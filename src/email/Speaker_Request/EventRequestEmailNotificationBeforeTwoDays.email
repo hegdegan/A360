@@ -1,0 +1,4 @@
+Hi, 
+
+You have {!Event_Request__c.Event_Title__c} coming up in 2 business days. Please contact your speakers to ensure they are appropriately prepared for this meeting. Please view additional information pertaining to this event at the following link:  {!Event_Request__c.Link} 
+Thank you.

@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Amount</value>
+        </caseValues>
+        <name>sales_price_opportunitylineitem</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Needed? --></label>
+        <name>Approval_Needed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Status --></label>
+        <name>Approval_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Required</masterLabel>
+            <translation><!-- Not Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Started</masterLabel>
+            <translation><!-- Not Started --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Asset Class-Geography --></label>
+        <name>Asset_Class_Geography__c</name>
+    </fields>
+    <fields>
+        <label><!-- Asset Class --></label>
+        <name>Asset_Class__c</name>
+    </fields>
+    <fields>
+        <help><!-- What are the Total Assets related to this product?
+
+(Note: You can enter &quot;K&quot; for Thousands, &quot;M&quot; for Millions and &quot;B&quot; for Billions.  No Decimals please!) --></help>
+        <label><!-- Assets --></label>
+        <name>Assets__c</name>
+    </fields>
+    <fields>
+        <label><!-- Blended? --></label>
+        <name>Blended__c</name>
+    </fields>
+    <fields>
+        <label><!-- Discount --></label>
+        <name>Discount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Drop Reason --></label>
+        <name>Drop_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Consulting Rating</masterLabel>
+            <translation><!-- Consulting Rating --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fees</masterLabel>
+            <translation><!-- Fees --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Products</masterLabel>
+            <translation><!-- Products --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- What is the expected new annualized reveunue related to this product?
+
+(Note: You can enter &quot;K&quot; for Thousands, &quot;M&quot; for Millions and &quot;B&quot; for Billions.  No Decimals please!) --></help>
+        <label><!-- Projected Annualized Revenue --></label>
+        <name>Expected_Annualized_Revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Projected Assets --></label>
+        <name>Expected_Assets__c</name>
+    </fields>
+    <fields>
+        <help><!-- What is the expected net interest revenue related to this product?
+
+(Note: You can enter &quot;K&quot; for Thousands, &quot;M&quot; for Millions and &quot;B&quot; for Billions.  No Decimals please!) --></help>
+        <label><!-- Projected NIR --></label>
+        <name>Expected_NIR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fee Structure --></label>
+        <name>Fee_Structure__c</name>
+        <picklistValues>
+            <masterLabel>Custom</masterLabel>
+            <translation><!-- Custom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard</masterLabel>
+            <translation><!-- Standard --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is First Strategy --></label>
+        <name>Is_First_Strategy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Unknown --></label>
+        <name>Is_Unknown__c</name>
+    </fields>
+    <fields>
+        <label><!-- Minimum Waiver --></label>
+        <name>Minimum_Waiver__c</name>
+        <relationshipLabel><!-- Strategies --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- What is the amount of expected new Net Interest Revenue based on cash balances? --></help>
+        <label><!-- Projected NIR --></label>
+        <name>NIR__c</name>
+    </fields>
+    <fields>
+        <help><!-- Are there any one-time fees related to this product?  If so, at what amount?  
+
+(Note: You can enter &quot;K&quot; for Thousands, &quot;M&quot; for Millions and &quot;B&quot; for Billions.  No Decimals please!) --></help>
+        <label><!-- One Time Fees --></label>
+        <name>One_Time_Fees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Amount --></label>
+        <name>Opportunity_Amount__c</name>
+    </fields>
+    <fields>
+        <help><!-- What is the probability of win for this product?  Please Note:  If no value is entered, the probability will be automatically updated to reflect Opportunity Probability. --></help>
+        <label><!-- Probability --></label>
+        <name>Percent__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portfolio Name --></label>
+        <name>Portfolio_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- PriceBook_BUId --></label>
+        <name>PriceBook_BUId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Link --></label>
+        <name>Product_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Strategy Name --></label>
+        <name>Product_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Record Type --></label>
+        <name>Product_Record_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vehicle --></label>
+        <name>Product_Vehicle__c</name>
+        <picklistValues>
+            <masterLabel>Australia Unit Trust</masterLabel>
+            <translation><!-- Australia Unit Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CDO</masterLabel>
+            <translation><!-- CDO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canadian Trust</masterLabel>
+            <translation><!-- Canadian Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collective Investment Trust</masterLabel>
+            <translation><!-- Collective Investment Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITM</masterLabel>
+            <translation><!-- ITM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Institutional Trust</masterLabel>
+            <translation><!-- Institutional Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LLC</masterLabel>
+            <translation><!-- LLC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Family of Funds (US)</masterLabel>
+            <translation><!-- MFS Family of Funds (US) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Investment Funds (FCP)</masterLabel>
+            <translation><!-- MFS Investment Funds (FCP) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meridian</masterLabel>
+            <translation><!-- Meridian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PPS</masterLabel>
+            <translation><!-- PPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seperate Account</masterLabel>
+            <translation><!-- Seperate Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subadvised Account</masterLabel>
+            <translation><!-- Subadvised Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIT</masterLabel>
+            <translation><!-- VIT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIT II</masterLabel>
+            <translation><!-- VIT II --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIT III</masterLabel>
+            <translation><!-- VIT III --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Restricted --></label>
+        <name>Restricted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Share Class --></label>
+        <name>Share_Class__c</name>
+        <picklistValues>
+            <masterLabel>A</masterLabel>
+            <translation><!-- A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B</masterLabel>
+            <translation><!-- B --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C</masterLabel>
+            <translation><!-- C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>I</masterLabel>
+            <translation><!-- I --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R1</masterLabel>
+            <translation><!-- R1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R2</masterLabel>
+            <translation><!-- R2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R3</masterLabel>
+            <translation><!-- R3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R4</masterLabel>
+            <translation><!-- R4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R6</masterLabel>
+            <translation><!-- R6 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Active Pipeline</masterLabel>
+            <translation><!-- Active Pipeline --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Awaiting Trade</masterLabel>
+            <translation><!-- Awaiting Trade --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dropped</masterLabel>
+            <translation><!-- Dropped --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lost</masterLabel>
+            <translation><!-- Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Won</masterLabel>
+            <translation><!-- Won --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- What is the Estimated Trading Volume related to this product?
+
+(Note: You can enter &quot;K&quot; for Thousands, &quot;M&quot; for Millions and &quot;B&quot; for Billions.  No Decimals please!) --></help>
+        <label><!-- Volume --></label>
+        <name>Volume__c</name>
+    </fields>
+    <layouts>
+        <layout>Opportunity Product Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Strategy Information --></label>
+            <section>Strategy Information</section>
+        </sections>
+    </layouts>
+    <validationRules>
+        <errorMessage><!-- Please provide drop reason before making the Strategy inactive --></errorMessage>
+        <name>DropReasonRequiredForInactive</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Record is not editable as it is pending for Approval. --></errorMessage>
+        <name>Prevent_Edit_whenSubmitted_for_Approval</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Quantity must be 1 --></errorMessage>
+        <name>QuantityShouldNotBeChanged</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Vehicle is required for Custom Fee Type Products. --></errorMessage>
+        <name>VehicleRequiredForCutomProducts</name>
+    </validationRules>
+</CustomObjectTranslation>

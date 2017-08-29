@@ -1,0 +1,23 @@
+This a request for your approval on the Investment Management Agreement for the account referenced in the Subject line of this email. <br><br>
+If you are comfortable with contents of the IMA applicable to your group please use the following link to “Approve” for your group:<br><br>
+
+<a href='http://spsecure/inv/tms/cobs/Pages/engageimaapprupd.aspx?tab=appr&EngagementItemId=502'>IMA Approval Form</a> or forward this email to William Smith with “Approve” in the event you are out of the office.<br><br>
+ 
+Once within the site, select the checkbox in the "Complete" column and then "Save" when done.  The IMA document that you are approving and reference information is also located on this approval page.<br><br>
+ 
+If you have multiple approvals, you may also access all of your pending approval items by using this link:<a href='http://spsecure/inv/tms/cobs/Pages/CSDashMyWorkItems.aspx?#tab-4'> My Work Items </a> <br><br>
+ 
+Contact <a href='mailto:wsm@mfs.com'> DL: TM team</a> with questions on the process or controls/tasks.  If you feel as though you were assigned as approver in error, please contact William Smith immediately so we can re-assign the item.<br><br>
+
+Case Link:  <a href='/'{!Case.Id}>{!Case.CaseNumber}</a> <br>
+Case Subject : {!Case.Subject}<br>
+Tier : {!Case.Tier__c}<br> <br>
+ 
+Thank you in advance for your attention to this important effort.<br><br><br>
+ 
+{!Case.Account}
+
+Regards,<br>
+Client Services Team
+ <br><br><br><br>
+Please do not respond to this email as it is system generated.

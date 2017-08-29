@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This template is used in the speaker request approval process. When a speaker request is submitted for approval, the approver should receive this template with a link to the URL to go and review the approval.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Speaker Request Approval</name>
+    <style>none</style>
+    <subject>Speaker Request for {!Event_Request__c.Requester__c} Approval Requested</subject>
+    <type>text</type>
+</EmailTemplate>

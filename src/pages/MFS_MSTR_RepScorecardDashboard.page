@@ -1,0 +1,5 @@
+<apex:page standardcontroller="Contact" extensions="MFS_MSTR_DashboardExtension" showHeader="true">
+    <apex:pageBlock >
+        <apex:iframe src="{!RepScorecardURL}" scrolling="true" id="theIframe"/>
+    </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,219 @@
+<!---
+Visualforce Page Name :  MFS_CompetitorSearchPage
+Version               :  1.0 
+Created Date          :  14 NOV 2016
+Function              :  Competitor product search page for opportunity
+--->
+<apex:page standardController="Competitor_Product_Opp_Association__c" extensions="MFS_CompetitorSearchController" standardStylesheets="false" docType="html-5.0">   
+    
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>{!$Label.MFS_Competitive_Product_Title}</title>
+</head>
+<body>
+    <apex:outputLink value="/{!recId}">back to Opportunity</apex:outputLink>
+    <apex:sectionHeader Title="{!$Label.PS_Manage} {!$ObjectType.Product2.LabelPlural}" subtitle="{!Competitor_Product_Opp_Association__c.Opportunity__r.Name}" rendered="{!$User.UIThemeDisplayed=='Theme3'}"/>
+    <apex:pageMessages id="errorMessage"/>     
+    <!--Selected Product section Start-->  
+    <apex:form id="form">
+        <apex:outputPanel id="ClassicView" rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+        <!--Selected Product section Ends-->  
+        <!--Search Section Starts -->        
+        <apex:pageBlock id="searchpage">              
+            <table>
+                <tr>
+                    <th><apex:outputLabel value="{!$Label.A360_Product_Name}"/> </th>
+                    <th><apex:outputLabel value="{!$Label.A360_Competitor_Name}"/></th>
+                </tr>
+                <tr>
+                    
+                    <th> 
+                        <apex:inputText value="{!searchCom}" style="width:250px"/> 
+                    </th>
+                    <th> 
+                        <apex:inputText value="{!firm}" style="width:250px"/> 
+                    </th>
+                         
+                </tr>
+            </table>
+            <br/>                   
+            <apex:commandButton value="{!$Label.Product_Search}" action="{!searchComProduct}" reRender="searchResults" />
+            <apex:commandButton value="{!$Label.A360_Add_Selected}" action="{!addUnknownStrategy}"/> <!-- Add Selected is replaced with Custom label on 21/Feb/2017-->
+            <br/><br/>
+            <!--Search Section Ends -->
+            <!--Search Result Section Starts --> 
+            <apex:outputPanel id="searchResults">
+                <apex:pageBlockTable value="{!wraplist}" var="resultRec"> 
+                    
+                    <apex:column headerValue="{!$Label.A360_Select}">
+                        <apex:inputCheckbox value="{!resultRec.isSelected}"/>
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!$Label.A360_Product_Name}" value="{!resultRec.comp.Name}" /> 
+                    <apex:column headerValue="{!$Label.A360_Competitor_Name}" value="{!resultRec.comp.Firm_Name__c}" /> <!-- Firm__r.Name is replaced with Firm_Name__c on 08/Feb/2017 for UAT Defect-->
+                </apex:pageBlockTable>
+            </apex:outputPanel>
+        </apex:pageBlock>
+        </apex:outputPanel>
+        
+        <apex:outputPanel id="lightningVeiw" rendered="{!$User.UIThemeDisplayed=='Theme4d' || $User.UIThemeDisplayed=='Theme4t'}">
+            <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/salesforce-lightning-design-system-ltng.min.css" />
+            <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/mfs_new_styles.css" />
+            <div class="MFS slds exclude-page-close-warning">
+                <div class="slds-page-header" role="banner">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-has-flexi-truncate">
+                            <div class="slds-media slds-no-space slds-grow">
+                                <div class="slds-media__figure">
+                                    <span class="slds-icon_container slds-icon-standard-case">
+                                        <svg aria-hidden="true" class="slds-icon slds-icon--medium">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="slds-media__body">
+                                    <p class="slds-text-title--caps slds-line-height--reset">Opportunities</p>
+                                    <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Competitor Search</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-no-flex slds-grid slds-align-top">
+                            <div class="mfs-top-arrow--small">
+                                <button class="slds-button slds-button--icon-border-filled" aria-haspopup="true" title="{!$label.A360_Show_More}">
+                                    <svg class="slds-button__icon" aria-hidden="true">
+                                        <use xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                    </svg>
+                                    <span class="slds-assistive-text">{!$label.A360_Show_More}</span>
+                                </button>
+                            </div>
+                            <apex:outputPanel id="topBtns" styleClass="slds-button-group mfs-top-buttons-container" html-role="group" layout="block">
+                                <button class="slds-button slds-button--neutral">{!$Label.A360_Cancel}</button>
+                                <apex:commandButton value="{!$Label.A360_Add_Selected}" action="{!addUnknownStrategy}" styleclass="slds-button slds-button--neutral"/> 
+                            </apex:outputPanel>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-container--x-large slds-container--center mfs-main-container" id="scroller">
+                    <div class="slds-grid slds-wrap search-filters-container">
+                        <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--small">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="lookup">{!$Label.A360_Product_Name}</label>
+                                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                                    <apex:inputText value="{!searchCom}" styleClass="slds-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--small">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="lookup">{!$Label.A360_Competitor_Name}</label>
+                                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                                    <apex:inputText value="{!firm}" styleClass="slds-input"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--small">
+                            <apex:commandButton value="{!$Label.Product_Search}" action="{!searchComProduct}" reRender="searchResultscom" styleClass="slds-button slds-button--brand mfs-comp-search-button"/>
+                        </div>
+                    </div>
+                    <div class="slds-m-top--medium">
+                        <apex:outputPanel id="searchResultscom" layout="block">
+                            <table class="slds-table slds-table--bordered slds-max-medium-table--stacked">
+                                <thead>
+                                    <tr class="slds-text-title--caps">
+                                        <th class="slds-cell-shrink" scope="col">
+                                            <!--<label class="slds-checkbox">
+                                                <input type="checkbox" name="options" />
+                                                <span class="slds-checkbox--faux"></span>
+                                                <span class="slds-assistive-text">{!$Label.MFS_CP_SelectAll}</span>
+                                            </label> -->
+                                        </th>
+                                        <th class="slds-is-sortable" scope="col">
+                                            <div class="slds-truncate" title="Asset-Class Geography">
+                                                {!$Label.A360_Product_Name}
+                                                <button class="slds-button slds-button--icon">
+                                                    <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                    </svg>
+                                                    <span class="slds-assistive-text">{!$Label.MFS_CP_Sort}</span>
+                                                </button>
+                                            </div>
+                                        </th>
+                                        <th class="slds-is-sortable" scope="col">
+                                            <div class="slds-truncate" title="Strategy Name">
+                                                {!$Label.A360_Competitor_Name}
+                                                <button class="slds-button slds-button--icon">
+                                                    <svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                    </svg>
+                                                    <span class="slds-assistive-text">{!$Label.MFS_CP_Sort}</span>
+                                                </button>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat value="{!wraplist}" var="resultRec">
+                                        <tr class="slds-hint-parent">
+                                            <td class="slds-cell-shrink" data-label="Select Row">
+                                                <label class="slds-checkbox">
+                                                    <apex:inputCheckbox value="{!resultRec.isSelected}"></apex:inputCheckbox>
+                                                    <span class="slds-checkbox--faux"></span>
+                                                    <span class="slds-assistive-text">{!$Label.A360_Select_Row}</span>
+                                                </label>
+                                            </td>
+                                            <td data-label="Portfolio Name">
+                                                <div class="slds-truncate">{!resultRec.comp.Name}</div> 
+                                            </td>
+                                            
+                                            <td data-label="{!$Label.A360_Competitor_Name}"> <!--Column Header is changed from Vehicle to "Competitor Name" -->
+                                                <div class="slds-truncate" title="Prospecting">{!resultRec.comp.Firm_Name__c}</div> <!--Firm__r.Name is replaced with Firm_Name__c on 08/Feb/2017 for UAT Defect -->
+                                            </td>
+                                        </tr>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                        </apex:outputPanel>
+                    </div>
+                </div>
+            </div>
+            <script>
+            var isConsole = '';
+            var allPortfolios = '';
+            var allCompetitorPortfolios = '';
+            var allUsers = '';
+            </script>
+            <script src="/resource/MFS_UI_Assets/assets/js/dist/MFS_Core_Plugins.min.js">
+            </script>
+			<script src="/resource/MFS_UI_Assets/assets/js/dist/MFS_Core_Plugins_Mobile.min.js">
+            </script>
+            <script src="/resource/MFS_UI_Assets/assets/js/dist/MFS_Core_Scripts.min.js">
+            </script>
+            <!--
+            <script src="{!URLFOR($Resource.MFS_Scripts_New)}">
+            </script>
+            <script src="{!URLFOR($Resource.MFS_UI_Engine)}">
+            </script> -->
+            <script>
+            var _compSearchOnEnterKey = function(e){
+                if(e.keyCode === 13){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    $(".mfs-comp-search-button").trigger("click");
+                    
+                    return false;
+                }
+            };
+            $(document).ready(function(){
+                $(".search-filters-container input[type='text']").on("keypress", function(e){
+                	_compSearchOnEnterKey(e);
+                });
+            });
+            </script>
+        </apex:outputPanel>
+    </apex:form>  
+</body>
+</html>
+</apex:page>

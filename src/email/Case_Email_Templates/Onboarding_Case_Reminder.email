@@ -1,0 +1,6 @@
+{!$Label.OB_Reminder_ET_1} {!Approval_Request__c.Approver_Group__c},<br><br>
+
+{!$Label.OB_Reminder_ET_2}<a href={!Approval_Request__c.Link}>{!$Label.OB_Reminder_ET_3}</a> , {!$Label.OB_Reminder_ET_4}<a href={!Approval_Request__c.Link}>{!$Label.OB_Reminder_ET_5}</a> {!$Label.OB_Reminder_ET_6}{!Approval_Request__c.Due_Date__c}.
+{!$Label.OB_Reminder_ET_7}<br><br>
+{!$Label.OB_Reminder_ET_8}<br>
+{!Approval_Request__c.OwnerFullName}

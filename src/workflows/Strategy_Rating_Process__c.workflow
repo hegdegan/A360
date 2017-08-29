@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>ApprovaNotfication</fullName>
+        <description>ApprovaNotfication</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/NewProductRatingisApproved</template>
+    </alerts>
+    <alerts>
+        <fullName>NewRatingReject</fullName>
+        <description>NewRatingReject</description>
+        <protected>false</protected>
+        <recipients>
+            <type>creator</type>
+        </recipients>
+        <senderType>CurrentUser</senderType>
+        <template>unfiled$public/Consultant_Reject</template>
+    </alerts>
+    <fieldUpdates>
+        <fullName>StatustoApproved</fullName>
+        <field>Status__c</field>
+        <literalValue>Approved</literalValue>
+        <name>StatustoApproved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>StrategyProcessNameUpdate</fullName>
+        <field>Name</field>
+        <formula>Product__r.Name+&quot; - &quot;+Consultant__r.Name</formula>
+        <name>StrategyProcessNameUpdate</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UpdateisApproved</fullName>
+        <field>isApproved__c</field>
+        <literalValue>1</literalValue>
+        <name>UpdateisApproved</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>WillNotBeRated</fullName>
+        <field>Status__c</field>
+        <literalValue>Will Not Be Rated</literalValue>
+        <name>WillNotBeRated</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>AutonameStrategyRatingProcess</fullName>
+        <actions>
+            <name>StrategyProcessNameUpdate</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Set Name to standard value for Strategy Rating Process Records</description>
+        <formula>ISNEW() || ISCHANGED(Name)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

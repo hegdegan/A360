@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Strategy Rating Process</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Strategy Rating Process</value>
+    </caseValues>
+    <fields>
+        <label><!-- Consultant --></label>
+        <name>Consultant__c</name>
+        <relationshipLabel><!-- Pending Ratings --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- This corresponds to the Consultant&apos;s name for a rating --></help>
+        <label><!-- External Rating --></label>
+        <name>External_Rating__c</name>
+    </fields>
+    <fields>
+        <help><!-- This rating corresponds to the MFS defined, common rating for a Consultant Rated Product --></help>
+        <label><!-- MFS Rating --></label>
+        <name>MFS_Rating__c</name>
+        <picklistValues>
+            <masterLabel>A</masterLabel>
+            <translation><!-- A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>A-</masterLabel>
+            <translation><!-- A- --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B</masterLabel>
+            <translation><!-- B --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B+</masterLabel>
+            <translation><!-- B+ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>B-</masterLabel>
+            <translation><!-- B- --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C</masterLabel>
+            <translation><!-- C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Rated</masterLabel>
+            <translation><!-- Not Rated --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Strategy --></label>
+        <name>Product__c</name>
+        <relationshipLabel><!-- Strategy Rating Process --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Rating Request Rationale --></label>
+        <name>Rating_Request_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Awaiting Consultant Feedback</masterLabel>
+            <translation><!-- Awaiting Consultant Feedback --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Initiated</masterLabel>
+            <translation><!-- Initiated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Request for Internal Approval</masterLabel>
+            <translation><!-- Request for Internal Approval --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>To Be Initiated</masterLabel>
+            <translation><!-- To Be Initiated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Will Not Be Rated</masterLabel>
+            <translation><!-- Will Not Be Rated --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- isApproved --></label>
+        <name>isApproved__c</name>
+    </fields>
+    <layouts>
+        <layout>New Consultant Rating Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Rating Request Rationale --></label>
+            <section>Rating Request Rationale</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please enter MFS Rating before submitting for approval. --></errorMessage>
+        <name>RequireRatingValues</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- New_Consultant_Strategy_Rating --></label>
+        <name>New_Consultant_Strategy_Rating</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Meeting</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Meetings</value>
+    </caseValues>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Calendar Meeting</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Calendar Meetings</value>
+        </caseValues>
+        <name>calendar_event</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Calendar Meeting Edit</value>
+        </caseValues>
+        <name>calendar_event_edit</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Calendar Meeting Subject</value>
+        </caseValues>
+        <name>calendar_event_subject</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Meeting Attendee</value>
+        </caseValues>
+        <name>event_attendee</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Meeting Data</value>
+        </caseValues>
+        <name>event_data</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Meeting Detail</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Meeting Details</value>
+        </caseValues>
+        <name>event_detail</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Meeting Detail Page</value>
+        </caseValues>
+        <name>event_detail_page</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Meeting Information</value>
+        </caseValues>
+        <name>event_information</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Meeting Invitation</value>
+        </caseValues>
+        <name>event_invitation</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Meeting Invitee</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Meeting Invitees</value>
+        </caseValues>
+        <name>event_invitee</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Meeting Occurrence</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Meeting Occurrences</value>
+        </caseValues>
+        <name>event_occurrence</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Meeting Record Type</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Meeting Record Types</value>
+        </caseValues>
+        <name>event_record_type</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Multi-Person Calendar Meeting</value>
+        </caseValues>
+        <name>group_calendar_event</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Multi-Person Calendar Meeting Edit</value>
+        </caseValues>
+        <name>group_calendar_event_edit</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Group Meeting</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Groups Meetings</value>
+        </caseValues>
+        <name>group_event</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Group Meeting Type</value>
+        </caseValues>
+        <caseValues>
+            <plural>true</plural>
+            <value>Groups Meeting Types</value>
+        </caseValues>
+        <name>group_event_type</name>
+        <startsWith>Vowel</startsWith>
+    </fields>
+    <fields>
+        <label><!-- Method --></label>
+        <name>Activity_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Detail --></label>
+        <name>Activity_Detail__c</name>
+        <relationshipLabel><!-- Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Activity Sub Type --></label>
+        <name>Activity_SubType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Sub Type --></label>
+        <name>Activity_Sub_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Activity_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Activity_Type_for_Instit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Location --></label>
+        <name>Additional_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Call Direction --></label>
+        <name>Call_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Call Note Parent Task Event --></label>
+        <name>Call_Note_Parent_Task_Event__c</name>
+    </fields>
+    <fields>
+        <label><!-- Call Outcome --></label>
+        <name>Call_Outcome__c</name>
+    </fields>
+    <fields>
+        <label><!-- Called Time --></label>
+        <name>Called_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Engagement --></label>
+        <name>Client_Engagement__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitive Analysis Request --></label>
+        <name>Competitive_Analysis_Request__c</name>
+    </fields>
+    <fields>
+        <label><!-- DB Activity Type --></label>
+        <name>DB_Activity_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event End Date --></label>
+        <name>Event_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Start Date --></label>
+        <name>Event_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- ExternalAttendees --></label>
+        <name>ExternalAttendees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Follow up Type --></label>
+        <name>Follow_up_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Government Entity? --></label>
+        <name>Government_Entity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Inbound Follow Up Created? --></label>
+        <name>Inbound_Follow_Up_Created__c</name>
+    </fields>
+    <fields>
+        <label><!-- InternalAttendees --></label>
+        <name>InternalAttendees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal Type --></label>
+        <name>Internal_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Modified within 6 months? --></label>
+        <name>Is_Modified_within_6_months__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Overdue --></label>
+        <name>Is_Overdue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Points and Directions for Speakers --></label>
+        <name>Key_Points_and_Directions_for_Speakers__c</name>
+    </fields>
+    <fields>
+        <label><!-- Location --></label>
+        <name>Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- MFS Attendees --></label>
+        <name>MFS_Attendees__c</name>
+        <relationshipLabel><!-- Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Materials Request --></label>
+        <name>Materials_Request__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Background --></label>
+        <name>Meeting_Background__c</name>
+    </fields>
+    <fields>
+        <label><!-- Method --></label>
+        <name>Method__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Activity Detail Id --></label>
+        <name>Parent_Activity_Detail_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Product__c</name>
+        <relationshipLabel><!-- Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Question Likely Asked --></label>
+        <name>Question_Likely_Asked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason for Call --></label>
+        <name>Reason_for_Call__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Organization --></label>
+        <name>Related_Organization__c</name>
+        <relationshipLabel><!-- Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Reminder Start Date --></label>
+        <name>Reminder_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Result --></label>
+        <name>Result__c</name>
+    </fields>
+    <fields>
+        <label><!-- Saleslogix ID --></label>
+        <name>Saleslogix_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Significant Anticipated Questions --></label>
+        <name>Significant_Anticipated_Questions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Speaker Request --></label>
+        <name>Speaker_Request__c</name>
+    </fields>
+    <layouts>
+        <layout>Event Layout</layout>
+        <sections>
+            <label><!-- Related To --></label>
+            <section>Related To</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Enhanced Event (Institutional) --></label>
+        <name>Enhanced_Event_Institutional</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Enhanced Event (Retail) --></label>
+        <name>Enhanced_Event_Retail</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Standard Event --></label>
+        <name>Standard_Event</name>
+    </recordTypes>
+    <startsWith>Vowel</startsWith>
+    <webLinks>
+        <label><!-- Create_Activity_BAR --></label>
+        <name>Create_Activity_BAR</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Meeting_Institutional --></label>
+        <name>Create_Meeting_Institutional</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Meeting_New --></label>
+        <name>Create_Meeting_New</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Meeting_Retail --></label>
+        <name>Create_Meeting_Retail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- View_Activities --></label>
+        <name>View_Activities</name>
+    </webLinks>
+</CustomObjectTranslation>

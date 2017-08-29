@@ -1,0 +1,8 @@
+<!---
+Visualforce Page Name :  MFS_ClonePage
+Version               :  1.0 
+Created Date          :  17 AUG 2016
+Function              :  Campaign clone button - custom
+--->
+<apex:page standardController="Campaign" extensions="MFS_CloneExtn" action="{!redirect}" >
+</apex:page>

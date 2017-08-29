@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Related Contact</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Related Contacts</value>
+    </caseValues>
+    <fields>
+        <label><!-- Authorized Signer --></label>
+        <name>Authorized_Signer__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Case__c</name>
+        <relationshipLabel><!-- Related Contacts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact Name --></label>
+        <name>Contact_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Related Contacts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Role --></label>
+        <name>Role__c</name>
+        <picklistValues>
+            <masterLabel>ACS Distributor</masterLabel>
+            <translation><!-- ACS Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AML Only</masterLabel>
+            <translation><!-- AML Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Accounting</masterLabel>
+            <translation><!-- Accounting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Actuary</masterLabel>
+            <translation><!-- Actuary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Administrative Assistant</masterLabel>
+            <translation><!-- Administrative Assistant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Administrator</masterLabel>
+            <translation><!-- Administrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auditor</masterLabel>
+            <translation><!-- Auditor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Authorized Signer</masterLabel>
+            <translation><!-- Authorized Signer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Billing</masterLabel>
+            <translation><!-- Billing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Board Member/ Trustee</masterLabel>
+            <translation><!-- Board Member/ Trustee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Development</masterLabel>
+            <translation><!-- Business Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Service Manager</masterLabel>
+            <translation><!-- Client Service Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compliance Analyst</masterLabel>
+            <translation><!-- Compliance Analyst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Analyst</masterLabel>
+            <translation><!-- Field Analyst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Consultant</masterLabel>
+            <translation><!-- Field Consultant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial Advisor</masterLabel>
+            <translation><!-- Financial Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fulfillment</masterLabel>
+            <translation><!-- Fulfillment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Human Resources</masterLabel>
+            <translation><!-- Human Resources --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Information Contact</masterLabel>
+            <translation><!-- Information Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investment Specialist</masterLabel>
+            <translation><!-- Investment Specialist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investment Staff</masterLabel>
+            <translation><!-- Investment Staff --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal</masterLabel>
+            <translation><!-- Legal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lending Agent</masterLabel>
+            <translation><!-- Lending Agent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operations</masterLabel>
+            <translation><!-- Operations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plan Administrator</masterLabel>
+            <translation><!-- Plan Administrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portfolio Manager</masterLabel>
+            <translation><!-- Portfolio Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Manager</masterLabel>
+            <translation><!-- Product Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relationship Manager</masterLabel>
+            <translation><!-- Relationship Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reporting</masterLabel>
+            <translation><!-- Reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research Analyst</masterLabel>
+            <translation><!-- Research Analyst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research Consultant</masterLabel>
+            <translation><!-- Research Consultant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retirement Analyst</masterLabel>
+            <translation><!-- Retirement Analyst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Management</masterLabel>
+            <translation><!-- Sales Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Person</masterLabel>
+            <translation><!-- Sales Person --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Senior Management</masterLabel>
+            <translation><!-- Senior Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialist</masterLabel>
+            <translation><!-- Specialist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trade Cost Analyst</masterLabel>
+            <translation><!-- Trade Cost Analyst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transition Manager</masterLabel>
+            <translation><!-- Transition Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trustee</masterLabel>
+            <translation><!-- Trustee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wholesaler</masterLabel>
+            <translation><!-- Wholesaler --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Contact Role Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

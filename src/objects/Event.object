@@ -1,0 +1,2563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Decline</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>DeleteSeries</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>MFS_Activity360EventRedirectInEditMode</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewEvent</actionName>
+        <content>MFS_StandardMeeting</content>
+        <skipRecordTypeSelect>true</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>NewSfdcEvent</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Today</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>MFS_Activity360EventRedirect</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <compactLayoutAssignment>Calendar_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Calendar_Layout</fullName>
+        <fields>Subject</fields>
+        <fields>Location</fields>
+        <fields>WhoId</fields>
+        <fields>WhatId</fields>
+        <fields>StartDateTime</fields>
+        <fields>InternalAttendees__c</fields>
+        <label>Calendar Layout</label>
+    </compactLayouts>
+    <enableFeeds>true</enableFeeds>
+    <fields>
+        <fullName>ActivityDate</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>ActivityDateTime</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>DurationInMinutes</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Email</fullName>
+    </fields>
+    <fields>
+        <fullName>EndDateTime</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>EventSubtype</fullName>
+    </fields>
+    <fields>
+        <fullName>IsAllDayEvent</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>IsPrivate</fullName>
+    </fields>
+    <fields>
+        <fullName>Location</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Phone</fullName>
+    </fields>
+    <fields>
+        <fullName>ShowAs</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>StartDateTime</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Subject</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Send Letter/Quote</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Type</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dealer Conference - National</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dealer Conference - Regional</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Due Diligence Meeting</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Internal Meeting</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFS Introduction/Strategy Introduction</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Multi-firm Event</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Portfolio/Strategy Review</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Roadshow</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Industry Event</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Business Partner Event/Entertainment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>WhatId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>WhoId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypes>
+        <fullName>Enhanced_Event_Institutional</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Calendar_Layout</compactLayoutAssignment>
+        <description>This record type is related to Activity360</description>
+        <label>Enhanced Event (Institutional)</label>
+        <picklistValues>
+            <picklist>Activity_Category__c</picklist>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Activity_SubType__c</picklist>
+            <values>
+                <fullName>Business Partner Event%2FEntertainment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DB Trends</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC Trends</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ESG Discussion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Finals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industry Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Introduction%2FStrategy Introduction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Senior Leadership Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Macro Market Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operational Due Diligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio%2FStrategy Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Finals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Activity_Sub_Type__c</picklist>
+            <values>
+                <fullName>Industry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Activity_Type__c</picklist>
+            <values>
+                <fullName>Charitable Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Seminar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Due Diligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Engagement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Entertainment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Final Presentation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information Request Response%3F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operational%2FAdministrative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Final Presentation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Activity_Type_for_Instit__c</picklist>
+            <values>
+                <fullName>Business Partner Event%2FEntertainment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Finals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industry Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Introduction%2FStrategy Introduction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Senior Leadership Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operational Due Diligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio%2FStrategy Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Finals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thought Leadership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Call_Category__c</picklist>
+            <values>
+                <fullName>Inbound</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outbound</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Call_Outcome__c</picklist>
+            <values>
+                <fullName>Assistant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Live Conversation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Voicemail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Called_Time__c</picklist>
+            <values>
+                <fullName>1%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_Engagement__c</picklist>
+            <values>
+                <fullName>DC Trends</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ESG Discussion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Overview%2FBusiness Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Macro Market Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operational Due Diligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Relationship Building Activity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research Analyst Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Risk Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Senior Management Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thought Leadership</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Follow_up_Type__c</picklist>
+            <values>
+                <fullName>Add to Campaign</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow Up - DCI Lead</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow Up - Money In Motion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research Required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Schedule Follow up Meeting%2FCall</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send Materials</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Government_Entity__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Internal_Type__c</picklist>
+            <values>
+                <fullName>In Office Day</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of Office</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>MFS Office</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offsite</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Method__c</picklist>
+            <values>
+                <fullName>Conference Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Person Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video Conference</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason_for_Call__c</picklist>
+            <values>
+                <fullName>Competitive Analysis Follow Up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCI Lead</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Story</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Schedule Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value Add</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wholesaler follow-up</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Result__c</picklist>
+            <values>
+                <fullName>Live Conversation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting Scheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Voicemail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send Letter%2FQuote</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Enhanced_Event_Retail</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Calendar_Layout</compactLayoutAssignment>
+        <description>This record type is related to Activity360page</description>
+        <label>Enhanced Event (Retail)</label>
+        <picklistValues>
+            <picklist>Activity_Category__c</picklist>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Activity_SubType__c</picklist>
+            <values>
+                <fullName>Business Partner Event%2FEntertainment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DB Trends</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC Trends</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ESG Discussion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Finals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industry Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Introduction%2FStrategy Introduction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Senior Leadership Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Macro Market Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operational Due Diligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio%2FStrategy Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Finals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Activity_Sub_Type__c</picklist>
+            <values>
+                <fullName>Industry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Activity_Type__c</picklist>
+            <values>
+                <fullName>Charitable Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Seminar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Due Diligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Engagement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Entertainment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Final Presentation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information Request Response%3F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operational%2FAdministrative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Final Presentation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Activity_Type_for_Instit__c</picklist>
+            <values>
+                <fullName>Business Partner Event%2FEntertainment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Finals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industry Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Introduction%2FStrategy Introduction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Senior Leadership Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operational Due Diligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio%2FStrategy Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Finals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thought Leadership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Call_Category__c</picklist>
+            <values>
+                <fullName>Inbound</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outbound</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Call_Outcome__c</picklist>
+            <values>
+                <fullName>Assistant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inbound</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Live Conversation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Voicemail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Called_Time__c</picklist>
+            <values>
+                <fullName>1%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_Engagement__c</picklist>
+            <values>
+                <fullName>DC Trends</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ESG Discussion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Overview%2FBusiness Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Macro Market Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operational Due Diligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Relationship Building Activity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research Analyst Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Risk Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Senior Management Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thought Leadership</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Follow_up_Type__c</picklist>
+            <values>
+                <fullName>Add to Campaign</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow Up - DCI Lead</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow Up - Money In Motion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research Required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Schedule Follow up Meeting%2FCall</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send Materials</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Government_Entity__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Internal_Type__c</picklist>
+            <values>
+                <fullName>In Office Day</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of Office</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>MFS Office</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offsite</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Method__c</picklist>
+            <values>
+                <fullName>Conference Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customized Webinar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Person Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video Conference</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason_for_Call__c</picklist>
+            <values>
+                <fullName>Advanced MStar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Competitive Analysis Follow Up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCI Lead</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow up-Advanced MStar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow up-Hypo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow up-Product Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow up-Wholesaler Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hypo</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Story</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prospect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Schedule Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value Add</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wholesaler follow-up</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Result__c</picklist>
+            <values>
+                <fullName>Live Conversation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting Scheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Voicemail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send Letter%2FQuote</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Business Partner Event%2FEntertainment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dealer Conference - National</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dealer Conference - Regional</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Due Diligence Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industry Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Introduction%2FStrategy Introduction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Multi-firm Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio%2FStrategy Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Roadshow</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Standard_Event</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Calendar_Layout</compactLayoutAssignment>
+        <label>Standard Event</label>
+        <picklistValues>
+            <picklist>Activity_Category__c</picklist>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Activity_SubType__c</picklist>
+            <values>
+                <fullName>Business Partner Event%2FEntertainment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DB Trends</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC Trends</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ESG Discussion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Finals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industry Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Introduction%2FStrategy Introduction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Senior Leadership Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Macro Market Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operational Due Diligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio%2FStrategy Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Finals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Activity_Sub_Type__c</picklist>
+            <values>
+                <fullName>Industry</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Activity_Type__c</picklist>
+            <values>
+                <fullName>Charitable Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Seminar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conference</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Due Diligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Engagement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Entertainment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Final Presentation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information Request Response%3F</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operational%2FAdministrative</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Final Presentation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Activity_Type_for_Instit__c</picklist>
+            <values>
+                <fullName>Business Partner Event%2FEntertainment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Finals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industry Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Introduction%2FStrategy Introduction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Senior Leadership Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operational Due Diligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio%2FStrategy Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Semi-Finals</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thought Leadership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Transition Meeting</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Call_Category__c</picklist>
+            <values>
+                <fullName>Inbound</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outbound</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Call_Outcome__c</picklist>
+            <values>
+                <fullName>Assistant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Live Conversation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Voicemail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Called_Time__c</picklist>
+            <values>
+                <fullName>1%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>11%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>12%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9%3A00 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9%3A00 PM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9%3A30 AM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9%3A30 PM</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_Engagement__c</picklist>
+            <values>
+                <fullName>DC Trends</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ESG Discussion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Overview%2FBusiness Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Macro Market Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Operational Due Diligence</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Relationship Building Activity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research Analyst Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Risk Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Senior Management Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Thought Leadership</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Follow_up_Type__c</picklist>
+            <values>
+                <fullName>Add to Campaign</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow Up - DCI Lead</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Follow Up - Money In Motion</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Research Required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Schedule Follow up Meeting%2FCall</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send Materials</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Government_Entity__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Internal_Type__c</picklist>
+            <values>
+                <fullName>In Office Day</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Internal Meeting%2FTraining</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Out of Office</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Travel</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Location__c</picklist>
+            <values>
+                <fullName>MFS Office</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offsite</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Method__c</picklist>
+            <values>
+                <fullName>Conference Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Customized Webinar</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Person Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video Conference</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason_for_Call__c</picklist>
+            <values>
+                <fullName>Competitive Analysis Follow Up</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DCI Lead</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Story</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Schedule Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Value Add</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Wholesaler follow-up</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Result__c</picklist>
+            <values>
+                <fullName>Live Conversation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting Scheduled</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Voicemail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Subject</picklist>
+            <values>
+                <fullName>Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send Letter%2FQuote</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Business Partner Event%2FEntertainment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dealer Conference - National</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dealer Conference - Regional</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Due Diligence Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industry Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Internal Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Introduction%2FStrategy Introduction</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Meeting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Multi-firm Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio%2FStrategy Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Roadshow</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>Create_Activity_BAR</fullName>
+        <availability>online</availability>
+        <description>This is used in BAR</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Create Activity</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/*This button javascript opens the Custom Activity360 page to create new Activity. 
+*/ 
+
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/apex.js&quot; )} 
+
+//parameters to pass in the URL 
+var returnID; 
+var pagename; 
+var isTaskorEvent = &apos;event=true&apos;; 
+var isNew = &apos;isNew=true&apos;;
+var RecType; 
+
+//Determine the Page Layout (Institutional/Retail) 
+if(&apos;{!Business_at_Risk__c.Type__c}&apos;.includes(&quot;Institution&quot;) || &apos;{!Business_at_Risk__c.Type__c}&apos;.includes(&quot;Global Client Service&quot;) || &apos;{!Business_at_Risk__c.Type__c}&apos;.includes(&quot;Global Consultant Relations&quot;)){ 
+pagename = &apos;MFS_Activity360PageSF1&apos;; 
+RecType = &apos;Institutional&apos;;
+} else if(&apos;{!Business_at_Risk__c.Type__c}&apos;.includes(&quot;Retail&quot;)){ 
+pagename = &apos;MFS_Activity360RetailPageSF1&apos;; 
+RecType = &apos;Retail&apos;;
+}else{ 
+pagename = &apos;MFS_Activity360RetailPageSF1&apos;;
+RecType = &apos;Retail&apos;; 
+} 
+
+//Determine the return ID (Account/Contact/Oppty/BAR id) 
+var barid = &apos;{!Business_at_Risk__c.Id}&apos;; 
+
+returnID = barid; 
+
+
+var activityId; 
+
+var connection = sforce.connection; 
+var newActivityDetail= new sforce.SObject(&quot;Activity_Detail__c&quot;); 
+newActivityDetail.Subject__c = &apos;Orphan Record&apos;; 
+result = sforce.connection.create([newActivityDetail]); 
+activityId = result[0].id; 
+
+var A360url = &apos;/apex/&apos; + pagename + &apos;?Id=&apos; +activityId+&apos;&amp;RecType=&apos; + RecType +&apos;&amp;&apos; +isTaskorEvent+ &apos;&amp;returnID=&apos;+returnID+&apos;&amp;&apos;+ isNew +&apos;&amp;isConsole=false&apos;; 
+
+var A360urlConsole = &apos;/apex/&apos; + pagename + &apos;?Id=&apos;+activityId+&apos;&amp;RecType=&apos; + RecType+&apos;&amp;&apos; +isTaskorEvent+ &apos;&amp;returnID=&apos;+returnID+&apos;&amp;&apos;+ isNew +&apos;&amp;isConsole=true&apos;; 
+
+if (typeof(srcUp) == &apos;function&apos;) { 
+srcUp(A360urlConsole); 
+} else { 
+window.open(A360url); 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Create_Meeting_Institutional</fullName>
+        <availability>online</availability>
+        <description>This button opens the Custom Activity360 page to create new Institutional Activity. This button available for the objects (Account, Contact, Opportunity) and in Sys. Admin page layouts.</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Create Activity (Institutional)</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/*This button javascript opens the Custom Activity360 page to create new Institutional Activity. 
+*/ 
+
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/apex.js&quot; )} 
+
+//parameters to pass in the URL 
+var returnID; 
+var pageneme = &apos;MFS_Activity360PageSF1&apos;; 
+var RecType= &apos;Institutional&apos;; 
+var isTaskorEvent = &apos;event=true&apos;; 
+var isNew = &apos;isNew=true&apos;; 
+
+//Determine the return ID (Account/Contact/Oppty/BAR id) 
+var acctid= &apos;{!Account.Id}&apos;; 
+var contid = &apos;{!Contact.Id}&apos;; 
+var opptyid = &apos;{!Opportunity.Id}&apos;; 
+var barid = &apos;{!Business_at_Risk__c.Id}&apos;; 
+var caseid = &apos;{!Case.Id}&apos;; 
+var campid = &apos;{!Campaign.Id}&apos;; 
+var spid= &apos;{!Strategy_Plan__c.Id}&apos;;
+var crid = &apos;{!Consultant_Rating__c.Id}&apos;;
+/**Do not change the order of the if-else conditions**/ 
+if(opptyid!= &apos;&apos;){ 
+returnID = opptyid; 
+}else if(barid!= &apos;&apos;){ 
+returnID = barid; 
+}else if(caseid!= &apos;&apos;){ 
+returnID = caseid; 
+}else if(campid!= &apos;&apos;){ 
+returnID = campid; 
+}else if(contid != &apos;&apos;){ 
+returnID = contid; 
+}else if(spid!= &apos;&apos;){ 
+returnID = spid; 
+}
+else if(crid  != &apos;&apos;){ 
+returnID = crid ; 
+}else { 
+returnID = acctid; 
+} 
+
+var activityId; 
+
+var connection = sforce.connection; 
+var newActivityDetail= new sforce.SObject(&quot;Activity_Detail__c&quot;); 
+newActivityDetail.Subject__c = &apos;Orphan Record&apos;; 
+result = sforce.connection.create([newActivityDetail]); 
+activityId = result[0].id;
+
+var A360url = &apos;/apex/&apos; + pageneme + &apos;?Id=&apos; +activityId+ &apos;&amp;&apos; +isTaskorEvent+ &apos;&amp;returnID=&apos;+returnID+&apos;&amp;RecType=&apos; + RecType+&apos;&amp;&apos;+ isNew +&apos;&amp;isConsole=false&apos; ; 
+
+var A360urlConsole = &apos;/apex/&apos; + pageneme + &apos;?Id=&apos; +activityId+ &apos;&amp;&apos; +isTaskorEvent+ &apos;&amp;returnID=&apos;+returnID+&apos;&amp;RecType=&apos; + RecType+&apos;&amp;&apos;+ isNew +&apos;&amp;isConsole=true&apos;; 
+
+if (typeof(srcUp) == &apos;function&apos;) { 
+srcUp(A360urlConsole ); 
+} else { 
+window.open(A360url); 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Create_Meeting_New</fullName>
+        <availability>online</availability>
+        <description>This button opens the Custom Activity360 page to create new Activity(Retail/Instit). This button available for the objects (Account, Contact and Opportunity).</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Create Activity</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/*This button javascript opens the Custom Activity360 page to create new Activity. 
+*/ 
+
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/apex.js&quot; )} 
+
+//parameters to pass in the URL 
+var returnID; 
+var pagename; 
+var isTaskorEvent = &apos;event=true&apos;; 
+var isNew = &apos;isNew=true&apos;; 
+
+//Determine the Page Layout (Institutional/Retail) 
+if(&apos;{!User.Profile}&apos;.includes(&quot;Institution&quot;) || &apos;{!User.Profile}&apos;.includes(&quot;Global Client Service&quot;) || &apos;{!User.Profile}&apos;.includes(&quot;Global Consultant Relations&quot;)){ 
+pagename = &apos;MFS_Activity360PageSF1&apos;; 
+} else if(&apos;{!User.Profile}&apos;.includes(&quot;Retail&quot;)){ 
+pagename = &apos;MFS_Activity360RetailPageSF1&apos;; 
+}else{ 
+pagename = &apos;MFS_Activity360RetailPageSF1&apos;; 
+} 
+
+//Determine the return ID (Account/Contact/Oppty/BAR id) 
+var acctid= &apos;{!Account.Id}&apos;; 
+var contid = &apos;{!Contact.Id}&apos;; 
+var opptyid = &apos;{!Opportunity.Id}&apos;; 
+var barid = &apos;{!Business_at_Risk__c.Id}&apos;; 
+var caseid = &apos;{!Case.Id}&apos;; 
+var campid = &apos;{!Campaign.Id}&apos;; 
+var conratingid = &apos;{!Consultant_Rating__c.Id}&apos;;
+var spid= &apos;{!Strategy_Plan__c.Id}&apos;;
+
+/**Do not change the order of the if-else conditions**/ 
+if(opptyid!= &apos;&apos;){ 
+returnID = opptyid; 
+}else if(barid!= &apos;&apos;){ 
+returnID = barid; 
+}else if(caseid!= &apos;&apos;){ 
+returnID = caseid; 
+}else if(campid!= &apos;&apos;){ 
+returnID = campid; 
+}else if(contid != &apos;&apos;){ 
+returnID = contid; 
+}else if(spid!= &apos;&apos;){ 
+returnID = spid; 
+}else if(conratingid != &apos;&apos;){ 
+returnID = conratingid; 
+}else { 
+returnID = acctid; 
+} 
+
+var activityId; 
+
+var connection = sforce.connection; 
+var newActivityDetail= new sforce.SObject(&quot;Activity_Detail__c&quot;); 
+newActivityDetail.Subject__c = &apos;Orphan Record&apos;; 
+result = sforce.connection.create([newActivityDetail]); 
+activityId = result[0].id;
+
+var A360url = &apos;/apex/&apos; + pagename + &apos;?Id=&apos; +activityId+ &apos;&amp;&apos; +isTaskorEvent+ &apos;&amp;returnID=&apos;+returnID+&apos;&amp;&apos;+ isNew +&apos;&amp;isConsole=false&apos;; 
+
+var A360urlConsole = &apos;/apex/&apos; + pagename + &apos;?Id=&apos;+activityId + &apos;&amp;&apos;+isTaskorEvent+&apos;&amp;returnID=&apos;+returnID +&apos;&amp;&apos;+ isNew + &apos;&amp;isConsole=true&apos;; 
+
+if (typeof(srcUp) == &apos;function&apos;) { 
+srcUp(A360urlConsole); 
+} else { 
+window.open(A360url); 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Create_Meeting_Retail</fullName>
+        <availability>online</availability>
+        <description>This button opens the Custom Activity360 page to create new Retail Activity. This button available for the objects (Account, Contact, Opportunity) and in Sys. Admin page layouts.</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Create Activity (Retail)</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/*This button javascript opens the Custom Activity360 page to create new Retail Activity. 
+*/
+
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/apex.js&quot; )}
+
+//parameters to pass in the URL
+var returnID;
+var pageneme = &apos;MFS_Activity360RetailPageSF1&apos;;
+var RecType= &apos;Retail&apos;;
+var isNew = &apos;isNew=true&apos;;
+
+//Determine the return ID (Account/Contact/Oppty/BAR id) 
+var acctid= &apos;{!Account.Id}&apos;; 
+var contid = &apos;{!Contact.Id}&apos;; 
+var opptyid = &apos;{!Opportunity.Id}&apos;; 
+var barid = &apos;{!Business_at_Risk__c.Id}&apos;; 
+var caseid = &apos;{!Case.Id}&apos;; 
+var campid = &apos;{!Campaign.Id}&apos;; 
+var spid= &apos;{!Strategy_Plan__c.Id}&apos;;
+var crid = &apos;{!Consultant_Rating__c.Id}&apos;;
+/**Do not change the order of the if-else conditions**/ 
+if(opptyid!= &apos;&apos;){ 
+returnID = opptyid; 
+}else if(barid!= &apos;&apos;){ 
+returnID = barid; 
+}else if(caseid!= &apos;&apos;){ 
+returnID = caseid; 
+}else if(campid!= &apos;&apos;){ 
+returnID = campid; 
+}else if(contid != &apos;&apos;){ 
+returnID = contid; 
+}else if(spid!= &apos;&apos;){ 
+returnID = spid; 
+}
+else if(crid  != &apos;&apos;){ 
+returnID = crid ; 
+}else { 
+returnID = acctid; 
+} 
+
+
+var activityId;
+
+var connection = sforce.connection;
+var newActivityDetail= new sforce.SObject(&quot;Activity_Detail__c&quot;);
+newActivityDetail.Subject__c = &apos;Orphan Record&apos;;
+result = sforce.connection.create([newActivityDetail]);
+
+activityId = result[0].id;
+
+
+var A360url = &apos;/apex/&apos; + pageneme + &apos;?Id=&apos;+ activityId + &apos;&amp;event=true&amp;returnID=&apos;+returnID+&apos;&amp;RecType=&apos; + RecType+&apos;&amp;&apos;+ isNew + &apos;&amp;isConsole=false&apos;;
+
+var A360urlConsole = &apos;/apex/&apos; + pageneme + &apos;?Id=&apos;+ activityId + &apos;&amp;event=true&amp;returnID=&apos;+returnID+&apos;&amp;RecType=&apos; + RecType+&apos;&amp;&apos;+ isNew + &apos;&amp;isConsole=true&apos;;
+
+if (typeof(srcUp) == &apos;function&apos;) { 
+srcUp(A360urlConsole ); 
+} else { 
+window.open(A360url); 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>View_Activities</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>View Activities</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/apex.js&quot; )} 
+
+//parameters to pass in the URL 
+var returnID; 
+var pageneme = &apos;MFS_RelatedActivities&apos;; 
+
+//Determine the return ID (Account/Contact/Oppty/BAR id) 
+var acctid= &apos;{!Account.Id}&apos;; 
+var contid = &apos;{!Contact.Id}&apos;; 
+var opptyid = &apos;{!Opportunity.Id}&apos;; 
+var barid = &apos;{!Business_at_Risk__c.Id}&apos;; 
+var caseid = &apos;{!Case.Id}&apos;; 
+var campid = &apos;{!Campaign.Id}&apos;; 
+/**Do not change the order of the if-else conditions**/ 
+if(opptyid!= &apos;&apos;){ 
+returnID = opptyid; 
+}else if(barid!= &apos;&apos;){ 
+returnID = barid; 
+}else if(caseid!= &apos;&apos;){ 
+returnID = caseid; 
+}else if(campid!= &apos;&apos;){ 
+returnID = campid; 
+}else if(contid != &apos;&apos;){ 
+returnID = contid; 
+}else { 
+returnID = acctid; 
+} 
+
+var A360url = &apos;/apex/&apos; + pageneme + &apos;?Id=&apos; +returnID+ &apos;&amp;&apos; +&apos;isConsole=false&apos; ; 
+
+var A360urlConsole = &apos;/apex/&apos; + pageneme + &apos;?Id=&apos; +returnID+ &apos;&amp;&apos; +&apos;isConsole=true&apos;; 
+
+if (typeof(srcUp) == &apos;function&apos;) { 
+srcUp(A360urlConsole ); 
+} else { 
+window.open(A360url); 
+}</url>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Competitive Analysis Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Competitive Analysis Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Meeting Note --></label>
+        <name>Call_Note__c</name>
+        <relationshipLabel><!-- Competitive Analysis Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Completed Date --></label>
+        <name>Completed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Competitive Analysis Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notify --></label>
+        <name>Notify__c</name>
+        <relationshipLabel><!-- Competitive Analysis Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Request Report? --></label>
+        <name>Request_Report__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request completed in (days): --></label>
+        <name>Request_completed_in_days__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Generate</masterLabel>
+            <translation><!-- Generate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Initiate</masterLabel>
+            <translation><!-- Initiate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Track</masterLabel>
+            <translation><!-- Track --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Advanced Morningstar</masterLabel>
+            <translation><!-- Advanced Morningstar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brightscope</masterLabel>
+            <translation><!-- Brightscope --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FI360</masterLabel>
+            <translation><!-- FI360 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fee Benchmarker</masterLabel>
+            <translation><!-- Fee Benchmarker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hypothetical Illustration</masterLabel>
+            <translation><!-- Hypothetical Illustration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Matrix Review</masterLabel>
+            <translation><!-- Matrix Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Morningstar (Plan Status and Plan Comparison)</masterLabel>
+            <translation><!-- Morningstar (Plan Status and Plan Comparison) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Morningstar Target Date Analyzer</masterLabel>
+            <translation><!-- Morningstar Target Date Analyzer --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Competitive Analysis Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

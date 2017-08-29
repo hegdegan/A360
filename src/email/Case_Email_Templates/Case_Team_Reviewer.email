@@ -1,0 +1,66 @@
+Hi,<br/><br/>
+
+The purpose of this email is to inform the group that MFS has received notification of the following account termination from {!Case.Account} within the MFS {{!Case.00NP00000015q2Y}} Strategy.<br/><br/>
+<html>
+<table  border="1">
+<tr>
+<td>Client Name</td><td>{!Case.Account}</td>
+</tr>
+<tr>
+<td>Pooled Vehicle (CIT, LLC, 40 Act, Institutional Trust, Canadian Trust, FCP, SICAV)</td><td>{!Case.00NP00000015q2i}</td>
+</tr>
+<tr>
+<td>MFS Portfolio Acronym</td><td>{!Case.00NP00000015q29}</td>
+</tr>
+<tr>
+<td>Share Class</td><td>{!Case.Share_Class__c}</td>
+</tr>
+<tr>
+<td>Product Style</td><td>{!Case.00NP00000015q2Y}</td>
+</tr>
+<tr>
+<td>Client's Account Number</td><td>{!Case.00NP00000015QKz}</td>
+</tr>
+<tr>
+<td>Termination Reason </td><td>{!Case.Termination_Reason__c}</td>
+</tr>
+<tr>
+<td>Consultant Firm</td><td>{!Case.00NP00000015nlf}</td>
+</tr>
+<tr>
+<td>Field Consultant (Contact)</td><td>{!Case.Consultant_Contact__c}</td>
+</tr>
+<tr>
+<td>MFS Contracting Entity</td><td>{!Case.MFS_Contracting_Entity__c}</td>
+</tr>
+<tr>
+<td>Current Assets</td><td>{!Case.Current_Assets__c}</td>
+</tr>
+<tr>
+<td>Material Transaction Fee (Yes/No)</td><td>{!Case.Material_Transaction_Fee__c}</td>
+</tr>
+<tr>
+<td>Last Reporting Date (meaning last period of reporting i.e. 30th June 2014)</td><td>{!Case.Last_Reporting_Date__c}</td>
+</tr><tr>
+<td>Does this client receive any manual reporting (incl. attribution letters) that can be ceased upon termination (confirm reports & letter code where applicable)</td><td>{!Case.When_are_proceeds_needed__c}</td>
+</tr><tr>
+<td>Last Billing Date (last day MFS earns a fee)</td><td>{!Case.Last_Billing_Date__c}</td>
+</tr><tr>
+<td>Last Reporting Date (meaning last period of reporting i.e. 30th June 2014)</td><td>{!Case.Last_Reporting_Date__c}</td>
+</tr><tr>
+<td>Does this client receive any manual reporting (incl. attribution letters) that can be ceased upon termination (confirm reports & letter code where applicable</td><td>{!Case.Can_manual_reporting_be_ceased__c}</td>
+</tr>
+<td>Original Funding Date</td><td>{!Case.Original_Funding_Date__c}</td>
+</tr>
+<tr>
+<td>Other Accounts with Client? (Yes/No)</td><td>{!Case.Other_Accounts_with_Client__c}</td>
+</tr><tr>
+<tr>
+<td>Do other clients remain in this vehicle/share class/vehicle? (Yes/No)</td><td>{!Case.Others_still_in_share_class_vehicle__c}</td>
+</tr><tr>
+<td>Termination Memo Reviewer (member of client service team)   </td><td>{!Case.Termination_Reviewer__c} </td>
+</tr>
+</table><br/><br/>
+Please let me know if anyone has any questions. <br/><br/>
+Thank you,<br/><br/>
+{!Case.Termination_Reviewer__c}

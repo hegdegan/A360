@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Con Client</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Con Clients</value>
+    </caseValues>
+    <fields>
+        <label><!-- Category Code --></label>
+        <name>CATCODE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Firm Profile --></label>
+        <name>MMD_Firm_Profile__c</name>
+        <relationshipLabel><!-- Clients --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Plan Sponsor Name --></label>
+        <name>PSNAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Sponsor MMD ID --></label>
+        <name>Plan_Sponsor_MMD_ID__c</name>
+        <relationshipLabel><!-- Consultants providing Services --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Plan Sponsor Sort Name --></label>
+        <name>SORTNAME__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

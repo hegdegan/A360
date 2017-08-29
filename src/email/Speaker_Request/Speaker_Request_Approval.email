@@ -1,0 +1,7 @@
+Hi, 
+
+A Speaker Request has been submitted for {!Event_Relation__c.Name__c}. Please review the request: {!Event_Relation__c.Link} and provide your approval. 
+
+
+Thank you, 
+{!User.FirstName} {!User.LastName}

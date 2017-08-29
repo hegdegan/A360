@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Belong To --></label>
+        <name>Belong_To__c</name>
+        <relationshipLabel><!-- Campaign Members --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ContactId --></label>
+        <name>ContactId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Silverpop Member Id --></label>
+        <name>silverpop__member_id__c</name>
+    </fields>
+</CustomObjectTranslation>

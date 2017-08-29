@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplicationComponent xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buttonText>My Contacts</buttonText>
+    <buttonWidth>120</buttonWidth>
+    <height>700</height>
+    <isHeightFixed>true</isHeightFixed>
+    <isHidden>false</isHidden>
+    <isWidthFixed>true</isWidthFixed>
+    <visualforcePage>MFS_MyContactsConsole</visualforcePage>
+    <width>900</width>
+</CustomApplicationComponent>

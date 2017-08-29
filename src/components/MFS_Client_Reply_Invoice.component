@@ -1,0 +1,38 @@
+<apex:component controller="MFS_ETDataRequest" access="global">
+    <apex:attribute name="recId" description="case Id" type="Id" assignTo="{!caseId}"/>
+    <html>
+        <table>
+            <tr>
+                <td>{!$Label.ET_sr_Client_Name}: </td><td><apex:outputPanel rendered="{!orgDetails.Name!=null}">{!orgDetails.Name}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!orgDetails.Name==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Client_Tier}:</td><td><apex:outputPanel rendered="{!OR(orgDetails.Institutional_Tier__c!=null,orgDetails.Non_US_Retail_Tier__c!=null,orgDetails.US_Retail_Tier__c!=null)}">
+                {!orgDetails.Institutional_Tier__c}{!orgDetails.Non_US_Retail_Tier__c}{!orgDetails.US_Retail_Tier__c}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!AND(orgDetails.Institutional_Tier__c==null,orgDetails.Non_US_Retail_Tier__c==null,orgDetails.US_Retail_Tier__c==null)}">TBD</apex:outputPanel> </td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Client_domicile}: </td><td><apex:outputPanel rendered="{!orgDetails.BillingCountry!=null}">{!orgDetails.BillingCountry}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!orgDetails.BillingCountry==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Vehicle}:</td><td><apex:outputPanel rendered="{!vehicle!=null}">{!vehicle}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!vehicle==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Name_of_Fund}:</td><td><apex:outputPanel rendered="{!fundName!=null}">{!fundName}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!fundName==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Requested_Due_Date}:</td><td><apex:outputtext value="{0,date,MMMM d,' ' YYYY}" rendered="{!Case.Due_Date__c!=null}">
+                <apex:param value="{!Case.Due_Date__c}"/>
+                </apex:outputtext> 
+                <apex:outputPanel rendered="{!Case.Due_Date__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+        </table>
+        <br/><br/>
+        {!$Label.ET_Thankyou}
+        <br/>
+        {!$Label.ET_MFS_Team}
+    </html>
+</apex:component>

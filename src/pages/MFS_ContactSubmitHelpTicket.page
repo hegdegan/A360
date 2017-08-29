@@ -1,0 +1,8 @@
+<!---
+Visualforce Page Name :  MFS_ContactSubmitHelpTicket
+Version               :  1.0 
+Created Date          :  11 OCT 2016
+Function              :  Page to redirect to Case creation page to submit help ticket from Contact on click of Submit Help Ticket
+--->
+<apex:page standardController="Contact" extensions="MFS_ContactSubmitHelpTicketExt" action="{!redirect}"> 
+</apex:page>

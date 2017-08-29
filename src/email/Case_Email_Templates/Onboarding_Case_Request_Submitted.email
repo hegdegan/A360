@@ -1,0 +1,6 @@
+Hi {!Approval_Request__c.OwnerFullName},<br><br>
+
+Onboarding Case#{!Approval_Request__c.Onboarding_Case__c} has been submitted for approval to {!Approval_Request__c.Approver_Group__c}.<br><br>
+
+Thanks,<br>
+MFS Team

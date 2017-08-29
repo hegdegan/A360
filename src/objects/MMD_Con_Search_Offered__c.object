@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>(MBI) - MMD - Consultants - Type of Searches Offered</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Firm_Name__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>$Organization.Country</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Firm Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ID__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Firm MMD ID</label>
+        <length>7</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MMD_Firm_Profile__c</fullName>
+        <externalId>false</externalId>
+        <label>MMD Firm Profile</label>
+        <referenceTo>MMCOMP__c</referenceTo>
+        <relationshipLabel>Searches Offered</relationshipLabel>
+        <relationshipName>MMD_Con_Searches_Offered</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>OTHSRCH__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Other Search Description</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SRCHCODE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Search Offered Code</label>
+        <length>12</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Search_Offered__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>CASE( SRCHCODE__c ,
+&quot;ACTUARY&quot;,&quot;Actuary&quot;,
+&quot;ALTMHEDGE&quot;,&quot;Alternative / Hedge Fund&quot;,
+&quot;CUSTMASTER&quot;,&quot;Custodian / Master Trustee&quot;,
+&quot;DCPROVIDER&quot;,&quot;Defined Contribution Service Provider&quot;,
+&quot;DOMESTMGR&quot;,&quot;Domestic Manager&quot;,
+&quot;EMERGEMGR&quot;,&quot;Emerging Market Manager&quot;,
+&quot;GICBICMGR&quot;,&quot;GIC/BIC Manager&quot;,
+&quot;INTLBANK&quot;,&quot;International Bank / Global Custodian&quot;,
+&quot;INTLMGR&quot;,&quot;International Manager&quot;,
+&quot;MWMGR&quot;,&quot;Minority / Woman-Owned Manager&quot;,
+&quot;MFUND&quot;,&quot;Mutual Fund&quot;,
+&quot;PRIVEMGR&quot;,&quot;Private Equity Manager&quot;,
+&quot;REMGR&quot;,&quot;Real Estate Manager&quot;,
+&quot;RECKEEPER&quot;,&quot;Recordkeeper&quot;,
+&quot;SOCMGR&quot;,&quot;Socially Conscious Manager&quot;,
+&quot;THIRDADM&quot;,&quot;3rd Party Administrator&quot;,
+&quot;OTHER&quot;,&quot;Other Manager&quot;,
+SRCHCODE__c 
+ )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Search Offered</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>MMD Con Search Offered</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Link</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>MMD Con Searches Offered</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

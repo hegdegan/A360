@@ -1,0 +1,195 @@
+<!---
+Visualforce Page Name :  AccountTeamMem
+Version               :  1.0 
+Created Date          :  23 May 2016
+Function              : This is an inline VF page for AccountTeamMember related list on Account
+
+Modification Log : 
+-----------------------------------------------------------------------------
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Jata Dubey           23 May 2016              Implemented Best practices
+--->
+<apex:page standardController="Account" extensions="MFS_AccountTeamMemExtensions">
+<html>    
+<head>
+    <apex:includeScript value="/support/console/35.0/integration.js" />
+    <script type="text/javascript">
+    function isSFOne() {
+        if( (typeof sforce != 'undefined') && (sforce != null) ) {
+            return FALSE;
+        }
+        else
+            return TRUE; 
+    }  
+    function createCase(){
+        var url = '{!JSENCODE(editUrl)}{!URLENCODE(accntName)}={!URLENCODE(acctName)}&{!URLENCODE(accntId)}={!URLENCODE(acctId)}&RecordType={!URLENCODE(recordTypeId)}&retURL={!URLENCODE(acctId)}&{!URLENCODE(requesterId)}_lkid={!URLENCODE(requesterUserId)}&{!URLENCODE(requesterId)}={!URLENCODE(requesterName)}&{!URLENCODE(caseType)}={!URLENCODE(caseTypeVal)}&{!URLENCODE(caseSubType)}={!URLENCODE(caseSubTypeVal)}&{!URLENCODE(caseSubject)}={!URLENCODE(caseSubjectVal)}&{!URLENCODE(teamMemberlkId)}_lkid={!URLENCODE(teamMemberId)}&{!URLENCODE(teamMemberlkId)}={!URLENCODE(teamMemberName)}';
+        
+        if(sforce.console.isInConsole()){
+            testOpenSubtab();
+        } 
+        else{
+            window.open(url);
+        }
+    }
+    function testOpenSubtab() {
+        sforce.console.getEnclosingPrimaryTabId(openSubtab);
+    }        
+    var openSubtab = function openSubtab(result) {
+        var primaryTabId = result.id;
+        var consoleUrl =  '{!JSENCODE(editUrl)}{!URLENCODE(accntName)}={!URLENCODE(acctName)}&{!URLENCODE(accntId)}={!URLENCODE(acctId)}&RecordType={!URLENCODE(recordTypeId)}&retURL={!URLENCODE(acctId)}&{!URLENCODE(requesterId)}_lkid={!URLENCODE(requesterUserId)}&{!URLENCODE(requesterId)}={!URLENCODE(requesterName)}&{!URLENCODE(caseType)}={!URLENCODE(caseTypeVal)}&{!URLENCODE(caseSubType)}={!URLENCODE(caseSubTypeVal)}&{!URLENCODE(caseSubject)}={!URLENCODE(caseSubjectVal)}&{!URLENCODE(teamMemberlkId)}_lkid={!URLENCODE(teamMemberId)}&{!URLENCODE(teamMemberlkId)}={!URLENCODE(teamMemberName)}';
+        sforce.console.openSubtab(primaryTabId , consoleUrl, true, 'Case', null, openSuccess, 'salesforceSubtab');
+    };        
+    var openSuccess = function openSuccess(result) {
+        if (result.success == true) {
+        } else {
+        }
+    };
+    
+    </script>
+    </head>
+<body>
+    <!--Classic View STARTS-->
+    <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme3'}"> 
+        <apex:form >
+            <!--<apex:actionFunction action="{!NewmemRequest}" name="actionfun"/>-->
+            <apex:pageMessages />
+            <apex:pageBlock id="pgblock">
+                <apex:pageBlockButtons location="Top">
+                    <apex:commandLink value="{!$Label.Request_New_Member}" rendered="{!renderReq}" oncomplete="createCase();" target="_parent" styleClass="btn" style="text-decoration: none" />
+                </apex:pageBlockButtons>
+                <apex:pageBlockTable value="{!lstAcctteamMem }" var="atm" id="table">
+                    <apex:column headerValue="{!$Label.ATM_Team_Member}">
+                        <apex:commandLink value="{!atm.User.Name}"  target="_parent" action="{!redirectToUserPage}" rendered="{!rendergotolist}">
+                            <apex:param value="{!atm.UserId}" name="conId"/>
+                        </apex:commandLink>
+                        <apex:outputLabel value="{!atm.User.Name}" rendered="{!!rendergotolist}">
+                            <apex:param value="{!atm.UserId}" name="conId"/>
+                        </apex:outputLabel>
+                    </apex:column>
+                    <apex:column value="{!atm.TeamMemberRole}" headerValue="{!$Label.ATM_Team_Role}" />
+                </apex:pageBlockTable>
+                <apex:commandLink value="{!$Label.Go_to_list}" action="{!AcctTeamMemGotoList}" Rendered="{!isGotolist}" target="_parent" />
+                <!--apex:outputLink value="" onclick="AcctTeamMemGotoList(); return false;" Rendered="{!rendergotolist}" >{!$Label.Go_to_list}</apex:outputLink-->
+                <apex:actionFunction name="AcctTeamMemGotoList" action="{!AcctTeamMemGotoList}" rerender="false"/>
+            </apex:pageBlock>
+        </apex:form>
+    </apex:outputPanel>
+    
+    <!--SLDS View (Desktop and Small-Medium Devices) STARTS-->
+    <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme4d' || $User.UIThemeDisplayed=='Theme4t'}">
+        <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/salesforce-lightning-design-system.min.css" />
+        <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/mfs_new_styles.css" />
+		
+        <script src="/resource/MFS_UI_Assets/assets/js/jquery-1.11.3.min.js">
+		</script>
+        <script src="/resource/MFS_UI_Assets/assets/js/ftscroller.js">
+		</script>
+        <apex:form >
+        <div class="slds" id="scroller">
+            <div class="mfs-coverage-team-container slds-m-bottom--large">
+                <table class="slds-table slds-table--bordered">
+                    <thead>
+                        <tr class="slds-text-title--caps">
+                            <th scope="col">
+                                <div title="{!$Label.ATM_Team_Member}">
+                                    {!$Label.ATM_Team_Member}
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div title=" {!$Label.ATM_Team_Role}">
+                                   {!$Label.ATM_Team_Role}
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat value="{!lstAcctteamMem}" var="acctm">
+                            <tr class="slds-hint-parent">
+                                <td data-label="{!$Label.ATM_Team_Member}">
+                                    <div title="{!acctm.User.Name}"> <apex:commandLink value="{!acctm.User.Name}" action="{!redirectToUserPage}" immediate="true" target="_parent" > 
+                                        <apex:param value="{!acctm.UserId}" name="conId"/>
+                                        </apex:commandLink> </div>
+                                </td>
+                                <td data-label="{!$Label.ATM_Team_Role}">
+                                    <div title="{!acctm.TeamMemberRole}">{!acctm.TeamMemberRole}</div>
+                                </td>
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </apex:form>
+        
+        <script>
+        var initOrientationChangeRelAct = function(){
+            var isTablet = (window.screen.width == 768 && window.screen.height == 1024 ) ? true : false;
+            var isMobile = (window.screen.width >= 320 && window.screen.width < 768 ) ? true : false;
+            var containerElement, scroller;
+            
+            //alert(isMobile + ":" + isTablet);
+            
+            if(isTablet){
+                containerElement = document.getElementById('scroller');
+                
+                scroller = new FTScroller(containerElement, {
+                    scrollbars: false,
+                    scrollingX: false,
+                    updateOnChanges : true,
+                    updateOnWindowResize : true
+                });
+                
+                var readDeviceOrientation = function(){
+                    if (Math.abs(window.orientation) === 90) {
+                        //alert("Landscape : " +window.screen.width);
+                        containerElement = document.getElementById('scroller');
+                        
+                        scroller = new FTScroller(containerElement, {
+                            scrollbars: false,
+                            scrollingX: false
+                        });
+                    } else {
+                        //alert("Portrait");
+                        $("#scroller").height(window.screen.width + 120);
+                        containerElement = document.getElementById('scroller');
+                        
+                        scroller = new FTScroller(containerElement, {
+                            scrollbars: false,
+                            scrollingX: false
+                        });
+                    }
+                };
+                //readDeviceOrientation();
+                
+                $(window).on("orientationchange", function(){
+                    //readDeviceOrientation();
+                    scroller.updateDimensions();
+                });
+            }
+            else if(isMobile){
+                //alert(window.screen.height);
+                $("#scroller").height(window.screen.height - 120);
+                containerElement = document.getElementById('scroller');
+                
+                scroller = new FTScroller(containerElement, {
+                    scrollbars: false,
+                    scrollingX: false,
+                    updateOnChanges : true,
+                    updateOnWindowResize : true
+                });
+            }
+        };
+        
+        $(document).ready(function(){
+            //initOrientationChangeRelAct();
+            
+            /*$("body,html").on("click", function(e){
+                e.stopPropagation();
+            });*/
+        });
+        </script>
+    </apex:outputPanel>
+</body>
+</html>
+</apex:page>

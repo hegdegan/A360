@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Fee Approval Request Submitted</name>
+    <style>none</style>
+    <subject>Pricing Request : {!Opportunity.Name} - {!Opportunity.Amount__c} - {!Approval_Request__c.Opportunity_Product__c}</subject>
+    <textOnly>Hi,
+
+Client/Prospect Information
+
+Business Opportunity:  {!Opportunity.Name}
+Stage of Sales Process:  {!Opportunity.StageName}
+Distribution Group:   MFSI
+Opportunity Region :  {!Opportunity.Region__c}
+Country :   {!Organization.Country}
+Client Prospect :   {!Opportunity.Account}
+Consultant:  {!Opportunity.Consultant__c}
+Cross Sell:
+Tier:  {!Opportunity.Institutional_Tier__c}
+If asset transfer, Please indicate existing Manager:   {!Approval_Request__c.00NP0000000svwj}
+If asset transfer, please indicate existing Manager&apos;s Fee Structure:  {!Approval_Request__c.If_asset_transer_enter_Fee_Structure__c}
+Client Type:   {!Opportunity.00NP0000000oi1h}
+Plan Type:   {!Plan__c.Plan_Type__c}
+
+
+
+Mandate Information
+
+Strategy Name:  {!Approval_Request__c.Opportunity_Product__c}
+Strategy Style:  {!Approval_Request__c.Product_Style__c}
+
+Asset Size:   {!OpportunityLineItem.Quantity}
+Fee Structure currency:   USD
+Summarize existing relationship with MFS(if applicable):   {!Approval_Request__c.Summarise_existing_relationship_with_MFS__c}
+Does client require Most Favored Nation Clause(MFN):  {!Approval_Request__c.Does_Clinet_require_MFS_clause__c}
+Are we also offering client a performance based fee?:   {!Approval_Request__c.Offering_Performance_based_Fee__c}
+Submitted By:   {!Approval_Request__c.LastModifiedBy}
+Submitter&apos;s email:   {!User.Email}
+Sales Management:
+Email Address:
+Submission Date:   {!Approval_Request__c.CreatedDate}
+Due Date:   {!Approval_Request__c.Due_Date__c}
+
+Any additional information regarding this Opportunity:   {!Approval_Request__c.Additional_Info_on_this_Opportunity__c}
+Turnaround Time:
+
+
+
+You may Approve or Reject this Fee Approval by either opening the Opportunity in C360 or by simply responding &apos;Approved&apos; or &apos;Rejected&apos; in the first line of your response
+
+Regards,
+{!User.FirstName}  {!User.LastName}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

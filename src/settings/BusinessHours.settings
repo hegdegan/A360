@@ -1,0 +1,1318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessHoursSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Argentina</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Argentina/Buenos_Aires</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Australia (Melbourne)</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Australia/Sydney</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Australia (Sydney)</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Australia/Sydney</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Brazil</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Sao_Paulo</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Canada (Montreal)</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Panama</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Canada (Toronto)</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Indiana/Indianapolis</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Canada (Vancouver)</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Tijuana</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Chile</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Puerto_Rico</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>true</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Default</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/New_York</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>France</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Africa/Algiers</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Germany</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Africa/Algiers</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Hong Kong</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Asia/Hong_Kong</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>India</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Asia/Kolkata</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Italy</name>
+        <saturdayEndTime>00:00:00.000Z</saturdayEndTime>
+        <saturdayStartTime>00:00:00.000Z</saturdayStartTime>
+        <sundayEndTime>00:00:00.000Z</sundayEndTime>
+        <sundayStartTime>00:00:00.000Z</sundayStartTime>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Africa/Algiers</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Japan</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Asia/Tokyo</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Luxembourg</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Africa/Algiers</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Mexico</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/El_Salvador</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Netherlands</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Africa/Algiers</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Portugal</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>GMT</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Singapore</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Asia/Singapore</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Spain</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Africa/Algiers</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>Switzerland</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Africa/Algiers</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>United Arab Emirates</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Asia/Dubai</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>United Kingdom</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Europe/London</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>United States (Boston)</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Panama</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>United States (Phoenix)</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Phoenix</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>United States (Quincy)</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Panama</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <holidays>
+        <activityDate>2016-02-08</activityDate>
+        <businessHours>Hong Kong</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>1st  Day of Lunar New Year</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-27</activityDate>
+        <businessHours>Hong Kong</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>2 nd  Day of Christmas (obs)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-09</activityDate>
+        <businessHours>Hong Kong</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>2nd  Day of Lunar New Year</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-10</activityDate>
+        <businessHours>Hong Kong</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>3rd  Day of Lunar New Year</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-04-25</activityDate>
+        <businessHours>Australia (Melbourne)</businessHours>
+        <businessHours>Australia (Sydney)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>ANZAC Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-01</activityDate>
+        <businessHours>Chile</businessHours>
+        <businessHours>France</businessHours>
+        <businessHours>Italy</businessHours>
+        <businessHours>Luxembourg</businessHours>
+        <businessHours>Spain</businessHours>
+        <businessHours>Switzerland</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>All Saints&apos; Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-02</activityDate>
+        <businessHours>Brazil</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>All Souls&apos; Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-11</activityDate>
+        <businessHours>France</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Armistice Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-19</activityDate>
+        <businessHours>Chile</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Army Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-05</activityDate>
+        <businessHours>France</businessHours>
+        <businessHours>Germany</businessHours>
+        <businessHours>Luxembourg</businessHours>
+        <businessHours>Netherlands</businessHours>
+        <businessHours>Switzerland</businessHours>
+        <businessHours>United Arab Emirates</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Ascension Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-10</activityDate>
+        <businessHours>Mexico</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Ash Wednesday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-15</activityDate>
+        <businessHours>Chile</businessHours>
+        <businessHours>France</businessHours>
+        <businessHours>Italy</businessHours>
+        <businessHours>Luxembourg</businessHours>
+        <businessHours>Portugal</businessHours>
+        <businessHours>Spain</businessHours>
+        <businessHours>Switzerland</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Assumption Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-26</activityDate>
+        <businessHours>Australia (Melbourne)</businessHours>
+        <businessHours>Australia (Sydney)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Australia Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-22</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Autumnal Equinox</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-01</activityDate>
+        <businessHours>Australia (Sydney)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-14</activityDate>
+        <businessHours>France</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Bastille Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-05</activityDate>
+        <businessHours>Mexico</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Battle of Puebla Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-03-21</activityDate>
+        <businessHours>Mexico</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Benito Juarez Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-27</activityDate>
+        <businessHours>Australia (Melbourne)</businessHours>
+        <businessHours>Australia (Sydney)</businessHours>
+        <businessHours>Canada (Montreal)</businessHours>
+        <businessHours>Canada (Toronto)</businessHours>
+        <businessHours>Canada (Vancouver)</businessHours>
+        <businessHours>United Kingdom</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Boxing Day (obs)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-07</activityDate>
+        <businessHours>Brazil</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Brazil Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-01</activityDate>
+        <businessHours>Canada (Vancouver)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>British Columbia Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-01</activityDate>
+        <businessHours>Canada (Montreal)</businessHours>
+        <businessHours>Canada (Toronto)</businessHours>
+        <businessHours>Canada (Vancouver)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Canada Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-05</activityDate>
+        <businessHours>Canada (Montreal)</businessHours>
+        <businessHours>Canada (Toronto)</businessHours>
+        <businessHours>Canada (Vancouver)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Canada Labour Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-10</activityDate>
+        <businessHours>Canada (Montreal)</businessHours>
+        <businessHours>Canada (Toronto)</businessHours>
+        <businessHours>Canada (Vancouver)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Canada Thanksgiving</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-08</activityDate>
+        <businessHours>Argentina</businessHours>
+        <businessHours>Brazil</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Carnival Monday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-09</activityDate>
+        <businessHours>Argentina</businessHours>
+        <businessHours>Brazil</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Carnival Tuesday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-01</activityDate>
+        <businessHours>Hong Kong</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Chinese National Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-08</activityDate>
+        <businessHours>Singapore</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Chinese New Year</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-09</activityDate>
+        <businessHours>Singapore</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Chinese New Year 2nd Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-04-04</activityDate>
+        <businessHours>Hong Kong</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Ching Ming Festival</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-26</activityDate>
+        <businessHours>Argentina</businessHours>
+        <businessHours>Australia (Melbourne)</businessHours>
+        <businessHours>Australia (Sydney)</businessHours>
+        <businessHours>Brazil</businessHours>
+        <businessHours>Canada (Montreal)</businessHours>
+        <businessHours>Canada (Toronto)</businessHours>
+        <businessHours>Canada (Vancouver)</businessHours>
+        <businessHours>Chile</businessHours>
+        <businessHours>France</businessHours>
+        <businessHours>Germany</businessHours>
+        <businessHours>Hong Kong</businessHours>
+        <businessHours>Netherlands</businessHours>
+        <businessHours>Singapore</businessHours>
+        <businessHours>United Kingdom</businessHours>
+        <businessHours>United States (Boston)</businessHours>
+        <businessHours>United States (Phoenix)</businessHours>
+        <businessHours>United States (Quincy)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Christmas Day (obs)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-10</activityDate>
+        <businessHours>Hong Kong</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Chung Yeung Festival (obs)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-01</activityDate>
+        <businessHours>Canada (Montreal)</businessHours>
+        <businessHours>Canada (Toronto)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Civic Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-12</activityDate>
+        <businessHours>Mexico</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Colombus Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-11</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Coming of Age Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-01</activityDate>
+        <businessHours>Mexico</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Constitution Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-06</activityDate>
+        <businessHours>Spain</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Constitution Day Spain</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-03</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Constitution Memorial Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-26</activityDate>
+        <businessHours>Brazil</businessHours>
+        <businessHours>Germany</businessHours>
+        <businessHours>Spain</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Corpus Christi Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-03</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Culture Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-02</activityDate>
+        <businessHours>Mexico</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Day of the Dead</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-02</activityDate>
+        <businessHours>United Kingdom</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Early May Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-03-28</activityDate>
+        <businessHours>Australia (Melbourne)</businessHours>
+        <businessHours>Australia (Sydney)</businessHours>
+        <businessHours>France</businessHours>
+        <businessHours>Germany</businessHours>
+        <businessHours>Hong Kong</businessHours>
+        <businessHours>Italy</businessHours>
+        <businessHours>Luxembourg</businessHours>
+        <businessHours>Netherlands</businessHours>
+        <businessHours>Switzerland</businessHours>
+        <businessHours>United Kingdom</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Easter Monday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-07</activityDate>
+        <businessHours>United Arab Emirates</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Eid Al Fitr / End of Ramadan</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-08</activityDate>
+        <businessHours>United Arab Emirates</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Eid Al Fitr / End of Ramadan</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-23</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Emperor&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-06</activityDate>
+        <businessHours>Italy</businessHours>
+        <businessHours>Spain</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Epiphany</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-15</activityDate>
+        <businessHours>Canada (Toronto)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Family Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-08</activityDate>
+        <businessHours>Canada (Vancouver)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Family Day (1)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-12</activityDate>
+        <businessHours>United Arab Emirates</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Feast of Sacrifice</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-13</activityDate>
+        <businessHours>United Arab Emirates</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Feast of Sacrifice</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-25</activityDate>
+        <businessHours>Brazil</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Foundation Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-15</activityDate>
+        <businessHours>Argentina</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>General San Martin&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-15</activityDate>
+        <businessHours>United States (Boston)</businessHours>
+        <businessHours>United States (Phoenix)</businessHours>
+        <businessHours>United States (Quincy)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>George Washington&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-03</activityDate>
+        <businessHours>Germany</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>German Unity Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-03-25</activityDate>
+        <businessHours>Argentina</businessHours>
+        <businessHours>Australia (Melbourne)</businessHours>
+        <businessHours>Australia (Sydney)</businessHours>
+        <businessHours>Brazil</businessHours>
+        <businessHours>Canada (Montreal)</businessHours>
+        <businessHours>Canada (Toronto)</businessHours>
+        <businessHours>Canada (Vancouver)</businessHours>
+        <businessHours>Chile</businessHours>
+        <businessHours>Germany</businessHours>
+        <businessHours>Hong Kong</businessHours>
+        <businessHours>Italy</businessHours>
+        <businessHours>Luxembourg</businessHours>
+        <businessHours>Mexico</businessHours>
+        <businessHours>Netherlands</businessHours>
+        <businessHours>Portugal</businessHours>
+        <businessHours>Singapore</businessHours>
+        <businessHours>Spain</businessHours>
+        <businessHours>Switzerland</businessHours>
+        <businessHours>United Kingdom</businessHours>
+        <businessHours>United States (Boston)</businessHours>
+        <businessHours>United States (Phoenix)</businessHours>
+        <businessHours>United States (Quincy)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Good Friday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-04</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Greenery Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-12</activityDate>
+        <businessHours>Singapore</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Hari Raya Haji</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-06</activityDate>
+        <businessHours>Singapore</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Hari Raya Puasa</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-10</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Health-Sports Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-03-24</activityDate>
+        <businessHours>Mexico</businessHours>
+        <businessHours>Spain</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Holy Thursday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-08</activityDate>
+        <businessHours>Argentina</businessHours>
+        <businessHours>Chile</businessHours>
+        <businessHours>Italy</businessHours>
+        <businessHours>Portugal</businessHours>
+        <businessHours>Spain</businessHours>
+        <businessHours>Switzerland</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Immaculate Conception Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-15</activityDate>
+        <businessHours>India</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-16</activityDate>
+        <businessHours>Mexico</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Independence Day Mexico</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-06-02</activityDate>
+        <businessHours>Italy</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Italy Republic Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-05</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Japan Children&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-04-27</activityDate>
+        <businessHours>Netherlands</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>King&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-02</activityDate>
+        <businessHours>Hong Kong</businessHours>
+        <businessHours>Singapore</businessHours>
+        <businessHours>Spain</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Labour Day (obs)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-23</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Labour Thanksgiving Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-04-25</activityDate>
+        <businessHours>Italy</businessHours>
+        <businessHours>Portugal</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Liberation Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-18</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Marine Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-18</activityDate>
+        <businessHours>United States (Boston)</businessHours>
+        <businessHours>United States (Phoenix)</businessHours>
+        <businessHours>United States (Quincy)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Martin Luther King, Jr.&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-30</activityDate>
+        <businessHours>United Arab Emirates</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Martyr&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-25</activityDate>
+        <businessHours>Argentina</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>May Day Revolution</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-01</activityDate>
+        <businessHours>Australia (Melbourne)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Melbourne Cup</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-03-14</activityDate>
+        <businessHours>Australia (Melbourne)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Melbourne Labour Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-30</activityDate>
+        <businessHours>United States (Boston)</businessHours>
+        <businessHours>United States (Phoenix)</businessHours>
+        <businessHours>United States (Quincy)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Memorial Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-16</activityDate>
+        <businessHours>Hong Kong</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Mid-Autumn Festival (obs)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-11</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Mountain Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-06-23</activityDate>
+        <businessHours>Luxembourg</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>National Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-09</activityDate>
+        <businessHours>Singapore</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>National Day Singapore</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-12</activityDate>
+        <businessHours>Spain</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>National Day Spain</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-06-20</activityDate>
+        <businessHours>Argentina</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>National Flag Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-11</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>National Founding Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-23</activityDate>
+        <businessHours>Canada (Montreal)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>National Patriots Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-28</activityDate>
+        <businessHours>Argentina</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>National Sovereignty Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-01</activityDate>
+        <businessHours>Argentina</businessHours>
+        <businessHours>Australia (Melbourne)</businessHours>
+        <businessHours>Australia (Sydney)</businessHours>
+        <businessHours>Brazil</businessHours>
+        <businessHours>Canada (Montreal)</businessHours>
+        <businessHours>Canada (Toronto)</businessHours>
+        <businessHours>Canada (Vancouver)</businessHours>
+        <businessHours>Chile</businessHours>
+        <businessHours>Default</businessHours>
+        <businessHours>France</businessHours>
+        <businessHours>Germany</businessHours>
+        <businessHours>Hong Kong</businessHours>
+        <businessHours>India</businessHours>
+        <businessHours>Italy</businessHours>
+        <businessHours>Japan</businessHours>
+        <businessHours>Luxembourg</businessHours>
+        <businessHours>Mexico</businessHours>
+        <businessHours>Netherlands</businessHours>
+        <businessHours>Portugal</businessHours>
+        <businessHours>Singapore</businessHours>
+        <businessHours>Spain</businessHours>
+        <businessHours>Switzerland</businessHours>
+        <businessHours>United Arab Emirates</businessHours>
+        <businessHours>United Kingdom</businessHours>
+        <businessHours>United States (Boston)</businessHours>
+        <businessHours>United States (Phoenix)</businessHours>
+        <businessHours>United States (Quincy)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-30</activityDate>
+        <businessHours>Brazil</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>New Year&apos;s Eve (obs)</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-12</activityDate>
+        <businessHours>Brazil</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Our Lady of Aparecida</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-06-10</activityDate>
+        <businessHours>Portugal</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Portugal Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-15</activityDate>
+        <businessHours>Brazil</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Proclamation of the Republic Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-12</activityDate>
+        <businessHours>United Arab Emirates</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Prophet Muhammad&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-06-13</activityDate>
+        <businessHours>Australia (Melbourne)</businessHours>
+        <businessHours>Australia (Sydney)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Queen&apos;s Birthday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-10</activityDate>
+        <businessHours>Chile</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Race Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-06-07</activityDate>
+        <businessHours>United Arab Emirates</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Ramadan</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-31</activityDate>
+        <businessHours>Chile</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Reformation Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-11</activityDate>
+        <businessHours>Canada (Vancouver)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Remembrance Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-01-26</activityDate>
+        <businessHours>India</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Republic Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-10</activityDate>
+        <businessHours>Argentina</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Respect for Cultural Diversity Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-19</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Respect for the Aged Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-21</activityDate>
+        <businessHours>Mexico</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Revolution Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-01</activityDate>
+        <businessHours>Hong Kong</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>SAR Establishment Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-04-29</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Showa Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-02-09</activityDate>
+        <businessHours>Portugal</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Shrove Tuesday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-30</activityDate>
+        <businessHours>United Kingdom</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Spring Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-06-24</activityDate>
+        <businessHours>Canada (Montreal)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>St Jean Baptiste Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-26</activityDate>
+        <businessHours>Italy</businessHours>
+        <businessHours>Luxembourg</businessHours>
+        <businessHours>Switzerland</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>St Stephen&apos;s Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-06-27</activityDate>
+        <businessHours>Chile</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Sts Peter + Paul Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-29</activityDate>
+        <businessHours>United Kingdom</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Summer Bank Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-08-01</activityDate>
+        <businessHours>Switzerland</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Swiss National Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-10-03</activityDate>
+        <businessHours>Australia (Sydney)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Sydney Labour Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-06-27</activityDate>
+        <businessHours>India</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Test</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-04-06</activityDate>
+        <businessHours>India</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Test Holiday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-11-24</activityDate>
+        <businessHours>United States (Boston)</businessHours>
+        <businessHours>United States (Phoenix)</businessHours>
+        <businessHours>United States (Quincy)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Thanksgiving</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-04-21</activityDate>
+        <businessHours>Brazil</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Tiradentes Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-03-24</activityDate>
+        <businessHours>Argentina</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Truth and Justice Memorial Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-06-06</activityDate>
+        <businessHours>Hong Kong</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Tuen Ng Festival</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-12-02</activityDate>
+        <businessHours>United Arab Emirates</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>UAE National Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-07-04</activityDate>
+        <businessHours>United States (Boston)</businessHours>
+        <businessHours>United States (Phoenix)</businessHours>
+        <businessHours>United States (Quincy)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>US Independence Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-09-05</activityDate>
+        <businessHours>United States (Boston)</businessHours>
+        <businessHours>United States (Phoenix)</businessHours>
+        <businessHours>United States (Quincy)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>US Labor Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-03-21</activityDate>
+        <businessHours>Japan</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Vernal Equinox</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-23</activityDate>
+        <businessHours>Canada (Toronto)</businessHours>
+        <businessHours>Canada (Vancouver)</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Victoria Day</name>
+    </holidays>
+    <holidays>
+        <activityDate>2016-05-16</activityDate>
+        <businessHours>France</businessHours>
+        <businessHours>Germany</businessHours>
+        <businessHours>Luxembourg</businessHours>
+        <businessHours>Netherlands</businessHours>
+        <businessHours>Switzerland</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Whitmonday</name>
+    </holidays>
+    <holidays>
+        <activityDate>2017-04-07</activityDate>
+        <isRecurring>false</isRecurring>
+        <name>test 7</name>
+    </holidays>
+</BusinessHoursSettings>

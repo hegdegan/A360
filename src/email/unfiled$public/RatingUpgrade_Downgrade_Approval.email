@@ -1,0 +1,5 @@
+Hi {!Consultant_Rating__c.OwnerFullName}}, 
+
+Your {!Consultant_Rating__c.Name} has been approved. Please click here to view additional details: {!Consultant_Rating__c.Link}
+
+Thanks!

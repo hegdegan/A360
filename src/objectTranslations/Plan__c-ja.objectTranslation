@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Plan --></value>
+    </caseValues>
+    <fields>
+        <label><!-- AML Exempt? --></label>
+        <name>AML_Exempt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contracting Entity at MFS? --></label>
+        <name>Contracting_Entity_at_MFS__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC Plan Type (if known) --></label>
+        <name>DC_Plan_Type_if_known__c</name>
+        <picklistValues>
+            <masterLabel>401A</masterLabel>
+            <translation><!-- 401A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>401K</masterLabel>
+            <translation><!-- 401K --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>403B</masterLabel>
+            <translation><!-- 403B --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>457</masterLabel>
+            <translation><!-- 457 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Last Reporting Date --></label>
+        <name>Last_Reporting_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Organization --></label>
+        <name>Organization__c</name>
+        <relationshipLabel><!-- Plans --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The fiscal year of the client&apos;s plan (not the funds year end) This will affect fiscal year reporting  from a performance standpoint. --></help>
+        <label><!-- Plan Fiscal Year End --></label>
+        <name>Plan_Fiscal_Year_End__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan ID --></label>
+        <name>Plan_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Legal Name Full --></label>
+        <name>Plan_Legal_Name_Full__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Start Date --></label>
+        <name>Plan_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Termination Date --></label>
+        <name>Plan_Termination_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Type --></label>
+        <name>Plan_Type__c</name>
+        <picklistValues>
+            <masterLabel>401(k) Plan</masterLabel>
+            <translation><!-- 401(k) Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Advisory</masterLabel>
+            <translation><!-- Advisory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asset Allocation Model</masterLabel>
+            <translation><!-- Asset Allocation Model --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Audit Adjustment</masterLabel>
+            <translation><!-- Audit Adjustment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brokerage</masterLabel>
+            <translation><!-- Brokerage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Central Bank</masterLabel>
+            <translation><!-- Central Bank --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corporate Cash</masterLabel>
+            <translation><!-- Corporate Cash --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defined Benefit</masterLabel>
+            <translation><!-- Defined Benefit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defined Contribution</masterLabel>
+            <translation><!-- Defined Contribution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defined Contribution (covers deferred Compensation)</masterLabel>
+            <translation><!-- Defined Contribution (covers deferred Compensation) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Discretionary</masterLabel>
+            <translation><!-- Discretionary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Endowment</masterLabel>
+            <translation><!-- Endowment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Endowment Assets</masterLabel>
+            <translation><!-- Endowment Assets --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Execution Only</masterLabel>
+            <translation><!-- Execution Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Foundation</masterLabel>
+            <translation><!-- Foundation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Foundation Assets</masterLabel>
+            <translation><!-- Foundation Assets --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fund of Funds</masterLabel>
+            <translation><!-- Fund of Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HSA - Health Savings Account</masterLabel>
+            <translation><!-- HSA - Health Savings Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Individual Retirement Account (IRA)</masterLabel>
+            <translation><!-- Individual Retirement Account (IRA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Individual/Trust</masterLabel>
+            <translation><!-- Individual/Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance</masterLabel>
+            <translation><!-- Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance General Account</masterLabel>
+            <translation><!-- Insurance General Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance Unit Linked</masterLabel>
+            <translation><!-- Insurance Unit Linked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance Variable Annuity</masterLabel>
+            <translation><!-- Insurance Variable Annuity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance Variable Life</masterLabel>
+            <translation><!-- Insurance Variable Life --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investment</masterLabel>
+            <translation><!-- Investment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Seed Money</masterLabel>
+            <translation><!-- MFS Seed Money --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monetary Authority</masterLabel>
+            <translation><!-- Monetary Authority --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nuclear Decommission Trust</masterLabel>
+            <translation><!-- Nuclear Decommission Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other Retail Account</masterLabel>
+            <translation><!-- Other Retail Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platform</masterLabel>
+            <translation><!-- Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platform Assets</masterLabel>
+            <translation><!-- Platform Assets --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reporting Account</masterLabel>
+            <translation><!-- Reporting Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retirement</masterLabel>
+            <translation><!-- Retirement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMA/PPM</masterLabel>
+            <translation><!-- SMA/PPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sovereign Wealth</masterLabel>
+            <translation><!-- Sovereign Wealth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sovereign Wealth Fund/Monetary Authority</masterLabel>
+            <translation><!-- Sovereign Wealth Fund/Monetary Authority --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sub-Advisory</masterLabel>
+            <translation><!-- Sub-Advisory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subadvised 40-Act</masterLabel>
+            <translation><!-- Subadvised 40-Act --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subadvised non-40-Act</masterLabel>
+            <translation><!-- Subadvised non-40-Act --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Superannuation</masterLabel>
+            <translation><!-- Superannuation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VEBA – Variable Employee Benefit Account</masterLabel>
+            <translation><!-- VEBA – Variable Employee Benefit Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voluntary Employee Benefit Account (VEBA)/Health Savings Account (HSA)</masterLabel>
+            <translation><!-- Voluntary Employee Benefit Account (VEBA)/Health Savings Account (HSA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Working Capital/Balance Sheet Assets</masterLabel>
+            <translation><!-- Working Capital/Balance Sheet Assets --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Risk Rating --></label>
+        <name>Risk_Rating__c</name>
+    </fields>
+    <layouts>
+        <layout>System Administrator</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Information --></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label><!-- Reporting Information --></label>
+            <section>Reporting Information</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel><!-- Plan Legal Name --></nameFieldLabel>
+    <webLinks>
+        <label>ポートフォリオビューアカウン</label>
+        <name>Account_with_Portfolio_View</name>
+    </webLinks>
+</CustomObjectTranslation>

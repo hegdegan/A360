@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Idea.Comments$Id</field>
+    </columns>
+    <columns>
+        <field>Idea.Comments$CreatedBy</field>
+    </columns>
+    <columns>
+        <field>Idea.Comments$CommentBody</field>
+    </columns>
+    <columns>
+        <field>Idea.Comments$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Idea*Idea$ID__c</field>
+    </columns>
+    <columns>
+        <field>Idea$Body</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>WiP Comments</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Ambassador_Idea_Report__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Idea.Comments$CreatedBy</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Idea.Comments$CreatedDate</dateColumn>
+        <endDate>2016-10-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2016-10-03</startDate>
+    </timeFrameFilter>
+</Report>

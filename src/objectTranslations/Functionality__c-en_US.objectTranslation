@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Functionality</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Functionalities</value>
+    </caseValues>
+    <fields>
+        <help><!-- These are a set of statements, each with a clear pass/fail result, that specify functional and non-functional requirements to determine when a functionality is completed and working as expected. --></help>
+        <label><!-- Acceptance Criteria --></label>
+        <name>Acceptance_Criteria__c</name>
+    </fields>
+    <fields>
+        <label><!-- Blocked Reason --></label>
+        <name>Blocked_Reason__c</name>
+    </fields>
+    <fields>
+        <help><!-- Overview of what requirements the functionality is going to address --></help>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mobile-Ready Required? --></label>
+        <name>Mobile_Ready_Required__c</name>
+    </fields>
+    <fields>
+        <help><!-- Note: All functionalities should be mobile ready. There are some that do not req a separate mobile UX design, but they still need to be mobile ready (i.e., responsive design is still req). This field is to track fun. needing a separate UX design --></help>
+        <label><!-- Mobile UX Status --></label>
+        <name>Mobile_UX_Status__c</name>
+        <picklistValues>
+            <masterLabel>Mobile UX Design Created</masterLabel>
+            <translation><!-- Mobile UX Design Created --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile UX Design Not Req (Use Desktop UX)</masterLabel>
+            <translation><!-- Mobile UX Design Not Req (Use Desktop UX) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile UX Design Pending</masterLabel>
+            <translation><!-- Mobile UX Design Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mobile UX Implementation Complete</masterLabel>
+            <translation><!-- Mobile UX Implementation Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A (No UI Required)</masterLabel>
+            <translation><!-- N/A (No UI Required) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total Actual Hours --></label>
+        <name>PF_Total_Actual_Hours__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Estimated Hours --></label>
+        <name>PF_Total_Estimated_Hours__c</name>
+    </fields>
+    <fields>
+        <label><!-- Questions/Comments --></label>
+        <name>Questions_Comments__c</name>
+    </fields>
+    <fields>
+        <help><!-- Description of the end solution created to address the business requirements --></help>
+        <label><!-- Solution Description --></label>
+        <name>Solution_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Blocked</masterLabel>
+            <translation><!-- Blocked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Complete</masterLabel>
+            <translation><!-- Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Development</masterLabel>
+            <translation><!-- In Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Started</masterLabel>
+            <translation><!-- Not Started --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Out-Of-Scope</masterLabel>
+            <translation><!-- Out-Of-Scope --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Include any prerequisite steps, key pointers, updates per iteration conversations, recommendations for approach here.
+
+Please Strike-through anything that is no longer required in this field. --></help>
+        <label><!-- Steps --></label>
+        <name>Steps__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Apex Development</masterLabel>
+            <translation><!-- Apex Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Integration Specification</masterLabel>
+            <translation><!-- Integration Specification --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pure Configuration</masterLabel>
+            <translation><!-- Pure Configuration --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Workstream --></label>
+        <name>Workstream__c</name>
+        <relationshipLabel><!-- Functionalities --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Functionality Layout</layout>
+        <sections>
+            <label><!-- Acceptance Criteria --></label>
+            <section>Acceptance Criteria</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label><!-- Solution Description --></label>
+            <section>Solution Description</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Please enter a Blocked Reason. --></errorMessage>
+        <name>Blocked_Reason_Required</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Solution Description required in order to mark functionality as Complete --></errorMessage>
+        <name>Solution_Description_Required</name>
+    </validationRules>
+</CustomObjectTranslation>

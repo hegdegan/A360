@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Team</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Teams</value>
+    </caseValues>
+    <fields>
+        <label><!-- AUM --></label>
+        <name>AUM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Branch Sales --></label>
+        <name>Branch_Sales__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Teams --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Firm Sales --></label>
+        <name>Firm_Sales__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDM ID --></label>
+        <name>MDM_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Will contain the preferred product information for teams. --></help>
+        <label><!-- Product --></label>
+        <name>Product__c</name>
+        <relationshipLabel><!-- Teams --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Rep/ Individual --></label>
+        <name>Rep_Individual__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Team Location --></label>
+        <name>Team_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team Sales --></label>
+        <name>Team_Sales__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team Website --></label>
+        <name>Team_Website__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Sales --></label>
+        <name>Total_Sales__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Sales --></label>
+        <name>YTD__c</name>
+    </fields>
+    <layouts>
+        <layout>Team Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Sales --></label>
+            <section>Sales</section>
+        </sections>
+        <sections>
+            <label><!-- Sales and Assets --></label>
+            <section>Sales and Assets</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Add Team Member --></label>
+        <name>Add_Team_Member</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

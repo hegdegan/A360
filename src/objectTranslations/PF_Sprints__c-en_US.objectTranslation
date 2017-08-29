@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Workstream</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Workstreams</value>
+    </caseValues>
+    <fields>
+        <label><!-- Actual Velocity --></label>
+        <name>PF_Actual_Velocity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>PF_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actual End Date --></label>
+        <name>PF_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is DE Review Completed ? --></label>
+        <name>PF_Is_DE_Review_Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Peer Review Completed ? --></label>
+        <name>PF_Is_Peer_Review_Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number Of Resources --></label>
+        <name>PF_Number_Of_Resources__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Working days in Sprint --></label>
+        <name>PF_Number_of_Working_days_in_Sprint__c</name>
+    </fields>
+    <fields>
+        <label><!-- Percent Complete --></label>
+        <name>PF_Percent_Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Planned End Date --></label>
+        <name>PF_Planned_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Planned Start Date --></label>
+        <name>PF_Planned_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Planned Velocity --></label>
+        <name>PF_Planned_Velocity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority --></label>
+        <name>PF_Priority__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Projected Velocity --></label>
+        <name>PF_Projected_Velocity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Release --></label>
+        <name>PF_Release__c</name>
+        <relationshipLabel><!-- Workstreams --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Slipage in End date --></label>
+        <name>PF_Slipage_in_End_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Slipage in Start date --></label>
+        <name>PF_Slipage_in_Start_date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sprint Status --></label>
+        <name>PF_Sprint_Status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Started</masterLabel>
+            <translation><!-- Not Started --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sprint Type --></label>
+        <name>PF_Sprint_Type__c</name>
+        <picklistValues>
+            <masterLabel>Custom/Mobile Development</masterLabel>
+            <translation><!-- Custom/Mobile Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Data &amp; Integration</masterLabel>
+            <translation><!-- Data &amp; Integration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Project Management</masterLabel>
+            <translation><!-- Project Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Cloud</masterLabel>
+            <translation><!-- Sales Cloud --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Cloud</masterLabel>
+            <translation><!-- Service Cloud --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Actual Start Date --></label>
+        <name>PF_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total # of Stories --></label>
+        <name>PF_Sum_of_All_Stories__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sum of Completed Stories --></label>
+        <name>PF_Sum_of_Completed_Stories__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Sprint Capacity --></label>
+        <name>PF_Total_Sprint_Capacity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Development Complete --></label>
+        <name>Total_Development_Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Development in New --></label>
+        <name>Total_Development_in_New__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Development in Progress --></label>
+        <name>Total_Development_in_Progress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Func. Build and Review --></label>
+        <name>Total_Func_Build_and_Review__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Func. Complete --></label>
+        <name>Total_Func_Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Func. In Design --></label>
+        <name>Total_Func_In_Design__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Func. in New --></label>
+        <name>Total_Func_in_New__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Func. Not In Scope --></label>
+        <name>Total_Func_in_Progress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Integrations Complete --></label>
+        <name>Total_Integrations_Complete__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Integrations in New --></label>
+        <name>Total_Integrations_in_New__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Integrations in Progress --></label>
+        <name>Total_Integrations_in_Progress__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Stories --></label>
+        <name>Total_Stories__c</name>
+    </fields>
+    <layouts>
+        <layout>PF_Sprints Layout</layout>
+        <sections>
+            <label><!-- Burn down Chart --></label>
+            <section>Burn down Chart</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Efforts &amp; Capacity --></label>
+            <section>Efforts &amp; Capacity</section>
+        </sections>
+        <sections>
+            <label><!-- Key Dates &amp; Resources --></label>
+            <section>Key Dates &amp; Resources</section>
+        </sections>
+        <sections>
+            <label><!-- Review Information --></label>
+            <section>Review Information</section>
+        </sections>
+        <sections>
+            <label><!-- Sprint Information --></label>
+            <section>Sprint Information</section>
+        </sections>
+        <sections>
+            <label><!-- Testing Summary --></label>
+            <section>Testing Summary</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Sprint Start/End dates should lie within Release Start/end dates --></errorMessage>
+        <name>Sprint_dates_lies_between_Release</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start date cannot be greater than End date --></errorMessage>
+        <name>Start_End_date_check</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- PF_Sprint_Status --></label>
+        <name>PF_Sprint_Status</name>
+    </webLinks>
+</CustomObjectTranslation>

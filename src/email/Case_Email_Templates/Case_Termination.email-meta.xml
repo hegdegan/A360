@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Case Termination</name>
+    <style>none</style>
+    <subject>{!Case.Subject}</subject>
+    <textOnly>Hi,  The purpose of this email is to inform the group that MFS has received notification of the following account termination from {!Case.Account} within the MFS {!Case.00NP00000015QJ3} Strategy.  Termination Details:
+
+Client Name {!Case.Account}
+Portfolio Name {!Case.Portfolio_Name__r}
+MFS Portfolio Acronym
+Termination Reason {!Case.Termination_Reason__c}
+Consultant Firm
+Field Consultant (Contact)
+MFS Contracting Entitye
+Product Style
+Current Assets
+Stop Buying Date
+Stop Sell Date
+Closing/Termination Date {!Case.Due_Date__c}
+Liquidation Requested (Yes/No) {!Case.Due_Date__c}
+If Yes - When are proceeds needed/td&gt; {!Case.Due_Date__c}
+Special Trading Instructions {!Case.Due_Date__c}
+Last Reporting Date (meaning last period of reporting i.e. 30th June 2014) {!Case.Due_Date__c}
+Does this client receive any manual reporting (incl. attribution letters) that can be ceased upon termination (confirm reports &amp; letter code where applicable {!Case.Due_Date__c}
+Last Valuation Date {!Case.Due_Date__c}
+Last Billing Date (last day MFS earns a fee) {!Case.Due_Date__c}
+Original Funding Date
+Other Accounts with Client? (Yes/No)
+Termination Memo Reviewer (member of client service team)
+
+Please let me know if anyone has any questions. Thank you, Client Service Manager Name</textOnly>
+    <type>custom</type>
+</EmailTemplate>

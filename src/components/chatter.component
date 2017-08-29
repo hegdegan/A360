@@ -1,0 +1,4 @@
+<apex:component controller="MFS_Activity360Controller">
+    
+    <chatter:feedWithFollowers entityId="{!recordId}" showheader="true"/>
+</apex:component>

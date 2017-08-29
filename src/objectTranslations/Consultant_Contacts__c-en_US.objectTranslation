@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Consultant Contact</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Consultant Contacts</value>
+    </caseValues>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Strategy Ratings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Primary? --></label>
+        <name>Primary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rating --></label>
+        <name>Rating__c</name>
+        <relationshipLabel><!-- Consultant Contacts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Role --></label>
+        <name>Role1__c</name>
+        <picklistValues>
+            <masterLabel>Field Consultant</masterLabel>
+            <translation><!-- Field Consultant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research Analyst</masterLabel>
+            <translation><!-- Research Analyst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research Consultant</masterLabel>
+            <translation><!-- Research Consultant --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Strategy Rating Process --></label>
+        <name>Strategy_Rating_Process__c</name>
+        <relationshipLabel><!-- Consultant Contacts --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Consultant Contact Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

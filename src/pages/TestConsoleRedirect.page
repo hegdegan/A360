@@ -1,0 +1,17 @@
+<apex:page >
+    <apex:includeScript value="/support/console/40.0/integration.js"/>
+    <A HREF="#" onClick="testGenerateConsoleURL();return false">
+        Click here to generate a console URL
+    </A>
+    <script type="text/javascript">
+    	function showConsoleUrl(result) {
+            //openConsoleUrl(result.consoleUrl);
+            alert('here');
+            //alert(result.consoleUrl);
+        }
+    	function testGenerateConsoleURL() {
+            alert('here');
+            sforce.console.generateConsoleUrl(['/apex/RefreshParentCloseChild'], showConsoleUrl);
+        }
+    </script>
+</apex:page>

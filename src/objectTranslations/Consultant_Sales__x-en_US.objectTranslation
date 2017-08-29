@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Consultant_Sales</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Consultant_Sales</value>
+    </caseValues>
+    <fields>
+        <label><!-- AUM_AUD --></label>
+        <name>AUM_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM_CAD --></label>
+        <name>AUM_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM_EUR --></label>
+        <name>AUM_EUR__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM_GBP --></label>
+        <name>AUM_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM_JPY --></label>
+        <name>AUM_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM_SGD --></label>
+        <name>AUM_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM_USD --></label>
+        <name>AUM_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consultant_MDM_ID --></label>
+        <name>Consultant_MDM_ID__c</name>
+        <relationshipLabel><!-- Consultant_Sales --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Consultant_Salesforce_ID --></label>
+        <name>Consultant_Salesforce_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level --></label>
+        <name>Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Organization_MDM_ID --></label>
+        <name>Organization_MDM_ID__c</name>
+        <relationshipLabel><!-- Consultant_Sales --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Organization_Salesforce_ID --></label>
+        <name>Organization_Salesforce_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Redemptions_AUD --></label>
+        <name>Prior_Year_Redemptions_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Redemptions_CAD --></label>
+        <name>Prior_Year_Redemptions_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Redemptions_EUR --></label>
+        <name>Prior_Year_Redemptions_EUR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Redemptions_GBP --></label>
+        <name>Prior_Year_Redemptions_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Redemptions_JPY --></label>
+        <name>Prior_Year_Redemptions_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Redemptions_SGD --></label>
+        <name>Prior_Year_Redemptions_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Redemptions_USD --></label>
+        <name>Prior_Year_Redemptions_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Sales_AUD --></label>
+        <name>Prior_Year_Sales_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Sales_CAD --></label>
+        <name>Prior_Year_Sales_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Sales_EUR --></label>
+        <name>Prior_Year_Sales_EUR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Sales_GBP --></label>
+        <name>Prior_Year_Sales_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Sales_JPY --></label>
+        <name>Prior_Year_Sales_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Sales_SGD --></label>
+        <name>Prior_Year_Sales_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prior_Year_Sales_USD --></label>
+        <name>Prior_Year_Sales_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product_Vehicle_Code --></label>
+        <name>Product_Vehicle_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product_Vehicle --></label>
+        <name>Product_Vehicle__c</name>
+    </fields>
+    <fields>
+        <label><!-- REC_ID --></label>
+        <name>REC_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Refresh_Date --></label>
+        <name>Refresh_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Share_Class_Code --></label>
+        <name>Share_Class_Code__c</name>
+        <relationshipLabel><!-- Consultant_Sales --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Source_Portfolio_ID --></label>
+        <name>Source_Portfolio_ID__c</name>
+        <relationshipLabel><!-- Consultant_Sales --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- YTD_Net_AUD --></label>
+        <name>YTD_Net_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Net_CAD --></label>
+        <name>YTD_Net_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Net_EUR --></label>
+        <name>YTD_Net_EUR__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Net_GBP --></label>
+        <name>YTD_Net_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Net_JPY --></label>
+        <name>YTD_Net_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Net_SGD --></label>
+        <name>YTD_Net_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Net_USD --></label>
+        <name>YTD_Net_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Redemptions_AUD --></label>
+        <name>YTD_Redemptions_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Redemptions_CAD --></label>
+        <name>YTD_Redemptions_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Redemptions_EUR --></label>
+        <name>YTD_Redemptions_EUR__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Redemptions_GBP --></label>
+        <name>YTD_Redemptions_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Redemptions_JPY --></label>
+        <name>YTD_Redemptions_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Redemptions_SGD --></label>
+        <name>YTD_Redemptions_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Redemptions_USD --></label>
+        <name>YTD_Redemptions_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Sales_AUD --></label>
+        <name>YTD_Sales_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Sales_CAD --></label>
+        <name>YTD_Sales_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Sales_EUR --></label>
+        <name>YTD_Sales_EUR__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Sales_GBP --></label>
+        <name>YTD_Sales_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Sales_JPY --></label>
+        <name>YTD_Sales_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Sales_SGD --></label>
+        <name>YTD_Sales_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD_Sales_USD --></label>
+        <name>YTD_Sales_USD__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

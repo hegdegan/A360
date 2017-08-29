@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Project</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Projects</value>
+    </caseValues>
+    <fields>
+        <label><!-- Actual End Date --></label>
+        <name>PF_Actual_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actual Start Date --></label>
+        <name>PF_Actual_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approach (Strategy) --></label>
+        <name>PF_Approach_Strategy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Background(History) --></label>
+        <name>PF_Background_History__c</name>
+    </fields>
+    <fields>
+        <label><!-- Benefits/Long Term Goal --></label>
+        <name>PF_Benefits_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>PF_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Planned End Date --></label>
+        <name>PF_Planned_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Planned Start Date --></label>
+        <name>PF_Planned_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Status --></label>
+        <name>PF_Stage__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>On Hold</masterLabel>
+            <translation><!-- On Hold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Planning</masterLabel>
+            <translation><!-- Planning --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>PF_Project Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Key Dates --></label>
+            <section>Key Dates</section>
+        </sections>
+        <sections>
+            <label><!-- Project Details --></label>
+            <section>Project Details</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Planned/Actual Start date cannot be greater than End date --></errorMessage>
+        <name>Start_End_date_check</name>
+    </validationRules>
+</CustomObjectTranslation>

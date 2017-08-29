@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Large Flow Notification" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+<c:MFS_LargeFlowNotificationTemplate recId="{!relatedTo.Id}"/>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

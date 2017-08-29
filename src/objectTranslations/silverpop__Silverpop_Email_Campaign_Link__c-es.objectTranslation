@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Silverpop Email Campaign Link --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Silverpop Email Campaign Link --></value>
+    </caseValues>
+    <gender><!-- Feminine --></gender>
+    <nameFieldLabel><!-- Silverpop Email Campaign Link Name --></nameFieldLabel>
+</CustomObjectTranslation>

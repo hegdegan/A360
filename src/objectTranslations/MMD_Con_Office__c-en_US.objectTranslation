@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Con Office</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Con Offices</value>
+    </caseValues>
+    <fields>
+        <label><!-- Address --></label>
+        <name>ADDRESS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Phone Area Code --></label>
+        <name>BAREACODE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Branch Office Code --></label>
+        <name>BOFFICE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Main Phone --></label>
+        <name>BRAPHONE__c</name>
+    </fields>
+    <fields>
+        <label><!-- City --></label>
+        <name>CITY__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country --></label>
+        <name>COUNTRY__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Firm Profile --></label>
+        <name>MMD_Firm_Profile__c</name>
+        <relationshipLabel><!-- Offices/Organizations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Office/Organization Name --></label>
+        <name>OFFNAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Office Lookup --></label>
+        <name>Office_Lookup__c</name>
+    </fields>
+    <fields>
+        <label><!-- State --></label>
+        <name>STATE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Postal Code --></label>
+        <name>ZIP__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

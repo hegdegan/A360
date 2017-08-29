@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Defect</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Defects</value>
+    </caseValues>
+    <fields>
+        <label><!-- Functionality --></label>
+        <name>Functionality__c</name>
+        <relationshipLabel><!-- Defects --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Actual Result --></label>
+        <name>PF_Actual_Result__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned To --></label>
+        <name>PF_Assigned_To__c</name>
+        <relationshipLabel><!-- Defects --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Closed Date --></label>
+        <name>PF_Closed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>PF_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expected Result --></label>
+        <name>PF_Expected_Result__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open Date --></label>
+        <name>PF_Open_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Planned Fixed Date --></label>
+        <name>PF_Planned_Fixed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority --></label>
+        <name>PF_Priority__c</name>
+        <picklistValues>
+            <masterLabel>Critical</masterLabel>
+            <translation><!-- Critical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Resolution Type --></label>
+        <name>PF_Resolution_Type__c</name>
+        <picklistValues>
+            <masterLabel>Configuration</masterLabel>
+            <translation><!-- Configuration --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Development</masterLabel>
+            <translation><!-- Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation><!-- Training --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PF_Status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fixed</masterLabel>
+            <translation><!-- Fixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Steps to Reproduce --></label>
+        <name>PF_Steps_to_Reproduce__c</name>
+    </fields>
+    <fields>
+        <label><!-- Test Case --></label>
+        <name>PF_Test_Case__c</name>
+        <relationshipLabel><!-- Defects --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Testing Cycle --></label>
+        <name>PF_Testing_Cycle__c</name>
+        <picklistValues>
+            <masterLabel>DEV</masterLabel>
+            <translation><!-- DEV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PROD</masterLabel>
+            <translation><!-- PROD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regression</masterLabel>
+            <translation><!-- Regression --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SIT</masterLabel>
+            <translation><!-- SIT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UAT</masterLabel>
+            <translation><!-- UAT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>PF_Type__c</name>
+        <picklistValues>
+            <masterLabel>Change Request</masterLabel>
+            <translation><!-- Change Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Code Defect</masterLabel>
+            <translation><!-- Code Defect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not a Defect</masterLabel>
+            <translation><!-- Not a Defect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spec Defect</masterLabel>
+            <translation><!-- Spec Defect --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>PF_Defects Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Defect Details --></label>
+            <section>Defect Details</section>
+        </sections>
+        <sections>
+            <label><!-- Defect Results --></label>
+            <section>Defect Results</section>
+        </sections>
+        <sections>
+            <label><!-- Key Dates --></label>
+            <section>Key Dates</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Component Test Defect --></label>
+        <name>Component_Test_Defect</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Unit Test Defect --></label>
+        <name>Unit_Test_Defect</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

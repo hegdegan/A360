@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>(MBI) - MMD - Plan Sponsor - Pension Plan Provider Fees</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>COLLECTIVE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Collective Code</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Collective_Desc__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>CASE( COLLECTIVE__c,
+&quot;000&quot;,&quot;Unspecified&quot;,
+&quot;001&quot;,&quot;Common Collective Trust&quot;,
+&quot;002&quot;,&quot;Exchange-Traded Fund&quot;,
+&quot;004&quot;,&quot;Mutual Fund&quot;,
+&quot;005&quot;,&quot;Pooled Separate Account&quot;,
+&quot;007&quot;,&quot;Unit Trust&quot;,&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Collective</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FEE_AGEN_AMOUNT__c</fullName>
+        <externalId>false</externalId>
+        <label>Fee AUM</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FEE_AMOUNT__c</fullName>
+        <externalId>false</externalId>
+        <label>Fee Amount ($000)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FEE_CUR__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Local Currency</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FEE_DATE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Fee Paid</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FEE_NOTES__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <length>500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Firm_Name_del__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>$Organization.Country</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Firm Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ID__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD ID</label>
+        <length>7</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MMD_Firm_Profile__c</fullName>
+        <externalId>false</externalId>
+        <label>MMD Firm Profile</label>
+        <referenceTo>MMCOMP__c</referenceTo>
+        <relationshipLabel>MMD Provider Fees</relationshipLabel>
+        <relationshipName>MMD_Provider_Fees</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>PLAN_NAME__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Plan Name</label>
+        <length>130</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PLAN_SEQ__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Plan Sequence #</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PROV_ID__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Provider ID</label>
+        <length>7</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PROV_NAME__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Provider Name</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Provider_Link__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Provider Link</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>MMD Provider Fees</relationshipLabel>
+        <relationshipName>MMD_Provider_Fees_del</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>REGION__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Region Code</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Region_Desc__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Region</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SERVICE_CODE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Service Code</label>
+        <length>8</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>STYLE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Style Code</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SVC_DETAIL__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Service Details</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>IF( SERVICE_CODE__c =&quot;ACCTG&quot;,&quot;Accounting&quot;,
+IF( SERVICE_CODE__c =&quot;ACT&quot;,&quot;Actuary&quot;,
+IF( SERVICE_CODE__c =&quot;AUD&quot;,&quot;Auditor&quot;,
+IF( SERVICE_CODE__c =&quot;CONC&quot;,&quot;Concierge Services&quot;,
+IF( SERVICE_CODE__c =&quot;CUST&quot;,&quot;Custodian&quot;,
+IF( SERVICE_CODE__c =&quot;ELECSVCS&quot;,&quot;Election Services GCUS Global Custodian&quot;,
+IF( SERVICE_CODE__c =&quot;CON&quot;,&quot;Investment Consultant&quot;,
+IF( SERVICE_CODE__c =&quot;MGR&quot;,&quot;Investment Manager&quot;,
+IF( SERVICE_CODE__c =&quot;ITSVCS&quot;,&quot;IT/Data Processing/Computer Services&quot;,
+IF( SERVICE_CODE__c =&quot;LEGAL&quot;,&quot;Legal&quot;,
+IF( SERVICE_CODE__c =&quot;LOBSVCS&quot;,&quot;Lobbyist Services&quot;,
+IF( SERVICE_CODE__c =&quot;OTHBNK&quot;,&quot;Other Banking Relationship&quot;,
+IF( SERVICE_CODE__c =&quot;OTHCON&quot;,&quot;Other Consultant&quot;,
+IF( SERVICE_CODE__c =&quot;OTHPRO&quot;,&quot;Other Professional Services&quot;,
+IF( SERVICE_CODE__c =&quot;PERFCON&quot;,&quot;Performance Measurement Consultants&quot;,
+IF( SERVICE_CODE__c =&quot;RECON&quot;,&quot;Real Estate Consultant&quot;,
+IF( SERVICE_CODE__c =&quot;RKP&quot;,&quot;Recordkeeper&quot;,
+IF( SERVICE_CODE__c =&quot;TAXSVCS&quot;,&quot;Tax Services&quot;,
+IF( SERVICE_CODE__c =&quot;TPA&quot;,&quot;Third Party Administrator&quot;,
+IF( SERVICE_CODE__c =&quot;TRUS&quot;,&quot;Trustee&quot;,
+IF( SERVICE_CODE__c =&quot;MTR&quot;,&quot;Master Trustee&quot;,
+&quot; &quot;)))))))))))))))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Service</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Style_Desc__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Style</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TYPE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Type Code</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type_Desc__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>CASE( TYPE__c,
+&quot;001&quot;,&quot;Alternatives&quot;,
+&quot;002&quot;,&quot;Asset Allocation&quot;,
+&quot;004&quot;,&quot;Cash &amp; Short-Term&quot;,
+&quot;005&quot;,&quot;Equities&quot;,
+&quot;006&quot;,&quot;Fixed Income&quot;,
+&quot;008&quot;,&quot;Loans&quot;,
+&quot;009&quot;,&quot;Self Directed Brokerage Accounts&quot;,
+&quot;014&quot;,&quot;Real Estate&quot;,
+&quot;000&quot;,&quot;Unspecified&quot;,TYPE__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>MMD Provider Fee</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Link</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>MMD Provider Fees</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

@@ -1,0 +1,5 @@
+Hello, <br/><br/>
+<html>
+An Inflow or Outflow for {!Case.Amount__c} for <b> {!Case.Account} </b> has been created. Please click <a href="{!Case.Link}"> here</a> to review. <br/><br/>
+Thanks, <br/>
+{!Case.OwnerFullName}

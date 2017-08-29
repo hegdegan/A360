@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>(MBI) - MMD - Plan Sponsor - Information from Federal 990 or 990 PF Tax Returns</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>CAPPOOL_LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Investment Pool (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CAPPOOL__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Investment Pool ($000)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDASSET1__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Fund 1 Assets ($000)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDASSET2__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Fund 2 Assets ($000)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDASSET3__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Fund 3 Assets ($000)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDASSET4__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Fund 4 Assets ($000)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDASSET5__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Fund 5 Assets ($000)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDASSET6__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Fund 6 Assets ($000)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDASSETLOC1__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Fund 1 Assets (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDASSETLOC2__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Fund 2 Assets (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDASSETLOC3__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Fund 3 Assets (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDASSETLOC4__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Fund 4 Assets (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDASSETLOC5__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Fund 5 Assets (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDASSETLOC6__c</fullName>
+        <externalId>false</externalId>
+        <label>Sub-Fund 6 Assets (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDNAME1__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Sub-Fund 1 Name</label>
+        <length>140</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDNAME2__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Sub-Fund 2 Name</label>
+        <length>140</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDNAME3__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Sub-Fund 3 Name</label>
+        <length>140</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDNAME4__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Sub-Fund 4 Name</label>
+        <length>140</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDNAME5__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Sub-Fund 5 Name</label>
+        <length>140</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FUNDNAME6__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Sub-Fund 6 Name</label>
+        <length>140</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Firm_Name__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>$Organization.Country</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Firm Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ID__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>true</externalId>
+        <label>MMD ID</label>
+        <length>7</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>INIT403B__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Intiated or plans to initiate 403(b)</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IRSCODE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>IRS Category Code</label>
+        <length>2</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IRSSUBCODE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>IRS Category SubCode</label>
+        <length>2</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IRS_Category__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>IF( AND(IRSCODE__c  = &quot;3&quot;, IRSSUBCODE__c =&quot;10&quot;),&quot;501(c)3 - Church&quot;,
+IF( AND(IRSCODE__c  = &quot;3&quot;, IRSSUBCODE__c =&quot;11&quot;),&quot;501(c)3 - School&quot;,
+IF( AND(IRSCODE__c  = &quot;3&quot;, IRSSUBCODE__c =&quot;12&quot;),&quot;501(c)3 - Hospital or  Medical Research&quot;,
+IF( AND(IRSCODE__c  = &quot;3&quot;, IRSSUBCODE__c =&quot;13&quot;),&quot;501(c)3 - Government Owned, to benefit university&quot;,
+IF( AND(IRSCODE__c  = &quot;3&quot;, IRSSUBCODE__c =&quot;15&quot;),&quot;501(c)3 - more than 1/3 Government Sponsored&quot;,
+IF( AND(IRSCODE__c  = &quot;3&quot;, IRSSUBCODE__c =&quot;16&quot;),&quot;501(c)3 - less than 1/3 investments, more than 1/3 contributions/fees&quot;,
+IF( AND(IRSCODE__c  = &quot;3&quot;, IRSSUBCODE__c =&quot;17&quot;),&quot;501(c)3 - Organizations related to above code organizations&quot;,
+IF( AND(IRSCODE__c  = &quot;3&quot;, IRSSUBCODE__c =&quot;&quot;),&quot;501(c)3&quot;,
+CASE( IRSCODE__c ,
+&quot;4&quot;,&quot;501(c)4 - Social Welfare Organizations&quot;,
+&quot;5&quot;,&quot;501(c)5 - Labor &amp; Agricultural Organizations&quot;,
+&quot;6&quot;,&quot;501(c)6 - Business Leagues&quot;,
+&quot;8&quot;,&quot;501(c)8 - Fraternal Organizations w. benefits&quot;,
+&quot;9&quot;,&quot;501(c)9 - Employee Beneficiary Associations&quot;,
+&quot;10&quot;,&quot;501(c)10 - Fraternal Associations w.o. benefits&quot;,
+&quot;11&quot;,&quot;501(c)11 - Teacher Retirement Associations&quot;,
+&quot;18&quot;,&quot;501(c)18 - Employee Pension Trust&quot;,
+&quot;19&quot;,&quot;501(c)19 - Armed Forces Organization&quot;,
+&quot;23&quot;,&quot;501(c)23 - Armed Forces Assn. founded before 1880&quot;,
+&quot;30&quot;,&quot;501(e) - Cooperative Hospital Service Organization&quot;,
+&quot;40&quot;,&quot;4947(a)(2) - Non-exempt Charitable Trust&quot;,
+&quot;  &quot;)))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>IRS Category</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Local_Currency_Conversion_Code__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>MMD_Firm_Profile__r.CURR_CODE__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Local Currency Conversion Code</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MMD_Firm_Profile__c</fullName>
+        <externalId>false</externalId>
+        <label>MMD Firm Profile</label>
+        <referenceTo>MMCOMP__c</referenceTo>
+        <relationshipLabel>MMD PS Tax-Exempt</relationshipLabel>
+        <relationshipName>MMD_PS_Tax_Exempt</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>TOTALASSETS_LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Assets (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TOTALASSETS__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Assets ($000)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TOTALLIAB_LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Liabilities (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TOTALLIAB__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Liabilities ($000)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>VALDATE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Valuation Date</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>MMD PS Tax-Exempt</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Link</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>MMD PS Tax-Exempt</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

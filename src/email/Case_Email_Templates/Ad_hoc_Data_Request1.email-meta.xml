@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Ad hoc Data Request</name>
+    <style>none</style>
+    <subject>(Portfolio code) Ad Hoc Data Request</subject>
+    <textOnly>Hi,
+
+Client Name {!Case.Account}
+Client Tier {!Case.Tier__c}
+Portfolio Code {!Case.Tier__c}
+Share Class
+Data Type
+Time Period(s)
+As of Date
+Contractual Requirement
+Recurring Request?
+Reason Needed
+Requestor(on behalf of)
+Due Date {!Case.Due_Date__c}
+Additional Details not outlined above
+
+
+
+*all data will be provided in the default currency, sector scheme and benchmark of the portfolio unless otherwise specified
+
+**Please keep in mind disclosure policies for commingled portfolio data.  The table below outlines the timing of when data can be released externally:
+
+First of the month to 15CD Performance
+15CD to 25CD Characteristics, Sector Weights, Country Weights, Currency Weights, and Top 10 Securities (no individual weights, just the percentage Total of the Top 10 – No other security names can be released
+25CD or later All data can be sent</textOnly>
+    <type>custom</type>
+</EmailTemplate>

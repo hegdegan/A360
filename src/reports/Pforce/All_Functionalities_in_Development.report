@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Description__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Steps__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Acceptance_Criteria__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Type__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Mobile_Ready_Required__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Mobile_UX_Status__c</field>
+    </columns>
+    <currency>USD</currency>
+    <filter>
+        <criteriaItems>
+            <column>CUST_NAME</column>
+            <operator>notContain</operator>
+            <value>spec</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Functionality__c.Status__c</column>
+            <operator>equals</operator>
+            <value>In Development</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>All Functionalities in Development</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Functionality__c@Functionality__c.Workstream__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

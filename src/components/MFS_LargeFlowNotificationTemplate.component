@@ -1,0 +1,93 @@
+<apex:component controller="MFS_ETDataRequest" access="global">
+    <apex:attribute name="recId" description="CaseRec Id" type="Id" assignTo="{!CaseId}"/>
+    <html>
+        {!$Label.ET_Large_Flow_Text1}<br/><br/>
+        {!$Label.ET_Large_Flow_Text2}<br/><br/>
+        {!$Label.ET_Large_Flow_Text3}<br/>
+        {!$Label.ET_Large_Flow_Text4}<br/>
+        {!$Label.ET_Large_Flow_Text5}<br/>
+        {!$Label.ET_Large_Flow_Text6}<br/> 
+        {!$Label.ET_Large_Flow_Text7}<br/><br/>
+        {!$Label.ET_Large_Flow_Text8}<br/>
+        {!$Label.ET_Large_Flow_Text9}<br/>
+        {!$Label.ET_Large_Flow_Text10}<br/>
+        {!$Label.ET_Large_Flow_Text11}<br/>
+        {!$Label.ET_Large_Flow_Text12}<br/><br/>
+        {!$Label.ET_Large_Flow_Text13}<br/><br/>
+        
+        <table border="1">
+            <tr>
+                <td>{!$Label.ET_sr_Client_Name}: </td><td><apex:outputPanel rendered="{!orgDetails.Name!=null}">{!orgDetails.Name}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!orgDetails.Name==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Client_Tier}:</td><td><apex:outputPanel rendered="{!OR(orgDetails.Institutional_Tier__c!=null,orgDetails.Non_US_Retail_Tier__c!=null,orgDetails.US_Retail_Tier__c!=null)}">
+                {!orgDetails.Institutional_Tier__c}{!orgDetails.Non_US_Retail_Tier__c}{!orgDetails.US_Retail_Tier__c}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!AND(orgDetails.Institutional_Tier__c==null,orgDetails.Non_US_Retail_Tier__c==null,orgDetails.US_Retail_Tier__c==null)}">TBD</apex:outputPanel> </td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_MFS_Portfolio_Acronym}</td><td><apex:outputPanel rendered="{!portfolioCode!=null}">{!portfolioCode}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!portfolioCode==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Contracting_Entity}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Consultant_Firm}</td><td><apex:outputPanel rendered="{!consultant!=null}">{!consultant}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!consultant==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Field_Consultant}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Product_Style}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Vehicle_Type}</td><td><apex:outputPanel rendered="{!Vehicle!=null}">{!Vehicle}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!Vehicle==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Redemption_Contribution}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Amount_USD}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Single_or_Multiple_Tranches_if_multiple_provide_dates}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Cash_In_Kind}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Trade_Date}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Settle_Date}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Client_AUM_pre_flow}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Account_AUM_pre_flow}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Relationship_Manager}</td><td><apex:outputPanel rendered="{!relationshipManager!=null}">{!relationshipManager}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!relationshipManager==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Client_Service_Manager}</td><td><apex:outputPanel rendered="{!csm!=null}">{!csm}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!csm==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Reason_for_Redemption_Contribution}</td><td>TBD</td>
+            </tr>
+        </table>
+        <br/>
+        {!$Label.ET_Large_Flow_Text14}<br/>
+        {!$Label.ET_Large_Flow_Text15}&nbsp;{!relationshipManager}&nbsp;{!$Label.ET_Large_Flow_Text16}<br/>
+        <br/><br/>
+        {!$Label.ET_Thankyou}
+        <br/>
+        {!$Label.ET_MFS_Team}
+    </html>
+ </apex:component>

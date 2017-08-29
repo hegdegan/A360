@@ -1,0 +1,8 @@
+<!---
+Visualforce Page Name :  MFS_NewClientInvestmentObj
+Version               :  1.0 
+Created Date          :  9 AUG 2016
+Function              :  VF Page for custom button to create a new client investment record
+--->
+<apex:page standardController="Client_Investment_Objective__c" recordSetvar=""  extensions="MFS_NewClientInvestmentObj" action="{!redirect}">
+</apex:page>

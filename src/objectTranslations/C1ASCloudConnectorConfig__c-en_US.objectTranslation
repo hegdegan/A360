@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>C1ASCloudConnectorConfig</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>C1ASCloudConnectorConfig</value>
+    </caseValues>
+    <fields>
+        <label><!-- Key --></label>
+        <name>Key__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value10 --></label>
+        <name>Value10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value2 --></label>
+        <name>Value2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value3 --></label>
+        <name>Value3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value4 --></label>
+        <name>Value4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value5 --></label>
+        <name>Value5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value6 --></label>
+        <name>Value6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value7 --></label>
+        <name>Value7__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value8 --></label>
+        <name>Value8__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value9 --></label>
+        <name>Value9__c</name>
+    </fields>
+    <fields>
+        <label><!-- Value --></label>
+        <name>Value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

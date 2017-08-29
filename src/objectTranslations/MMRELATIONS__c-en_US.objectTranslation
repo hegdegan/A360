@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Firm Relationship</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Firm Relationships</value>
+    </caseValues>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Profile Link --></label>
+        <name>Firm_Profile_Link__c</name>
+        <relationshipLabel><!-- Firm Relationships --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Firm MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category Code --></label>
+        <name>REL_CAT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Firm Name --></label>
+        <name>REL_CONAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rel Firm MMD ID --></label>
+        <name>REL_PID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Relationship Code --></label>
+        <name>REL_TYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Firm Link --></label>
+        <name>Related_Firm_Link__c</name>
+        <relationshipLabel><!-- MMD Firm Relationships (Related Firm Link) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Relationship --></label>
+        <name>Relationship__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

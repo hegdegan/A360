@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>Notify_User</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Notify_User</fullName>
+        <fields>Name</fields>
+        <fields>User__c</fields>
+        <fields>User_email__c</fields>
+        <label>Notify User</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Parent_ER__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>$Label.MFS_Instance_URL + Speaker_Request__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Parent ER</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Speaker_Request__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Speaker Request</label>
+        <referenceTo>Event_Request__c</referenceTo>
+        <relationshipLabel>Notify Users</relationshipLabel>
+        <relationshipName>Notify_Users</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Termination_Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Termination Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Notify Users</relationshipLabel>
+        <relationshipName>Notify_Users</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>User__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>User</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Notify_Users</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>User_email__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>User__r.Email</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>User email</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Notify User</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>NU-{000}</displayFormat>
+        <label>NotifyUser Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Notify Users</pluralLabel>
+    <recordTypes>
+        <fullName>Notify_User_for_Case</fullName>
+        <active>true</active>
+        <label>Notify User</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Notify_User_for_Speaker_Request</fullName>
+        <active>true</active>
+        <label>Notify User (for Speaker Request Only)</label>
+    </recordTypes>
+    <searchLayouts>
+        <lookupDialogsAdditionalFields>User_email__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>User_email__c</lookupPhoneDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>New</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>var eventRequestID = &apos;{!Event_Request__c.Id}&apos;; 
+var caseid = &apos;{!Case.Id}&apos;; 
+var recTypeForNotifyUser = &apos;&apos;; 
+if(eventRequestID != &apos;&apos;){ 
+recTypeForNotifyUser = &apos;{!$Label.Notify_User_SR_RT}&apos;; 
+}else if(caseid != &apos;&apos;) { 
+recTypeForNotifyUser = &apos;{!$Label.Notify_User_RT}&apos;; 
+}else{ 
+recTypeForNotifyUser = &apos;{!$Label.Notify_User_RT}&apos;; 
+} 
+
+var emailURL = &apos;/{!$Label.Notify_user_Edit_Url}/e?{!$Label.Notify_User_Term_Case_Field_Id}={!Case.CaseNumber}&amp;{!$Label.Notify_User_Term_Case_Field_LK_Id}={!Case.Id}&amp;{!$Label.Notify_User_Ev_Req_Field_Id}={!Event_Request__c.Name}&amp;{!$Label.Notify_User_Ev_Req_Field_LK_Id}={!Event_Request__c.Id}&amp;retURL=/{!Case.Id}{!Event_Request__c.Id}&amp;RecordType=&apos; + recTypeForNotifyUser + &apos;&amp;ent={!$Label.Notify_User_Obj_Id}&apos; 
+
+if (typeof(srcUp) == &apos;function&apos;) { 
+srcUp(emailURL); 
+} else { 
+window.open(emailURL); 
+}</url>
+    </webLinks>
+</CustomObject>

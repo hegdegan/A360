@@ -1,0 +1,2238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Asset Class-Geography --></label>
+        <name>Asset_Class_Geography__c</name>
+        <picklistValues>
+            <masterLabel>Emerging Markets (diversified) Equity</masterLabel>
+            <translation>エマージング マーケット (ダイバーシファイド) 株式</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emerging Markets (diversified) Fixed Income</masterLabel>
+            <translation>エマージング マーケット (ダイバーシファイド) 債券</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emerging Markets Equity</masterLabel>
+            <translation>エマージング マーケット 株式</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Alternatives/Specialty</masterLabel>
+            <translation>グローバル オルタナティブ / スペシャリティ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Balanced/Multi-Asset</masterLabel>
+            <translation>グロバール バランス型 / マルチアセット</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity</masterLabel>
+            <translation>グローバル エクイティ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Fixed Income</masterLabel>
+            <translation>グローバル債券</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global ex US Equity</masterLabel>
+            <translation>グローバル ex-US エクイティ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional Equity</masterLabel>
+            <translation>リージョナル エクイティ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Country - Non US Equity</masterLabel>
+            <translation>シングルカントリー - Non-US株</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Alternatives/Specialty</masterLabel>
+            <translation>USオルタナティブ / スペシャリティ</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Balanced/Multi-Asset</masterLabel>
+            <translation>USバランス型 / マルチアセット</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Equity</masterLabel>
+            <translation>US株</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Fixed Income</masterLabel>
+            <translation>US債券</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This field will contain a group of securities that exhibit similar characteristics, behave similarly in the marketplace, and are subject to the same laws and regulation --></help>
+        <label><!-- Asset Class --></label>
+        <name>Asset_Class__c</name>
+        <picklistValues>
+            <masterLabel>Alternatives/Speciality </masterLabel>
+            <translation><!-- Alternatives/Speciality  --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Balanced/Multi-Asset</masterLabel>
+            <translation><!-- Balanced/Multi-Asset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Equity</masterLabel>
+            <translation><!-- Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fixed Income</masterLabel>
+            <translation><!-- Fixed Income --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Asset Class - Geography --></label>
+        <name>Asset_Class_by_Geography__c</name>
+    </fields>
+    <fields>
+        <label><!-- Auditor Name --></label>
+        <name>Auditor_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Blended? --></label>
+        <name>Blended__c</name>
+    </fields>
+    <fields>
+        <label><!-- Closed? --></label>
+        <name>Closed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custodian Name --></label>
+        <name>Custodian_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Discount --></label>
+        <name>Discount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distribution Composite --></label>
+        <name>Distribution_Composite__c</name>
+        <picklistValues>
+            <masterLabel>Absolute Return</masterLabel>
+            <translation><!-- Absolute Return --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia Emerging Markets ex India Equity</masterLabel>
+            <translation><!-- Asia Emerging Markets ex India Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia Pacific Equity ex Japan</masterLabel>
+            <translation><!-- Asia Pacific Equity ex Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asia ex Japan Equity</masterLabel>
+            <translation><!-- Asia ex Japan Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asset Allocation</masterLabel>
+            <translation><!-- Asset Allocation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asset-Backed Structured Credit</masterLabel>
+            <translation><!-- Asset-Backed Structured Credit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australian Equity</masterLabel>
+            <translation><!-- Australian Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research - Emerging Markets Equity</masterLabel>
+            <translation><!-- Blended Research - Emerging Markets Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research - European Equity</masterLabel>
+            <translation><!-- Blended Research - European Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research - Focused Global Equity</masterLabel>
+            <translation><!-- Blended Research - Focused Global Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research - Focused US Core Equity</masterLabel>
+            <translation><!-- Blended Research - Focused US Core Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research - Global Equity</masterLabel>
+            <translation><!-- Blended Research - Global Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research - Global High Dividend Equity</masterLabel>
+            <translation><!-- Blended Research - Global High Dividend Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research - International Equity</masterLabel>
+            <translation><!-- Blended Research - International Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research - Large Cap Growth</masterLabel>
+            <translation><!-- Blended Research - Large Cap Growth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research - Large Cap Value</masterLabel>
+            <translation><!-- Blended Research - Large Cap Value --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research - US Core (ESG) Equity</masterLabel>
+            <translation><!-- Blended Research - US Core (ESG) Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research - US Core Equity</masterLabel>
+            <translation><!-- Blended Research - US Core Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research - US Core Equity Broad Universe</masterLabel>
+            <translation><!-- Blended Research - US Core Equity Broad Universe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research 130/30 - All Country Global Equity</masterLabel>
+            <translation><!-- Blended Research 130/30 - All Country Global Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research 130/30 US Core Equity</masterLabel>
+            <translation><!-- Blended Research 130/30 US Core Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research Global - Non Discretionary</masterLabel>
+            <translation><!-- Blended Research Global - Non Discretionary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research Mid Cap Core Equity</masterLabel>
+            <translation><!-- Blended Research Mid Cap Core Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Blended Research Small Cap Equity</masterLabel>
+            <translation><!-- Blended Research Small Cap Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMBS (U.S.) Fixed Annuity Restricted</masterLabel>
+            <translation><!-- CMBS (U.S.) Fixed Annuity Restricted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>California Insured Municipal Closed End</masterLabel>
+            <translation><!-- California Insured Municipal Closed End --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cash Management</masterLabel>
+            <translation><!-- Cash Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collateralized Loan Obligation</masterLabel>
+            <translation><!-- Collateralized Loan Obligation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Commodities</masterLabel>
+            <translation><!-- Commodities --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conservative Equity</masterLabel>
+            <translation><!-- Conservative Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core Equity</masterLabel>
+            <translation><!-- Core Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core Equity Non-Discretionary</masterLabel>
+            <translation><!-- Core Equity Non-Discretionary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core Plus Research Fixed Income</masterLabel>
+            <translation><!-- Core Plus Research Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corporate BB Fixed Income</masterLabel>
+            <translation><!-- Corporate BB Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Diversified Income</masterLabel>
+            <translation><!-- Diversified Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Domestic Balanced</masterLabel>
+            <translation><!-- Domestic Balanced --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emerging Markets Debt</masterLabel>
+            <translation><!-- Emerging Markets Debt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emerging Markets Debt Diversified</masterLabel>
+            <translation><!-- Emerging Markets Debt Diversified --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emerging Markets Equity</masterLabel>
+            <translation><!-- Emerging Markets Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emerging Markets Equity Research</masterLabel>
+            <translation><!-- Emerging Markets Equity Research --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emerging Markets External Debt Diversified</masterLabel>
+            <translation><!-- Emerging Markets External Debt Diversified --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emerging Markets Local Currency Debt</masterLabel>
+            <translation><!-- Emerging Markets Local Currency Debt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Equity Income</masterLabel>
+            <translation><!-- Equity Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>European Concentrated Equity</masterLabel>
+            <translation><!-- European Concentrated Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>European Core Equity</masterLabel>
+            <translation><!-- European Core Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>European Equity ex U.K.</masterLabel>
+            <translation><!-- European Equity ex U.K. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>European Research Equity</masterLabel>
+            <translation><!-- European Research Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>European Research Equity Hedged</masterLabel>
+            <translation><!-- European Research Equity Hedged --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>European Research Equity Restricted</masterLabel>
+            <translation><!-- European Research Equity Restricted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>European Smaller Companies</masterLabel>
+            <translation><!-- European Smaller Companies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>European Value Equity</masterLabel>
+            <translation><!-- European Value Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Aggregate Fixed Income</masterLabel>
+            <translation><!-- Global Aggregate Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Aggregate Opportunistic Fixed Income</masterLabel>
+            <translation><!-- Global Aggregate Opportunistic Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Balanced</masterLabel>
+            <translation><!-- Global Balanced --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Balanced Restricted</masterLabel>
+            <translation><!-- Global Balanced Restricted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Bond</masterLabel>
+            <translation><!-- Global Bond --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Concentrated Equity</masterLabel>
+            <translation><!-- Global Concentrated Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Concentrated Equity Restricted</masterLabel>
+            <translation><!-- Global Concentrated Equity Restricted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Credit Fixed Income</masterLabel>
+            <translation><!-- Global Credit Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Energy Equity</masterLabel>
+            <translation><!-- Global Energy Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity</masterLabel>
+            <translation><!-- Global Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity 50% Hedged to JPY</masterLabel>
+            <translation><!-- Global Equity 50% Hedged to JPY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity 75% Hedged to EUR</masterLabel>
+            <translation><!-- Global Equity 75% Hedged to EUR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity Diversified ex AU/NZ</masterLabel>
+            <translation><!-- Global Equity Diversified ex AU/NZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity HKD Currency Restricted</masterLabel>
+            <translation><!-- Global Equity HKD Currency Restricted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity Hedged to AUD</masterLabel>
+            <translation><!-- Global Equity Hedged to AUD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity Hedged to GBP</masterLabel>
+            <translation><!-- Global Equity Hedged to GBP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity Research Responsible</masterLabel>
+            <translation><!-- Global Equity Research Responsible --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity ex Australia</masterLabel>
+            <translation><!-- Global Equity ex Australia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity ex Canada</masterLabel>
+            <translation><!-- Global Equity ex Canada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity ex Japan</masterLabel>
+            <translation><!-- Global Equity ex Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity ex U.K.GBP 50% Hedged</masterLabel>
+            <translation><!-- Global Equity ex U.K.GBP 50% Hedged --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Government Intermediate FI Closed End</masterLabel>
+            <translation><!-- Global Government Intermediate FI Closed End --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Growth Concentrated Equity</masterLabel>
+            <translation><!-- Global Growth Concentrated Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Growth Equity</masterLabel>
+            <translation><!-- Global Growth Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Growth Equity ex Japan</masterLabel>
+            <translation><!-- Global Growth Equity ex Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Growth ex Emerging Markets</masterLabel>
+            <translation><!-- Global Growth ex Emerging Markets --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global High Yield</masterLabel>
+            <translation><!-- Global High Yield --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global High Yield ex Bank Loans</masterLabel>
+            <translation><!-- Global High Yield ex Bank Loans --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Inflation-Adjusted Fixed Income</masterLabel>
+            <translation><!-- Global Inflation-Adjusted Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Market Neutral Equity</masterLabel>
+            <translation><!-- Global Market Neutral Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Multi-Asset Allocation</masterLabel>
+            <translation><!-- Global Multi-Asset Allocation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Real Estate Equity</masterLabel>
+            <translation><!-- Global Real Estate Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Regulated Utilities Equity Hedged</masterLabel>
+            <translation><!-- Global Regulated Utilities Equity Hedged --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Research Equity</masterLabel>
+            <translation><!-- Global Research Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Research Focused Equity</masterLabel>
+            <translation><!-- Global Research Focused Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Smid Cap Equity</masterLabel>
+            <translation><!-- Global Smid Cap Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Sovereign Fixed Income</masterLabel>
+            <translation><!-- Global Sovereign Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Tactical Asset Allocation</masterLabel>
+            <translation><!-- Global Tactical Asset Allocation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Value Equity</masterLabel>
+            <translation><!-- Global Value Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Value Hedged to GBP</masterLabel>
+            <translation><!-- Global Value Hedged to GBP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Value Restricted</masterLabel>
+            <translation><!-- Global Value Restricted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Value ex Japan</masterLabel>
+            <translation><!-- Global Value ex Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Growth Equity</masterLabel>
+            <translation><!-- Growth Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Growth Equity - PPM</masterLabel>
+            <translation><!-- Growth Equity - PPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Yield Muni Fixed Income Closed End</masterLabel>
+            <translation><!-- High Yield Muni Fixed Income Closed End --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>InterMarket Income Trust Closed End</masterLabel>
+            <translation><!-- InterMarket Income Trust Closed End --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intermediate Core Fixed Income - Socially Responsible</masterLabel>
+            <translation><!-- Intermediate Core Fixed Income - Socially Responsible --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intermediate High Income Closed End</masterLabel>
+            <translation><!-- Intermediate High Income Closed End --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International ADR Equity - PPM</masterLabel>
+            <translation><!-- International ADR Equity - PPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Concentrated Equity</masterLabel>
+            <translation><!-- International Concentrated Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Concentrated Equity Restricted</masterLabel>
+            <translation><!-- International Concentrated Equity Restricted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Diversification Equity</masterLabel>
+            <translation><!-- International Diversification Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Equity</masterLabel>
+            <translation><!-- International Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Equity Restricted</masterLabel>
+            <translation><!-- International Equity Restricted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Growth Equity</masterLabel>
+            <translation><!-- International Growth Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Growth Equity Restricted</masterLabel>
+            <translation><!-- International Growth Equity Restricted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Growth ex Emerging Markets 50% Hedge</masterLabel>
+            <translation><!-- International Growth ex Emerging Markets 50% Hedge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Growth ex Emerging Markets Equity</masterLabel>
+            <translation><!-- International Growth ex Emerging Markets Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Research Equity</masterLabel>
+            <translation><!-- International Research Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Small Cap Equity</masterLabel>
+            <translation><!-- International Small Cap Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Value Equity</masterLabel>
+            <translation><!-- International Value Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>International Value Restricted</masterLabel>
+            <translation><!-- International Value Restricted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investment Grade Municipal Trust Closed End</masterLabel>
+            <translation><!-- Investment Grade Municipal Trust Closed End --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japan Concentrated Equity</masterLabel>
+            <translation><!-- Japan Concentrated Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japan Equity</masterLabel>
+            <translation><!-- Japan Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japan Equity Restricted</masterLabel>
+            <translation><!-- Japan Equity Restricted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Large Cap Core Equity - PPM</masterLabel>
+            <translation><!-- Large Cap Core Equity - PPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Large Cap Growth Concentrated Equity</masterLabel>
+            <translation><!-- Large Cap Growth Concentrated Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Large Cap Growth Equity</masterLabel>
+            <translation><!-- Large Cap Growth Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Large Cap Value Equity</masterLabel>
+            <translation><!-- Large Cap Value Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Large Cap Value Equity - PPM</masterLabel>
+            <translation><!-- Large Cap Value Equity - PPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Large Cap Value Equity - Restricted</masterLabel>
+            <translation><!-- Large Cap Value Equity - Restricted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Latin American Equity</masterLabel>
+            <translation><!-- Latin American Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Limited Maturity Fixed Income</masterLabel>
+            <translation><!-- Limited Maturity Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Volatility - Global Equity</masterLabel>
+            <translation><!-- Low Volatility - Global Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Volatility - Global Equity - Australia Optimized</masterLabel>
+            <translation><!-- Low Volatility - Global Equity - Australia Optimized --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Volatility - Global Equity ex Japan</masterLabel>
+            <translation><!-- Low Volatility - Global Equity ex Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Volatility - US Equity</masterLabel>
+            <translation><!-- Low Volatility - US Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low Volatility International Equity</masterLabel>
+            <translation><!-- Low Volatility International Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Balanced High Yield Closed End</masterLabel>
+            <translation><!-- MFS Balanced High Yield Closed End --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mid Cap Growth Equity</masterLabel>
+            <translation><!-- Mid Cap Growth Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mid Cap Value Equity</masterLabel>
+            <translation><!-- Mid Cap Value Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multi Strategy</masterLabel>
+            <translation><!-- Multi Strategy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multi Strategy - Asset Mix</masterLabel>
+            <translation><!-- Multi Strategy - Asset Mix --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multi-Strategy Equity Alpha</masterLabel>
+            <translation><!-- Multi-Strategy Equity Alpha --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Municipal High Yield Fixed Income</masterLabel>
+            <translation><!-- Municipal High Yield Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Municipal Plus Fixed Income</masterLabel>
+            <translation><!-- Municipal Plus Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Municipal Short-Intermediate Fixed Income</masterLabel>
+            <translation><!-- Municipal Short-Intermediate Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Municipal State Fixed Income</masterLabel>
+            <translation><!-- Municipal State Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunistic Fixed Income</masterLabel>
+            <translation><!-- Opportunistic Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Real Estate Debt Structured Financial Product</masterLabel>
+            <translation><!-- Real Estate Debt Structured Financial Product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research Equity</masterLabel>
+            <translation><!-- Research Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research Equity Growth &amp; Income</masterLabel>
+            <translation><!-- Research Equity Growth &amp; Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research International Foreign Ordinary - PPM</masterLabel>
+            <translation><!-- Research International Foreign Ordinary - PPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research Plus Core Equity - PPM</masterLabel>
+            <translation><!-- Research Plus Core Equity - PPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small Cap Growth Equity</masterLabel>
+            <translation><!-- Small Cap Growth Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small Cap Value Equity</masterLabel>
+            <translation><!-- Small Cap Value Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Strategic Core Fixed Income Closed End</masterLabel>
+            <translation><!-- Strategic Core Fixed Income Closed End --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology Equity</masterLabel>
+            <translation><!-- Technology Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>U.K. Equity</masterLabel>
+            <translation><!-- U.K. Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>U.K. Equity (GBP) Restricted</masterLabel>
+            <translation><!-- U.K. Equity (GBP) Restricted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>U.S. Credit</masterLabel>
+            <translation><!-- U.S. Credit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>U.S. Long Duration Credit</masterLabel>
+            <translation><!-- U.S. Long Duration Credit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>U.S. Market Neutral Equity</masterLabel>
+            <translation><!-- U.S. Market Neutral Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Core High Yield Fixed income</masterLabel>
+            <translation><!-- US Core High Yield Fixed income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Government Fixed Income</masterLabel>
+            <translation><!-- US Government Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Government Fixed Income Closed End</masterLabel>
+            <translation><!-- US Government Fixed Income Closed End --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Inflation Adjustment Fixed Income</masterLabel>
+            <translation><!-- US Inflation Adjustment Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unassigned</masterLabel>
+            <translation><!-- Unassigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Utilities Equity</masterLabel>
+            <translation><!-- Utilities Equity --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- This field will contain the country where the fund is registered. --></help>
+        <label><!-- Domicile --></label>
+        <name>Domicile__c</name>
+        <picklistValues>
+            <masterLabel>Afghanistan</masterLabel>
+            <translation><!-- Afghanistan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aland Islands</masterLabel>
+            <translation><!-- Aland Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Albania</masterLabel>
+            <translation><!-- Albania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Algeria</masterLabel>
+            <translation><!-- Algeria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>American Samoa</masterLabel>
+            <translation><!-- American Samoa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Andorra</masterLabel>
+            <translation><!-- Andorra --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Angola</masterLabel>
+            <translation><!-- Angola --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Anguilla</masterLabel>
+            <translation><!-- Anguilla --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Antarctica</masterLabel>
+            <translation><!-- Antarctica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Antigua and Barbuda</masterLabel>
+            <translation><!-- Antigua and Barbuda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Argentina</masterLabel>
+            <translation><!-- Argentina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Armenia</masterLabel>
+            <translation><!-- Armenia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aruba</masterLabel>
+            <translation><!-- Aruba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australia</masterLabel>
+            <translation><!-- Australia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Austria</masterLabel>
+            <translation><!-- Austria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Azerbaijan</masterLabel>
+            <translation><!-- Azerbaijan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bahamas</masterLabel>
+            <translation><!-- Bahamas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bahrain</masterLabel>
+            <translation><!-- Bahrain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bangladesh</masterLabel>
+            <translation><!-- Bangladesh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Barbados</masterLabel>
+            <translation><!-- Barbados --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belarus</masterLabel>
+            <translation><!-- Belarus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belgium</masterLabel>
+            <translation><!-- Belgium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belize</masterLabel>
+            <translation><!-- Belize --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Benin</masterLabel>
+            <translation><!-- Benin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bermuda</masterLabel>
+            <translation><!-- Bermuda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bhutan</masterLabel>
+            <translation><!-- Bhutan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bolivia, Plurinational State of</masterLabel>
+            <translation><!-- Bolivia, Plurinational State of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bonaire, Sint Eustatius and Saba</masterLabel>
+            <translation><!-- Bonaire, Sint Eustatius and Saba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bosnia and Herzegovina</masterLabel>
+            <translation><!-- Bosnia and Herzegovina --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Botswana</masterLabel>
+            <translation><!-- Botswana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bouvet Island</masterLabel>
+            <translation><!-- Bouvet Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brazil</masterLabel>
+            <translation><!-- Brazil --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>British Indian Ocean Territory</masterLabel>
+            <translation><!-- British Indian Ocean Territory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brunei Darussalam</masterLabel>
+            <translation><!-- Brunei Darussalam --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bulgaria</masterLabel>
+            <translation><!-- Bulgaria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Burkina Faso</masterLabel>
+            <translation><!-- Burkina Faso --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Burundi</masterLabel>
+            <translation><!-- Burundi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cambodia</masterLabel>
+            <translation><!-- Cambodia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cameroon</masterLabel>
+            <translation><!-- Cameroon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canada</masterLabel>
+            <translation><!-- Canada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cape Verde</masterLabel>
+            <translation><!-- Cape Verde --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cayman Islands</masterLabel>
+            <translation><!-- Cayman Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Central African Republic</masterLabel>
+            <translation><!-- Central African Republic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chad</masterLabel>
+            <translation><!-- Chad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chile</masterLabel>
+            <translation><!-- Chile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>China</masterLabel>
+            <translation><!-- China --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese Taipei</masterLabel>
+            <translation><!-- Chinese Taipei --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Christmas Island</masterLabel>
+            <translation><!-- Christmas Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cocos (Keeling) Islands</masterLabel>
+            <translation><!-- Cocos (Keeling) Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Colombia</masterLabel>
+            <translation><!-- Colombia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comoros</masterLabel>
+            <translation><!-- Comoros --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Congo</masterLabel>
+            <translation><!-- Congo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Congo, the Democratic Republic of the</masterLabel>
+            <translation><!-- Congo, the Democratic Republic of the --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cook Islands</masterLabel>
+            <translation><!-- Cook Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Costa Rica</masterLabel>
+            <translation><!-- Costa Rica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cote d&apos;Ivoire</masterLabel>
+            <translation><!-- Cote d&apos;Ivoire --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Croatia</masterLabel>
+            <translation><!-- Croatia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cuba</masterLabel>
+            <translation><!-- Cuba --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Curaçao</masterLabel>
+            <translation><!-- Curaçao --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cyprus</masterLabel>
+            <translation><!-- Cyprus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Czech Republic</masterLabel>
+            <translation><!-- Czech Republic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Denmark</masterLabel>
+            <translation><!-- Denmark --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Djibouti</masterLabel>
+            <translation><!-- Djibouti --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dominica</masterLabel>
+            <translation><!-- Dominica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dominican Republic</masterLabel>
+            <translation><!-- Dominican Republic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ecuador</masterLabel>
+            <translation><!-- Ecuador --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Egypt</masterLabel>
+            <translation><!-- Egypt --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>El Salvador</masterLabel>
+            <translation><!-- El Salvador --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Equatorial Guinea</masterLabel>
+            <translation><!-- Equatorial Guinea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eritrea</masterLabel>
+            <translation><!-- Eritrea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Estonia</masterLabel>
+            <translation><!-- Estonia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ethiopia</masterLabel>
+            <translation><!-- Ethiopia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Falkland Islands (Malvinas)</masterLabel>
+            <translation><!-- Falkland Islands (Malvinas) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Faroe Islands</masterLabel>
+            <translation><!-- Faroe Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fiji</masterLabel>
+            <translation><!-- Fiji --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finland</masterLabel>
+            <translation><!-- Finland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>France</masterLabel>
+            <translation><!-- France --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French Guiana</masterLabel>
+            <translation><!-- French Guiana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French Polynesia</masterLabel>
+            <translation><!-- French Polynesia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French Southern Territories</masterLabel>
+            <translation><!-- French Southern Territories --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gabon</masterLabel>
+            <translation><!-- Gabon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gambia</masterLabel>
+            <translation><!-- Gambia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Georgia</masterLabel>
+            <translation><!-- Georgia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Germany</masterLabel>
+            <translation><!-- Germany --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ghana</masterLabel>
+            <translation><!-- Ghana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gibraltar</masterLabel>
+            <translation><!-- Gibraltar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greece</masterLabel>
+            <translation><!-- Greece --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greenland</masterLabel>
+            <translation><!-- Greenland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grenada</masterLabel>
+            <translation><!-- Grenada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guadeloupe</masterLabel>
+            <translation><!-- Guadeloupe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guam</masterLabel>
+            <translation><!-- Guam --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guatemala</masterLabel>
+            <translation><!-- Guatemala --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guernsey</masterLabel>
+            <translation><!-- Guernsey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guinea</masterLabel>
+            <translation><!-- Guinea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guinea-Bissau</masterLabel>
+            <translation><!-- Guinea-Bissau --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guyana</masterLabel>
+            <translation><!-- Guyana --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Haiti</masterLabel>
+            <translation><!-- Haiti --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Heard Island and McDonald Islands</masterLabel>
+            <translation><!-- Heard Island and McDonald Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Holy See (Vatican City State)</masterLabel>
+            <translation><!-- Holy See (Vatican City State) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Honduras</masterLabel>
+            <translation><!-- Honduras --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hong Kong</masterLabel>
+            <translation><!-- Hong Kong --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hungary</masterLabel>
+            <translation><!-- Hungary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iceland</masterLabel>
+            <translation><!-- Iceland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India</masterLabel>
+            <translation><!-- India --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Indonesia</masterLabel>
+            <translation><!-- Indonesia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iran, Islamic Republic of</masterLabel>
+            <translation><!-- Iran, Islamic Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Iraq</masterLabel>
+            <translation><!-- Iraq --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ireland</masterLabel>
+            <translation><!-- Ireland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Isle of Man</masterLabel>
+            <translation><!-- Isle of Man --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Israel</masterLabel>
+            <translation><!-- Israel --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italy</masterLabel>
+            <translation><!-- Italy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jamaica</masterLabel>
+            <translation><!-- Jamaica --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japan</masterLabel>
+            <translation><!-- Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jersey</masterLabel>
+            <translation><!-- Jersey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jordan</masterLabel>
+            <translation><!-- Jordan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kazakhstan</masterLabel>
+            <translation><!-- Kazakhstan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kenya</masterLabel>
+            <translation><!-- Kenya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kiribati</masterLabel>
+            <translation><!-- Kiribati --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korea, Democratic People&apos;s Republic of</masterLabel>
+            <translation><!-- Korea, Democratic People&apos;s Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korea, Republic of</masterLabel>
+            <translation><!-- Korea, Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kuwait</masterLabel>
+            <translation><!-- Kuwait --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kyrgyzstan</masterLabel>
+            <translation><!-- Kyrgyzstan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lao People&apos;s Democratic Republic</masterLabel>
+            <translation><!-- Lao People&apos;s Democratic Republic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Latvia</masterLabel>
+            <translation><!-- Latvia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lebanon</masterLabel>
+            <translation><!-- Lebanon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lesotho</masterLabel>
+            <translation><!-- Lesotho --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Liberia</masterLabel>
+            <translation><!-- Liberia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Libya</masterLabel>
+            <translation><!-- Libya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Libyan Arab Jamahiriya</masterLabel>
+            <translation><!-- Libyan Arab Jamahiriya --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Liechtenstein</masterLabel>
+            <translation><!-- Liechtenstein --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lithuania</masterLabel>
+            <translation><!-- Lithuania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Luxembourg</masterLabel>
+            <translation><!-- Luxembourg --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Macao</masterLabel>
+            <translation><!-- Macao --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Macedonia, the former Yugoslav Republic of</masterLabel>
+            <translation><!-- Macedonia, the former Yugoslav Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Madagascar</masterLabel>
+            <translation><!-- Madagascar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malawi</masterLabel>
+            <translation><!-- Malawi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malaysia</masterLabel>
+            <translation><!-- Malaysia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Maldives</masterLabel>
+            <translation><!-- Maldives --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mali</masterLabel>
+            <translation><!-- Mali --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malta</masterLabel>
+            <translation><!-- Malta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marshall Islands</masterLabel>
+            <translation><!-- Marshall Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Martinique</masterLabel>
+            <translation><!-- Martinique --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mauritania</masterLabel>
+            <translation><!-- Mauritania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mauritius</masterLabel>
+            <translation><!-- Mauritius --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mayotte</masterLabel>
+            <translation><!-- Mayotte --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mexico</masterLabel>
+            <translation><!-- Mexico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Micronesia (Federated States of)</masterLabel>
+            <translation><!-- Micronesia (Federated States of) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Moldova, Republic of</masterLabel>
+            <translation><!-- Moldova, Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monaco</masterLabel>
+            <translation><!-- Monaco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mongolia</masterLabel>
+            <translation><!-- Mongolia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Montenegro</masterLabel>
+            <translation><!-- Montenegro --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Montserrat</masterLabel>
+            <translation><!-- Montserrat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Morocco</masterLabel>
+            <translation><!-- Morocco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mozambique</masterLabel>
+            <translation><!-- Mozambique --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Myanmar</masterLabel>
+            <translation><!-- Myanmar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Namibia</masterLabel>
+            <translation><!-- Namibia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nauru</masterLabel>
+            <translation><!-- Nauru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nepal</masterLabel>
+            <translation><!-- Nepal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Netherlands</masterLabel>
+            <translation><!-- Netherlands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Caledonia</masterLabel>
+            <translation><!-- New Caledonia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Zealand</masterLabel>
+            <translation><!-- New Zealand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nicaragua</masterLabel>
+            <translation><!-- Nicaragua --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Niger</masterLabel>
+            <translation><!-- Niger --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nigeria</masterLabel>
+            <translation><!-- Nigeria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Niue</masterLabel>
+            <translation><!-- Niue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norfolk Island</masterLabel>
+            <translation><!-- Norfolk Island --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Northern Mariana Islands</masterLabel>
+            <translation><!-- Northern Mariana Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norway</masterLabel>
+            <translation><!-- Norway --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oman</masterLabel>
+            <translation><!-- Oman --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pakistan</masterLabel>
+            <translation><!-- Pakistan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Palau</masterLabel>
+            <translation><!-- Palau --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Palestine, State of</masterLabel>
+            <translation><!-- Palestine, State of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Palestinian Territory, Occupied</masterLabel>
+            <translation><!-- Palestinian Territory, Occupied --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Panama</masterLabel>
+            <translation><!-- Panama --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Papua New Guinea</masterLabel>
+            <translation><!-- Papua New Guinea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paraguay</masterLabel>
+            <translation><!-- Paraguay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Peru</masterLabel>
+            <translation><!-- Peru --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Philippines</masterLabel>
+            <translation><!-- Philippines --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pitcairn</masterLabel>
+            <translation><!-- Pitcairn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poland</masterLabel>
+            <translation><!-- Poland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portugal</masterLabel>
+            <translation><!-- Portugal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Puerto Rico</masterLabel>
+            <translation><!-- Puerto Rico --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Qatar</masterLabel>
+            <translation><!-- Qatar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reunion</masterLabel>
+            <translation><!-- Reunion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Romania</masterLabel>
+            <translation><!-- Romania --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Russian Federation</masterLabel>
+            <translation><!-- Russian Federation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rwanda</masterLabel>
+            <translation><!-- Rwanda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Barthélemy</masterLabel>
+            <translation><!-- Saint Barthélemy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Helena, Ascension and Tristan da Cunha</masterLabel>
+            <translation><!-- Saint Helena, Ascension and Tristan da Cunha --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Kitts and Nevis</masterLabel>
+            <translation><!-- Saint Kitts and Nevis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Lucia</masterLabel>
+            <translation><!-- Saint Lucia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Martin (French part)</masterLabel>
+            <translation><!-- Saint Martin (French part) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Pierre and Miquelon</masterLabel>
+            <translation><!-- Saint Pierre and Miquelon --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saint Vincent and the Grenadines</masterLabel>
+            <translation><!-- Saint Vincent and the Grenadines --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Samoa</masterLabel>
+            <translation><!-- Samoa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Marino</masterLabel>
+            <translation><!-- San Marino --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sao Tome and Principe</masterLabel>
+            <translation><!-- Sao Tome and Principe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saudi Arabia</masterLabel>
+            <translation><!-- Saudi Arabia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Senegal</masterLabel>
+            <translation><!-- Senegal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Serbia</masterLabel>
+            <translation><!-- Serbia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seychelles</masterLabel>
+            <translation><!-- Seychelles --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sierra Leone</masterLabel>
+            <translation><!-- Sierra Leone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Singapore</masterLabel>
+            <translation><!-- Singapore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sint Maarten (Dutch part)</masterLabel>
+            <translation><!-- Sint Maarten (Dutch part) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Slovakia</masterLabel>
+            <translation><!-- Slovakia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Slovenia</masterLabel>
+            <translation><!-- Slovenia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solomon Islands</masterLabel>
+            <translation><!-- Solomon Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Somalia</masterLabel>
+            <translation><!-- Somalia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Africa</masterLabel>
+            <translation><!-- South Africa --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Georgia and the South Sandwich Islands</masterLabel>
+            <translation><!-- South Georgia and the South Sandwich Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>South Sudan</masterLabel>
+            <translation><!-- South Sudan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spain</masterLabel>
+            <translation><!-- Spain --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sri Lanka</masterLabel>
+            <translation><!-- Sri Lanka --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sudan</masterLabel>
+            <translation><!-- Sudan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Suriname</masterLabel>
+            <translation><!-- Suriname --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Svalbard and Jan Mayen</masterLabel>
+            <translation><!-- Svalbard and Jan Mayen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swaziland</masterLabel>
+            <translation><!-- Swaziland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sweden</masterLabel>
+            <translation><!-- Sweden --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Switzerland</masterLabel>
+            <translation><!-- Switzerland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Syrian Arab Republic</masterLabel>
+            <translation><!-- Syrian Arab Republic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Taiwan, Province of China</masterLabel>
+            <translation><!-- Taiwan, Province of China --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tajikistan</masterLabel>
+            <translation><!-- Tajikistan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tanzania, United Republic of</masterLabel>
+            <translation><!-- Tanzania, United Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thailand</masterLabel>
+            <translation><!-- Thailand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Timor-Leste</masterLabel>
+            <translation><!-- Timor-Leste --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Togo</masterLabel>
+            <translation><!-- Togo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tokelau</masterLabel>
+            <translation><!-- Tokelau --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tonga</masterLabel>
+            <translation><!-- Tonga --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trinidad and Tobago</masterLabel>
+            <translation><!-- Trinidad and Tobago --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tunisia</masterLabel>
+            <translation><!-- Tunisia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turkey</masterLabel>
+            <translation><!-- Turkey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turkmenistan</masterLabel>
+            <translation><!-- Turkmenistan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Turks and Caicos Islands</masterLabel>
+            <translation><!-- Turks and Caicos Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tuvalu</masterLabel>
+            <translation><!-- Tuvalu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uganda</masterLabel>
+            <translation><!-- Uganda --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ukraine</masterLabel>
+            <translation><!-- Ukraine --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United Arab Emirates</masterLabel>
+            <translation><!-- United Arab Emirates --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United Kingdom</masterLabel>
+            <translation><!-- United Kingdom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United Kingdom of Great Britain and Northern Ireland</masterLabel>
+            <translation><!-- United Kingdom of Great Britain and Northern Ireland --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United States</masterLabel>
+            <translation><!-- United States --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United States Minor Outlying Islands</masterLabel>
+            <translation><!-- United States Minor Outlying Islands --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United States of America</masterLabel>
+            <translation><!-- United States of America --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uruguay</masterLabel>
+            <translation><!-- Uruguay --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uzbekistan</masterLabel>
+            <translation><!-- Uzbekistan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vanuatu</masterLabel>
+            <translation><!-- Vanuatu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Venezuela, Bolivarian Republic of</masterLabel>
+            <translation><!-- Venezuela, Bolivarian Republic of --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Viet Nam</masterLabel>
+            <translation><!-- Viet Nam --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virgin Islands (U.S.)</masterLabel>
+            <translation><!-- Virgin Islands (U.S.) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Virgin Islands, British</masterLabel>
+            <translation><!-- Virgin Islands, British --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wallis and Futuna</masterLabel>
+            <translation><!-- Wallis and Futuna --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Western Sahara</masterLabel>
+            <translation><!-- Western Sahara --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yemen</masterLabel>
+            <translation><!-- Yemen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zambia</masterLabel>
+            <translation><!-- Zambia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Zimbabwe</masterLabel>
+            <translation><!-- Zimbabwe --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Geography --></label>
+        <name>Geography__c</name>
+        <picklistValues>
+            <masterLabel>Emerging Markets</masterLabel>
+            <translation><!-- Emerging Markets --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emerging Markets (diversified)</masterLabel>
+            <translation><!-- Emerging Markets (diversified) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global</masterLabel>
+            <translation><!-- Global --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global ex US</masterLabel>
+            <translation><!-- Global ex US --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional</masterLabel>
+            <translation><!-- Regional --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Country - Non US</masterLabel>
+            <translation><!-- Single Country - Non US --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US</masterLabel>
+            <translation><!-- US --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is High Interest Product --></label>
+        <name>Is_High_Interest_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Unknown --></label>
+        <name>Is_Unknown__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Valid Product --></label>
+        <name>Is_Valid_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Market Cap --></label>
+        <name>Market_Cap__c</name>
+        <picklistValues>
+            <masterLabel>All</masterLabel>
+            <translation><!-- All --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fixed Income</masterLabel>
+            <translation><!-- Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Large</masterLabel>
+            <translation><!-- Large --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Large/Multi</masterLabel>
+            <translation><!-- Large/Multi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mid</masterLabel>
+            <translation><!-- Mid --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small</masterLabel>
+            <translation><!-- Small --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small / Medium</masterLabel>
+            <translation><!-- Small / Medium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Small/Mid</masterLabel>
+            <translation><!-- Small/Mid --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- First day of change in performance --></help>
+        <label><!-- Performance Start Date --></label>
+        <name>Performance_Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- This will field will contain unique three character acronym assigned to the portfolio. --></help>
+        <label><!-- Portfolio Code --></label>
+        <name>Portfolio_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portfolio End Date --></label>
+        <name>Portfolio_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portfolio Start Date --></label>
+        <name>Portfolio_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Link --></label>
+        <name>Product_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Record Type --></label>
+        <name>Product_Record_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Tier --></label>
+        <name>Product_Tier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reporting Name --></label>
+        <name>Reporting_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Restricted --></label>
+        <name>Restricted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Restriction Reason --></label>
+        <name>Restriction_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Saleslogix ID --></label>
+        <name>Saleslogix_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Strategy --></label>
+        <name>Strategy__c</name>
+        <relationshipLabel><!-- Strategies --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- This field will contain overarching strategy or theory used by either a retail investor or an institutional money manager to set asset allocation and choose individual securities for investment. For example, core, value, growth, etc. --></help>
+        <label><!-- Style --></label>
+        <name>Style__c</name>
+        <picklistValues>
+            <masterLabel>Absolute Return</masterLabel>
+            <translation><!-- Absolute Return --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>All</masterLabel>
+            <translation><!-- All --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CDO</masterLabel>
+            <translation><!-- CDO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core</masterLabel>
+            <translation><!-- Core --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core (FI)</masterLabel>
+            <translation><!-- Core (FI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core Plus</masterLabel>
+            <translation><!-- Core Plus --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core/Multi FI Strategy</masterLabel>
+            <translation><!-- Core/Multi FI Strategy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Credit</masterLabel>
+            <translation><!-- Credit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMD</masterLabel>
+            <translation><!-- EMD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emerging Markets (FI)</masterLabel>
+            <translation><!-- Emerging Markets (FI) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fund of Funds</masterLabel>
+            <translation><!-- Fund of Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global</masterLabel>
+            <translation><!-- Global --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global (FI - SUB only)</masterLabel>
+            <translation><!-- Global (FI - SUB only) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Government</masterLabel>
+            <translation><!-- Government --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Growth</masterLabel>
+            <translation><!-- Growth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hedge</masterLabel>
+            <translation><!-- Hedge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Grade</masterLabel>
+            <translation><!-- High Grade --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Yield</masterLabel>
+            <translation><!-- High Yield --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Limited Maturity</masterLabel>
+            <translation><!-- Limited Maturity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Money Market</masterLabel>
+            <translation><!-- Money Market --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multi Eq Style</masterLabel>
+            <translation><!-- Multi Eq Style --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multi Eq Style/Multi FI Strategy</masterLabel>
+            <translation><!-- Multi Eq Style/Multi FI Strategy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multi FI Strategy</masterLabel>
+            <translation><!-- Multi FI Strategy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Multi Sector</masterLabel>
+            <translation><!-- Multi Sector --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Municipal</masterLabel>
+            <translation><!-- Municipal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Municipal Funds</masterLabel>
+            <translation><!-- Municipal Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunistic</masterLabel>
+            <translation><!-- Opportunistic --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sector</masterLabel>
+            <translation><!-- Sector --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Securitized</masterLabel>
+            <translation><!-- Securitized --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Securitized / Other</masterLabel>
+            <translation><!-- Securitized / Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Short Term/Money Markets</masterLabel>
+            <translation><!-- Short Term/Money Markets --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Structured</masterLabel>
+            <translation><!-- Structured --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Total Return</masterLabel>
+            <translation><!-- Total Return --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value</masterLabel>
+            <translation><!-- Value --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value/Core</masterLabel>
+            <translation><!-- Value/Core --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value/High Yield</masterLabel>
+            <translation><!-- Value/High Yield --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Term --></label>
+        <name>Term__c</name>
+        <picklistValues>
+            <masterLabel>Long Term</masterLabel>
+            <translation><!-- Long Term --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Short Term</masterLabel>
+            <translation><!-- Short Term --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Termination Date --></label>
+        <name>Termination_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time Frame --></label>
+        <name>Time_Frame__c</name>
+        <picklistValues>
+            <masterLabel>0-3 months</masterLabel>
+            <translation><!-- 0-3 months --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4-6 months</masterLabel>
+            <translation><!-- 4-6 months --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7-9 months</masterLabel>
+            <translation><!-- 7-9 months --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Vehicle --></label>
+        <name>Vehicle__c</name>
+        <picklistValues>
+            <masterLabel>Alternative Fund</masterLabel>
+            <translation><!-- Alternative Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Australia Unit Trust</masterLabel>
+            <translation><!-- Australia Unit Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CDO</masterLabel>
+            <translation><!-- CDO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canadian Trust</masterLabel>
+            <translation><!-- Canadian Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cayman</masterLabel>
+            <translation><!-- Cayman --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cayman CFC</masterLabel>
+            <translation><!-- Cayman CFC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collective Investment Trust</masterLabel>
+            <translation><!-- Collective Investment Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compass</masterLabel>
+            <translation><!-- Compass --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corporate Finance</masterLabel>
+            <translation><!-- Corporate Finance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITM</masterLabel>
+            <translation><!-- ITM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Institutional Trust</masterLabel>
+            <translation><!-- Institutional Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LLC</masterLabel>
+            <translation><!-- LLC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Family of Funds (US)</masterLabel>
+            <translation>MFS ファミリー オブ ファンズ (US)</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Investment Funds (FCP)</masterLabel>
+            <translation><!-- MFS Investment Funds (FCP) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meridian</masterLabel>
+            <translation><!-- Meridian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PPS</masterLabel>
+            <translation><!-- PPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Separate Account</masterLabel>
+            <translation><!-- Separate Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subadvised Account</masterLabel>
+            <translation><!-- Subadvised Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIT</masterLabel>
+            <translation><!-- VIT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIT II</masterLabel>
+            <translation><!-- VIT II --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIT III</masterLabel>
+            <translation><!-- VIT III --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Portfolio</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Information --></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label><!-- Portfolio Information --></label>
+            <section>Portfolio Information</section>
+        </sections>
+        <sections>
+            <label><!-- Product Hierarchy --></label>
+            <section>Product Hierarchy</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Strategy</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Product Hierarchy --></label>
+            <section>Product Hierarchy</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>System Administrator</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Information --></label>
+            <section>Information</section>
+        </sections>
+        <sections>
+            <label><!-- Portfolio Information --></label>
+            <section>Portfolio Information</section>
+        </sections>
+        <sections>
+            <label><!-- Product Hierarchy --></label>
+            <section>Product Hierarchy</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Portfolio --></label>
+        <name>Portfolio</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Strategy --></label>
+        <name>Strategy</name>
+    </recordTypes>
+    <webLinks>
+        <label><!-- MFS_com --></label>
+        <name>MFS_com</name>
+    </webLinks>
+</CustomObjectTranslation>

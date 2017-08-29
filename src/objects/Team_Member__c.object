@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This will serve as the junction object to tie Contacts with Teams.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>lookup relationship to Contact</description>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Team</relationshipLabel>
+        <relationshipName>Team_Members</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>MDM_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <encrypted>false</encrypted>
+        <externalId>true</externalId>
+        <label>MDM ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <defaultValue>NOW()</defaultValue>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Team_Role__c</fullName>
+        <externalId>false</externalId>
+        <label>Team Role</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Member</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Leader</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Scheduling Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>401k Specialist</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Administrative Assistant</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Analyst</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Center of Influence</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Group Member</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Individual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Individual Member</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Team__c</fullName>
+        <externalId>false</externalId>
+        <label>Team</label>
+        <referenceTo>Team__c</referenceTo>
+        <relationshipLabel>Team Members</relationshipLabel>
+        <relationshipName>Team_Members</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>Team Member</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>OBJECT_ID</columns>
+        <columns>NAME</columns>
+        <columns>Contact__c</columns>
+        <columns>Team__c</columns>
+        <columns>Team_Role__c</columns>
+        <columns>CURRENCY_ISO_CODE</columns>
+        <columns>CREATEDBY_USER.ALIAS</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>TM-{000000}</displayFormat>
+        <label>Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Team Members</pluralLabel>
+    <searchLayouts>
+        <listViewButtons>Create_New_Team</listViewButtons>
+        <listViewButtons>Add_Contact_to_Team</listViewButtons>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>Add_Contact_to_Team</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Add Contact to Team_Not_Used</masterLabel>
+        <openType>replace</openType>
+        <page>MFS_AddContactTeamMember</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Contact_to_Team_JS</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add Contact to Team</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/22.0/apex.js&quot; )}
+
+var contId = &apos;{!Contact.Id}&apos;;
+var teamId = &apos;{!Team__c.Id}&apos;;
+var resultTeam = sforce.connection.describeSObjects([&quot;Team_Member__c&quot;]);
+var clientPrefix = resultTeam[0].keyPrefix;
+clientPrefix = &apos;/&apos;+clientPrefix;
+
+
+var contName;
+var teamName;
+if(contId != null &amp;&amp; contId != &apos;&apos;){
+contName = &apos;{!Contact.Name}&apos;;
+}
+if(teamId != null &amp;&amp; teamId != &apos;&apos;){
+teamName = &apos;{!Team__c.Name}&apos;;
+}
+var teamMemFieldIds = sforce.connection.query(&quot;SELECT Name, Field_API_Name__c, Field_Id__c, Field_Label__c, Object_Name__c from StoreFieldIds__c where Object_Name__c = &apos;Team_Member__c&apos; &quot;);
+
+var ContactF;
+var ContactFLKId;
+var TeamF;
+var TeamFLKId;
+records = teamMemFieldIds.getArray(&quot;records&quot;);
+
+for (var i=0; i&lt; records.length; i++) {
+var record = records[i];
+if(record.Field_API_Name__c == &apos;Contact__c&apos;){
+ContactF = record.Field_Id__c;
+ContactFLKId= ContactF + &apos;_lkid&apos;;
+}else if(record.Field_API_Name__c == &apos;Team__c&apos;){
+TeamF = record.Field_Id__c;
+TeamFLKId = TeamF  + &apos;_lkid&apos;;
+}
+
+}
+var teamURL;
+if(contId != null &amp;&amp; contId != &apos;&apos;){
+teamURL = clientPrefix + &apos;/e?retURL={!Contact.Id}&amp;&apos;+ContactF+&apos;={!Contact.Name}&amp;&apos;+ContactFLKId+&apos;={!Contact.Id}&apos;
+}else{
+teamURL = clientPrefix + &apos;/e?retURL={!Team__c.Id}&amp;&apos;+TeamF+&apos;={!Team__c.Name}&amp;&apos;+TeamFLKId+&apos;={!Team__c.Id}&apos;
+}
+
+
+if (typeof(srcUp) == &apos;function&apos;) {
+srcUp(teamURL );
+} else {
+window.open(teamURL );
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Create_New_Team</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Create New Team</masterLabel>
+        <openType>replace</openType>
+        <page>MFS_CreateNewTeam</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+</CustomObject>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Compliance_AML_KYC__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>Corporate Finance</label>
+        <name>Corporate_Finance</name>
+    </approvalStep>
+    <emailTemplate>Case_Email_Templates/Case_Approval_Request</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Approval_Request__c.RecordType</field>
+            <operation>equals</operation>
+            <value>Onboarding Approval Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Approval_Request__c.Compliance_AML_KYC__c</field>
+            <operation>notEqual</operation>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Approval_Request__c.Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>Not Started</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Approval_Request__c.Approver_Group__c</field>
+            <operation>equals</operation>
+            <value>Compliance - AML/KYC Group</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Approval_Date7</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Approved2</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Rejected3</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Pending2</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Compliance - AML/KYC</label>
+    <recallActions>
+        <action>
+            <name>Not_Started2</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

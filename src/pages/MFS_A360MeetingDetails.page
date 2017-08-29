@@ -1,0 +1,481 @@
+<apex:page controller="MFS_Activity360Controller" standardStylesheets="false" showHeader="false" sidebar="false" docType="html-5.0">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>{!$Label.A360_MFS_Activity_360_Meeting_Details}</title>
+    <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/salesforce-lightning-design-system-ltng.min.css" />
+    <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/mfs_new_styles.css" />
+    <style>
+        .slds-section__title{text-decoration:underline;}
+    </style>
+</head>
+<body>
+    
+<div class="slds MFS no-console-scroll">
+<apex:form >
+    <div class="slds-page-header" role="banner">
+        <div class="slds-grid">
+            <div class="slds-col slds-has-flexi-truncate">
+                <div class="slds-media slds-no-space slds-grow">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-custom-custom15">
+                            <svg aria-hidden="true" class="slds-icon slds-icon--medium">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/custom-sprite/svg/symbols.svg#custom15"></use>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <p class="slds-text-title--caps slds-line-height--reset">{!$Label.A360_Activity_360}</p>
+                        <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">{!topPageBlockName}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-no-flex slds-grid slds-align-top">
+                <div class="slds-button-group" role="group">
+                    <input type="button" value="{!$Label.A360_Print}" class="slds-button slds-button--neutral slds-truncate print_button" onclick="window.print();" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slds-container--x-large slds-container--center slds-inner-container mfs-main-container for_print" id="scroller">
+        <apex:outputPanel id="topSectn" layout="block">
+            
+           <!-- Event Details (Meeting) -->
+            <apex:outputPanel layout="block" rendered="{!eventCallNote}" styleClass="mfs_events_section">
+                <div class="slds-form--compound">
+                    <div class="slds-form-element__group slds-grid slds-wrap slds-pull--padded">
+                        <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--large no_margin_for_print">
+                            <h3 class="slds-section__title slds-text-title--caps">{!$Label.A360_Event_Details}</h3>
+                        </div>
+                        
+                        <div class="slds-p-horizontal--small slds-m-top--medium slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12">
+                            <div class="slds-form-element slds-is-required slds-lookup" data-select="single">
+                                <label class="slds-form-element__label">{!$Label.A360_Assigned_To} <abbr>{!$Label.A360_Please_complete_this_field}</abbr></label>
+                                <div class="slds-form-element__control">
+                                    <apex:outputPanel layout="block" styleClass="assigned_to_username">
+                                        <apex:outputField styleClass="slds-output" value="{!parentEvent.Owner.Name}" />
+                                    </apex:outputPanel>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="slds-p-horizontal--small slds-m-top--medium slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12">
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label">{!$Label.A360_Location}</label>
+                                <div class="slds-form-element__control">
+                                    <apex:outputField styleClass="slds-output" value="{!callNote.Additional_Location__c}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-p-horizontal--small slds-m-top--medium slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12">
+                            
+                            <apex:outputPanel layout="block" styleClass="slds-grid slds-wrap">
+                                <div class="slds-size--6-of-12 slds-p-horizontal--small slds-p-left--none">
+                                    <div class="slds-form--stacked">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label">{!$Label.A360_Start}</label>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-input-has-icon slds-input-has-icon--right">
+                                                    <apex:outputField value="{!parentEvent.StartDateTime}" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                        </div>
+                        <div class="slds-p-horizontal--small slds-m-top--medium slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12">
+                            <apex:outputPanel layout="block" styleClass="slds-grid slds-wrap">
+                                <div class="slds-size--6-of-12 slds-p-horizontal--small slds-p-left--none">
+                                    <div class="slds-form--stacked">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label">{!$Label.A360_End}</label>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-input-has-icon slds-input-has-icon--right">
+                                                    <apex:outputField value="{!parentEvent.EndDateTime}"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                        </div>
+                        <div class="slds-p-horizontal--small slds-m-top--medium slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12"></div>
+                        <div class="slds-p-horizontal--small slds-m-top--medium slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12">
+                            <div class="slds-form-element slds-is-required">
+                                <label class="slds-form-element__label">{!$Label.A360_Method}<abbr>{!$Label.A360_Please_complete_this_field}</abbr></label>
+                                <div class="slds-form-element__control">
+                                    <apex:outputField styleClass="slds-output" value="{!parentEvent.Method__c}"/>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Invitees Section -->
+                <div class="slds-form--compound">
+                    <div class="slds-form-element__group slds-grid slds-wrap slds-pull--padded slds-m-top--large">
+                        <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--small">
+                            <div class="slds-clearfix">
+                                <div class="slds-float--left slds-m-top--small"><h3 class="slds-section__title slds-text-title--caps">{!$Label.A360_Attendees}</h3></div>
+                               </div>
+                        </div>
+                        <apex:outputPanel id="eATI" layout="block" styleClass="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--medium">
+                            <table class="slds-table slds-max-medium-table--stacked slds-table--bordered mfs-invitee-table" role="grid">
+                                <thead class="slds-section-title--divider">
+                                    <tr class="slds-text-heading--label">
+                                        <th scope="col" width="10%">
+                                            <div>{!$Label.A360_Name}</div>
+                                        </th>
+                                        <th scope="col" width="10%" class="slds-is-sortable {!IF(sortingOrgOrder == 'ASC', 'slds-is-sorted slds-is-sorted--asc', '')} {!IF(sortingOrgOrder == 'DESC', 'slds-is-sorted slds-is-sorted--desc', '')}">
+                                            <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" onclick="sortInviteesByOrg('{!sortingOrgOrder}');">
+                                                <span title="{!$Label.A360_Org}">{!$Label.A360_Org}</span>
+                                                <span class="slds-icon_container">
+                                                    <svg aria-hidden="true" class="slds-icon slds-icon--x-small slds-icon-text-default slds-is-sortable__icon">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                        </th>
+                                        <th scope="col" width="15%">
+                                            <div>{!$Label.A360_Topic}</div>
+                                        </th>
+                                        <th scope="col" width="25%" class="slds-is-sortable {!IF(sortingOrder == 'ASC', 'slds-is-sorted slds-is-sorted--asc', '')} {!IF(sortingOrder == 'DESC', 'slds-is-sorted slds-is-sorted--desc', '')}">
+                                            <a href="javascript:void(0);" class="slds-th__action slds-text-link--reset" onclick="sortInviteesByTime('{!sortingOrder}');">
+                                                <span title="{!$Label.A360_Timeslot}">{!$Label.A360_Timeslot}</span>
+                                                <span class="slds-icon_container">
+                                                    <svg aria-hidden="true" class="slds-icon slds-icon--x-small slds-icon-text-default slds-is-sortable__icon">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"></use>
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                        </th>
+                                        <th scope="col" width="5%">
+                                            <div>{!$Label.A360_Status}</div>
+                                        </th>
+                                        <th scope="col" width="30%">
+                                            <div>{!$Label.A360_Portfolio}</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <apex:repeat id="pbInvitee" value="{!inviteeOrderKeys}" var="invId">
+                                        <tr class="slds-hint-parent">
+                                           <td data-label="{!$Label.A360_Name}">
+                                                {!inviteesMap[invId].evntRel.Name__c} - {!inviteesMap[invId].evntRel.Invitee_Type__c}
+                                            </td>
+                                            <td data-label="{!$Label.A360_Org}">
+                                                {!inviteesMap[invId].orgName}
+                                            </td>
+                                            <td data-label="{!$Label.A360_Topic}" scope="row">
+                                                <apex:outputField value="{!inviteesMap[invId].evntRel.Topic__c}" styleClass="slds-output"/>
+                                            </td>
+                                            <td data-label="{!$Label.A360_Timeslot}" scope="row">
+                                                <apex:outputField value="{!inviteesMap[invId].evntRel.Time_Slot_Start__c}"/> &nbsp;-&nbsp; 
+                                                    <apex:outputField value="{!inviteesMap[invId].evntRel.Time_Slot_End__c}"/>
+                                            </td>
+                                            <td data-label="{!$Label.A360_Status}" class="slds-text-align--center mfs-attendees-status-icons">
+                                                <apex:outputPanel rendered="{!IF((inviteesMap[invId].evntRel.Approval_Status__c == 'New' || inviteesMap[invId].evntRel.Approval_Status__c == 'Pending'), true, false)}" styleClass="slds-icon_container slds-icon-action-info slds-icon_container--circle">
+                                                    <svg aria-hidden="true" class="slds-icon slds-icon--x-small for_page_display">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/action-sprite/svg/symbols.svg#info"></use>
+                                                    </svg>
+                                                    <span class="status_for_print">{!$Label.A360_New}</span>
+                                                </apex:outputPanel>
+                                                
+                                                <apex:outputPanel rendered="{!IF((inviteesMap[invId].evntRel.Approval_Status__c == 'Approved' || inviteesMap[invId].evntRel.Approval_Status__c == 'Not Required'), true, false)}" styleClass="slds-icon_container slds-icon-action-approval slds-icon_container--circle">
+                                                    <svg aria-hidden="true" class="slds-icon slds-icon--x-small for_page_display">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/action-sprite/svg/symbols.svg#approval"></use>
+                                                    </svg>
+                                                    <span class="status_for_print">{!$Label.A360_Approved}</span>
+                                                </apex:outputPanel>
+                                                
+                                                <apex:outputPanel rendered="{!IF((inviteesMap[invId].evntRel.Approval_Status__c == 'Rejected'), true, false)}" styleClass="slds-icon_container slds-icon-action-delete slds-icon_container--circle">
+                                                    <svg aria-hidden="true" class="slds-icon slds-icon--x-small for_page_display">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/action-sprite/svg/symbols.svg#close"></use>
+                                                    </svg>
+                                                    <span class="status_for_print">{!$Label.A360_Rejected}</span>
+                                                </apex:outputPanel>
+                                            </td>
+                                            <td data-label="{!$Label.A360_Portfolio}" scope="row">
+                                               
+                                                    <apex:repeat value="{!inviteesMap[invId].evntRelPortLst}" var="invRelPOrt">
+                                                        <div class="row tbody">
+                                                            <div>
+                                                                {!invRelPOrt.portName}
+                                                            </div>
+                                                            <div>&nbsp;</div>
+                                                        </div>
+                                                    </apex:repeat>
+                                             </td>
+                                        </tr>
+                                    </apex:repeat>
+                                </tbody>
+                            </table>
+                        </apex:outputPanel>
+                    </div>
+                </div>
+                <!-- Ends : Invitees Section -->
+                
+                <!-- Meeting Objective -->
+                <div class="slds-form--compound">
+                    <div class="slds-form-element__group slds-grid slds-wrap slds-pull--padded">
+                        <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--large">
+                            <h3 class="slds-section__title slds-text-title--caps">{!$Label.A360_Meeting_Objectives_and_Purpose}</h3>
+                        </div>
+                        
+                        <div class="slds-p-horizontal--small slds-m-top--medium slds-size--12-of-12">
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control">
+                                    <apex:outputField styleClass="slds-output" value="{!parentEvent.Description}" />
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ends : Meeting Objective -->
+                
+                <!-- Hot Button Issues -->
+                <div class="slds-form--compound">
+                    <div class="slds-form-element__group slds-grid slds-wrap slds-pull--padded">
+                        <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--large">
+                            <h3 class="slds-section__title slds-text-title--caps">{!$Label.A360_Hot_Button_Issues}</h3>
+                        </div>
+                        
+                        <div class="slds-p-horizontal--small slds-m-top--medium slds-size--12-of-12">
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control">
+                                    <apex:outputField styleClass="slds-output" value="{!callNote.Hot_Button_Issues__c}"/>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ends : Hot Button Issues -->
+                
+                <!-- Past Relationship -->
+                <div class="slds-form--compound">
+                    <div class="slds-form-element__group slds-grid slds-wrap slds-pull--padded">
+                        <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--large">
+                            <h3 class="slds-section__title slds-text-title--caps">{!$Label.A360_Past_Relationship}</h3>
+                        </div>
+                        
+                        <div class="slds-p-horizontal--small slds-m-top--medium slds-size--12-of-12">
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control">
+                                    <apex:outputField styleClass="slds-output" value="{!callNote.Past_Relationship__c}"/>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ends : Past Relationship -->
+                
+                <!-- Other Notes -->
+                <div class="slds-form--compound">
+                    <div class="slds-form-element__group slds-grid slds-wrap slds-pull--padded">
+                        <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--large">
+                            <h3 class="slds-section__title slds-text-title--caps">{!$Label.A360_Other_Notes}</h3>
+                        </div>
+                        
+                        <div class="slds-p-horizontal--small slds-m-top--medium slds-size--12-of-12">
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control">
+                                    <apex:outputField styleClass="slds-output" value="{!callNote.Other_Notes__c}"/>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ends : Other Notes -->
+                
+                <!-- Other Notes -->
+                <div class="slds-form--compound">
+                    <div class="slds-form-element__group slds-grid slds-wrap slds-pull--padded">
+                        <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--large">
+                            <h3 class="slds-section__title slds-text-title--caps">Competitive Information</h3>
+                        </div>
+                        
+                        <div class="slds-p-horizontal--small slds-m-top--medium slds-size--12-of-12">
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control">
+                                    <apex:outputField styleClass="slds-output" value="{!callNote.Competitive_Information__c}" />
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ends : Other Notes -->
+                
+                <!-- Presentation -->
+                <div class="slds-form--compound">
+                    <div class="slds-form-element__group slds-grid slds-wrap slds-pull--padded">
+                        <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--large">
+                            <h3 class="slds-section__title slds-text-title--caps">{!$Label.A360_Presentation}</h3>
+                        </div>
+                        
+                        <div class="slds-p-horizontal--small slds-m-top--medium slds-size--12-of-12">
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control">
+                                    <apex:outputField styleClass="slds-output" value="{!callNote.Presentation__c}"/>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ends : Presentation -->
+                
+                <!-- Link to Details -->
+                <div class="slds-form--compound">
+                    <div class="slds-form-element__group slds-grid slds-wrap slds-pull--padded">
+                        <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--large">
+                            <h3 class="slds-section__title slds-text-title--caps">{!$Label.A360_Link_to_Meeting_Materials}</h3>
+                        </div>
+                        
+                        <div class="slds-p-horizontal--small slds-m-top--medium slds-size--12-of-12">
+                            <div class="slds-form-element">
+                                <div class="slds-form-element__control">
+                                    {!presentationUrl}
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Ends : Link to Details -->
+                
+            </apex:outputPanel>
+            <!-- Ends : Event Details (Meeting) -->
+        </apex:outputPanel>
+        
+        
+       <apex:outputPanel id="pbAttchment" layout="block" styleClass="slds-grid slds-wrap">
+            <apex:outputPanel layout="none">
+                <div class="slds-size--12-of-12 slds-p-horizontal--small">
+                    <div class="slds-clearfix">
+                        <div class="slds-float--left slds-m-top--small"><h3 class="slds-section__title slds-text-title--caps">{!$Label.A360_Attachments}</h3></div>
+                        
+                    </div>
+                    
+                    <apex:outputPanel layout="block">
+                        <ul class="slds-has-dividers--bottom-space slds-m-top--medium mfs-attachments-section">
+                            <apex:repeat value="{!attachmentList}" var="att">
+                                <li class="slds-item">
+                                    <div class="slds-tile slds-media">
+                                        <div class="slds-media__figure">
+                                            <svg aria-hidden="true" class="slds-icon">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/doctype-sprite/svg/symbols.svg#attachment"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <h3 class="slds-truncate" title=" {!att.Name}">
+                                                <apex:actionRegion >
+                                                    <apex:outputLink value="{!URLFOR($Action.Attachment.Download, att.Id)}" target="_blank">{!att.Name}</apex:outputLink> 
+                                                </apex:actionRegion>
+                                            </h3>
+                                            <div class="slds-tile__detail slds-text-body--small">
+                                                <ul class="slds-list--horizontal slds-has-dividers--right">
+                                                    <li class="slds-item">
+                                                        <apex:outputText value="{0, date, MMMM d','  yyyy}">
+                                                            <apex:param value="{!att.LastModifiedDate}" /> 
+                                                        </apex:outputText>
+                                                    </li>
+                                                    <li class="slds-item">{!att.BodyLength} KB</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </li>
+                            </apex:repeat>
+                        </ul>
+                    </apex:outputPanel>
+                    
+                </div>
+            </apex:outputPanel>
+        </apex:outputPanel>
+        
+    </div>
+    
+</apex:form>
+   
+</div>
+
+<script src="/resource/MFS_UI_Assets/assets/js/jquery-1.11.3.min.js">
+</script>
+<script>
+    var allPortfolios = '';
+    var allCompetitorPortfolios = '';
+    var allUsers = '{!JSENCODE(jsonDataAllUsers)}';
+    
+    var currUserNameFromEdit = "";
+    var currAccNameFromEdit = "";
+    var currRelatedToFromEdit = "";
+    var isConsole = "{!isConsole}";
+    
+    
+    $(document).ready(function(){
+        var currWhatID = $.trim($(".what_id_object_name_new").text());
+        var currWhoID = $.trim($(".what_name_new").text());
+        
+        populateRelatedToField(currWhatID, currWhoID);
+    });
+    
+    function SetTabTitle() {
+        //Set the current tab's title
+        if('{!eventCallNote}'=='true')
+            if('{!callNote.Not_An_Orphan_Record__c}'=='false')
+                sforce.console.setTabTitle('New Activity');
+            else
+                sforce.console.setTabTitle('{!JSENCODE(parentEvent.Subject)}');
+        else
+            if('{!callNote.Not_An_Orphan_Record__c}'=='false')
+                sforce.console.setTabTitle('New Call');
+            else
+                sforce.console.setTabTitle('{!parentTask.Subject}');
+    }
+    var pageLoad = window.onload;
+    window.onload = function() {
+        if (pageLoad) {
+            pageLoad();
+        }
+        SetTabTitle();
+    }
+    //JS function to support reRender of rich text field
+    function ReloadCKEditor() {
+        for(name in CKEDITOR.instances)
+        {
+            delete CKEDITOR.instances[name];
+        }
+        CKEDITOR.replaceAll();
+    } 
+    function openDetailSheet()
+    {
+        window.open('{!pageURLForDetailSheet}',"_blank");
+        }
+</script>
+    
+<script src="/resource/MFS_UI_Assets/assets/js/moment.js">
+</script>
+<script src="/resource/MFS_UI_Assets/assets/js/jquery.aljs-init.min.js">
+</script>
+<script src="/resource/MFS_UI_Assets/assets/js/jquery.aljs-datepicker.min.js">
+</script>
+<script src="/resource/MFS_UI_Assets/assets/js/jquery.aljs-multi-select.min.js">
+</script>
+<script src="/resource/MFS_UI_Assets/assets/js/SLDS_Lookup.js">
+</script>
+<script src="/resource/MFS_UI_Assets/assets/js/masonry.pkgd.min.js">
+</script>    
+<script src="/resource/MFS_UI_Assets/assets/js/ftscroller.js">
+</script>
+<script src="{!URLFOR($Resource.CKEditor,'ckeditor/ckeditor.js')}">
+</script>
+<script src="{!URLFOR($Resource.Activity360, 'script.js')}">
+</script>
+<script src="{!URLFOR($Resource.MFS_Scripts_New)}">
+</script>
+<script src="{!URLFOR($Resource.MFS_UI_Engine)}">
+</script>
+<apex:includeScript value="/support/console/35.0/integration.js"/>
+</body>
+</html>
+</apex:page>

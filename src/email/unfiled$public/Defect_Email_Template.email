@@ -1,0 +1,14 @@
+Hi {!PF_Defects__c.PF_Assigned_To__c} , 
+
+The following defect has been created/updated and is assigned to you. Please address the defect. 
+
+Link to Open Defect: 
+
+{!PF_Defects__c.Link} 
+
+
+{!PF_Defects__c.Functionality__c} 
+
+Defect Description : 
+
+{!PF_Defects__c.PF_Description__c}

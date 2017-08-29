@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Final Guidelines for Product</name>
+    <style>none</style>
+    <subject>Final IMA &amp; Guidelines for [Strategy] for {!Case.Account}.</subject>
+    <textOnly>Hello,
+
+Purpose:  To circulate Final IMA and guidelines for [Strategy] for {!Case.Account}.
+
+[Enter description of request here]
+
+See Sharepoint link below:
+[Add Link]
+
+Below please find additional information regarding these new mandates:
+
+Client: {!Case.Account}
+Client Type:  {!Case.00NP0000000t4L3}
+
+
+Next Steps: We will be reaching out for approvals shortly.  Please provide these approvals at your earliest convince
+
+Please let me know if you have any questions.
+
+Thank you,
+{!User.FirstName} {!User.LastName}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

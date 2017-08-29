@@ -1,0 +1,9 @@
+<!---
+Visualforce Page Name :  MFS_FeeApprovalRequestMessages
+Version               :  1.0 
+Created Date          :  24 JUN 2016
+Function              :  Display error messages in Approval requests
+--->
+<apex:page standardController="Approval_Request__c" sidebar="false">
+    <apex:pageMessages ></apex:pageMessages>
+</apex:page>

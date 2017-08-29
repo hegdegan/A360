@@ -1,0 +1,6 @@
+Hello,
+
+Case {!Case.CaseNumber} with Subject "{!Case.Subject}" has been resolved.
+
+Thanks,
+MFS Team

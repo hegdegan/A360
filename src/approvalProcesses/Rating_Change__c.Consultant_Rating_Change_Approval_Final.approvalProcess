@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Consultant_Relations_LS</submitter>
+        <type>roleSubordinates</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Date_Requested__c</field>
+        <field>New_Rating_Requested__c</field>
+        <field>New_MFS_Rating_Requested__c</field>
+        <field>Rating_Change_Reason__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>EMEA_Rating_Change_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>Sales LS,Sales</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.Country_3_Work__c</field>
+                <operation>equals</operation>
+                <value>GBR,PRT,DEU,ESP,CHE,FRA,ITA,NLD</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>EMEA Approval Request</label>
+        <name>EMEA_Approval_Request</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>North_America_Rating_Change_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>Sales LS,Sales</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.Country_3_Work__c</field>
+                <operation>notEqual</operation>
+                <value>GBR,PRT,DEU,ESP,CHE,FRA,ITA,NLD,AUS,NZ</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>North America Approval Request</label>
+        <name>North_America_Approval_Request</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Asia_ex_Japan_Rating_Change_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.Country_3_Work__c</field>
+                <operation>equals</operation>
+                <value>BHR,HKG,IND,PHL,SGP,TWN</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Asia-ex Japan Approval</label>
+        <name>Asia_ex_Japan_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Australia_New_Zealand_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.Country_3_Work__c</field>
+                <operation>equals</operation>
+                <value>AUS,NZ</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>AUS NZ Approval</label>
+        <name>AUS_NZ_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Japan_Rating_Change_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>Japan LS,Japan</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Japan Approval Process</label>
+        <name>Japan_Approval_Process</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Non_US_Retail_Rating_Change_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>Non-US LS,Non-US KA,Non-US Retail</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Non-US Retail Approval</label>
+        <name>Non_US_Retail_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Rel_Mgrs_ex_Asia_Pac_Hybrids_Approver</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>Client Service LS,CSM,Coordinator</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Rel Mgrs (ex Asia Pac Hybrids) Approval</label>
+        <name>Rel_Mgrs_ex_Asia_Pac_Hybrids_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Consultant_Relations_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>Consultant Relations LS,Consultant Relations</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Consultant Relations Approval</label>
+        <name>Consultant_Relations_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>MFD_KAM_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>Key Accounts,Key Accounts LS</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>MFD (KAM) Approval</label>
+        <name>MFD_KAM_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>ARG_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>ARG LS,ARG</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>ARG Approval</label>
+        <name>ARG_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>PPM_ISG_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>DC LS,DC,RIA</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>PPM/ISG Approval</label>
+        <name>PPM_ISG_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <emailTemplate>unfiled$public/RatingUpgrade_Downgrade_Approval_Request</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND(!ISBLANK(TEXT(New_MFS_Rating_Requested__c)), OR(
+$UserRole.DeveloperName ==&apos;Sales_LS&apos;,
+$UserRole.DeveloperName ==&apos;Sales&apos;,
+$UserRole.DeveloperName ==&apos;Japan_LS&apos;,
+$UserRole.DeveloperName ==&apos;Japan&apos;,
+$UserRole.DeveloperName ==&apos;Non-US LS&apos;,
+$UserRole.DeveloperName ==&apos;Non-US KA&apos;,
+$UserRole.DeveloperName ==&apos;Non-US Retail&apos;,
+$UserRole.DeveloperName ==&apos;Client Service LS&apos;,
+$UserRole.DeveloperName ==&apos;CSM&apos;,
+$UserRole.DeveloperName ==&apos;Coordinator&apos;,
+$UserRole.DeveloperName ==&apos;Consultant Relations LS&apos;,
+$UserRole.DeveloperName ==&apos;Consultant Relations&apos;,
+$UserRole.DeveloperName ==&apos;Key Accounts LS&apos;,
+$UserRole.DeveloperName ==&apos;Key Accounts&apos;,
+$UserRole.DeveloperName ==&apos;ARG LS&apos;,
+$UserRole.DeveloperName ==&apos;ARG&apos;,
+$UserRole.DeveloperName ==&apos;DC LS&apos;,
+$UserRole.DeveloperName ==&apos;DC&apos;,
+$UserRole.DeveloperName ==&apos;RIA&apos;,
+$User.Country_3_Work__c = &apos;BHR&apos;, 
+$User.Country_3_Work__c = &apos;HKG&apos;, 
+$User.Country_3_Work__c = &apos;IND&apos;, 
+$User.Country_3_Work__c = &apos;PHL&apos;, 
+$User.Country_3_Work__c = &apos;SGP&apos;, 
+$User.Country_3_Work__c = &apos;TWN&apos;,
+$User.Country_3_Work__c = &apos;AUS&apos; ,
+$User.Country_3_Work__c = &apos;NZ&apos; 
+))</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>isApprovedUpdte</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Rating_Change_Approved</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>UpdatedApprovalDate</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Rating_Change_Rejected</name>
+            <type>Alert</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>Consultant Rating Change Approval</label>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

@@ -1,0 +1,15 @@
+<messaging:emailTemplate recipientType="User"  
+    relatedToType="Case"
+    subject="{!$Label.Interim_New_Account_Onboarding_Communication}" 
+    replyTo="sbova@mfs.com">
+<messaging:htmlEmailBody >
+              <p> Hi</p>
+<P>The purpose of this email is to inform everyone about the following New Account # {!relatedTo.CaseNumber}</P>
+<br/>
+<c:MFS_InterimNewAccCommunication recId="{!relatedTo.Id}"/>
+<br></br>
+Thank you,
+<br></br>
+MFS Team
+  </messaging:htmlEmailBody>    
+</messaging:emailTemplate>

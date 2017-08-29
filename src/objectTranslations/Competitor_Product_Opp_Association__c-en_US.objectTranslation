@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Competitor Product to Oppty Junction</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Competitor Product to Oppty Junction</value>
+    </caseValues>
+    <fields>
+        <label><!-- Competitor Name --></label>
+        <name>Competitor_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Product --></label>
+        <name>Competitor_Product__c</name>
+        <relationshipLabel><!-- Competitor Product to Oppty Junction --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Competitor Products --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Name --></label>
+        <name>Product_Name__c</name>
+    </fields>
+    <layouts>
+        <layout>Competitor Product Opp Association Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Add_Competitor --></label>
+        <name>Add_Competitor</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Associate_Competitor_Product --></label>
+        <name>Associate_Competitor_Product</name>
+    </webLinks>
+</CustomObjectTranslation>

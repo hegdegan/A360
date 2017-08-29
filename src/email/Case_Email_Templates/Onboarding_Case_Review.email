@@ -1,0 +1,6 @@
+{!$Label.OB_OwnerReview_ET_1}  {!Case.OwnerFullName},<br><br>
+
+{!$Label.OB_OwnerReview_ET_2} <a href={!Case.Link} > {!Case.CaseNumber} </a>   {!$Label.OB_OwnerReview_ET_3}
+<br> <br>
+{!$Label.OB_OwnerReview_ET_4} {!Case.Number_of_Approvals_Received__c} {!$Label.OB_OwnerReview_ET_5}  {!Case.Number_of_Approvals_Sent__c} {!$Label.OB_OwnerReview_ET_6} {!Case.Due_Date__c} . <br><br>
+{!$Label.OB_OwnerReview_ET_7}

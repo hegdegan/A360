@@ -1,0 +1,484 @@
+<apex:component controller="MFS_NewAccSummary" access="global">
+    <apex:attribute name="recId" description="CaseRec Id" type="Id" assignTo="{!CaseId}"/>
+    <html>
+        <p> {!$Label.ET_Hi} </p>
+        <P>{!$Label.ET_Text_Separate1}&nbsp;{!CaseRec.Client_Legal_Name__c}.&nbsp;{!$Label.ET_Text_Separate2}</P>
+        <b>{!$Label.General_Information}</b>
+        <br/>
+        <TABLE border ="1">
+            
+            <tr>
+                <td>{!$Label.ET_Client_Name}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Account.Name!=null}">{!CaseRec.Account.Name}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Account.Name==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Client_Legal_Name}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Client_Legal_Name__c!=null}">{!CaseRec.Client_Legal_Name__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Client_Legal_Name__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+             <tr>
+                 <td>{!$Label.ET_Client_Tier}</td>
+                 <td><apex:outputpanel rendered="{!CaseRec.Tier__c!=null}">{!CaseRec.Tier__c}</apex:outputpanel>
+                     <apex:outputPanel rendered="{!CaseRec.Tier__c==null}">TBD</apex:outputPanel></td>
+            </tr> 
+            <tr>
+                <td>{!$Label.ACS_Distributor}</td>
+                <td><apex:outputpanel rendered="{!ACSDistributor!=null}">{!ACSDistributor}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!ACSDistributor==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Relationship_Manager}</td> <!-- Need to complete-->
+                <td><apex:outputpanel rendered="{!relationshipManager!=null}">{!relationshipManager}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!relationshipManager==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Client_Service_Manager}</td> <!-- Need to complete-->
+                <td><apex:outputpanel rendered="{!csm!=null}">{!csm}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!csm==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Salesperson}</td> <!-- Need to complete-->
+                <td><apex:outputpanel rendered="{!institutionalSales!=null}">{!institutionalSales}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!institutionalSales==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Account_Name}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Plan_Legal_Name__c!=null}">{!CaseRec.Plan_Legal_Name__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Plan_Legal_Name__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Reporting_Name}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Reporting_Name__c!=null}">{!CaseRec.Reporting_Name__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Reporting_Name__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Acct_Acronym_Portfolio_Code}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Portfolio_Code__c!=null}">{!CaseRec.Portfolio_Code__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Portfolio_Code__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Salesforce_ID}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Account.Id!=null}">{!CaseRec.Account.Id}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Account.Id==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Legal_Entity}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Client_Legal_Name__c!=null}">{!CaseRec.Client_Legal_Name__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Client_Legal_Name__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Portfolio_Domicile}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Portfolio_s_Country_of_Domicile__c!=null}">{!CaseRec.Portfolio_s_Country_of_Domicile__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Portfolio_s_Country_of_Domicile__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Client_Domicile}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Account.BillingCountry!=null}">{!CaseRec.Account.BillingCountry}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Account.BillingCountry==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Accounting_Treatment_if_new_client}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Type!=null}">{!CaseRec.Type}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Type==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Org_Type}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Account.Organization_Sub_Type__c!=null}">{!CaseRec.Account.Organization_Sub_Type__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Account.Organization_Sub_Type__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.Plan_Type}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Client_Investment__r.Plan__r.Plan_Type__c!=null}">{!CaseRec.Client_Investment__r.Plan__r.Plan_Type__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Client_Investment__r.Plan__r.Plan_Type__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_DC_Plan_Type_if_known}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Client_Investment__r.Plan__r.DC_Plan_Type_if_known__c!=null}">{!CaseRec.Client_Investment__r.Plan__r.DC_Plan_Type_if_known__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Client_Investment__r.Plan__r.DC_Plan_Type_if_known__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Tax_ID}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Tax_ID_Number_of_Portfolio__c!=null}">{!CaseRec.Tax_ID_Number_of_Portfolio__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Tax_ID_Number_of_Portfolio__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Tax_Status}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Tax_Status__c!=null}">{!CaseRec.Tax_Status__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Tax_Status__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_ERISA_Account}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.ERISA__c!=null}">{!CaseRec.ERISA__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.ERISA__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Primary_Consultant_Name}</td>
+                <td><apex:outputPanel rendered="{!CaseRec.Related_To_Opportunity__r.Consultant_Contact__r.Contact_Name__c!=''}">{!CaseRec.Related_To_Opportunity__r.Consultant_Contact__r.Contact_Name__c}</apex:outputPanel>
+                    <apex:outputPanel rendered="{!CaseRec.Related_To_Opportunity__r.Consultant_Contact__r.Contact_Name__c==''}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Consultant_Firm_Name}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Related_To_Opportunity__r.Consultant__r.Name!=null}">{!CaseRec.Related_To_Opportunity__r.Consultant__r.Name}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Related_To_Opportunity__r.Consultant__r.Name==null}">TBD</apex:outputPanel></td>
+            </tr>
+        </TABLE>
+        <br/><br/>
+        <b>{!$Label.ET_Account_Information}</b>
+        <table  border="1">
+            <tr>
+                <td>{!$Label.ET_Initial_Funding_Amount_USD}</td>
+                <td><apex:outputText value="{0, number, ###,###,###,##0.00}" rendered="{!CaseRec.Expected_Funding_Amount__c!=null}" >
+                {!CaseRec.CurrencyIsoCode}&nbsp;<apex:param value="{!CaseRec.Expected_Funding_Amount__c}"/>  
+                </apex:outputText>
+                <apex:outputPanel rendered="{!CaseRec.Expected_Funding_Amount__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Portfolio_Valuation_Date}</td>
+                <td>
+                    
+                    <apex:outputText value="{0,date,MM/dd/yyyy}" rendered="{!CaseRec.Portfolio_Valuation_Date_First_NAV__c!=null}">
+                        <apex:param value="{!CaseRec.Portfolio_Valuation_Date_First_NAV__c}">
+                        </apex:param>
+                    </apex:outputText>
+                    <apex:outputPanel rendered="{!CaseRec.Portfolio_Valuation_Date_First_NAV__c==null}">
+                        TBD</apex:outputPanel>
+                </td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Funding_Date}</td>
+                <td>
+                    
+                    <apex:outputText value="{0,date,MM/dd/yyyy}" rendered="{!CaseRec.Actual_Funding_Date__c!=null}">
+                        <apex:param value="{!CaseRec.Actual_Funding_Date__c}">
+                        </apex:param>
+                    </apex:outputText>
+                    
+                    <apex:outputPanel rendered="{!CaseRec.Actual_Funding_Date__c==null}">
+                        TBD
+                    </apex:outputPanel>
+                </td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Performance_Start_Date}</td>
+                <td>
+                    <apex:outputText value="{0,date,MM/dd/yyyy}" rendered="{!CaseRec.Client_Investment__r.Performance_Start_Date__c!=null}">
+                        <apex:param value="{!CaseRec.Client_Investment__r.Performance_Start_Date__c}">
+                        </apex:param>
+                    </apex:outputText>
+                    <apex:outputPanel rendered="{!CaseRec.Client_Investment__r.Performance_Start_Date__c==null}">
+                        TBD
+                    </apex:outputPanel>
+                </td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Transition_Performance}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Transition_Performance__c!=null}">{!CaseRec.Transition_Performance__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Transition_Performance__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Transition_Period}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Transition_Range__c!=null}">{!CaseRec.Transition_Range__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Transition_Range__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Funding_Method}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Funding_Method__c!=null}">{!CaseRec.Funding_Method__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Funding_Method__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Transition_Manager}</td>  <!-- Need to complete-->
+                <td><apex:outputpanel rendered="{!transitionManager!=null}">{!transitionManager}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!transitionManager==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.Et_Model_Portfolio}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Model_Portfolio__c!=null}">{!CaseRec.Model_Portfolio__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Model_Portfolio__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Expected_Cash_Flows}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Expected_Cash_Flows__c!=null}">{!CaseRec.CurrencyIsoCode}&nbsp;{!CaseRec.Expected_Cash_Flows__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Expected_Cash_Flows__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Trade_Date_Investment}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Trade_Date_Investment_on_inflows__c!=null}">{!CaseRec.Trade_Date_Investment_on_inflows__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Trade_Date_Investment_on_inflows__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Flow_Currency_Type_Primary}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Cash_Flow_Currency__c!=null}">{!CaseRec.Cash_Flow_Currency__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Cash_Flow_Currency__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Trading_Currency}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Trading_Currency__c!=null}">{!CaseRec.Trading_Currency__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Trading_Currency__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Reporting_Currency}</td>
+                <td>
+                    <apex:outputpanel rendered="{!CaseRec.Reporting_Currency__c!=null}">{!CaseRec.Reporting_Currency__c}
+                    </apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Reporting_Currency__c==null}">TBD
+                    </apex:outputPanel>
+                </td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_FX_on_Cash_Activity}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.FX_on_Flow__c!=null}">{!CaseRec.FX_on_Flow__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.FX_on_Flow__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_FX_on_Trading_Activity}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.FX_on_Trading_Activity__c!=null}">{!CaseRec.FX_on_Trading_Activity__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.FX_on_Trading_Activity__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_FX_on_Repatriation_of_income_dividends}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.FX_on_Repatriation_of_Income_Dividends__c!=null}">{!CaseRec.FX_on_Repatriation_of_Income_Dividends__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.FX_on_Repatriation_of_Income_Dividends__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Bill_on_Custodian_Assets}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Billing_Currency__c!=null}">{!CaseRec.Billing_Currency__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Billing_Currency__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Custodian}</td>  <!-- Need to complete-->
+                <td><apex:outputpanel rendered="{!custodyBank!=null}">{!custodyBank}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!custodyBank==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Administrator}</td>  <!-- Need to complete-->
+                <td><apex:outputpanel rendered="{!Administrator!=null}">{!Administrator}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!Administrator==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Proxy_Voting}</td>
+                <td>
+                    <apex:outputpanel rendered="{!CaseRec.Proxy_Voting__c!=null}">{!CaseRec.Proxy_Voting__c}
+                    </apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Proxy_Voting__c==null}">TBD</apex:outputPanel>
+                </td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Directed_Trading}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Directed_Trading__c!=null}">{!CaseRec.Directed_Trading__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Directed_Trading__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_IPO_Allocation}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Participate_in_IPOs__c!=null}">{!CaseRec.Participate_in_IPOs__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Participate_in_IPOs__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Use_of_Soft_Dollars}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Use_of_Soft_Dollars__c!=null}">{!CaseRec.Use_of_Soft_Dollars__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Use_of_Soft_Dollars__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Invest_Cash_Short_Term}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Invest_Cash_Short_Term__c!=null}">{!CaseRec.Invest_Cash_Short_Term__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Invest_Cash_Short_Term__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Reporting_Requirements}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Reporting_Requirements__c!=null}">{!CaseRec.Reporting_Requirements__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Reporting_Requirements__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Sector_Scheme}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Sector_Scheme__c!=null}">{!CaseRec.Sector_Scheme__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Sector_Scheme__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_First_Reporting_Period}</td>
+                <td>
+                    <apex:outputPanel rendered="{!CaseRec.First_Reporting_Period__c!=null}">
+                        <apex:outputText value="{0,date,MM/dd/yyyy}">
+                            <apex:param value="{!CaseRec.First_Reporting_Period__c}">
+                            </apex:param>
+                        </apex:outputText></apex:outputPanel>
+                    <apex:outputPanel rendered="{!CaseRec.First_Reporting_Period__c==null}">TBD</apex:outputPanel>
+                </td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Turnover_Methodology}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Turnover_Methodology__c!=null}">{!CaseRec.Turnover_Methodology__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Turnover_Methodology__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_New_Attribution_Required}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.New_Attribution_Required__c!=null}">{!CaseRec.New_Attribution_Required__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.New_Attribution_Required__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Freedom_of_Information_Act_Applicable}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Freedom_of_Information_Act_Applicable__c!=null}">{!CaseRec.Freedom_of_Information_Act_Applicable__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Freedom_of_Information_Act_Applicable__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Web_Reporting}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Internet_set_up_for_your_account__c!=null}">{!CaseRec.Internet_set_up_for_your_account__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Internet_set_up_for_your_account__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_PLSA_Requirement}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.PLSA_Requirement__c!=null}">{!CaseRec.PLSA_Requirement__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.PLSA_Requirement__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.Plan_Fiscal_Year_End}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Client_Investment__r.Plan__r.Plan_Fiscal_Year_End__c!=null}">{!CaseRec.Client_Investment__r.Plan__r.Plan_Fiscal_Year_End__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Client_Investment__r.Plan__r.Plan_Fiscal_Year_End__c==null}">TBD</apex:outputPanel>{!CaseRec.Client_Investment__r.Plan__r.Plan_Fiscal_Year_End__c}</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_CICI_Number}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.LEI_Number__c!=null}">{!CaseRec.LEI_Number__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.LEI_Number__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <br/>
+        </table>
+        <br/><br/>
+        <b>{!$Label.ET_Product_Benchmark}</b> 
+        <table  border="1">
+            <tr>
+                <td>{!$Label.ET_Product}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Portfolio_Name__r.Name !=null}">{!CaseRec.Portfolio_Name__r.Name }</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Portfolio_Name__r.Name ==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Vehicle}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Portfolio_Name__r.Vehicle__c!=null}">{!CaseRec.Portfolio_Name__r.Vehicle__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Portfolio_Name__r.Vehicle__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Portfolio_Manager}</td> <!-- Need to complete-->
+                <td><apex:outputpanel rendered="{!portfolioManager!=null}">{!portfolioManager}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!portfolioManager==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Primary_Benchmark}</td> 
+                <td><apex:outputpanel rendered="{!CaseRec.Benchmark_Primary__c!=null}">{!CaseRec.Benchmark_Primary__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Benchmark_Primary__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Secondary_Benchmark}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Secondary_Benchmark__c!=null}">{!CaseRec.Secondary_Benchmark__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Secondary_Benchmark__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+        </table>
+        <br/><br/>
+        <b>{!$Label.ET_Billing_Information}</b>
+        <br/>
+        <TABLE border ="1">
+            
+            <tr>
+                <td>{!$Label.ET_Client_Billing_Contact}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Billing_Contact_Name__r.Name!=null}">{!CaseRec.Billing_Contact_Name__r.Name}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Billing_Contact_Name__r.Name==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Address}</td>
+                <td><apex:outputpanel rendered="{!OR(CaseRec.Billing_Contact_Name__r.MailingStreet!=null,CaseRec.Billing_Contact_Name__r.MailingCity!=null, 
+                                                CaseRec.Billing_Contact_Name__r.MailingState!=null,CaseRec.Billing_Contact_Name__r.MailingCountry!=null,
+                                                CaseRec.Billing_Contact_Name__r.MailingPostalcode!=null)}">{!CaseRec.Billing_Contact_Name__r.MailingStreet}<br/>
+                    {!CaseRec.Billing_Contact_Name__r.MailingCity}<br/>
+                    {!CaseRec.Billing_Contact_Name__r.MailingState}<br/>
+                    {!CaseRec.Billing_Contact_Name__r.MailingCountry}<br/>
+                    {!CaseRec.Billing_Contact_Name__r.MailingPostalcode}<br/>
+                    </apex:outputpanel>
+                    <apex:outputPanel rendered="{!AND(CaseRec.Billing_Contact_Name__r.MailingStreet==null,CaseRec.Billing_Contact_Name__r.MailingCity==null, 
+                                                CaseRec.Billing_Contact_Name__r.MailingState==null, CaseRec.Billing_Contact_Name__r.MailingCountry==null,
+                                                CaseRec.Billing_Contact_Name__r.MailingPostalcode==null)}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Email}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Billing_Contact_Name__r.Email!=null}">{!CaseRec.Billing_Contact_Name__r.Email}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Billing_Contact_Name__r.Email==null}">TBD</apex:outputPanel></td>
+            </tr>
+            
+            <tr>
+                <td>{!$Label.ET_Billing_Currency}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Billing_Currency__c!=null}">{!CaseRec.Billing_Currency__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Billing_Currency__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Performance_Based_Fee}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Performance_Based_Fee__c!=null}">{!CaseRec.Performance_Based_Fee__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Performance_Based_Fee__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Most_Favored_Nations}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Most_Favored_Nations__c!=null}">{!CaseRec.Most_Favored_Nations__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Most_Favored_Nations__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Fee_Schedule}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Fee_Schedule__c!=null}">{!CaseRec.Fee_Schedule__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Fee_Schedule__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Effective_Fee_Schedule}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Effective_Fee_Schedule__c!=null}">{!CaseRec.Effective_Fee_Schedule__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Effective_Fee_Schedule__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Other_Application_Fees}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Other_Application_Fees__c!=null}">{!CaseRec.Other_Application_Fees__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Other_Application_Fees__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Billing_Inception_Date}</td>
+                <td>
+                    <apex:outputText value="{0,date,MM/dd/yyyy}" rendered="{!CaseRec.Billing_Inception_Date__c!=null}">
+                        <apex:param value="{!CaseRec.Billing_Inception_Date__c}"></apex:param>
+                    </apex:outputText>
+                    <apex:outputPanel rendered="{!CaseRec.Billing_Inception_Date__c==null}">TBD</apex:outputPanel>
+                </td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_VAT_or_Other_Tax_Applicable_Country_Rate_and_Allocation}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.VAT_Registration_Number_for_European_ac__c!=null}">{!CaseRec.VAT_Registration_Number_for_European_ac__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.VAT_Registration_Number_for_European_ac__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_VAT_Comment}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.VAT_Comment__c!=null}">{!CaseRec.VAT_Comment__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.VAT_Comment__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_VAT_Registration_Number}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.VAT_Registration_Number_for_European_ac__c!=null}">{!CaseRec.VAT_Registration_Number_for_European_ac__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.VAT_Registration_Number_for_European_ac__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            
+        </TABLE>
+        <br/><br/>
+        <b>{!$Label.ET_Other_Information}</b> 
+        <br/>
+        <table  border="1">
+            <tr>
+                <td>{!$Label.ET_Dodd_Frank_Form_Provided_to_Client}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Is_client_allowed_to_trade_Derivatives__c!=null}">{!CaseRec.Is_client_allowed_to_trade_Derivatives__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Is_client_allowed_to_trade_Derivatives__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Dodd_Frank_Form_Received_Back}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Dodd_Frank_Form_Received_Back__c!=null}">{!CaseRec.Dodd_Frank_Form_Received_Back__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Dodd_Frank_Form_Received_Back__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Qualified_Institutional_Buyer_QIB}</td>
+                <td><apex:outputpanel rendered="{!CaseRec.Qualified_Institutional_Buyer__c!=null}">{!CaseRec.Qualified_Institutional_Buyer__c}</apex:outputpanel>
+                    <apex:outputPanel rendered="{!CaseRec.Qualified_Institutional_Buyer__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+        </table>
+        <br/><br/>
+        {!$Label.ET_Thankyou}
+        <br/><br/>
+        {!$Label.ET_MFS_Team}
+    </html>
+</apex:component>

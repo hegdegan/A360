@@ -1,0 +1,32 @@
+<!---
+Visualforce Page Name :  MFS_ViewActivities_Contact_SF1Action
+Version               :  1.0 
+Created Date          :  2 MAR 2017
+Function              :  Publisher action to launch Activities Cheat sheet from Contact in mobile
+--->
+<apex:page standardController="Contact" sidebar="false" >
+    
+    <script>
+    <apex:includeScript value="/soap/ajax/22.0/connection.js"/>
+        <apex:includeScript value="/soap/ajax/22.0/apex.js"/>
+        <apex:includeScript value="/support/console/35.0/integration.js"/>
+        
+        /*Thisjavascript opens the Custom View Activities page to Create Activity.*/ 
+        
+            //parameters to pass in the URL 
+            var returnID; 
+    var pageneme = 'MFS_RelatedActivities'; 
+    
+    var A360url = '/apex/' + pageneme + '?Id=' + '{!contact.id}' + '&' +'isConsole=false' ; 
+    
+    var A360urlConsole = '/apex/' + pageneme + '?Id=' +'{!contact.id}'+ '&' +'isConsole=true'; 
+    
+    if (sforce.console.isInConsole()){ 
+    window.open(A360urlConsole,"_self");
+    }
+    else { 
+        sforce.one.navigateToURL(A360url );
+    }   
+    </script>
+    
+</apex:page>

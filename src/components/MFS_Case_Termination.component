@@ -1,0 +1,111 @@
+<apex:component controller="MFS_ETDataRequest" access="global">
+    <apex:attribute name="recId" description="case Id" type="Id" assignTo="{!caseId}"/>
+    <html>
+        {!$Label.ET_Hi}<br/><br/>
+        {!$Label.ET_Message1} {!TerminationCase.Account.Name} {!$Label.ET_Message2} {!TerminationCase.Portfolio_Name__r.Style__c} {!$Label.ET_Message3}.<br/><br/>
+        {!$Label.ET_Termination_Details}<br/><br/>
+        
+        
+        <table id="termination_table"  border="1">
+            <tbody>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Client_Name}</td><td style="width:50%">{!TerminationCase.Account.Name}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Portfolio_Name}</td><td style="width:50%">{!TerminationCase.Portfolio_Name__r.Name}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_sr_MFS_Portfolio_Acronym}</td><td style="width:50%">{!TerminationCase.Portfolio_Name__r.Portfolio_Code__c}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Termination_Reason}</td><td style="width:50%">{!TerminationCase.Termination_Reason__c}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_sr_Consultant_Firm}</td><td style="width:50%">{!TerminationCase.Consultant_Contact__r.Account.Name}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Field_Consultant_Contact}</td><td style="width:50%">{!TerminationCase.Consultant_Contact__r.Name}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_MFS_Contracting_Entity}</td><td style="width:50%">{!TerminationCase.MFS_Contracting_Entity__c}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_sr_Product_Style}</td><td style="width:50%">{!TerminationCase.Portfolio_Name__r.Style__c}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Current_Assets}</td><td style="width:50%">{!TerminationCase.Current_Assets__c}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Stop_Buying_Date}</td>
+                    <td style="width:50%">
+                        <apex:outputtext value="{0,date,MMMM d,' ' YYYY}">
+                            <apex:param value="{!TerminationCase.Stop_Buying_Date__c}"/>
+                        </apex:outputtext></td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Stop_Sell_Date}</td>
+                    <td style="width:50%"><apex:outputtext value="{0,date,MMMM d,' ' YYYY}">
+                        <apex:param value="{!TerminationCase.Stop_Sell_Date__c}"/>
+                        </apex:outputtext></td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Closing_Termination_Date}</td><td style="width:50%"><apex:outputtext value="{0,date,MMMM d,' ' YYYY}">
+                    <apex:param value="{!TerminationCase.Closing_Termination_Date__c}"/>
+                    </apex:outputtext></td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Liquidation_Requested_Yes_No}</td><td style="width:50%">{!TerminationCase.Liquidation_Requested__c}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_If_Yes_When_are_proceeds_needed}</td>
+                    <td style="width:50%"><apex:outputtext value="{0,date,MMMM d,' ' YYYY}">
+                        <apex:param value="{!TerminationCase.When_are_proceeds_needed__c}"/>
+                        </apex:outputtext></td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Special_Trading_Instructions}</td><td style="width:50%">{!TerminationCase.Special_Trading_Instructions__c}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Last_Reporting_Date}</td>
+                    <td style="width:50%"><apex:outputtext value="{0,date,MMMM d,' ' YYYY}">
+                        <apex:param value="{!TerminationCase.Last_Reporting_Date__c}"/>
+                        </apex:outputtext>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Confirm_Message1}</td><td style="width:50%">{!TerminationCase.Can_manual_reporting_be_ceased__c}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Last_Valuation_Date}</td>
+                    <td style="width:50%"><apex:outputtext value="{0,date,MMMM d,' ' YYYY}">
+                        <apex:param value="{!TerminationCase.Last_Valuation_Date__c}"/>
+                        </apex:outputtext></td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Last_Billing_Date}</td>
+                    <td style="width:50%"><apex:outputtext value="{0,date,MMMM d,' ' YYYY}">
+                        <apex:param value="{!TerminationCase.Last_Billing_Date__c}"/>
+                        </apex:outputtext></td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Original_Funding_Date}</td><td style="width:50%"><apex:outputtext value="{0,date,MMMM d,' ' YYYY}">
+                    <apex:param value="{!TerminationCase.Original_Funding_Date__c}"/>
+                    </apex:outputtext></td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Other_Accounts_with_Client}</td><td style="width:50%">{!TerminationCase.Other_Accounts_with_Client__c}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Confirm_Message2}</td><td style="width:50%">{!TerminationCase.Others_still_in_share_class_vehicle__c}</td>
+                </tr>
+                <tr>
+                    <td style="width:50%">{!$Label.ET_Termination_Memo_Reviewer}</td><td style="width:50%">{!TerminationCase.Termination_Reviewer__r.Name}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br/><br/>
+        {!$Label.ET_Confirm_Message3}<br/><br/>
+        {!$Label.ET_Signature}<br/>
+        {!TerminationCase.Termination_Reviewer__r.Name}
+    </html>
+</apex:component>

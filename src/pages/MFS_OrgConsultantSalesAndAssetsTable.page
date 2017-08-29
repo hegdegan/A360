@@ -1,0 +1,516 @@
+<!---
+Visualforce Page Name :  MFS_OrgConsultantSalesAndAssetsTable
+Version               :  1.0 
+Created Date          :  7 JUL 2016
+Function              :  Sales and assets page for Consultant Orgs
+--->
+<apex:page readOnly="true" standardController="Account" extensions="MFS_OrgSalesAndAssetsController" action="{!getSalesAssetsListForConsultant}" showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+    <apex:includeScript value="/support/console/30.0/integration.js"/>
+    <c:MFS_LoadingComponent ></c:MFS_LoadingComponent>
+    <html xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+            <title>Insert title here</title>
+            <apex:stylesheet value="{!URLFOR($Resource.SLDS102, 'assets/styles/salesforce-lightning-design-system-vf.css')}" /> 
+            <apex:stylesheet value="{!URLFOR($Resource.SalesAndAssets, 'SalesAndAssets/assets/css/OrgConsultant.css')}" />
+        </head>
+        <body>
+            <script src="{!URLFOR($Resource.jQuery, 'jquery-1.11.2.min.js')}"/>
+            <script type="text/javascript">
+                //var j$ = jQuery.noConflict();
+                $(window).load(function()
+                               {
+                                   startLoading();    
+                               });
+            $(window).bind("load", function()
+                           { 
+                               endLoading();
+                           }); 
+            </script>        
+            <apex:form id="pgForm"> 
+                <div class="slds slds-container--large">
+                    <apex:outputPanel id="wholepanel" layout="block" styleClass="mfs-table-main-container">
+                        <apex:pageMessages ></apex:pageMessages>
+                        <table class="slds-table mfs-red-table" scope="expandable-table" style="text-align: right;">
+                            <thead>
+                                <!--Table Row displays the Level1 consolidated Asset Prices (include category dropdown, YTD, YTD Redemption, PY, PY Redemption, AUM -->
+                                <tr class="slds-text-heading--label">
+                                    <th scope="col">
+                                        <div class="slds-truncate" style="text-align: center;">
+                                            <apex:outputtext value="{!$Label.SA_Total}" style="text:bold;text-align: left;"/>
+                                        </div>
+                                    </th>
+                                    
+                                    <!--YTD-->
+                                    <th scope="col" >
+                                        <div class="slds-truncate">
+                                            <div class="mfs-bold">{!$Label.SA_Ytd}</div>
+                                            
+                                            {!UserCurrencySymbol}<apex:outputText styleClass="mfs-bold" value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!SWrapperTotal.YTD}"/></apex:outputText>
+                                        </div>
+                                    </th>
+                                    
+                                    <!--YTD Redemption-->
+                                    <th scope="col" >
+                                        <div class="slds-truncate">
+                                            <div class="mfs-bold">{!$Label.SA_YtdRed}</div>
+                                            ({!UserCurrencySymbol}<apex:outputText styleClass="mfs-bold" value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!SWrapperTotal.YTDRed}"/></apex:outputText>)
+                                        </div>
+                                    </th>
+                                    
+                                    <!--YTD Net-->
+                                    <th scope="col" >
+                                        <div class="slds-truncate">
+                                            <div class="mfs-bold">YTD Net</div>
+                                            ({!UserCurrencySymbol}<apex:outputText styleClass="mfs-bold" value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!SWrapperTotal.YTDNet}"/></apex:outputText>)
+                                        </div>
+                                    </th>
+                                    
+                                    <!--PY-->
+                                    <th scope="col" >
+                                        <div class="slds-truncate">
+                                            <div class="mfs-bold">{!$Label.SA_Py}</div>
+                                            {!UserCurrencySymbol}<apex:outputText styleClass="mfs-bold" value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!SWrapperTotal.PY}"/></apex:outputText>
+                                        </div>
+                                    </th>
+                                    
+                                    <!-- PY redemption -->
+                                    <th scope="col" >
+                                        <div class="slds-truncate">
+                                            <div class="mfs-bold">{!$Label.SA_PyRed}</div>
+                                            ({!UserCurrencySymbol}<apex:outputText styleClass="mfs-bold" value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!SWrapperTotal.PYRed}"/></apex:outputText>)
+                                        </div>
+                                    </th>
+                                    
+                                    <!--AUM -->
+                                    <th scope="col" >
+                                        <div class="slds-truncate">
+                                            <div class="mfs-bold">{!$Label.SA_Aum}</div>
+                                            {!UserCurrencySymbol}<apex:outputText styleClass="mfs-bold" value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!SWrapperTotal.AUM}"/></apex:outputText>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <apex:repeat value="{!LevelOneList}" var="strategy">
+                                    <tr class="slds-hint-parent" scope="expandable-row">
+                                        <th class="slds-truncate" scope="row" data-label="{!strategy.productName}" >
+                                            <div >
+                                                <!-- Expandable and Collapsible mode -->
+                                                <img class="mfs_table_plus slds-hide" src="{!URLFOR($Resource.SalesAndAssets,'SalesAndAssets/assets/image/Plus.png')}" width="15" /> 
+                                                <img class="mfs_table_minus slds-hide" src="{!URLFOR($Resource.SalesAndAssets,'SalesAndAssets/assets/image/Minus.png')}" width="15" /> 
+                                                <apex:outputLink value="#" onClick="testOpenPrimaryTab('{!JSENCODE(strategy.ProductId)}',
+                                                                                            '{!JSENCODE(strategy.productName)}')" >
+                                                    {!strategy.productName}<!--Domestic Mutual Fund-->
+                                                </apex:outputLink>
+                                            </div>
+                                        </th>
+                                        
+                                        <!--YTD-->
+                                        <td class="slds-truncate" data-label="YTD">
+                                            {!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!strategy.YTD}"/>
+                                            </apex:outputText>
+                                        </td>
+                                        
+                                        <!--YTD redemption-->
+                                        <td class="" data-label="YTD Red">
+                                            ({!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!strategy.YTDRed}"/>
+                                            </apex:outputText>)
+                                        </td>
+                                        
+                                        <!--YTD Net-->
+                                        <td class="" data-label="YTD Net">
+                                            ({!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!strategy.YTDNet}"/>
+                                            </apex:outputText>)
+                                        </td>
+                                        
+                                        <!--PY-->
+                                        <td class="slds-truncate" data-label="PY">
+                                            {!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!strategy.PY}"/>
+                                            </apex:outputText>
+                                        </td>
+                                        
+                                        <!--PY Redemption-->
+                                        <td class="" data-label="PY Red">
+                                            ({!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!strategy.PYRed}"/>
+                                            </apex:outputText>)
+                                        </td>
+                                        
+                                        <!--AUM-->
+                                        <td class="" data-label="AUM">
+                                            {!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!strategy.AUM}"/>
+                                            </apex:outputText>
+                                        </td>
+                                    </tr>
+                                    
+                                    
+                                    <apex:variable value="{!0}" var="rowNum"/>
+                                    <apex:repeat value="{!levelTwoMap[strategy.PortfolioId]}" var="vehicle">
+                                        <apex:outputPanel rendered="{!IF((vehicle.productName==strategy.productName),TRUE,FALSE)}" layout="none"> 
+                                            <apex:variable var="rowNum" value="{!rowNum + 1}" />
+                                            <tr class = "slds-hide" scope="{!IF(rowNum > 5, 'expanded-content-additional','expanded-content')}"  aria-expand-parent="{!strategy.productName}">
+                                                <th class="slds-truncate" scope="row" data-sublabel="{!vehicle.secondLevelGroup}" >    
+                                                    <div >
+                                                        <!-- Expandable and Collapsible mode -->
+                                                        <img class="mfs_table_plus slds-hide" src="{!URLFOR($Resource.SalesAndAssets,'SalesAndAssets/assets/image/Plus.png')}" width="15" /> 
+                                                        <img class="mfs_table_minus slds-hide" src="{!URLFOR($Resource.SalesAndAssets,'SalesAndAssets/assets/image/Minus.png')}" width="15" /> 
+                                                            {!vehicle.VehicleName}
+                                                    </div>
+                                                </th>
+                                                
+                                                <!--YTD-->
+                                                <td class="slds-truncate" >
+                                                    {!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                    <apex:param value="{!vehicle.YTD}"/>
+                                                    </apex:outputText>
+                                                </td>
+                                                
+                                                <!--YTD redemption-->
+                                                <td class="slds-truncate" >
+                                                    ({!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                    <apex:param value="{!vehicle.YTDRed}"/>
+                                                    </apex:outputText>)
+                                                </td>
+                                                
+                                                <!--YTD Net-->
+                                                <td class="slds-truncate" >
+                                                    ({!userCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                    <apex:param value="{!vehicle.YTDNet}"/>
+                                                    </apex:outputText>)
+                                                </td>
+                                                
+                                                <!--PY-->
+                                                <td class="slds-truncate" >
+                                                    {!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                    <apex:param value="{!vehicle.PY}"/>
+                                                    </apex:outputText>
+                                                </td>
+                                                
+                                                <!--PY redemption-->
+                                                <td class="slds-truncate" >
+                                                    ({!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                    <apex:param value="{!vehicle.PYRed}"/>
+                                                    </apex:outputText>)
+                                                </td>
+                                                
+                                                <!--AUM-->
+                                                <td class="slds-truncate" >
+                                                    {!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                    <apex:param value="{!vehicle.AUM}"/>
+                                                    </apex:outputText>
+                                                </td>
+                                            </tr>
+                                            
+                                            
+                                            <apex:repeat value="{!LevelThreeMap[strategy.PortfolioId+'#'+vehicle.productVehicleId]}" var="org">
+                                                <apex:outputPanel rendered="{!IF(org.VehicleName==vehicle.VehicleName && vehicle.productName==strategy.productName, TRUE, FALSE)}" layout="none">
+                                                    <tr class="slds-hide" scope="expanded-subcontent" 
+                                                        aria-expand-additionalproduct = "{!IF(rowNum > 5, 'TRUE', 'FALSE')}"
+                                                        aria-expand-subparent="{!vehicle.secondLevelGroup}" 
+                                                        aria-expand-parent="{!strategy.productName}">
+                                                        <th class="slds-truncate" scope="row">
+                                                            <apex:outputLink value="#" onClick="testOpenPrimaryTab('{!org.OrgId}','{org.OrgId}')" >
+                                                               - {!org.OrgName}
+                                                            </apex:outputLink> 
+                                                        </th>
+                                                        
+                                                        <td class="slds-truncate">
+                                                            {!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                            <apex:param value="{!org.YTD}"/>                                        
+                                                            </apex:outputText>
+                                                        </td>
+                                                        
+                                                        <td class="">
+                                                            ({!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">                                       
+                                                            <apex:param value="{!org.YTDRed}"/>                                        
+                                                            </apex:outputText>)
+                                                        </td>
+                                                        
+                                                        <td class="">
+                                                            ({!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">                                       
+                                                            <apex:param value="{!org.YTDNet}"/>                                        
+                                                            </apex:outputText>)
+                                                        </td>
+                                                        
+                                                        <td class="slds-truncate">
+                                                            {!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                            <apex:param value="{!org.PY}"/>                                        
+                                                            </apex:outputText>
+                                                        </td>
+                                                        
+                                                        <td class="">
+                                                            ({!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">                                       
+                                                            <apex:param value="{!org.PYRed}"/>                                        
+                                                            </apex:outputText>)
+                                                        </td>
+                                                        
+                                                        <td class="slds-truncate">
+                                                            {!UserCurrencySymbol}<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                            <apex:param value="{!org.AUM}"/>                                        
+                                                            </apex:outputText>
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                </apex:outputPanel>
+                                            </apex:repeat>
+                                        </apex:outputPanel>      
+                                    </apex:repeat>
+                                    <apex:outputPanel rendered="{!IF(AND(strategy.productName==strategy.productName,rowNum >= 6),TRUE,FALSE)}" layout="none">
+                                        <tr class="slds-hide" scope="expanded-content-seemore" 
+                                            aria-expand-parent="{!strategy.productName}">
+                                            <th class="slds-truncate" scope="row"></th> 
+                                            <td class="slds-truncate"></td>
+                                            <td class="slds-truncate"></td>
+                                            <td class="slds-truncate"></td>
+                                            <td class="slds-truncate"></td>
+                                            <td class="slds-truncate" data-label="{!strategy.productName}">
+                                                <span class="see_more" id="showMore" data-label="{!strategy.productName }">{!$Label.SA_Show_More}</span></td>
+                                        </tr>
+                                    </apex:outputPanel>
+                                </apex:repeat>      
+                            </tbody>
+                        </table>
+                    </apex:outputPanel>
+                </div>
+            </apex:form> 
+            
+            <script src="{!URLFOR($Resource.jquery113)}"></script>
+            <script >
+                var MFS_Engine = function($){
+                    var _init = function(){
+                        initPlugins();
+                        initSubPlugins();
+                        initTopSubPlugins();                
+                        invokePlugins();
+                    };
+                    
+                    var nextCount = 0;
+                    var totaltemsDisplayed = 5;
+                    var rowsPerPage = 5;
+                    var totalPageRows;
+                    
+                    var initPlugins = function(){
+                        $.fn.expandableTables = function(){
+                            var that = $(this);
+                            $(".mfs_table_minus").addClass("slds-hide");
+                            $(".mfs_table_plus").removeClass("slds-hide");
+                            
+                            that.find("tbody > tr[scope='expandable-row'] > th:first-child").on("click", function(){
+                                var handleName = $(this).data("label");
+                                
+                                var allRowChildren = $("tr[scope='expanded-content'][aria-expand-parent='"+handleName+"']");
+                                var seeMoreRow = $("tr[scope='expanded-content-seemore'][aria-expand-parent='"+handleName+"']");
+                                var additionalRow = $("tr[scope='expanded-content-additional'][aria-expand-parent='"+handleName+"']");
+                                var existingRows = $("tr[scope='expanded-content'][aria-expand-parent='"+handleName+"']");
+                                
+                                if($(this).find(".mfs_table_minus").hasClass("slds-hide")){
+                                    //Expand
+                                    $(this).find(".mfs_table_plus").addClass("slds-hide");
+                                    $(this).find(".mfs_table_minus").removeClass("slds-hide");
+                                    allRowChildren.removeClass("slds-hide");
+                                    seeMoreRow.removeClass("slds-hide");
+                                    
+                                    totalPageRows = existingRows.length + additionalRow.length;
+                                    console.log(totalPageRows);
+                                    
+                                    nextCount = 0;
+                                    totaltemsDisplayed = 5;
+                                    rowsPerPage = 5;
+                                    
+                                    $(".see_more").toggleClass('See_More');
+                                    $(".see_more").text('{!$Label.SA_Show_More}');
+                                }
+                                else{
+                                    //Collapse
+                                    $(this).find(".mfs_table_plus").removeClass("slds-hide");
+                                    $(this).find(".mfs_table_minus").addClass("slds-hide"); 
+                                    allRowChildren.addClass("slds-hide");
+                                    seeMoreRow.addClass("slds-hide");
+                                    
+                                    $("tr[scope='expanded-content']").find(".mfs_table_plus").removeClass("slds-hide");
+                                    $("tr[scope='expanded-content']").find(".mfs_table_minus").addClass("slds-hide");   
+                                }
+                                additionalRow.addClass("slds-hide");  
+                            });
+                        };
+                    };
+                    
+                    
+                    var initSubPlugins = function(){
+                        $.fn.expandableSubTables = function(){
+                            var that = $(this);
+                            
+                            that.find("tbody > tr[scope='expanded-content'  ] > th:first-child").on("click", function(){
+                                var handleSubName = $(this).data("sublabel");
+                                var allRowSubChildren = $("tr[scope='expanded-subcontent'][aria-expand-subparent='"+handleSubName+"']");
+                                if(allRowSubChildren.hasClass("slds-hide")){
+                                    allRowSubChildren.removeClass("slds-hide");
+                                    $(this).find(".mfs_table_plus").addClass("slds-hide");
+                                    $(this).find(".mfs_table_minus").removeClass("slds-hide");
+                                }
+                                else{
+                                    allRowSubChildren.addClass("slds-hide");
+                                    
+                                    $(this).find(".mfs_table_plus").removeClass("slds-hide");
+                                    $(this).find(".mfs_table_minus").addClass("slds-hide");
+                                }
+                                
+                            });
+                            
+                            that.find("tbody > tr[scope='expanded-content-additional'] > th:first-child").on("click", function(){
+                                var handleSubName = $(this).data("sublabel");
+                                var allRowSubChildren = $("tr[scope='expanded-subcontent'][aria-expand-subparent='"+handleSubName+"']");
+                                if(allRowSubChildren.hasClass("slds-hide")){
+                                    allRowSubChildren.removeClass("slds-hide");
+                                    $(this).find(".mfs_table_plus").addClass("slds-hide");
+                                    $(this).find(".mfs_table_minus").removeClass("slds-hide");
+                                }
+                                else{
+                                    allRowSubChildren.addClass("slds-hide");
+                                    
+                                    $(this).find(".mfs_table_plus").removeClass("slds-hide");
+                                    $(this).find(".mfs_table_minus").addClass("slds-hide");
+                                }
+                                
+                            });                    
+                            
+                            that.find("tbody > tr[scope='expanded-content-seemore'] > td > .see_more").on("click", function(){
+                                var handleName = $(this).data("label");
+                                var $this = $(this);
+                                
+                                var allRowSubChildren = $("tr[scope='expanded-content-additional'][aria-expand-parent='"+handleName+"']");
+                                var allRowSeeMoreSubChildren = $("tr[show-sub-content='true']");
+                                
+                                if($this.text() == "{!$Label.SA_Show_More}"){
+                                    if( allRowSubChildren.length > rowsPerPage ){
+                                        
+                                        console.log(nextCount, totaltemsDisplayed);
+                                        
+                                        allRowSubChildren = allRowSubChildren.slice(nextCount, totaltemsDisplayed);
+                                        
+                                        nextCount = nextCount+rowsPerPage;
+                                        totaltemsDisplayed = nextCount + rowsPerPage;
+                                        
+                                        if(allRowSubChildren.hasClass("slds-hide")){
+                                            allRowSubChildren.removeClass("slds-hide");                            
+                                            $(this).find(".mfs_table_plus").addClass("slds-hide");
+                                            $(this).find(".mfs_table_minus").removeClass("slds-hide");
+                                        }
+                                        else{
+                                            allRowSubChildren.addClass("slds-hide");
+                                            allRowSeeMoreSubChildren.addClass("slds-hide"); //Hiding See more sub rows
+                                            
+                                            $("tr[scope='expanded-content-additional']").find(".mfs_table_plus").removeClass("slds-hide");
+                                            $("tr[scope='expanded-content-additional']").find(".mfs_table_minus").addClass("slds-hide");
+                                            
+                                            $(this).find(".mfs_table_plus").removeClass("slds-hide");
+                                            $(this).find(".mfs_table_minus").addClass("slds-hide");
+                                        }
+                                        
+                                        if(totaltemsDisplayed >= totalPageRows){                            
+                                            $this.toggleClass('See_More');
+                                            $this.text('{!$Label.SA_Show_Less}');
+                                        }
+                                    }
+                                }
+                                else{
+                                    nextCount = 0;
+                                    totaltemsDisplayed = 5;
+                                    rowsPerPage = 5;
+                                    
+                                    $this.toggleClass('See_More');
+                                    $this.text('{!$Label.SA_Show_More}');
+                                    
+                                    $("tr[scope='expanded-content-additional'][aria-expand-parent='"+handleName+"']").addClass("slds-hide");
+                                }
+                            });
+                        };
+                    };
+                    
+                    var initTopSubPlugins = function(){
+                        $.fn.expandableTopSubTables = function(){
+                            var that = $(this);
+                            that.find("tbody > tr[scope='expandable-row'] > th:first-child").on("click", function(){
+                                var handleName = $(this).data("label");
+                                var allRowTopSubChildren = $("tr[scope='expanded-subcontent'][aria-expand-parent='"+handleName+"']");
+                                if(allRowTopSubChildren.hasClass("slds-hide")){
+                                    allRowTopSubChildren.addClass("slds-hide");
+                                }
+                                else{
+                                    allRowTopSubChildren.addClass("slds-hide");
+                                }
+                            });
+                        };
+                    };
+                    
+                    
+                    var invokePlugins = function(){
+                        $("table[scope='expandable-table']").expandableTables();
+                        $("table[scope='expandable-table']").expandableSubTables();
+                        $("table[scope='expandable-table']").expandableTopSubTables(); 
+                    };
+                    
+                    var _postRerenderActions = function(){
+                        $("table[scope='expandable-table']").expandableTables();
+                        $("table[scope='expandable-table']").expandableSubTables(); 
+                        $("table[scope='expandable-table']").expandableTopSubTables();
+                    };
+                    
+                    return {
+                        init : _init,
+                        postRerenderActions : _postRerenderActions
+                    };
+                }(jQuery);
+            
+            $(document).ready(function(){
+                MFS_Engine.init();
+            });   
+            
+            
+            
+           function testOpenPrimaryTab(productid,notename) {
+            var myURL = '/'+productid;
+            if(sforce.console.isInConsole()){
+                sforce.console.openPrimaryTab(null, myURL, true, 
+                notename, openSuccess, notename);
+            }
+            else{
+                //alert('window');
+                window.open(myURL, '_blank');
+            }
+        }
+        
+        var openSuccess = function openSuccess(result) {
+            //Report whether opening the new tab was successful
+            if (result.success == true) {
+                //alert('Primary tab successfully opened');
+            } else {
+                //alert('Primary tab cannot be opened');
+            }
+        };
+            
+            function startLoading(){
+                $('#load_scrl').css('top', $(document).scrollTop() + 10);
+                $('.loadingBox').show();
+                //this.disabled = true;
+            }
+            function endLoading(){
+                $('.loadingBox').hide();
+                //this.disabled = false;
+            }
+        </script>
+        </body>
+    </html>  
+</apex:page>

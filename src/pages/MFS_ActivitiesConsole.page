@@ -1,0 +1,235 @@
+<!---
+Visualforce Page Name :  MFS_ActivitiesConsole
+Version               :  1.0 
+Created Date          :  1 Nov 2016
+Function              :  Custom Console component for showing activitites in the console with all A360 buttons for Accounts
+--->
+<apex:page standardController="Account" extensions="MFS_ActivitiesConsoleController">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+        <head>
+            <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/salesforce-lightning-design-system.min.css" />
+            <style>
+                html, html *{background-color: #f4f6f9;}
+                ul li, ol li{margin:0;padding:0;}
+                a{color:#006cb5;}
+                .list.consoleTable{background-color: #f4f6f9;border: none;border-top: 1px solid #e0e3e5;text-align: left;}
+                .list.consoleTable .headerRow{padding-top: 2px;padding-right: 5px;padding-bottom: 0;padding-left: 0;}
+                .list.consoleTable .headerRow th{font-family: 'Salesforce Sans',Helvetica,Arial,sans-serif;font-size: 12.5px;color: #8392aa;font-weight: bold;text-transform: capitalize;border-bottom:0;}
+                h3{font-family: 'Salesforce Sans',Helvetica,Arial,sans-serif;font-size: 16px;color: #16325c;font-weight: 300;margin:10px 0 0 0;display:block;}
+                .mfs-goto-list-container{padding:10px 0 10px 10px;;}
+                .mfs-goto-list-container a{font-size:12px;}
+                .mfs-more-actions-open-acts{position:relative;top:4px;}
+                .slds-dropdown__list, .slds-dropdown__list > li, .slds-dropdown__list > li a, .slds-dropdown__list > li a span{background-color:#FFF;}
+                .slds-dropdown__list > li:hover a, .slds-dropdown__list > li:hover a span{background-color: #f4f6f9;}
+            </style>
+            <apex:includeScript value="/support/console/35.0/integration.js"/>
+            <script src="/resource/MFS_UI_Assets/assets/js/jquery-1.11.3.min.js">
+            </script>
+        </head>
+        <body>
+        <apex:form >
+            <div class="slds-clearfix">
+                <div><h3>{!$ObjectType.OpenActivity.LabelPlural}</h3></div>
+                <!--
+                <div class="slds-dropdown-trigger slds-dropdown-trigger--click">
+                    <button class="slds-button slds-button--icon-container mfs-more-actions-open-acts" aria-haspopup="true" title="settings" onclick="openMenu(this, event);">
+                        <svg aria-hidden="true" class="slds-button__icon">
+                            <use xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#settings"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Settings</span>
+                    </button>
+                    <div class="slds-dropdown slds-dropdown--left slds-nubbin--top-left">
+                        <ul class="slds-dropdown__list" role="menu">
+                            <li class="slds-dropdown__item" role="presentation">
+                                <a href="javascript:void(0);" role="menuitem" tabindex="0">
+                                    <span class="slds-truncate">Create Activity (Retail)</span>
+                                </a>
+                            </li>
+                            <li class="slds-dropdown__item" role="presentation">
+                                <a href="javascript:void(0);" role="menuitem" tabindex="-1">
+                                    <span class="slds-truncate" onclick="openCreateActivityInst();">Create Activity (Institutional)</span>
+                                </a>
+                            </li>
+                            <li class="slds-dropdown__item" role="presentation">
+                                <a href="javascript:void(0);" role="menuitem" tabindex="-1">
+                                    <span class="slds-truncate">Log a Call (Retail)</span>
+                                </a>
+                            </li>
+                            <li class="slds-dropdown__item" role="presentation">
+                                <a href="javascript:void(0);" role="menuitem" tabindex="-1">
+                                    <span class="slds-truncate">Log a Call (Institutional)</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                -->
+                <div>
+                    <div class="slds-m-bottom--small">
+                        <apex:outputPanel layout="block" rendered="{!CONTAINS($Profile.Name,'Admin')}">
+                        <input type="button" class="slds-button slds-button--neutral slds-m-top--small" value="{!$Label.Buttons_Create_Activity_Institutional}" onclick="openCreatePage('MFS_CreateActivity_Inst_SF1Action');" />
+                        <input type="button" class="slds-button slds-button--neutral slds-m-top--small slds-m-left--small" value="{!$Label.Buttons_Create_Activity_Retail}" onclick="openCreatePage('MFS_CreateActivity_Retail_SF1Action');"/>
+                        <input type="button" class="slds-button slds-button--neutral slds-m-top--small slds-m-left--small" value="{!$Label.Buttons_Log_a_Call_Retail}" onclick = "openCreatePage('MFS_LogACall_Retail_SF1Action');"/>
+                        <input type="button" class="slds-button slds-button--neutral slds-m-top--small slds-m-left--small" value="{!$Label.Buttons_Log_a_Call_Institutional}" onclick = "openCreatePage('MFS_LogACall_Inst_SF1Action');"/>
+                        <input type="button" class="slds-button slds-button--neutral slds-m-top--small slds-m-left--small" value="{!$Label.A360_View_Activities}" onclick = "openCreatePage('MFS_ViewActivities_SF1Action');"/>
+                       </apex:outputPanel> 
+                        <apex:outputPanel layout="block" rendered="{!!CONTAINS($Profile.Name,'Admin')}">
+                        <input type="button" class="slds-button slds-button--neutral slds-m-top--small slds-m-left--small" value="{!$Label.Buttons_Create_Activity}" onclick = "openCreatePage('MFS_CreateActivity_SF1Action');"/>
+                        <input type="button" class="slds-button slds-button--neutral slds-m-top--small slds-m-left--small" value="{!$Label.Buttons_Log_a_Call}" onclick = "openCreatePage('MFS_LogACall_SF1Action');"/>
+                            <input type="button" class="slds-button slds-button--neutral slds-m-top--small slds-m-left--small" value="{!$Label.A360_View_Activities}" onclick = "openCreatePage('MFS_ViewActivities_SF1Action');"/>
+                        </apex:outputPanel>
+                    </div>
+                </div>
+            </div>
+            <apex:outputPanel rendered="{!OpenActivities.size!=0}" layout="block" styleClass="related-list-sidebar">
+                <div id="openAct" class="bRelatedList">
+                    <table class="list consoleTable" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                            <tr class="headerRow">
+                                <th class="actionColumn" scope="col">{!$Label.AC_Action}</th>
+                                <th scope="col" class="cellCol1 zen-deemphasize">{!$Label.AC_Subject}</th>
+                                <th scope="col" class="cellCol2 zen-deemphasize">{!$Label.AC_Name}</th>
+                                <th scope="col" class="cellCol3 zen-deemphasize">{!$Label.AC_Related_To}</th>
+                                <th scope="col" class="DateElement cellCol4 zen-deemphasize">{!$Label.AC_Completed_Date}</th>
+                            </tr>
+                            <apex:repeat value="{!OpenActivities}" var="task">
+                                <!-- ListRow -->
+                                <tr class="dataRow even first">
+                                    <td class="actionColumn">
+                                        <apex:outputLink value="/{!task.id}/e" target="_blank"> {!$Label.AC_Edit}</apex:outputLink>
+                                    </td>
+                                    <th scope="row" class="dataCell  cellCol1">
+                                        <apex:outputLink value="/{!task.id}" target="_blank"> {!task.Subject}</apex:outputLink>
+                                    </th>
+                                    <td class="dataCell cellCol2"><apex:outputLink value="/{!task.PrimaryWhoId}" target="_blank">{!task.PrimaryWho.Name}</apex:outputLink></td>
+                                    <td class="dataCell cellCol3"><apex:outputLink value="/{!task.WhatId}" target="_blank">{!task.What.Name}</apex:outputLink></td>
+                                    <td class="dataCell cellCol4 DateElement">
+                                        <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                            <apex:param value="{!task.Activitydate}" /> 
+                                        </apex:outputText>
+                                    </td>
+                                </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table>  
+                </div>
+                 <div class="mfs-goto-list-container">
+                <apex:outputLink onclick="openActivityList(); return false;">{!$Label.AC_Go_to_list} &raquo;</apex:outputLink>
+            </div>
+            </apex:outputPanel>
+            
+            <apex:outputPanel rendered="{!OpenActivities.size==0}" layout="block" styleClass="slds-m-top--medium">
+                <div class="no-record-message">
+                    {!$Label.BAR_Disp_Message2}
+                </div>
+            </apex:outputPanel>
+            
+            
+            <!-- Activity History-->
+            <div class="slds-m-top--medium">
+                <h3>{!$ObjectType.ActivityHistory.Label}</h3>
+            </div>
+            
+            <apex:outputPanel rendered="{!ActivityHistories.size!=0}" layout="block">
+                <div class="" id="actHist">
+                    <table class="list consoleTable" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                            <tr class="headerRow">
+                                <th class="actionColumn" scope="col">{!$Label.AC_Action}</th>
+                                <th scope="col" class="cellCol1 zen-deemphasize">{!$Label.AC_Subject}</th>
+                                <th scope="col" class="cellCol2 zen-deemphasize">{!$Label.AC_Name}</th>
+                                <th scope="col" class="cellCol3 zen-deemphasize">{!$Label.AC_Related_To}</th>
+                                <th scope="col" class="DateElement cellCol4 zen-deemphasize">{!$Label.AC_Completed_Date}</th>
+                            </tr>
+                            <apex:repeat value="{!ActivityHistories}" var="ah">
+                                <!-- ListRow -->
+                                <tr class="dataRow even first">
+                                     <td class="actionColumn">
+                                        <apex:outputLink value="/{!ah.id}/e" target="_blank"> {!$Label.AC_Edit}</apex:outputLink>
+                                    </td>
+                                    <th scope="row" class="dataCell  cellCol1">
+                                        <apex:outputLink value="/{!ah.id}" target="_blank">{!ah.Subject}</apex:outputLink>
+                                    </th>
+                                    <td class="dataCell cellCol2"><apex:outputLink value="/{!ah.PrimaryWhoId}" target="_blank">{!ah.PrimaryWho.Name}</apex:outputLink></td>
+                                    <td class="dataCell cellCol3"><apex:outputLink value="/{!ah.WhatId}" target="_blank">{!ah.What.Name}</apex:outputLink></td>
+                                    <td class="dataCell cellCol4 DateElement">
+                                        <apex:outputText value="{0,date,MM'/'dd'/'yyyy}" label="Relationship At Risk Date">
+                                            <apex:param value="{!ah.Activitydate}" /> 
+                                        </apex:outputText>
+                                    </td>
+                                </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table> 
+                </div>
+                <div class="mfs-goto-list-container">
+                <apex:outputLink onclick="relatedHistoryList(); return false;">{!$Label.AC_Go_to_list} &raquo;</apex:outputLink>
+            </div>
+            </apex:outputPanel>
+            
+            <apex:outputPanel rendered="{!ActivityHistories.size==0}" layout="block" styleClass="slds-m-top--medium">
+                <div class="no-record-message">
+                    {!$Label.BAR_Disp_Message2}
+                </div>
+            </apex:outputPanel>
+        </apex:form>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("body").on("click", function(){
+                    $(".slds-dropdown-trigger.slds-dropdown-trigger--click").removeClass("slds-is-open");
+                });
+            });
+            
+            var openMenu = function(elem, e){
+                e.stopPropagation();
+                e.preventDefault();
+                
+                var menuContainer = $(elem).parent(".slds-dropdown-trigger.slds-dropdown-trigger--click");
+                if(menuContainer.hasClass("slds-is-open")){
+                    menuContainer.removeClass("slds-is-open");
+                }
+                else{
+                    menuContainer.addClass("slds-is-open");
+                }
+            };
+            
+            function openActivityList(){
+                sforce.console.getEnclosingPrimaryTabId(openSubtab);
+            }
+            var openSubtab = function openSubtab(result) {
+                var primaryTabId = result.id;
+                var url = '/007?id='+'{!Account.Id}'+'&rlid=RelatedActivityList&closed=0';
+                sforce.console.openSubtab(primaryTabId , url, true, 'Open Activities', null, openSuccess, 'salesforceSubtab');
+            };
+            function relatedHistoryList(){
+                sforce.console.getEnclosingPrimaryTabId(openHistorySubtab);
+            }
+            var openHistorySubtab = function openHistorySubtab(result) {
+                var primaryTabId = result.id;
+                var url = '/007?id='+'{!Account.Id}'+'&rlid=RelatedHistoryList&closed=1';
+                sforce.console.openSubtab(primaryTabId , url, true, 'Activity History', null, openSuccess, 'salesforceSubtab');
+            };
+            var openSuccess = function openSuccess(result) {
+                
+            };
+            function openCreatePage(pageName)
+            {
+                var pName = pageName;
+                sforce.console.getEnclosingPrimaryTabId(function(result)
+                                                        {
+                                                            var primaryTabId = result.id;
+                                                            sforce.console.openSubtab(primaryTabId , '/apex/'+pName+'?Id='+'{!Account.Id}', true, 'Activity 360', null, openSuccess, 'salesforceSubtab');
+                                                        });
+            }
+            
+            var createActivityInstSubTab = function createActivityInstSubTab(result, pageName) {
+                var primaryTabId = result.id;
+                sforce.console.openSubtab(primaryTabId , '/apex/'+pageName+'?Id='+'{!Account.Id}', true, 'Activity 360', null, openSuccess, 'salesforceSubtab');
+            };
+            
+           
+           //{!URLFOR($Action.Account.Create_Activity_Institutional, Account.Id)}
+        </script>
+        </body>
+    </html>
+</apex:page>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Inflow Outflow greater than 5m ET</name>
+    <style>none</style>
+    <subject>Inflow / Outflow generated for case {!Case.CaseNumber}</subject>
+    <textOnly>Hello,
+
+An Inflow or Outflow for {!Case.Amount__c} for {!Case.Account} has been created. Please click  here to review.
+
+Thanks, {!Case.OwnerFullName}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

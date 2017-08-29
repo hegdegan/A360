@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Minimumm Investment Waiver Approval Request</description>
+    <encodingKey>ISO-2022-JP</encodingKey>
+    <name>Minimumm Investment Waiver Approval Request</name>
+    <style>none</style>
+    <subject>MINIMUM INVESTMENT WAIVER APPROVAL REQUEST</subject>
+    <textOnly>Minimum Initial Investment
+
+USD $3 million
+
+Waiver Details
+
+Distribution Channel: {!Opportunity.Distribution_Channel__c}
+Prospective Client: {!Opportunity.Account}
+Trust: {!Opportunity.First_Strategy_Name__c}
+
+
+
+Please respond to the following four items in the currency in which the prospective client would invest
+
+Stated minimum:
+Proposed investment by trust:
+Anticipated additional investment within next 1 – 2 years by trust:
+Investments in other MFS pooled product or separate accounts:
+
+Business Rationale</textOnly>
+    <type>custom</type>
+</EmailTemplate>

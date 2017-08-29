@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>(MBI) - MMD - Consultants - Types of Services Offered</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Firm_Name__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>$Organization.Country</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Firm Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ID__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Firm MMD ID</label>
+        <length>7</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MMD_Firm_Profile__c</fullName>
+        <externalId>false</externalId>
+        <label>MMD Firm Profile</label>
+        <referenceTo>MMCOMP__c</referenceTo>
+        <relationshipLabel>Services</relationshipLabel>
+        <relationshipName>MMD_Con_Services</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>OTHSRV__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Other Service Description</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SRVCODE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Service Code</label>
+        <length>12</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>CASE( SRVCODE__c ,
+&quot;ACTUARIAL&quot;,&quot;Actuarial Services&quot;,
+&quot;ALTINVEST&quot;,&quot;Alternative Investments&quot;,
+&quot;ASSALLOC&quot;,&quot;Asset Allocation&quot;,
+&quot;MODELING&quot;,&quot;Asset/Liability Modeling&quot;,
+&quot;AUDITSER&quot;,&quot;Audit Services&quot;,
+&quot;CLIENTRP&quot;,&quot;Client Monitoring/Reporting&quot;,
+&quot;COMMRECAP&quot;,&quot;Commission Recapture&quot;,
+&quot;TRUSTEE&quot;,&quot;Corporate Trusteeship&quot;,
+&quot;CUSTAUDIT&quot;,&quot;Custodial Audits&quot;,
+&quot;DCSVCS&quot;,&quot;Defined Contribution Services&quot;,
+&quot;DILIGENCE&quot;,&quot;Due Diligence&quot;,
+&quot;DBPUB&quot;,&quot;Database/Publications&quot;,
+&quot;BENECON&quot;,&quot;Employee Benefit Consulting&quot;,
+&quot;EMPCOMM&quot;,&quot;Employee Communications&quot;,
+&quot;EQUITYEVAL&quot;,&quot;Equity Evaluation/Software&quot;,
+&quot;FASBIMPACT&quot;,&quot;FASB Impact&quot;,
+&quot;FEENEGO&quot;,&quot;Fee/Contract Negotiation&quot;,
+&quot;FIDUCIARY&quot;,&quot;Fiduciary Review&quot;,
+&quot;GICADVISE&quot;,&quot;GIC/BIC Advisory&quot;,
+&quot;BROKERSVCS&quot;,&quot;Institutional Broker Services&quot;,
+&quot;INSURANCE&quot;,&quot;Insurance Withdrawal&quot;,
+&quot;INVANALSW&quot;,&quot;Investment Analysis Software&quot;,
+&quot;INVESTPOL&quot;,&quot;Investment Policy/Objectives&quot;,
+&quot;LEGAL&quot;,&quot;Legal Compliance&quot;,
+&quot;LIABILITY&quot;,&quot;Liability Analysis/Simulation&quot;,
+&quot;LIQUIDITY&quot;,&quot;Liquidity Evaluation (portfolio)&quot;,
+&quot;LITIGATION&quot;,&quot;Litigation Support&quot;,
+&quot;MGRSTRUCT&quot;,&quot;Manager Structure Analysis&quot;,
+&quot;MULTIMGR&quot;,&quot;Multiple Manager Analysis/Structure&quot;,
+&quot;NEURALNETS&quot;,&quot;Neural Nets/Chaos Models&quot;,
+&quot;THEORIES&quot;,&quot;New Theories&quot;,
+&quot;OPTIONS&quot;,&quot;Options and Futures&quot;,
+&quot;PEERGRP&quot;,&quot;Peer Group Analysis&quot;,
+&quot;PERATTRIB&quot;,&quot;Performance Attribution&quot;,
+&quot;PERFORMFEE&quot;,&quot;Performance-Based Fee Structure/Negotiation&quot;,
+&quot;PERMEASURE&quot;,&quot;Performance Measurement/Analysis&quot;,
+&quot;PLANDES&quot;,&quot;Plan Design/Implementation/Administration&quot;,
+&quot;PORTOPT&quot;,&quot;Portfolio Optimization&quot;,
+&quot;PROPMGT&quot;,&quot;Property Management&quot;,
+&quot;PROTOPLAN&quot;,&quot;Prototype Plans&quot;,
+&quot;PROXYVOTE&quot;,&quot;Proxy Voting&quot;,
+&quot;QUANTANAL&quot;,&quot;Quantitative Analysis&quot;,
+&quot;READVISE&quot;,&quot;Real Estate Acquisition/Sales/Advisory&quot;,
+&quot;RECORD&quot;,&quot;Recordkeeping&quot;,
+&quot;RPTS&quot;,&quot;Reports/Custom Research&quot;,
+&quot;RISKBK&quot;,&quot;Risk Management&quot;,
+&quot;SEMINAR&quot;,&quot;Seminars/Lectures&quot;,
+&quot;SOCIALINV&quot;,&quot;Socially Conscious Investing&quot;,
+&quot;STRATPLAN&quot;,&quot;Strategic Planning Services&quot;,
+&quot;STYLETILT&quot;,&quot;Style Tilting&quot;,
+&quot;TRADING&quot;,&quot;Trading Cost Analysis&quot;,
+&quot;WELFARE&quot;,&quot;Welfare Services&quot;,
+&quot;OTHER&quot;,&quot;Other&quot;,
+SRVCODE__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Service</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>MMD Con Service</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Link</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>MMD Con Services</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

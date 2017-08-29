@@ -1,0 +1,2044 @@
+<!---
+Visualforce Page Name :  MFS_MyCampCon
+Version               :  1.0 
+Created Date          :  4 OCT 2016
+Function              :  My campaign contacts page to add/remove contacts to My Campaign
+--->
+<apex:page sidebar="false" standardController="Campaign" extensions="MFS_MyCampContacts" standardStylesheets="{!if($User.UIThemeDisplayed=='Theme3',true,false)}" showheader="{!!isInConsole}" tabStyle="Campaign" title="Manage Campaign Members">
+    <style>
+        .dataTables_filter{margin-bottom:10px;}
+        .page-tabs{}
+        .active-Tab{background-color:#c93; color:White; background-image:none; font-size:14px; font-weight:bold; height:30px; width:130px; !important}
+        .inactive-Tabs{background-color:#CA7; color:White; background-image:none; font-size:14px; height:28px; width:130px; !important}
+        
+        table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr{background:#FFF;}
+        table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{background:#FFF !important;}
+        table.dataTable.display tbody tr > .sorting_1, 
+        table.dataTable.order-column tbody tr > .sorting_1{background:#FFF !important;}
+        
+        table.dataTable{border-radius:0 !important;border:1px solid #e0e3e5 !important;background:none !important;}
+        table.dataTable thead tr{background:#f2f3f3;}
+        table.dataTable thead tr th{border-right:1px solid #e0e3e5;}
+        table.dataTable thead th, table.dataTable thead td{padding:4px 18px !important;}
+        table.dataTable tbody th, table.dataTable tbody td{padding:0 10px !important;height:21px;border-bottom:1px solid #e0e3e5;}
+        .dataTables_wrapper{min-height:605px;}
+        .show{visibility:visible;}
+        .hide{visibility:hidden;}
+        .searchBox{width:100% !important;}
+        
+        body button,body .x-btn,body .btn,body .btnDisabled,body .btnCancel,body .menuButton .menuButtonButton {
+        color: #333;
+        margin: 1px;
+        padding: 2px 3px;
+        border: 1px solid #b5b5b5;
+        border-bottom-color: #7f7f7f;
+        background: #e8e8e9 url('/img/alohaSkin/btn_sprite.png') repeat-x right top;
+        font-weight: bold;
+        font-size: .9em;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px
+        }
+        body .menuButton {
+        margin: 0;
+        padding: 0;
+        display: inline-block
+        }
+        
+        body .menuButton .menuButtonButton {
+        display: inline-block;
+        margin: 0;
+        padding-top: 5px;
+        padding-right: 22px;
+        padding-bottom: 3px;
+        padding-left: 5px;
+        background-image: url('/img/alohaSkin/btn_mutton_sprite.png')
+        }
+        
+        body .menuButton .menuButtonButton.hasDefault {
+        padding-right: 24px;
+        background-image: url('/img/alohaSkin/split_mutton_sprite.png')
+        }
+        
+        .menuButton .menuButtonButton a {
+        color: #333
+        }
+        
+        .menuButtonListContainer{display:none;position:absolute;top:20px;background:#f8f8f8;width:200px;border: 1px solid #7d7d7d;-moz-box-shadow: 0 1px 5px #727272;-webkit-box-shadow: 0 1px 5px #727272;box-shadow: 0 1px 5px #727272;z-index:999;}
+        .menuButtonListContainer > div{padding:5px 10px;}
+        .menuButtonListContainer > div a{color:#015ba7;line-height: 150%;width: 90%;font-size: 1em;}
+        
+        .search-filters-classic > ul{list-style-type:none;overflow:hidden;margin:0 0 10px 0;padding:0;display:block;}
+        .search-filters-classic > ul > li{width:190px;float:left;margin:10px 10px 0 0;}
+    </style>
+    <apex:includeScript value="/support/console/36.0/integration.js"/>
+    <apex:includeScript value="{!URLFOR($Resource.JqueryMin, 'jqueryUI/jquery-1.11.1.min.js')}" />    
+    <apex:stylesheet value="{!URLFOR($Resource.Datatable, 'DataTables-1.10.12/media/css/jquery.dataTables.min.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Datatable,'/DataTables-1.10.12/media/js/jquery.dataTables.min.js')}"/>   
+    <apex:includeScript value="{!URLFOR($Resource.moment,'/moment.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-all.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-datepicker.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-modal.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-pill.min.js')}"/>
+    <script type="text/javascript">var __sfdcSessionId = '{!GETSESSIONID()}';
+    </script>
+    <script src="../../soap/ajax/36.0/connection.js" type="text/javascript">
+        </script>
+    <script> 
+    
+    function testSetTabTitle() {
+        //Set the current tab's title
+        sforce.console.setTabTitle('Add Campaign Members');
+    }
+    var pageLoad = window.onload;
+    window.onload = function() {
+        if (pageLoad) {
+            pageLoad();
+        }
+        testSetTabTitle();
+    }
+    var j$ = jQuery.noConflict();
+    var listRendered = false;
+    var selectedRecordsMap = {};
+    var selectedExtRecordsMap = {};
+    
+    j$.fn.dataTable.ext.order['dom-checkbox'] = function  ( settings, col )
+    {
+        return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
+            //alert(j$('input', td).prop('checked'));
+            return j$('input', td).prop('checked') ? '1' : '0';
+        } );
+    };
+    
+    j$.fn.dataTable.ext.errMode = 'none';
+    
+    function makeMyContactsDataTable(){
+        var table = j$('#myContactsTable').DataTable({
+            "bDestroy" : true,
+            "pageLength": 50,
+            "dom": '<"bottom"if>rt<"bottom"lp><"clear">',
+            "order": [1, "asc"],
+            "columnDefs": [ { "orderable": false, "targets": [0]}],
+                        "searching":false 
+                   
+        });
+
+        onsearchEnd();
+        
+        j$('#myContactsTable').on('draw.dt', function(){
+            // Update state of "Select all" control
+            updateDataTableSelectAllCtrl(j$('#myContactsTable'), j$(".total_rows_selected"), "selectedRecordsMap");
+        });       
+        
+        updateDataTableSelectAllCtrl(j$('#myContactsTable'), j$(".total_rows_selected"), "selectedRecordsMap");        
+    }   
+    var updateDataTableSelectAllCtrl = function(table, totalRowsIndicator, recordsMap){
+        if(table.length > 0){
+            var $table             = table;
+            var $chkbox_all        = table.find('tbody input[type="checkbox"]');
+            var $chkbox_checked    = table.find('tbody input[type="checkbox"]:checked');
+            var chkbox_select_all  = table.find('thead input[type="checkbox"]').get(0);
+            
+            // If none of the checkboxes are checked
+            if($chkbox_checked.length === 0){
+                chkbox_select_all.checked = false;
+                if('indeterminate' in chkbox_select_all){
+                    chkbox_select_all.indeterminate = false;
+                }
+                
+                // If all of the checkboxes are checked
+            } else if ($chkbox_checked.length === $chkbox_all.length){
+                chkbox_select_all.checked = true;
+                if('indeterminate' in chkbox_select_all){
+                    chkbox_select_all.indeterminate = false;
+                }
+                
+                // If some of the checkboxes are checked
+            } else {
+                chkbox_select_all.checked = true;
+                if('indeterminate' in chkbox_select_all){
+                    chkbox_select_all.indeterminate = true;
+                }
+            }
+            
+            table.find('thead input[id*="selectAll"]').on('click', function(e){
+                if(this.checked){
+                    table.find('tbody input[type="checkbox"]:not(:checked)').trigger('click');
+                }
+                else{
+                    table.find('tbody input[type="checkbox"]:checked').trigger('click');
+                }
+                
+                // Prevent click event from propagating to parent
+                e.stopPropagation();
+            });
+            
+            table.find('tbody td:first-child input[type="checkbox"]').on('click', function(e){
+                var currRecordID = j$.trim(j$(this).next(".current_record_id").text());
+                
+                if(recordsMap == "selectedRecordsMap"){
+                    if(this.checked === true){
+                        selectedRecordsMap[currRecordID] = currRecordID;
+                    }
+                    else{
+                        if(selectedRecordsMap[currRecordID]){
+                            delete selectedRecordsMap[currRecordID];
+                        }
+                    }
+                    
+                    totalRowsIndicator.text(getNoOfRowsSelected("selectedRecordsMap"));
+                }
+                else if(recordsMap == "selectedExtRecordsMap"){
+                    if(this.checked === true){
+                        selectedExtRecordsMap[currRecordID] = currRecordID;
+                    }
+                    else{
+                        if(selectedExtRecordsMap[currRecordID]){
+                            delete selectedExtRecordsMap[currRecordID];
+                        }
+                    }
+                    
+                    totalRowsIndicator.text(getNoOfRowsSelected("selectedExtRecordsMap"));
+                }
+            });
+        }
+    }    
+    
+    var getNoOfRowsSelected = function(mapVar){
+        var count = 0;
+        
+        if(mapVar == "selectedRecordsMap"){
+            for(var recID in selectedRecordsMap){
+                count++;
+            }
+        }
+        else if(mapVar == "selectedExtRecordsMap"){
+            for(var recID in selectedExtRecordsMap){
+                count++;
+            }
+        }
+        
+        return count;
+    };
+    
+    function makeMyContactsDataTableSLDS(){
+        j$('#myContactsTableSLDS').DataTable({
+            "bDestroy" : true,
+            "pageLength": 25,
+            "dom": '<"bottom"if>rt<"bottom"lp><"clear">',
+            "order": [1, "asc"],
+            "columnDefs": [ { "orderable": false, "targets": [0]}],
+            "searching":false,
+            "responsive":true
+        }); 
+        onsearchEnd();
+        j$('#myContactsTableSLDS').on('draw.dt', function(){
+            // Update state of "Select all" control
+            updateDataTableSelectAllCtrl(j$('#myContactsTableSLDS'), j$(".total_rows_selected_slds"), "selectedRecordsMap");
+        });       
+        
+        
+        updateDataTableSelectAllCtrl(j$('#myContactsTableSLDS'), j$(".total_rows_selected_slds"), "selectedRecordsMap");
+    }
+    
+    j$(document).ready(function() {
+        j$('[data-aljs="tabs"]').tabs({
+            defaultTabId: '',
+            onChange: function(obj) {
+                rerenderEListSLDS();
+            }
+        });
+        submitForm();
+        makeMyContactsDataTable();  
+        makeExtMemDataTable();
+        makeMyContactsDataTableSLDS();
+        makeExtMemDataTableSLDS();
+        
+        j$("[id$='data-div']").show();
+        j$("[id$='loading-div']").hide();
+        j$("[id*='allContacts']").off("click").on("click", function(){
+            //getAllContacts();
+            
+        });
+        
+        setContactTableWidth();
+        
+    });
+    
+    j$(window).resize(function(){
+        setContactTableWidth();
+    });
+    
+    var setContactTableWidth = function(){
+        var tableW = j$(window).width() - 88;
+        j$(".contacts_table_container").width(tableW);
+    };
+    
+    function onsearchStart()
+    {
+        j$("[id*='data-div']").hide();
+        j$("[id*='loading-div']").show();
+    }
+    function onsearchEnd()
+    {
+        j$("[id*='data-div']").show();
+        j$("[id*='loading-div']").hide();
+    }    
+    
+    var openMenuButton = function(elem, e){
+        e.stopPropagation();
+        
+        j$(elem).next(".menuButtonListContainer").slideToggle("fast");
+    };
+    
+    j$("body").on("click", function(){
+        j$(".menuButtonListContainer").slideUp("fast");
+    });
+    
+    var submitForm = function () {
+        j$(".searchBox").keypress(function(e){
+            var key = e.keyCode;
+            if (key == 13) {
+                e.preventDefault();
+                
+                onsearchStart();
+                searchInMyContacts();
+            }
+        });
+    };
+       
+    var setSelectedContacts = function(selectedStatus){ 
+        onsearchStart();
+        var recordIDArr = [];
+        var allRecordIDs = "";
+        
+        for(var recID in selectedRecordsMap){
+            recordIDArr.push(recID);
+        }
+        
+        allRecordIDs = selectedStatus+","+recordIDArr.join(",");
+        console.log(allRecordIDs);
+        j$("input[type='hidden'][id*='myContactsSelected']").val(allRecordIDs);        
+        passValueToController();
+    };
+    
+    var setSelectedMember = function(selectedStatus){ 
+        console.log('selectedStatus:'+selectedStatus);
+        onsearchStart();
+        var recordIDArr = [];
+        var allRecordIDs = "";
+        
+        for(var recID in selectedExtRecordsMap){
+            recordIDArr.push(recID);
+        }
+        
+        allRecordIDs = selectedStatus+","+recordIDArr.join(",");
+        j$("input[type='hidden'][id*='extMemSelected']").val(allRecordIDs);        
+        passExtMController();
+    };
+    
+    function reSetCounter(tableType){
+        if(tableType == "extTable"){
+            j$("input[type='hidden'][id*='extMemSelected']").val(0);
+            
+            selectedExtRecordsMap = {};
+        }
+    }
+    
+    function makeExtMemDataTable(){
+        j$('#extMemberDataTable').DataTable({
+            "bDestroy" : true,
+            "pageLength": 50,
+            "dom": '<"bottom"if>rt<"bottom"lp><"clear">',
+            "order": [2, "asc"],
+            "columnDefs": [ { "orderable": false, "targets": [0,1]}],
+            "searching":false
+            
+        }); 
+        
+        j$('#extMemberDataTable').on('draw.dt', function(){
+            // Update state of "Select all" control
+            updateDataTableSelectAllCtrl(j$('#extMemberDataTable'), j$(".total_rows_selected1"), "selectedExtRecordsMap");
+        });
+        
+        updateDataTableSelectAllCtrl(j$('#extMemberDataTable'), j$(".total_rows_selected1"), "selectedExtRecordsMap");
+    }
+    
+    function makeExtMemDataTableSLDS(){
+        onsearchStart();
+        j$('#extMemTableSLDS').DataTable({
+            "bDestroy" : true,
+            "pageLength": 25,
+            "dom": '<"bottom"if>rt<"bottom"lp><"clear">',
+            "order": [2, "asc"],
+            "columnDefs": [ { "orderable": false, "targets": [0,1]}],
+            "searching":false,
+            "responsive":true
+        }); 
+        onsearchEnd();
+        j$('#extMemTableSLDS').on('draw.dt', function(){
+            // Update state of "Select all" control
+            updateDataTableSelectAllCtrl(j$('#extMemTableSLDS'), j$(".total_rows_selected1_slds"), "selectedExtRecordsMap");
+        });       
+        
+        
+        updateDataTableSelectAllCtrl(j$('#extMemTableSLDS'), j$(".total_rows_selected1_slds"), "selectedExtRecordsMap");
+    }
+    
+    
+    function searchUsers(key){
+        console.log('here:'+key);
+        j$('#SrchDrpDwn').show();
+        //Grabbing The Input Field Value
+        searchKey = key;         
+        if(searchKey == ''){
+            j$('#SrchDrpDwn').hide();
+        }
+        j$('#searchText').text(searchKey);
+        //Querying For Records In User for Name Matching The Input in The Text Field
+        result = sforce.connection.query("Select Id, FirstName,LastName from User WHERE (FirstName LIKE '"+searchKey+"%' OR LastName LIKE '"+searchKey+"') and isActive=true LIMIT 5");
+        records = result.getArray("records");
+        console.log('result:'+records);
+        var searchLis ='';            
+        if(records.length > 0){
+            for(var i=0; i<records.length; i++){
+                searchLis += '<li onclick="userInfo(\''+records[i].Id+'\');" class="slds-lookup__item"><a id="'+records[i].Id+'" href="#" role="option">'+records[i].FirstName+' '+records[i].LastName+'</a></li>';
+            }
+        }else{
+            searchLis += '<li class="slds-lookup__item">No Records Found</li>';
+        } 
+        j$('#searchResultsUL').html(searchLis);
+    }
+    function userInfo(userId){
+        showLoading();
+        console.log('userId:'+userId);
+        j$('#SrchDrpDwn').fadeOut();            
+        result = sforce.connection.retrieve("FirstName,LastName", "User", [userId]);
+        j$('#viewAsLookUp').val(result[0].FirstName+' '+result[0].LastName);             
+        setUserId(userId); 
+    }
+    
+    var showLoading = function(){
+        j$(".slds").append('<div class="slds-loader--container"><div class="slds-modal slds-fade-in-open" aria-hidden="false" role="dialog"><div class="slds-modal__container"><div class="slds-text-align--center loader-container"><img src="/resource/SLDSv202/assets/images/spinners/slds_spinner_brand.gif" width="50" /></div></div></div><div class="slds-backdrop slds-backdrop--open"></div></div>');
+    };
+    
+    var hideLoading = function(){
+        console.log(j$(".slds").find(".slds-loader--container"));
+        
+        j$(".slds").find(".slds-loader--container").remove();
+    };
+    
+    function openNewTab(recId,notename) {
+        var urlString = '/'+recId;
+        if(sforce.console.isInConsole())
+        {
+            sforce.console.openPrimaryTab(null, urlString, true, notename, true, notename);
+        }
+        else
+        {
+            window.open(urlString, '_blank');
+        }
+    } 
+    
+    var reRenderExtTableStatus = false;
+    var reRenderExtTableOnce = function(){
+        if(!reRenderExtTableStatus){
+            toggleExistingMembers();
+            reRenderExtTableStatus = true;
+        }
+    };
+    
+    </script>
+    <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme3'}">  
+        <apex:outputPanel rendered="{!!isInConsole}">
+            <apex:sectionHeader title="Campaign" subtitle="{!campRec.Name}"/>
+            <apex:outputLink value="/{!campRec.ID}" > {!$Label.MyCamp_BackToCamp} {!campRec.Name}</apex:outputLink>
+        </apex:outputPanel>
+        <apex:tabPanel switchType="client" value="{!selectedTab}" id="contactsTabPanel" tabClass="active-Tab" inactiveTabClass="inactive-Tabs">
+            <!-- My Contacts (Campaign) -->
+            <apex:tab label="{!$Label.MyCamp_MyContact}" name="myContacts" id="myContacts" styleClass="page-tabs" >
+                <apex:form style="width:100%"> 
+                    <apex:actionFunction name="goBack" action="{!goBack}"/>
+                    <apex:actionFunction name="clearMes" action="{!resetMessages}" rerender="MessagePan,myContacts-message"/>
+                    <apex:actionFunction name="searchInMyContacts" action="{!searchInMyContacts}" rerender="contactsTable, myContacts-message, paginationPanel"  onbeforedomupdate="onsearchStart()" oncomplete="makeMyContactsDataTable()" />
+                    <apex:pageBlock >
+                        <apex:outputPanel id="mycontacts-block" layout="block">
+                            <apex:outputPanel id="myContacts-message" >    
+                                <apex:pageMessages />
+                            </apex:outputPanel>
+                            
+                            <div align="right">                             
+                                <apex:outputLabel value="View As: "/> 
+                                <apex:inputField value="{!campaignRec.Other_Contact__c}">
+                                    <apex:actionSupport event="onchange" action="{!getOtherContact}" reRender="contactsTable" oncomplete="makeMyContactsDataTable();"></apex:actionSupport>
+                                </apex:inputField>
+                            </div> 
+                            
+                            <div class="search-filters-classic">
+                                <ul>
+                                    <li>
+                                        <div>{!$Label.MyCamp_Name}</div>     
+                                        <div><apex:inputText value="{!searchMCName}" styleClass="searchBox"/></div>
+                                    </li>
+                                    <li>
+                                        <div>{!$Label.MyCamp_Organization}</div>     
+                                        <div><apex:inputText value="{!searchMCOrg}" styleClass="searchBox"/></div>
+                                    </li>
+                                    <li>
+                                        <div>{!$Label.MyCamp_City}</div>     
+                                        <div><apex:inputText value="{!searchMCCity}" styleClass="searchBox"/></div>
+                                    </li>
+                                    <li>
+                                        <div>{!$Label.MyCamp_State}</div>     
+                                        <div><apex:inputText value="{!searchMCState}" styleClass="searchBox"/></div>
+                                    </li>
+                                    <li>
+                                        <div>{!$Label.MyCamp_Country}</div>     
+                                        <div><apex:inputText value="{!searchMCCountry}" styleClass="searchBox"/></div>
+                                    </li>
+                                    <li>
+                                        <div>{!$Label.MyCamp_Zone}</div>     
+                                        <div><apex:inputText value="{!searchMCZone}" styleClass="searchBox"/></div>
+                                    </li>
+                                    <li>
+                                        <div>{!$Label.MyCamp_ContactRole}</div>     
+                                        <div><apex:inputText value="{!searchMCContRole}" styleClass="searchBox"/></div>
+                                    </li>
+                                    <li>
+                                        <div>Org Type</div>     
+                                        <div><apex:inputText value="{!searchMCOrgType}" styleClass="searchBox"/></div>
+                                    </li>
+                                    <li>
+                                        <div>Region</div>     
+                                        <div><apex:inputText value="{!searchMCRegion}" styleClass="searchBox"/></div>
+                                    </li>
+                                </ul>
+                                <div>
+                                    <apex:commandbutton value="{!$Label.MyCamp_Search}" action="{!searchInMyContacts}" rerender="contactsTable, myContacts-message, paginationPanel"  onclick="onsearchStart()" oncomplete="makeMyContactsDataTable();submitForm();" />
+                                    <apex:commandbutton value="{!$Label.MyCamp_Reset}" action="{!refreshMyContacts}" rerender="mycontacts-block, contactsTable, paginationPanel" onclick="onsearchStart()" oncomplete="makeMyContactsDataTable();submitForm();" />
+                                </div>
+                            </div>
+                            
+                        </apex:outputPanel>                        
+                    </apex:pageBlock>
+                    
+                    <apex:pageBlock >
+                        <div id="loading-div" style="text-align: center; margin-top:100px; margin-bottom:300px;">
+                            <span style="color:red;">Loading</span> <img src="/img/loading.gif" />
+                        </div>
+                        <div id="data-div" style="display:none;">
+                            <apex:outputPanel id="contactsTable" layout="block">
+                                <apex:inputHidden value="{!selectedContact}" id="myContactsSelected" />
+                              <!--  <apex:commandButton value="{!$Label.MyCamp_AddAll}" action="{!addAllContacts}" onkeyup="if(event.keyCode==13){event.preventDefault(); return false;}"/>    -->
+                                <div class="menuButton menuButtonActivated" style="position: relative;">
+                                    <div class="menuButtonButton" onclick="openMenuButton(this, event);"><span class="menuButtonLabel" tabindex="0">{!$Label.MyCamp_AddWithStatus}</span></div>
+                                    <div class="menuButtonListContainer"> 
+                                        <div> 
+                                            <apex:outputLink onclick="setSelectedContacts('Sent');">{!$Label.MyCamp_Sent}</apex:outputLink>                                                                  
+                                        </div>
+                                        <div> 
+                                            <apex:outputLink onclick="setSelectedContacts('Responded');">{!$Label.MyCamp_Responded}</apex:outputLink>                                      
+                                        </div>
+                                        <div> 
+                                            <apex:outputLink onclick="setSelectedContacts('Not Sent');">{!$Label.MyCamp_NotSent}</apex:outputLink>                                      
+                                        </div>
+                                    </div>
+                                </div>
+                                <apex:actionFunction name="passValueToController" action="{!addCampMember}" rerender="myContactsSelected" onComplete="makeMyContactsDataTable(); onsearchEnd();"/>
+                                
+                                <apex:outputPanel layout="block" rendered="{!userType=='Retail'}" styleClass="contacts_table_container" style="overflow:auto;">
+                                    <table id="myContactsTable" style="width:100%;">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:2%;">
+                                                    <apex:inputCheckBox id="selectAll" style="position: relative;left: -8px;" />
+                                                </th>
+                                                <th>{!$Label.MyCamp_Name}</th>
+                                                <th>{!$Label.MyCamp_Organization}</th>
+                                                <th>{!$Label.MyCamp_Street}</th>
+                                                <th>{!$Label.MyCamp_City}</th>
+                                                <th>{!$Label.MyCamp_State}</th>
+                                                <th>{!$Label.MyCamp_Country}</th>
+                                                <th>{!$Label.MyCamp_Email}</th>
+                                                <th>{!$Label.MyCamp_YTDSalesUSD}</th>
+                                                <th>{!$Label.MyCamp_LastActivity}</th>
+                                                <th>{!$Label.MyCamp_ContactRole}</th>
+                                                <th>Org Type</th>
+                                                <th>Region</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <apex:repeat value="{!MyContactsList}" var="myCont"> 
+                                                <tr>
+                                                    <td style="width:2%;"><apex:inputCheckbox value="{!myCont.isSelected}" /> <span class="current_record_id" style="display:none">{!myCont.cont.id}</span> </td>
+                                                    <td style="width:15%"><apex:outputLink onclick="openNewTab('{!myCont.cont.id}');return false;">{!myCont.cont.LastName}<apex:outputText value=", {!myCont.cont.FirstName} {!myCont.cont.MiddleName}" rendered="{!myCont.cont.FirstName!=''}"></apex:outputText></apex:outputLink></td>
+                                                    <td style="width:15%;"><apex:outputLink onclick="openNewTab('{!myCont.cont.AccountId}'); return false;">{!myCont.cont.Account.Name}</apex:outputLink></td>
+                                                    <td width="15%">{!myCont.cont.MailingStreet}</td>
+                                                    <td style="width:11%;">{!myCont.cont.MailingCity}</td>
+                                                    <td style="width:11%;">{!myCont.cont.MailingState}</td>
+                                                    <td style="width:11%;">{!myCont.cont.MailingCountry}</td>
+                                                    <td style="width:11%;">{!myCont.cont.Email}</td>
+                                                    <td width="10%">{!myCont.cont.YTD_Sales_in_USD__c}</td>
+                                                    <td width="10%"><apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                                        <apex:param value="{!myCont.cont.LastActivityDate}" /> 
+                                                        </apex:outputText>
+                                                    </td> 
+                                                    <td width="10%">{!myCont.cont.Contact_Role__c}</td>
+                                                    <td width="10%">{!myCont.cont.Org_Type__c}</td>
+                                                    <td width="10%">{!myCont.cont.Region__c}</td>
+                                                </tr>
+                                            </apex:repeat>  
+                                        </tbody>
+                                    </table>
+                                </apex:outputPanel>
+                                
+                                <apex:outputPanel layout="block" rendered="{!userType!='Retail'}" styleClass="contacts_table_container" style="overflow:auto;">
+                                    <table id="myContactsTable" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th width="2%">
+                                                    <apex:inputCheckBox id="selectAll1" style="position: relative;left: -8px;" />
+                                                </th>
+                                                <th width="10%">{!$Label.MyCamp_Name}</th>
+                                                <th width="10%">{!$Label.MyCamp_Organization}</th>
+                                                <th width="10%">{!$Label.MyCamp_Street}</th>
+                                                <th width="6%">{!$Label.MyCamp_City}</th>
+                                                <th width="6%">{!$Label.MyCamp_State}</th>
+                                                <th width="6%">{!$Label.MyCamp_Country}</th>
+                                                <th width="8%">{!$Label.MyCamp_Email}</th>
+                                                <th width="6%">YTD Sales <br/>USD</th>
+                                                <th width="6%">{!$Label.MyCamp_LastActivity}</th>
+                                                <th width="8%">{!$Label.MyCamp_ContactRole}</th>
+                                                <th width="8%">Org Type</th>
+                                                <th width="8%">Region</th>
+                                                <th width="2%">{!$Label.MyCamp_KeyRM} <br/>{!$Label.MyCamp_Contact}</th>
+                                                <th width="2%">{!$Label.MyCamp_KeyCSM} <br/>{!$Label.MyCamp_Contact}</th>
+                                                <th width="2%">{!$Label.MyCamp_KeySales} <br/>{!$Label.MyCamp_Contact}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <apex:repeat value="{!MyContactsList}" var="myCont"> 
+                                                <tr>
+                                                    <td><apex:inputCheckbox value="{!myCont.isSelected}" /> <span class="current_record_id" style="display:none">{!myCont.cont.id}</span> </td>
+                                                    <td><apex:outputLink onclick="openNewTab('{!myCont.cont.id}')">{!myCont.cont.LastName}<apex:outputText value=", {!myCont.cont.FirstName} {!myCont.cont.MiddleName}" rendered="{!myCont.cont.FirstName!=''}"></apex:outputText></apex:outputLink></td>
+                                                    <td><apex:outputLink onclick="openNewTab('{!myCont.cont.AccountId}')">{!myCont.cont.Account.Name}</apex:outputLink></td>
+                                                    <td>{!myCont.cont.MailingStreet}</td>
+                                                    <td>{!myCont.cont.MailingCity}</td>
+                                                    <td>{!myCont.cont.MailingState}</td>
+                                                    <td>{!myCont.cont.MailingCountry}</td>
+                                                    <td>{!myCont.cont.Email}</td>
+                                                    <td>{!myCont.cont.YTD_Sales_in_USD__c}</td>
+                                                    <td>
+                                                        <apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                                            <apex:param value="{!myCont.cont.LastActivityDate}" /> 
+                                                        </apex:outputText>
+                                                    </td> 
+                                                    <td>{!myCont.cont.Contact_Role__c}</td>
+                                                    <td>{!myCont.cont.Org_Type__c}</td>
+                                                    <td>{!myCont.cont.Region__c}</td>
+                                                    <td><apex:outputField value="{!myCont.cont.Key_RM_Contact__c}" /></td>
+                                                    <td><apex:outputField value="{!myCont.cont.Key_CSM_Contact__c}" /></td>
+                                                    <td><apex:outputField value="{!myCont.cont.Key_Sales_Contact__c}" /></td>
+                                                </tr>
+                                            </apex:repeat>  
+                                        </tbody>
+                                    </table>
+                                </apex:outputPanel>
+                                <div class="total-rows-section">
+                                    <span>{!$Label.MyCamp_TotalRowsSelected} </span>
+                                    <span class="total_rows_selected">0</span>
+                                </div>
+                                
+                            </apex:outputPanel>
+                            
+                            <apex:outputPanel id="paginationPanel" layout="block">
+                                <center>
+                                    <apex:outputPanel rendered="{!noOfRecords>size}">
+                                        <hr/>
+                                        <apex:actionFunction name="getpreviousContacts" status="fetchStatus" action="{!getpreviousContacts}" 
+                                                             rerender="contactsTable, paginationPanel" oncomplete="makeMyContactsDataTable()"/> 
+                                        
+                                        <apex:ActionFunction status="fetchStatus" name="getNextContacts" action="{!getNextContacts}" 
+                                                             rerender="contactsTable, paginationPanel" oncomplete="makeMyContactsDataTable()"/> 
+                                        
+                                        <apex:outputLink onclick="onsearchStart(); getpreviousContacts(); return false;" disabled="{!!myInstContacts.hasPrevious}">&lt;{!$Label.My_Cont_Previous}</apex:outputLink>
+                                        &nbsp;&nbsp;
+                                        <apex:outputLink onclick="onsearchStart(); getNextContacts(); return false;" disabled="{!!myInstContacts.hasNext}">{!$Label.My_Cont_Next}&gt;</apex:outputLink>
+                                        &nbsp;&nbsp;
+                                        <apex:outputText >{!(myInstContacts.pageNumber * size)+1-size}-{!IF((myInstContacts.pageNumber * size)>noOfRecords, noOfRecords,
+                                            (myInstContacts.pageNumber * size))} of {!noOfRecords}
+                                        </apex:outputText>
+                                    </apex:outputPanel>
+                                </center>
+                                <apex:outputPanel >                      
+                                    <apex:actionStatus id="fetchStatus" >
+                                        <apex:facet name="start" >
+                                            <img src="/img/loading.gif" />                    
+                                        </apex:facet>
+                                    </apex:actionStatus>
+                                </apex:outputPanel> 
+                            </apex:outputPanel>
+                        </div>
+                    </apex:pageBlock>
+                    <hr/>
+                </apex:form>
+            </apex:tab>
+            <!--Existing Member -->
+            <apex:tab label="{!$Label.MyCamp_ExistingMembers}" name="extMember" id="extMember" styleClass="page-tabs" ontabenter="refreshUserName();">
+                <apex:outputPanel id="MessagePan" rendered="{!!showMessage}">
+                    <apex:pageMessages >                 
+                    </apex:pageMessages>
+                </apex:outputPanel>
+                <apex:form >                
+                    <apex:pageBlock >
+                        <div id="loading-div1" style="text-align: center; margin-top:100px; margin-bottom:300px;">
+                            <span style="color:red;">Loading</span> <img src="/img/loading.gif" />
+                        </div>
+                        
+                        <div id="data-div1" style="display:none;">
+                            <apex:outputPanel id="extMemTable" layout="block">
+                                <apex:selectRadio value="{!selectedOption}" onchange="toggleExistingMembers();" >
+                                    
+                                    <apex:selectOptions value="{!items}" />
+                                    
+                                </apex:selectRadio>
+                                <apex:actionFunction name="refreshUserName" rerender="selectedUserNamePanel"/>
+                                <apex:outputPanel layout="block" id="selectedUserNamePanel" rendered="{!selectedOption == 'MCM'}">
+                                    <div align="right">                             
+                                        <apex:outputLabel value="{!$Label.MyCamp_ViewingAs} "/> 
+                                        <apex:outputText value="{!selectedUserName}" />
+                                    </div> 
+                                </apex:outputPanel>
+                                <apex:inputHidden value="{!selectedMember}" id="extMemSelected"/>
+                                <apex:actionFunction name="toggleExistingMembers" action="{!toggleExistingMembers}" rerender="extMemTable" oncomplete="makeExtMemDataTable()"/>
+                                <apex:commandButton value="{!$Label.MyCamp_Remove}" onclick="setSelectedMember('Remove'); return false;"  />
+                                <div class="menuButton menuButtonActivated" style="position: relative;">
+                                    <div class="menuButtonButton" onclick="openMenuButton(this, event);"><span class="menuButtonLabel" tabindex="0">{!$Label.MyCamp_UpdateWithStatus}</span></div>
+                                    <div class="menuButtonListContainer">                                     
+                                        <div> 
+                                            <apex:outputLink onclick="setSelectedMember('Sent'); return false;"> {!$Label.MyCamp_Sent}  </apex:outputLink>                                                                  
+                                        </div>
+                                        <div> 
+                                            <apex:outputLink onclick="setSelectedMember('Responded'); return false;"> {!$Label.MyCamp_Responded}  </apex:outputLink>                                      
+                                        </div>
+                                        <div> 
+                                            <apex:outputLink onclick="setSelectedMember('Not Sent'); return false;"> {!$Label.MyCamp_NotSent}  </apex:outputLink>                                      
+                                        </div>
+                                    </div>
+                                </div>                                
+                                <apex:actionFunction name="passExtMController" action="{!updateRemoveMembers}" rerender="extMemTable,MessagePan" oncomplete="makeExtMemDataTable();onsearchEnd();reSetCounter('extTable');" />
+                                <table id="extMemberDataTable" style="width:100%;">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:2%;"><apex:inputCheckBox id="selectAllExt" style="position: relative;left: -8px;" /></th>
+                                            <!-- <th>{!$Label.MyCamp_Action}</th> -->
+                                            <th>{!$Label.MyCamp_Name}</th>
+                                            <th>{!$Label.MyCamp_Organization}</th>
+                                            <th>{!$Label.MyCamp_Street}</th>
+                                            <th>{!$Label.MyCamp_City}</th>
+                                            <th>{!$Label.MyCamp_State}</th>
+                                            <th>{!$Label.MyCamp_Country}</th>
+                                            <th>{!$Label.MyCamp_Email}</th>
+                                            <th>{!$Label.MyCamp_Status}</th>
+                                            <th>{!$Label.MyCamp_YTDSalesUSD}</th>
+                                            <th>{!$Label.MyCamp_LastActivity}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- <apex:actionFunction name="removeMembers" action="{!removeMembers}" reRender="extMemTable,MessagePan" oncomplete="makeExtMemDataTable();onsearchEnd();">
+<apex:param value="" assignTo="{!removeMemId}" name="removeMemId"/>
+</apex:actionFunction>-->
+                                        <apex:repeat value="{!existingMemList}" var="existingMember"> 
+                                            <tr>
+                                                <td style="width:2%;">
+                                                    <apex:inputCheckbox value="{!existingMember.isSelected}"/> <span class="current_record_id" style="display:none">{!existingMember.campMem.id}</span> </td>
+                                                <!-- <td style="width:5%;">
+<apex:outputLink value="/{!existingMember.campMem.id}/e" style="color: #015ba7!important;">{!$Label.MyCamp_Edit}</apex:outputLink>&nbsp;|&nbsp;                                                   
+<apex:outputLink style="color: #015ba7!important;" onclick="removeMembers('{!existingMember.campMem.id}'); onsearchStart(); return false;">{!$Label.MyCamp_Remove}</apex:outputLink>
+</td>-->
+                                                <td style="width:10%"><apex:outputLink onclick="openNewTab('{!existingMember.campMem.id}')">{!existingMember.campMem.LastName}<apex:outputText value=", {!existingMember.campMem.FirstName}" rendered="{!existingMember.campMem.FirstName!=''}"></apex:outputText>
+                                                    </apex:outputLink></td>
+                                                <td style="width:12%;"><apex:outputLink value="Organization"> </apex:outputLink> {!existingMember.campMem.CompanyOrAccount}</td>
+                                                <td style="width:12%;">{!existingMember.campMem.Contact.MailingStreet}</td>
+                                                <td style="width:12%;">{!existingMember.campMem.Contact.MailingCity}</td>
+                                                <td style="width:12%;">{!existingMember.campMem.Contact.MailingState}</td>
+                                                <td style="width:10%;">{!existingMember.campMem.Contact.MailingCountry}</td>
+                                                <td style="width:10%;">{!existingMember.campMem.Contact.Email}</td>
+                                                <td style="width:8%;">{!existingMember.campMem.Status}</td>
+                                                <td style="width:10%;">{!existingMember.campMem.Contact.YTD_Sales_in_USD__c}</td>
+                                                <td style="width:8%;"><apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                                    <apex:param value="{!existingMember.campMem.Contact.LastActivityDate}" /> 
+                                                    </apex:outputText>
+                                                </td>
+                                                
+                                                
+                                            </tr>
+                                        </apex:repeat>  
+                                    </tbody>
+                                </table>
+                                <div class="total-rows-section1">
+                                    <span>{!$Label.MyCamp_TotalRowsSelected} </span>
+                                    <span class="total_rows_selected1">0</span>
+                                </div>
+                            </apex:outputPanel>
+                        </div>
+                    </apex:pageBlock>
+                    <hr/>
+                    
+                </apex:form>
+            </apex:tab>
+        </apex:tabPanel>
+    </apex:outputPanel>
+    
+    <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme4t'}">
+        <!-- SLDS Section -->
+        <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <head>
+            
+            <apex:stylesheet value="{!URLFOR($Resource.SLDSv202, '/assets/styles/salesforce-lightning-design-system.min.css')}" />
+            <style>                
+                body{-webkit-overflow-scrolling: none;}
+                .dataTables_filter{margin-bottom:10px;}
+                table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr{background:#FFF;}
+                table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{background:#FFF !important;}
+                table.dataTable.display tbody tr > .sorting_1, 
+                table.dataTable.order-column tbody tr > .sorting_1{background:#FFF !important;}            
+                table.dataTable{border-radius:0 !important;border:1px solid #e0e3e5 !important;background:none !important;}
+                table.dataTable thead tr{background:#f2f3f3;}
+                table.dataTable thead tr th{border-right:1px solid #e0e3e5;}
+                table.dataTable thead th, table.dataTable thead td{padding:4px 18px !important;}
+                table.dataTable tbody th, table.dataTable tbody td{padding:0 10px !important;height:30px;border-bottom:1px solid #e0e3e5;}
+                .dataTables_wrapper{min-height:605px;}
+                .show{visibility:visible;}
+                .hide{visibility:hidden;}            
+                #myContactsTableContainer{padding:0 9px;}
+                .menuButtonListContainer{top:33px;z-index:999;}
+                
+                .message{margin:0 !important;background-color:#FFF !important;}
+                .search-filters-container ul{margin:0;padding:0;display:block;overflow:hidden;}
+                .search-filters-container ul li{width:200px;float:left;margin:0 16px 0 0;padding:0;}
+                .view-as-container > div:first-child{width:15%;margin-right:9px;}
+                
+                .slds *{font-family:"Salesforce Sans", Arial;}
+                .my-contacts-list, .my-contacts-list-existing{list-style-type:none;overflow:hidden;display:block;margin:0;padding:0;}
+                .my-contacts-list > li, .my-contacts-list-existing > li{overflow:hidden;margin:0;border-bottom:1px solid #D8DDE6;padding:12px 12px 12px 6px;}
+                .my-contacts-list > li .icon-container, .my-contacts-list-existing > li .icon-container{padding-top:4px;margin-right:10px;}
+                
+                .selected{background:#ededed;}
+                
+                @media only screen and (max-width: 20rem){
+                    table.dataTable tbody th, table.dataTable tbody td{height:36px;}
+                    table.dataTable ul li{margin:0;padding:10px 0;}
+                    table.dataTable ul li span.dtr-title{font-weight:bold;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                
+                    .search-filters-container ul li{width:100%;float:none;margin:0;padding:0;}
+                    [id*='mycontacts-block']{border-bottom:1px solid #d8dde6;padding-bottom:20px;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                    .dataTables_wrapper{min-height:0;}
+                    .view-as-container > div:first-child{width:100%;float:none;margin-right:0;}
+                }
+                @media only screen and (min-width: 20.0625em) and (max-width:47.937em) {
+                    table.dataTable tbody th, table.dataTable tbody td{height:36px;}
+                    table.dataTable ul li{margin:0;padding:10px 0;}
+                    table.dataTable ul li span.dtr-title{font-weight:bold;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                
+                    .search-filters-container ul li{width:100%;float:none;margin:0;padding:0;}
+                    [id*='mycontacts-block']{border-bottom:1px solid #d8dde6;padding-bottom:20px;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                    .dataTables_wrapper{min-height:0;}
+                    .view-as-container > div:first-child{width:100%;float:none;margin-right:0;}
+                }
+                @media only screen and (min-device-width: 768px) and (max-device-width:1024px) and (orientation:landscape) {
+                    table.dataTable tbody th, table.dataTable tbody td{height:36px;}
+                    table.dataTable ul li{margin:0;padding:10px 0;}
+                    table.dataTable ul li span.dtr-title{font-weight:bold;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                
+                    .search-filters-container ul li{width:317px;float:left;}
+                    .search-filters-container ul li:nth-child(3n){margin-right:0;}
+                
+                    [id*='mycontacts-block']{border-bottom:1px solid #d8dde6;padding-bottom:20px;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                    .dataTables_wrapper{min-height:0;}
+                    .view-as-container > div:first-child{width:25%;margin-right:0;}
+                }
+                @media only screen and (min-device-width: 768px) and (max-device-width:1024px) and (orientation:portrait) {
+                    table.dataTable tbody th, table.dataTable tbody td{height:36px;}
+                    table.dataTable ul li{margin:0;padding:10px 0;}
+                    table.dataTable ul li span.dtr-title{font-weight:bold;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}   
+                
+                    .search-filters-container ul li{width:232px;float:left;}
+                    .search-filters-container ul li:nth-child(3n){margin-right:0;}
+                    
+                    [id*='mycontacts-block']{border-bottom:1px solid #d8dde6;padding-bottom:20px;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                    .dataTables_wrapper{min-height:0;}
+                    .view-as-container > div:first-child{width:25%;margin-right:0;}
+                }
+                
+                .myContactsTableContainer fieldset table[role="presentation"] tbody > tr > td{display:block;padding:10px 0;text-transform:uppercase;}
+                .myContactsTableContainer fieldset table[role="presentation"] tbody > tr > td input[type="radio"]{position:relative;top:2px;}
+                .slds-tabs--default__content{overflow:auto;-webkit-overflow-scrolling: none;}
+            
+            </style>
+            <script>
+        
+            var MyContacts = function($){
+                var cJSONFull = "";
+                var contactsPerPage = 10;
+                var currPage = 0;
+                var currPageMembers = 0;
+                var contactsBuckets = [];
+                var selectedContacts = [];
+                
+                var _initMyContacts = function(cJSONStr, fromSearch){
+                    var cJSON = JSON.parse(cJSONStr);
+                    cJSONFull = cJSON;
+                    //console.log(cJSON);
+                    
+                    if(cJSON.length > 0){
+                        contactsBuckets = __chunkArrayInGroups(cJSON, contactsPerPage);
+                        
+                        //console.log(contactsBuckets);
+                        if(fromSearch){
+                            currPage = 0;
+                            __loadContacts(fromSearch);
+                        }
+                        else{
+                            __loadContacts();
+                            __eventListeners();
+                        }
+                        
+                        _hideLoader();
+                    }
+                    else{
+                        $(".my-contacts-list").html("<li>No contacts to display</li>");
+                    }
+                };
+                
+                var _initExistingMembers = function(clearAllFlag){
+                    var membersJSONStr = $.trim($(".new_json_members").text());
+                    var cJSON = JSON.parse(membersJSONStr);
+                    
+                    //console.log(cJSON);
+                    
+                    if(cJSON.length > 0){
+                        contactsBuckets = __chunkArrayInGroups(cJSON, contactsPerPage);
+                        
+                        if(clearAllFlag){
+                            currPageMembers = 0;
+                            __loadExistingContacts(clearAllFlag);
+                        }
+                        else{
+                            __loadExistingContacts();
+                        }
+                        
+                        //__eventListeners();
+                        
+                        _hideLoader();
+                    }
+                    else{
+                        //$(".my-contacts-list-existing").html("<li>No contacts to display</li>");
+                    }
+                };
+                
+                var __loadContacts = function(fromSearch){
+                    //console.log(currPage);
+                    var listHTML = "";
+                    
+                    if(contactsBuckets[currPage]){
+                        for(var i=0, iLen = contactsBuckets[currPage].length; i < iLen; i++){
+                            var cName = contactsBuckets[currPage][i]["contactFName"]+" ";
+                            var cOrgName = contactsBuckets[currPage][i]["contactOrgName"];
+                            var cRole = contactsBuckets[currPage][i]["CRole"] !== null ? contactsBuckets[currPage][i]["CRole"] : "";
+                            var ytdSales = contactsBuckets[currPage][i]["YTDSales"] !== null ? contactsBuckets[currPage][i]["YTDSales"] : "";
+                            var orgType = contactsBuckets[currPage][i]["orgType"] !== null ? contactsBuckets[currPage][i]["orgType"] : "";
+                            var region = contactsBuckets[currPage][i]["region"] !== null ? contactsBuckets[currPage][i]["region"] : "";
+                            
+                            if(contactsBuckets[currPage][i]["contactMName"]){
+                                cName += contactsBuckets[currPage][i]["contactMName"]+" ";
+                            }
+                            if(contactsBuckets[currPage][i]["contactLName"]){
+                                cName += contactsBuckets[currPage][i]["contactLName"];
+                            }
+                            
+                            listHTML += '<li onclick="MyContacts.showMoreDetails(this);" data-contact-id="'+contactsBuckets[currPage][i]["contactId"]+'" style="position:relative;">'+
+                                            '<div class="icon-container slds-float--left">'+
+                                                '<span class="slds-icon_container slds-icon-standard-contact">'+
+                                                    '<svg aria-hidden="true" class="slds-icon slds-icon--medium">'+
+                                                        '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/SLDSv202/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>'+
+                                                    '</svg>'+
+                                                '</span>'+
+                                                '<span class="slds-hide slds-icon_container slds-icon-action-approval">'+
+                                                    '<svg aria-hidden="true" class="slds-icon slds-icon--medium">'+
+                                                        '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/SLDSv202/assets/icons/action-sprite/svg/symbols.svg#approval"></use>'+
+                                                    '</svg>'+
+                                                '</span>'+
+                                            '</div>'+
+                                            '<div class="slds-m-left--small">'+
+                                                '<div class="slds-text-heading--medium slds-truncate">'+cName+'</div>'+
+                                                '<div class="slds-text-heading--label slds-line-height--reset slds-truncate">'+cOrgName+'</div>'+
+                                            '</div>'+
+                                            '<div class="contact_list_more_details slds-m-top--medium slds-hide" style="margin-left:30px;">'+
+                                                '<div class="slds-grid slds-wrap">'+
+                                                    '<div class="slds-size--5-of-12 slds-p-horizontal--small slds-text-heading--label slds-p-left--none">Contact Role</div>'+
+                                                    '<div class="slds-size--7-of-12 slds-p-horizontal--small slds-p-right--none">'+cRole+'</div>'+
+                                                '</div>'+
+                                                '<div class="slds-grid slds-wrap slds-m-top--small">'+
+                                                    '<div class="slds-size--5-of-12 slds-p-horizontal--small slds-text-heading--label slds-p-left--none">YTD Sales</div>'+
+                                                    '<div class="slds-size--7-of-12 slds-p-horizontal--small slds-p-right--none">'+ytdSales+'</div>'+
+                                                '</div>'+
+                                                '<div class="slds-grid slds-wrap slds-m-top--small">'+
+                                                    '<div class="slds-size--5-of-12 slds-p-horizontal--small slds-text-heading--label slds-p-left--none">Org Type</div>'+
+                                                    '<div class="slds-size--7-of-12 slds-p-horizontal--small slds-p-right--none">'+orgType+'</div>'+
+                                                '</div>'+
+                                                '<div class="slds-grid slds-wrap slds-m-top--small">'+
+                                                    '<div class="slds-size--5-of-12 slds-p-horizontal--small slds-text-heading--label slds-p-left--none">Region</div>'+
+                                                    '<div class="slds-size--7-of-12 slds-p-horizontal--small slds-p-right--none">'+region+'</div>'+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<div style="position:absolute;top:20px;right:6px" onclick="MyContacts.openContactPage(\''+$.trim(contactsBuckets[currPage][i]["contactId"])+'\', event);">'+
+                                                '<span class="slds-icon_container slds-icon-action-more slds-icon_container--circle" style="padding:4px;">'+
+                                                    '<svg aria-hidden="true" class="slds-icon slds-icon--x-small">'+
+                                                        '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/SLDSv202/assets/icons/action-sprite/svg/symbols.svg#more"></use>'+
+                                                    '</svg>'+
+                                                '</span>'+
+                                            '</div>'+
+                                        '</li>';
+                        }
+                        
+                        if(fromSearch){
+                            $(".my-contacts-list").html(listHTML);
+                        }
+                        else{
+                            $(".my-contacts-list").append(listHTML);
+                        }
+                        
+                        
+                        $(".my-contacts-list > li span.slds-icon-standard-contact").off("click").on("click", function(){
+                            var currElem = $(this).parents("li");
+                            $(this).toggleClass("slds-hide");
+                            $(this).next().toggleClass("slds-hide");
+                            currElem.addClass("selected");
+                            
+                            selectedContacts.push(currElem.data("contact-id"));
+                            
+                            return false;
+                        });
+                        
+                        $(".my-contacts-list > li span.slds-icon-action-approval").off("click").on("click", function(){
+                            var currElem = $(this).parents("li");
+                            var currContactID = $(this).data("contact-id");
+                            var currIndex;
+                            
+                            $(this).toggleClass("slds-hide");
+                            $(this).prev().toggleClass("slds-hide");
+                            currElem.removeClass("selected");
+                            
+                            currIndex = selectedContacts.indexOf(currContactID);
+                            selectedContacts.splice(currIndex, 1);
+                            
+                            return false;
+                        });
+                    }
+                };
+                
+                var __loadExistingContacts = function(clearFlag){
+                    console.log(currPageMembers);
+                    var listHTML = "";
+                    
+                    if(contactsBuckets[currPageMembers]){
+                        for(var i=0, iLen = contactsBuckets[currPageMembers].length; i < iLen; i++){
+                            var fName = contactsBuckets[currPageMembers][i]["FirstName"];
+                            var lName = contactsBuckets[currPageMembers][i]["LastName"];
+                            var cName = fName + " "+lName;
+                            var cOrgName = contactsBuckets[currPageMembers][i]["CompanyOrAccount"];
+                            
+                            var ytdSales = contactsBuckets[currPageMembers][i]["YTDSales"] !== null ? contactsBuckets[currPageMembers][i]["YTDSales"] : "";
+                            var email = contactsBuckets[currPageMembers][i]["Email"] !== null ? contactsBuckets[currPageMembers][i]["Email"] : "";
+                            var status = contactsBuckets[currPageMembers][i]["status"] !== null ? contactsBuckets[currPageMembers][i]["status"] : "";
+                            
+                            listHTML += '<li onclick="MyContacts.showMoreDetails(this);" data-contact-id="'+contactsBuckets[currPageMembers][i]["campId"]+'" style="position:relative;">'+
+                                            '<div class="icon-container slds-float--left">'+
+                                                '<span class="slds-icon_container slds-icon-standard-contact">'+
+                                                    '<svg aria-hidden="true" class="slds-icon slds-icon--medium">'+
+                                                        '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/SLDSv202/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>'+
+                                                    '</svg>'+
+                                                '</span>'+
+                                                '<span class="slds-hide slds-icon_container slds-icon-action-approval">'+
+                                                    '<svg aria-hidden="true" class="slds-icon slds-icon--medium">'+
+                                                        '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/SLDSv202/assets/icons/action-sprite/svg/symbols.svg#approval"></use>'+
+                                                    '</svg>'+
+                                                '</span>'+
+                                            '</div>'+
+                                            '<div class="slds-m-left--small">'+
+                                                '<div class="slds-text-heading--medium slds-truncate">'+cName+'</div>'+
+                                                '<div class="slds-text-heading--label slds-line-height--reset slds-truncate">'+cOrgName+'</div>'+
+                                            '</div>'+
+                                            '<div class="contact_list_more_details slds-m-top--medium slds-hide" style="margin-left:30px;">'+
+                                                '<div class="slds-grid slds-wrap slds-m-top--small">'+
+                                                    '<div class="slds-size--5-of-12 slds-p-horizontal--small slds-text-heading--label slds-p-left--none">YTD Sales</div>'+
+                                                    '<div class="slds-size--7-of-12 slds-p-horizontal--small slds-p-right--none">'+ytdSales+'</div>'+
+                                                '</div>'+
+                                                '<div class="slds-grid slds-wrap slds-m-top--small">'+
+                                                    '<div class="slds-size--5-of-12 slds-p-horizontal--small slds-text-heading--label slds-p-left--none">Email</div>'+
+                                                    '<div class="slds-size--7-of-12 slds-p-horizontal--small slds-p-right--none">'+email+'</div>'+
+                                                '</div>'+
+                                                '<div class="slds-grid slds-wrap slds-m-top--small">'+
+                                                    '<div class="slds-size--5-of-12 slds-p-horizontal--small slds-text-heading--label slds-p-left--none">Status</div>'+
+                                                    '<div class="slds-size--7-of-12 slds-p-horizontal--small slds-p-right--none">'+status+'</div>'+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<div style="position:absolute;top:20px;right:6px" onclick="MyContacts.openContactPage(\''+$.trim(contactsBuckets[currPageMembers][i]["campId"])+'\', event);">'+
+                                                '<span class="slds-icon_container slds-icon-action-more slds-icon_container--circle" style="padding:4px;">'+
+                                                    '<svg aria-hidden="true" class="slds-icon slds-icon--x-small">'+
+                                                        '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/SLDSv202/assets/icons/action-sprite/svg/symbols.svg#more"></use>'+
+                                                    '</svg>'+
+                                                '</span>'+
+                                            '</div>'+
+                                        '</li>';
+                        }
+                        
+                        if(clearFlag){
+                            $(".my-contacts-list-existing").html(listHTML);
+                        }
+                        else{
+                            $(".my-contacts-list-existing").append(listHTML);
+                        }
+                        
+                        $(".my-contacts-list-existing > li span.slds-icon-standard-contact").off("click").on("click", function(){
+                            var currElem = $(this).parents("li");
+                            $(this).toggleClass("slds-hide");
+                            $(this).next().toggleClass("slds-hide");
+                            currElem.addClass("selected");
+                            
+                            selectedContacts.push(currElem.data("contact-id"));
+                            
+                            return false;
+                        });
+                        
+                        $(".my-contacts-list-existing > li span.slds-icon-action-approval").off("click").on("click", function(){
+                            var currElem = $(this).parents("li");
+                            var currContactID = $(this).data("contact-id");
+                            var currIndex;
+                            
+                            $(this).toggleClass("slds-hide");
+                            $(this).prev().toggleClass("slds-hide");
+                            currElem.removeClass("selected");
+                            
+                            currIndex = selectedContacts.indexOf(currContactID);
+                            selectedContacts.splice(currIndex, 1);
+                            
+                            return false;
+                        });
+                    }
+                };
+                
+                var __eventListeners = function(){
+                    /*$(window).scroll(function() {
+                        if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                            if($(".tab_my_contacts").hasClass("slds-active")){
+                                //console.log("If", currPage);
+                                
+                                currPage++;
+                                __loadContacts();
+                            }
+                            else{
+                                //console.log("Else", currPageMembers);
+                                
+                                currPageMembers++;
+                                __loadExistingContacts();
+                            }
+                        }
+                    });*/
+                    
+                    $('.slds-tabs--default__content').on('scroll', function() {
+                        if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+                            //console.log('end reached');
+                            if($(".tab_my_contacts").hasClass("slds-active")){
+                                //console.log("If", currPage);
+                                
+                                currPage++;
+                                __loadContacts();
+                            }
+                            else{
+                                //console.log("Else", currPageMembers);
+                                
+                                currPageMembers++;
+                                __loadExistingContacts();
+                            }
+                        }
+                    });
+                    
+                    _setTabHeight();
+                };
+                
+                var __chunkArrayInGroups = function(array, unit) {
+                    var results = [],
+                        length = Math.ceil(array.length / unit);
+                    
+                    for (var i = 0; i < length; i++) {
+                        results.push(array.slice(i * unit, (i + 1) * unit));
+                    }
+                    return results;
+                }
+                
+                var _setTabHeight = function(){
+                    var tabH = $(window).height() - 82;
+                    console.log(tabH);
+                    $("#tab-default-1").css("height", tabH+"px");
+                    $("#tab-default-2").css("height", tabH+"px");
+                };
+                
+                var _setSelectedContacts = function(statusType){
+                    $("[id*='myContactsSelected']").val(statusType+","+selectedContacts.join(","));
+                    console.log($("[id*='myContactsSelected']").val());
+                    passValueToController();
+                };
+                
+                var _setSelectedMembers = function(statusType){
+                    $("input[type='hidden'][id*='extMemSelected']").val(statusType+","+selectedContacts.join(","));        
+                    console.log($("input[type='hidden'][id*='extMemSelected']").val);
+                    passExtMController();
+                };
+                
+                var _redirectToExistingMembers = function(){
+                    //_showLoader();
+                    $(".tab_existing_members a").trigger("click");
+                };
+                
+                var _showLoader = function(){
+                    if($(".slds").find(".mfs-spinner").length == 0){
+                        $(".slds").append('<div class="slds-spinner_container mfs-spinner">'+
+                                              '<div class="slds-spinner" role="alert">'+
+                                                  '<span class="slds-assistive-text">Loading</span>'+
+                                                  '<div><img src="/resource/SLDSv202/assets/images/spinners/slds_spinner_brand.gif" width="50" /></div>'+
+                                              '</div>'+
+                                          '</div>');
+                    }
+                };
+                
+                var _hideLoader = function(){
+                    $(".slds").find('.slds-spinner_container.mfs-spinner').remove();
+                };
+                
+                var _openContactPage = function(contactId, e){
+                    sforce.one.navigateToSObject(contactId);
+                    e.stopPropagation();
+                };
+                
+                var _showMoreDetails = function(currLi){
+                    $(".contact_list_more_details").addClass("slds-hide");
+                    $(currLi).find(".contact_list_more_details").removeClass("slds-hide");
+                };
+                
+                var _reInitializeContacts = function(resetFlag){
+                    var searchResultsJSON = $.trim($(".new_json_contacts").text());
+                    //console.log(searchResultsJSON);
+                    
+                    if(resetFlag){
+                        currPage = 0;
+                        $(".search-filters-container input").val("");
+                    }
+                    
+                    _initMyContacts(searchResultsJSON, true);
+                };
+                
+                return {
+                    initMyContacts : _initMyContacts,
+                    initExistingMembers : _initExistingMembers,
+                    openContactPage : _openContactPage,
+                    showMoreDetails : _showMoreDetails,
+                    reInitializeContacts : _reInitializeContacts,
+                    setSelectedContacts : _setSelectedContacts,
+                    setSelectedMembers : _setSelectedMembers,
+                    redirectToExistingMembers : _redirectToExistingMembers,
+                    showLoader : _showLoader,
+                    hideLoader : _hideLoader,
+                    setTabHeight : _setTabHeight
+                }
+            }(jQuery);
+            
+            j$(document).ready(function(){
+                MyContacts.showLoader();
+                MyContacts.initMyContacts('{!JSENCODE(JSONContacts)}');
+            });
+                
+            </script>
+            </head>
+            <body>
+                <apex:form >
+                    <apex:actionFunction name="rerenderEListSLDS" rerender="enhancedListPanelSLDS"/>
+                </apex:form>
+                <div class="slds">
+                    <div class="slds-container--fluid slds-p-around--small">
+                        <!-- Tabs -->
+                        <div class="slds-tabs--default" data-aljs="tabs">
+                            <ul class="slds-tabs--default__nav" role="tablist">
+                                <li class="slds-tabs--default__item slds-text-heading--label tab_my_contacts" title="Item One" role="presentation"><a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" data-aljs-show="tab-default-1">{!$Label.MyCamp_MyContact}</a></li>
+                                <li class="slds-tabs--default__item slds-text-heading--label tab_existing_members" title="Item Two" role="presentation"><a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" data-aljs-show="tab-default-2" onclick="MyContacts.showLoader();existingMemTableSLDS();">{!$Label.MyCamp_ExistingMembers}</a></li>
+                            </ul>
+                            <div id="tab-default-1" class="slds-tabs--default__content slds-hide" role="tabpanel">
+                                <apex:form >
+                                    <apex:actionFunction name="searchInMyContacts" action="{!searchInMyContacts}" rerender="contactsTableSLDS, myContacts-messageSLDS" onbeforedomupdate="onsearchStart()" oncomplete="makeMyContactsDataTableSLDS();" />
+                                    <apex:outputPanel id="mycontacts-block" layout="block">
+                                        <apex:outputPanel id="myContacts-messageSLDS" layout="block">
+                                            <apex:pageMessages />
+                                        </apex:outputPanel>
+                                        
+                                        <div class="slds-clearfix view-as-container">
+                                            <div class="slds-float--right"> 
+                                                <div data-select="single" data-scope="single" name="View As">
+                                                    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                                                        <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
+                                                            <use xlink:href="{!URLFOR($Resource.SLDSv202,'/assets/icons/utility-sprite/svg/symbols.svg#search')}"></use>
+                                                        </svg>
+                                                        <input id="viewAsLookUp" value ="{!campaignRec.Other_Contact__c}" class="slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded="true"  placeholder="View As" onkeyup="searchUsers(this.value)" aria-activedescendant="SrchDrpDwn"/>
+                                                        <div class="slds-lookup">
+                                                            <div class="slds-lookup__menu" role="listbox" id="SrchDrpDwn" style="display:none;">
+                                                                <div class="slds-lookup__item"></div>
+                                                                <ul class="slds-lookup__list" role="presentation" id="searchResultsUL" style="max-height: 100px;">  </ul>                                                                 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                            </div> 
+                                            <apex:actionFunction name="setUserId" action="{!getOtherContact}" reRender="contactsTableSLDS, myContacts-messageSLDS" oncomplete="hideLoading();MyContacts.reInitializeContacts();">
+                                                <apex:param name="selectedRow" assignTo="{!campaignRec.Other_Contact__c}" value=""/>                            
+                                            </apex:actionFunction>
+                                        </div>
+                                        
+                                        <div class="search-filters-container">
+                                            <ul>
+                                                <li>
+                                                    <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                        <div class="slds-size--12-of-12">
+                                                            {!$Label.MyCamp_Name}
+                                                        </div>
+                                                        <div class="slds-size--12-of-12">
+                                                            <apex:inputText value="{!searchMCName}" styleClass="slds-input searchBox"/>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                        <div class="slds-size--12-of-12">
+                                                            {!$Label.MyCamp_Organization}
+                                                        </div>
+                                                        <div class="slds-size--12-of-12">
+                                                            <apex:inputText value="{!searchMCOrg}" styleClass="slds-input searchBox"/>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                        <div class="slds-size--12-of-12">
+                                                            {!$Label.MyCamp_City}
+                                                        </div>
+                                                        <div class="slds-size--12-of-12">
+                                                            <apex:inputText value="{!searchMCCity}" styleClass="slds-input searchBox"/>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                        <div class="slds-size--12-of-12">
+                                                            {!$Label.MyCamp_State}
+                                                        </div>
+                                                        <div class="slds-size--12-of-12">
+                                                            <apex:inputText value="{!searchMCState}" styleClass="slds-input searchBox"/>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                        <div class="slds-size--12-of-12">
+                                                            {!$Label.MyCamp_Country}
+                                                        </div>
+                                                        <div class="slds-size--12-of-12">
+                                                            <apex:inputText value="{!searchMCCountry}" styleClass="slds-input searchBox"/>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                        <div class="slds-size--12-of-12">
+                                                            {!$Label.MyCamp_Zone}
+                                                        </div>
+                                                        <div class="slds-size--12-of-12">
+                                                            <apex:inputText value="{!searchMCZone}" styleClass="slds-input searchBox"/>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                        <div class="slds-size--12-of-12">
+                                                            {!$Label.MyCamp_ContactRole}
+                                                        </div>
+                                                        <div class="slds-size--12-of-12">
+                                                            <apex:inputText value="{!searchMCContRole}" styleClass="slds-input searchBox"/>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                        <div class="slds-size--12-of-12">
+                                                            Org Type
+                                                        </div>
+                                                        <div class="slds-size--12-of-12">
+                                                            <apex:inputText value="{!searchMCOrgType}" styleClass="slds-input searchBox"/>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                        <div class="slds-size--12-of-12">
+                                                            Region
+                                                        </div>
+                                                        <div class="slds-size--12-of-12">
+                                                            <apex:inputText value="{!searchMCRegion}" styleClass="slds-input searchBox"/>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="slds-grid slds-wrap slds-m-top--medium">
+                                            <div class="slds-size--12-of-12">
+                                                <apex:commandbutton value="{!$Label.MyCamp_Search}" action="{!searchInMyContacts}" styleClass="slds-button slds-button--brand" 
+                                                                    rerender="contactsTableSLDS, myContacts-messageSLDS"  onclick="MyContacts.showLoader();" oncomplete="MyContacts.hideLoader();MyContacts.reInitializeContacts();" />
+                                                <apex:commandbutton value="{!$Label.MyCamp_Reset}" action="{!refreshMyContacts}"  styleClass="slds-button slds-button--brand" 
+                                                                    rerender="mycontacts-block, contactsTableSLDS" onclick="MyContacts.showLoader();" oncomplete="MyContacts.hideLoader();MyContacts.reInitializeContacts(true);" />
+                                            </div>
+                                        </div>
+                                    </apex:outputPanel>
+                                    
+                                    <apex:outputPanel layout="block" id="contactsTableSLDS" styleClass="myContactsTableContainer">
+                                        <span class="slds-hide new_json_contacts">{!JSONContacts}</span>
+                                        <apex:inputHidden value="{!selectedContact}" id="myContactsSelected" />
+                                    </apex:outputPanel>
+                                    
+                                    
+                                    <div class="slds-clearfix slds-m-top--large">
+                                       <!-- <div class="slds-float--left">
+                                            <apex:commandButton value="{!$Label.MyCamp_AddAll}" action="{!addAllContactsSF1}" styleClass="slds-button slds-button--neutral" rerender="existingMemTableSLDS" oncomplete="MyContacts.redirectToExistingMembers();" /> 
+                                        </div> -->
+                                        <div class="slds-float--left slds-m-left--small">
+                                            <div class="menuButton menuButtonActivated" style="position: relative;">
+                                                <button class="slds-button slds-button--neutral" onclick="openMenuButton(this, event);return false;">
+                                                    {!$Label.MyCamp_AddWithStatus}
+                                                    <svg aria-hidden="true" class="slds-button__icon slds-button__icon--right">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/SLDSv202/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                                    </svg>
+                                                </button>
+                                                
+                                                <div class="menuButtonListContainer"> 
+                                                    <div> 
+                                                        <apex:outputLink onclick="MyContacts.showLoader();MyContacts.setSelectedContacts('Sent');return false;">{!$Label.MyCamp_Sent}</apex:outputLink>                                                                  
+                                                    </div>
+                                                    <div> 
+                                                        <apex:outputLink onclick="MyContacts.showLoader();MyContacts.setSelectedContacts('Responded');return false;">{!$Label.MyCamp_Responded}</apex:outputLink>                                      
+                                                    </div>
+                                                    <div> 
+                                                        <apex:outputLink onclick="MyContacts.showLoader();MyContacts.setSelectedContacts('Not Sent');return false;">{!$Label.MyCamp_NotSent}</apex:outputLink>                                      
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    
+                                    <apex:actionFunction name="passValueToController" action="{!addCampMemberSF1}" rerender="myContactsSelected,existingMemTableSLDS" oncomplete="MyContacts.initMyContacts('{!JSENCODE(JSONContacts)}', true);MyContacts.redirectToExistingMembers();" /> 
+                                    
+                                    <div class="slds-m-top--medium">
+                                        <ul class="my-contacts-list"></ul>
+                                    </div>
+                                    
+                                </apex:form>
+                                
+                                <br/>
+                            </div>
+                            <div id="tab-default-2" class="slds-tabs--default__content slds-hide" role="tabpanel">
+                                <apex:form >     
+                                    <apex:actionFunction name="existingMemTableSLDS" action="{!getExistingmember1}" rerender="existingMemTableSLDS" oncomplete="MyContacts.hideLoader();MyContacts.initExistingMembers(true);" />
+                                    <!--<apex:outputPanel id="existingMem-block" >                           
+                                    <apex:outputPanel id="existingMem-messageSLDS">
+                                    <apex:pageMessages />
+                                    </apex:outputPanel>
+                                    </apex:outputPanel>-->
+                                    <apex:outputPanel id="existingMemTableSLDS" layout="block" styleClass="myContactsTableContainer">
+                                        <span class="new_json_members slds-hide">{!JSONMembers}</span>
+                                        
+                                        <div class="slds-grid slds-wrap">
+                                            <div class="slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12">
+                                                
+                                                <apex:selectRadio value="{!selectedOption}" onchange="MyContacts.showLoader();toggleExistingMembers();" >
+                                                    <apex:selectOptions value="{!items}" />
+                                                </apex:selectRadio>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <apex:actionFunction name="refreshUserName" rerender="selectedUserNamePanel"/>
+                                        <apex:outputPanel layout="block" id="selectedUserNamePanel" rendered="{!selectedOption == 'MCM'}" styleClass="slds-m-top--medium">
+                                            <div align="right">                             
+                                                <apex:outputLabel value="{!$Label.MyCamp_ViewingAs} "/> 
+                                                <apex:outputText value="{!selectedUserName}" />
+                                            </div> 
+                                        </apex:outputPanel>
+                                        <apex:actionFunction name="toggleExistingMembers" action="{!toggleExistingMembers}" rerender="existingMemTableSLDS" oncomplete="MyContacts.hideLoader();MyContacts.initExistingMembers(true);"/>
+                                        <apex:inputHidden value="{!selectedMember}" id="extMemSelected" />
+                                        
+                                    </apex:outputPanel>
+                                    
+                                    <div class="slds-clearfix slds-m-top--large">
+                                        <div class="slds-float--left">       
+                                            <apex:commandButton value="{!$Label.MyCamp_Remove}" onclick="MyContacts.showLoader();MyContacts.setSelectedMembers('Remove'); return false;" styleClass="slds-button slds-button--neutral" />
+                                        </div>
+                                        <div class="slds-float--left slds-m-left--small">
+                                            <div class="menuButton menuButtonActivated" style="position: relative;">
+                                                <button class="slds-button slds-button--neutral" onclick="openMenuButton(this, event);return false;">
+                                                    {!$Label.MyCamp_UpdateWithStatus}
+                                                    <svg aria-hidden="true" class="slds-button__icon slds-button__icon--right">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/SLDSv202/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                                    </svg>
+                                                </button>
+                                                
+                                                <div class="menuButtonListContainer"> 
+                                                    <div onclick="MyContacts.showLoader();MyContacts.setSelectedMembers('Sent'); return false;"><apex:outputLink > {!$Label.MyCamp_Sent}</apex:outputLink></div>
+                                                    <div onclick="MyContacts.showLoader();MyContacts.setSelectedMembers('Responded'); return false;"><apex:outputLink > {!$Label.MyCamp_Responded}</apex:outputLink></div>
+                                                    <div onclick="MyContacts.showLoader();MyContacts.setSelectedMembers('Not Sent'); return false;"><apex:outputLink > {!$Label.MyCamp_NotSent}</apex:outputLink></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                            
+                                    <apex:actionFunction name="passExtMController" action="{!updateRemoveMembers}" rerender="existingMemTableSLDS,existingMem-messageSLDS" oncomplete="MyContacts.hideLoader();MyContacts.initExistingMembers(true);" />
+                                    
+                                    <div class="slds-m-top--medium">
+                                        <ul class="my-contacts-list-existing"></ul>
+                                    </div>
+                                    
+                                </apex:form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </html>
+        <!-- SLDS Section Ends -->
+    </apex:outputPanel>
+   
+    <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme4d'}">
+        <!-- SLDS Section -->
+        <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <style>
+                .dataTables_filter{margin-bottom:10px;}
+                table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr{background:#FFF;}
+                table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{background:#FFF !important;}
+                table.dataTable.display tbody tr > .sorting_1, 
+                table.dataTable.order-column tbody tr > .sorting_1{background:#FFF !important;}            
+                table.dataTable{border-radius:0 !important;border:1px solid #e0e3e5 !important;background:none !important;}
+                table.dataTable thead tr{background:#f2f3f3;}
+                table.dataTable thead tr th{border-right:1px solid #e0e3e5;}
+                table.dataTable thead th, table.dataTable thead td{padding:4px 18px !important;}
+                table.dataTable tbody th, table.dataTable tbody td{padding:0 10px !important;height:30px;border-bottom:1px solid #e0e3e5;}
+                .dataTables_wrapper{min-height:605px;}
+                .show{visibility:visible;}
+                .hide{visibility:hidden;}            
+                #myContactsTableContainer{padding:0 9px;}
+                .menuButtonListContainer{top:33px;z-index:999;}
+                
+                .message{margin:0 !important;background-color:#FFF !important;}
+                .search-filters-container ul{margin:0;padding:0;display:block;overflow:hidden;}
+                .search-filters-container ul li{width:200px;float:left;margin:0 16px 0 0;padding:0;}
+                .view-as-container > div:first-child{width:15%;margin-right:9px;}
+                @media only screen and (max-width: 20rem){
+                    table.dataTable tbody th, table.dataTable tbody td{height:36px;}
+                    table.dataTable ul li{margin:0;padding:10px 0;}
+                    table.dataTable ul li span.dtr-title{font-weight:bold;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                
+                    .search-filters-container ul li{width:100%;float:none;margin:0;padding:0;}
+                    [id*='mycontacts-block']{border-bottom:1px solid #d8dde6;padding-bottom:20px;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                    .dataTables_wrapper{min-height:0;}
+                    .view-as-container > div:first-child{width:100%;float:none;margin-right:0;}
+                }
+                @media only screen and (min-width: 20.0625em) and (max-width:47.937em) {
+                    table.dataTable tbody th, table.dataTable tbody td{height:36px;}
+                    table.dataTable ul li{margin:0;padding:10px 0;}
+                    table.dataTable ul li span.dtr-title{font-weight:bold;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                
+                    .search-filters-container ul li{width:100%;float:none;margin:0;padding:0;}
+                    [id*='mycontacts-block']{border-bottom:1px solid #d8dde6;padding-bottom:20px;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                    .dataTables_wrapper{min-height:0;}
+                    .view-as-container > div:first-child{width:100%;float:none;margin-right:0;}
+                }
+                @media only screen and (min-device-width: 768px) and (max-device-width:1024px) and (orientation:landscape) {
+                    table.dataTable tbody th, table.dataTable tbody td{height:36px;}
+                    table.dataTable ul li{margin:0;padding:10px 0;}
+                    table.dataTable ul li span.dtr-title{font-weight:bold;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                
+                    .search-filters-container ul li{width:317px;float:left;}
+                    .search-filters-container ul li:nth-child(3n){margin-right:0;}
+                
+                    [id*='mycontacts-block']{border-bottom:1px solid #d8dde6;padding-bottom:20px;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                    .dataTables_wrapper{min-height:0;}
+                    .view-as-container > div:first-child{width:25%;margin-right:0;}
+                }
+                @media only screen and (min-device-width: 768px) and (max-device-width:1024px) and (orientation:portrait) {
+                    table.dataTable tbody th, table.dataTable tbody td{height:36px;}
+                    table.dataTable ul li{margin:0;padding:10px 0;}
+                    table.dataTable ul li span.dtr-title{font-weight:bold;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}   
+                
+                    .search-filters-container ul li{width:232px;float:left;}
+                    .search-filters-container ul li:nth-child(3n){margin-right:0;}
+                    
+                    [id*='mycontacts-block']{border-bottom:1px solid #d8dde6;padding-bottom:20px;}
+                    .dataTables_length{margin-top:10px;}
+                    .dataTables_paginate{margin-top:20px !important;}
+                    .dataTables_wrapper{min-height:0;}
+                    .view-as-container > div:first-child{width:25%;margin-right:0;}
+                }
+            </style>
+            <apex:stylesheet value="{!URLFOR($Resource.SLDSv202, '/assets/styles/salesforce-lightning-design-system.min.css')}" />
+           
+            <script type="text/javascript" language="javascript" src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.js">
+            </script>
+            <apex:form >
+                <apex:actionFunction name="rerenderEListSLDS" rerender="enhancedListPanelSLDS"/>
+            </apex:form>
+            <div class="slds" style="margin:20px!important;">
+                <!-- Tabs -->
+                <div class="slds-tabs--default" data-aljs="tabs">
+                    <ul class="slds-tabs--default__nav" role="tablist">
+                        <li class="slds-tabs--default__item slds-text-heading--label" title="Item One" role="presentation"><a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" data-aljs-show="tab-default-1">{!$Label.MyCamp_MyContact}</a></li>
+                        <li class="slds-tabs--default__item slds-text-heading--label" title="Item Two" role="presentation"><a class="slds-tabs--default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" data-aljs-show="tab-default-2" onclick="reRenderExtTableOnce();">{!$Label.MyCamp_ExistingMembers}</a></li>
+                    </ul>
+                    <div id="tab-default-1" class="slds-tabs--default__content slds-hide" role="tabpanel">
+                        <apex:form >
+                            <apex:actionFunction name="searchInMyContacts" action="{!searchInMyContacts}" rerender="contactsTableSLDS, myContacts-messageSLDS, paginationPanelSLDS" onbeforedomupdate="onsearchStart()" oncomplete="makeMyContactsDataTableSLDS();" />
+                            <apex:outputPanel id="mycontacts-block" layout="block">
+                                
+                                <apex:outputPanel id="myContacts-messageSLDS" layout="block">
+                                    <apex:pageMessages />
+                                </apex:outputPanel>
+                                
+                                <div class="slds-clearfix view-as-container">
+                                    <div class="slds-float--right"> 
+                                        <div data-select="single" data-scope="single" name="View As">
+                                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                                                <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
+                                                    <use xlink:href="{!URLFOR($Resource.SLDSv202,'/assets/icons/utility-sprite/svg/symbols.svg#search')}"></use>
+                                                </svg>
+                                                <input id="viewAsLookUp" value ="{!campaignRec.Other_Contact__c}" class="slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded="true"  placeholder="View As" onkeyup="searchUsers(this.value)" aria-activedescendant="SrchDrpDwn"/>
+                                                <div class="slds-lookup">
+                                                    <div class="slds-lookup__menu" role="listbox" id="SrchDrpDwn" style="display:none;">
+                                                        <div class="slds-lookup__item"></div>
+                                                        <ul class="slds-lookup__list" role="presentation" id="searchResultsUL" style="max-height: 100px;">  </ul>                                                                 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div> 
+                                    <apex:actionFunction name="setUserId" action="{!getOtherContact}" reRender="contactsTableSLDS" oncomplete="makeMyContactsDataTableSLDS();hideLoading();">
+                                        <apex:param name="selectedRow" assignTo="{!campaignRec.Other_Contact__c}" value=""/>                            
+                                    </apex:actionFunction>
+                                </div>
+                                
+                                <div class="search-filters-container">
+                                    <ul>
+                                        <li>
+                                            <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                <div class="slds-size--12-of-12">
+                                                    {!$Label.MyCamp_Name}
+                                                </div>
+                                                <div class="slds-size--12-of-12">
+                                                    <apex:inputText value="{!searchMCName}" styleClass="slds-input searchBox"/>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                <div class="slds-size--12-of-12">
+                                                    {!$Label.MyCamp_Organization}
+                                                </div>
+                                                <div class="slds-size--12-of-12">
+                                                    <apex:inputText value="{!searchMCOrg}" styleClass="slds-input searchBox"/>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                <div class="slds-size--12-of-12">
+                                                    {!$Label.MyCamp_City}
+                                                </div>
+                                                <div class="slds-size--12-of-12">
+                                                    <apex:inputText value="{!searchMCCity}" styleClass="slds-input searchBox"/>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                <div class="slds-size--12-of-12">
+                                                    {!$Label.MyCamp_State}
+                                                </div>
+                                                <div class="slds-size--12-of-12">
+                                                    <apex:inputText value="{!searchMCState}" styleClass="slds-input searchBox"/>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                <div class="slds-size--12-of-12">
+                                                    {!$Label.MyCamp_Country}
+                                                </div>
+                                                <div class="slds-size--12-of-12">
+                                                    <apex:inputText value="{!searchMCCountry}" styleClass="slds-input searchBox"/>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                <div class="slds-size--12-of-12">
+                                                    {!$Label.MyCamp_Zone}
+                                                </div>
+                                                <div class="slds-size--12-of-12">
+                                                    <apex:inputText value="{!searchMCZone}" styleClass="slds-input searchBox"/>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                <div class="slds-size--12-of-12">
+                                                    {!$Label.MyCamp_ContactRole}
+                                                </div>
+                                                <div class="slds-size--12-of-12">
+                                                    <apex:inputText value="{!searchMCContRole}" styleClass="slds-input searchBox"/>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                <div class="slds-size--12-of-12">
+                                                   Org Type
+                                                </div>
+                                                <div class="slds-size--12-of-12">
+                                                    <apex:inputText value="{!searchMCOrgType}" styleClass="slds-input searchBox"/>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                                <div class="slds-size--12-of-12">
+                                                    Region
+                                                </div>
+                                                <div class="slds-size--12-of-12">
+                                                    <apex:inputText value="{!searchMCRegion}" styleClass="slds-input searchBox"/>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                
+                                <div class="slds-grid slds-wrap slds-m-top--medium">
+                                    <div class="slds-size--12-of-12">
+                                        <apex:commandbutton value="{!$Label.MyCamp_Search}" action="{!searchInMyContacts}" styleClass="slds-button slds-button--brand" 
+                                                            rerender="contactsTableSLDS, myContacts-messageSLDS, paginationPanelSLDS"  onclick="onsearchStart()" oncomplete="makeMyContactsDataTableSLDS()" />
+                                        <apex:commandbutton value="{!$Label.MyCamp_Reset}" action="{!refreshMyContacts}"  styleClass="slds-button slds-button--brand" 
+                                                            rerender="mycontacts-block, contactsTableSLDS, paginationPanelSLDS" onclick="onsearchStart()" oncomplete="makeMyContactsDataTableSLDS()" />
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                            <apex:outputPanel id="contactsTableSLDS" layout="block" styleClass="myContactsTableContainer">
+                                <apex:inputHidden value="{!selectedContact}" id="myContactsSelected" />
+                                <div class="slds-clearfix slds-m-top--large">
+                                  <!--  <div class="slds-float--left">
+                                        <apex:commandButton value="{!$Label.MyCamp_AddAll}" action="{!addAllContacts}" styleClass="slds-button slds-button--neutral" /> 
+                                    </div> -->
+                                    <div class="slds-float--left slds-m-left--small">
+                                        <div class="menuButton menuButtonActivated" style="position: relative;">
+                                            <button class="slds-button slds-button--neutral" onclick="openMenuButton(this, event);return false;">
+                                                {!$Label.MyCamp_AddWithStatus}
+                                                <svg aria-hidden="true" class="slds-button__icon slds-button__icon--right">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/SLDSv202/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                                </svg>
+                                            </button>
+                                            
+                                            <div class="menuButtonListContainer"> 
+                                                <div> 
+                                                    <apex:outputLink onclick="setSelectedContacts('Sent');"> {!$Label.MyCamp_Sent}  </apex:outputLink>                                                                  
+                                                </div>
+                                                <div> 
+                                                    <apex:outputLink onclick="setSelectedContacts('Responded');"> {!$Label.MyCamp_Responded}  </apex:outputLink>                                      
+                                                </div>
+                                                <div> 
+                                                    <apex:outputLink onclick="setSelectedContacts('Not Sent');"> {!$Label.MyCamp_NotSent} </apex:outputLink>                                      
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                                
+                                <apex:actionFunction name="passValueToController" action="{!addCampMember}" rerender="myContactsSelected" onComplete="makeMyContactsDataTableSLDS(); onsearchEnd();"/> 
+                                <apex:outputPanel layout="none" rendered="{!userType=='Retail'}">
+                                    <table id="myContactsTableSLDS" class="slds-table slds-table--bordered" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:2%;position:relative;left:-8px;"> <apex:inputCheckbox id="selectAllSLDS" styleclass="slds-checkbox" /> </th> 
+                                                <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Name}</th>
+                                                <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Organization}</th>
+                                                <th style="width:20%; !important" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Street}</th>
+                                                <th style="width:10% !important" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_City}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_State}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Country}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Email}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_YTDSalesUSD}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_LastActivity}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_ContactRole}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">Org Type</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">Region</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <apex:repeat value="{!MyContactsList}" var="myCont"> 
+                                                <tr>
+                                                    <td style="width:2%;"><apex:inputCheckbox value="{!myCont.isSelected}" styleclass="slds-checkbox"/> <span class="current_record_id" style="display:none">{!myCont.cont.id}</span> </td>
+                                                    <td class="slds-truncate"><apex:outputLink value="/{!myCont.cont.id}">{!myCont.cont.Name}</apex:outputLink></td>
+                                                    <td class="slds-truncate"><apex:outputLink value="/{!myCont.cont.AccountId}">{!myCont.cont.Account.Name}</apex:outputLink></td>
+                                                    <td class="slds-truncate">{!myCont.cont.MailingStreet}</td>
+                                                    <td class="slds-truncate">{!myCont.cont.MailingCity}</td>
+                                                    <td class="slds-truncate">{!myCont.cont.MailingState}</td>
+                                                    <td class="slds-truncate">{!myCont.cont.MailingCountry}</td>
+                                                    <td class="slds-truncate">{!myCont.cont.Email}</td>
+                                                    <td class="slds-truncate">{!myCont.cont.YTD_Sales_in_USD__c}</td>
+                                                    <td class="slds-truncate"><apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                                        <apex:param value="{!myCont.cont.LastActivityDate}" /> 
+                                                        </apex:outputText>
+                                                    </td>  
+                                                    <td class="slds-truncate">{!myCont.cont.Contact_Role__c}</td>
+                                                    <td class="slds-truncate">{!myCont.cont.Org_Type__c}</td>
+                                                <td class="slds-truncate">{!myCont.cont.Region__c}</td>
+                                                </tr>
+                                            </apex:repeat>  
+                                        </tbody>
+                                    </table>
+                                </apex:outputPanel>
+                                <apex:outputPanel layout="none" rendered="{!userType!='Retail'}">
+                                    <table id="myContactsTableSLDS" class="slds-table slds-table--bordered" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:2%;position:relative;left:-8px;"> <apex:inputCheckbox id="selectAllSLDSInst" styleclass="slds-checkbox" /> </th> 
+                                                <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Name}</th>
+                                                <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Organization}</th>
+                                                <th style="width:20%; !important" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Street}</th>
+                                                <th style="width:10% !important" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_City}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_State}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Country}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Email}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_YTDSalesUSD}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_LastActivity}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_ContactRole}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">Org Type</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">Region</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_KeyRM} <br/>{!$Label.MyCamp_Contact}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_KeyCSM} <br/>{!$Label.MyCamp_Contact}</th>
+                                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_KeySales} <br/>{!$Label.MyCamp_Contact}</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <apex:repeat value="{!MyContactsList}" var="myCont"> 
+                                                <tr>
+                                                    <td style="width:2%;"><apex:inputCheckbox value="{!myCont.isSelected}" styleclass="slds-checkbox"/> <span class="current_record_id" style="display:none">{!myCont.cont.id}</span> </td>
+                                                    <td class="slds-truncate"><apex:outputLink value="/{!myCont.cont.id}">{!myCont.cont.Name}</apex:outputLink></td>
+                                                    <td class="slds-truncate"><apex:outputLink value="/{!myCont.cont.AccountId}">{!myCont.cont.Account.Name}</apex:outputLink></td>
+                                                    <td class="slds-truncate">{!myCont.cont.MailingStreet}</td>
+                                                    <td class="slds-truncate">{!myCont.cont.MailingCity}</td>
+                                                    <td class="slds-truncate">{!myCont.cont.MailingState}</td>
+                                                    <td class="slds-truncate">{!myCont.cont.MailingCountry}</td>
+                                                    <td class="slds-truncate">{!myCont.cont.Email}</td>
+                                                    <td class="slds-truncate">{!myCont.cont.YTD_Sales_in_USD__c}</td>
+                                                    <td class="slds-truncate"><apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                                        <apex:param value="{!myCont.cont.LastActivityDate}" /> 
+                                                        </apex:outputText>
+                                                    </td> 
+                                                    <td class="slds-truncate">{!myCont.cont.Contact_Role__c}</td>
+                                                    <td class="slds-truncate">{!myCont.cont.Org_Type__c}</td>
+                                                <td class="slds-truncate">{!myCont.cont.Region__c}</td>
+                                                    <td class="slds-truncate"><apex:outputField value="{!myCont.cont.Key_RM_Contact__c}"/></td>
+                                                    <td class="slds-truncate"><apex:outputField value="{!myCont.cont.Key_CSM_Contact__c}"/></td>
+                                                    <td class="slds-truncate"><apex:outputField value="{!myCont.cont.Key_Sales_Contact__c}"/></td>
+                                                </tr>
+                                            </apex:repeat>  
+                                        </tbody>
+                                    </table>
+                                </apex:outputPanel>
+                                
+                                <apex:outputPanel id="paginationPanelSLDS" layout="block">
+                                    <center>
+                                        <apex:outputPanel rendered="{!noOfRecords>size}">
+                                            <hr/>
+                                            <apex:commandButton status="fetchStatus" value="Previous" action="{!getpreviousContacts}" disabled="{!!myInstContacts.hasPrevious}"
+                                                                rerender="contactsTableSLDS, paginationPanelSLDS" onclick="onsearchStart()" oncomplete="makeMyContactsDataTableSLDS()"/> 
+                                            
+                                            <apex:commandButton status="fetchStatus" value="Next" action="{!getNextContacts}" disabled="{!!myInstContacts.hasNext}"
+                                                                rerender="contactsTableSLDS, paginationPanelSLDS" onclick="onsearchStart()" oncomplete="makeMyContactsDataTableSLDS()"/> 
+                                            
+                                            <apex:outputText >{!(myInstContacts.pageNumber * size)+1-size}-{!IF((myInstContacts.pageNumber * size)>noOfRecords, noOfRecords,
+                                                (myInstContacts.pageNumber * size))} of {!noOfRecords}
+                                            </apex:outputText>
+                                        </apex:outputPanel>
+                                    </center>
+                                    <apex:outputPanel >                      
+                                        <apex:actionStatus id="fetchStatus" >
+                                            <apex:facet name="start" >
+                                                <img src="/img/loading.gif" />                    
+                                            </apex:facet>
+                                        </apex:actionStatus>
+                                    </apex:outputPanel> 
+                                    
+                                </apex:outputPanel>
+                                <div class="total-rows-section">
+                                    <span>{!$Label.MyCamp_TotalRowsSelected} </span>
+                                    <span class="total_rows_selected_slds">0</span>
+                                </div>
+                            </apex:outputPanel>
+                        </apex:form>
+                        
+                        <br/>
+                    </div>
+                    <div id="tab-default-2" class="slds-tabs--default__content slds-hide" role="tabpanel">
+                        <apex:form >                       
+                            <apex:outputPanel id="existingMem-block" >                           
+                                <apex:outputPanel id="existingMem-messageSLDS">
+                                    <apex:pageMessages />
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                            <apex:outputPanel id="existingMemTableSLDS" layout="block" styleClass="myContactsTableContainer">
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12">
+                                        <apex:selectRadio value="{!selectedOption}" onchange="toggleExistingMembers();" >
+                                            <apex:selectOptions value="{!items}" />
+                                        </apex:selectRadio>
+                                    </div>
+                                </div>
+                                
+                                
+                                <apex:actionFunction name="refreshUserName" rerender="selectedUserNamePanel"/>
+                                <apex:outputPanel layout="block" id="selectedUserNamePanel" rendered="{!selectedOption == 'MCM'}" styleClass="slds-m-top--medium">
+                                    <div align="right">                             
+                                        <apex:outputLabel value="{!$Label.MyCamp_ViewingAs} "/> 
+                                        <apex:outputText value="{!selectedUserName}" />
+                                    </div> 
+                                </apex:outputPanel>
+                                <apex:actionFunction name="toggleExistingMembers" action="{!toggleExistingMembers}" rerender="existingMemTableSLDS" oncomplete="makeExtMemDataTableSLDS()"/>
+                                <apex:inputHidden value="{!selectedMember}" id="extMemSelected" />
+                                
+                                <div class="slds-clearfix slds-m-top--large">
+                                    <div class="slds-float--left">
+                                        <!--showLoading();-->         
+                                        <apex:commandButton value="{!$Label.MyCamp_Remove}" onclick="setSelectedMember('Remove');showLoading(); return false;" styleClass="slds-button slds-button--neutral" />
+                                    </div>
+                                    <div class="slds-float--left slds-m-left--small">
+                                        <div class="menuButton menuButtonActivated" style="position: relative;">
+                                            <button class="slds-button slds-button--neutral" onclick="openMenuButton(this, event);return false;">
+                                                {!$Label.MyCamp_UpdateWithStatus}
+                                                <svg aria-hidden="true" class="slds-button__icon slds-button__icon--right">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/SLDSv202/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                                </svg>
+                                            </button>
+                                            
+                                            <div class="menuButtonListContainer"> 
+                                                <div><apex:outputLink onclick="setSelectedMember('Sent'); return false;"> {!$Label.MyCamp_Sent}</apex:outputLink></div>
+                                                <div><apex:outputLink onclick="setSelectedMember('Responded'); return false;"> {!$Label.MyCamp_Responded}</apex:outputLink></div>
+                                                <div><apex:outputLink onclick="setSelectedMember('Not Sent'); return false;"> {!$Label.MyCamp_NotSent}</apex:outputLink></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                            
+                                <apex:actionFunction name="passExtMController" action="{!updateRemoveMembers}" rerender="existingMemTableSLDS,existingMem-messageSLDS" oncomplete="reSetCounter('extTable');makeExtMemDataTableSLDS();hideLoading();" />
+                                <table id="extMemTableSLDS" class="slds-table slds-table--bordered" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:2%;position:relative;left:-8px" > <apex:inputCheckbox id="selectAllExtSLDS" styleclass="slds-checkbox" /> </th> 
+                                            <!-- <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Action}</th> -->
+                                            <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Name}</th>
+                                            <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Organization}</th>
+                                            <th style="width:20%; !important" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Street}</th>
+                                            <th style="width:10% !important" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_City}</th>
+                                            <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_State}</th>
+                                            <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Country}</th>
+                                            <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Email}</th>
+                                            <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_Status}</th>
+                                            <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_YTDSalesUSD}</th>
+                                            <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.MyCamp_LastActivity}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!existingMemList}"  var="existingMember"> 
+                                            <tr>
+                                                <td style="width:2%;" class="slds-truncate"><apex:inputCheckbox value="{!existingMember.isSelected}" styleclass="slds-checkbox"/> <span class="current_record_id" style="display:none">{!existingMember.campMem.id}</span> </td>
+                                                <!-- <td style="width:5%;" class="slds-truncate">
+                                                <apex:outputLink value="/{!existingMember.campMem.id}/e" style="color: #015ba7!important;">{!$Label.MyCamp_Edit}</apex:outputLink>&nbsp;|&nbsp;                                                   
+                                                <apex:outputLink style="color: #015ba7!important;" onclick="removeMembers('{!existingMember.campMem.id}'); return false;">{!$Label.MyCamp_Remove}</apex:outputLink>
+                                                </td> -->
+                                                <td class="slds-truncate"><apex:outputLink value="/{!existingMember.campMem.id}">{!existingMember.campMem.LastName}<apex:outputText value=", {!existingMember.campMem.FirstName}" rendered="{!existingMember.campMem.FirstName!=''}"></apex:outputText></apex:outputLink></td>
+                                                <td class="slds-truncate">{!existingMember.campMem.CompanyOrAccount}></td>
+                                                <td class="slds-truncate">{!existingMember.campMem.Contact.MailingStreet}</td>
+                                                <td class="slds-truncate">{!existingMember.campMem.Contact.MailingCity}</td>
+                                                <td class="slds-truncate">{!existingMember.campMem.Contact.MailingState}</td>
+                                                <td class="slds-truncate">{!existingMember.campMem.Contact.MailingCountry}</td>
+                                                <td class="slds-truncate">{!existingMember.campMem.Contact.Email}</td>
+                                                <td class="slds-truncate">{!existingMember.campMem.Status}</td>
+                                                <td class="slds-truncate">{!existingMember.campMem.Contact.YTD_Sales_in_USD__c}</td>
+                                                <td class="slds-truncate"><apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                                    <apex:param value="{!existingMember.campMem.Contact.LastActivityDate}" /> 
+                                                    </apex:outputText>
+                                                </td>  
+                                            </tr>
+                                        </apex:repeat>  
+                                        <!-- <apex:actionFunction name="removeMembers" action="{!removeMembers}" reRender="existingMemTableSLDS" oncomplete="makeExtMemDataTableSLDS();">
+                                        <apex:param value="" assignTo="{!removeMemId}" name="removeMemId"/>
+                                        </apex:actionFunction> -->
+                                    </tbody>
+                                </table>  
+                                <div class="total-rows-section1">
+                                    <span>{!$Label.MyCamp_TotalRowsSelected} </span>
+                                    <span class="total_rows_selected1_slds">0</span>
+                                </div>
+                            </apex:outputPanel>
+                        </apex:form>
+                    </div>
+                </div>
+            </div>
+        </html>
+        <!-- SLDS Section Ends -->
+    </apex:outputPanel>
+ 
+</apex:page>

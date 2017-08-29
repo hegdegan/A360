@@ -1,0 +1,256 @@
+<!---
+Visualforce Page Name :  MFS_BusinessAtRiskUpdate
+Version               :  1.0 
+Created Date          :  20 JUL 2016
+Function              :  Business at Risk detail and edit page for Institutional
+--->
+<apex:page standardController="Business_at_Risk__c" tabStyle="Business_at_Risk__c" extensions="MFS_BusinessAtRiskController" title="{!$ObjectType.Business_at_Risk__c.Label}"
+           docType="html-5.0">
+    <apex:includeScript value="/support/console/30.0/integration.js"/>
+        <apex:includeScript value="{!URLFOR($Resource.JqueryMin, 'jqueryUI/jquery-1.11.1.min.js')}" />
+        <!--Javascript libararies for datepicker in lightning-->
+        <apex:includeScript value="{!URLFOR($Resource.moment,'/moment.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-init.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-datepicker.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-modal.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-pill.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.jQueryDate)}"/>
+        
+        <style>
+            .card-margins {
+            margin: 15px !important;
+            /* margin-top: 5px !important; */
+            }
+        </style>
+        
+        <script type="text/javascript">
+        //var assetsLocation = "{!URLFOR($Resource.SLDSv202,'/assets/icons/utility-sprite/svg/symbols.svg')}";
+        
+        function testSetTabTitle() {
+            //Set the current tab's title
+            sforce.console.setTabTitle('{!JSENCODE(Business_at_Risk__c.Name)}');
+        }
+        var pageLoad = window.onload;
+        window.onload = function() {
+            if (pageLoad) {
+                pageLoad();
+            }
+            testSetTabTitle();
+        }
+        j$=jQuery.noConflict();
+        j$(document).ready(function() {
+            if(Number('{!JSENCODE(TEXT(OpenActivities.size))}')>5)
+            {
+                j$("[id$='openAct']").addClass('slds-scrollable--y relList');
+            }
+            if(Number('{!JSENCODE(TEXT(ActivityHistories.size))}')>5)
+            {
+                j$("[id$='actHist']").addClass('slds-scrollable--y relList');
+            } 
+            if(Number('{!JSENCODE(TEXT(FAR.size))}')>5)
+            {
+                j$("[id$='farList']").addClass('slds-scrollable--y relList');
+            }
+            
+            j$.aljsInit({
+                assetsLocation: "/resource/SLDSv202"
+            });
+            
+            
+            
+        });
+        function openNewTab(productid,notename) {
+            var urlString = '/'+productid;
+            if(sforce.console.isInConsole())
+            {
+                sforce.console.openPrimaryTab(null, urlString, true, notename, true, notename);
+            }
+            else
+            {
+                window.open(urlString, '_blank');
+            }
+        }
+        function createFAR()
+        {
+            sforce.one.createRecord('Approval_Request__c','{!erRecordTypeId}');
+        }
+        
+        
+        
+        </script>
+        
+        
+        <apex:form >
+            <!--Classic View STARTS-->
+            
+            <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+                <apex:stylesheet value="{!URLFOR($Resource.MFS_UI_Assets, 'assets/styles/Business_At_Risk.css')}" />
+                <apex:sectionHeader title="{!$ObjectType.Business_at_Risk__c.Label}"/>
+                <apex:pageBlock >
+                    <apex:pageBlockSection title="{!$Label.BAR_Plans_and_Portfolios}" collapsible="false" columns="1">
+                        <apex:outputText value="" rendered="{!planLst.size==0}">{!$Label.BAR_Disp_Message1}</apex:outputText>
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+                <apex:pageMessages id="message"></apex:pageMessages>
+                <div onclick="copyToChildRows();">
+                    Refresh
+                </div>
+            <apex:actionFunction name="copyToChildRows" rerender="panel,message"/>
+            <apex:outputPanel layout="block" id="panel">
+                    <table class="outer-table-inst" scope="expandable-table" data-render-mode="edit">
+                        <thead>
+                            <tr class="table-header">
+                                <th width="27%" height="30px">{!$Label.BAR_Plan_Portfolio_Name}</th>
+                                <th width="26%">{!$Label.BAR_Strategy}</th>
+                                <th width="10%">{!$Label.BAR_AUM_in} {!userCurrency}<br/><h6 class="small-font-header">({!$Label.BAR_User_Currency})</h6></th>
+                                <th width="10%">{!$Label.BAR_AUM_in} {!clientCurrency} <br/><h6 class="small-font-header">({!$Label.BAR_Client_Currency})</h6></th>
+                                <th width="10%">{!$Label.BAR_Level}</th>
+                                <th width="8%">{!$Label.BAR_Percentage}<br/>{!$Label.BAR_At_Risk}</th>
+                                <th width="9%">{!$Label.BAR_Selected}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <apex:repeat value="{!planLst}" var="plan">
+                                <tr class="plan-detail-row" scope="expandable-row">
+                                    <td style="height:25px" data-label="{!Plan.barplans.Plan_Id__c}">
+                                        <b><apex:outputLink value="#" onClick="openNewTab('{!Plan.barplans.Plan__c}')">{!Plan.barplans.Plan_Name__c}</apex:outputLink></b>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        {!userCurrencySymbol}&nbsp; <apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                        <apex:param value="{!plan.userCurrency}"/>
+                                        </apex:outputText>
+                                    </td>
+                                    <td>
+                                        {!clientCurrencySymbol}&nbsp; <apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                        <apex:param value="{!plan.ClientCurrency}"/>
+                                        </apex:outputText>
+                                    </td>
+                                    <td>{!$Label.Level_Plan}</td>
+                                    <td>
+                                        <apex:outputText value="{!plan.percAtRisk}" rendered="{!plan.barPlans.Percentage_At_Risk__c!=null && isDetail == true && plan.barPlans.Selected__c == true}"/>
+                                        <apex:inputText value="{!plan.percAtRisk}" rendered="{!!isDetail && !plan.barPlans.Selected__c== false}" styleClass="textbox-small" id="numbersOnly" html-check-type="plan" />
+                                    </td>
+                                    <td><apex:outputField id="planCB" value="{!plan.barPlans.Selected__c}"/></td>
+                                </tr>
+                                <apex:repeat value="{!portfolioMap[plan.barPlans.Plan_ID__c]}" var="portf" >
+                                    <tr class="portfolio-row" scope="expanded-content" aria-expand-parent="{!Plan.barplans.Plan_Id__c}">
+                                        <td style="height:25px"><apex:outputLink value="#" onClick="openNewTab('{!portf.barPortfolio.Portfolio__c}')">{!portf.barPortfolio.Portfolio__r.Name}</apex:outputLink></td>
+                                        <td>{!portf.barPortfolio.Strategy__c}</td>
+                                        
+                                        <td>
+                                            {!userCurrencySymbol }&nbsp;<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!portf.userCurrency}"/>
+                                            </apex:outputText>
+                                        </td>
+                                        <td>
+                                            {!clientCurrencySymbol}&nbsp;<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                            <apex:param value="{!portf.clientCurrency}"/>
+                                            </apex:outputText>
+                                        </td>
+                                        <td>{!$Label.Level_Portfolio}</td>
+                                        <td>
+                                            <apex:outputText value="{!portf.percAtRisk}" styleClass="textbox-small" id="numbersOnly1" rendered="{!(portf.barPortfolio.Percentage_At_Risk__c!=null && isdetail==true) || plan.barPlans.Selected__c == true}"/>
+                                       		</td>
+                                        <td><apex:outputField id="planCB" value="{!portf.barPortfolio.Selected__c}"/></td>
+                                    </tr>
+                                </apex:repeat>
+                            </apex:repeat>
+                         </tbody>
+                    </table>
+                </apex:outputPanel>
+                <br/><br/>
+                
+                <apex:pageBlock rendered="{!!isDetail}" id="outerPanel">
+                    <apex:pageMessages />
+                    <apex:pageBlockSection columns="2" title="{!$Label.BAR_Business_at_Risk_Details}" collapsible="false">
+                        <apex:outputText value="{!Business_at_Risk__c.Name}"/>
+                        <apex:outputField value="{!Business_at_Risk__c.Organization__c}" />
+                        <apex:inputField value="{!Business_at_Risk__c.Reason_at_Risk__c}"/>
+                        <apex:InputField value="{!Business_at_Risk__c.Relationship_at_Risk_Date__c}"/>
+                        <apex:inputField value="{!Business_at_Risk__c.Percentage_at_Risk__c}"/>
+                        <apex:outputText label="{!$Label.BAR_Total_AUM}({!userCurrency})" value="{0, number,###,###,###,###,###,###,##0}" id="fields">
+                            {!userCurrencySymbol}&nbsp;<apex:param value="{!totalValueU}"/>
+                        </apex:outputText>
+                        <apex:inputField value="{!Business_at_Risk__c.Expected_Loss_Date__c}"/>
+                        <apex:outputText label="{!$Label.BAR_Total_AUM}({!ClientCurrency})" value="{0, number,###,###,###,###,###,###,##0}" id="fields1">
+                            {!clientCurrencySymbol}&nbsp;<apex:param value="{!totalValueC}"/>
+                        </apex:outputText>
+                        <apex:inputField value="{!Business_at_Risk__c.Status__c}"/>
+                        <apex:outputtext value=""/>
+                        <apex:outputtext value=""/>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="1">
+                        <!--apex:inputField value="{!Business_at_Risk__c.Description__c}"/-->
+                    </apex:pageBlockSection>
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:commandButton value="{!$Label.BAR_Save}" action="{!updateBAR}"/>
+                        <apex:commandButton value="{!$Label.BAR_Cancel}" action="{!cancel}"/>
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+                <apex:pageBlock rendered="{!isDetail}">
+                    
+                    <apex:pageBlockSection columns="2" title="{!$Label.BAR_Business_at_Risk_Details}" collapsible="false">
+                        <apex:OutputText value="{!Business_at_Risk__c.Name}"/>
+                        <apex:outputField value="{!Business_at_Risk__c.Organization__c}"/>
+                        <apex:outputField value="{!Business_at_Risk__c.Reason_at_Risk__c}"/>
+                        <apex:outputText value="{0,date,MM'/'dd'/'yyyy}" label="{!$ObjectType.Business_at_Risk__c.fields.Relationship_at_Risk_Date__c.Label}">
+                            <apex:param value="{!Business_at_Risk__c.Relationship_at_Risk_Date__c}" /> 
+                        </apex:outputText>
+                        <apex:outputField value="{!Business_at_Risk__c.Percentage_at_Risk__c}"/>
+                        <apex:outputText label="{!$Label.BAR_Total_AUM}({!userCurrency})" value="{0, number,###,###,###,###,###,###,##0}">
+                            {!userCurrencySymbol}&nbsp;<apex:param value="{!totalValueU}"/>
+                        </apex:outputText>
+                        
+                        <apex:outputText value="{0,date,MM'/'dd'/'yyyy}" label="{!$ObjectType.Business_at_Risk__c.fields.Expected_Loss_Date__c.Label}">
+                            <apex:param value="{!Business_at_Risk__c.Expected_Loss_Date__c}" /> 
+                        </apex:outputText>
+                        <apex:outputText label="{!$Label.BAR_Total_AUM}({!ClientCurrency})" value="{0, number,###,###,###,###,###,###,##0}">
+                            {!clientCurrencySymbol}&nbsp;<apex:param value="{!totalValueC}"/>
+                        </apex:outputText>
+                        
+                        <apex:outputField value="{!Business_at_Risk__c.Status__c}"/>
+                        <apex:outputtext value=""/>
+                        <apex:outputtext value=""/>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockSection columns="1">
+                        <apex:outputField value="{!Business_at_Risk__c.Description__c}"/>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:commandButton value="{!$Label.BAR_Edit}" action="{!Edit}"/>
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+            </apex:outputPanel>
+            <!--Classic View ENDS-->
+            
+            <!--SLDS View STARTS-->
+            
+            <!--SLDS View ENDS-->
+        </apex:form>
+        
+        <script src="{!URLFOR($Resource.MFS_BAR_Scripts)}">
+        </script>
+        <script>
+        var restrictNumbers = function () {
+            j$("[id*='numbersOnly']").keypress(function (e) {
+                //if the letter is not digit or if it is greater than 100-- don't type anything
+                var a= String.fromCharCode(e.which);
+                var b=this.value+a;
+                if (isNaN(a) || parseInt(b)>100) {
+                    return false;
+                }
+                
+            });
+        };
+        
+        j$(document).ready(function(){
+        	restrictNumbers();
+        });
+        </script>
+    <!--Standard Related Lists (only for classic)--> 
+    <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+        <apex:relatedList list="OpenActivities" rendered="{!isDetail}"/>
+        <apex:relatedList list="ActivityHistories" rendered="{!isDetail}"/>
+        <apex:relatedList list="Fee_Approval_Requests__r" rendered="{!isDetail}"/>
+    </apex:outputPanel>
+</apex:page>

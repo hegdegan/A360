@@ -1,0 +1,9 @@
+<!---
+Visualforce Page Name :  MFS_CompetitorProductSearchPage
+Version               :  1.0 
+Created Date          :  19 NOV 2016
+Function              :  Publisher action for Competitor Search page for mobile
+--->
+<apex:page standardController="Opportunity" extensions="MFS_CompetitorProdSearchRedirection" action="{!redirect}">
+
+</apex:page>

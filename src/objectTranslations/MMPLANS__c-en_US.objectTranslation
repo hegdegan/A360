@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Plan</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Plans</value>
+    </caseValues>
+    <fields>
+        <label><!-- Annual Contributions (Local Curr) --></label>
+        <name>ANN_CONTRIB_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Annual Contributions ($000) --></label>
+        <name>ANN_CONTRIB__c</name>
+    </fields>
+    <fields>
+        <label><!-- Asset Allocation Study --></label>
+        <name>ASSETACON__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Assets (Local Curr) --></label>
+        <name>ASSETS_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Assets ($000) --></label>
+        <name>ASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Local Currency Conversion Code --></label>
+        <name>CURR_CODE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Eligible Employees --></label>
+        <name>ELIGIBLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Amt Short Of or Over PBO --></label>
+        <name>FUNDED__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Link --></label>
+        <name>Firm_Link__c</name>
+        <relationshipLabel><!-- MMD Plans --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assumed Interest Rate --></label>
+        <name>INTRATE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Liabilities (Local Curr) --></label>
+        <name>LIABILITIES_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Liabilities --></label>
+        <name>LIABILITIES__c</name>
+    </fields>
+    <fields>
+        <label><!-- MFS Managed --></label>
+        <name>MFS_Managed__c</name>
+    </fields>
+    <fields>
+        <label><!-- MFS Mgr Count --></label>
+        <name>MFS_Mgr_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager Search --></label>
+        <name>MGRSCON__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Firm Profile --></label>
+        <name>MMD_Firm_Profile__c</name>
+        <relationshipLabel><!-- MMD Plans --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- NAIC --></label>
+        <name>NAIC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Participants --></label>
+        <name>PARTICIPANTS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Participant Directed --></label>
+        <name>PDIRECT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Performance Evaluation --></label>
+        <name>PERFECON__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan ID --></label>
+        <name>PLANID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Name --></label>
+        <name>PLAN_NAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Type Code --></label>
+        <name>PLAN_TYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Lookup --></label>
+        <name>Plan_Lookup__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Type --></label>
+        <name>Plan_Type_Desc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Self-Directed Brokerage --></label>
+        <name>SELFDIRECT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Sequence # --></label>
+        <name>SEQ_NO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Asset Valuation Date --></label>
+        <name>VALDATE__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

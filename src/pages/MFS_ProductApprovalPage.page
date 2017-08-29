@@ -1,0 +1,322 @@
+<!---
+Visualforce Page Name :  MFS_ProductApprovalPage
+Version               :  1.0 
+Created Date          :  1 JUN 2016
+Function              :  Product approval page on opportunity
+--->
+<apex:page standardController="Opportunity" extensions="MFS_ProductApproval" title="Product Approval for: {!opportunity.Name}" standardStylesheets="false">
+    <!--Style class for column width -->   
+    <style>
+        .fullcol{
+        width:80%;}
+    </style>
+    
+    <!--Product Details Section --> 
+    <apex:sectionHeader Title="{!$Label.PS_Manage} {!$ObjectType.Product2.LabelPlural}" subtitle="{!opportunity.Name}" rendered="{!$User.UIThemeDisplayed=='Theme3'}"/>
+    <apex:Pagemessages />
+    <apex:form id="form"> 
+        <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme3'}"><!--rendered="{!!isSF1Req}"-->
+            <apex:pageBlock title="{!$Label.PS_Selected} {!$ObjectType.Product2.LabelPlural}" id="selected">    
+           <apex:outputPanel id="innertab1">                  
+                    <apex:pageblockTable value="{!oppLineItems}" var="s" >
+                        <apex:column headerValue="{!$Label.Product_Geography_Class}" value="{!s.Asset_Class_Geography__c}" />  
+                        <apex:column headerValue="{!$Label.Product_Name}" value="{!s.Product_Name__c}" />  
+                        <apex:column headerValue="{!$Label.Portfolio_Name}" value="{!s.Portfolio_Name__c}" />  
+                        <apex:column headerValue="{!$Label.Product_Vehicle}" value="{!s.Product_Vehicle__c}" />  
+                        <apex:column headerValue="{!$Label.Product_Restricted}" value="{!s.Restricted__c}" />  
+                        <apex:column headerValue="{!$Label.Product_Fee_Type}" value="{!s.Fee_Structure__c}"/>                     
+                        <apex:column headerValue="{!$Label.Product_Action}" >
+                            <apex:commandLink value="{!$Label.Product_Add_App_Dtls}" action="{!refreshPage}"  reRender="innertab1" immediate="true" rendered="{!if(s.Approval_Needed__c,false,true)}">  
+                                <apex:param value="true" assignTo="{!s.Approval_Needed__c}" name="toSelect1"/> 
+                                <apex:param value="{!s.id}" assignTo="{!toSelect}" name="toSelect"/>      
+                            </apex:commandLink>
+                        </apex:column>        
+                        <!--Inner Section for Fee Approval details -->
+                        <apex:column breakBefore="true"  id="innertab" rendered="{!s.Approval_Needed__c}" colspan="4" width="100%">                       
+                            <apex:pageBlockSection title="{!$Label.Product_approval_Info}"  columns="2" id="appSec" collapsible="true" rendered="{!if(s.Approval_Status__c=='Not Started',true,false)}">                        
+                                <apex:inputField value="{!feeAppRec.Does_Clinet_require_MFS_clause__c}" required="true"/>
+                                <apex:inputField value="{!feeAppRec.Due_Date__c}" required="true" />
+                                <apex:inputField value="{!feeAppRec.Offering_Performance_based_Fee__c}" required="true"/>
+                                <!--<apex:inputField value="{!feeAppRec.Fee_Type__c}" required="true" />
+                                <apex:inputField value="{!feeAppRec.CurrencyISOCode}" required="true"/>-->
+                            </apex:pageBlockSection>
+                            <apex:pageBlocksection columns="1" rendered="{!if(s.Approval_Status__c=='Not Started',true,false)}">
+                                <!--<apex:inputField value="{!feeAppRec.Fee_Type__c}" required="true"/>-->
+                                <apex:inputField value="{!feeAppRec.Summarise_existing_relationship_with_MFS__c}" styleclass="fullcol" required="true"/>
+                                <apex:inputField value="{!feeAppRec.Additional_Info_on_this_Opportunity__c}" styleclass="fullcol" required="false "/>
+                                 <!--<apex:inputField value="{!feeAppRec.General_Comments__c}" styleclass="fullcol" required="false "/>
+                                <apex:inputField value="{!feeAppRec.Fee_Schedule_Assessment__c}" styleclass="fullcol" required="false "/>-->
+                            </apex:pageBlocksection>
+                            <apex:commandButton value="{!$Label.Submit_for_Approval}" action="{!submitForApproval}"  rendered="{!if(s.Approval_Status__c=='Not Started',true,false)}" /> 
+                            <apex:pageBlocksection columns="1" rendered="{!if(s.Approval_Status__c=='Not Started',false,true)}">
+                                <b> {!$Label.Submit_Success_Message}</b>
+                            </apex:pageBlocksection>
+                        </apex:column>  
+                    </apex:pageblockTable>   <br/>
+                    <apex:commandButton value="{!$Label.Product_Go_Back}" action="{!Cancel}"/> 
+      </apex:outputPanel>
+            </apex:pageBlock>
+            
+        </apex:outputPanel>
+        
+        
+        <!--------------------------------Lightning design---------------------->
+  <apex:includeScript value="/support/console/20.0/integration.js"/>
+        <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <apex:stylesheet value="{!URLFOR($Resource.MFS_UI_Assets, '/assets/styles/salesforce-lightning-design-system-ltng.min.css')}" />
+            <apex:includeScript value="{!URLFOR($Resource.JqueryMin, 'jqueryUI/jquery-1.11.1.min.js')}" />
+            <apex:includeScript value="{!URLFOR($Resource.moment,'/moment.js')}" />
+            <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-all.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-datepicker.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-modal.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-pill.min.js')}"/>
+            
+            <apex:outputPanel rendered="{!OR($User.UIThemeDisplayed=='Theme4d',$User.UIThemeDisplayed=='Theme4t')}">
+                <div class="slds MFS">
+                    <div class="slds-page-header" role="banner">
+                        <div class="slds-media slds-media--center">
+                            <div class="slds-media__figure">
+                                <svg aria-hidden="true" class="slds-icon slds-icon-standard-opportunity">
+                                    <use xlink:href="{!URLFOR($Resource.SLDSv202,'/assets/icons/standard-sprite/svg/symbols.svg#opportunity')}"></use>
+                                </svg>
+                            </div>
+                            <div class="slds-media__body">
+                                <p class="slds-page-header__title slds-truncate slds-align-middle" title="{!$Label.PS_Manage} {!$ObjectType.Product2.LabelPlural}">{!$Label.PS_Manage} {!$ObjectType.Product2.LabelPlural}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <apex:outputPanel >
+                        <apex:inputText value="{!feeAppRec.Due_Date__c}" style="display:none" id="h_startDate"/>
+                    </apex:outputPanel>
+                    
+                    <div class="slds-panel slds-grid slds-grid--vertical slds-nowrap">
+                        <div class="slds-form--stacked slds-grow slds-scrollable--y">
+                            <div class="slds-panel__section slds-has-divider--bottom">
+                                <div class="slds-panel__section">
+                                    <div class="slds-media__body">
+                                        <p class="slds-text-heading--small" title="{!$Label.PS_Selected} {!$ObjectType.Product2.LabelPlural}">{!$Label.PS_Selected} {!$ObjectType.Product2.LabelPlural}</p>
+                                    </div>
+                                    <input type="text" style="visibility:hidden"/>
+                                    <div class="slds-grid slds-grid--pull-padded">
+                                        <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                            <div class="slds-text-heading--label">
+                                                {!$Label.Product_Geography_Class}
+                                            </div>
+                                        </div>
+                                        <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                            <div class="slds-text-heading--label">
+                                                {!$Label.Product_Name}
+                                            </div>
+                                        </div>
+                                    <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                            <div class="slds-text-heading--label">
+                                                {!$Label.Portfolio_Name}
+                                            </div>
+                                        </div>
+                                        <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                            <div class="slds-text-heading--label">
+                                                {!$Label.Product_Vehicle}
+                                            </div>
+                                        </div>
+                                        <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                            <div class="slds-text-heading--label">
+                                                {!$Label.Product_Restricted}
+                                            </div>
+                                        </div>
+                                        <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                            <div class="slds-text-heading--label">
+                                                {!$Label.Product_Fee_Type}
+                                            </div>
+                                        </div>
+                                        <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                            <div class="slds-text-heading--label">
+                                                {!$Label.Product_Action}
+                                            </div>
+                                        </div></div>
+                                    <apex:outputPanel id="innertab1">
+                                        <apex:repeat value="{!oppLineItems}" var="s" >
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom">
+                                                <apex:inputText value="{!s.Approval_Needed__c}" style="display:none" id="approvalNeeded"/>
+                                                <input type="text" style="visibility:hidden"/>
+                                                <div class="slds-grid slds-grid--pull-padded">
+                                                    <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                                        <apex:outputField title="{!$Label.Product_Geography_Class}" value="{!s.Asset_Class_Geography__c}" styleClass="slds-output"/> </div>
+                                                    <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                                        <apex:outputField title="{!$Label.Product_Name}" value="{!s.Product_Name__c}" styleClass="slds-output"/></div>
+                                                    <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                                        <apex:outputField title="{!$Label.Portfolio_Name}" value="{!s.Portfolio_Name__c}" styleClass="slds-output"/></div>
+                                                    <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                                        <apex:outputField title="{!$Label.Product_Vehicle}" value="{!s.Product_Vehicle__c}" styleClass="slds-output"/></div>
+                                                    <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                                        <apex:outputField title="{!$Label.Product_Restricted}" value="{!s.Restricted__c}" styleClass="slds-output"/></div>
+                                                    <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                                        <apex:outputField title="{!$Label.Product_Fee_Type}" value="{!s.Fee_Structure__c}" styleClass="slds-output"/></div>
+                                                    
+                                                    <div class="slds-col--padded slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--1-of-6">
+                                                        <apex:commandLink value="{!$Label.Product_Add_App_Dtls}" action="{!refreshPage}" reRender="innertab1"
+                                                                          immediate="true" rendered="{!if(s.Approval_Needed__c,false,true)}" oncomplete="renderSVG()" >  
+                                                            <apex:param value="true" assignTo="{!s.Approval_Needed__c}" name="toSelect1"/> 
+                                                            <apex:param value="{!s.id}" assignTo="{!toSelect}" name="toSelect"/>      
+                                                        </apex:commandLink></div>
+                                                </div>
+                                                
+                                               
+                                                <apex:outputPanel id="outerPanel" rendered="{!s.Approval_Needed__c}" >
+                                                    <apex:outputPanel rendered="{!if(s.Approval_Status__c=='Not Started',true,false)}">
+                                                        <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                                                            
+                                                            <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2">
+                                                                <div class="slds-form-element is-required">
+                                                                    <label class="slds-form-element__label" for="select01">
+                                                                        <abbr class="slds-required" title="required">*</abbr> {!$Label.PA_MFS_Approval}</label>
+                                                                    <div class="slds-form-element__control">
+                                                                        <div class="slds-select_container">
+                                                                            <apex:inputField value="{!feeAppRec.Does_Clinet_require_MFS_clause__c}" styleClass="slds-select"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2">
+                                                                
+                                                                <div class="slds-form--stacked">
+                                                                    <div class="slds-form-element">
+                                                                        <label class="slds-form-element__label" for="date">Due Date</label>
+                                                                        <div class="slds-form-element__control">
+                                                                            <div class="slds-input-has-icon slds-input-has-icon--right">
+                                                                                <div Id="Icon">
+                                                                                    
+                                                                                
+                                                                                <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
+                                                                                    <use xlink:href="{!URLFOR($Resource.SLDSv202,'/assets/icons/utility-sprite/svg/symbols.svg#event')}"></use>
+                                                                                    </svg>
+                                                                                <input id="date" class="slds-input" placeholder="Pick a Date" label="Start Date" type="text"/>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div> 
+                                                                    
+                                                            </div>
+                                                            <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2">
+                                                                <div class="slds-form-element is-required">
+                                                                    <label class="slds-form-element__label" for="select01">
+                                                                        <abbr class="slds-required" title="required">*</abbr> {!$Label.PS_Offering_Fee}</label>
+                                                                    <div class="slds-form-element__control">
+                                                                        <div class="slds-select_container">
+                                                                            <apex:inputField value="{!feeAppRec.Offering_Performance_based_Fee__c}" styleClass="slds-select"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2">
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                                                            
+                                                            <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-1">
+                                                                <div class="slds-form-element">
+                                                                    <label class="slds-form-element__label" for="textarea-input-01">{!$Label.PS_Summaries}</label>
+                                                                    <div class="slds-form-element__control">
+                                                                        <apex:inputField value="{!feeAppRec.Summarise_existing_relationship_with_MFS__c}" styleclass="slds-textarea" />
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-1">
+                                                                <div class="slds-form-element">
+                                                                    <label class="slds-form-element__label" for="textarea-input-01">{!$Label.PS_Additional_info}</label>
+                                                                    <div class="slds-form-element__control">
+                                                                        <apex:inputField value="{!feeAppRec.Additional_Info_on_this_Opportunity__c}" styleclass="slds-textarea"/>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slds-grid slds-grid--align-center">
+                                                            <apex:commandButton value="{!$Label.Submit_for_Approval}" styleClass="slds-button slds-button--neutral" action="{!submitForApproval}" rendered="{!if(s.Approval_Status__c=='Not Started',true,false)}" /> 
+                                                        </div>
+                                                    </apex:outputPanel>
+                                                    
+                                                </apex:outputPanel>
+                                                <apex:outputPanel rendered="{!if(s.Approval_Status__c=='Not Started',false,true)}">
+                                                    <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                                                        
+                                                        <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-1">
+                                                            <div>
+                                                                <br/>    <b> {!$Label.Submit_Success_Message}</b>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-1">
+                                                            <div class="slds-grid slds-grid--align-left">
+                                                                <apex:commandButton value="{!$Label.Product_Go_Back}" action="{!Cancel}" styleClass="slds-button slds-button--neutral"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </apex:outputPanel>
+                                            </div>
+                                        </apex:repeat>
+                                    </apex:outputPanel>
+
+                                    <apex:actionFunction action="{!refreshPage}" name="refreshPage" rerender="null"/>
+                                    <apex:actionFunction name="rerender" rerender="innertab1"/>
+                                </div></div></div></div>
+                    
+                </div>
+            </apex:outputPanel>
+        </html> 
+    </apex:form>
+    <script>
+    j$=jQuery.noConflict();
+    function renderSVG(){
+            var imageURL = "{!URLFOR($Resource.SLDSv202,'/assets/icons/utility-sprite/svg/symbols.svg#event')}";
+        var SVG = j$('<svg/>', {
+            class:'slds-input__icon slds-icon-text-default',
+            
+        });
+        
+        var SVGUse = j$('<use/>');
+        SVGUse.attr('xlink:href',imageURL);
+        j$('#Icon').prepend(SVG.append(SVGUse));
+        j$('#Icon' ).html(j$('#Icon').html());
+        j$('#date').attr('data-aljs-datepicker-id',"date");
+        iniDatePick();
+    }
+    
+    function iniDatePick() {
+        j$.aljsInit({
+                assetsLocation: "/resource/SLDSv202"
+            });
+        j$('#date').datepicker({
+            
+      
+            format: 'MM/DD/YYYY',
+            initDate: moment(),
+            
+            onChange: function(datepicker) {
+                console.log(datepicker);
+                //j$('#date').datepicker('setDate', moment);
+                //j$('#date').val(format.getDate());
+                j$("[id$='h_startDate']").val(j$('#date').val());
+            }
+        });
+    }
+ 
+    function showPanel(id)
+    {
+        refreshPage();
+        j$("[id$='toselect']").val(id);
+        //alert(j$("[id$='toselect']").val());
+        j$("[id$='"+id+"']").show();
+        
+        j$("[id$='approvalNeeded']").val('');
+        
+    }
+    
+    
+    
+    
+    
+    </script>
+</apex:page>

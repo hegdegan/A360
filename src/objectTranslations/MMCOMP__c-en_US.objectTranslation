@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Overview</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Overview</value>
+    </caseValues>
+    <fields>
+        <label><!-- MMD Address --></label>
+        <name>ADDRESS__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Affiliate --></label>
+        <name>AFFILIATE__c</name>
+    </fields>
+    <fields>
+        <label><!-- If No, Securities Lending Agent --></label>
+        <name>AGENTNAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Annl Contributions (Local Curr) --></label>
+        <name>ANN_CONTRIB_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Annl Contributions ($000) --></label>
+        <name>ANN_CONTRIB__c</name>
+    </fields>
+    <fields>
+        <label><!-- Autranet --></label>
+        <name>AUTRANET__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bank Affiliate --></label>
+        <name>BANKAFF__c</name>
+    </fields>
+    <fields>
+        <label><!-- BNY/ESI --></label>
+        <name>BNYESI__c</name>
+    </fields>
+    <fields>
+        <label><!-- Boston Institutional Services --></label>
+        <name>BOSINSTIT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Broker Affiliate --></label>
+        <name>BROKAFF__c</name>
+    </fields>
+    <fields>
+        <label><!-- Capital Institutional Services --></label>
+        <name>CAPINSTIT__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Category Code --></label>
+        <name>CATEGORY__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chg/Add Managers --></label>
+        <name>CHG_ASST_MGR__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD City --></label>
+        <name>CITY__c</name>
+    </fields>
+    <fields>
+        <label><!-- If Yes, Responsible for Dir Busn --></label>
+        <name>COMMISSNAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Directs Comms for Services --></label>
+        <name>COMMISS__c</name>
+    </fields>
+    <fields>
+        <label><!-- International Company Name --></label>
+        <name>CONMTRANS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Year began Consulting --></label>
+        <name>CONSULTYR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Convert DB to DC --></label>
+        <name>CONVERT_PLAN__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Country --></label>
+        <name>COUNTRY__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Comm Recapture Firm --></label>
+        <name>CROTHER__c</name>
+    </fields>
+    <fields>
+        <label><!-- Local Currency Conversion Code --></label>
+        <name>CURR_CODE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Currency/Foreign Exch --></label>
+        <name>CURR_FOR_EX__c</name>
+    </fields>
+    <fields>
+        <label><!-- Use Custodial Bank --></label>
+        <name>CUSTBANK__c</name>
+    </fields>
+    <fields>
+        <label><!-- DB Assets ($Mil) --></label>
+        <name>DB_Assets_Mil__c</name>
+    </fields>
+    <fields>
+        <label><!-- DB Assets (Local Curr) --></label>
+        <name>DB_TOTAL_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- DB Assets ($000) --></label>
+        <name>DB_TOTAL__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC Assets ($Mil) --></label>
+        <name>DC_Assets_Mil__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC Assets (Local Curr) --></label>
+        <name>DC_TOTAL_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC Assets ($000) --></label>
+        <name>DC_TOTAL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Derivatives --></label>
+        <name>DERIVATIVES__c</name>
+    </fields>
+    <fields>
+        <label><!-- Donaldson &amp; Co. --></label>
+        <name>DONALDSN__c</name>
+    </fields>
+    <fields>
+        <label><!-- EAFE Index --></label>
+        <name>EAFE_INDEX__c</name>
+    </fields>
+    <fields>
+        <label><!-- Endow/Found Assets (Local Curr) --></label>
+        <name>EF_ASSETS_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Endow/Found Assets ($000) --></label>
+        <name>EF_ASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- EIN # --></label>
+        <name>EIN_NO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Equity Benchmark 2 --></label>
+        <name>EIOTHER2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Equity Benchmark --></label>
+        <name>EIOTHER__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Email --></label>
+        <name>EMAIL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Emerging Markets --></label>
+        <name>EMERG_MKTS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Con - Employees --></label>
+        <name>EMPLOYEES__c</name>
+    </fields>
+    <fields>
+        <label><!-- Real Estate Manager --></label>
+        <name>ESTATEMGR__c</name>
+    </fields>
+    <fields>
+        <label><!-- European Markets --></label>
+        <name>EURO_MKTS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Empl Bene Assets ($Mil) --></label>
+        <name>Empl_Bene_Assets_Mil__c</name>
+    </fields>
+    <fields>
+        <label><!-- Endow/Found Assets ($Mil) --></label>
+        <name>Endow_Found_Assets_Mil__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Fax --></label>
+        <name>FAX__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fidelity --></label>
+        <name>FIDELITY__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Advisor --></label>
+        <name>FINADVISOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Futures --></label>
+        <name>FIN_FUTURES__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Fixed Income Benchmark 2 --></label>
+        <name>FIOTHER2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Fixed Income Benchmark --></label>
+        <name>FIOTHER__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invests in Fund of Funds --></label>
+        <name>FNDOFFNDS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fund of Funds Manager --></label>
+        <name>FOFFMGR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name__c</name>
+        <relationshipLabel><!-- MMD Overview --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Hedge Fund Manager --></label>
+        <name>HEDGEMGR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hedge Funds --></label>
+        <name>HEDGE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hire Hedge Fund Mgr --></label>
+        <name>HIREHFMGR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hire Woman/Minority Firm --></label>
+        <name>HIREWMFIRM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Independent Advisor --></label>
+        <name>IADVISOR__c</name>
+    </fields>
+    <fields>
+        <label><!-- IARD/CRD Number --></label>
+        <name>IARDCRD__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assets Mng In-House (Local Curr) --></label>
+        <name>INHSETOT_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assets Mgd In-House ($000) --></label>
+        <name>INHSETOT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Initiate 401(k) Plan --></label>
+        <name>INIT_401K__c</name>
+    </fields>
+    <fields>
+        <label><!-- Insurance Company Affiliate --></label>
+        <name>INSAFF__c</name>
+    </fields>
+    <fields>
+        <label><!-- Institutional Money Manager --></label>
+        <name>INSTITMGR__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Internet --></label>
+        <name>INTERNET__c</name>
+    </fields>
+    <fields>
+        <label><!-- Future Invest Interests --></label>
+        <name>INVESTAREAS__c</name>
+    </fields>
+    <fields>
+        <label><!-- If Yes, to what Inv Types --></label>
+        <name>INVESTYPE1__c</name>
+    </fields>
+    <fields>
+        <label><!-- If Yes, for what Inv Types --></label>
+        <name>INVESTYPE2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investment Manager Affiliate --></label>
+        <name>INVMGRAFF__c</name>
+    </fields>
+    <fields>
+        <label><!-- Barclay Capital Aggregate Bond Index --></label>
+        <name>LEHAGGRE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Barclay Capital Govt/Corp Bond Index --></label>
+        <name>LEHBOND__c</name>
+    </fields>
+    <fields>
+        <label><!-- Limited Partnerships --></label>
+        <name>LPARTNER__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lynch, Jones &amp; Ryan --></label>
+        <name>LYNCHJONES__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last MMD Data Load --></label>
+        <name>Last_MMD_Data_Load__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Mailing Address --></label>
+        <name>MAILADD__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Metro Area --></label>
+        <name>METRO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Merrill Lynch --></label>
+        <name>MLYNCH__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last MMD Survey --></label>
+        <name>MMDUPDATE__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Category --></label>
+        <name>MMD_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Firm Name --></label>
+        <name>MMD_NAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD WebAccess Link --></label>
+        <name>MMD_WebAccess_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- MSCI-EAFE --></label>
+        <name>MSCIEAFE__c</name>
+    </fields>
+    <fields>
+        <label><!-- # Consultants --></label>
+        <name>NO_CONS__c</name>
+    </fields>
+    <fields>
+        <label><!-- # Managers --></label>
+        <name>NO_MGRS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Options Writing --></label>
+        <name>OPTION_WRT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Assets (Local Curr) --></label>
+        <name>OT_ASSETS_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Assets ($000) --></label>
+        <name>OT_ASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Assets ($Mil) --></label>
+        <name>Other_Assets_Mil__c</name>
+    </fields>
+    <fields>
+        <label><!-- Pacific Rim Markets --></label>
+        <name>PACRIM_MKTS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Empl Bene Assets (Local Curr) --></label>
+        <name>PEN_ASSETS_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Empl Bene Assets ($000) --></label>
+        <name>PEN_ASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Phone --></label>
+        <name>PHONE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plexus Group --></label>
+        <name>PLEXUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Private Equity Manager --></label>
+        <name>PRIVMGR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Votes Own Proxy --></label>
+        <name>PROX__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quant Investing Strategies --></label>
+        <name>QUANTINVEST__c</name>
+    </fields>
+    <fields>
+        <label><!-- Real Estate --></label>
+        <name>REAL_ESTATE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Int&apos;l Registration # --></label>
+        <name>REGNUM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rochdale Securities --></label>
+        <name>ROCHDALE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Russell 2000 --></label>
+        <name>RUSSELL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Salomon Smith Barney --></label>
+        <name>SALOMONSB__c</name>
+    </fields>
+    <fields>
+        <label><!-- Securities Lending --></label>
+        <name>SEC_LENDING__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chg Asset Allocation --></label>
+        <name>SIG_CHG_ASST__c</name>
+    </fields>
+    <fields>
+        <label><!-- Socially Responsible Invest --></label>
+        <name>SOC_SCREEN__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Sort Name --></label>
+        <name>SORTNAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- S&amp;P 500 --></label>
+        <name>SP500__c</name>
+    </fields>
+    <fields>
+        <label><!-- S&amp;P MidCap 400 --></label>
+        <name>SPMIDCAP__c</name>
+    </fields>
+    <fields>
+        <label><!-- S&amp;P SmallCap 600 --></label>
+        <name>SPSMCAP__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Int&apos;l State/Province --></label>
+        <name>STATE_INTL__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD State --></label>
+        <name>STATE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stock Publicly Traded --></label>
+        <name>STOCK__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sun Trust Robinson Humphrey --></label>
+        <name>SUNTRUST__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stock Exchange 1 --></label>
+        <name>SYMBOL1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stock Exchange 2 --></label>
+        <name>SYMBOL2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stock Exchange 3 --></label>
+        <name>SYMBOL3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stock Exchange 4 --></label>
+        <name>SYMBOL4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stock Exchange 5 --></label>
+        <name>SYMBOL5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stock Exchange 6 --></label>
+        <name>SYMBOL6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tactical Asset Alloc --></label>
+        <name>TACT_ASSET__c</name>
+    </fields>
+    <fields>
+        <label><!-- TIAA CREF --></label>
+        <name>TIAA_CREF__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ticker Symbol --></label>
+        <name>TICKER__c</name>
+    </fields>
+    <fields>
+        <label><!-- Timberland --></label>
+        <name>TIMBER__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Plan Assets (Local Curr) --></label>
+        <name>TOTAL_PS_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Plan Assets ($000) --></label>
+        <name>TOTAL_PS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Con - Assets Represented ($000) --></label>
+        <name>TOTASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Con - Number of Clients --></label>
+        <name>TOTCLIENTS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Plan Assets ($Mil) --></label>
+        <name>Total_Plan_Assets_Mil__c</name>
+    </fields>
+    <fields>
+        <label><!-- Asset Valuation Date --></label>
+        <name>VALDATE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wilshire 5000 --></label>
+        <name>WILSHIRE__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Postal Code --></label>
+        <name>ZIP__c</name>
+    </fields>
+    <layouts>
+        <layout>MMD Consultant Profile Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- MMD Consultant Profile --></label>
+            <section>MMD Consultant Profile</section>
+        </sections>
+        <sections>
+            <label><!-- MMD Info 2 --></label>
+            <section>MMD Info 2</section>
+        </sections>
+        <sections>
+            <label><!-- MMD Info 4 --></label>
+            <section>MMD Info 4</section>
+        </sections>
+        <sections>
+            <label><!-- Phone/Address --></label>
+            <section>Phone/Address</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>MMD PS Profile Layout</layout>
+        <sections>
+            <label><!-- Asset Summary --></label>
+            <section>Asset Summary</section>
+        </sections>
+        <sections>
+            <label><!-- Asset Summary (Local Currency) --></label>
+            <section>Asset Summary (Local Currency)</section>
+        </sections>
+        <sections>
+            <label><!-- Benchmarks used for Equity Investments --></label>
+            <section>Benchmarks used for Equity Investments</section>
+        </sections>
+        <sections>
+            <label><!-- Benchmarks used for Fixed Income Invesments --></label>
+            <section>Benchmarks used for Fixed Income Invesments</section>
+        </sections>
+        <sections>
+            <label><!-- Commission Recapture 2 --></label>
+            <section>Commission Recapture 2</section>
+        </sections>
+        <sections>
+            <label><!-- Custodial Bank/Directed Commissions --></label>
+            <section>Custodial Bank/Directed Commissions</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- During the next year the firm plans to: --></label>
+            <section>During the next year the firm plans to:</section>
+        </sections>
+        <sections>
+            <label><!-- Eq Benchmarks 2 --></label>
+            <section>Eq Benchmarks 2</section>
+        </sections>
+        <sections>
+            <label><!-- FI Benchmarks 2 --></label>
+            <section>FI Benchmarks 2</section>
+        </sections>
+        <sections>
+            <label><!-- Firms utilized for Commission Recapture --></label>
+            <section>Firms utilized for Commission Recapture</section>
+        </sections>
+        <sections>
+            <label><!-- In next year 2 --></label>
+            <section>In next year 2</section>
+        </sections>
+        <sections>
+            <label><!-- MMD Info 2 --></label>
+            <section>MMD Info 2</section>
+        </sections>
+        <sections>
+            <label><!-- MMD Info 4 --></label>
+            <section>MMD Info 4</section>
+        </sections>
+        <sections>
+            <label><!-- MMD Plan Sponsor Profile --></label>
+            <section>MMD Plan Sponsor Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Phone/Address --></label>
+            <section>Phone/Address</section>
+        </sections>
+        <sections>
+            <label><!-- Stock Exchanges --></label>
+            <section>Stock Exchanges</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- Tax Exempt funds participates in: --></label>
+            <section>Tax Exempt funds participates in:</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Consultant --></label>
+        <name>Consultant</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Plan Sponsor --></label>
+        <name>PlanSponsor</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

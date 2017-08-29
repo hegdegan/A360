@@ -1,0 +1,1969 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Advisor Certifications --></label>
+        <name>Advisor_Certifications__c</name>
+    </fields>
+    <fields>
+        <label><!-- Advisor Trainings --></label>
+        <name>Advisor_Trainings__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assistant Email --></label>
+        <name>Assistant_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assistant Name --></label>
+        <name>Assistant_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assistant Phone --></label>
+        <name>Assistant_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Bounce Count --></label>
+        <name>Bounce_Count__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Title --></label>
+        <name>Business_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact MMD ID --></label>
+        <name>CONTID__c</name>
+    </fields>
+    <fields>
+        <label><!-- CRD # --></label>
+        <name>CRD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consultant Research Focus --></label>
+        <name>Consultant_Market_Focus_1__c</name>
+        <picklistValues>
+            <masterLabel>Area 1</masterLabel>
+            <translation><!-- Area 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Area 2</masterLabel>
+            <translation><!-- Area 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Area 3</masterLabel>
+            <translation><!-- Area 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Area 4</masterLabel>
+            <translation><!-- Area 4 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Consultant Years in Business --></label>
+        <name>Consultant_Years_in_Business__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Influence --></label>
+        <name>Contact_Influence__c</name>
+        <picklistValues>
+            <masterLabel>Approver</masterLabel>
+            <translation><!-- Approver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Decision Maker</masterLabel>
+            <translation><!-- Decision Maker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gate Keeper</masterLabel>
+            <translation><!-- Gate Keeper --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Contact Marketing Language --></label>
+        <name>Contact_Marketing_Language__c</name>
+        <picklistValues>
+            <masterLabel>Chinese</masterLabel>
+            <translation><!-- Chinese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French</masterLabel>
+            <translation><!-- French --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German</masterLabel>
+            <translation><!-- German --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italian</masterLabel>
+            <translation><!-- Italian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation><!-- Japanese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Korean</masterLabel>
+            <translation><!-- Korean --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish</masterLabel>
+            <translation><!-- Spanish --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Contact Name --></label>
+        <name>Contact_Name1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Name --></label>
+        <name>Contact_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Name for Attendee Search --></label>
+        <name>Contact_Name_for_Attendee_Search__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Reporting Language --></label>
+        <name>Contact_Reporting_Language__c</name>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English-UK</masterLabel>
+            <translation><!-- English-UK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French</masterLabel>
+            <translation><!-- French --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French-Canadian</masterLabel>
+            <translation><!-- French-Canadian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German</masterLabel>
+            <translation><!-- German --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japanese</masterLabel>
+            <translation><!-- Japanese --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Contact Role --></label>
+        <name>Contact_Role__c</name>
+        <picklistValues>
+            <masterLabel>ACS Distributor</masterLabel>
+            <translation><!-- ACS Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AML Only</masterLabel>
+            <translation><!-- AML Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Accounting</masterLabel>
+            <translation><!-- Accounting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Actuary</masterLabel>
+            <translation><!-- Actuary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Administrative Assistant</masterLabel>
+            <translation><!-- Administrative Assistant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Administrator</masterLabel>
+            <translation><!-- Administrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auditor</masterLabel>
+            <translation><!-- Auditor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Authorized Signer</masterLabel>
+            <translation><!-- Authorized Signer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Beneficial Owner</masterLabel>
+            <translation><!-- Beneficial Owner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Billing</masterLabel>
+            <translation><!-- Billing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Board Member/Trustee</masterLabel>
+            <translation><!-- Board Member/Trustee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Business Development</masterLabel>
+            <translation><!-- Business Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Service Manager</masterLabel>
+            <translation><!-- Client Service Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitor</masterLabel>
+            <translation><!-- Competitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compliance Analyst</masterLabel>
+            <translation><!-- Compliance Analyst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Analyst</masterLabel>
+            <translation><!-- Field Analyst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Field Consultant</masterLabel>
+            <translation><!-- Field Consultant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Financial Advisor</masterLabel>
+            <translation><!-- Financial Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fulfillment</masterLabel>
+            <translation><!-- Fulfillment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Human Resources</masterLabel>
+            <translation><!-- Human Resources --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Information Contact</masterLabel>
+            <translation><!-- Information Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investment Specialist</masterLabel>
+            <translation><!-- Investment Specialist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investment Staff</masterLabel>
+            <translation><!-- Investment Staff --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Legal</masterLabel>
+            <translation><!-- Legal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lending Agent</masterLabel>
+            <translation><!-- Lending Agent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operations</masterLabel>
+            <translation><!-- Operations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plan Administrator</masterLabel>
+            <translation><!-- Plan Administrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portfolio Manager</masterLabel>
+            <translation><!-- Portfolio Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Manager</masterLabel>
+            <translation><!-- Product Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relationship Manager</masterLabel>
+            <translation><!-- Relationship Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reporting</masterLabel>
+            <translation><!-- Reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research Analyst</masterLabel>
+            <translation><!-- Research Analyst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research Consultant</masterLabel>
+            <translation><!-- Research Consultant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retirement Analyst</masterLabel>
+            <translation><!-- Retirement Analyst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Management</masterLabel>
+            <translation><!-- Sales Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Person</masterLabel>
+            <translation><!-- Sales Person --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Senior Management</masterLabel>
+            <translation><!-- Senior Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialist</masterLabel>
+            <translation><!-- Specialist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trade Cost Analyst</masterLabel>
+            <translation><!-- Trade Cost Analyst --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transition Manager</masterLabel>
+            <translation><!-- Transition Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trustee</masterLabel>
+            <translation><!-- Trustee --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wholesaler</masterLabel>
+            <translation><!-- Wholesaler --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Contact Suffix --></label>
+        <name>Contact_Suffix__c</name>
+        <picklistValues>
+            <masterLabel>I</masterLabel>
+            <translation><!-- I --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>II</masterLabel>
+            <translation><!-- II --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>III</masterLabel>
+            <translation><!-- III --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IV</masterLabel>
+            <translation><!-- IV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jr.</masterLabel>
+            <translation><!-- Jr. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sr.</masterLabel>
+            <translation><!-- Sr. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>V</masterLabel>
+            <translation><!-- V --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VI</masterLabel>
+            <translation><!-- VI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VII</masterLabel>
+            <translation><!-- VII --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Contact Tier --></label>
+        <name>Contact_Tier__c</name>
+        <picklistValues>
+            <masterLabel>Bronze</masterLabel>
+            <translation><!-- Bronze --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gold</masterLabel>
+            <translation><!-- Gold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum</masterLabel>
+            <translation><!-- Platinum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silver</masterLabel>
+            <translation><!-- Silver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unassigned</masterLabel>
+            <translation><!-- Unassigned --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Contact Type --></label>
+        <name>Contact_Type__c</name>
+        <picklistValues>
+            <masterLabel>Client/Prospect</masterLabel>
+            <translation><!-- Client/Prospect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitor</masterLabel>
+            <translation><!-- Competitor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investment Consultant</masterLabel>
+            <translation><!-- Investment Consultant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider</masterLabel>
+            <translation><!-- Service Provider --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Contact Website --></label>
+        <name>Contact_Website__c</name>
+    </fields>
+    <fields>
+        <label><!-- DCIO_BUSINESS_PLAN --></label>
+        <name>DCIO_BUSINESS_PLAN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date Joined Current Firm --></label>
+        <name>Date_Joined_Current_Firm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distribution Level Code --></label>
+        <name>Distribution_Level_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distribution Level --></label>
+        <name>Distribution_Level__c</name>
+        <picklistValues>
+            <masterLabel>Global Institutional</masterLabel>
+            <translation><!-- Global Institutional --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-US Retail</masterLabel>
+            <translation><!-- Non-US Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Retail</masterLabel>
+            <translation><!-- US Retail --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Distribution Level fm --></label>
+        <name>Distribution_Level_fm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Edward Jones ID --></label>
+        <name>Edward_Jones_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Edward Jones Territory --></label>
+        <name>Edward_Jones_Territory__c</name>
+    </fields>
+    <fields>
+        <label><!-- Effective Date --></label>
+        <name>Effective_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expenses to Date --></label>
+        <name>Expenses__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expertise --></label>
+        <name>Expertise__c</name>
+        <picklistValues>
+            <masterLabel>Sample 1</masterLabel>
+            <translation><!-- Sample 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sample 2</masterLabel>
+            <translation><!-- Sample 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sample 3</masterLabel>
+            <translation><!-- Sample 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sample 4</masterLabel>
+            <translation><!-- Sample 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sample 5</masterLabel>
+            <translation><!-- Sample 5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Extent of Use of Recc List --></label>
+        <name>Extent_of_Use_of_Recc_List__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Frequency of Fund Lineup Review --></label>
+        <name>Frequency_of_Fund_Lineup_Review__c</name>
+        <picklistValues>
+            <masterLabel>Annually</masterLabel>
+            <translation><!-- Annually --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Monthly</masterLabel>
+            <translation><!-- Monthly --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quarterly</masterLabel>
+            <translation><!-- Quarterly --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Geo Location --></label>
+        <name>Geo_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Google Maps --></label>
+        <name>Google_Maps__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hard Bounce --></label>
+        <name>Hard_Bounce__c</name>
+    </fields>
+    <fields>
+        <label><!-- Highlights --></label>
+        <name>Highlights__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will indicate whether the associated address is a home office. --></help>
+        <label><!-- Home Office --></label>
+        <name>Home_Office__c</name>
+    </fields>
+    <fields>
+        <label><!-- In Business Since --></label>
+        <name>In_Business_Since__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internet set up for your account --></label>
+        <name>Internet_set_up_for_your_account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Japan Contact ID --></label>
+        <name>Japan_Contact_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key CSM Contact --></label>
+        <name>Key_CSM_Contact__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select if this a Key RM Contact for this Organization --></help>
+        <label><!-- Key RM Contact --></label>
+        <name>Key_RM_Contact__c</name>
+    </fields>
+    <fields>
+        <help><!-- Select if this is a Key Sales Contact for this Organization --></help>
+        <label><!-- Key Sales Contact --></label>
+        <name>Key_Sales_Contact__c</name>
+    </fields>
+    <fields>
+        <help><!-- This field will display whether or not this contact is a key person to contact when scheduling meetings. --></help>
+        <label><!-- Key Scheduling Contact --></label>
+        <name>Key_Scheduling_Contact__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last MMD Data Load --></label>
+        <name>Last_MMD_Data_Load__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn --></label>
+        <name>LinkedIn__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDM ID --></label>
+        <name>MDM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Alt Address --></label>
+        <name>MMD_ADDRESS__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Alt State/Prov --></label>
+        <name>MMD_Alt_State_Prov__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Alt City --></label>
+        <name>MMD_CITY__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Alt Company Name --></label>
+        <name>MMD_COMPANY__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Alt Country --></label>
+        <name>MMD_COUNTRY__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Email --></label>
+        <name>MMD_EMAIL__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD First Name --></label>
+        <name>MMD_FNAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD_ID --></label>
+        <name>MMD_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Info Chg By --></label>
+        <name>MMD_Info_Chg_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Info Chg --></label>
+        <name>MMD_Info_Chg__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Job Title --></label>
+        <name>MMD_JOB_TITLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Job 10 --></label>
+        <name>MMD_Job_10__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Job 1 --></label>
+        <name>MMD_Job_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Job 2 --></label>
+        <name>MMD_Job_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Job 3 --></label>
+        <name>MMD_Job_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Job 4 --></label>
+        <name>MMD_Job_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Job 5 --></label>
+        <name>MMD_Job_5__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Job 6 --></label>
+        <name>MMD_Job_6__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Job 7 --></label>
+        <name>MMD_Job_7__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Job 8 --></label>
+        <name>MMD_Job_8__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Job 9 --></label>
+        <name>MMD_Job_9__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD LinkedIn --></label>
+        <name>MMD_LINKEDIN__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Last Name --></label>
+        <name>MMD_LNAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Middle Name --></label>
+        <name>MMD_MNAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Prefix --></label>
+        <name>MMD_PERSONTITLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Alt Phone --></label>
+        <name>MMD_PHONE__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Gender --></label>
+        <name>MMD_SEX__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Alt State --></label>
+        <name>MMD_STATE__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Suffix --></label>
+        <name>MMD_SUFFIX__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD WebAccess Link --></label>
+        <name>MMD_WebAccess_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Alt Zip --></label>
+        <name>MMD_ZIP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mailing Attention --></label>
+        <name>Mailing_Attention__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mailing Superfluous --></label>
+        <name>Mailing_Superfluous__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Preferences --></label>
+        <name>Marketing_Preferences__c</name>
+        <picklistValues>
+            <masterLabel>Client Satisfaction Survey</masterLabel>
+            <translation><!-- Client Satisfaction Survey --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compliance/ADV</masterLabel>
+            <translation><!-- Compliance/ADV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Holiday Card</masterLabel>
+            <translation><!-- Holiday Card --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invoice</masterLabel>
+            <translation><!-- Invoice --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Conferences/Events</masterLabel>
+            <translation><!-- MFS Conferences/Events --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Corporate Updates</masterLabel>
+            <translation><!-- MFS Corporate Updates --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UK FCP Mailing</masterLabel>
+            <translation><!-- UK FCP Mailing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unsubscribe</masterLabel>
+            <translation><!-- Unsubscribe --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Marketing Tier --></label>
+        <name>Marketing_Tier__c</name>
+        <picklistValues>
+            <masterLabel>Bronze</masterLabel>
+            <translation><!-- Bronze --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Gold</masterLabel>
+            <translation><!-- Gold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platinum</masterLabel>
+            <translation><!-- Platinum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silver</masterLabel>
+            <translation><!-- Silver --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unassigned</masterLabel>
+            <translation><!-- Unassigned --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of Years Registered --></label>
+        <name>Number_of_Years_Registered__c</name>
+    </fields>
+    <fields>
+        <label><!-- Office Phone Extension --></label>
+        <name>Office_Phone_Extension__c</name>
+    </fields>
+    <fields>
+        <label><!-- Org MMD ID --></label>
+        <name>Org_MMD_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Org Type --></label>
+        <name>Org_Type__c</name>
+        <picklistValues>
+            <masterLabel>Bank Broker Dealer</masterLabel>
+            <translation><!-- Bank Broker Dealer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DC Platform</masterLabel>
+            <translation><!-- DC Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fund of Fund/ Asset Manager</masterLabel>
+            <translation><!-- Fund of Fund/ Asset Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Broker Dealer</masterLabel>
+            <translation><!-- Independent Broker Dealer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance Company</masterLabel>
+            <translation><!-- Insurance Company --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private Bank</masterLabel>
+            <translation><!-- Private Bank --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RIA</masterLabel>
+            <translation><!-- RIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional Bank Trust</masterLabel>
+            <translation><!-- Regional Bank Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional Broker/ Dealer</masterLabel>
+            <translation><!-- Regional Broker/ Dealer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wirehouse</masterLabel>
+            <translation><!-- Wirehouse --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Other Email --></label>
+        <name>Other_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Politically Exposed Person --></label>
+        <name>PEP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Organization --></label>
+        <name>Parent_Organization__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Size --></label>
+        <name>Plan_Size__c</name>
+        <picklistValues>
+            <masterLabel>10,000-20,000</masterLabel>
+            <translation><!-- 10,000-20,000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>20,000-30,000</masterLabel>
+            <translation><!-- 20,000-30,000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>30,000-40,000</masterLabel>
+            <translation><!-- 30,000-40,000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>&lt;10,000</masterLabel>
+            <translation><!-- &lt;10,000 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Plan Type --></label>
+        <name>Plan_Type__c</name>
+        <picklistValues>
+            <masterLabel>401(k)</masterLabel>
+            <translation><!-- 401(k) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corporate</masterLabel>
+            <translation><!-- Corporate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DB</masterLabel>
+            <translation><!-- DB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Endowment</masterLabel>
+            <translation><!-- Endowment --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Platform --></label>
+        <name>Platform__c</name>
+        <picklistValues>
+            <masterLabel>Platform 1</masterLabel>
+            <translation><!-- Platform 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platform 2</masterLabel>
+            <translation><!-- Platform 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platform 3</masterLabel>
+            <translation><!-- Platform 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Please use this field to track the preferred name of the contact --></help>
+        <label><!-- Preferred Name --></label>
+        <name>Preferred_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- This checkbox should be selected when the contact is a Primary Contact at the organization. There can be more than one Primary Contact at an organization. --></help>
+        <label><!-- Primary Contact --></label>
+        <name>Primary_Contact__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prof. Designations --></label>
+        <name>Professional_Designations__c</name>
+        <picklistValues>
+            <masterLabel>AIF</masterLabel>
+            <translation><!-- AIF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ARPC</masterLabel>
+            <translation><!-- ARPC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>C(k)P</masterLabel>
+            <translation><!-- C(k)P --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CAIA</masterLabel>
+            <translation><!-- CAIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CFA</masterLabel>
+            <translation><!-- CFA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CFP</masterLabel>
+            <translation><!-- CFP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CHLV</masterLabel>
+            <translation><!-- CHLV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CIMA</masterLabel>
+            <translation><!-- CIMA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CIMC</masterLabel>
+            <translation><!-- CIMC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CLU</masterLabel>
+            <translation><!-- CLU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CMFC</masterLabel>
+            <translation><!-- CMFC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CPA</masterLabel>
+            <translation><!-- CPA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CRFA</masterLabel>
+            <translation><!-- CRFA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CSFC</masterLabel>
+            <translation><!-- CSFC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ChFC</masterLabel>
+            <translation><!-- ChFC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Esq.</masterLabel>
+            <translation><!-- Esq. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FRM</masterLabel>
+            <translation><!-- FRM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JD</masterLabel>
+            <translation><!-- JD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MBA</masterLabel>
+            <translation><!-- MBA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MD</masterLabel>
+            <translation><!-- MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PhD</masterLabel>
+            <translation><!-- PhD --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Refresh Date --></label>
+        <name>Refresh_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Rep ID # --></label>
+        <name>Rep_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Research Method --></label>
+        <name>Research_Method__c</name>
+        <picklistValues>
+            <masterLabel>Lipper</masterLabel>
+            <translation><!-- Lipper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Litman Gregory</masterLabel>
+            <translation><!-- Litman Gregory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Morningstar</masterLabel>
+            <translation><!-- Morningstar --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Saleslogix ID --></label>
+        <name>Saleslogix_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Specialty Type --></label>
+        <name>Specialty_Type__c</name>
+        <picklistValues>
+            <masterLabel>529 Plans</masterLabel>
+            <translation><!-- 529 Plans --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Annuity</masterLabel>
+            <translation><!-- Annuity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed End</masterLabel>
+            <translation><!-- Closed End --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corporate</masterLabel>
+            <translation><!-- Corporate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defined Benefit</masterLabel>
+            <translation><!-- Defined Benefit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defined Contribution</masterLabel>
+            <translation><!-- Defined Contribution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESG</masterLabel>
+            <translation><!-- ESG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Endowment &amp; Foundations</masterLabel>
+            <translation><!-- Endowment &amp; Foundations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-US Mutual Funds</masterLabel>
+            <translation><!-- Non-US Mutual Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outsource CIO</masterLabel>
+            <translation><!-- Outsource CIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pension</masterLabel>
+            <translation><!-- Pension --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private Wealth/High Net Worth</masterLabel>
+            <translation><!-- Private Wealth/High Net Worth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Funds</masterLabel>
+            <translation><!-- Public Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Separately Managed Accounts</masterLabel>
+            <translation><!-- Separately Managed Accounts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Taft Hartley</masterLabel>
+            <translation><!-- Taft Hartley --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Select the option that best represents the status of the contact. --></help>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Street City --></label>
+        <name>Street_City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street Country --></label>
+        <name>Street_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street State Province --></label>
+        <name>Street_State_Province__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street Street --></label>
+        <name>Street_Street__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street Superfluous --></label>
+        <name>Street_Superfluous__c</name>
+    </fields>
+    <fields>
+        <label><!-- Street Zip Postal Code --></label>
+        <name>Street_Zip_Postal_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Tier within Firm --></label>
+        <name>Tier_within_Firm__c</name>
+        <picklistValues>
+            <masterLabel>2009 Barron&apos;s Top 100 Advisor</masterLabel>
+            <translation><!-- 2009 Barron&apos;s Top 100 Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2009 HD Vest Premier Advisor</masterLabel>
+            <translation><!-- 2009 HD Vest Premier Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2010 HD Vest Premier Advisor</masterLabel>
+            <translation><!-- 2010 HD Vest Premier Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AXA Gold Members</masterLabel>
+            <translation><!-- AXA Gold Members --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AXA Top 500</masterLabel>
+            <translation><!-- AXA Top 500 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Adv Satisfaction Top Fd Producer</masterLabel>
+            <translation><!-- Adv Satisfaction Top Fd Producer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Amer. Top Advisor</masterLabel>
+            <translation><!-- Amer. Top Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ampr. P1 Advisor</masterLabel>
+            <translation><!-- Ampr. P1 Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ampr. P2 Advisor</masterLabel>
+            <translation><!-- Ampr. P2 Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Baird 1919 Club</masterLabel>
+            <translation><!-- Baird 1919 Club --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Center of Influence</masterLabel>
+            <translation><!-- Center of Influence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Circle of Excellence</masterLabel>
+            <translation><!-- Circle of Excellence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comm Prod Lvl 1</masterLabel>
+            <translation><!-- Comm Prod Lvl 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comm Prod Lvl 2</masterLabel>
+            <translation><!-- Comm Prod Lvl 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comm Prod Lvl 3</masterLabel>
+            <translation><!-- Comm Prod Lvl 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comm Prod Lvl 4</masterLabel>
+            <translation><!-- Comm Prod Lvl 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comm Prod Lvl 5</masterLabel>
+            <translation><!-- Comm Prod Lvl 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comm Prod Lvl 6</masterLabel>
+            <translation><!-- Comm Prod Lvl 6 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCI 2013 Focus 30</masterLabel>
+            <translation><!-- DCI 2013 Focus 30 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCI 2013 Top 120</masterLabel>
+            <translation><!-- DCI 2013 Top 120 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCI 2014 Top 150</masterLabel>
+            <translation><!-- DCI 2014 Top 150 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCI 2014 Top 150-Q1-Q2</masterLabel>
+            <translation><!-- DCI 2014 Top 150-Q1-Q2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCI 2015 Top 150</masterLabel>
+            <translation><!-- DCI 2015 Top 150 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCI 2015 Top 150-Q1-Q2</masterLabel>
+            <translation><!-- DCI 2015 Top 150-Q1-Q2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCI 2016 Top 150</masterLabel>
+            <translation><!-- DCI 2016 Top 150 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCI Target 2012</masterLabel>
+            <translation><!-- DCI Target 2012 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DC_Gold</masterLabel>
+            <translation><!-- DC_Gold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DC_Platinum</masterLabel>
+            <translation><!-- DC_Platinum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDJ Levels 1 and 2</masterLabel>
+            <translation><!-- EDJ Levels 1 and 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDJ Levels 3 and 4</masterLabel>
+            <translation><!-- EDJ Levels 3 and 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDJ Levels 5 6 7</masterLabel>
+            <translation><!-- EDJ Levels 5 6 7 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDJ Levels 8 9 10</masterLabel>
+            <translation><!-- EDJ Levels 8 9 10 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EDJ New</masterLabel>
+            <translation><!-- EDJ New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FID Leaders Council</masterLabel>
+            <translation><!-- FID Leaders Council --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HD Vest PAS Advisor</masterLabel>
+            <translation><!-- HD Vest PAS Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICD Leaders Council</masterLabel>
+            <translation><!-- ICD Leaders Council --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>InvstrCap Top 100</masterLabel>
+            <translation><!-- InvstrCap Top 100 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JJB  Top Sales</masterLabel>
+            <translation><!-- JJB  Top Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JJB Top AUM</masterLabel>
+            <translation><!-- JJB Top AUM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JJB Top Sales and AUM</masterLabel>
+            <translation><!-- JJB Top Sales and AUM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LPL Bank</masterLabel>
+            <translation><!-- LPL Bank --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LPL Bank Top 500 MF</masterLabel>
+            <translation><!-- LPL Bank Top 500 MF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LPL Chairmans Club</masterLabel>
+            <translation><!-- LPL Chairmans Club --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LPL Chairmans Council</masterLabel>
+            <translation><!-- LPL Chairmans Council --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LPL Directors Club</masterLabel>
+            <translation><!-- LPL Directors Club --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LPL Exec Council</masterLabel>
+            <translation><!-- LPL Exec Council --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LPL Freedom Club</masterLabel>
+            <translation><!-- LPL Freedom Club --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LPL Patriots Club</masterLabel>
+            <translation><!-- LPL Patriots Club --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LPL Top 500 MF</masterLabel>
+            <translation><!-- LPL Top 500 MF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LPL Top Producer</masterLabel>
+            <translation><!-- LPL Top Producer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lincoln Top 500</masterLabel>
+            <translation><!-- Lincoln Top 500 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ML Edge</masterLabel>
+            <translation><!-- ML Edge --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ML Quintile 1</masterLabel>
+            <translation><!-- ML Quintile 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ML Quintile 2</masterLabel>
+            <translation><!-- ML Quintile 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ML Quintile 3</masterLabel>
+            <translation><!-- ML Quintile 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ML Quintile 4</masterLabel>
+            <translation><!-- ML Quintile 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ML Quintile 5</masterLabel>
+            <translation><!-- ML Quintile 5 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ML US Trust</masterLabel>
+            <translation><!-- ML US Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MSSB Graystone Consulting</masterLabel>
+            <translation><!-- MSSB Graystone Consulting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Merrill Lynch ICG</masterLabel>
+            <translation><!-- Merrill Lynch ICG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Morgan Stanley IWS Top Producer</masterLabel>
+            <translation><!-- Morgan Stanley IWS Top Producer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Morgan Stanley PWS Top Producer</masterLabel>
+            <translation><!-- Morgan Stanley PWS Top Producer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NW Rep Model I</masterLabel>
+            <translation><!-- NW Rep Model I --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NW Rep Model II</masterLabel>
+            <translation><!-- NW Rep Model II --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NW Rep Model III</masterLabel>
+            <translation><!-- NW Rep Model III --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PNC Top Advisor</masterLabel>
+            <translation><!-- PNC Top Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Premier Advisors Forum</masterLabel>
+            <translation><!-- Premier Advisors Forum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RBC Pres. Council</masterLabel>
+            <translation><!-- RBC Pres. Council --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RBC Private Wealth</masterLabel>
+            <translation><!-- RBC Private Wealth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RJFS Chairman&apos;s Council</masterLabel>
+            <translation><!-- RJFS Chairman&apos;s Council --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RJFS Executive Council</masterLabel>
+            <translation><!-- RJFS Executive Council --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RJFS Rising Stars</masterLabel>
+            <translation><!-- RJFS Rising Stars --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ray Jay Top 10%</masterLabel>
+            <translation><!-- Ray Jay Top 10% --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sterne Agee Presidents Club 2013</masterLabel>
+            <translation><!-- Sterne Agee Presidents Club 2013 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SunTrust-FA</masterLabel>
+            <translation><!-- SunTrust-FA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SunTrust-PFA</masterLabel>
+            <translation><!-- SunTrust-PFA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SunTrust-PWA</masterLabel>
+            <translation><!-- SunTrust-PWA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tier 3</masterLabel>
+            <translation><!-- Tier 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Top 100 Stifel Advisor</masterLabel>
+            <translation><!-- Top 100 Stifel Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Top 100 Wells Fargo Select Financial Consultant</masterLabel>
+            <translation><!-- Top 100 Wells Fargo Select Financial Consultant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Top 400 Masters Producer</masterLabel>
+            <translation><!-- Top 400 Masters Producer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UBS Complex Director</masterLabel>
+            <translation><!-- UBS Complex Director --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UBS Private Wealth Adv</masterLabel>
+            <translation><!-- UBS Private Wealth Adv --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UHNW Hightower</masterLabel>
+            <translation><!-- UHNW Hightower --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UHNW MSSB Graystone</masterLabel>
+            <translation><!-- UHNW MSSB Graystone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>W&amp;R Choice Advisor</masterLabel>
+            <translation><!-- W&amp;R Choice Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>W&amp;R Classic Advisor</masterLabel>
+            <translation><!-- W&amp;R Classic Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>W&amp;RW&amp;R Classic Advisor Classic Advisor</masterLabel>
+            <translation><!-- W&amp;RW&amp;R Classic Advisor Classic Advisor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WF PCG Branch Manager</masterLabel>
+            <translation><!-- WF PCG Branch Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WF PCG Complex Manager</masterLabel>
+            <translation><!-- WF PCG Complex Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WF PCG Market Manager</masterLabel>
+            <translation><!-- WF PCG Market Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WF-Top 2013 PIM Producers</masterLabel>
+            <translation><!-- WF-Top 2013 PIM Producers --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wells Fargo Top Mutual Fund</masterLabel>
+            <translation><!-- Wells Fargo Top Mutual Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Time Zone --></label>
+        <name>Time_Zone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unsubscribe --></label>
+        <name>Unsubscribe__c</name>
+    </fields>
+    <fields>
+        <label><!-- Use MMD Info --></label>
+        <name>Use_MMD_Info__c</name>
+    </fields>
+    <fields>
+        <label><!-- Use of  Firm Recommendation Lists? --></label>
+        <name>Use_of_Recommendation__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- YTD Sales in USD --></label>
+        <name>YTD_Sales_in_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Year Registered --></label>
+        <name>Year_Registered__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disable Duplicate Check --></label>
+        <name>dupcheck__dc3DisableDuplicateCheck__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duplicate Check Index --></label>
+        <name>dupcheck__dc3Index__c</name>
+    </fields>
+    <fields>
+        <label><!-- Optout --></label>
+        <name>optout__c</name>
+    </fields>
+    <fields>
+        <label><!-- CRMI Modified Date --></label>
+        <name>silverpop__CRMI_Modified_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Sync Date --></label>
+        <name>silverpop__Last_Sync_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Sync Id --></label>
+        <name>silverpop__Last_Sync_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Rank --></label>
+        <name>silverpop__Lead_Rank__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Score --></label>
+        <name>silverpop__Lead_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Silverpop Behavior Score --></label>
+        <name>silverpop__Silverpop_Behavior_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Silverpop Lead Rank --></label>
+        <name>silverpop__Silverpop_Lead_Rank__c</name>
+    </fields>
+    <fields>
+        <label><!-- Silverpop Lead Score --></label>
+        <name>silverpop__Silverpop_Lead_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Silverpop RecipientID --></label>
+        <name>silverpop__Silverpop_RecipientID__c</name>
+    </fields>
+    <fields>
+        <help>Utilisez « Synchroniser avec Silverpop » pour déterminer quels contacts vous voulez synchroniser avec Silverpop. Quand la case est cochée, la valeur du champ NE PEUT PAS être changée et les contacts sélectionnés seront synchronisés avec Silverpop et le seront toujours.</help>
+        <label><!-- Sync to Silverpop --></label>
+        <name>silverpop__Sync_to_Silverpop_Chk__c</name>
+    </fields>
+    <fields>
+        <label><!-- No Longer Used --></label>
+        <name>silverpop__Sync_to_Silverpop__c</name>
+        <picklistValues>
+            <masterLabel>silverpop__Not Used</masterLabel>
+            <translation>silverpop_Non utilisé</translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Consultant</layout>
+        <sections>
+            <label><!-- Silverpop Email --></label>
+            <section>Silverpop Email</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Home Office - Retail</layout>
+        <sections>
+            <label><!-- Address --></label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Preferences --></label>
+            <section>Marketing Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Silverpop Email --></label>
+            <section>Silverpop Email</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Institutional</layout>
+        <sections>
+            <label><!-- Silverpop Email --></label>
+            <section>Silverpop Email</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Retail</layout>
+        <sections>
+            <label><!-- Address --></label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Preferences --></label>
+            <section>Marketing Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Sales and Assets --></label>
+            <section>Sales and Assets</section>
+        </sections>
+        <sections>
+            <label><!-- Silverpop Email --></label>
+            <section>Silverpop Email</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>System Administrator</layout>
+        <sections>
+            <label><!-- Advisor Profile --></label>
+            <section>Advisor Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Consultant Profile --></label>
+            <section>Consultant Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Contact Preferences --></label>
+            <section>Contact Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Contact Segmentation --></label>
+            <section>Contact Segmentation</section>
+        </sections>
+        <sections>
+            <label><!-- Internal Employee Information --></label>
+            <section>Internal Employee Information</section>
+        </sections>
+        <sections>
+            <label><!-- Sales and Assets --></label>
+            <section>Sales and Assets</section>
+        </sections>
+        <sections>
+            <label><!-- Silverpop Email --></label>
+            <section>Silverpop Email</section>
+        </sections>
+        <sections>
+            <label><!-- Total Sales Data --></label>
+            <section>Total Sales Data</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Unknown</layout>
+        <sections>
+            <label><!-- Address --></label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Preferences --></label>
+            <section>Marketing Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Sales and Assets --></label>
+            <section>Sales and Assets</section>
+        </sections>
+        <sections>
+            <label><!-- Silverpop Email --></label>
+            <section>Silverpop Email</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Verified Consultant</layout>
+        <sections>
+            <label><!-- Silverpop Email --></label>
+            <section>Silverpop Email</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Verified Home Office - Retail</layout>
+        <sections>
+            <label><!-- Address --></label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Preferences --></label>
+            <section>Marketing Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Silverpop Email --></label>
+            <section>Silverpop Email</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Verified Institutional</layout>
+        <sections>
+            <label><!-- Silverpop Email --></label>
+            <section>Silverpop Email</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Verified Retail</layout>
+        <sections>
+            <label><!-- Address --></label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Preferences --></label>
+            <section>Marketing Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Sales and Assets --></label>
+            <section>Sales and Assets</section>
+        </sections>
+        <sections>
+            <label><!-- Silverpop Email --></label>
+            <section>Silverpop Email</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Call --></label>
+        <name>Call</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Case --></label>
+        <name>Case</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Activity --></label>
+        <name>Create_Activity</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Activity (Institutional) --></label>
+        <name>Create_Activity_Institutional</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Activity (Retail) --></label>
+        <name>Create_Activity_Retail</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Event --></label>
+        <name>Event</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log A Call (Institutional) --></label>
+        <name>Log_A_Call_Institutional</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log A Call --></label>
+        <name>Log_A_Call_New</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log A Call (Retail) --></label>
+        <name>Log_A_Call_Retail</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log a Call --></label>
+        <name>Log_a_Call</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log A Note --></label>
+        <name>Note</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Rep Scorecard --></label>
+        <name>Rep_Scorecard</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Request To Join MFS Coverage Team --></label>
+        <name>Request_To_Join_MFS_Coverage_Team_Action</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Submit a help ticket --></label>
+        <name>Submit_a_help_ticket_action</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Task --></label>
+        <name>Task</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- View Activities --></label>
+        <name>View_Activities</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- New Contact --></label>
+        <name>add_contact_team_action</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Consultant --></label>
+        <name>Consultant</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Consultant - Verified --></label>
+        <name>Consultant_Verified</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Institutional --></label>
+        <name>Institutional</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Institutional - Verified --></label>
+        <name>Institutional_Verified</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Retail --></label>
+        <name>Retail</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Retail - Verified --></label>
+        <name>Retail_Verified</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- UNKNOWN --></label>
+        <name>UNKNOWN</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Address/Email/Phone information needs to be entered to save the Contact Record. --></errorMessage>
+        <name>Either_Business_Email_or_Phone_Rule</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter a first name. --></errorMessage>
+        <name>EnterFirstName</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter an Organization --></errorMessage>
+        <name>Must_have_an_Org</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- A phone number must contain only numbers (at least 10). --></errorMessage>
+        <name>Phone_number_must_have_10_digits</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This contact is currently inactive, please mark the contact as active before changing the organization --></errorMessage>
+        <name>Validate_On_Status_Is_Inactive</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sync to Silverpop selection cannot be changed. Once the box is checked, it cannot be unchecked. --></errorMessage>
+        <name>silverpop__Disable_Changing_Enable_Sync</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sync to Silverpop selection cannot be changed. Once set to &quot;Yes, Always Sync&quot; or &quot;No, Don&apos;t Sync&quot; it cannot be changed back to &quot;-None-.” --></errorMessage>
+        <name>silverpop__Disable_Changing_To_None</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Engage contact could not sync to Salesforce because the matching lead or contact in Salesforce has been set to not sync. You will need to change the &quot;Sync to Silverpop&quot; setting for the lead or contact in Salesforce. --></errorMessage>
+        <name>silverpop__Prevent_Change_From_Engage</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Conga_Composer_OAuth --></label>
+        <name>APXTConga4__Conga_Composer_OAuth</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Conga_Mail_Merge --></label>
+        <name>APXTConga4__Conga_Mail_Merge</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Activity --></label>
+        <name>Create_Activity</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Activity_Institutional --></label>
+        <name>Create_Activity_Institutional</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Create_Activity_Retail --></label>
+        <name>Create_Activity_Retail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- LinkedIn --></label>
+        <name>LinkedIn</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Log_A_Call_Institutional --></label>
+        <name>Log_A_Call_Institutional</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Log_A_Call_New --></label>
+        <name>Log_A_Call_New</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Log_A_Call_Retail --></label>
+        <name>Log_A_Call_Retail</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Log_a_Call --></label>
+        <name>Log_a_Call</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Rep_Scorecard --></label>
+        <name>Rep_Scorecard</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_HH_Info --></label>
+        <name>Send_HH_Info</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Submit_a_help_ticket --></label>
+        <name>Submit_a_help_ticket</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- View_Activities --></label>
+        <name>View_Activities</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- dc3Check --></label>
+        <name>dupcheck__dc3Check</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- dc3Merge --></label>
+        <name>dupcheck__dc3Merge</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Address_Finder --></label>
+        <name>pca__Address_Finder</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Address_Finder_Link --></label>
+        <name>pca__Address_Finder_Link</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Silverpop_Email --></label>
+        <name>silverpop__Send_Silverpop_Email</name>
+    </webLinks>
+</CustomObjectTranslation>

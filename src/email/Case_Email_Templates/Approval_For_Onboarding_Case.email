@@ -1,0 +1,6 @@
+Hi {!Case.OwnerFullName}<br><br/>
+	All of the approvals for the following Onboarding Case  {!Case.Link} have been completed. Please send out the New Account Memo Sheet. 
+
+<br><br/>
+Thank you,<br><br/>
+MFS Team

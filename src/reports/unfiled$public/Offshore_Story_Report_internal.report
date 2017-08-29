@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PF_Stories__c$Name</field>
+    </columns>
+    <columns>
+        <field>PF_Stories__c$PF_Title__c</field>
+    </columns>
+    <columns>
+        <field>PF_Stories__c$PF_Description__c</field>
+    </columns>
+    <columns>
+        <field>PF_Stories__c$PF_Story_Owner__c</field>
+    </columns>
+    <columns>
+        <field>PF_Stories__c$Apex_Development_Status__c</field>
+    </columns>
+    <columns>
+        <field>PF_Stories__c$PF_Complete__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>PF_Stories__c$Name</column>
+            <operator>contains</operator>
+            <value>STY-00259,STY-00260,STY-00621,STY-00265,STY-00261,STY-00622,STY-00623,STY-00176,STY-00280,STY-00556,STY-00624,STY-00250,STY-00421,STY-00625,STY-00626</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PF_Stories__c$Workstream__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Offshore Story Report - internal</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>PF_Story__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>PF_Stories__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CURRENT</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,363 @@
+<!---
+Visualforce Page Name :  MFS_ProductSearch
+Version               :  1.0 
+Created Date          :  3 JUN 2016
+Function              :  Product search page on opportunity
+--->
+<apex:page standardController="Opportunity" extensions="MFS_ProductSearchController" title="Product Selection for: {!opportunity.Name}" standardStylesheets="false">     
+    <apex:sectionHeader Title="{!$Label.PS_Manage} {!$ObjectType.Product2.LabelPlural}" subtitle="{!opportunity.Name}" rendered="{!$User.UIThemeDisplayed=='Theme3'}"/>
+    <apex:pageMessages id="errorMessage"/>     
+    <!--Selected Product section Start-->  
+    <script>
+    function onEnter(e){
+        if(e.keyCode == 13){
+            searchProduct();
+            return false;
+        }
+    }
+    </script>
+    <apex:form id="form">
+      
+        <apex:outputPanel id="ClassicView" rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+        <apex:pageBlock title="{!$Label.PS_Selected} {!$ObjectType.Product2.LabelPlural}" id="selected">                       
+            <apex:pageblockTable value="{!oppLineItems}" var="s" >               
+                <apex:column headerValue="{!$Label.Product_Geography_Class}" value="{!s.Asset_Class_Geography__c}" /> 
+                <apex:column headerValue="{!$Label.Product_Name}" value="{!s.Product_Name__c}" />
+                <apex:column headerValue="{!$Label.Portfolio_Name}" value="{!s.Portfolio_Name__c}" />                  
+                <apex:column headerValue="{!$Label.Product_Vehicle}" >
+                    <apex:outputField value="{!s.Product_Vehicle__c}" rendered="{!if(OR(s.Id!=null,s.Is_Unknown__c,s.Product_Record_Type__c=$Label.Portfolio_RT),true,false)}"/>
+                    <apex:inputField value="{!s.Product_Vehicle__c}" rendered="{!if(AND(s.Product_Record_Type__c=$Label.Strategy_RT,s.Id==null),true,false)}"  />
+                </apex:column>
+                <apex:column headerValue="{!$Label.Product_Restricted}" value="{!s.Restricted__c}" />               
+                <apex:column headerValue="{!$Label.Product_Fee_Type}" >  
+                    <apex:inputField value="{!s.Fee_Structure__c}" required="true" rendered="{!if(AND(null==s.id,!s.Is_Unknown__c),true,false)}" />
+                    <apex:outputField value="{!s.Fee_Structure__c}" rendered="{!if(OR(s.Is_Unknown__c,s.Id!=null),true,false)}"/>                    
+                </apex:column>
+                <apex:column headerValue="{!$Label.Product_Action}">
+                    <apex:commandLink value="{!$Label.Product_Remove}" action="{!removeFromLineItem}" reRender="selected,searchResults" immediate="true" status="blurBground" rendered="{!if(null==s.id,true,false)}">                            
+                        <apex:param value="{!s.PriceBookEntryId}" assignTo="{!toUnselect}" name="toUnselect"/>
+                    </apex:commandLink>
+                </apex:column>                      
+            </apex:pageblockTable>  
+            <apex:pageBlockButtons >
+                <apex:commandButton value="{!$Label.Product_Save}" action="{!onSave}">                         
+                </apex:commandButton>
+                <apex:commandButton action="{!onCancel}" value="{!$Label.Product_Cancel}" immediate="true"/>                                                            
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        <!--Selected Product section Ends-->  
+        <!--Search Section Starts -->        
+        <apex:pageBlock id="searchpage"> 
+            <apex:actionFunction name="searchProduct" action="{!searchProduct}" reRender="searchResults"/>
+            <table>
+                <tr>
+                    <th><apex:outputLabel value="{!$Label.Product_Geography_Class}"/> </th>
+                    <th><apex:outputLabel value="{!$Label.Strategy_Portfolio_Name}"/></th>
+                    <th><apex:outputLabel value="{!$Label.Product_Vehicle}"/></th>                    
+                </tr>
+                <tr>
+                    <th>
+                        <apex:actionRegion >  
+                            <apex:selectList value="{!selectedAssetGeography}" size="1" id="styleP" >
+                                <apex:actionSupport event="onchange" action="{!searchProduct}" reRender="searchResults">                                         
+                                </apex:actionSupport>
+                                <apex:selectOptions value="{!GeograhpyOptions}"/>
+                            </apex:selectList>
+                        </apex:actionRegion>
+                    </th>
+                    <th> 
+                        <apex:inputText value="{!searchOpt}" style="width:250px" onKeyPress="return onEnter(event)"/> 
+                    </th>
+                    <th>
+                        <apex:actionRegion >  
+                            <apex:selectList value="{!selectedVehicle}" size="1" id="PVehicle" >
+                                <apex:actionSupport event="onchange" action="{!searchProduct}" reRender="searchResults">                                         
+                                </apex:actionSupport>
+                                <apex:selectOptions value="{!VehicleOptions}"/>
+                            </apex:selectList>
+                        </apex:actionRegion>
+                    </th>       
+                </tr>
+            </table>
+            <br/>                   
+            <apex:commandButton value="{!$Label.Product_Search}" action="{!searchProduct}" reRender="searchResults" />
+            <apex:commandButton value="{!$Label.Add_Unknown}" action="{!addUnknownStrategy}" immediate="true"/> 
+            <br/><br/>
+            <!--Search Section Ends -->
+            <!--Search Result Section Starts --> 
+            <apex:outputPanel id="searchResults">
+                <apex:pageBlockTable value="{!wraplist}" var="resultRec"> 
+                    <apex:column headerValue="{!$Label.Product_Geography_Class}" value="{!resultRec.prg.Asset_Class_Geography__c}" /> 
+                    <apex:column headerValue="{!$Label.Product_Name}" value="{!resultRec.prg.Strategy_Name__c}" /> 
+                    <apex:column headerValue="{!$Label.Portfolio_Name}" value="{!resultRec.prg.Portfolio_Name__c}" /> 
+                    <apex:column headerValue="{!$Label.Product_Vehicle}" value="{!resultRec.prg.Product_Vehicle__c}" /> 
+                    <apex:column headerValue="{!$Label.Product_Restricted}" value="{!resultRec.prg.Restricted__c}" /> 
+                    <apex:column headerValue="{!$Label.Product_Action}"> 
+                        <apex:commandLink value="{!$Label.Product_Add}" action="{!addToLineItem}" reRender="selected,searchResults" immediate="true" status="blurBground">
+                            <apex:param value="{!resultRec.prg.Name}" assignTo="{!toSelect}" name="toSelect"/>                                    
+                        </apex:commandLink>
+                    </apex:column>                                                                      
+                </apex:pageBlockTable>
+            </apex:outputPanel>
+        </apex:pageBlock>
+        </apex:outputPanel>
+        
+        <!--Search Result Section Ends --> 
+        <!--Lightning Design-->
+        <apex:outputPanel id="LightningView" rendered="{!OR($User.UIThemeDisplayed=='Theme4d', $User.UIThemeDisplayed=='Theme4t')}">
+            <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <head>               
+                    <apex:stylesheet value="{!URLFOR($Resource.MFS_UI_Assets, '/assets/styles/salesforce-lightning-design-system-ltng.min.css')}" />
+                    <style>
+                        html,
+                        body {height: 100%;width: 100%;overflow: auto;}
+                        input[type="text"], textarea, select {-webkit-appearance: none;}
+                        .MFS .slds-form-element.slds-is-required .slds-input, 
+                        .MFS .slds-form-element.slds-is-required .slds-select{border-left:3px solid #c00;}
+                        .MFS .slds-form-element.slds-is-required .slds-dirty-input{border:1px solid #c00;}
+                        
+                        .MFS .slds-form-element.slds-is-required .slds-form-element__label abbr{display:none;color: #c00;margin-left: 5px;font-style: italic;}
+                        .slds-loader--container .slds-backdrop{background:#FFF;opacity:0.6;}.slds-form-element.slds-is-required .slds-input, 
+                        .MFS .slds-form-element.slds-is-required .slds-select{border-left:3px solid #c00;}
+                        .MFS .slds-form-element.slds-is-required .slds-dirty-input{border:1px solid #c00;}
+                        
+                        .MFS .slds-form-element.slds-is-required .slds-form-element__label abbr{display:none;color: #c00;margin-left: 5px;font-style: italic;}
+                        .slds-loader--container .slds-backdrop{background:#FFF;opacity:0.6;}
+                    </style>
+                </head>
+                <body>            
+                    <div class="slds MFS">
+                        <div>
+                            <div class="slds-page-header" role="banner">
+                                <div class="slds-media slds-media--center">
+                                    <div class="slds-media__figure">
+                                        <svg aria-hidden="true" class="slds-icon slds-icon-standard-case">
+                                            <use xlink:href="{!URLFOR($Resource.MFS_UI_Assets, '/assets/icons/standard-sprite/svg/symbols.svg#product')}"></use>
+                                        </svg>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <p class="slds-page-header__title slds-align-middle">
+                                            {!$Label.PS_Manage} {!$ObjectType.Product2.LabelPlural} - {!Opportunity.Name}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-panel slds-grid slds-grid--vertical" style="margin:10px !important;">
+                                <div class="slds-form--stacked slds-grow slds-scrollable--y">
+                                    <div class="slds-has-divider--bottom" style="padding-top: 10px !important;">
+                                        <div class="slds-card">
+                                            <div class="slds-card__header slds-grid">
+                                                <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                                                    <div class="slds-media__body slds-truncate">
+                                                        <a href="javascript:void(0);" class="slds-text-link--reset">
+                                                            <span class="slds-text-heading--small">{!$Label.PS_Selected} {!$ObjectType.Product2.LabelPlural}
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slds-card__body slds-text-align--center">
+                                                <apex:outputPanel layout="block" id="selectedSLDS">
+                                                <table class="slds-table slds-table--bordered slds-max-medium-table--stacked"> 
+                                                    <thead>
+                                                        <tr class="slds-text-heading--label">        
+                                                            <th class="slds-text-heading--label" scope="col">{!$Label.Product_Geography_Class}</th>
+                                                            <th class="slds-text-heading--label" scope="col"> {!$Label.Product_Name}</th>
+                                                            <th class="slds-text-heading--label" scope="col"> {!$Label.Portfolio_Name}</th>                                                                 
+                                                            <th class="slds-text-heading--label" scope="col">{!$Label.Product_Vehicle}</th>           
+                                                            <th class="slds-text-heading--label" scope="col">{!$Label.Product_Restricted}</th>
+                                                            <th class="slds-text-heading--label" scope="col">{!$Label.Product_Fee_Type}</th> 
+                                                            <th class="slds-text-heading--label" scope="col"> {!$Label.Product_Action} </th>
+                                                        </tr> 
+                                                    </thead> 
+                                                    <tbody>
+                                                        <apex:repeat value="{!oppLineItems}" var="oppLI">
+                                                            <tr>
+                                                                <td data-label="{!$Label.Product_Geography_Class}">
+                                                                    <div>
+                                                                        <apex:outputField title="{!$Label.Product_Geography_Class}" value="{!oppLI.Asset_Class_Geography__c}" styleClass="slds-output"/>
+                                                                    </div>
+                                                                </td> 
+                                                                <td data-label="{!$Label.Product_Name}">
+                                                                    <div>
+                                                                        <apex:outputField title="{!$Label.Product_Name}" value="{!oppLI.Product_Name__c}" styleClass="slds-output"/>                                    
+                                                                    </div>
+                                                                </td>
+                                                                <td data-label="{!$Label.Portfolio_Name}">
+                                                                    <div>
+                                                                        <apex:outputField title="{!$Label.Portfolio_Name}" value="{!oppLI.Portfolio_Name__c}" styleClass="slds-output"/>                                    
+                                                                    </div>
+                                                                </td>
+                                                                <td data-label="{!$Label.Product_Vehicle}">
+                                                                    <div class="slds-form-element slds-is-required">
+                                                                        <label class="slds-form-element__label"></label>
+                                                                        <div class="slds-form-element__control">
+                                                                            <apex:outputField value="{!oppLI.Product_Vehicle__c}" rendered="{!if(OR(oppLI.Id!=null,oppLI.Is_Unknown__c,oppLI.Product_Record_Type__c=$Label.Portfolio_RT),true,false)}"/>
+                                                                            <apex:outputPanel styleClass="slds-select_container" layout="block" rendered="{!if(AND(oppLI.Product_Record_Type__c=$Label.Strategy_RT,oppLI.Id==null),true,false)}">
+                                                                                <apex:inputField value="{!oppLI.Product_Vehicle__c}" styleClass="slds-select" />
+                                                                            </apex:outputPanel>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td data-label="{!$Label.Product_Restricted}">
+                                                                    <div>
+                                                                        <apex:outputField title="{!$Label.Product_Restricted}"  value="{!oppLI.Restricted__c}" styleClass="slds-output"/>                                    
+                                                                    </div>
+                                                                </td> 
+                                                                <td data-label="{!$Label.Product_Fee_Type}">                                                                       
+                                                                    <div class="slds-form-element slds-is-required">
+                                                                        <label class="slds-form-element__label"></label>
+                                                                        <div class="slds-form-element__control">
+                                                                            <apex:outputField value="{!oppLI.Fee_Structure__c}" rendered="{!if(OR(oppLI.Is_Unknown__c,oppLI.Id!=null),true,false)}" styleClass="slds-output"/> 
+                                                                            <apex:outputPanel styleClass="slds-select_container" layout="block" rendered="{!if(and(null==oppLI.id,!oppLI.Is_Unknown__c),true,false)}">
+                                                                                <apex:inputField value="{!oppLI.Fee_Structure__c}" required="true" styleClass="slds-select" />
+                                                                            </apex:outputPanel>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td data-label="{!$Label.Product_Action}">
+                                                                    <div>
+                                                                        <apex:commandLink value="{!$Label.Product_Remove}" action="{!removeFromLineItem}" immediate="true" status="blurBground" rendered="{!if(null==oppLI.id,true,false)}">
+                                                                            <apex:param value="{!oppLI.PriceBookEntryId}" assignTo="{!toUnselect}" name="toUnselect"/>
+                                                                        </apex:commandLink>                                   
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </apex:repeat> 
+                                                    </tbody>
+                                                </table> 
+                                                </apex:outputPanel>
+                                                <br/>
+                                                <div class="slds-grid slds-grid--align-center">
+                                                    <input type="button" value="Save" class="slds-button slds-button--neutral" onclick="validatePageFormBAR(this, event);" />
+                                                    <apex:commandButton action="{!onSave}" value="Save" styleClass="mfs_save_bar_action slds-button slds-button--neutral slds-hide" />
+                                                    <apex:commandButton action="{!cancel}" value="Cancel" html-formnovalidate="formnovalidate" styleClass="slds-button slds-button--neutral"/>
+                                                </div>
+                                                <table class="slds-table slds-max-medium-table--stacked slds-m-top--medium">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="slds-form-element">
+                                                                    <label class="slds-form-element__label" for="select-01">{!$Label.Product_Geography_Class}</label>
+                                                                    <div class="slds-form-element__control">
+                                                                        <div class="slds-select_container">
+                                                                            <apex:actionRegion >  
+                                                                                <apex:selectList value="{!selectedAssetGeography}" size="1" id="styleP" styleClass="slds-select">
+                                                                                    <apex:actionSupport event="onchange" action="{!searchProduct}" reRender="searchResults">                                         
+                                                                                    </apex:actionSupport>
+                                                                                    <apex:selectOptions value="{!GeograhpyOptions}"/>
+                                                                                </apex:selectList>
+                                                                            </apex:actionRegion>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="slds-form-element">
+                                                                    <label class="slds-form-element__label" for="text-input-01">{!$Label.Product_Name}</label>
+                                                                    <div class="slds-form-element__control">
+                                                                        <apex:inputText value="{!searchOpt}"  styleClass="slds-input" onKeyPress="return onEnter(event)"/>
+                                                                        <apex:actionFunction name="searchProduct" action="{!searchProduct}" reRender="searchResults"/>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="slds-form-element">
+                                                                    <label class="slds-form-element__label" for="select-01">{!$Label.Product_Vehicle}</label>
+                                                                    <div class="slds-form-element__control">
+                                                                        <div class="slds-select_container"><apex:actionRegion > 
+                                                                            <apex:selectList value="{!selectedVehicle}" size="1" id="PVehicle" styleClass="slds-select" >
+                                                                                <apex:actionSupport event="onchange" action="{!searchProduct}" reRender="searchResults">                                         
+                                                                                </apex:actionSupport>
+                                                                                <apex:selectOptions value="{!VehicleOptions}"/>
+                                                                            </apex:selectList>
+                                                                            </apex:actionRegion>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> 
+                                                                <apex:commandButton value="{!$Label.Product_Search}" action="{!searchProduct}" reRender="searchResults" status="searchStatus" styleClass="slds-button slds-button--neutral" immediate="true"/>
+                                                                <apex:commandButton value="{!$Label.Add_Unknown}" action="{!addUnknownStrategy}" immediate="true" styleClass="slds-button slds-button--neutral"/> 
+                                                            </td>
+                                                            <td></td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <apex:outputPanel id="searchResults" layout="block">
+                                                <table class="slds-table slds-table--bordered slds-max-medium-table--stacked">
+                                                    <thead>
+                                                        <tr>        
+                                                            <th class="slds-text-heading--label" scope="col">{!$Label.Product_Geography_Class}</th>
+                                                            <th class="slds-text-heading--label" scope="col">{!$Label.Product_Name}</th>                             
+                                                            <th class="slds-text-heading--label" scope="col">{!$Label.Portfolio_Name}</th>                             
+                                                            <th class="slds-text-heading--label" scope="col">{!$Label.Product_Vehicle}</th>           
+                                                            <th class="slds-text-heading--label" scope="col">{!$Label.Product_Restricted}</th>
+                                                            <th class="slds-text-heading--label" scope="col"> {!$Label.Product_Action} </th>
+                                                        </tr>
+                                                    </thead> 
+                                                    <tbody>
+                                                        <apex:repeat value="{!wraplist}" var="a">
+                                                            <tr>
+                                                                <td data-label="{!$Label.Product_Geography_Class}">
+                                                                    <div>
+                                                                        <apex:outputField title="{!$Label.Product_Geography_Class}" value="{!a.prg.Asset_Class_Geography__c}" styleClass="slds-output"/>                                    
+                                                                    </div>
+                                                                </td>
+                                                                <td data-label="{!$Label.Product_Name}" >
+                                                                    <div>
+                                                                        <apex:outputField title="{!$Label.Product_Name}" value="{!a.prg.Strategy_Name__c}" styleClass="slds-output"/>                                    
+                                                                    </div>
+                                                                </td>
+                                                                <td data-label="{!$Label.Portfolio_Name}" >
+                                                                    <div>
+                                                                        <apex:outputField title="{!$Label.Portfolio_Name}"  value="{!a.prg.Portfolio_Name__c}" styleClass="slds-output"/>                                    
+                                                                    </div>
+                                                                </td>
+                                                                <td data-label="{!$Label.Product_Vehicle}">
+                                                                    <div>
+                                                                        <apex:outputField title="{!$Label.Product_Vehicle}" value="{!a.prg.Product_Vehicle__c}" styleClass="slds-output"/>                    
+                                                                    </div>
+                                                                </td>
+                                                                <td data-label="{!$Label.Product_Restricted}">
+                                                                    <div>
+                                                                        <apex:outputField title="{!$Label.Product_Restricted}" value="{!a.prg.Restricted__c}" styleClass="slds-output"/>                                    
+                                                                    </div>
+                                                                </td>
+                                                                <td data-label="{!$Label.Product_Action}">
+                                                                    <div>
+                                                                        <apex:outputLink onclick="addToLineItem('{!JSENCODE(a.prg.Name)}'); return false;"> {!$Label.Product_Add}  </apex:outputLink>  
+                                                                        <!--apex:commandLink value="{!$Label.Product_Add}" action="{!addToLineItem}" immediate="true" status="blurBground">                            
+                                                                            <apex:param value="{!a.prg.Name}" assignTo="{!toSelect}" name="toSelect"/>         
+                                                                        </apex:commandLink-->   
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </apex:repeat>
+                                                        
+                                                    </tbody>
+                                                </table> 
+                                            </apex:outputPanel>
+                                            <apex:actionFunction name="addToLineItem" action="{!addToLineItem}" rerender="selectedSLDS, searchResults">
+                                                <apex:param name="toSelect" value="" assignTo="{!toSelect}"/>
+                                            </apex:actionFunction>
+                                        </div><!-- End Card -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script src="/resource/MFS_UI_Assets/assets/js/jquery-1.11.3.min.js">
+                    </script>
+                    <script src="{!URLFOR($Resource.MFS_Scripts_New)}">
+                    </script>
+                </body>
+            </html>
+        </apex:outputPanel>
+    </apex:form>  
+</apex:page>

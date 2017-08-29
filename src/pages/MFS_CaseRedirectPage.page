@@ -1,0 +1,95 @@
+<!---
+Visualforce Page Name :  MFS_CaseRedirectPage
+Version               :  1.0 
+Created Date          :  16 MAY 2017
+Function              :  Override recordtypes for Case
+--->
+<apex:page standardController="Case"  > 
+    <!--Console Integration ToolKit Library-->
+    <apex:includeScript value="/support/console/30.0/integration.js"/>
+    <apex:includeScript value="/soap/ajax/22.0/connection.js"/>
+    <apex:includeScript value="/soap/ajax/22.0/apex.js"/>
+    <!--JQuery Library-->
+    <script src="{!URLFOR($Resource.jquery113)}"></script>
+    <script type="text/javascript">
+        var url;
+    var j$ = jQuery.noConflict();
+    j$(document).ready(function()
+                       {
+                           sforce.connection.sessionId = "{!$Api.Session_ID}";
+                           //Edit Page
+                           if('{!Case.Id}' != ''){
+                               if('{!Case.RecordType.Name}' == 'Service Request'){
+                                   url = "/apex/MFS_ServiceRequestCase?Id={!Case.Id}&retURL={!Case.Id}&ent=Case";
+                               }
+                               else{
+                                   url = "/{!Case.Id}/e?retURL={!Case.Id}&nooverride=1";
+                               }
+                           }
+                           //Create page
+                           else{
+                               var recTypes = sforce.connection.query("SELECT Id from Recordtype where DeveloperName='Service_Request' and SObjectType='Case' limit 1");
+                               records = recTypes.getArray("records"); 
+                               var recordtypeId = records[0].Id;
+                               var recordtypeIndex = '{!$currentPage.URL}'.indexOf('RecordType=');
+                               var recordtype = '{!$currentPage.URL}'.substr(Number(recordtypeIndex)+11,15);
+                               if(recordtypeId.includes(recordtype)){
+                                   url = "/apex/MFS_ServiceRequestCase?RecordType="+recordtypeId+"&retURL=005&ent=Case";
+                               }
+                               else{
+                                   url = "/500/e?RecordType="+recordtype+"&retURL=005&nooverride=1";
+                               }
+                           }
+                           //If console, open in new sub tab.
+                           if(sforce.console.isInConsole())
+                           {
+                               openTaskInSubTab();
+                           } 
+                           //If window, override on the same window
+                           else if(typeof sforce != "undefined" && sforce.one != null)
+                           {
+                               sforce.one.navigateToURL(url);
+                           }
+                               else{
+                                   window.open(url,"_parent");
+                               }   
+                           
+                       });
+    //Console Integration method to Open Event (Standard/Enhanced Event) in sub tab 
+    function openEventInSubTab() {
+        sforce.console.openPrimaryTab(null, url, true,"{!$Label.A360_New_Task}", openSuccess, "{!$Label.A360_New_Task}");   
+    }
+    
+    function openTaskInSubTab() {
+        //To get the Primary Tab ID
+        sforce.console.getFocusedPrimaryTabObjectId(function(result){
+            var objId = result.id;
+            sforce.console.getEnclosingPrimaryTabId(function(resultPrim){
+                var primaryTabId = resultPrim.id;
+                if(url.includes("what_id")){
+                    sforce.console.openSubtab(primaryTabId, url, true,"{!$Label.A360_New_Task}",null, openSuccess, "{!$Label.A360_New_Task}");
+                }
+                else{
+                    sforce.console.openPrimaryTab(null, url, true,"{!$Label.A360_New_Task}", openSuccess, "{!$Label.A360_New_Task}"); 
+                }
+            });
+            
+        });
+    }
+    
+    //Console method to identify the ID of the unwanted additional sub tab 
+    var openSuccess = function openSuccess(result) {
+        if (result.success == true) {
+            sforce.console.getEnclosingTabId(closeAdditionalSubtab);
+        }
+        else{
+            console.log(result);
+        }
+    }
+    //Console method to close the unwanted additional sub tab
+    var closeAdditionalSubtab = function closeSubtab(result) {
+        var tabId = result.id;
+        sforce.console.closeTab(tabId);
+    };
+    </script>
+</apex:page>

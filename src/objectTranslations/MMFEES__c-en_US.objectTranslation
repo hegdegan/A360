@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Provider Fee</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Provider Fees</value>
+    </caseValues>
+    <fields>
+        <label><!-- Collective Code --></label>
+        <name>COLLECTIVE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Collective --></label>
+        <name>Collective_Desc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fee AUM --></label>
+        <name>FEE_AGEN_AMOUNT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fee Amount ($000) --></label>
+        <name>FEE_AMOUNT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Local Currency --></label>
+        <name>FEE_CUR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fee Paid --></label>
+        <name>FEE_DATE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>FEE_NOTES__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name_del__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Firm Profile --></label>
+        <name>MMD_Firm_Profile__c</name>
+        <relationshipLabel><!-- MMD Provider Fees --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Plan Name --></label>
+        <name>PLAN_NAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Sequence # --></label>
+        <name>PLAN_SEQ__c</name>
+    </fields>
+    <fields>
+        <label><!-- Provider ID --></label>
+        <name>PROV_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Provider Name --></label>
+        <name>PROV_NAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Provider Link --></label>
+        <name>Provider_Link__c</name>
+        <relationshipLabel><!-- MMD Provider Fees --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Region Code --></label>
+        <name>REGION__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Region_Desc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Code --></label>
+        <name>SERVICE_CODE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Style Code --></label>
+        <name>STYLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Details --></label>
+        <name>SVC_DETAIL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service --></label>
+        <name>Service__c</name>
+    </fields>
+    <fields>
+        <label><!-- Style --></label>
+        <name>Style_Desc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type Code --></label>
+        <name>TYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type_Desc__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

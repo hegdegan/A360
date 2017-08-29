@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- RFP --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Business Channel --></label>
+        <name>Business_Channel__c</name>
+        <picklistValues>
+            <masterLabel>ARG</masterLabel>
+            <translation><!-- ARG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCI</masterLabel>
+            <translation><!-- DCI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Marketing</masterLabel>
+            <translation><!-- Global Marketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISG</masterLabel>
+            <translation><!-- ISG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFD</masterLabel>
+            <translation><!-- MFD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS</masterLabel>
+            <translation><!-- MFS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS - Canada</masterLabel>
+            <translation><!-- MFS - Canada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFSI - Asia</masterLabel>
+            <translation><!-- MFSI - Asia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFSI - Australia</masterLabel>
+            <translation><!-- MFSI - Australia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFSI - Europe</masterLabel>
+            <translation><!-- MFSI - Europe --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFSI - Japan</masterLabel>
+            <translation><!-- MFSI - Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFSI - ME/SA</masterLabel>
+            <translation><!-- MFSI - ME/SA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFSI - US</masterLabel>
+            <translation><!-- MFSI - US --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MIL</masterLabel>
+            <translation><!-- MIL --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Business Type --></label>
+        <name>Business_Type__c</name>
+        <picklistValues>
+            <masterLabel>Consultant Research</masterLabel>
+            <translation><!-- Consultant Research --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Existing Business</masterLabel>
+            <translation><!-- Existing Business --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Business</masterLabel>
+            <translation><!-- New Business --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Client/Prospect Name --></label>
+        <name>Client_Prospect_Name2__c</name>
+        <relationshipLabel><!-- RFPs (Client/Prospect Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Client/Prospect Name --></label>
+        <name>Client_Prospect_Name_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Tier --></label>
+        <name>Client_Tier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consultant Organization --></label>
+        <name>Consultant_Organization_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consultant Organization --></label>
+        <name>Consultant_Organization__c</name>
+        <relationshipLabel><!-- RFPs (Consultant Organization) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Consultant Tier --></label>
+        <name>Consultant_Tier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date Due --></label>
+        <name>Date_Due__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date Received --></label>
+        <name>Date_Received__c</name>
+    </fields>
+    <fields>
+        <label><!-- Due In --></label>
+        <name>Due_In__c</name>
+    </fields>
+    <fields>
+        <label><!-- Institutional Tier --></label>
+        <name>Institutional_Tier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity Amount --></label>
+        <name>Opportunity_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- RFPs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Org Name --></label>
+        <name>Org_Name__c</name>
+        <relationshipLabel><!-- RFPs (Org Name) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- PMAPS Proposal Id --></label>
+        <name>PMAPS_Proposal_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- PMAPS Sales Person Name --></label>
+        <name>PMAPS_Sales_Person_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Type --></label>
+        <name>Plan_Type__c</name>
+        <picklistValues>
+            <masterLabel>Deferred Compensation</masterLabel>
+            <translation><!-- Deferred Compensation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defined Benefit</masterLabel>
+            <translation><!-- Defined Benefit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defined Contribution</masterLabel>
+            <translation><!-- Defined Contribution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Endowment</masterLabel>
+            <translation><!-- Endowment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Foundation</masterLabel>
+            <translation><!-- Foundation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance - General Account</masterLabel>
+            <translation><!-- Insurance - General Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investment</masterLabel>
+            <translation><!-- Investment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nuclear Decommissioning Trust</masterLabel>
+            <translation><!-- Nuclear Decommissioning Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subadvised</masterLabel>
+            <translation><!-- Subadvised --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subadvised (40 Act)</masterLabel>
+            <translation><!-- Subadvised (40 Act) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unit Linked Insurance Plan (ULIP)</masterLabel>
+            <translation><!-- Unit Linked Insurance Plan (ULIP) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Unknown</masterLabel>
+            <translation><!-- Unknown --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VEBA</masterLabel>
+            <translation><!-- VEBA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- RFP Declined --></label>
+        <name>RFP_Declined__c</name>
+    </fields>
+    <fields>
+        <label><!-- RFP Status --></label>
+        <name>RFP_Status__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Initiated</masterLabel>
+            <translation><!-- Initiated --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- RFP Team --></label>
+        <name>RFP_Team__c</name>
+        <picklistValues>
+            <masterLabel>Australia</masterLabel>
+            <translation><!-- Australia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Boston</masterLabel>
+            <translation><!-- Boston --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canada</masterLabel>
+            <translation><!-- Canada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>London</masterLabel>
+            <translation><!-- London --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tokyo</masterLabel>
+            <translation><!-- Tokyo --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Required if &apos;RFP Declined&apos; is checked --></help>
+        <label><!-- Reason Declined --></label>
+        <name>Reason_Declined__c</name>
+    </fields>
+    <fields>
+        <label><!-- Request Type --></label>
+        <name>Request_Type__c</name>
+        <picklistValues>
+            <masterLabel>15C</masterLabel>
+            <translation><!-- 15C --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ad hoc</masterLabel>
+            <translation><!-- Ad hoc --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Awards</masterLabel>
+            <translation><!-- Awards --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Due Diligence</masterLabel>
+            <translation><!-- Client Due Diligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consultant Due Diligence</masterLabel>
+            <translation><!-- Consultant Due Diligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consultant Research Request</masterLabel>
+            <translation><!-- Consultant Research Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PQQ</masterLabel>
+            <translation><!-- PQQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Presentation Prep</masterLabel>
+            <translation><!-- Presentation Prep --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RFI</masterLabel>
+            <translation><!-- RFI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RFP</masterLabel>
+            <translation><!-- RFP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sample Due Diligence</masterLabel>
+            <translation><!-- Sample Due Diligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sample RFP</masterLabel>
+            <translation><!-- Sample RFP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Survey</masterLabel>
+            <translation><!-- Survey --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Rush Delivery --></label>
+        <name>Rush_Delivery__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Person/Relationship Manager --></label>
+        <name>Sales_Person_Relationship_Manager__c</name>
+        <relationshipLabel><!-- RFPs (Sales Person/Relationship Manager) --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- autofill based on &apos;Sales Person/Relationship Manager&apos; --></help>
+        <label><!-- Sales/RM Email --></label>
+        <name>Sales_RM_Email__c</name>
+    </fields>
+    <fields>
+        <help><!-- autofill based on &apos;Sales Person/Relationship Manager&apos; --></help>
+        <label><!-- Sales/RM Phone --></label>
+        <name>Sales_RM_Phone__c</name>
+    </fields>
+    <fields>
+        <help><!-- autofill based on &apos;Secondary MFS Contact&apos; --></help>
+        <label><!-- Secondary Contact Email --></label>
+        <name>Secondary_Contact_Email__c</name>
+    </fields>
+    <fields>
+        <help><!-- autofill based on &apos;Secondary MFS Contact&apos; --></help>
+        <label><!-- Secondary Contact Phone --></label>
+        <name>Secondary_Contact_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Secondary MFS Contact --></label>
+        <name>Secondary_MFS_Contact__c</name>
+        <relationshipLabel><!-- RFPs (Secondary MFS Contact) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Service Request --></label>
+        <name>Service_Request__c</name>
+        <relationshipLabel><!-- RFPs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Strategy --></label>
+        <name>Strategy__c</name>
+        <relationshipLabel><!-- RFPs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Submission Date --></label>
+        <name>Today_s_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Your Email --></label>
+        <name>Your_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Your Name --></label>
+        <name>Your_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Your Phone --></label>
+        <name>Your_Phone__c</name>
+    </fields>
+    <layouts>
+        <layout>PMAPS Layout</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Declined Details --></label>
+            <section>Declined Details</section>
+        </sections>
+        <sections>
+            <label><!-- Plans and Client Investments --></label>
+            <section>Plans and Client Investments</section>
+        </sections>
+        <sections>
+            <label><!-- RFP Team Location --></label>
+            <section>RFP Team Location</section>
+        </sections>
+        <sections>
+            <label><!-- Request Information --></label>
+            <section>Request Information</section>
+        </sections>
+        <sections>
+            <label><!-- Requested By (Internal Contacts Only) --></label>
+            <section>Requested By (Internal Contacts Only)</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel><!-- RFP Name --></nameFieldLabel>
+    <validationRules>
+        <errorMessage><!-- Required if &apos;RFP Not Pursued&apos; is checked --></errorMessage>
+        <name>Required_if_RFP_Not_Persued_is_checked</name>
+    </validationRules>
+    <webLinks>
+        <label>新しいRFP</label>
+        <name>New_RFP</name>
+    </webLinks>
+    <webLinks>
+        <label>新RFP1</label>
+        <name>RFP</name>
+    </webLinks>
+    <webLinks>
+        <label>PMAPSに提出</label>
+        <name>Submit_to_PMAPS</name>
+    </webLinks>
+</CustomObjectTranslation>

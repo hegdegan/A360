@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Requester__c</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Retail_Business_Approver_Queue</name>
+                <type>queue</type>
+            </approver>
+            <approver>
+                <name>Retail_Regional_Director</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>Unanimous</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>(!ISPICKVAL(Requester__r.Speaker_Request_Approval__c,&apos;IPS&apos;) || (ISPICKVAL(Requester__r.Business__c,&apos;Retail&apos;) &amp;&amp; RecordType.Name = &apos;Trading Floor Tour&apos;)) &amp;&amp; !ISPICKVAL(Approval_Status__c,&apos;Rejected&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Regional Director and Business Approval</label>
+        <name>Regional_Director_and_Business_Approval</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Retail_IPM_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>((ISPICKVAL(Requester__r.Business__c , &apos;Retail&apos;) &amp;&amp; ISPICKVAL(Requester__r.Speaker_Request_Approval__c , &apos;PM&apos;))) &amp;&amp;  !ISPICKVAL(Approval_Status__c,&apos;Rejected&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>IPM</label>
+        <name>IPM</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Speaker_Coordinator_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>((ISPICKVAL(Requester__r.Business__c , &apos;Retail&apos;) &amp;&amp; ISPICKVAL(Requester__r.Speaker_Request_Approval__c , &apos;US Equity Analyst&apos;)) || (ISPICKVAL(Requester__r.Business__c , &apos;Retail&apos;) &amp;&amp; ISPICKVAL(Requester__r.Speaker_Request_Approval__c , &apos;Fixed Income&apos;)) || (ISPICKVAL(Requester__r.Business__c , &apos;Retail&apos;) &amp;&amp; ISPICKVAL(Requester__r.Speaker_Request_Approval__c , &apos;Non-US Retail&apos;)))&amp;&amp; !ISPICKVAL(Approval_Status__c , &apos;Rejected&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Speaker Coordinator</label>
+        <name>Speaker_Coordinator3</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Retail_Equity_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>((ISPICKVAL(Requester__r.Business__c,&apos;Retail&apos;) &amp;&amp; ISPICKVAL(Requester__r.Speaker_Request_Approval__c,&apos;US Equity Analyst&apos;)) || (ISPICKVAL(Requester__r.Business__c , &apos;Retail&apos;) &amp;&amp; ISPICKVAL(Requester__r.Speaker_Request_Approval__c , &apos;Fixed Income&apos;)) || (ISPICKVAL(Requester__r.Business__c , &apos;Retail&apos;) &amp;&amp; ISPICKVAL(Requester__r.Speaker_Request_Approval__c , &apos;Non-US Retail&apos;))) &amp;&amp; !ISPICKVAL(Approval_Status__c,&apos;Rejected&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Equity Dept Speaker</label>
+        <name>Equity_Dept_Speaker</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Speaker_Coordinator_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Requester__r.Business__c,&apos;Retail&apos;) &amp;&amp; ISPICKVAL(Requester__r.Speaker_Request_Approval__c,&apos;Senior Mgmt&apos;) &amp;&amp;  !ISPICKVAL(Approval_Status__c,&apos;Rejected&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Speaker Coordinator</label>
+        <name>Speaker_Coordinator</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Jim_Jesse_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>ISPICKVAL(Requester__r.Business__c,&apos;Retail&apos;) &amp;&amp; ISPICKVAL(Requester__r.Speaker_Request_Approval__c,&apos;Senior Mgmt&apos;) &amp;&amp; !ISPICKVAL(Approval_Status__c,&apos;Rejected&apos;)</formula>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Jim Jessee</label>
+        <name>Jim_Jessee</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Speaker_Coordinator_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <formula>!ISPICKVAL(Approval_Status__c,&apos;Rejected&apos;)</formula>
+        </entryCriteria>
+        <label>Speaker Coordinator</label>
+        <name>Speaker_Coordinator2</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <emailTemplate>Speaker_Request/Speaker_Request_Approval</emailTemplate>
+    <enableMobileDeviceAccess>true</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>(ISPICKVAL(Requester__r.Business__c,&apos;Retail&apos;) &amp;&amp;   RecordType.Name = &apos;Trading Floor Tour&apos;) &amp;&amp; (!ISPICKVAL(Approval_Status__c,&apos;Approved&apos;))</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Retail_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Retail_Rejected</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>IPM_Pending</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Global Retail</label>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

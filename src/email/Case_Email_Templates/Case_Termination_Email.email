@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="{!relatedTo.subject}" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+<c:MFS_Case_Termination recId="{!relatedTo.Id}"/>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

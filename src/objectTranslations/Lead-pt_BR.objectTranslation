@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- DB Created Date without Time --></label>
+        <name>DB_Created_Date_without_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- DB Lead Age --></label>
+        <name>DB_Lead_Age__c</name>
+    </fields>
+    <fields>
+        <label><!-- Organization --></label>
+        <name>Organization__c</name>
+        <relationshipLabel><!-- Prospects --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Specialty Type --></label>
+        <name>Specialty_Type__c</name>
+        <picklistValues>
+            <masterLabel>529 Plans</masterLabel>
+            <translation><!-- 529 Plans --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Annuity</masterLabel>
+            <translation><!-- Annuity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corporate</masterLabel>
+            <translation><!-- Corporate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defined Benefit</masterLabel>
+            <translation><!-- Defined Benefit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defined Contribution</masterLabel>
+            <translation><!-- Defined Contribution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESG</masterLabel>
+            <translation><!-- ESG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Endowment &amp; Foundations</masterLabel>
+            <translation><!-- Endowment &amp; Foundations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outsource CIO</masterLabel>
+            <translation><!-- Outsource CIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Private Wealth/ High Net Worth</masterLabel>
+            <translation><!-- Private Wealth/ High Net Worth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Funds</masterLabel>
+            <translation><!-- Public Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Separately Managed Accounts</masterLabel>
+            <translation><!-- Separately Managed Accounts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Taft Hartley</masterLabel>
+            <translation><!-- Taft Hartley --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Disable Duplicate Check --></label>
+        <name>dupcheck__dc3DisableDuplicateCheck__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duplicate Check Index --></label>
+        <name>dupcheck__dc3Index__c</name>
+    </fields>
+    <fields>
+        <label><!-- is Web2Lead --></label>
+        <name>dupcheck__dc3Web2Lead__c</name>
+    </fields>
+    <fields>
+        <label><!-- CRMI Modified Date --></label>
+        <name>silverpop__CRMI_Modified_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Sync Date --></label>
+        <name>silverpop__Last_Sync_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Last Sync Id --></label>
+        <name>silverpop__Last_Sync_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Rank --></label>
+        <name>silverpop__Lead_Rank__c</name>
+    </fields>
+    <fields>
+        <label><!-- Lead Score --></label>
+        <name>silverpop__Lead_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Silverpop Behavior Score --></label>
+        <name>silverpop__Silverpop_Behavior_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Silverpop Lead Rank --></label>
+        <name>silverpop__Silverpop_Lead_Rank__c</name>
+    </fields>
+    <fields>
+        <label><!-- Silverpop Lead Score --></label>
+        <name>silverpop__Silverpop_Lead_Score__c</name>
+    </fields>
+    <fields>
+        <label><!-- Silverpop RecipientID --></label>
+        <name>silverpop__Silverpop_RecipientID__c</name>
+    </fields>
+    <fields>
+        <help>Use “Sincronizar com a Silverpop” para determinar quais as oportunidades de vendas que deseja sincronizar com a Silverpop. Quando a caixa estiver marcada, o valor do campo NÃO PODE ser alterado, as oportunidades de vendas selecionadas serão sincronizadas com a Silverpop e sempre serão sincronizadas.</help>
+        <label><!-- Sync to Silverpop --></label>
+        <name>silverpop__Sync_to_Silverpop_Chk__c</name>
+    </fields>
+    <fields>
+        <label><!-- No Longer Used --></label>
+        <name>silverpop__Sync_to_Silverpop__c</name>
+        <picklistValues>
+            <masterLabel>Not Used</masterLabel>
+            <translation>Não usado</translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Institutional</layout>
+        <sections>
+            <label><!-- Advisor Profile --></label>
+            <section>Advisor Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Prospect Preferences --></label>
+            <section>Prospect Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Prospect Segmentation --></label>
+            <section>Prospect Segmentation</section>
+        </sections>
+        <sections>
+            <label><!-- Silver Pop --></label>
+            <section>Silver Pop</section>
+        </sections>
+        <sections>
+            <label><!-- Silverpop Contact Insight --></label>
+            <section>Silverpop Contact Insight</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Lead Layout</layout>
+        <sections>
+            <label><!-- Advisor Profile --></label>
+            <section>Advisor Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Prospect Preferences --></label>
+            <section>Prospect Preferences</section>
+        </sections>
+        <sections>
+            <label><!-- Prospect Segmentation --></label>
+            <section>Prospect Segmentation</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Retail</layout>
+        <sections>
+            <label><!-- Advisor Profile --></label>
+            <section>Advisor Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Contact Segmentation --></label>
+            <section>Contact Segmentation</section>
+        </sections>
+        <sections>
+            <label><!-- Marketing Preferences --></label>
+            <section>Marketing Preferences</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Event --></label>
+        <name>Event</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log a Call --></label>
+        <name>Log_a_Call</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log A Note --></label>
+        <name>Note</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Task --></label>
+        <name>Task</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Institutional --></label>
+        <name>Institutional</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Retail --></label>
+        <name>Retail</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Sync to Silverpop selection cannot be changed. Once the box is checked, it cannot be unchecked. --></errorMessage>
+        <name>silverpop__Disable_Changing_Enable_Sync</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Sync to Silverpop selection cannot be changed. Once set to &quot;Yes, Always Sync&quot; or &quot;No, Don&apos;t Sync&quot; it cannot be changed back to &quot;-None-.” --></errorMessage>
+        <name>silverpop__Disable_Changing_To_None</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Engage contact could not sync to Salesforce because the matching lead or contact in Salesforce has been set to not sync. You will need to change the &quot;Sync to Silverpop&quot; setting for the lead or contact in Salesforce. --></errorMessage>
+        <name>silverpop__Prevent_Change_From_Engage</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Conga_Composer_OAuth --></label>
+        <name>APXTConga4__Conga_Composer_OAuth</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Conga_Mail_Merge --></label>
+        <name>APXTConga4__Conga_Mail_Merge</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleMaps --></label>
+        <name>GoogleMaps</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleNews --></label>
+        <name>GoogleNews</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- GoogleSearch --></label>
+        <name>GoogleSearch</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- dc3Check --></label>
+        <name>dupcheck__dc3Check</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- dc3Convert --></label>
+        <name>dupcheck__dc3Convert</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- dc3Merge --></label>
+        <name>dupcheck__dc3Merge</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Address_Finder --></label>
+        <name>pca__Address_Finder</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Address_Finder_Link --></label>
+        <name>pca__Address_Finder_Link</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Silverpop_Email --></label>
+        <name>silverpop__Send_Silverpop_Email</name>
+    </webLinks>
+</CustomObjectTranslation>

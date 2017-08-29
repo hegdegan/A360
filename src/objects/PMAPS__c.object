@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Used to track and manage external correspondences including, but not limited to: RFP, RFI, 15C.  Integrates with PMAPS WebPro.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Business_Channel__c</fullName>
+        <externalId>false</externalId>
+        <label>Business Channel</label>
+        <picklist>
+            <picklistValues>
+                <fullName>ARG</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DCI</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Marketing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ISG</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFD</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFS - Canada</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFSI - Asia</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFSI - Australia</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFSI - Europe</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFSI - Japan</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFSI - ME/SA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFSI - US</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MIL</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Business_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Business Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Consultant Research</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Existing Business</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>N/A</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New Business</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Client_Prospect_Name2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Client/Prospect Name</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>PMAPS1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Client_Prospect_Name_2__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>$Organization.Country</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Client/Prospect Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Tier__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>Text(Opportunity__r.Account.Institutional_Tier__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Client Tier</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Consultant_Organization_2__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>$Organization.Country</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Consultant Organization</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Consultant_Organization__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Consultant Organization</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>PMAPS</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Consultant_Tier__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>Text(Opportunity__r.Account.Institutional_Tier__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Consultant Tier</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date_Due__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Date Due</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_Received__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Date Received</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Due_In__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>IF((Date_Due__c -TODAY())&gt;365,&apos;More than a year&apos;,IF((Date_Due__c -TODAY())&gt;180,&apos;More than 6 months&apos;,IF((Date_Due__c -TODAY())&gt;90,&apos;More than 3 months&apos;,IF((Date_Due__c -TODAY())&gt;30,&apos;More than a month&apos;,IF((Date_Due__c -TODAY())&gt;15,&apos;With in a month&apos;,IF((Date_Due__c -TODAY())&gt;7,&apos;Fortnight&apos;,
+IF((Date_Due__c -TODAY())&gt;0,&apos;In a week&apos;,&apos;Past Due&apos;)
+))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Due In</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Institutional_Tier__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>TEXT(
+Org_Name__r.Institutional_Tier__c
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Institutional Tier</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Amount__c</fullName>
+        <description>PMAPS requires a text field to integrate with PMAPS WebPro.  This was required to convert Opportunity Amount, currency field, to a text field. This field is updated via a workflow rule.  This is to remain off of the page layout.</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Opportunity Amount</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipName>PMAPS</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Org_Name__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Org Name</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>RFPs (Org Name)</relationshipLabel>
+        <relationshipName>RFPs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PMAPS_Proposal_Id__c</fullName>
+        <description>This field is from PMAPS, is hidden and for integration use only.</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>PMAPS Proposal Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMAPS_Sales_Person_Name__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>Sales_Person_Relationship_Manager__r.LastName &amp; &quot;, &quot; &amp; Sales_Person_Relationship_Manager__r.FirstName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PMAPS Sales Person Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Plan_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Plan Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Deferred Compensation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Defined Benefit</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Defined Contribution</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Endowment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Foundation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Insurance - General Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Investment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>N/A</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Nuclear Decommissioning Trust</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Retail</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Subadvised</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Subadvised (40 Act)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Unit Linked Insurance Plan (ULIP)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VEBA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>RFP_Declined__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>RFP Declined</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>RFP_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>RFP Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Initiated</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>RFP_Team__c</fullName>
+        <externalId>false</externalId>
+        <label>RFP Team</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Australia</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Boston</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Canada</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>London</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tokyo</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Reason_Declined__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>Required if &apos;RFP Declined&apos; is checked</inlineHelpText>
+        <label>Reason Declined</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Request_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Request Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>15C</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ad hoc</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Awards</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Client Due Diligence</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Consultant Due Diligence</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Consultant Research Request</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PQQ</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Presentation Prep</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>RFI</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>RFP</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sample Due Diligence</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sample RFP</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Survey</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Rush_Delivery__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>IMAGE(IF(
+CASE(MOD( DATEVALUE(CreatedDate) - DATE(1985,6,24),7),
+0 , CASE( MOD( Date_Due__c - Datevalue(CreatedDate) ,7),1,2,2,3,3,4,4,5,5,5,6,5,1),
+1 , CASE( MOD( Date_Due__c - Datevalue(CreatedDate) ,7),1,2,2,3,3,4,4,4,5,4,6,5,1),
+2 , CASE( MOD( Date_Due__c - Datevalue(CreatedDate) ,7),1,2,2,3,3,3,4,3,5,4,6,5,1),
+3 , CASE( MOD( Date_Due__c - Datevalue(CreatedDate) ,7),1,2,2,2,3,2,4,3,5,4,6,5,1),
+4 , CASE( MOD( Date_Due__c - Datevalue(CreatedDate) ,7),1,1,2,1,3,2,4,3,5,4,6,5,1),
+5 , CASE( MOD( Date_Due__c - Datevalue(CreatedDate) ,7),1,0,2,1,3,2,4,3,5,4,6,5,0),
+6 , CASE( MOD( Date_Due__c - Datevalue(CreatedDate) ,7),1,1,2,2,3,3,4,4,5,5,6,5,0),
+999)
++
+(FLOOR(( Date_Due__c - Datevalue(CreatedDate) )/7)*5)&lt;=5, &quot;img/samples/flag_red.gif&quot;,&quot;&quot; ), &apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rush Delivery</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_Person_Relationship_Manager__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Sales Person/Relationship Manager</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>PMAPS</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_RM_Email__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>autofill based on &apos;Sales Person/Relationship Manager&apos;</inlineHelpText>
+        <label>Sales/RM Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sales_RM_Phone__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>autofill based on &apos;Sales Person/Relationship Manager&apos;</inlineHelpText>
+        <label>Sales/RM Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Secondary_Contact_Email__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>autofill based on &apos;Secondary MFS Contact&apos;</inlineHelpText>
+        <label>Secondary Contact Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Secondary_Contact_Phone__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>autofill based on &apos;Secondary MFS Contact&apos;</inlineHelpText>
+        <label>Secondary Contact Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Secondary_MFS_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Secondary MFS Contact</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>RFPs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Service_Request__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Service Request</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>RFPs</relationshipLabel>
+        <relationshipName>RFPs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Strategy__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Strategy</label>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>RFPs</relationshipLabel>
+        <relationshipName>RFPs</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Today_s_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>DATEVALUE(CreatedDate)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submission Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Your_Email__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>CreatedBy.Email</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Your Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Your_Name__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>CreatedBy.LastName &amp; &apos;, &apos; &amp;  CreatedBy.FirstName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Your Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Your_Phone__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>CreatedBy.Phone</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Your Phone</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>RFP</label>
+    <listViews>
+        <fullName>Active_RFPs</fullName>
+        <columns>Opportunity__c</columns>
+        <columns>NAME</columns>
+        <columns>RFP_Status__c</columns>
+        <columns>Date_Due__c</columns>
+        <columns>Sales_Person_Relationship_Manager__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RFP_Status__c</field>
+            <operation>equals</operation>
+            <value>In Progress,New,Received</value>
+        </filters>
+        <label>Active RFPs</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Client_Prospect_Name2__c</columns>
+        <columns>Date_Due__c</columns>
+        <columns>Date_Received__c</columns>
+        <columns>Rush_Delivery__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>RFP-{0000}</displayFormat>
+        <label>RFP Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>RFPs</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Required_if_RFP_Not_Persued_is_checked</fullName>
+        <active>true</active>
+        <description>If the RFP is not pursued, then users need to enter a reason.</description>
+        <errorConditionFormula>AND(ISBLANK( Reason_Declined__c ), RFP_Declined__c = True)</errorConditionFormula>
+        <errorDisplayField>Reason_Declined__c</errorDisplayField>
+        <errorMessage>Required if &apos;RFP Not Pursued&apos; is checked</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>New_RFP</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>page</linkType>
+        <masterLabel>New RFP</masterLabel>
+        <openType>replace</openType>
+        <page>MFS_NewRFPPage</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>RFP</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>New RFP1</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/a2x/e?retURL=%2F{!Opportunity.Id}&amp;ent=PMAPS__c&amp;CF00NP0000000t1qI={!Opportunity.Name}&amp;CF00NP0000000t1qI_lkid={!Opportunity.Id}&amp;00NP0000000szhO=New Business&amp;CF00NP0000000t0ez={!Opportunity.Client_Contact__c}&amp;CF00NP0000000t0ez_lkid={!Opportunity.Client_ContactId__c}&amp;CF00NP0000000t0cP={!Opportunity.OwnerFullName}&amp;CF00NP0000000t0cP_lkid={!Opportunity.OwnerId}&amp;CF00NP0000000yEMk={!Opportunity.Account}&amp;CF00NP0000000yEMk_lkid={!Opportunity.AccountId}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Submit_to_PMAPS</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Submit to PMAPS</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/apex/PMAPS__SelectDocumentForProposal?id={!PMAPS__c.Id}</url>
+    </webLinks>
+</CustomObject>

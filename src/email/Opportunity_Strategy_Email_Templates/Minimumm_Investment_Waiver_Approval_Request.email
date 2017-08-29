@@ -1,0 +1,21 @@
+<html>
+<b><u>Minimum Initial Investment</u></b><br/><br/>
+USD $3 million <br/><br/>
+<b><u>Waiver Details</u></b><br/><br/>
+Distribution Channel: {!Opportunity.Distribution_Channel__c}
+<br/>
+Prospective Client: {!Opportunity.Account}<br/>
+Trust: {!Opportunity.First_Strategy_Name__c}
+ <br/><br/>
+
+Please respond to the following four items in the currency in which the prospective client would invest<br/><br/>
+ 
+Stated minimum:<br/>
+ 
+Proposed investment by trust:<br/>
+ 
+Anticipated additional investment within next 1 – 2 years by trust:<br/>
+ 
+Investments in other MFS pooled product or separate accounts: <br/><br/>
+ 
+<b><u>Business Rationale</b></u>

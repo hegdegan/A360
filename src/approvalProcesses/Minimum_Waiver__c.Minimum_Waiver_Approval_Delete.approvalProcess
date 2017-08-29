@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+        <field>Anticipated_additional_investment_within__c</field>
+        <field>Opportunity__c</field>
+        <field>Prospective_Client__c</field>
+        <field>Discount__c</field>
+        <field>CurrencyIsoCode</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Minimum_Waiver_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>Global Retail Minimum Waiver</label>
+        <name>Global_Retail_Minimum_Waiver</name>
+    </approvalStep>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND(AND(  Opportunity__r.Amount__c  &gt;=0,Opportunity__r.Amount__c&lt;=50000000, Discount__c &gt;0.05 ) || AND( Opportunity__r.Amount__c &gt;50000000,Opportunity__r.Amount__c&lt;=100000000, Discount__c &gt;0.1 ) || AND( Opportunity__r.Amount__c&gt;100000000,Opportunity__r.Amount__c&lt;=200000000, Discount__c &gt;0.15 ) || AND(Opportunity__r.Amount__c&gt;200000000, Discount__c &gt;0.2 ),  ISPICKVAL(Approval_Status__c,&apos;Not Started&apos;))</formula>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>StatusApproved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>StatusRejected</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>StatusPending</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Minimum Waiver Approval_Delete</label>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

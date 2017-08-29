@@ -1,0 +1,5 @@
+A meeting material request has been submitted for {!Meeting_Material_Request__c.Client_Prospect_Name__c}. Please review and complete the following request: {!Meeting_Material_Request__c.Link}
+<br/>
+<br/>
+Thanks,<br/>
+{!User.Name}

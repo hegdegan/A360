@@ -1,0 +1,611 @@
+<!---
+Visualforce Page Name :  MFS_ConsultantOrgSalesAndAssets
+Version               :  1.0 
+Created Date          :  9 JUN 2016
+Function              :  Sales and assets page for Consultant Orgs
+--->
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+    <apex:includeScript value="/support/console/30.0/integration.js" />
+    <html xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <title>Insert title here</title>
+        <apex:stylesheet value="{!URLFOR($Resource.SLDS102, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
+        <style>
+            .slds h1, .slds h2, .slds h3, .slds h4, .slds h5, .slds h6, .slds th, .slds td {                  
+                  font-family: Arial, Helvetica, sans-serif !important;
+                  font-size: 12px !important;
+                }
+            .slds div a,
+            .slds div a:active {
+                color: #fff;
+                white-space: normal;
+                word-wrap: normal;
+                word-break: break-word;
+                display: inline-table;
+            }
+            .slds div a:hover,
+            .slds div a:focus {
+                text-decoration: underline;
+                color: #fff;
+                outline: none;
+            }
+            .slds-truncate a,
+            .slds-truncate a:active {
+                color: #000;
+                white-space: normal;
+                word-wrap: normal;
+                word-break: break-word;
+                display: inline-table;
+            }
+            .slds-truncate a:hover,
+            .slds-truncate a:focus {
+                text-decoration: underline;
+                color: #000;
+                outline: none !important;
+            }
+            .slds img {
+                display: inline-block;
+            }
+            .mfs-red-table tbody tr[scope='expanded-content'] .slds-truncate a {
+                color: #fff;
+            }
+            .mfs-red-table tbody td {
+                font-weight: bold;
+            }
+            .mfs-bold,
+            .mfs-red-table thead th[scope='col'] .slds-truncate > div {
+                font-weight: 700;
+            }
+            .mfs-red-table tbody {
+                background: #CECAC5;
+                font-size: 0.875rem;
+                color: #333;
+            }
+            .mfs-red-table thead {
+                background: #001b1f;
+                color: #fff !important;
+            }
+            .mfs-red-table thead tr th:hover {
+                background: #001b1f;
+            }
+            .mfs-red-table tbody tr:hover > th,
+            .mfs-red-table tbody tr:hover > td {
+                background: #CECAC5 !important;
+            }
+            .mfs-red-table tbody tr[scope='expandable-row']:hover > td,
+            .mfs-red-table tbody tr[scope='expandable-row']:hover > th {
+                background: #00292e !important;
+                color: #FFF;
+            }
+            .mfs-red-table tbody tr[scope='expanded-content']:hover > th,
+            .mfs-red-table tbody tr[scope='expanded-content']:hover > td {
+                background: #BCB8B2 !important;
+            }
+            .mfs-red-table tbody tr[scope='expanded-content-additional']:hover > th,
+            .mfs-red-table tbody tr[scope='expanded-content-additional']:hover > td {
+                background: #BCB8B2 !important;
+            }
+            .mfs-red-table thead tr.slds-text-heading--label {
+                color: #FFF;
+                font-size: 0.875rem;
+            }
+            .mfs-red-table tbody tr .mfs-red-table-row-expand {
+                position: relative;
+                top: -1px;
+                margin-right: 5px;
+            }
+            .mfs-red-table tbody tr .mfs-red-table-row-expand svg {
+                fill: #FFF;
+            }
+            .mfs-red-table tbody tr[scope='expandable-row'] > td,
+            .mfs-red-table tbody tr[scope='expandable-row'] > th {
+                background: #00292e;
+                color: #FFF;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expandable-row'] > th:first-child {
+                cursor: pointer;
+                color:#fff;
+            }
+            .mfs-red-table tbody tr[scope='expanded-content'] > th:first-child {
+                background: #A8A49F;
+                text-align: right;
+                color:#fff;
+            }
+            .mfs-red-table tbody tr[scope='expanded-content'] > td:nth-child(2),
+            .mfs-red-table tbody tr[scope='expanded-content'] > td:nth-child(3),
+            .mfs-red-table tbody tr[scope='expanded-content'] > td:nth-child(4){
+                background: #BCB8B2;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expanded-content'] > td:nth-child(5),
+            .mfs-red-table tbody tr[scope='expanded-content'] > td:nth-child(6) {
+                background: #C5C2BC;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expanded-content-additional'] > th:first-child {
+                background: #A8A49F;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expanded-content-additional'] > td:nth-child(2),
+            .mfs-red-table tbody tr[scope='expanded-content-additional'] > td:nth-child(3),
+            .mfs-red-table tbody tr[scope='expanded-content-additional'] > td:nth-child(4){
+                background: #BCB8B2;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expanded-content-additional'] > td:nth-child(5),
+            .mfs-red-table tbody tr[scope='expanded-content-additional'] > td:nth-child(6) {
+                background: #C5C2BC;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expanded-content-additional'] > td:nth-child(7) {
+                background: #CECAC5;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expandable-row'] > td:nth-child(2),
+            .mfs-red-table tbody tr[scope='expandable-row'] > td:nth-child(3),
+            .mfs-red-table tbody tr[scope='expandable-row'] > td:nth-child(4){
+                background: #00464F;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expandable-row'] > td:nth-child(5),
+            .mfs-red-table tbody tr[scope='expandable-row'] > td:nth-child(6) {
+                background: #008598;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expandable-row'] > td:nth-child(7) {
+                background: #00A9B7;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expanded-subcontent'] > th:first-child {
+                background: #DDDAD6;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expanded-subcontent'] > td:nth-child(2),
+            .mfs-red-table tbody tr[scope='expanded-subcontent'] > td:nth-child(3),
+            .mfs-red-table tbody tr[scope='expanded-subcontent'] > td:nth-child(4){
+                background: #E4E2DF;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expanded-subcontent'] > td:nth-child(5),
+            .mfs-red-table tbody tr[scope='expanded-subcontent'] > td:nth-child(6) {
+                background: #E7E5E2;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expanded-subcontent'] > td:nth-child(7) {
+                background: #EAE9E6;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expanded-subseecontent'] > th:first-child {
+                background: #A8A49F;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expanded-subseecontent'] > td:nth-child(2),
+            .mfs-red-table tbody tr[scope='expanded-subseecontent'] > td:nth-child(3),
+            .mfs-red-table tbody tr[scope='expanded-subseecontent'] > td:nth-child(4){
+                background: #BCB8B2;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expanded-subseecontent'] > td:nth-child(5),
+            .mfs-red-table tbody tr[scope='expanded-subseecontent'] > td:nth-child(6) {
+                background: #C5C2BC;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr[scope='expanded-subseecontent'] > td:nth-child(7) {
+                background: #CECAC5;
+                text-align: right;
+            }
+            .mfs-red-table tbody tr th[scope='row'] {
+                text-align: left;
+            }
+            .mfs-red-table tbody tr[scope='expanded-subcontent'] > th[scope='row'] {
+                text-align: right !important;
+            }
+            div.slds-truncate {
+                text-align: right;
+                max-width: inherit !important;
+                min-width: inherit !important;
+            }
+            .see_more .seemore_btn {
+                background: #2F2F2F;
+                padding: 4px 10px;
+                border-radius: 4px;
+                color: #fff;
+                cursor: pointer;
+                float: right;
+            }
+            .see_more .seemore_btn:hover {
+                background: #333;
+            }
+            .slds .borderround {
+                -webkit-border-radius: 10px !important;
+                -moz-border-radius: 10px;
+                border-radius: 10px !important;
+                background: #a6a6a6;
+                border-bottom: none;
+            }
+            select {
+                background: #a6a6a6 !important;
+            }
+            .mfs-red-table tbody tr[scope='expanded-content'] > th:first-child {
+                background: #A8A49F;
+                text-align: left;
+                padding-left: 60px;
+            }
+            .slds .slds-table tr > th:last-child,
+            .slds .slds-table tr > td:last-child {
+                padding-right: 24px;
+                text-align: right;
+            }
+        </style>
+    </head>
+
+    <body>
+        <apex:form id="pgForm">
+            <div class="slds slds-container--large">
+                <table class="slds-table slds-max-medium-table--stacked-horizontal mfs-red-table" scope="expandable-table">
+                    <thead>
+                        <tr class="slds-text-heading--label">
+                            <th scope="col">
+                                <div class="slds-truncate" style="text-align:center;">
+                                    <div>Total</div>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate">
+                                    <div class="mfs-bold">YTD</div>
+                                    <div>$400,000</div>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate">
+                                    <div class="mfs-bold">YTD Red</div>
+                                    <div>($50,000)</div>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate">
+                                    <div class="mfs-bold">YTD Net</div>
+                                    <div>$5,000</div>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate">
+                                    <div class="mfs-bold">PY</div>
+                                    <div>$12,000</div>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate">
+                                    <div class="mfs-bold">PY Red</div>
+                                    <div>($100,000)</div>
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate">
+                                    <div class="mfs-bold">AUM</div>
+                                    <div>$10,000,000</div>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="slds-hint-parent" scope="expandable-row">
+                            <th class="slds-truncate" scope="row" data-label="MFS Institutional International Equity Fund">
+                                <div>
+                                    <img class="mfs_table_plus slds-hide" src="{!URLFOR($Resource.SLDS102,'assets/images/Plus.png')}" width="30" />
+                                    <img class="mfs_table_minus slds-hide" src="{!URLFOR($Resource.SLDS102,'assets/images/Minus.png')}" width="30" />
+                                        MFS Institutional International Equity Fund
+                                </div>
+                            </th>
+                            <td class="slds-truncate" data-label="YTD">$200,000</td>
+                            <td class="" data-label="YTD Red">($30,000)</td>
+                            <td class="" data-label="YTD Red">$2,000</td>
+                            <td class="slds-truncate" data-label="PY">$10,000</td>
+                            <td class="" data-label="PY Red">($50,000)</td>
+                            <td class="" data-label="AUM">$5,000,000</td>
+                        </tr>
+
+                        <tr class="slds-hide" scope="expanded-content" has-sub-content="true" aria-expand-parent="MFS Institutional International Equity Fund">
+                            <th class="slds-truncate" scope="row" data-sublabel="Separate Account" data-label="MFS Institutional International Equity Fund">
+                                <div>
+                                    <img class="mfs_table_plus slds-hide" src="{!URLFOR($Resource.SLDS102,'assets/images/Plus.png')}" width="30" />
+                                    <img class="mfs_table_minus slds-hide" src="{!URLFOR($Resource.SLDS102,'assets/images/Minus.png')}" width="30" />
+                                    Separate Account
+                                </div>
+                            </th>
+                            <td class="slds-truncate">$100,000</td>
+                            <td class="">($15,000)</td>
+                            <td class="">$1,000</td>
+                            <td class="slds-truncate">$5,000</td>
+                            <td class="">($25,000)</td>
+                            <td class="">$2,500,000</td>
+                        </tr>
+
+                        <tr class="slds-hide" scope="expanded-subcontent" aria-expand-subparent="Separate Account" aria-expand-parent="MFS Institutional International Equity Fund">
+                            <th class="slds-truncate" scope="row">
+                                <apex:outputLink value="#" onClick="testOpenPrimaryTab('001P000000k4u7J','FCA US LLC')">
+                                    FCA US LLC
+                                </apex:outputLink>
+                            </th>
+                            <td class="slds-truncate">$100,000</td>
+                            <td class="">($15,000)</td>
+                            <td class="">$1,000</td>
+                            <td class="slds-truncate">$5,000</td>
+                            <td class="">($25,000)</td>
+                            <td class="">$2,500,000</td>
+                        </tr>
+
+<tr class="slds-hide" scope="expanded-content" has-sub-content="true" aria-expand-parent="MFS Institutional International Equity Fund">
+                            <th class="slds-truncate" scope="row" data-sublabel="Mutual Fund" data-label="MFS Institutional International Equity Fund">
+                                <div>
+                                    <img class="mfs_table_plus slds-hide" src="{!URLFOR($Resource.SLDS102,'assets/images/Plus.png')}" width="30" />
+                                    <img class="mfs_table_minus slds-hide" src="{!URLFOR($Resource.SLDS102,'assets/images/Minus.png')}" width="30" />
+                                    Mutual Fund
+                                </div>
+                            </th>
+                            <td class="slds-truncate">$100,000</td>
+                            <td class="">($15,000)</td>
+                            <td class="">$1,000</td>
+                            <td class="slds-truncate">$5,000</td>
+                            <td class="">($25,000)</td>
+                            <td class="">$2,500,000</td>
+                        </tr>
+
+                        <tr class="slds-hide" scope="expanded-subcontent" aria-expand-subparent="Mutual Fund" aria-expand-parent="MFS Institutional International Equity Fund">
+                            <th class="slds-truncate" scope="row">
+                                <apex:outputLink value="#" onClick="testOpenPrimaryTab('001P000000k4u7J','FCA US LLC')">
+                                    FCA US LLC
+                                </apex:outputLink>
+                            </th>
+                            <td class="slds-truncate">$100,000</td>
+                            <td class="">($15,000)</td>
+                            <td class="">$1,000</td>
+                            <td class="slds-truncate">$5,000</td>
+                            <td class="">($25,000)</td>
+                            <td class="">$2,500,000</td>
+                        </tr>
+
+                        <tr class="slds-hint-parent" scope="expandable-row">
+                            <th class="slds-truncate" scope="row" data-label="MFS Global Equity Fund">
+                                <div>
+                                    <img class="mfs_table_plus slds-hide" src="{!URLFOR($Resource.SLDS102,'assets/images/Plus.png')}" width="30" />
+                                    <img class="mfs_table_minus slds-hide" src="{!URLFOR($Resource.SLDS102,'assets/images/Minus.png')}" width="30" />
+                                        MFS Global Equity Fund
+                                </div>
+                            </th>
+                            <td class="slds-truncate" data-label="YTD">$200,000</td>
+                            <td class="" data-label="YTD Red">($20,000)</td>
+                            <td class="" data-label="YTD Red">$3,000</td>
+                            <td class="slds-truncate" data-label="PY">$2,000</td>
+                            <td class="" data-label="PY Red">($50,000)</td>
+                            <td class="" data-label="AUM">$5,000,000</td>
+                        </tr>
+
+                        <tr class="slds-hide" scope="expanded-content" has-sub-content="true" aria-expand-parent="MFS Global Equity Fund">
+                            <th class="slds-truncate" scope="row" data-sublabel="Separate Account" data-label="MFS Global Equity Fund">
+                                <div>
+                                    <img class="mfs_table_plus slds-hide" src="{!URLFOR($Resource.SLDS102,'assets/images/Plus.png')}" width="30" />
+                                    <img class="mfs_table_minus slds-hide" src="{!URLFOR($Resource.SLDS102,'assets/images/Minus.png')}" width="30" />
+                                        Separate Account
+                                </div>
+                            </th>
+                            <td class="slds-truncate">$100,000</td>
+                            <td class="">($10,000)</td>
+                            <td class="">$1,500</td>
+                            <td class="slds-truncate">$1,000</td>
+                            <td class="">($25,000)</td>
+                            <td class="">$2,500,000</td>
+                        </tr>
+
+                        <tr class="slds-hide" scope="expanded-subcontent" aria-expand-subparent="Separate Account" aria-expand-parent="MFS Global Equity Fund">
+                            <th class="slds-truncate" scope="row">
+                                <apex:outputLink value="#" onClick="testOpenPrimaryTab('001P000000k4vkE','KPMG LLP')">
+                                    KPMG LLP
+                                </apex:outputLink>
+                            </th>
+                            <td class="slds-truncate">$100,000</td>
+                            <td class="">($10,000)</td>
+                            <td class="">$1,500</td>
+                            <td class="slds-truncate">$1,000</td>
+                            <td class="">($25,000)</td>
+                            <td class="">$2,500,000</td>
+                        </tr>
+
+
+<tr class="slds-hide" scope="expanded-content" has-sub-content="true" aria-expand-parent="MFS Global Equity Fund">
+                            <th class="slds-truncate" scope="row" data-sublabel="Mutual Fund" data-label="MFS Global Equity Fund">
+                                <div>
+                                    <img class="mfs_table_plus slds-hide" src="{!URLFOR($Resource.SLDS102,'assets/images/Plus.png')}" width="30" />
+                                    <img class="mfs_table_minus slds-hide" src="{!URLFOR($Resource.SLDS102,'assets/images/Minus.png')}" width="30" />
+                                        Mutual Fund
+                                </div>
+                            </th>
+                            <td class="slds-truncate">$100,000</td>
+                            <td class="">($10,000)</td>
+                            <td class="">$1,500</td>
+                            <td class="slds-truncate">$1,000</td>
+                            <td class="">($25,000)</td>
+                            <td class="">$2,500,000</td>
+                        </tr>
+
+                        <tr class="slds-hide" scope="expanded-subcontent" aria-expand-subparent="Mutual Fund" aria-expand-parent="MFS Global Equity Fund">
+                            <th class="slds-truncate" scope="row">
+                                <apex:outputLink value="#" onClick="testOpenPrimaryTab('001P000000k4vkE','KPMG LLP')">
+                                    KPMG LLP
+                                </apex:outputLink>
+                            </th>
+                            <td class="slds-truncate">$100,000</td>
+                            <td class="">($10,000)</td>
+                            <td class="">$1,500</td>
+                            <td class="slds-truncate">$1,000</td>
+                            <td class="">($25,000)</td>
+                            <td class="">$2,500,000</td>
+                        </tr>
+
+                       
+                    </tbody>
+                </table>
+            </div>
+
+        </apex:form>
+
+        <script src="{!URLFOR($Resource.jquery113)}"></script>
+        <script>
+            var MFS_Engine = function($) {
+                var _init = function() {
+                    initPlugins();
+                    invokePlugins();
+                };
+
+                var initPlugins = function() {
+                    $.fn.expandableTables = function() {
+                        var that = $(this);
+
+                        console.log(that);
+                        $(".mfs_table_minus").addClass("slds-hide");
+                        $(".mfs_table_plus").removeClass("slds-hide");
+
+                        that.find("tbody > tr[scope='expandable-row'] > th:first-child").on("click", function() {
+                            var handleName = $(this).data("label");
+                            var allRowChildren = $("tr[scope='expanded-content'][aria-expand-parent='" + handleName + "']");
+
+                            if (allRowChildren.hasClass("slds-hide")) {
+                                $(this).find(".mfs_table_plus").addClass("slds-hide");
+                                $(this).find(".mfs_table_minus").removeClass("slds-hide");
+                                allRowChildren.removeClass("slds-hide");
+                            } else {
+                                $(this).find(".mfs_table_plus").removeClass("slds-hide");
+                                $(this).find(".mfs_table_minus").addClass("slds-hide");
+                                $("tr[aria-expand-parent='" + handleName + "']").addClass("slds-hide"); //Hiding sub rows
+                                $("tr[aria-expand-parent='" + handleName + "']").find(".mfs_table_minus").addClass("slds-hide"); //Hiding sub rows
+                                $("tr[aria-expand-parent='" + handleName + "']").find(".mfs_table_plus").removeClass("slds-hide"); //Hiding sub rows
+                                $("tr[aria-expand-parent='See More'][aria-actual-parent='" + handleName + "']").addClass("slds-hide"); //Hiding sub rows for see more
+                                $("tr[aria-expand-parent='See More'][aria-actual-parent='" + handleName + "']").find(".mfs_table_minus").addClass("slds-hide"); //Hiding sub rows for see more
+                                $("tr[aria-expand-parent='See More'][aria-actual-parent='" + handleName + "']").find(".mfs_table_plus").removeClass("slds-hide"); //Hiding sub rows for see more
+
+
+                                allRowChildren.addClass("slds-hide");
+                            }
+                        });
+
+                        that.find("tbody > tr[has-sub-content='true'] > th:first-child").on("click", function() {
+                            var handleSubName = $(this).data("sublabel");
+                            var handleParentName = $(this).data("label");
+                            var allRowSubChildren = $("tr[scope='expanded-subcontent'][aria-expand-parent='" + handleParentName + "'][aria-expand-subparent='" + handleSubName + "']");
+                            if (allRowSubChildren.hasClass("slds-hide")) {
+                                allRowSubChildren.removeClass("slds-hide");
+                                $(this).find(".mfs_table_plus").addClass("slds-hide");
+                                $(this).find(".mfs_table_minus").removeClass("slds-hide");
+                            } else {
+                                allRowSubChildren.addClass("slds-hide");
+                                $(this).find(".mfs_table_plus").removeClass("slds-hide");
+                                $(this).find(".mfs_table_minus").addClass("slds-hide");
+                            }
+                        });
+
+                        that.find("tbody > tr[show-more='true'] > td:last-child").on("click", function() {
+                            var handleName = $(this).data("label");
+                            var handleParentName = $(this).data("actual-label");
+                            var allRowChildren = $("tr[scope='expanded-content'][aria-expand-parent='" + handleName + "'][aria-actual-parent='" + handleParentName + "']");
+                            var allRowSeeMoreSubChildren = $("tr[show-sub-content='true']");
+
+                            if (allRowChildren.hasClass("slds-hide")) {
+                                allRowChildren.removeClass("slds-hide");
+                                $(this).find(".mfs_table_plus").addClass("slds-hide");
+                                $(this).find(".mfs_table_minus").removeClass("slds-hide");
+                                //$(this).parent().remove();
+                            } else {
+                                allRowChildren.addClass("slds-hide");
+                                allRowSeeMoreSubChildren.addClass("slds-hide"); //Hiding See more sub rows
+                                $(this).find(".mfs_table_plus").removeClass("slds-hide");
+                                $(this).find(".mfs_table_minus").addClass("slds-hide");
+
+                                $("tr[has-sub-content='true']']").find(".mfs_table_plus").removeClass("slds-hide");
+                                $("tr[has-sub-content='true']']").find(".mfs_table_minus").addClass("slds-hide");
+                            }
+                        });
+                    };
+                };
+
+                var initSubPlugins = function() {
+                    $.fn.expandableSubTables = function() {
+                        var that = $(this);
+
+                        that.find("tbody > tr[scope='expanded-content'] > th:first-child").on("click", function() {
+                            var handleSubName = $(this).data("sublabel");
+                            var handleParentName = $(this).data("label");
+                            var allRowSubChildren = $("tr[scope='expanded-subcontent'][aria-expand-subparent='" + handleSubName + "']");
+                            if (allRowSubChildren.hasClass("slds-hide")) {
+                                allRowSubChildren.removeClass("slds-hide");
+                                $(this).find(".mfs_table_plus").addClass("slds-hide");
+                                $(this).find(".mfs_table_minus").removeClass("slds-hide");
+                            } else {
+                                allRowSubChildren.addClass("slds-hide");
+                                $(this).find(".mfs_table_plus").removeClass("slds-hide");
+                                $(this).find(".mfs_table_minus").addClass("slds-hide");
+                            }
+                        });
+                    };
+                };
+
+                var invokePlugins = function() {
+                    $("table[scope='expandable-table']").expandableTables();
+                };
+
+                return {
+                    init: _init
+                };
+            }(jQuery);
+
+            $(document).ready(function() {
+                MFS_Engine.init();
+            });
+
+            $('.seemore_btn').click(function() {
+                var $this = $(this);
+                $this.toggleClass('See_More');
+                if ($this.hasClass('See_More')) {
+                    $this.text('Show Less');
+                } else {
+                    $this.text('Show More');
+                }
+            });
+
+
+
+
+            /*$('.see_more').on('click', function(){
+              $(this).closest('#seeMore').remove();
+            })*/
+            function testOpenPrimaryTab(productid, notename) {
+                /*alert('noteid='+noteid);
+                alert('accountid='+accountid);        
+                alert('notename='+notename);*/
+                //var myURL = 'apex/CustomNoteView?id=' + noteid + '&accountId=' + accountid;     
+                var myURL = '/' + productid;
+                //alert('URL='+myURL);
+                //Open a new primary tab with the salesforce.com home page in it
+                if (sforce.console.isInConsole()) {
+                    sforce.console.openPrimaryTab(null, myURL, true,
+                        notename, openSuccess, notename);
+                } else {
+                    window.open(myURL, '_blank');
+                }
+            }
+
+            var openSuccess = function openSuccess(result) {
+                //Report whether opening the new tab was successful
+                if (result.success == true) {
+                    //alert('Primary tab successfully opened');
+                } else {
+                    //alert('Primary tab cannot be opened');
+                }
+            };
+        </script>
+    </body>
+
+    </html>
+</apex:page>

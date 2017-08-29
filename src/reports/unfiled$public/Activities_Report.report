@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>fkp</joinTable>
+        </blockInfo>
+        <columns>
+            <field>CUST_NAME</field>
+        </columns>
+        <currency>USD</currency>
+        <filter>
+            <criteriaItems>
+                <column>Consultant_Rating__c.Consultant__c</column>
+                <operator>equals</operator>
+                <value></value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Consultant Ratings with Strategy block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>CustomEntity$Consultant_Rating__c@Consultant_Rating__c.Product__c</reportType>
+        <scope>organization</scope>
+        <timeFrameFilter>
+            <dateColumn>Consultant_Rating__c.Rating_Last_Updated_Date__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>p</joinTable>
+        </blockInfo>
+        <columns>
+            <field>SUBJECT</field>
+        </columns>
+        <currency>USD</currency>
+        <format>Summary</format>
+        <name>Activities with Products block 2</name>
+        <params>
+            <name>closed</name>
+            <value>open</value>
+        </params>
+        <params>
+            <name>type</name>
+            <value>te</value>
+        </params>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>ProductActivity</reportType>
+        <scope>organization</scope>
+        <timeFrameFilter>
+            <dateColumn>DUE_DATE</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>fkp</joinTable>
+    </blockInfo>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>FK_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Activities Report</name>
+    <params>
+        <name>lsk</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Consultant_Rating__c@Consultant_Rating__c.Product__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

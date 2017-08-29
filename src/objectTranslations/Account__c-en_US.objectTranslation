@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Client Investment</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Client Investments</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account ID --></label>
+        <name>Account_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Number --></label>
+        <name>Account_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Start Date --></label>
+        <name>Account_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Termination Date --></label>
+        <name>Account_Termination_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Type / Asset Source --></label>
+        <name>Account_Type_Asset_Source__c</name>
+        <picklistValues>
+            <masterLabel>Advisory</masterLabel>
+            <translation><!-- Advisory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Asset Allocation Model</masterLabel>
+            <translation><!-- Asset Allocation Model --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Audit Adj.</masterLabel>
+            <translation><!-- Audit Adj. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AuditAdj</masterLabel>
+            <translation><!-- AuditAdj --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brokerage</masterLabel>
+            <translation><!-- Brokerage --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corp Cash</masterLabel>
+            <translation><!-- Corp Cash --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defined Benefit</masterLabel>
+            <translation><!-- Defined Benefit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defined Contribution</masterLabel>
+            <translation><!-- Defined Contribution --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Defined Contribution (covers deferred Compensation)</masterLabel>
+            <translation><!-- Defined Contribution (covers deferred Compensation) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Discretionary</masterLabel>
+            <translation><!-- Discretionary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Endowment</masterLabel>
+            <translation><!-- Endowment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Endowment Assets</masterLabel>
+            <translation><!-- Endowment Assets --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Execution Only</masterLabel>
+            <translation><!-- Execution Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Foundation</masterLabel>
+            <translation><!-- Foundation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Foundation Assets</masterLabel>
+            <translation><!-- Foundation Assets --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fund of Funds</masterLabel>
+            <translation><!-- Fund of Funds --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HSA - Health Savings Account</masterLabel>
+            <translation><!-- HSA - Health Savings Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Individual/Trust</masterLabel>
+            <translation><!-- Individual/Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance</masterLabel>
+            <translation><!-- Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance General Account</masterLabel>
+            <translation><!-- Insurance General Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance Variable Annuity</masterLabel>
+            <translation><!-- Insurance Variable Annuity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance Variable Life</masterLabel>
+            <translation><!-- Insurance Variable Life --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Investment</masterLabel>
+            <translation><!-- Investment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Seed Money</masterLabel>
+            <translation><!-- MFS Seed Money --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nuclear Decommission Trust</masterLabel>
+            <translation><!-- Nuclear Decommission Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Platform</masterLabel>
+            <translation><!-- Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reporting Account</masterLabel>
+            <translation><!-- Reporting Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retirement</masterLabel>
+            <translation><!-- Retirement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SMA/PPM</masterLabel>
+            <translation><!-- SMA/PPM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sov Wlth Fd/Mntry Ath</masterLabel>
+            <translation><!-- Sov Wlth Fd/Mntry Ath --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sovereign Wealth</masterLabel>
+            <translation><!-- Sovereign Wealth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sub-Advisory</masterLabel>
+            <translation><!-- Sub-Advisory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subadvised 40-Act</masterLabel>
+            <translation><!-- Subadvised 40-Act --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subadvised non-40-Act</masterLabel>
+            <translation><!-- Subadvised non-40-Act --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Superannuation</masterLabel>
+            <translation><!-- Superannuation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Treasury</masterLabel>
+            <translation><!-- Treasury --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trust</masterLabel>
+            <translation><!-- Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VEBA</masterLabel>
+            <translation><!-- VEBA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VEBA – Variable Employee Benefit Account</masterLabel>
+            <translation><!-- VEBA – Variable Employee Benefit Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Working Capital/Balance Sheet Assets</masterLabel>
+            <translation><!-- Working Capital/Balance Sheet Assets --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Additional Account Numbers --></label>
+        <name>Additional_Account_Numbers__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distribution Composite Name --></label>
+        <name>Composite_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- ERISA --></label>
+        <name>ERISA__c</name>
+    </fields>
+    <fields>
+        <label><!-- FYE Month and Day --></label>
+        <name>FYE_Month_and_Day__c</name>
+    </fields>
+    <fields>
+        <label><!-- Omnibus --></label>
+        <name>Omnibus__c</name>
+    </fields>
+    <fields>
+        <label><!-- Organization --></label>
+        <name>Organization__c</name>
+        <relationshipLabel><!-- Client Investments --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- First day of change in performance --></help>
+        <label><!-- Performance Start Date --></label>
+        <name>Performance_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan --></label>
+        <name>Plan__c</name>
+        <relationshipLabel><!-- Client Investments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Pooled Port Code --></label>
+        <name>Pooled_Port_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portfolio Code --></label>
+        <name>Portfolio_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portfolio --></label>
+        <name>Portfolio__c</name>
+        <relationshipLabel><!-- Client Investments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Product Style --></label>
+        <name>Product_Style__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reporting Currency --></label>
+        <name>Reporting_Currency__c</name>
+        <picklistValues>
+            <masterLabel>AUD</masterLabel>
+            <translation><!-- AUD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CAD</masterLabel>
+            <translation><!-- CAD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EUR</masterLabel>
+            <translation><!-- EUR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GBP</masterLabel>
+            <translation><!-- GBP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JPY</masterLabel>
+            <translation><!-- JPY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SGD</masterLabel>
+            <translation><!-- SGD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>USD</masterLabel>
+            <translation><!-- USD --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reporting Language --></label>
+        <name>Reporting_Language__c</name>
+        <picklistValues>
+            <masterLabel>Chinese-HK</masterLabel>
+            <translation><!-- Chinese-HK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese-Taiwan</masterLabel>
+            <translation><!-- Chinese-Taiwan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dutch-Belgium</masterLabel>
+            <translation><!-- Dutch-Belgium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English</masterLabel>
+            <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English-UK</masterLabel>
+            <translation><!-- English-UK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French-Canadian</masterLabel>
+            <translation><!-- French-Canadian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French-France</masterLabel>
+            <translation><!-- French-France --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French-Swiss</masterLabel>
+            <translation><!-- French-Swiss --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German-Germany</masterLabel>
+            <translation><!-- German-Germany --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Italian</masterLabel>
+            <translation><!-- Italian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Norwegian</masterLabel>
+            <translation><!-- Norwegian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portuguese</masterLabel>
+            <translation><!-- Portuguese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish</masterLabel>
+            <translation><!-- Spanish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swedish</masterLabel>
+            <translation><!-- Swedish --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reporting Name --></label>
+        <name>Reporting_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Share Class --></label>
+        <name>Share_Class__c</name>
+        <relationshipLabel><!-- Client Investments --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- SubPort Code --></label>
+        <name>SubPort_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vehicle --></label>
+        <name>Vehicle__c</name>
+    </fields>
+    <layouts>
+        <layout>Products/Strategies Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Portfolio Attributes --></label>
+            <section>Portfolio Attributes</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Account Number must contain only digits --></errorMessage>
+        <name>Account_Number_Validation</name>
+    </validationRules>
+</CustomObjectTranslation>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD PS Tax-Exempt</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD PS Tax-Exempt</value>
+    </caseValues>
+    <fields>
+        <label><!-- Total Investment Pool (Local Curr) --></label>
+        <name>CAPPOOL_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Investment Pool ($000) --></label>
+        <name>CAPPOOL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 1 Assets ($000) --></label>
+        <name>FUNDASSET1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 2 Assets ($000) --></label>
+        <name>FUNDASSET2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 3 Assets ($000) --></label>
+        <name>FUNDASSET3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 4 Assets ($000) --></label>
+        <name>FUNDASSET4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 5 Assets ($000) --></label>
+        <name>FUNDASSET5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 6 Assets ($000) --></label>
+        <name>FUNDASSET6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 1 Assets (Local Curr) --></label>
+        <name>FUNDASSETLOC1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 2 Assets (Local Curr) --></label>
+        <name>FUNDASSETLOC2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 3 Assets (Local Curr) --></label>
+        <name>FUNDASSETLOC3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 4 Assets (Local Curr) --></label>
+        <name>FUNDASSETLOC4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 5 Assets (Local Curr) --></label>
+        <name>FUNDASSETLOC5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 6 Assets (Local Curr) --></label>
+        <name>FUNDASSETLOC6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 1 Name --></label>
+        <name>FUNDNAME1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 2 Name --></label>
+        <name>FUNDNAME2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 3 Name --></label>
+        <name>FUNDNAME3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 4 Name --></label>
+        <name>FUNDNAME4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 5 Name --></label>
+        <name>FUNDNAME5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sub-Fund 6 Name --></label>
+        <name>FUNDNAME6__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Intiated or plans to initiate 403(b) --></label>
+        <name>INIT403B__c</name>
+    </fields>
+    <fields>
+        <label><!-- IRS Category Code --></label>
+        <name>IRSCODE__c</name>
+    </fields>
+    <fields>
+        <label><!-- IRS Category SubCode --></label>
+        <name>IRSSUBCODE__c</name>
+    </fields>
+    <fields>
+        <label><!-- IRS Category --></label>
+        <name>IRS_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Local Currency Conversion Code --></label>
+        <name>Local_Currency_Conversion_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Firm Profile --></label>
+        <name>MMD_Firm_Profile__c</name>
+        <relationshipLabel><!-- MMD PS Tax-Exempt --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Total Assets (Local Curr) --></label>
+        <name>TOTALASSETS_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Assets ($000) --></label>
+        <name>TOTALASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Liabilities (Local Curr) --></label>
+        <name>TOTALLIAB_LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Liabilities ($000) --></label>
+        <name>TOTALLIAB__c</name>
+    </fields>
+    <fields>
+        <label><!-- Valuation Date --></label>
+        <name>VALDATE__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

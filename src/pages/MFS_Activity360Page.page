@@ -1,0 +1,1794 @@
+<apex:page controller="MFS_Activity360Controller" tabStyle="Competitive_Analysis_Request__c" standardStylesheets="true" showHeader="FALSE"  title="{!$Label.A360_Activity_360}" >
+    <head>
+        <apex:includeScript value="/support/console/35.0/integration.js" />
+        
+        <script>
+        function createSpeakerRequest1(activityDetailId, startDate, endDate, parentWhoId, parentSubject, parentWhatId, assignedTo ){
+            var start = DateFormat.format.date(startDate,"MM/dd/yyyy hh:mm a");
+            var end = DateFormat.format.date(endDate,"MM/dd/yyyy hh:mm a");
+            //var description =  meetingDesc.replace('\n', '%0D%0A');
+            //alert(meetingDesc);
+            
+            var url = '/apex/MFS_RecordTypeSelectionPage?Id='+activityDetailId+'&start='+start+'&end='+end+'&contact='+parentWhoId
+            +'&subject='+parentSubject+'&organization='+parentWhatId+'&requestedFor='+assignedTo+'&eventInst='+'{!URLENCODE(ParentEvent.Description)}';
+            
+            var isCon = '{!isConsole}';
+            
+            if(sforce.console.isInConsole() || isCon == 'true'){
+                OpenSpkrRequestPrimaryTab1(url);
+            } 
+            else{
+                window.open(url);
+            }
+        }
+            
+            function OpenSpkrRequestPrimaryTab1(url) {
+                //Open a new primary tab with the salesforce.com home page in it
+                sforce.console.openPrimaryTab(null, url, true, 'New Event Request:Select Event Request Record Type');
+            }
+        
+        function consoleCheck(callNote){
+            var url;
+            
+            if('{!taskCallNote}' == 'true'){
+                if('{!isNew}' == 'true'){
+                    url = '/apex/MFS_Activity360Page?'+'task=true'+'&id='+callNote+'&isNew=true'+'&RecType=Institution'+'&returnID='+'{!parentObjectID}';
+                }
+                else{
+                    url = '/apex/MFS_Activity360Page?'+'task=true'+'&id='+callNote+'&isNew=false'+'&RecType=Institution'+'&returnID='+'{!parentObjectID}';
+                }
+            }
+            
+            if('{!eventCallNote}' == 'true'){
+                if('{!isNew}' == 'true'){
+                    url = '/apex/MFS_Activity360Page?'+'event=true'+'&id='+callNote+'&isNew=true'+'&RecType=Institution'+'&returnID='+'{!parentObjectID}';
+                    alert(url);
+                }
+                else{
+                    url = '/apex/MFS_Activity360Page?'+'event=true'+'&id='+callNote+'&isNew=true'+'&RecType=Institution'+'&returnID='+'{!parentObjectID}';
+                }
+            } 
+            
+            console.log('CONSOLE TEST');
+            console.log(sforce);
+            if(sforce.console.isInConsole()){
+                console.log('----1');
+                openTaskInSubTab();
+            }else{
+                console.log('CONSOLE ELSE');
+                window.open(url,"_self");
+            }
+            //Console Integration method to Open Task (Standard/Meeting Notes) in sub tab 
+            function openTaskInSubTab() {
+                //To get the Primary Tab ID
+                console.log('-----2');
+                sforce.console.getEnclosingPrimaryTabId(openSubtab);
+            }
+            
+            var openSubtab = function openSubtab(result) {
+                console.log('-----3');
+                var primaryTabId = result.id;
+                //console method to Open sub tab
+                sforce.console.openSubtab(primaryTabId, url, true,"test",null, openSuccess, "test1");
+                                          };
+                                          
+                                          //Console method to identify the ID of the unwanted additional sub tab 
+                var openSuccess = function openSuccess(result) {
+                    console.log('-----4');
+                    if (result.success == true) {
+                        console.log('-----5');
+                        sforce.console.getEnclosingTabId(closeAdditionalSubtab);
+                    } else {
+                        console.log('-----6');
+                    }
+                };
+                
+                //Console method to close the unwanted additional sub tab
+                var closeAdditionalSubtab = function closeSubtab(result) {
+                    console.log('-----7');
+                    var tabId = result.id;
+                    sforce.console.closeTab(tabId);
+                };
+                
+            }
+        
+        </script>
+        
+        <apex:stylesheet value="{!URLFOR($Resource.Activity360, 'styles.css')}" />
+        <apex:stylesheet value="{!URLFOR($Resource.Activity360, 'bootstrap.min.css')}" />
+        <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"/>
+        <apex:includeScript value="{!URLFOR($Resource.Activity360, 'jqueryDate.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.Activity360, 'script.js')}" />        <!--Javascript File -->
+        <apex:includeScript value="/support/console/35.0/integration.js"/>
+        <apex:includeScript value="{!URLFOR($Resource.Activity360, 'jquery-ui.min.js')}" />
+    </head>
+    <apex:form id="fom">
+        
+        <!-- Displayed if errors STARTS -->
+        <apex:outputPanel id="err">
+            <apex:outputPanel rendered="{!errorFlag}" id="err1" >
+                <apex:pageMessages ></apex:pageMessages>
+            </apex:outputPanel>
+        </apex:outputPanel>
+        <!-- Displayed if errors ENDS -->
+        
+        
+        <!-- Displayed if no errors STARTS -->
+        <apex:pageBlock id="pbBtns" title="{!topPageBlockName}"> 
+            <apex:pageBlockButtons location="top" >
+                <apex:commandButton onclick="cursorWaiting()" oncomplete="cursorNormal();{!IF(showEventRequestPopup,'openModal();return false;','return false;')}" value="Save" reRender="pbCN,noRchTxt,sRMmr,eAT,eATI,err,pbBtns,pbBtnsBtm, erpup,tstpopup" action="{!Save}" id="saveBtn"/>
+                
+                <apex:commandButton rendered="{!if(eventCallNote, true,false)}" oncomplete="saveAndClose('{!IF(isNew,parentObjectID,IF(parentEvent.Whatid != NULL,parentEvent.Whatid,parentEvent.Whoid))}');return false;" value="Close"/>
+                <apex:commandButton rendered="{!if(taskCallNote, true,false)}" oncomplete="saveAndClose('{!IF(isNew,parentObjectID,IF(parentTask.Whatid != NULL,parentTask.Whatid,parentTask.Whoid))}');return false;" value="Close"/>
+                <!-- <apex:commandButton onclick="cursorWaiting()" oncomplete="cursorNormal()" value="{!$Label.A360_Next}"  rendered="{!if(callNote.Id == null, true,false)}" action="{!Save2}" reRender="err,pbCN" id="saveBtn2"/> -->
+                
+                <apex:commandButton onclick="cursorWaiting()" oncomplete="cursorNormal()" value="{!$Label.A360_Edit}"  reRender="pbCN,sRMmr,eAT,eATI,pbBtns,pbBtnsBtm" rendered="{!disabled}" action="{!edit}" id="editBtn"/>
+                <apex:commandButton onclick="cursorWaiting()" oncomplete="cursorNormal()" value="{!$Label.A360_Cancel}" immediate="true" reRender="pbCN,sRMmr,err,eAT,eATI,pbBtns,pbBtnsBtm" action="{!cancel}" rendered="{!!disabled}" />
+            </apex:pageBlockButtons> 
+        </apex:pageBlock>
+        
+        <!-- Parent Task/Event section STARTS -->
+        <div class="inner-page-block">
+            <apex:pageBlock id="pbCN">
+                
+                <!-- Parent TASK section STARTS -->
+                <apex:outputPanel rendered="{!taskCallNote}">
+                    <apex:outputPanel rendered="{!!disabled}">
+                        <div class="custom-page-block">
+                            <div class="custom-page-block-head">
+                                <span><img src="/s.gif" alt="Hide Section - Task Detail" class="hideListButton" /></span><span>Task Detail</span>
+                            </div>
+                            <div class="custom-page-block-body">
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td>Contacted Person</td>
+                                        <td>
+                                            <apex:inputField value="{!parentTask.WhoId}">
+                                                <!--<apex:actionSupport action="{!displayOrganizationTiedToAContact}" event="onchange" reRender="IDorgOfContact"/>-->
+                                            </apex:inputField>
+                                        </td> 
+                                        <td>Related Organization</td>
+                                        <td>
+                                           <!-- <apex:outputField id="IDorgOfContact"  value="{!parentTask.Related_Organization__c}"/>-->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date/Time Called</td>
+                                        <td>
+                                            <span>
+                                                <apex:inputField value="{!parentTask.ActivityDate}" styleClass="start_date_time"/>
+                                            </span>
+                                            <span>
+                                                <apex:inputField value="{!parentTask.Called_Time__c}"/>
+                                            </span>
+                                        </td>
+                                        <td>Related To</td>
+                                        <td>
+                                            <apex:inputField label="Related To" value="{!parentTask.WhatId}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Type</td>
+                                        <td>
+                                            <apex:inputField label="Type" value="{!parentTask.Type}"/>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>Notes</td>
+                                        <td>
+                                            <apex:inputField value="{!parentTask.Description}" label="Notes" styleClass="textArea" style=""/>
+                                        </td>
+                                    </tr>
+                                    
+                                </table>
+                            </div>    
+                        </div>
+
+                        <!--
+                        <apex:pageBlockSection columns="2" title="{!$Label.A360_Task_Detail}" collapsible="true">
+                            <apex:inputField label="Contacted Person" value="{!parentTask.WhoId}">
+                                <apex:actionSupport action="{!displayOrganizationTiedToAContact}" event="onchange" reRender="IDorgOfContact"/>
+                            </apex:inputField>
+                            <apex:outputField id="IDorgOfContact" label="Related Organization" value="{!parentTask.Related_Organization__c}"/>
+                            <apex:outputPanel>
+                                <apex:outputLabel>aslkfjsldj</apex:outputLabel>
+                             <apex:outputPanel>  
+                            <apex:inputField label="Date Called"  value="{!parentTask.ActivityDate}"/>
+                            <apex:inputField label="Date Called"  value="{!parentTask.Called_Time__c}"/>
+                                </apex:outputPanel> </apex:outputPanel>
+                            <apex:inputField label="Related To" value="{!parentTask.WhatId}"/>
+                            <apex:inputField label="Type" value="{!parentTask.Type}"/>
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection columns="1">
+                            <apex:inputField value="{!parentTask.Description}" label="Notes" styleClass="textArea" style=""/>
+                        </apex:pageBlockSection>-->
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel rendered="{!disabled}">
+                        <!--<apex:pageBlockSection columns="2" title="{!$Label.A360_Task_Detail}" collapsible="true">
+                            <apex:outputField label="Contacted Person" value="{!parentTask.WhoId}"/>
+                            <apex:outputField label="Organization" value="{!parentTask.Related_Organization__c}"/>
+                            <apex:outputPanel style="padding-left: 175px;">
+                                <apex:outputLabel value="Called Date/Time"> </apex:outputLabel>
+                                <apex:outputField value="{!parentTask.ActivityDate}" styleClass="start_date_time"/>
+                                <apex:outputField value="{!parentTask.Called_Time__c}" />
+                            </apex:outputPanel>
+                            
+                            <apex:outputField label="Related To" value="{!parentTask.WhatId}"/>
+                            <apex:outputField label="Type" value="{!parentTask.Type}"/>
+                        </apex:pageBlockSection>
+                        <apex:pageBlockSection columns="1">
+                            <apex:outputField value="{!parentTask.Description}" label="Notes" styleClass="textArea" style=""/>
+                        </apex:pageBlockSection>-->
+                                                <div class="custom-page-block">
+                            <div class="custom-page-block-head">
+                                <span><img src="/s.gif" alt="Hide Section - Task Detail" class="hideListButton" /></span><span>Task Detail</span>
+                            </div>
+                            <div class="custom-page-block-body">
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td>Contacted Person</td>
+                                        <td>
+                                            <apex:outputField value="{!parentTask.WhoId}">
+                                                <!--<apex:actionSupport action="{!displayOrganizationTiedToAContact}" event="onchange" reRender="IDorgOfContact"/>-->
+                                            </apex:outputField>
+                                        </td> 
+                                        <td>Related Organization</td>
+                                        <td>
+                                           <!-- <apex:outputField value="{!parentTask.Related_Organization__c}"/>-->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date/Time Called</td>
+                                        <td>
+                                            <span>
+                                                <apex:outputField value="{!parentTask.ActivityDate}" styleClass="start_date_time"/>
+                                            </span>
+                                            <span>
+                                                <apex:outputField value="{!parentTask.Called_Time__c}"/>
+                                            </span>
+                                        </td>
+                                        <td>Related To</td>
+                                        <td>
+                                            <apex:outputField label="Related To" value="{!parentTask.WhatId}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Type</td>
+                                        <td>
+                                            <apex:outputField label="Type" value="{!parentTask.Type}"/>
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>Notes</td>
+                                        <td>
+                                            <apex:outputField value="{!parentTask.Description}" label="Notes" styleClass="textArea" style=""/>
+                                        </td>
+                                    </tr>
+                                    
+                                </table>
+                            </div>    
+                        </div>
+
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                <!-- Parent TASK section ENDS -->
+                
+                
+                <!-- Parent EVENT section STARTS --> 
+                <apex:outputPanel rendered="{!eventCallNote}">
+                    
+                    <!-- Parent Event section for Institutional record type STARTS -->
+                    <apex:outputPanel rendered="{!!disabled}">
+                        <div class="custom-page-block">
+                            <div class="custom-page-block-head">
+                                <span><img src="/s.gif" alt="Hide Section - Event Detail" class="hideListButton" /></span><span>{!$Label.A360_Event_Detail}</span>
+                            </div>
+                            <div class="custom-page-block-body">
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td>{!$Label.A360_Name}</td>
+                                        <td>
+                                            <apex:outputPanel id="eventNamePanel">
+                                            <apex:inputField value="{!parentEvent.WhoId}" rendered="{!IF(AND(isNew,parentObjectType != 'Contact'),TRUE,FALSE)}">
+                                                <apex:actionSupport event="onchange" reRender="evLoc, eventNamePanel" action="{!changingEventWhoId}" status="eventLoc,EventSubjectStatus," />
+                                            </apex:inputField> 
+                                            <apex:outputField value="{!parentEvent.WhoId}" rendered="{!IF(AND(isNew,parentObjectType == 'Contact'),TRUE,FALSE)}"/>
+                                            <apex:inputField value="{!parentEvent.WhoId}" rendered="{!IF(AND(NOT(isNew),(ISBLANK(parentEvent.WhoId))),TRUE,FALSE)}">
+                                                <apex:actionSupport event="onchange" reRender="evLoc, eventNamePanel" action="{!changingEventWhoId}" status="eventLoc,EventSubjectStatus" />
+                                            </apex:inputField> 
+                                            <apex:outputField value="{!parentEvent.WhoId}" rendered="{!IF(AND(NOT(isNew),NOT(ISBLANK(parentEvent.WhoId))),TRUE,FALSE)}"/>
+                                                </apex:outputPanel>
+                                        </td> 
+                                        <td>{!$Label.A360_Onsite_Offsite}</td>
+                                        <td>
+                                            <apex:inputField id="osf" html-data-lookup-name="event_loc" value="{!parentEvent.Location__c}" required="true">
+                                                <apex:actionSupport event="onchange" reRender="evLoc" action="{!changeLocation}" status="eventLoc"/>
+                                            </apex:inputField>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>{!$Label.A360_Method}</td>
+                                        <td>
+                                            <apex:inputField value="{!parentEvent.Method__c}" required="true">
+                                                <apex:actionSupport event="onchange" reRender="osf,pbEATI,sDateForInstitEvent,sTimeForInstitEvent,eDateForInstitEvent,eTimeForInstitEvent"
+                                                                    action="{!changingEventMethod}" oncomplete="checkMethodFieldValue('{!allDayEvent}');" status="EventSubjectStatus" />
+                                            </apex:inputField>
+                                        </td>
+                                        <td>{!$Label.A360_Location}</td>
+                                        <td>
+                                            <apex:outputPanel id="evLoc">
+                                                <apex:inputField id="event_loc" value="{!parentEvent.Location}" style="width: 80%;"/>
+                                                <apex:actionStatus id="eventLoc"><apex:facet name="start" ><img src="/img/loading.gif" /></apex:facet></apex:actionStatus>
+                                            </apex:outputPanel>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>{!$Label.A360_Start_Date}</td>
+                                        <td>
+                                            <span>
+                                                <apex:inputField id="sDateForInstitEvent" value="{!parentEvent.Event_Start_Date__c}" required="true" styleClass="start_date_time">
+                                                    <apex:actionSupport event="onchange" status="endTimeStatus" action="{!startDateTimeChange}" reRender="endDate,eTimeForInstitEvent, eATI"/>
+                                                </apex:inputField>
+                                            </span>
+                                            <span>
+                                                <apex:selectList id="sTimeForInstitEvent" disabled="{!allDayEvent}" value="{!startDateTime}" multiselect="false" size="1" required="true">
+                                                    <apex:actionSupport event="onchange" status="endTimeStatus" action="{!startDateTimeChange}" reRender="endDate, eTimeForInstitEvent,eATI"/>
+                                                    <apex:actionStatus id="startTimeStatus">
+                                                        <apex:facet name="{!$Label.A360_start}" >
+                                                            <img src="/img/loading.gif" />
+                                                        </apex:facet>
+                                                    </apex:actionStatus>
+                                                    <apex:selectOptions value="{!TimeList}"></apex:selectOptions>
+                                                </apex:selectList>
+                                            </span>
+                                        </td>
+                                        <td>{!$Label.A360_Assigned_To}</td>
+                                        <td><apex:inputField value="{!parentEvent.OwnerId}">
+                                            <apex:actionSupport event="onchange" action="{!changeHostForInvitees}" rerender="eATI"/>
+                                            </apex:inputField></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{!$Label.A360_End_Date}</td>
+                                        <td>
+                                            <span >
+                                                <apex:outputPanel id="eDateForInstitEvent">
+                                                    <apex:outputPanel id="eDateForInstitEvent1" rendered="{!!allDayEvent}">
+                                                        <apex:inputField id="endDate"  value="{!parentEvent.Event_End_Date__c}" required="true" styleClass="end_date_time">
+                                                            <apex:actionSupport event="onchange" reRender="endDate, eTimeForInstitEvent, eATI"/>
+                                                        </apex:inputField>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel rendered="{!allDayEvent}" id="eDateForInstitEvent2" styleClass="disabled-output-field">
+                                                        <apex:outputField id="endDateOutput" value="{!parentEvent.Event_End_Date__c}"/>
+                                                    </apex:outputPanel>
+                                                </apex:outputPanel>
+                                            </span>
+                                            <span>
+                                                <apex:selectList id="eTimeForInstitEvent" disabled="{!allDayEvent}" value="{!endDateTime}" multiselect="false" size="1">
+                                                    <apex:actionSupport event="onchange" reRender="endDate, eTimeForInstitEvent, eATI"/>
+                                                    <apex:actionStatus id="endTimeStatus">
+                                                        <apex:facet name="{!$Label.A360_start}" >
+                                                            <img src="/img/loading.gif" />
+                                                        </apex:facet>
+                                                    </apex:actionStatus>
+                                                    <apex:selectOptions value="{!TimeList}"></apex:selectOptions>
+                                                </apex:selectList>
+                                            </span>
+                                        </td>
+                                        <td>{!$Label.A360_Related_To}</td>
+                                        <td>
+                                            <apex:inputField value="{!parentEvent.WhatId}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>{!$Label.A360_Activity_Type}</td>
+                                        <td>
+                                            <apex:inputField id="activity_type" style="padding-left:0px;" value="{!parentEvent.Activity_Type_for_Instit__c}">
+                                                <!-- <apex:actionSupport event="onchange" action="{!populateActivitySubTypeOptions}" reRender="activity_subtype_options, activity_subtype_selected">
+                                                </apex:actionSupport> -->
+                                            </apex:inputField>
+                                        </td>
+                                        <!-- <td>{!$Label.A360_Activity_Sub_Type}</td>
+                                        <td>
+                                            <apex:selectList id="activity_subtype_options" value="{!selectedSubType}" multiselect="true" size="3"  style="height:100px;width:270px; margin-right:20px;"   >
+                                                <apex:selectOptions value="{!optionsActivitySubType}" />
+                                                <apex:actionSupport event="onclick" reRender="activity_subtype, activity_subtype_selected" action="{!selectActivitySubType}" />
+                                            </apex:selectList>
+                                            <apex:selectList id="activity_subtype_selected"  multiselect="true" size="3"  disabled="TRUE"  style="height:100px;width:270px;"   >
+                                                <apex:selectOptions value="{!optionsSelectedActivitySubType}" />
+                                            </apex:selectList>
+                                        </td> -->
+                                    </tr>
+                                </table>
+                            </div>    
+                        </div>
+                        
+                        <apex:pageBlockSection title="{!$Label.A360_Description_Information}" columns="1" collapsible="false">
+                            <apex:inputField value="{!parentEvent.Description}" label="{!$Label.A360_Meeting_Objective_and_Purpose}" styleClass="textArea"/>  
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                    
+                    <apex:outputPanel rendered="{!disabled}">
+                        <div class="custom-page-block">
+                            <div class="custom-page-block-head">
+                                <span><img src="/s.gif" alt="Hide Section - Event Detail" class="hideListButton" /></span><span>{!$Label.A360_Event_Detail}</span>
+                            </div>
+                            <div class="custom-page-block-body">
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td>{!$Label.A360_Name}</td>
+                                        <td>
+                                            <apex:outputField value="{!parentEvent.WhoId}" />
+                                        </td>                               
+                                        <td>{!$Label.A360_Onsite_Offsite}</td>
+                                        <td>
+                                            <apex:outputField value="{!parentEvent.Location__c}"/>
+                                        </td>                                    
+                                    </tr>
+                                    <tr>
+                                        <td>{!$Label.A360_Method}</td>
+                                        <td>
+                                            <apex:outputField value="{!parentEvent.Method__c}" />
+                                        </td>   
+                                        <td>{!$Label.A360_Location}</td>
+                                        <td>
+                                            <apex:outputField value="{!parentEvent.Location}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>{!$Label.A360_Start}</td>
+                                        <td>
+                                            <apex:outputField value="{!parentEvent.StartDateTime}"/>
+                                        </td>
+                                        <td>{!$Label.A360_Assigned_To}</td>
+                                        <td>
+                                            <apex:outputField value="{!parentEvent.OwnerId}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>{!$Label.A360_End}</td>
+                                        <td>
+                                            <apex:outputField value="{!parentEvent.EndDateTime}" />
+                                        </td>   
+                                        <td>{!$Label.A360_Related_To}</td>
+                                        <td>
+                                            <apex:outputField value="{!parentEvent.WhatId}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>{!$Label.A360_Activity_Type}</td>
+                                        <td>
+                                            <apex:outputField value="{!parentEvent.Activity_Type_for_Instit__c}"/>
+                                        </td>
+                                       <!-- <td>{!$Label.A360_Activity_Sub_Type}</td>
+                                        <td>
+                                            <apex:outputField value="{!parentEvent.Activity_SubType__c}"/>
+                                        </td> -->
+                                    </tr>
+                                </table>
+                            </div>    
+                        </div>
+                        <apex:pageBlockSection title="{!$Label.A360_Description_Information}" columns="1" collapsible="false"><apex:inlineEditSupport hideOnEdit="editBtn" showOnEdit="saveBtn"/>
+                            <apex:outputField value="{!parentEvent.Description}" label="{!$Label.A360_Meeting_Objective_and_Purpose}" styleClass="textArea"/>
+                        </apex:pageBlockSection>
+                    </apex:outputPanel>
+                    <!-- Parent Event section for Institutional record type ENDS -->
+                    
+                </apex:outputPanel>
+            </apex:pageBlock>
+        </div>
+        <!-- Parent Task/Event section ENDS -->
+        
+        <!-- Parent Event invitee section STARTS -->
+        <apex:outputPanel id="eATI" layout="block">
+            <!-- Here defining a new variable for the fake id -->
+            <apex:variable value="{!0}" var="rowNumber" />
+            <apex:actionFunction name="{!$Label.A360_removeInvitee}" action="{!removeInvitee}" reRender="eATI">
+                <apex:param id="inviteeID" value="" name="{!$Label.A360_invteID}" assignTo="{!removeInviteeId}"/>
+            </apex:actionFunction>
+            <apex:actionFunction name="removeInvitee" action="{!removeInvitee}" rerender="eATI">
+                <apex:param name="inviteeId" value="" assignTo="{!removeInviteeId}"/>
+            </apex:actionFunction>
+            <apex:pageBlock id="pbEATI" title="{!$Label.A360_Select_Invitees}" rendered="{!AND(TRUE,eventCallNote)}"> <!--Disabled-->
+                <apex:commandButton immediate="true" value="{!$Label.A360_Select}" action="{!selectInvitee}" reRender="eATI,attndpopup" rendered="{!!disabled}"/>
+                
+                <apex:pageblocktable id="pbInvitee" value="{!inviteeOrderKeys}" var="invId" columnsWidth="5%,15%,15%,10%,30%,5%,20%">
+                    <apex:column headerValue="{!$Label.A360_Action}" rendered="{!!disabled}">
+                        <apex:outputPanel rendered="{!IF((inviteesMap[invId].evntRel.Host__c == true), false, true)}">
+                        <a href="#" style="color: #015ba7!important;" onclick="removeInvitee('{!invId}')">Remove</a>&nbsp;
+                            </apex:outputPanel>
+                    </apex:column>
+                    
+                    <apex:column headerValue="{!$Label.A360_Action}" rendered="{!disabled}">
+                       
+                    </apex:column>
+                    
+                    <apex:column headerValue="Name">
+                        <apex:outputText >
+                            {!inviteesMap[invId].evntRel.Name__c} - {!inviteesMap[invId].evntRel.Invitee_Type__c}
+                        </apex:outputText>
+                    </apex:column>
+                    <apex:column headerValue="Org">
+                        <apex:outputText >
+                            {!inviteesMap[invId].orgName}
+                        </apex:outputText>
+                        </apex:column>
+                    <apex:column headerValue="Topic">
+                        <apex:inputField value="{!inviteesMap[invId].evntRel.Topic__c}" rendered="{!!disabled}"/>
+                        <apex:outputField value="{!inviteesMap[invId].evntRel.Topic__c}" rendered="{!disabled}"/>
+                     </apex:column>
+                    <apex:column headerValue="Timeslot" rendered="{!!disabled}">
+                        <style>
+                            div.hideCurrDate span.dateInput span.dateFormat{
+                            display:none;
+                            }
+                        </style>
+                        <div class="hideCurrDate">
+                            <apex:inputField value="{!inviteesMap[invId].evntRel.Start_Date__c}"/>
+                            <apex:selectList id="timeSlotStart" value="{!inviteesMap[invId].startTime}" multiselect="false" size="1">
+                                <apex:actionSupport event="onchange" status="endTimeStatus1" action="{!startDateTimeChange}" reRender="endDate1,endTime1"/>
+                                <apex:selectOptions value="{!InviteeTimeList}"></apex:selectOptions>
+                            </apex:selectList> &nbsp;-&nbsp; 
+                            <apex:inputField value="{!inviteesMap[invId].evntRel.End_Date__c}"/>
+                            <apex:selectList id="timeSlotEnd" value="{!inviteesMap[invId].endTime}" multiselect="false" size="1">
+                                <apex:actionSupport event="onchange" status="endTimeStatus1" action="{!startDateTimeChange}" reRender="endDate1,endTime1"/>
+                                <apex:selectOptions value="{!InviteeTimeList}"></apex:selectOptions>
+                            </apex:selectList>
+                        </div>
+                    </apex:column>
+                    <apex:column headerValue="Timeslot" rendered="{!disabled}">
+                    <apex:outputField value="{!inviteesMap[invId].evntRel.Time_Slot_Start__c}"/> &nbsp;-&nbsp; 
+                         <apex:outputField value="{!inviteesMap[invId].evntRel.Time_Slot_End__c}"/>
+                    </apex:column>
+                    <apex:column headerValue="Status">
+                        <apex:outputText value="{!inviteesMap[invId].evntRel.Status__c}" rendered="{!IF(inviteesMap[invId].evntRel.Status__c == 'Pending', true, false)}"/>
+                        <center><apex:image height="18px" width="18px" value="/img/msg_icons/confirm32.png" rendered="{!IF((inviteesMap[invId].evntRel.Status__c == 'Approved' || inviteesMap[invId].evntRel.Status__c == 'Not Required'), true, false)}"/>
+                        </center>
+                    </apex:column>
+                    <apex:column headerValue="Strategy/Portfolio" rendered="{!!disabled}">
+                        <apex:outputPanel id="inviteePortf">
+                        <apex:actionRegion >
+                       <apex:inputField value="{!inviteesMap[invId].evRelPort.portfolio__c}">
+                                <apex:actionSupport event="onchange" action="{!addPortfToInvitee}" rerender="inviteePortf">
+                                    <apex:param id="inviteeId" name="inviteeId" value="{!invId}" assignTo="{!inviteeId}"/>
+                                </apex:actionSupport>
+                            </apex:inputField>
+                            </apex:actionRegion>
+                        
+                            <apex:repeat value="{!inviteesMap[invId].evntRelPortLst}" var="invRelPOrt" id="test">
+                                <br/>
+                                <a href="#" style="color: #015ba7!important;" onclick="removePortfFromInvitee('{!invRelPOrt.pRowNum}','{!invId}')"><apex:image value="/img/func_icons/remove12.gif"></apex:image></a>&nbsp;
+                                <apex:outputLink value="/{!invRelPOrt.evRelPort.Portfolio__c}">
+                                    {!invRelPOrt.portName}
+                                </apex:outputLink>
+                                
+                                
+                            </apex:repeat>
+                        </apex:outputPanel>
+                    </apex:column>
+                    
+                    
+                    <apex:column headerValue="Strategy/Portfolio" rendered="{!disabled}">
+                        <apex:repeat value="{!inviteesMap[invId].evntRelPortLst}" var="invRelPOrt">
+                            <apex:outputLink value="/{!invRelPOrt.evRelPort.Portfolio__c}">
+                                {!invRelPOrt.portName}
+                            </apex:outputLink>
+                            <br/>
+                        </apex:repeat>
+                    </apex:column>
+                </apex:pageblocktable>
+               <apex:actionFunction name="removePortfFromInvitee" action="{!removePortfFromInvitee}" rerender="inviteePortf">
+                   <apex:param name="removePfRowNum" value="" assignTo="{!removePfRowNum}"/>
+                   <apex:param id="inviteeId" name="inviteeId" value="" assignTo="{!inviteeId}"/>
+                </apex:actionFunction>
+            </apex:pageBlock> 
+        </apex:outputPanel>
+        <!-- Parent Event invitee section ENDS -->
+        
+        
+        <!--****************************************************************************************-->
+        <!-- Select invitee POP UP Sections STARTS -->
+        <apex:outputPanel id="attndpopup">
+            <apex:outputPanel rendered="{!showEventInviteePopUp}">
+                <apex:outputPanel styleClass="popupBackground2" layout="block" />
+                <apex:outputPanel styleClass="custPopup2" layout="block" >
+                    <apex:pageBlock title="Select Invitees" > 
+                        <apex:actionRegion >
+                            <apex:outputPanel id="BoxPanel">
+                                <apex:pageMessages ></apex:pageMessages>
+                                <table width="100%">
+                                    <tr>
+                                        <td style="width: 1px;"><span class="labelCol">{!$Label.A360_Search}:</span></td>
+                                        <td style="width:20%;float:left;margin-right:20px;">
+                                            <apex:selectList value="{!SearchObjects}" multiselect="false" size="1">
+                                                <apex:selectOptions value="{!InviteeSearchObjects}" />
+                                            </apex:selectList>
+                                        </td>
+                                        <td style="width:30%;float:left;"><apex:inputText style="width:100%" value="{!SearchText}" /></td>
+                                        <td style="width:20%;float:left;">
+                                            <span style="float: left;">&nbsp;</span>
+                                            <apex:actionStatus id="SearchIcon">
+                                                <apex:facet name="start">
+                                                    <apex:outputPanel >
+                                                        <apex:commandButton style="float: left;" disabled="true" value="Find" />
+                                                        <img style="float: left;" src="/img/loading24.gif" /> 
+                                                    </apex:outputPanel>
+                                                </apex:facet>
+                                                <apex:facet name="stop">
+                                                    <apex:outputPanel >
+                                                        <apex:commandButton action="{!searchInvitee}" value="Find" rerender="BoxPanel" status="SearchIcon" />
+                                                    </apex:outputPanel>
+                                                </apex:facet>
+                                            </apex:actionStatus>
+                                        </td>
+                                    </tr>
+                                </table>
+                                
+                                <table width="100%">
+                                    <tr>
+                                        <th class="{!$Label.A360_selectTitle}">Select</th>
+                                        <th></th>
+                                        <th class="{!$Label.A360_selectTitle}">Selected</th>
+                                    </tr>
+                                    <tr>
+                                        <td style="width:500px;"><apex:selectList value="{!leftSelectedList}" multiselect="true" style="width:100%" size="10">
+                                            <apex:selectOptions value="{!lstLeftOption}" />
+                                            </apex:selectList>
+                                        </td>
+                                        <td style="vertical-align: middle;">
+                                            <div>
+                                                <apex:image styleClass="picklistArrowRight" value="/s.gif">
+                                                    <apex:actionSupport action="{!clickRight}" event="onclick" reRender="BoxPanel" />
+                                                </apex:image> 
+                                                <br /> <br />
+                                                <apex:image styleClass="picklistArrowLeft" value="/s.gif">
+                                                    <apex:actionSupport action="{!clickLeft}" event="onclick" reRender="BoxPanel" />
+                                                </apex:image> 
+                                            </div>
+                                        </td>
+                                        <td style="width:500px;"><apex:selectList value="{!rightSelectedList}" multiselect="true" style="width:100%" size="10">
+                                            <apex:selectOptions value="{!lstRightOption}" />
+                                            </apex:selectList>
+                                        </td> 
+                                    </tr> 
+                                </table>
+                            </apex:outputPanel>
+                        </apex:actionRegion>
+                        <div style="text-align:center;margin-top:8px;">
+                            <apex:commandButton immediate="true" value="{!$Label.A360_Done}" action="{!addInvitees}" reRender="attndpopup,eATI,pbInvitee" style="margin-right:4px;" />
+                            <apex:commandButton immediate="true" value="{!$Label.A360_Cancel}" action="{!closeInviteePopUp}" reRender="attndpopup" />   
+                        </div>
+                    </apex:pageBlock>
+                </apex:outputPanel>
+            </apex:outputPanel>
+        </apex:outputPanel>
+        <!-- Select invitee POP UP Sections ENDS -->
+        
+        
+        
+        <!--****************************************************************************************-->
+        <!-- All related records POP UP Sections STARTS -->
+        <div class="custom-modal">
+            <div class="modal-container">
+                <apex:outputPanel id="tstpopup" layout="block" styleClass="popup_outputpanel">
+                    <apex:outputPanel layout="block" rendered="{!displayPopUp}"/>
+                    <apex:outputPanel layout="block" rendered="{!displayPopUp}">
+                        
+                        <!-- Task pop up section STARTS -->
+                        <apex:outputPanel rendered="{!showTaskPopUp}" id="tpup" layout="block" styleClass="responsive">
+                            <apex:sectionHeader title="{!$Label.A360_Follow_Ups}"/>
+                            <apex:pageBlock id="pbFollowUpTask">
+                                <apex:pageBlockButtons location="top">
+                                    <apex:commandButton value="{!$Label.A360_Save}" oncomplete="closeModal();" rendered="{!showSaveBtnOnPopUp}" action="{!saveFollowUpTask}" rerender="tstpopup,pbActivity,errMsgFWT"/>
+                                    <apex:commandButton value="{!$Label.A360_Edit}" rendered="{!!showSaveBtnOnPopUp}" action="{!editFollowUpRecord}" rerender="tpup"/>
+                                    <!--<apex:commandButton value="{!$Label.A360_Cancel}" rendered="{!showSaveBtnOnPopUp}" action="{!cancelFollowUpRecord}" rerender="tpup"/>-->
+                                    <apex:commandButton value="{!$Label.A360_Close}" immediate="true" action="{!closePopup}" rerender="tstpopup" onclick="forceCloseModal();" />
+                                </apex:pageBlockButtons>
+                                <apex:pageMessages id="errMsgFWT" rendered="{!errorFlag}"></apex:pageMessages>
+                                <apex:outputPanel rendered="{!popUpInEditMode}">
+                                    <apex:pageBlockSection columns="2">
+                                        <apex:inputField value="{!task.OwnerId}"/>
+                                        <apex:inputField value="{!task.Status}"/>
+                                        <apex:inputField value="{!task.Subject}" required="true"/>
+                                        <apex:inputField label="{!$Label.A360_Schedule_date}" value="{!task.ActivityDate}"/>
+                                        <apex:inputField value="{!task.Priority}"/>
+                                        <apex:inputField rendered="{!IF(AND(isNew,parentObjectType != 'Contact'),TRUE,FALSE)}" value="{!task.WhoId}"/>
+                                        <apex:outputField rendered="{!IF(AND(isNew,parentObjectType == 'Contact'),TRUE,FALSE)}" value="{!task.WhoId}"/>
+                                        <apex:inputField rendered="{!IF(AND(NOT(isNew),(ISBLANK(task.WhoId))),TRUE,FALSE)}" value="{!task.WhoId}"/>
+                                        <apex:outputField rendered="{!IF(AND(NOT(isNew),NOT(ISBLANK(task.WhoId))),TRUE,FALSE)}" value="{!task.WhoId}"/>
+                                        <apex:inputField rendered="{!!CONTAINS(oRecTypeActivity.Name,'Institutional')}" value="{!task.Type}" required="true"/>
+                                        <apex:inputField value="{!task.Activity_Category__c}"/>
+                                        <apex:outputField value="{!task.WhatId}"/> 
+                                        <apex:inputField value="{!task.Activity_Type_for_Instit__c}"/>
+                                        <apex:inputField label="{!$Label.A360_Notes}" value="{!task.Description}" style="width:100%" />
+                                        <!-- <apex:inputField value="{!task.Activity_Sub_Type__c}"/>
+                                        <apex:outputPanel ></apex:outputPanel>
+                                        <apex:inputField value="{!task.Client_Engagement__c}"/> -->
+                                    </apex:pageBlockSection>
+                                    <apex:pageBlockSection columns="1" title="{!$Label.A360_Reminder}"> 
+                                        <apex:inputField value="{!task.IsReminderSet}"/>
+                                        <apex:inputField value="{!task.ReminderDateTime}"/>
+                                    </apex:pageBlockSection>
+                                </apex:outputPanel>
+                                
+                                <apex:outputPanel rendered="{!!popUpInEditMode}">
+                                    <apex:pageBlockSection columns="2" title="{!$Label.A360_Task_Information}">
+                                        <apex:outputField value="{!task.OwnerId}"/>
+                                        <apex:outputField value="{!task.Status}"/>
+                                        <apex:outputField value="{!task.Subject}"/>
+                                        <apex:outputField label="Schedule date" value="{!task.ActivityDate}"/>
+                                        <apex:outputField value="{!task.Priority}"/>
+                                        <apex:outputField value="{!task.WhoId}"/>
+                                        <apex:outputField rendered="{!!CONTAINS(oRecTypeActivity.Name,'Institutional')}" value="{!task.Type}"/>
+                                        <apex:outputField value="{!task.Activity_Category__c}"/>
+                                        <apex:outputField value="{!task.WhatId}"/>
+                                        <apex:outputField value="{!task.Activity_Type_for_Instit__c}"/>
+                                        <apex:outputField label="{!$Label.A360_Notes}" value="{!task.Description}" style="width:100%" />
+                                        <!-- <apex:outputField value="{!task.Activity_Sub_Type__c}"/>
+                                        <apex:outputPanel ></apex:outputPanel>
+                                        <apex:outputField value="{!task.Client_Engagement__c}"/> -->
+                                    </apex:pageBlockSection>
+                                    <apex:pageBlockSection columns="1" title="{!$Label.A360_Reminder}"> 
+                                        <apex:outputField value="{!task.IsReminderSet}"/>
+                                        <apex:outputField value="{!task.ReminderDateTime}"/>
+                                    </apex:pageBlockSection>
+                                </apex:outputPanel>
+                            </apex:pageBlock>
+                        </apex:outputPanel>
+                        <!-- Task pop up section ENDS -->
+                        
+                        <!-- Competitive Analysis pop up section STARTS -->
+                        <apex:outputPanel rendered="{!showCompAnalysisPopUp}" id="capup" layout="block" style="responsive">
+                            <!--<apex:sectionHeader description="{!$Label.A360_New_Competitive_Analysis}" title="{!$Label.A360_Competitive_Analysis}"/>-->
+                            <apex:pageBlock title="{!$Label.A360_Competitive_Analysis} {!IF(AND(compRequest.id != NULL, popUpInEditMode),'{!$Label.A360_Edit}','')}">
+                                <apex:pageBlockButtons location="top">
+                                    <apex:commandButton value="{!$Label.A360_Save}" oncomplete="closeModal();" rendered="{!showSaveBtnOnPopUp}" action="{!saveCompAnalysis}" rerender="tstpopup,pbCompAnalysis"/>
+                                    <apex:commandButton value="{!$Label.A360_Edit}" rendered="{!!showSaveBtnOnPopUp}" action="{!editFollowUpRecord}" rerender="capup"/>
+                                    <apex:commandButton value="{!$Label.A360_Close}" onclick="forceCloseModal();" immediate="true" action="{!closePopup}" rerender="tstpopup"/>
+                                </apex:pageBlockButtons>
+                                <apex:outputPanel rendered="{!popUpInEditMode}">
+                                    <apex:pageBlockSection columns="2" title="{!$Label.A360_Competitive_Analysis_Information}">
+                                        <apex:inputField rendered="{!IF(compRequest.Status__c != 'Track',TRUE,FALSE)}"  value="{!compRequest.Status__c}"/>
+                                        <apex:inputField value="{!compRequest.Type__c}"/>
+                                        <apex:outputField rendered="{!IF(compRequest.Status__c == 'Track',TRUE,FALSE)}"  value="{!compRequest.Status__c}"/>
+                                        <apex:inputField value="{!compRequest.Notify__c}"/>
+                                        <apex:inputField value="{!compRequest.Description__c}"/>
+                                        
+                                        <apex:inputField value="{!compRequest.Request_Report__c}">
+                                            <apex:actionSupport event="onchange"  reRender="capup">
+                                            </apex:actionSupport>
+                                        </apex:inputField>
+                                        <apex:inputField id="inputOnBehalfOf"
+                                                         rendered="{!AND(compRequest.Request_Report__c, CONTAINS(oRecTypeActivity.Name,'Institutional'))}"
+                                                         value="{!compRequest.Contact__c}"/>
+                                        <apex:outputText id="outputOnBehalfOf2" label="{!$Label.A360_Contact}"
+                                                         rendered="{!AND(NOT(compRequest.Request_Report__c), (compRequest.id != NULL), CONTAINS(oRecTypeActivity.Name,'{!$Label.A360_Institutional}'))}"
+                                                         value="{!compRequest.CreatedBy.Name}"/>
+                                        <apex:outputText id="outputOnBehalfOf3" label="{!$Label.A360_Contact}"
+                                                         rendered="{!AND(NOT(compRequest.Request_Report__c), (compRequest.id == NULL), CONTAINS(oRecTypeActivity.Name,'{!$Label.A360_Institutional}'))}"
+                                                         value="{!$User.FirstName} {!$User.LastName}"/>
+                                        
+                                        <apex:outputField id="inputOnBehalfOf4"
+                                                          rendered="{!AND(compRequest.Request_Report__c, !CONTAINS(oRecTypeActivity.Name,'Institutional'))}"
+                                                          value="{!compRequest.Ownerid}"/>
+                                        <apex:outputText id="outputOnBehalfOf5" label="{!$Label.A360_Owner}"
+                                                         rendered="{!AND(NOT(compRequest.Request_Report__c), (compRequest.id != NULL), !CONTAINS(oRecTypeActivity.Name,'Institutional'))}"
+                                                         value="{!compRequest.CreatedBy.Name}"/>
+                                        <apex:outputText id="outputOnBehalfOf6" label="{!$Label.A360_Owner}"
+                                                         rendered="{!AND(NOT(compRequest.Request_Report__c), (compRequest.id == NULL), !CONTAINS(oRecTypeActivity.Name,'Institutional'))}"
+                                                         value="{!$User.FirstName} {!$User.LastName}"/>
+                                    </apex:pageBlockSection>
+                                    
+                                    <apex:pageBlockSection columns="2" rendered="{!IF(compRequest.id != NULL,TRUE,FALSE)}">
+                                        <apex:outputField label="{!$Label.A360_Created_By}" value="{!compRequest.CreatedBy.Name}"/>
+                                        <apex:outputField label="{!$Label.A360_Created_Date}" value="{!compRequest.CreatedDate}"/>
+                                        <apex:outputField rendered="{!IF(NOT(ISBLANK(compRequest.Completed_Date__c)),TRUE,FALSE)}"  value="{!compRequest.Completed_Date__c}"/>
+                                        <apex:outputField rendered="{!IF(NOT(ISBLANK(compRequest.Completed_Date__c)),TRUE,FALSE)}"  value="{!compRequest.Request_completed_in_days__c}"/>
+                                    </apex:pageBlockSection>
+                                    <apex:pageBlockSection columns="1" title="{!$Label.A360_Additional_Notes}">
+                                        <apex:inputField style="width:100%" value="{!compRequest.Notes__c}"/>
+                                    </apex:pageBlockSection>
+                                </apex:outputPanel>
+                                
+                                <apex:outputPanel rendered="{!!popUpInEditMode}">
+                                    <apex:pageBlockSection columns="2" title="{!$Label.A360_Competitive_Analysis_Information}">
+                                        <apex:outputField label="{!$Label.A360_Name}" value="{!compRequest.Name}"/>
+                                        <apex:outputText ></apex:outputText>
+                                        <apex:outputField value="{!compRequest.Status__c}"/>
+                                        <apex:outputField value="{!compRequest.Type__c}"/>
+                                        <apex:outputField value="{!compRequest.Notify__c}"/>
+                                        <apex:outputField value="{!compRequest.Description__c}"/>
+                                        <apex:outputField value="{!compRequest.Request_Report__c}"/>
+                                        <apex:outputField rendered="{!if(CONTAINS(oRecTypeActivity.Name,'Institutional') ,TRUE ,FALSE)}" value="{!compRequest.Contact__c}"/>
+                                        <apex:outputField rendered="{!!if(CONTAINS(oRecTypeActivity.Name,'Institutional') ,TRUE ,FALSE)}" value="{!compRequest.Ownerid}"/>
+                                    </apex:pageBlockSection>
+                                    
+                                    <apex:pageBlockSection columns="2" rendered="{!NOT(ISBLANK(compRequest.id))}">
+                                        <apex:outputField label="{!$Label.A360_Created_By}" value="{!compRequest.CreatedBy.Name}"/>
+                                        <apex:outputField label="{!$Label.A360_Created_Date}" value="{!compRequest.CreatedDate}"/>
+                                        <apex:outputField rendered="{!IF(NOT(ISBLANK(compRequest.Completed_Date__c)),TRUE,FALSE)}" value="{!compRequest.Completed_Date__c}"/>
+                                        <apex:outputField rendered="{!IF(NOT(ISBLANK(compRequest.Completed_Date__c)),TRUE,FALSE)}"  value="{!compRequest.Request_completed_in_days__c}"/>
+                                    </apex:pageBlockSection>
+                                    <apex:pageBlockSection columns="1" title="{!$Label.A360_Additional_Notes}">
+                                        <apex:outputField style="width:100%" value="{!compRequest.Notes__c}"/>
+                                    </apex:pageBlockSection>
+                                </apex:outputPanel>
+                                <apex:pageBlockSection columns="1" title="{!$Label.A360_Related_Items}">
+                                    <!-- displays the related Products of Competitive Analysis Request -->                        
+                                    <apex:pageblock id="pbProductForCompAnalysis" >
+                                        <apex:actionFunction name="{!$Label.A360_removingProductForCA}" action="{!removingProductForCA}" reRender="pbProductForCompAnalysis">
+                                            <apex:param id="productCAID" value="" name="{!$Label.A360_productCAID}" assignTo="{!individualChildRecordId}"/>
+                                        </apex:actionFunction>
+                                        <apex:outputPanel rendered="{!(OR(ProductWrapperListForCA == null,ProductWrapperListForCA.size == 0))}">{!$Label.A360_No_records_to_display}</apex:outputPanel>
+                                        <apex:pageblocktable rendered="{!ProductWrapperListForCA.size > 0}" id="pbtProduct" value="{!ProductWrapperListForCA}" var="c">
+                                            
+                                            <apex:column >
+                                                <apex:facet name="{!$Label.A360_header}">
+                                                    {!if(CONTAINS(oRecTypeActivity.Name,'Institutional') ,'MFS Strategies' ,'MFS Portfolios')}
+                                                </apex:facet>                                        
+                                                <apex:outputlink value="/{!c.wProduct.id}"> 
+                                                    {!c.wProduct.name}
+                                                </apex:outputlink>
+                                            </apex:column>
+                                            <apex:column headerValue="{!$Label.A360_Vehicle}">
+                                                <apex:outputField value="{!c.wProduct.Vehicle__c}"/>
+                                            </apex:column>
+                                            <apex:column >
+                                                <apex:facet name="{!$Label.A360_header}">
+                                                    Select the Competitor {!if(CONTAINS(oRecTypeActivity.Name,'Institutional') ,'Strategies' ,'Portfolios')}
+                                                </apex:facet>
+                                                
+                                                <apex:pageBlockTable value="{!c.lstCompProd}" var="cp" >
+                                                    <apex:column >
+                                                        <apex:facet name="{!$Label.A360_header}">
+                                                            <apex:inputField label="{!if(CONTAINS(oRecTypeActivity.Name,'Institutional') ,'MFS Competitor Strategies' , 'MFS Competitor Portfolios')}"
+                                                                             value="{!c.wCompAnalysisProdJn.Competitor_Product__c}">
+                                                                <apex:actionSupport event="onchange" action="{!selectCompProductForCA}"
+                                                                                    reRender="pbProductForCompAnalysis" >
+                                                                    <apex:param id="IDcompProd" name="{!$Label.A360_IDcompProd}"
+                                                                                value="{!c.wProduct.id}"
+                                                                                assignTo="{!individualChildRecordId}"
+                                                                                ></apex:param>
+                                                                    <apex:param id="IDcompProd1" name="{!$Label.A360_IDcompProd1}"
+                                                                                value="{!c.wCompAnalysisProdJn.Competitor_Product__r.id}"
+                                                                                assignTo="{!selectedCompProduct}"
+                                                                                ></apex:param>
+                                                                </apex:actionSupport>
+                                                            </apex:inputField>
+                                                        </apex:facet>
+                                                        <apex:outputField value="{!cp.name}"/>
+                                                    </apex:column>
+                                                    <apex:column headerValue="{!$Label.A360_Firm}">
+                                                        <apex:outputField value="{!cp.Firm__c}"/>
+                                                    </apex:column>
+                                                    
+                                                    <apex:column headerValue="{!$Label.A360_Action}" >
+                                                        <a style="cursor:pointer;color: #015ba7!important;">
+                                                            Remove
+                                                            <apex:actionSupport action="{!removeCompProductForCA}" event="onclick" reRender="pbProductForCompAnalysis"  >
+                                                                <apex:param id="prodIdForRemovingCompProd" name="{!$Label.A360_prodIdForRemovingCompProd}"
+                                                                            value="{!c.wProduct.id}"
+                                                                            assignTo="{!individualChildRecordId}"
+                                                                            ></apex:param>
+                                                                <apex:param id="IdForRemovingCompProd" name="{!$Label.A360_IdForRemovingCompProd}"
+                                                                            value="{!cp.id}"
+                                                                            assignTo="{!selectedCompProduct}"
+                                                                            ></apex:param>
+                                                            </apex:actionSupport>
+                                                        </a>
+                                                    </apex:column>
+                                                </apex:pageBlockTable>
+                                            </apex:column>
+                                        </apex:pageblocktable>
+                                    </apex:pageblock> 
+                                </apex:pageBlockSection>
+                            </apex:pageBlock>
+                        </apex:outputPanel>
+                        <!-- Competitive Analysis pop up section ENDS -->
+                        
+                        <!-- Meeting Material Request pop up section STARTS --> 
+                        <apex:outputPanel rendered="{!showMMRPopUp}" id="mmrpup" layout="block" styleClass="not-responsive">
+                            <apex:sectionHeader title="{!$Label.A360_Meeting_Material_Request}"/>
+                            <apex:pageBlock >
+                                <apex:pageBlockButtons >
+                                    <apex:commandButton value="{!$Label.A360_Save}" oncomplete="closeModal();" rendered="{!showSaveBtnOnPopUp}" action="{!saveMMR}" rerender="tstpopup,pbMMR,pbMMR1"/>
+                                    <apex:commandButton value="{!$Label.A360_Edit}" rendered="{!!showSaveBtnOnPopUp}" action="{!editFollowUpRecord}" rerender="mmrpup"/>
+                                    <apex:commandButton value="{!$Label.A360_Close}" action="{!closePopup}" immediate="true" rerender="tstpopup" onclick="forceCloseModal();"/>
+                                    <apex:actionFunction name="{!$Label.A360_removeMMRPortfolios}" action="{!removeMMRPortfolios}" reRender="mmrPortfolios">
+                                        <apex:param name="{!$Label.A360_rmMMRPortfId}" value="" assignTo="{!rmMMRPortfRow}"/>
+                                    </apex:actionFunction>
+                                    <apex:actionFunction name="{!$Label.A360_removeSingleMMRClientInv}" action="{!removeSingleMMRClientInv}" reRender="mmrClientInvDetail">
+                                        <apex:param name="{!$Label.A360_rmMMRPortfId}" value="" assignTo="{!rmMMRPortfRow}"/>
+                                    </apex:actionFunction>
+                                    
+                                </apex:pageBlockButtons>
+                                <apex:outputPanel rendered="{!popUpInEditMode}">
+                                    <apex:pageBlockSection columns="2" title="{!$Label.A360_Meeting_Material_Request_Information}">
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="{!$Label.A360_Date_Due_to_Client}"></apex:outputLabel>
+                                            <apex:actionRegion >
+                                                <apex:inputField value="{!MMR.Date_Due_to_Client__c}" required="true">
+                                                    <apex:actionSupport event="onchange" action="{!constructMMRName}" rerender="MMRName"/>
+                                                </apex:inputField>
+                                            </apex:actionRegion>
+                                        </apex:pageBlockSectionItem>
+                                        
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="{!$Label.A360_MFS_Meeting_Room_Needed}?"></apex:outputLabel>
+                                            <apex:outputPanel id="meetingRoom" >
+                                                <apex:inputField value="{!MMR.Meeting_Room_Needed__c}" rendered="{!MMR.Material_Type__c!='Introductory Transition Call' && MMR.Material_Type__c!=null}"/>
+                                                <apex:inputText value="{!MMR.Meeting_Room_Needed__c}"  rendered="{!MMR.Material_Type__c=='Introductory Transition Call' || MMR.Material_Type__c==''}" disabled="true" />
+                                            </apex:outputPanel>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="{!$Label.A360_Material_Type}"></apex:outputLabel>
+                                            <apex:actionRegion >
+                                                <apex:inputField value="{!MMR.Material_Type__c}" required="true">
+                                                    <apex:actionSupport event="onchange" action="{!constructMMRName}" rerender="matType,meetingRoom"/>
+                                                </apex:inputField>
+                                            </apex:actionRegion>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:inputField value="{!MMR.Do_materials_need_to_be_printed__c}"/>
+                                    </apex:pageBlockSection>
+                                    
+                                    <apex:pageBlockSection id="matType">
+                                        <apex:inputField value="{!MMR.Use_CRP__c}"  rendered="{!MMR.Material_Type__c !='CRP Only' && MMR.Material_Type__c !='Introductory Transition Call'}"/>
+                                        <apex:inputText value="{!MMR.Use_CRP__c}" rendered="{!MMR.Material_Type__c =='CRP Only' || MMR.Material_Type__c =='Introductory Transition Call'}" disabled="true"/>
+                                        
+                                        <apex:inputField value="{!MMR.Trinket_Gift_Needed__c}" rendered="{!MMR.Material_Type__c!='Introductory Transition Call' && MMR.Material_Type__c!=''}"/>
+                                        <apex:inputText value="{!MMR.Trinket_Gift_Needed__c}" rendered="{!MMR.Material_Type__c=='Introductory Transition Call' || MMR.Material_Type__c==''}" disabled="true"/>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="{!$Label.A360_Meeting_Material_Request_Name}"></apex:outputLabel>
+                                            <apex:outputPanel id="MMRName">
+                                                <apex:outputField value="{!MMR.Name}"/>
+                                            </apex:outputPanel>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:inputField value="{!MMR.Government_Entity__c}"/>
+                                        
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="{!$Label.A360_Organization_Name}"></apex:outputLabel>
+                                            <apex:actionRegion >
+                                                <apex:inputField value="{!MMR.Client_Prospect_Name__c}" required="true">
+                                                    <apex:actionSupport event="onchange" action="{!fetchMMRTeamMembers}" rerender="teamMembers"/>
+                                                </apex:inputField>
+                                            </apex:actionRegion>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:inputField value="{!MMR.Additional_Comments__c}" style="width:100%"/>
+                                        <apex:inputField value="{!MMR.Cover_Page_Title__c}"/>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="{!$Label.A360_Team_Members}"></apex:outputLabel>
+                                            <apex:outputPanel id="teamMembers">
+                                                <apex:outputField value="{!MMR.Team_Members__c}"/>
+                                            </apex:outputPanel>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:OutputField value="{!MMR.Start__c}"/>
+                                        <apex:inputField value="{!MMR.Since_Inception_Date__c}"/>
+                                        <apex:OutputField value="{!MMR.End__c}"/>
+                                        
+                                        <apex:inputText value="{!MMR.Agreement_Finalized_Date__c}" rendered="{!MMR.Material_Type__c!='Introductory Transition Call'}" disabled="true"/>
+                                        <apex:inputField value="{!MMR.Agreement_Finalized_Date__c}" rendered="{!MMR.Material_Type__c=='Introductory Transition Call'}" required="{!MMR.Material_Type__c=='Introductory Transition Call'}"/>
+                                        
+                                        <apex:inputField value="{!MMR.Sector_Scheme__c}" rendered="{!MMR.Material_Type__c=='Client' || MMR.Material_Type__c=='Generic/Sales'}"/>
+                                        <apex:inputText value="{!MMR.Sector_Scheme__c}" rendered="{!MMR.Material_Type__c!='Client' && MMR.Material_Type__c!='Generic/Sales'}" disabled="true"/>
+                                        
+                                        <apex:inputText value="{!MMR.Account_Estimate_Funding_Date__c}" rendered="{!MMR.Material_Type__c!='Introductory Transition Call'}" disabled="true"/>
+                                        <apex:inputField value="{!MMR.Account_Estimate_Funding_Date__c}" rendered="{!MMR.Material_Type__c=='Introductory Transition Call'}" required="{!MMR.Material_Type__c=='Introductory Transition Call'}"/>
+                                        <apex:inputField value="{!MMR.Benchmark__c}" rendered="{!MMR.Material_Type__c=='Client' || MMR.Material_Type__c=='Generic/Sales'}"/>
+                                        <apex:inputText value="{!MMR.Benchmark__c}" rendered="{!MMR.Material_Type__c!='Client' && MMR.Material_Type__c!='Generic/Sales'}" disabled="true"/>
+                                        <apex:outputField value="{!MMR.Requested_Date__c}"/>
+                                        <apex:inputField value="{!MMR.Syntax__c}" rendered="{!MMR.Material_Type__c=='Client'}"/>
+                                        <apex:inputText value="{!MMR.Syntax__c}" rendered="{!MMR.Material_Type__c!='Client'}" disabled="true"/>
+                                        <br/>
+                                        
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="{!$Label.A360_Data_Time_Period}"></apex:outputLabel>
+                                            <apex:actionRegion >
+                                                <apex:inputField value="{!MMR.Data_Time_period__c}" rendered="{!MMR.Material_Type__c=='Client'}">
+                                                    <apex:actionSupport event="onchange" rerender="dataAsofEndDate, timeRange"/>
+                                                </apex:inputField>
+                                                <apex:inputText value="{!MMR.Data_Time_period__c}" rendered="{!MMR.Material_Type__c!='Client'}" disabled="true"/>
+                                                
+                                            </apex:actionRegion>
+                                        </apex:pageBlockSectionItem> 
+                                        
+                                        <br/>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="{!$Label.A360_Please_Enter_the_Desired_Time_Range}"></apex:outputLabel>
+                                            <apex:outputPanel id="timeRange">
+                                                <apex:inputField value="{!MMR.Please_Enter_the_Desired_Time_Range__c}" rendered="{!MMR.Data_Time_period__c=='Custom'}"/>
+                                                <apex:inputText value="{!MMR.Please_Enter_the_Desired_Time_Range__c}" rendered="{!MMR.Data_Time_period__c!='Custom'}" disabled="true"/>
+                                            </apex:outputPanel>
+                                        </apex:pageBlockSectionItem>
+                                        
+                                        <br/>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="{!$Label.A360_Data_as_of_End_Date}"></apex:outputLabel>
+                                            <apex:outputPanel id="dataAsofEndDate">
+                                                <apex:inputField value="{!MMR.Data_as_of_End_Month__c}" rendered="{!MMR.Data_Time_period__c!='' && MMR.Data_Time_period__c!='Custom'}" />
+                                                <apex:inputText value="{!MMR.Data_as_of_End_Month__c}" rendered="{!MMR.Data_Time_period__c!='' && MMR.Data_Time_period__c=='Custom'}" disabled="true" />
+                                                <apex:inputField value="{!MMR.Data_as_of_End_Year__c}" rendered="{!MMR.Data_Time_period__c!='' && MMR.Data_Time_period__c!='Custom'}" />
+                                                <apex:inputText value="{!MMR.Data_as_of_End_Year__c}" rendered="{!MMR.Data_Time_period__c!='' && MMR.Data_Time_period__c=='Custom'}" disabled="true"/>
+                                            </apex:outputPanel>
+                                        </apex:pageBlockSectionItem>
+                                        <br/>
+                                        <apex:outputField value="{!MMR.Presenters__c}"/>
+                                        <span></span>
+                                        <apex:outputField value="{!MMR.Location__c}"/>
+                                        <span></span>
+                                        <apex:inputField value="{!MMR.Overview_Section__c}"/>
+                                        <span></span>
+                                        <apex:inputField value="{!MMR.Status__c}"/>
+                                    </apex:pageBlockSection>
+                                    <apex:pageBlockSection columns="2">
+                                        <apex:pageBlock title="{!$Label.A360_Client_Investments}">
+                                            <apex:pageBlockSection columns="1" id="mmrPortfolios">
+                                                <apex:pageBlockSectionItem >
+                                                    <apex:outputLabel value="{!$Label.A360_Client_Investment}"></apex:outputLabel>
+                                                    <apex:actionRegion >
+                                                        <apex:inputField value="{!MMR.Client_Investment__c}">
+                                                            <apex:actionSupport event="onchange" action="{!addMMRPortfolios}" rerender="mmrPortfolios" oncomplete="setScrollBarPosition()"/>
+                                                        </apex:inputField>
+                                                    </apex:actionRegion>
+                                                </apex:pageBlockSectionItem>
+                                                <apex:pageblockTable value="{!MMRPortfolioWrapperList}" var="pwl" columnsWidth="15%,30%,30%,15%">
+                                                    <apex:column headerValue="{!$Label.A360_Action}">
+                                                        <a href="#" onclick="removeMMRPortfolios('{!pwl.rowNum}');" style="color: #015ba7!important;">Remove</a>
+                                                    </apex:column>
+                                                    <apex:column headerValue="{!$Label.A360_Name}">
+                                                        <apex:outputLink value="/{!pwl.mmrClientAsscn.Id}">
+                                                            {!pwl.clientInvName}
+                                                        </apex:outputLink>
+                                                    </apex:column>
+                                                    <apex:column headerValue="{!$Label.A360_Portfolio}">
+                                                        <apex:outputLink value="/{!pwl.mmrClientAsscn.Portfolio__c}">
+                                                            {!pwl.portfName}
+                                                        </apex:outputLink>
+                                                    </apex:column>
+                                                    <apex:column headerValue="{!$Label.A360_Portfolio_Code}">
+                                                            {!pwl.portfCode}
+                                                        
+                                                    </apex:column>
+                                                </apex:pageblockTable>
+                                                
+                                            </apex:pageBlockSection>
+                                        </apex:pageBlock>
+                                        <apex:pageBlock title="{!$Label.A360_Translation_Languages}">
+                                            <apex:pageBlockSection id="transLang" columns="1">
+                                                <apex:pageBlockSectionItem >
+                                                    <apex:outputLabel value="{!$Label.A360_Translation_Languages}"></apex:outputLabel>
+                                                    <apex:actionRegion >
+                                                        <apex:inputField value="{!MMR.Translation_Languages__c}">
+                                                            <apex:actionSupport event="onchange" action="{!addLanguageFields}" rerender="transLangPanel" oncomplete="setScrollBarPosition()"/>
+                                                        </apex:inputField>
+                                                    </apex:actionRegion>
+                                                </apex:pageBlockSectionItem>
+                                                <b><u>{!$Label.A360_Number_of_Hard_Copies_Required}</u></b>
+                                                <apex:outputPanel id="transLangPanel" layout="block">
+                                                    <table style="border-collapse:separate; border-spacing:10px !important">
+                                                        <apex:repeat value="{!languageFields}" var="lf">
+                                                            <tr>
+                                                                <td>{!lf.labelName}</td>
+                                                                <td> <apex:inputText value="{!lf.fieldValue}"> &nbsp;&nbsp;
+                                                                    <apex:actionSupport event="onchange" rerender="transLangPanel"/>
+                                                                    </apex:inputText></td>
+                                                            </tr>
+                                                        </apex:repeat>
+                                                    </table>
+                                                </apex:outputPanel>
+                                            </apex:pageBlockSection>
+                                        </apex:pageBlock>
+                                    </apex:pageBlockSection>
+                                </apex:outputPanel>
+                                
+                                
+                                <apex:outputPanel rendered="{!!popUpInEditMode}">
+                                    <apex:pageBlockSection columns="2" title="{!$Label.A360_Meeting_Material_Request_Information}">
+                                        <apex:outputField value="{!MMR.Date_Due_to_Client__c}"/>
+                                        <apex:outputField value="{!MMR.Meeting_Room_Needed__c}"/>
+                                        <apex:outputField value="{!MMR.Material_Type__c}"/>
+                                        <apex:outputField value="{!MMR.Do_materials_need_to_be_printed__c}"/>
+                                        <apex:outputField value="{!MMR.Use_CRP__c}"/>
+                                        <apex:outputField value="{!MMR.Trinket_Gift_Needed__c}"/>
+                                        <apex:outputField value="{!MMR.Name}"/>
+                                        <apex:outputField value="{!MMR.Government_Entity__c}"/>
+                                        <apex:OutputField value="{!MMR.Client_Prospect_Name__c}"/>
+                                        <apex:outputField value="{!MMR.Additional_Comments__c}" style="width:100%"/>
+                                        <apex:outputField value="{!MMR.Cover_Page_Title__c}"/>
+                                        <apex:outputField value="{!MMR.Team_Members__c}"/>
+                                        <apex:OutputField value="{!MMR.Start__c}"/>
+                                        <apex:outputField value="{!MMR.Since_Inception_Date__c}"/>
+                                        <apex:OutputField value="{!MMR.End__c}"/>
+                                        <apex:OutputField value="{!MMR.Agreement_Finalized_Date__c}"/>
+                                        <apex:OutputField value="{!MMR.Sector_Scheme__c}"/>
+                                        <apex:outputField value="{!MMR.Account_Estimate_Funding_Date__c}"/>
+                                        <apex:outputField value="{!MMR.Benchmark__c}"/>
+                                        <apex:outputField value="{!MMR.Requested_Date__c}"/>
+                                        <!--Location-->
+                                        <apex:outputField value="{!MMR.Syntax__c}"/>
+                                        <br/>
+                                        <apex:outputField value="{!MMR.Data_Time_period__c}"/>
+                                        <br/>
+                                        <apex:outputField value="{!MMR.Please_Enter_the_Desired_Time_Range__c}"/>
+                                        <br/>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="{!$Label.A360_Data_as_of_End_Date}"></apex:outputLabel>
+                                            <apex:outputPanel >
+                                                <apex:outputField value="{!MMR.Data_as_of_End_Month__c}"/>
+                                                <apex:outputField value="{!MMR.Data_as_of_End_Year__c}"/>
+                                            </apex:outputPanel>
+                                        </apex:pageBlockSectionItem>
+                                        <br/>
+                                        <apex:outputField value="{!MMR.Presenters__c}"/>
+                                        <span></span>
+                                        <apex:outputField value="{!MMR.Location__c}"/>
+                                        <span></span>
+                                        <apex:outputField value="{!MMR.Overview_Section__c}"/>
+                                        <span></span>
+                                        <apex:outputField value="{!MMR.Status__c}"/>
+                                    </apex:pageBlockSection>
+                                    <apex:pageBlockSection columns="2">
+                                        <apex:pageBlock title="{!$Label.A360_Client_Investments}">
+                                            <apex:pageBlockSection columns="1" id="mmrClientInvDetail">
+                                                <apex:pageblockTable value="{!MMRPortfolioWrapperList}" var="pwl" columnsWidth="15%,30%,30%,15%">
+                                                    <apex:column headerValue="{!$Label.A360_Action}">
+                                                        <a href="#" onclick="removeSingleMMRClientInv('{!pwl.rowNum}');" style="color: #015ba7!important;">{!$Label.A360_remove}</a>
+                                                    </apex:column>
+                                                    <apex:column headerValue="{!$Label.A360_Name}">
+                                                        <apex:outputLink value="/{!pwl.mmrClientAsscn.Id}">
+                                                            {!pwl.clientInvName}
+                                                        </apex:outputLink>
+                                                    </apex:column>
+                                                    <apex:column headerValue="{!$Label.A360_Portfolio}">
+                                                        <apex:outputLink value="/{!pwl.mmrClientAsscn.Portfolio__c}">
+                                                            {!pwl.portfName}
+                                                        </apex:outputLink>
+                                                    </apex:column>
+                                                    <apex:column headerValue="{!$Label.A360_Portfolio_Code}">
+                                                            {!pwl.portfCode}
+                                                        
+                                                    </apex:column>
+                                                </apex:pageblockTable>
+                                            </apex:pageBlockSection>
+                                        </apex:pageBlock>
+                                        <apex:pageBlock title="{!$Label.A360_Translation_Languages}">
+                                            <apex:pageBlockSection id="transLang" columns="1">
+                                                <apex:outputField value="{!MMR.Translation_Languages__c}"/>
+                                                <b><u>{!$Label.A360_Number_of_Hard_Copies_Required}</u></b>
+                                                <apex:outputPanel layout="block">
+                                                    <table style="border-collapse:separate; border-spacing:10px !important">
+                                                        <apex:repeat value="{!languageFields}" var="lf">
+                                                            <tr>
+                                                                <td>{!lf.labelName}</td>
+                                                                <td> <apex:outputText value="{!lf.fieldValue}"/></td>
+                                                            </tr>
+                                                        </apex:repeat>
+                                                    </table>
+                                                </apex:outputPanel>
+                                            </apex:pageBlockSection>
+                                        </apex:pageBlock>
+                                    </apex:pageBlockSection>
+                                </apex:outputPanel>
+                            </apex:pageBlock>
+                        </apex:outputPanel>
+                        <!-- Meeting Material Request pop up section ENDS -->
+                         
+                        
+                        
+                        <!-- Event Request pop up section STARTS --> 
+                        <apex:outputPanel rendered="{!showEventRequestPopup}" id="erpup" layout="block" styleClass="not-responsive">
+                            <apex:sectionHeader title="Event Request Title"/>
+                            <apex:pageBlock >
+                                <apex:pageBlockButtons >
+                                    <apex:commandButton value="{!$Label.A360_Save}" oncomplete="closeModal();" rendered="{!showSaveBtnOnPopUp}" action="{!updateSR}" rerender="tstpopup,pbSpeaker"/>
+                                    <apex:commandButton value="{!$Label.A360_Edit}" rendered="{!!showSaveBtnOnPopUp}" action="{!editFollowUpRecord}" rerender="erpup"/>
+                                    <!--<apex:commandButton value="{!$Label.A360_Close}" action="{!closePopup}" immediate="true" rerender="tstpopup" onclick="forceCloseModal();"/>-->
+                                    <apex:commandButton value="{!$Label.A360_Close}" action="{!showTaskPopup}" onclick="openModal();" immediate="true" rerender="tstpopup" oncomplete="fresizeModal();"/>
+                                </apex:pageBlockButtons>
+                                
+                                
+                                <apex:outputPanel rendered="{!IF(placholderEventRequest.id == NULL,true,false)}">
+                                    <apex:pageBlockSection columns="1" title="Event Request Information">
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Select from the available Event Request"></apex:outputLabel>
+                                                <apex:inputField value="{!tempEventRelation.Speaker_Request__c}" >
+                                                    <!--<apex:actionSupport event="onChange" action="{!showExistingEventRequestFields}" reRender="IDeventRequestFields"/>-->
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        </apex:pageBlockSection>
+                                        <apex:pageBlockSection columns="1" title="Attended Speakers">
+                                          <apex:pageblocktable id="pbSpeakers" value="{!SpeakerList}" var="c">
+                                        <apex:column >
+                                            <apex:facet name="header">
+                                                Speaker Name
+                                            </apex:facet>
+                                            <apex:outputField value="{!c.Speaker__c}" ></apex:outputField>
+                                        </apex:column>
+                                        <!--<apex:column >
+                                            <apex:facet name="header">
+                                                Approval Status
+                                            </apex:facet>
+                                            <apex:outputField value="{!c.Approval_Status__c}" ></apex:outputField>
+                                        </apex:column>
+                                        <apex:column >
+                                            <apex:facet name="header">
+                                                Time Slot Start
+                                            </apex:facet>
+                                            <apex:outputField value="{!c.Time_Slot_Start__c}" ></apex:outputField>
+                                        </apex:column>
+                                        <apex:column >
+                                            <apex:facet name="header">
+                                                Time Slot End
+                                            </apex:facet>
+                                            <apex:outputField value="{!c.Time_Slot_End__c}" ></apex:outputField>
+                                        </apex:column>-->
+                                    </apex:pageblocktable>
+                                        </apex:pageBlockSection>
+                                    <!--</apex:pageBlockSection>-->
+                                </apex:outputPanel>
+                                <apex:outputPanel id="IDeventRequestFields" rendered="{!IF(placholderEventRequest.id != NULL,true,false)}">
+                                <apex:pageBlockSection columns="2" title="Event Request Information">
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Requested For"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Requester__c}" required="true">
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Overall Approval Status"></apex:outputLabel>
+                                                <apex:outputField value="{!placholderEventRequest.Overall_Approval_Status__c}" >
+                                                </apex:outputField>
+                                        </apex:pageBlockSectionItem>
+                                    </apex:pageBlockSection>
+                                    
+                                    <apex:pageBlockSection columns="2" title="Event Summary">
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Event Title"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Event_Title__c}" required="true">
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Organization"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Organization__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Time Zone"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.TimeZone__c}" required="true">
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Contact"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Contact__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Start Date & Time"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Start_Date__c}" required="true">
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem ></apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="End Date & Time"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.End_Date__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                    </apex:pageBlockSection>
+                                    <apex:pageBlockSection columns="2" title="Event Details">
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Method"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Method__c}" required="true">
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Conference Room"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Conference_Room__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Event Type"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Event_Types__c}" required="true">
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Hotel"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Hotel__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Location"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Location__c}" required="true">
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Street"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Street__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Is Travel Required?"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Is_Travel_Required__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="City"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.City__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Audience"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Audience__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="State"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.State__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Dress Code"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Dress_Code__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Country"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Country__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Call & Participant Code"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Call__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Zip Code"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Zip_Code__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <!--<apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Event Instructions"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Event_Instructions__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>-->
+                                        
+                                    </apex:pageBlockSection>
+                                    
+                                    <apex:pageBlockSection columns="2" title="Meeting Materials">
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="Link to Presentation Materials"></apex:outputLabel>
+                                                <apex:inputField value="{!placholderEventRequest.Link_to_presentation_materials__c}" >
+                                                </apex:inputField>
+                                        </apex:pageBlockSectionItem>
+                                        <apex:pageBlockSectionItem >
+                                            <apex:outputLabel value="MFS Contact for Presentation Materials"></apex:outputLabel>
+                                                <!--apex:inputField value="{!placholderEventRequest.MFS_Contact_for_Presentation_Materials__c}" >
+                                                </apex:inputField-->
+                                        </apex:pageBlockSectionItem>
+                                        
+                                        
+                                        
+                                        
+                                    </apex:pageBlockSection>
+                                    
+                                                                          <apex:pageBlockSection columns="1" title="Requested Speakers">
+                                          <apex:pageblocktable id="pbSpeakers" value="{!SpeakerList}" var="c">
+                                        <apex:column >
+                                            <apex:facet name="header">
+                                                Speaker Name
+                                            </apex:facet>
+                                            <apex:outputField value="{!c.Speaker__c}" ></apex:outputField>
+                                        </apex:column>
+                                        <apex:column >
+                                            <apex:facet name="header">
+                                                Approval Status
+                                            </apex:facet>
+                                            <apex:outputField value="{!c.Approval_Status__c}" ></apex:outputField>
+                                        </apex:column>
+                                        <apex:column >
+                                            <apex:facet name="header">
+                                                Time Slot Start
+                                            </apex:facet>
+                                            <apex:outputField value="{!c.Time_Slot_Start__c}" ></apex:outputField>
+                                        </apex:column>
+                                        <apex:column >
+                                            <apex:facet name="header">
+                                                Time Slot End
+                                            </apex:facet>
+                                            <apex:outputField value="{!c.Time_Slot_End__c}" ></apex:outputField>
+                                        </apex:column>
+                                    </apex:pageblocktable>
+                                        </apex:pageBlockSection>
+
+                                     
+                                </apex:outputPanel>
+                            </apex:pageBlock>   
+                        </apex:outputPanel>
+                        
+                        
+                        
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </div>
+            <div class="custom-modal-backdrop"></div>
+        </div>
+        
+        <!-- All related records POP UP Sections ENDS -->
+        <!--****************************************************************************************-->
+        
+        
+        
+        <!--****************************************************************************************-->
+        <!-- Non POP UP section STARTS -->
+        
+        <apex:pageBlock rendered="{!showAllRelatedSection}">
+            <apex:pageblocksection columns="2">
+                
+                <!-- Rich Text section STARTS -->
+                <apex:pageBlockSectionItem >
+                    <apex:outputpanel style="overflow:scroll;{!IF(eventCallNote,'height:970px','height:750px')};" layout="block">
+                        <apex:pageblock Title="{!IF(eventCallNote,$Label.A360_Activity_Results, 'Additional Notes')}" mode="maindetail">
+                            <apex:inputfield label="" value="{!CallNote.Notes__c}" />
+                        </apex:pageblock>
+                    </apex:outputpanel>
+                </apex:pageBlockSectionItem>
+                <!-- Rich Text section ENDS -->
+                
+                <!-- All Related record section except rich text field STARTS -->
+                <apex:pageBlockSectionItem >   
+                    <apex:outputPanel id="noRchTxt">
+                        <apex:outputPanel rendered="{!showAllRelatedSection}">
+                            <apex:pageblock >
+                                <!--<apex:pageblocksection columns="1" collapsible = "TRUE">-->
+                                
+                                <!-- Product related record section STARTS -->
+                                <apex:outputpanel rendered="{!eventCallNote}" style="overflow:scroll;height:175px;" layout="block">
+                                    <apex:pageblock id="pbProduct" title="{!if(AND(eventCallNote,CONTAINS(oRecTypeActivity.Name,'Institutional')),'Strategies' ,'')}
+                                                                          {!if(AND(!eventCallNote,CONTAINS(oRecTypeActivity.Name,'Institutional')),'MFS Strategy' ,'')}
+                                                                          {!if(NOT(CONTAINS(oRecTypeActivity.Name,'Institutional')),'Portfolios' ,'')}"
+                                                    mode="maindetail">
+                                        
+                                        <apex:pageblockbuttons id="pbBtnProduct" location="top">
+                                            <apex:actionRegion >
+                                                <apex:inputField id="searchProd" value="{!oProductJN.Product__c} "   >  
+                                                    <apex:actionSupport action="{!addingProduct}" event="onchange" rerender="pbProduct,searchCompProd" />
+                                                </apex:inputField>
+                                            </apex:actionRegion>
+                                            <apex:actionFunction name="{!$Label.A360_delProduct}" action="{!removingProduct}" oncomplete="cursorNormal()" rerender="pbProduct">
+                                                <apex:param name="{!$Label.A360_prdId}" value="" assignTo="{!individualChildRecordId}"/>
+                                            </apex:actionFunction>
+                                            <apex:actionFunction name="{!$Label.A360_highInterest}" action="{!highInterestProductCheck}" oncomplete="cursorNormal();" rerender="pbProduct">
+                                                <apex:param name="{!$Label.A360_hI}" value="" assignTo="{!individualChildRecordId}"/>
+                                            </apex:actionFunction>
+                                        </apex:pageblockbuttons>
+                                        <apex:outputPanel rendered="{!IF(ProductWrapperList.size ==0, true, false)}">{!$Label.A360_No_records_to_display}</apex:outputPanel>
+                                        <apex:outputPanel rendered="{!IF(ProductWrapperList.size >0, true, false)}">
+                                            <apex:pageblocktable id="pbtProduct" value="{!ProductWrapperList}" var="c">
+                                                <apex:column >
+                                                    <apex:facet name="{!$Label.A360_header}">
+                                                        {!$Label.A360_Action}
+                                                    </apex:facet>
+                                                    <!-- <apex:inputCheckbox styleClass="ProductChkBx" id="ChildChkBox" value="{!c.selected}"/> -->
+                                                    <a href="#" onclick="delProduct('{!c.wProduct.id}');cursorWaiting(); return false;" style="color: #015ba7!important;">{!$Label.A360_remove}</a>
+                                                </apex:column>
+                                                <apex:column >
+                                                    <apex:facet name="{!$Label.A360_header}">
+                                                        {!$Label.A360_Product}
+                                                    </apex:facet>                                        
+                                                    <apex:outputlink value="/{!c.wProduct.id}"> 
+                                                        {!c.wProduct.name}
+                                                    </apex:outputlink>
+                                                </apex:column>
+                                                <!--
+                                                <apex:column headerValue="{!$Label.A360_High_Interest_Product}">
+                                                    <apex:inputField onclick="highInterest('{!c.wActivityProdJuncObj.Id}');cursorWaiting(); return false;" value="{!c.wActivityProdJuncObj.High_Interest__c}"/>
+                                                </apex:column>
+                                                <apex:column headerValue="{!$Label.A360_Vehicle}">
+                                                    <apex:outputField value="{!c.wProduct.Vehicle__c}"/>
+                                                </apex:column>
+                                                -->
+                                            </apex:pageblocktable>
+                                        </apex:outputPanel>
+                                    </apex:pageblock>
+                                </apex:outputpanel>
+                                <!-- Product related record section ENDS -->
+                                
+                                <!-- Speaker Request related record section on second screen STARTS -->
+                                <apex:outputpanel id="opSR" style="overflow:scroll;height:175px;" layout="block" rendered="{!eventCallNote}">
+                                    <apex:actionFunction name="spkrRequestDelete" action="{!deleteSpeakerRequestRecord}" oncomplete="cursorNormal()" rerender="pbSpeaker">
+                                        <apex:param name="srId1" value="" assignTo="{!individualChildRecordId}"/>
+                                    </apex:actionFunction>
+                                    <apex:pageblock id="pbSpeaker" title="{!$Label.A360_Speaker_Request}">
+                                        <apex:pageblockbuttons location="top">
+                                            <!--<apex:commandButton immediate="true" value="{!$Label.A360_Create}" onclick="createSpeakerRequest1('{!callNote.Id}', '{!parentEvent.StartDateTime}','{!parentEvent.endDateTime}','{!parentEvent.whoId}','{!parentEvent.Subject}', '{!parentEvent.WhatId}','{!parentEvent.OwnerId}'); return false;" reRender="dummy"/>-->
+                                        </apex:pageblockbuttons>
+                                        <apex:outputPanel rendered="{!IF(SpeakerWrapperList.size ==0, true, false)}">{!$Label.A360_No_records_to_display}</apex:outputPanel>
+                                        <apex:outputPanel rendered="{!IF(SpeakerWrapperList.size > 0, true, false)}">
+                                            <apex:pageblocktable value="{!SpeakerWrapperList}" var="sw">
+                                                <apex:column >
+                                                    <apex:facet name="{!$Label.A360_header}">
+                                                        {!$Label.A360_Action}
+                                                    </apex:facet>
+                                                    
+                                                    <a href="#" onclick="speakerRequestEdit('{!sw.wSpeakerReq.Id}');return false;" style="color: #015ba7!important;">{!$Label.A360_Edit}</a> | 
+                                                    <!--<a href="#" onclick="spkrRequestDelete('{!sw.wSpeakerReq.Id}');cursorWaiting();return false;" style="color: #015ba7!important;">{!$Label.A360_remove}</a>-->
+                                                </apex:column>
+                                                <apex:column headerValue="{!$Label.A360_Event_Title}">
+                                                    <apex:commandLink rendered="{!showAllRelatedSection}" onclick="speakerRequestEdit('{!sw.wSpeakerReq.Id}'); return false;">
+                                                        <apex:outputField value="{!sw.wSpeakerReq.Event_Title__c}" />
+                                                    </apex:commandLink>
+                                                    <apex:outputField rendered="{!!showAllRelatedSection}" value="{!sw.wSpeakerReq.Event_Title__c}" />
+                                                </apex:column>
+                                                <apex:column headerValue="{!$Label.A360_Requested_For}">
+                                                    <apex:outputField value="{!sw.wSpeakerReq.Requester__c}" />
+                                                </apex:column>   
+                                                <apex:column headerValue="{!$Label.A360_Event_Type}">
+                                                    <apex:outputField value="{!sw.wSpeakerReq.Event_Types__c}"/> 
+                                                </apex:column>                                                                         
+                                            </apex:pageblocktable>
+                                        </apex:outputPanel>  
+                                    </apex:pageblock>
+                                </apex:outputpanel>
+                                <!-- Speaker Request related record section on second screen ENDS -->
+                                
+                                <!-- Meeting Material Request related record section on second screen STARTS --> 
+                                <apex:outputpanel id="opMMR" style="overflow:scroll;height:175px;" layout="block" rendered="{!eventCallNote}">
+                                    <apex:actionFunction name="{!$Label.A360_showMMRDetail}" action="{!showMMRPopup}" oncomplete="resizeModal();return false;" rerender="tstpopup">
+                                        <apex:param name="{!$Label.A360_mmrId1}" value="" assignTo="{!individualChildRecordId}"/>
+                                    </apex:actionFunction>
+                                    <apex:actionFunction name="{!$Label.A360_mmrEdit}" action="{!editMMRRecord}" oncomplete="resizeModal();cursorNormal();return false;" rerender="tstpopup">
+                                        <apex:param name="{!$Label.A360_mmrId}" value="" assignTo="{!individualChildRecordId}"/>
+                                    </apex:actionFunction>
+                                    <apex:actionFunction name="{!$Label.A360_mmrDelete}" action="{!deleteMMRRecord}" oncomplete="cursorNormal()" reRender="pbMMR1">
+                                        <apex:param name="{!$Label.A360_mmrId}" value="" assignTo="{!individualChildRecordId}"/>
+                                    </apex:actionFunction>
+                                    <apex:pageblock id="pbMMR1" title="{!$Label.A360_Meeting_Material_Request}">
+                                        <apex:pageblockbuttons location="top">
+                                            <apex:commandButton immediate="true" onclick="openModal();" value="{!$Label.A360_Create}" action="{!showMMRPopup}" oncomplete="resizeModal();" rerender="tstpopup"/>
+                                        </apex:pageblockbuttons>
+                                        <apex:outputPanel rendered="{!IF(MMRWrapperList.size ==0, true, false)}">{!$Label.A360_No_records_to_display}</apex:outputPanel>
+                                        <apex:outputPanel rendered="{!IF(MMRWrapperList.size > 0, true, false)}">
+                                            <apex:pageblocktable value="{!MMRWrapperList}" var="mw">
+                                                <apex:column >
+                                                    <apex:facet name="{!$Label.A360_header}">
+                                                        {!$Label.A360_Action}
+                                                    </apex:facet>
+                                                    <!-- <apex:inputCheckbox styleClass="ChkBx" id="disMmrChkBox" value="{!mw.selected}" /> -->
+                                                    <a href="#" onclick="mmrEdit('{!mw.wMMR.Id}');openModal();cursorWaiting();return false;" style="color: #015ba7!important;">{!$Label.A360_Edit}</a> | 
+                                                    <a href="#" onclick="mmrDelete('{!mw.wMMR.Id}');cursorWaiting();return false;" style="color: #015ba7!important;">{!$Label.A360_remove}</a>
+                                                </apex:column>
+                                                <apex:column headerValue="{!$Label.A360_Name}">
+                                                    <apex:commandLink rendered="{!showAllRelatedSection}" onclick="showMMRDetail('{!mw.wMMR.Id}');openModal();return false;">
+                                                        <apex:outputField value="{!mw.wMMR.Name}"/> 
+                                                    </apex:commandLink>
+                                                    <apex:outputField rendered="{!!showAllRelatedSection}" value="{!mw.wMMR.Name}"/>
+                                                </apex:column>
+                                                <apex:column headerValue="{!$Label.A360_Material_Type}">
+                                                    <apex:outputField value="{!mw.wMMR.Material_Type__c}" />
+                                                </apex:column>
+                                                <apex:column headerValue="{!$Label.A360_Requested_Date}">
+                                                    <apex:outputField value="{!mw.wMMR.Requested_Date__c}" />
+                                                </apex:column>                                    
+                                            </apex:pageblocktable>
+                                        </apex:outputPanel>  
+                                    </apex:pageblock>
+                                </apex:outputpanel>
+                                <!-- Meeting Material Request related record section on second screen ENDS -->
+                                
+                                <style>
+                                    .taskHeight .bPageBlock{height:250px;overflow:auto;border:0 !important;}
+                                    .eventHeight .bPageBlock{height:175px;overflow:auto;}
+                                </style>
+                                <!-- Task/Event related record section STARTS -->
+                                <apex:outputpanel layout="block" styleClass="{!IF(taskCallNote,'taskHeight','eventHeight')}">
+                                    <apex:actionFunction name="{!$Label.A360_showTaskDetail}" action="{!showTaskPopup}" oncomplete="resizeModal();return false;" rerender="tstpopup">
+                                        <apex:param name="{!$Label.A360_tskId}" value="" assignTo="{!individualChildRecordId}"/>
+                                    </apex:actionFunction>
+                                    <apex:actionFunction name="{!$Label.A360_activityEdit}" action="{!editFollowUpTaskRecord}" oncomplete="resizeModal();cursorNormal();return false;" rerender="tstpopup">
+                                        <apex:param name="{!$Label.A360_actvtyId}" value="" assignTo="{!individualChildRecordId}" />
+                                    </apex:actionFunction>
+                                    <apex:actionFunction name="{!$Label.A360_activityDelete}" action="{!deleteFollowUpTaskEvent}" oncomplete="cursorNormal();return false;" rerender="pbActivity">
+                                        <apex:param name="{!$Label.A360_actvtyId}" value="" assignTo="{!individualChildRecordId}" />
+                                    </apex:actionFunction>
+                                    <apex:pageBlock title="{!if(taskCallNote == true, 'Call Follow Up', 'Follow-Ups')}" id="pbActivity">
+                                        <apex:pageBlockButtons location="top">
+                                            <apex:commandButton immediate="true" value="Create" action="{!showTaskPopup}" rerender="tstpopup" onclick="openModal();" oncomplete="resizeModal();" />
+                                            <!-- <apex:commandButton rendered="{!eventCallNote}" reRender="dummy" value="{!$Label.A360_Send_Email}" onclick="openSendEmailTab('{!parentEvent.WhatId}','{!parentEvent.WhoId}')" />
+                                            <apex:commandButton rendered="{!taskCallNote}" reRender="dummy" value="{!$Label.A360_Send_Email}" onclick="openSendEmailTab('{!parentTask.WhatId}','{!parentTask.WhoId}')" /> -->
+                                        </apex:pageBlockButtons>
+                                        
+                                        <apex:outputPanel rendered="{!if(taskWrapperList.size == 0,true,false)}">{!$Label.A360_No_records_to_display}</apex:outputPanel>
+                                        
+                                        <!-- Task/Event Section if records are there STARTS -->     
+                                        <apex:outputPanel rendered="{!if(taskWrapperList.size > 0,true,false)}">
+                                            <table width="100%">
+                                                <thead style="margin-bottom:20px;">
+                                                    <tr>
+                                                        <th scope="col">
+                                                            <span>{!$Label.A360_Action}</span>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <span>{!$Label.A360_Event_Task}</span>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <span>{!$Label.A360_Subject}</span>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <span>{!$Label.A360_Assigned_To}</span>
+                                                        </th>
+                                                        <th scope="col">
+                                                            <span>{!$Label.A360_Due_Date_Start}</span>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody style="background:white;">
+                                                    <apex:repeat value="{!taskWrapperList}" var="t">
+                                                        <tr>
+                                                            <td>
+                                                                <!-- <apex:inputCheckbox styleClass="ChkBx" id="disChildChkBox" value="{!t.Selected}" /> -->
+                                                                <a href="#" onclick="activityEdit('{!t.wTask.Id}');openModal();cursorWaiting(); return false;" style="color: #015ba7!important;">{!$Label.A360_Edit}</a> 
+                                                                <a href="#" onclick="activityDelete('{!t.wTask.Id}');cursorWaiting(); return false;" style="color: #015ba7!important;">{!$Label.A360_remove}</a>
+                                                            </td> 
+                                                            <td>
+                                                                {!$Label.A360_Task}
+                                                            </td>
+                                                            <td>
+                                                                <apex:commandLink onclick="showTaskDetail('{!t.wTask.Id}');openModal(); return false;">
+                                                                    <apex:outputField value="{!t.wTask.Subject}"/>
+                                                                </apex:commandLink>
+                                                            </td>
+                                                            <td>
+                                                                <apex:outputField value="{!t.wTask.OwnerId}" />
+                                                            </td>
+                                                            <td>
+                                                                <apex:outputField value="{!t.wTask.ActivityDate}"/>
+                                                            </td>                                     
+                                                        </tr>
+                                                    </apex:repeat>
+                                                </tbody>
+                                            </table>
+                                        </apex:outputPanel>
+                                        <!-- Task/Event Section if records are there ENDS -->
+                                        
+                                    </apex:pageBlock>
+                                </apex:outputpanel>
+                                <!-- Task/Event related record section ENDS -->
+                                
+                                <!--</apex:pageblocksection> -->
+                            </apex:pageblock>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                <!-- All Related record section except rich text field ENDS -->
+            </apex:pageblocksection>
+        </apex:pageBlock>
+        
+        <!-- Non POP UP section ENDS -->
+        
+        <!--****************************************************************************************-->   
+        <apex:pageBlock id="pbBtnsBtm">  
+            <apex:pageBlockButtons location="bottom" >
+                <apex:commandButton onclick="cursorWaiting()" oncomplete="cursorNormal();return false;" value="Save" reRender="pbCN,noRchTxt,sRMmr,eAT,eATI,err,pbBtns,pbBtnsBtm" action="{!Save}" id="saveBtn"/>
+                <apex:commandButton rendered="{!if(eventCallNote, true,false)}" oncomplete="saveAndClose('{!IF(isNew,parentObjectID,IF(parentEvent.Whatid != NULL,parentEvent.Whatid,parentEvent.Whoid))}');return false;" value="Close"/>
+                <apex:commandButton rendered="{!if(taskCallNote, true,false)}" oncomplete="saveAndClose('{!IF(isNew,parentObjectID,IF(parentTask.Whatid != NULL,parentTask.Whatid,parentTask.Whoid))}');return false;" value="Close"/>
+                <!-- <apex:commandButton onclick="cursorWaiting()" oncomplete="cursorNormal()" value="{!$Label.A360_Next}"  rendered="{!if(callNote.Id == null, true,false)}" action="{!Save2}" reRender="err,pbCN" id="saveBtn2"/> -->
+                <apex:commandButton onclick="cursorWaiting()" oncomplete="cursorNormal()" value="{!$Label.A360_Edit}"  reRender="pbCN,sRMmr,eAT,eATI,pbBtns,pbBtnsBtm" rendered="{!disabled}" action="{!edit}" id="editBtn"/>
+                <apex:commandButton onclick="cursorWaiting()" oncomplete="cursorNormal()" value="{!$Label.A360_Cancel}" immediate="true" reRender="pbCN,sRMmr,err,eAT,eATI,pbBtns,pbBtnsBtm" action="{!cancel}" rendered="{!!disabled}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+        
+        <!-- Displayed if no errors ENDS -->
+    </apex:form>
+    
+    <!-- Notes and Attachments related list starts -->
+    <!-- <apex:pageBlock mode="{!$Label.A360_maindetail}">
+        <apex:relatedList id="noteslist" list="CombinedAttachments" subject="{!callNote.id}" />
+    </apex:pageBlock> -->
+    
+    
+    <apex:form >
+            <apex:actionRegion renderRegionOnly="false">
+                <apex:actionFunction name="deleteAtt" action="{!deleteAttachment}" reRender="pbAttchment">
+                    <apex:param name="atId" value="" assignTo="{!individualChildRecordId}"/>
+                </apex:actionFunction>
+            </apex:actionRegion>
+            <apex:actionFunction name="saveAtt" action="{!uploadAttachment}" />
+            
+            <!-- Upload attachment Overlay start-->
+            <div class="custom-modal-att">
+                <div class="modal-container-att">
+                    <apex:outputPanel styleClass="att_popup">
+                        <apex:outputPanel styleClass="responsive">
+                            <apex:pageBlock >
+                                <apex:pageMessages />
+                                <apex:pageBlockButtons location="top" >
+                                    <!-- <apex:commandButton value="{!$Label.A360_Save}" action="{!uploadAttachment}"/> -->
+                                    <input type="button" value="{!$Label.A360_Save}" onclick="saveAtt();"/>
+                                    <input type="button" value="{!$Label.A360_Close}" id="open" onclick="closeAttModal();"/>
+                                </apex:pageBlockButtons>
+                                <apex:pageBlockSection showHeader="false" columns="2" id="block1">
+                                    <apex:pageBlockSectionItem >
+                                        <apex:outputLabel value="{!$Label.A360_File}" for="file"/>
+                                        <apex:inputFile value="{!fileBody}" fileName="{!fileName}" id="file"/>
+                                    </apex:pageBlockSectionItem>
+                                </apex:pageBlockSection>
+                            </apex:pageBlock>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                </div>
+                <div class="custom-modal-backdrop-att"></div>
+            </div>
+            <!-- Upload attachment Overlay end-->
+
+            <!-- Attachment section STARTS -->
+            <apex:pageBlock rendered="{!if(callNote.Id !=null, true,false)}" title="{!$Label.A360_Attachments}" id="pbAttchment">
+                <apex:pageBlockButtons location="top">
+                    <apex:actionRegion >
+                        <input type="button" value="{!$Label.A360_Attach_File}" id="open" onclick="openAttModal();"/>
+                    </apex:actionRegion>
+                </apex:pageBlockButtons>
+                <apex:actionRegion >
+                    <apex:pageBlockTable id="attTable" value="{!attachmentList}" var="att">
+                        <apex:column >
+                            <apex:facet name="{!$Label.A360_header}">
+                                Action
+                            </apex:facet>
+                            <apex:actionRegion >
+                                <apex:outputLink style="color: #015ba7!important;" value="{!URLFOR($Action.Attachment.Download, att.Id)}" target="_blank">View</apex:outputLink> | 
+                                <a href="#" onclick="deleteAtt('{!att.Id}'); return false;" style="color: #015ba7!important;">Remove</a>
+                            </apex:actionRegion>
+                        </apex:column>
+                        <apex:column headerValue="{!$Label.A360_File_Name}">
+                            <apex:outputText value="{!att.Name}" />
+                        </apex:column>
+                        <apex:column headerValue="{!$Label.A360_Size}">
+                            <apex:outputText value="{!att.BodyLength} KB" />
+                        </apex:column>
+                        <apex:column headerValue="{!$Label.A360_Last_Modified}" >
+                            <apex:outputText value="{0, date, MMMM d','  yyyy}">
+                                <apex:param value="{!att.LastModifiedDate}" /> 
+                            </apex:outputText>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:actionRegion>
+            </apex:pageBlock>
+            <!-- Attachment section ENDS -->
+            
+             <apex:outputPanel rendered="{!SpeakerWrapperList != null}">
+        
+              <apex:outputPanel layout="block" styleClass="slds-m-around--small" rendered="{AND(eventCallNote = true, SpeakerWrapperList[0].Approval_Status__c = 'Approved')}">
+                                   
+            <apex:pageBlock rendered="{!if(eventCallNote, true,false)}" >
+            <apex:pageBlockSection title="Meeting Material Questions" columns="2">
+                
+                <apex:pageBlockSectionItem >
+                    Key Points and Directions for Speakers
+                    <!--<apex:inputTextarea value="{!KeyPointsandDirections}" style="height:181px;width:387px"/>-->
+                </apex:pageBlockSectionItem>
+                    
+                 <apex:pageBlockSectionItem >
+                    Significant Anticipated Questions to and from Client and Other Consideration Factors
+                    <!--<apex:inputTextarea value="{!SignificantAnticipated}" style="height:181px;width:387px"/>-->
+                </apex:pageBlockSectionItem>   
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        </apex:outputPanel>
+     </apex:outputPanel>
+    </apex:form>
+    <!-- Notes and Attachments related list ends -->
+    
+
+</apex:page>

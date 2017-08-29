@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Con Outside DB</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Con Outside DBs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Outside Database --></label>
+        <name>DBNAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Firm Profile --></label>
+        <name>MMD_Firm_Profile__c</name>
+        <relationshipLabel><!-- Outside Databases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sequence # --></label>
+        <name>SEQ_NO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Database Description --></label>
+        <name>TEXT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vendor/Provider City &amp; State --></label>
+        <name>VCITYST__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vendor/Provider Name --></label>
+        <name>VNAME__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

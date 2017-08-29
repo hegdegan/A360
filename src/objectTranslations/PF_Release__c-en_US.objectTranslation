@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Release</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Releases</value>
+    </caseValues>
+    <fields>
+        <label><!-- Actual End Date --></label>
+        <name>PF_Actual_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Actual Start Date --></label>
+        <name>PF_Actual_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approach (Strategy) --></label>
+        <name>PF_Approach_Strategy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Deployment Instance --></label>
+        <name>PF_Deployment_Instance__c</name>
+        <picklistValues>
+            <masterLabel>Development</masterLabel>
+            <translation><!-- Development --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Production</masterLabel>
+            <translation><!-- Production --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QA Sandbox</masterLabel>
+            <translation><!-- QA Sandbox --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SIT</masterLabel>
+            <translation><!-- SIT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UAT</masterLabel>
+            <translation><!-- UAT --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Key Deliverable&apos;s / Outcome --></label>
+        <name>PF_Key_Deliverables__c</name>
+    </fields>
+    <fields>
+        <label><!-- Objectives --></label>
+        <name>PF_Objectives__c</name>
+    </fields>
+    <fields>
+        <label><!-- Planned End Date --></label>
+        <name>PF_Planned_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Planned Start Date --></label>
+        <name>PF_Planned_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project --></label>
+        <name>PF_Project__c</name>
+        <relationshipLabel><!-- Releases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Release Type --></label>
+        <name>PF_Release_Type__c</name>
+        <picklistValues>
+            <masterLabel>Major</masterLabel>
+            <translation><!-- Major --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Minor</masterLabel>
+            <translation><!-- Minor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Patch</masterLabel>
+            <translation><!-- Patch --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PF_Status__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>PF_Release Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Key Dates --></label>
+            <section>Key Dates</section>
+        </sections>
+        <sections>
+            <label><!-- Release Details --></label>
+            <section>Release Details</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Release Start/End dates should lie within Project Start/end dates --></errorMessage>
+        <name>PF_Release_date_lies_between_Project</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start date cannot be greater than End date --></errorMessage>
+        <name>PF_Start_End_date_check</name>
+    </validationRules>
+</CustomObjectTranslation>

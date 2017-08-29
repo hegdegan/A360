@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Requirement</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Requirements</value>
+    </caseValues>
+    <fields>
+        <label><!-- Apex Development Status --></label>
+        <name>Apex_Development_Status__c</name>
+        <picklistValues>
+            <masterLabel>Build &amp; Review</masterLabel>
+            <translation><!-- Build &amp; Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Build Complete</masterLabel>
+            <translation><!-- Build Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Code Review Complete</masterLabel>
+            <translation><!-- Code Review Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design</masterLabel>
+            <translation><!-- Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Started</masterLabel>
+            <translation><!-- Not Started --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- % Completed --></label>
+        <name>Completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Configuration Description --></label>
+        <name>Config_Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- There isn&apos;t trigger/apex code/vf page required but there may be integration required. --></help>
+        <label><!-- Config Only? --></label>
+        <name>Config_Only__c</name>
+    </fields>
+    <fields>
+        <label><!-- Configuration Required? --></label>
+        <name>Configuration_Required__c</name>
+    </fields>
+    <fields>
+        <label><!-- Configuration Status --></label>
+        <name>Configuration_Status_2__c</name>
+        <picklistValues>
+            <masterLabel>Build Complete</masterLabel>
+            <translation><!-- Build Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Build and Review</masterLabel>
+            <translation><!-- Build and Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design</masterLabel>
+            <translation><!-- Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not in Scope</masterLabel>
+            <translation><!-- Not in Scope --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Estimated hours --></label>
+        <name>Estimated_hours__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please enter any comments (e.g.; Requirement will be handled in another workstream) --></help>
+        <label><!-- Functional Comments --></label>
+        <name>Functional_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Functionality --></label>
+        <name>Functionality__c</name>
+        <relationshipLabel><!-- Related Requirements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Integration Status --></label>
+        <name>Integration_Status__c</name>
+        <picklistValues>
+            <masterLabel>Build &amp; Review</masterLabel>
+            <translation><!-- Build &amp; Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Build Complete</masterLabel>
+            <translation><!-- Build Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Code Review Complete</masterLabel>
+            <translation><!-- Code Review Complete --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design</masterLabel>
+            <translation><!-- Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spec Complete</masterLabel>
+            <translation><!-- Spec Complete --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- New Requirement --></label>
+        <name>New_Requirement__c</name>
+    </fields>
+    <fields>
+        <label><!-- Acceptance Criteria --></label>
+        <name>PF_Acceptance_Criteria__c</name>
+    </fields>
+    <fields>
+        <label><!-- Additional Information --></label>
+        <name>PF_Additional_Information__c</name>
+    </fields>
+    <fields>
+        <label><!-- Backlog Rank --></label>
+        <name>PF_Backlog_Rank__c</name>
+    </fields>
+    <fields>
+        <label><!-- Completed --></label>
+        <name>PF_Complete__c</name>
+    </fields>
+    <fields>
+        <help><!-- Populate for &quot;Change Request&quot; , If raised from a defect. --></help>
+        <label><!-- Defect --></label>
+        <name>PF_Defect__c</name>
+        <relationshipLabel><!-- Requirements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>PF_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PF_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- NameClean --></label>
+        <name>PF_NameClean__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Step --></label>
+        <name>PF_Next_Step__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Story --></label>
+        <name>PF_Parent_Story__c</name>
+        <relationshipLabel><!-- Requirements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- % completed --></label>
+        <name>PF_Percent_completed__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority --></label>
+        <name>PF_Priority__c</name>
+        <picklistValues>
+            <masterLabel>Critical</masterLabel>
+            <translation><!-- Critical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Requestor --></label>
+        <name>PF_Requestor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sprint Name --></label>
+        <name>PF_Sprint_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sprint --></label>
+        <name>PF_Sprint__c</name>
+        <relationshipLabel><!-- Requirements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PF_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Story Owner --></label>
+        <name>PF_Story_Owner__c</name>
+        <relationshipLabel><!-- Requirements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Story Point --></label>
+        <name>PF_Story_Point__c</name>
+    </fields>
+    <fields>
+        <help><!-- Please fill this if story status is Out of Scope, Duplicate or Cancelled --></help>
+        <label><!-- Story Status Reason --></label>
+        <name>PF_Story_Status_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PF_Story_Status__c</name>
+        <picklistValues>
+            <masterLabel>1-New</masterLabel>
+            <translation><!-- 1-New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2-Design</masterLabel>
+            <translation><!-- 2-Design --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3-Build</masterLabel>
+            <translation><!-- 3-Build --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4-Test</masterLabel>
+            <translation><!-- 4-Test --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5-Closed</masterLabel>
+            <translation><!-- 5-Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6-Eliminated</masterLabel>
+            <translation><!-- 6-Eliminated --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Story Type --></label>
+        <name>PF_Story_Type__c</name>
+        <picklistValues>
+            <masterLabel>Change Request</masterLabel>
+            <translation><!-- Change Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Sub Status --></label>
+        <name>PF_Sub_Status__c</name>
+        <picklistValues>
+            <masterLabel>Build - In Progress</masterLabel>
+            <translation><!-- Build - In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Build - Open Question/Blocked</masterLabel>
+            <translation><!-- Build - Open Question/Blocked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Build Completed - Ready for Review</masterLabel>
+            <translation><!-- Build Completed - Ready for Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed - Cancelled</masterLabel>
+            <translation><!-- Closed - Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed - Duplicate</masterLabel>
+            <translation><!-- Closed - Duplicate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed - Out of Scope</masterLabel>
+            <translation><!-- Closed - Out of Scope --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed - Sign off</masterLabel>
+            <translation><!-- Closed - Sign off --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design - Blocked</masterLabel>
+            <translation><!-- Design - Blocked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design - Completed</masterLabel>
+            <translation><!-- Design - Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Design - In Progress</masterLabel>
+            <translation><!-- Design - In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ready for Testing</masterLabel>
+            <translation><!-- Ready for Testing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ready to build</masterLabel>
+            <translation><!-- Ready to build --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test - Blocked</masterLabel>
+            <translation><!-- Test - Blocked --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test - Completed</masterLabel>
+            <translation><!-- Test - Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test - In Progress</masterLabel>
+            <translation><!-- Test - In Progress --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>PF_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type of Config --></label>
+        <name>Type_of_Config__c</name>
+        <picklistValues>
+            <masterLabel>Approval Processes</masterLabel>
+            <translation><!-- Approval Processes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Custom Fields</masterLabel>
+            <translation><!-- Custom Fields --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Custom Objects</masterLabel>
+            <translation><!-- Custom Objects --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Page Layouts</masterLabel>
+            <translation><!-- Page Layouts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Record Types</masterLabel>
+            <translation><!-- Record Types --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Validation Rules</masterLabel>
+            <translation><!-- Validation Rules --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Workflow Rules</masterLabel>
+            <translation><!-- Workflow Rules --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Workstream --></label>
+        <name>Workstream__c</name>
+    </fields>
+    <layouts>
+        <layout>PF_Stories Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Functional Configuration --></label>
+            <section>Functional Configuration</section>
+        </sections>
+        <sections>
+            <label><!-- Key Information --></label>
+            <section>Key Information</section>
+        </sections>
+        <sections>
+            <label><!-- Related To --></label>
+            <section>Related To</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+        <sections>
+            <label><!-- Technical Specification --></label>
+            <section>Technical Specification</section>
+        </sections>
+        <sections>
+            <label><!-- Testing Summary (QA/SIT) --></label>
+            <section>Testing Summary (QA/SIT)</section>
+        </sections>
+        <sections>
+            <label><!-- User Story Description --></label>
+            <section>User Story Description</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Start date cannot be greater than End date --></errorMessage>
+        <name>PF_Start_End_date_check</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter Story Status Reason when Story Status is Out of Scope or Duplicate or Cancelled --></errorMessage>
+        <name>StoryStatusReason</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Story Start/End dates should lie within Sprint Start/end dates --></errorMessage>
+        <name>Story_dates_lies_between_Sprint</name>
+    </validationRules>
+</CustomObjectTranslation>

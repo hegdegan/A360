@@ -1,0 +1,115 @@
+<!---
+Visualforce Page Name :  MFS_RSSAggregator
+Version               :  1.0 
+Created Date          :  26 MAY 2016
+Function              :  Displays RSS feed for Org - with alternate UI
+--->
+<apex:page standardController="Account" showHeader="false" sidebar="false" standardStylesheets="false" docType="html-5.0" applyHtmlTag="false">
+<apex:includeScript value="{!URLFOR($Resource.RSSMix, '/RSS_Mix/jsapi.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.RSSMix, '/RSS_Mix/gfeedfetcher.js')}"/>
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+<style type="text/css">
+.labelfield { 
+    color: brown;
+    font-size: 90%;
+}
+.datefield { 
+    color: gray;
+    font-size: 90%;
+}
+#example1 li { 
+    margin-bottom: 4px;
+}
+#example2 div { 
+    margin-bottom: 5px;
+}
+#example2 div a { 
+    text-decoration: none;
+}
+#example3 a {
+    color: #960033;
+    text-decoration: none;
+    font-weight: 700;
+}
+#example3 p:hover a, #example3 a:hover {
+    text-decoration:underline;
+}
+#example3 p { 
+    padding: 10px 10px 10px 10px;
+    margin: 0 0 0px 0;
+    border-bottom: 1px solid #E0D8DB;
+}
+.descriptionfield {
+    margin-top: 4px;
+    color: #000;
+    display: inline-block;
+}
+code { 
+    color: red;
+}
+.RSS_block {
+        height: 380px;
+    /*font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #333;
+    background: #FFF5F9;
+    border: 1px solid #960033;
+    margin: 0 auto;
+}
+.RSS_block  h3 {
+    margin: 0;
+    padding: 6px;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid #960033;
+    background: #960033;
+    color:#fff;
+}
+#example3 { 
+    width: 100%;
+    height: 348px;
+    display: inline-block;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.loader {
+    padding: 10px 0;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+    display: block;
+}
+</style>
+</head>
+
+    <div class="RSS_block">
+      
+        
+        <script type="text/javascript">
+        var url = "{!JSENCODE(Account.Name)}";
+        url = url.split(' ').join('%20');
+            var newsfeed=new gfeedfetcher("example3", "example3class", "_blank")
+            //Specify "label" plus URL to RSS feed
+            newsfeed.addFeed("Google", "https://news.google.com/news?cf=all&hl=en&ned=us&output=rss&q="+url) 
+            //Specify "label" plus URL to RSS feed
+            //newsfeed.addFeed("MSNBC", "http://www.msnbc.msn.com/id/3032091/device/rss/rss.xml") 
+            //Specify "label" plus URL to RSS feed
+            newsfeed.addFeed("Yahoo News", "https://feeds.finance.yahoo.com/rss/2.0/headline?s="+url+"&region=US&lang=en-US") 
+            //show the specified additional fields
+            newsfeed.displayoptions("datetime snippet") 
+            //Display each entry as a paragraph, and add a "pclass" class to each P
+            newsfeed.setentrycontainer("p", "pclass") 
+            //Show 8 entries, sort by date
+            newsfeed.filterfeed(25, "date") 
+            //Always call this last
+            newsfeed.init() 
+        </script>
+        
+    </div>
+    
+</html>
+</apex:page>

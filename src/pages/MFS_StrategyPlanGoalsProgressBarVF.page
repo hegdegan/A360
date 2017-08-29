@@ -1,0 +1,64 @@
+<!---
+        Visualforce Page Name :  StrategyPlanGoalsProgressBarVF
+        Version               :  1.0 
+        Created Date          :  24 APR 2016
+        Function              :  This responsive page displays the progress of the 8 different meetings conducted for a particular strategy plan. 
+                                 
+        Modification Log : 
+        -----------------------------------------------------------------------------
+        * Developer                   Date                   Description
+        * ----------------------------------------------------------------------------                 
+        * Maheshkumar            24 APR 2016              Initial Version
+        --->
+        <apex:page standardController="Strategy_Plan__c" extensions="MFS_SPlanGoalsProgressBarExtension" action="{!init}" showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+         
+            <!--Bootstrap Library-->
+            <apex:stylesheet value="{!URLFOR($Resource.BootStrapFile, '/bootstrap-3.2.0-dist/css/bootstrap.min.css')}" />
+
+        <apex:pageMessages ></apex:pageMessages>
+            <html>
+                <body > 
+                      <div class = "container-fluid">
+                        <div class = "row">
+                            <apex:repeat value="{!lstOutput}" var="output">
+                            <div class = "col-md-6">
+                            <div class = "row">   
+                              <div class = "col-md-3" id="label">
+                                 <span style = "font-size: 11px;font-weight: bold;">
+                                    {!output.name} <!-- :  <b>{!output.info}</b>    -->
+                                    </span>   
+                              </div>
+                               
+                              <!--This section displays one Progress Bar ( Actual vs Goal) -->
+                              <div class="col-md-9">
+                                <div class="progress" style="text-align: center;">
+                                    
+                                  <!--Display the actual progress if no surplus -->
+                                  <apex:outputpanel rendered="{!IF(output.surplus <= 0, TRUE, FALSE) }">
+                                      <div class="progress-bar progress-bar-success"  role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:{!output.actual}%; background-color: #8a002e; ">
+                                          <apex:outputpanel rendered="{!IF(output.actual != 0, TRUE, FALSE) }">
+                                              <b>{!output.info}</b>
+                                          </apex:outputpanel>
+                                      </div>
+                                  </apex:outputpanel>
+                                      
+                                   <!--Display the animated progress bar if surplus exist -->
+                                  <apex:outputpanel rendered = "{!IF(output.surplus > 0, TRUE, FALSE) }">
+                                      <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%; background-color: #8a002e;">
+                                          <B>{!output.info}</B>
+                                      </div>
+                                  </apex:outputpanel>  
+                                      
+                                  <apex:outputpanel rendered="{!IF(output.actual != 0, FALSE, TRUE) }">
+                                      <b>{!output.info}</b>
+                                   </apex:outputpanel>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </apex:repeat> 
+                    </div>
+               </div>
+            </body>
+        </html>
+    </apex:page>

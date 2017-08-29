@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Manager Service</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Manager Services</value>
+    </caseValues>
+    <fields>
+        <label><!-- Collective Code --></label>
+        <name>COLLECTIVE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Collective --></label>
+        <name>Collective_Desc__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager MMD ID --></label>
+        <name>MANAGER_NO__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Plan Manager --></label>
+        <name>MMD_Plan_Manager__c</name>
+        <relationshipLabel><!-- Manager Services --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Region Code --></label>
+        <name>REGION__c</name>
+    </fields>
+    <fields>
+        <label><!-- Region Desc --></label>
+        <name>Region_Desc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Sequence # --></label>
+        <name>SEQ_NO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Style Code --></label>
+        <name>STYLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Style Desc --></label>
+        <name>Style_Desc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type Code --></label>
+        <name>TYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type_Desc__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

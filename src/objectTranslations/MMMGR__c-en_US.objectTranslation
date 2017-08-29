@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Plan Manager</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Plan Managers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Dollars Managed ($000) --></label>
+        <name>DOLLARS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Link --></label>
+        <name>Firm_Link__c</name>
+        <relationshipLabel><!-- Plan Managers - MMD --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assets Managed (Local Curr) --></label>
+        <name>LOC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Local Currency Conversion Code --></label>
+        <name>Local_Currency_Conversion_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager MMD ID --></label>
+        <name>MANAGER_NO__c</name>
+    </fields>
+    <fields>
+        <label><!-- MFS Mgr --></label>
+        <name>MFS_Mgr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager Name &amp; City --></label>
+        <name>MGRNAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Firm Profile --></label>
+        <name>MMD_Firm_Profile__c</name>
+        <relationshipLabel><!-- Plan Managers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- MMD Pension Plan --></label>
+        <name>MMD_Pension_Plan__c</name>
+        <relationshipLabel><!-- MMD Plan Managers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- MMD Web Access Link --></label>
+        <name>MMD_Web_Access_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager WebAccess Link --></label>
+        <name>Manager_WebAccess_Link__c</name>
+    </fields>
+    <fields>
+        <label><!-- Percent Managed --></label>
+        <name>PER_MANAGED__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Name --></label>
+        <name>Plan_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Type --></label>
+        <name>Plan_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Sequence # --></label>
+        <name>SEQ_NO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Year Hired --></label>
+        <name>YEAR_HIRED__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

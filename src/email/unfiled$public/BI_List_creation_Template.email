@@ -1,0 +1,10 @@
+Hi List Creation Team,
+<br/><br/>
+A new campaign list request has been submitted. Please click the link below to view the request.
+{!Campaign.Link}
+
+<br/><br/>
+
+
+Thanks,<br/>
+{!User.FirstName} {!User.LastName}

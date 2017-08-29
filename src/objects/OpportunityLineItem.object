@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>AddProduct</actionName>
+        <content>MFS_ProductSearch</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>ChoosePricebook</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>EditAllProduct</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Active__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Needed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Approval Needed?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Approval Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Started</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Required</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Asset_Class_Geography__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Asset Class-Geography</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Asset_Class__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>TEXT(PricebookEntry.Product2.Asset_Class__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Asset Class</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assets__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What are the Total Assets related to this product?
+
+(Note: You can enter &quot;K&quot; for Thousands, &quot;M&quot; for Millions and &quot;B&quot; for Billions.  No Decimals please!)</inlineHelpText>
+        <label>Assets</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Blended__c</fullName>
+        <externalId>false</externalId>
+        <formula>PricebookEntry.Blended__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Blended?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+    </fields>
+    <fields>
+        <fullName>Discount</fullName>
+    </fields>
+    <fields>
+        <fullName>Discount__c</fullName>
+        <description>Discount % tbd</description>
+        <externalId>false</externalId>
+        <label>Discount</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Drop_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Drop Reason</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Consulting Rating</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fees</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Products</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Annualized_Revenue__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the expected new annualized reveunue related to this product?
+
+(Note: You can enter &quot;K&quot; for Thousands, &quot;M&quot; for Millions and &quot;B&quot; for Billions.  No Decimals please!)</inlineHelpText>
+        <label>Projected Annualized Revenue</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Expected_Assets__c</fullName>
+        <externalId>false</externalId>
+        <label>Projected Assets</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Expected_NIR__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the expected net interest revenue related to this product?
+
+(Note: You can enter &quot;K&quot; for Thousands, &quot;M&quot; for Millions and &quot;B&quot; for Billions.  No Decimals please!)</inlineHelpText>
+        <label>Projected NIR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Fee_Structure__c</fullName>
+        <description>If Fee Structure = &apos;Custom&apos; an approval will be required when added</description>
+        <externalId>false</externalId>
+        <label>Fee Structure</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Standard</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Custom</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Is_First_Strategy__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is First Strategy</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Unknown__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is Unknown</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ListPrice</fullName>
+    </fields>
+    <fields>
+        <fullName>Minimum_Waiver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Minimum Waiver</label>
+        <referenceTo>Minimum_Waiver__c</referenceTo>
+        <relationshipLabel>Strategies</relationshipLabel>
+        <relationshipName>Opportunity_Product</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>NIR__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the amount of expected new Net Interest Revenue based on cash balances?</inlineHelpText>
+        <label>Projected NIR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>One_Time_Fees__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Are there any one-time fees related to this product?  If so, at what amount?  
+
+(Note: You can enter &quot;K&quot; for Thousands, &quot;M&quot; for Millions and &quot;B&quot; for Billions.  No Decimals please!)</inlineHelpText>
+        <label>One Time Fees</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>OpportunityId</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Amount__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity.Amount__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Percent__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the probability of win for this product?  Please Note:  If no value is entered, the probability will be automatically updated to reflect Opportunity Probability.</inlineHelpText>
+        <label>Probability</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Portfolio_Name__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Portfolio Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PriceBook_BUId__c</fullName>
+        <description>Combination of PriceBookEntyId and BU Id mapped from Assets while adding RBO products</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>PriceBook_BUId</label>
+        <length>36</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product2Id</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ProductCode</fullName>
+    </fields>
+    <fields>
+        <fullName>Product_Link__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>IF(ISPICKVAL(Product_Vehicle__c, &apos;Australia Unit Trust&apos;) , 
+HYPERLINK(&quot;https://www.mfs.com/wps/portal/mfs/insti/australia-nz-updates-and-products/wholesale-trust-daily-navs-and-pricing?clearPortletSession=true&quot;,&apos;Australia Unit Trust&apos;), 
+IF(ISPICKVAL(Product_Vehicle__c, &apos;PPS&apos;) , 
+HYPERLINK(&quot;http://www.mfs.com/wps/portal/mfs/us-advisor-pub/products/separate-accounts/?portCode=&quot;&amp; PricebookEntry.Product2.ProductCode&amp;&quot;&amp;viewMode=profileSummary&quot;,&apos;Separately Managed Accounts (SMA)&apos;), 
+IF(ISPICKVAL(Product_Vehicle__c, &apos;Meridian&apos;) , 
+HYPERLINK(&quot;https://www.mfs.com/wps/portal/mfs/non-us-investor/products/meridian-funds/?portCode=&quot;&amp; PricebookEntry.Product2.ProductCode&amp;&quot;&amp;viewMode=profileSummary&quot;,&apos;Meridian Funds&apos;), 
+IF(ISPICKVAL(Product_Vehicle__c , &apos;VIT&apos;), HYPERLINK(&quot;http://www.mfs.com/wps/portal/mfs/us-advisor-pub/products/variable-insurance/?portCode=&quot;&amp;PricebookEntry.Product2.ProductCode&amp;&quot;&amp;viewMode=profileSummary&quot;, 
+&apos;VIT I Funds&apos;), 
+IF(ISPICKVAL(Product_Vehicle__c, &apos;VIT II&apos;), HYPERLINK(&quot;http://www.mfs.com/wps/portal/mfs/us-advisor-pub/products/variable-insurance/?portCode=&quot;&amp;PricebookEntry.Product2.ProductCode&amp;&quot;&amp;viewMode=profileSummary&quot;, 
+&apos;VIT II Funds&apos;), 
+IF(ISPICKVAL(Product_Vehicle__c, &apos;VIT III&apos;), HYPERLINK(&quot;http://www.mfs.com/wps/portal/mfs/us-advisor-pub/products/variable-insurance/?portCode=&quot;&amp;PricebookEntry.Product2.ProductCode&amp;&quot;&amp;viewMode=profileSummary&quot;, 
+&apos;VIT III Funds&apos;), 
+IF(ISPICKVAL(Product_Vehicle__c, &apos;MFS Family of Funds (US)&apos;) , 
+HYPERLINK(&quot;http://www.mfs.com/wps/portal/mfs/us-advisor-pub/products/mutual-funds/?portCode=&quot;&amp;PricebookEntry.Product2.ProductCode&amp;&quot;&amp;viewMode=profileSummary &quot;,&apos;US Retail&apos;),&apos;&apos; 
+) ))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Link</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Name__c</fullName>
+        <description>To show the Asset Name for RBO Opportunity product selection</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Strategy Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Record_Type__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Product Record Type</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Vehicle__c</fullName>
+        <externalId>false</externalId>
+        <label>Vehicle</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Australia Unit Trust</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Canadian Trust</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CDO</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Collective Investment Trust</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Institutional Trust</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VIT II</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LLC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meridian</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFS Family of Funds (US)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFS Investment Funds (FCP)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Seperate Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Subadvised Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ITM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PPS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VIT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VIT III</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Quantity</fullName>
+    </fields>
+    <fields>
+        <fullName>Restricted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Restricted</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ServiceDate</fullName>
+    </fields>
+    <fields>
+        <fullName>Share_Class__c</fullName>
+        <externalId>false</externalId>
+        <label>Share Class</label>
+        <picklist>
+            <picklistValues>
+                <fullName>A</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>B</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>C</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>I</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>R1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>R2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>R3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>R4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>R6</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Active Pipeline</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Awaiting Trade</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Won</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lost</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dropped</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Subtotal</fullName>
+    </fields>
+    <fields>
+        <fullName>TotalPrice</fullName>
+    </fields>
+    <fields>
+        <fullName>UnitPrice</fullName>
+    </fields>
+    <fields>
+        <fullName>Volume__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the Estimated Trading Volume related to this product?
+
+(Note: You can enter &quot;K&quot; for Thousands, &quot;M&quot; for Millions and &quot;B&quot; for Billions.  No Decimals please!)</inlineHelpText>
+        <label>Volume</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <validationRules>
+        <fullName>DropReasonRequiredForInactive</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND (Active__c==false, ISPICKVAL( Drop_Reason__c,&apos;&apos; ))</errorConditionFormula>
+        <errorDisplayField>Drop_Reason__c</errorDisplayField>
+        <errorMessage>Please provide drop reason before making the Strategy inactive</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Prevent_Edit_whenSubmitted_for_Approval</fullName>
+        <active>true</active>
+        <description>When the record is submitted for approval, user should not be able to edit it</description>
+        <errorConditionFormula>AND(IF(ISPICKVAL(Approval_Status__c  , &apos;Pending&apos;) , true, false),OR(ISCHANGED(UnitPrice), ISCHANGED(Quantity), ISCHANGED(Product_Vehicle__c),ISCHANGED(Restricted__c), ISCHANGED(Drop_Reason__c)))</errorConditionFormula>
+        <errorMessage>Record is not editable as it is pending for Approval.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>QuantityShouldNotBeChanged</fullName>
+        <active>true</active>
+        <errorConditionFormula>Quantity !=1</errorConditionFormula>
+        <errorDisplayField>Quantity</errorDisplayField>
+        <errorMessage>Quantity must be 1</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>VehicleRequiredForCutomProducts</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(ISPICKVAL( Product_Record_Type__c,&apos;1.Strategy&apos;),
+ISPICKVAL( Fee_Structure__c , &apos;Custom&apos;), ISBLANK( TEXT(Product_Vehicle__c ))  )</errorConditionFormula>
+        <errorMessage>Vehicle is required for Custom Fee Type Products.</errorMessage>
+    </validationRules>
+</CustomObject>

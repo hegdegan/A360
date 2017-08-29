@@ -1,0 +1,13 @@
+<apex:page standardController="Contact">
+    <apex:form style="text-align:left;">
+    <apex:pageBlock title="State and Country Picklists" mode="edit">
+        
+ <apex:pageBlockSection title="" >  
+     <apex:inputField id="Country" value="{!Contact.MailingCountryCode}" style="align:left"></apex:inputField>   
+     <apex:inputField value="{!Contact.MailingStateCode}"></apex:inputField>
+         <br />
+     <br/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+        </apex:form>
+</apex:page>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Contact Relation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Contact Relations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Contact MMD ID --></label>
+        <name>CONTID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact Name --></label>
+        <name>Contact_Name__c</name>
+        <relationshipLabel><!-- MMD Relations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Firm MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Firm Name --></label>
+        <name>REL_CONAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Firm MMD ID --></label>
+        <name>REL_PID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Related Firm Link --></label>
+        <name>Related_Firm_Link__c</name>
+        <relationshipLabel><!-- MMD Contact Relations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>TITLE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Year Hired --></label>
+        <name>YEAR_HIRED__c</name>
+    </fields>
+    <fields>
+        <label><!-- Year Left --></label>
+        <name>YEAR_LEFT__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

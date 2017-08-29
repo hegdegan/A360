@@ -1,0 +1,43 @@
+<!---
+Visualforce Page Name :  MFS_RSSGoogleSearch
+Version               :  1.0 
+Created Date          :  23 MAY 2016
+Function              :  Displays RSS feed for Org
+--->
+<apex:page standardController="Account" showHeader="false" sidebar="false" standardStylesheets="false" docType="html-5.0" applyHtmlTag="false">
+    <apex:includeScript value="{!URLFOR($Resource.RSSLib, '/RSSLibrary/jquery-1.11.3.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.RSSLib, '/RSSLibrary/FeedEk.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.RSSLib, '/RSSLibrary/FeedEk.js')}"/>
+    <html lang="en">
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <meta http-equiv="content-language" content="en" />
+            
+        </head>
+        <body>
+            
+            <div class="rssDiv">
+                <div id="divRss"></div>
+            </div>
+            <div style="clear: both"></div>
+
+            <script type="text/javascript">
+            var url = "{!JSENCODE(Account.Name)}";
+            url = url.split(' ').join('%20');
+            url = "https://news.google.com/news?cf=all&hl=en&ned=us&output=rss&q="+url;
+            $(document).ready(function () {
+                $('#divRss').FeedEk({
+                    FeedUrl: url,
+                    MaxCount: 10
+                });      
+            });
+            </script>
+            <script type="text/javascript">
+            function myFunction() {
+                $("a").attr('target','_blank');
+            }
+            $(window).load(myFunction);  
+            </script>
+        </body>
+    </html>
+</apex:page>

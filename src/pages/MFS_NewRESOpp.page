@@ -1,0 +1,8 @@
+<!---
+Visualforce Page Name :  MFS_NewInstutionalConsOpp
+Version               :  1.0 
+Created Date          :  8 AUG 2016
+Function              :  VF Page for custom button to create new Institutional opportunity from Org
+--->
+<apex:page standardController="Opportunity" recordSetvar=""  extensions="MFS_NewRESOpportunity" action="{!redirect}">
+</apex:page>

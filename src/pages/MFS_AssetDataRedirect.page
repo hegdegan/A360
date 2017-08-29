@@ -1,0 +1,9 @@
+<!---
+Visualforce Page Name :  MFS_AssetDataRedirect
+Version               :  1.0 
+Created Date          :  9 JUN 2016
+Function              :  Redirect page which redirects to applicable Sales and Assets page based on record type. Omly for Admin profiles.
+--->
+<apex:page standardController="Account" extensions="MFS_AssetDataRedirectController" action="{!redirect}">
+<apex:pageMessages ></apex:pageMessages>
+</apex:page>

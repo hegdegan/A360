@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Acceptance_Criteria__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.PF_Total_Actual_Hours__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.PF_Total_Estimated_Hours__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Type__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Blocked_Reason__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Solution_Description__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Status__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>Functionality Progress Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Functionality__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

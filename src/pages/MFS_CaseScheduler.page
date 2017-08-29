@@ -1,0 +1,473 @@
+<!---
+Visualforce Page Name :  MFS_CaseScheduler
+Version               :  1.0 
+Created Date          :  7 JUN 2016
+Function              :  Recurring Case scheduler page
+--->
+<apex:page StandardController="Case" docType="html-5.0" extensions="MFS_CaseSchedulerController" title="{!$Label.RC_Recurring_Cases}">
+    <apex:pageMessages />
+    
+    <apex:includeScript value="/support/console/20.0/integration.js"/>
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+        <head>
+            <title>{!$Label.RC_Recurring_Cases}</title>
+            <apex:includeScript value="/resource/MFS_UI_Assets/assets/js/jquery-1.11.3.min.js" />
+        </head>
+        <body>    
+            <apex:form >
+                <apex:actionFunction name="addingSummary" action="{!getSummary}" rerender="summaryPanel"/>
+                <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+                    <apex:pageBlock rendered="{!isNotRecurr}">
+                        <apex:pageMessage severity="Warning" id="page_message"> 
+                            {!$Label.RC_Message1} <apex:outputLink value="/{!$CurrentPage.parameters.Id}"> <u>{!$Label.RC_Message2}</u> </apex:outputLink> {!$Label.RC_Message3}.
+                        </apex:pageMessage>
+                        
+                    </apex:pageBlock>
+                    <apex:pageBlock rendered="{!(!isNotRecurr)}">
+                        <h1 style="font-size: 20px">{!$Label.RC_Recurring_Cases}</h1>         
+                        <apex:outputPanel id="panel">
+                            <apex:pageBlockSection columns="2"  >
+                                <apex:inputField value="{!Case.Repeats__c}" required="true" styleClass="fieldlength">
+                                    <apex:actionSupport event="onchange"  reRender="panel,panelSummary"/>
+                                </apex:inputField>
+                                <apex:inputField label="{!$Label.RC_Reminder_Not_In_Days}" value="{!Case.Due_In__c}" styleClass="fieldlength"/>
+                                 <apex:inputField value="{!Case.Start_Date__c}" required="true" rendered="{!IF(Case.Repeats__c=='Weekly' ||   Case.Repeats__c==NULL,true,false)}">
+                                <apex:actionSupport event="onchange" reRender="panelSummary"/>
+                            </apex:inputField>
+                            <apex:inputField value="{!Case.Start_Month__c}" styleClass="fieldlength"  rendered="{!IF(Case.Repeats__c!='Weekly' && Case.Repeats__c!='Quarterly' && Case.Repeats__c!=NULL ,true,false)}">
+                                 <apex:actionSupport event="onchange" reRender="panelSummary"/> 
+                            </apex:inputField>
+                                <apex:selectList label="Quarter Beginning/End" value="{!selectedQuarter}" size="1" rendered="{!IF(Case.Repeats__c=='Quarterly',true,false)}" >
+                                     <apex:actionSupport event="onchange" reRender="panelSummary,panel"/>
+                                    <apex:selectOption itemvalue="" itemLabel="--None--" />
+                                    <apex:selectOption itemvalue="Beginning" itemLabel="Beginning" />
+                                <apex:selectOption itemvalue="End" itemLabel="End" />
+                            </apex:selectList>
+                                 <apex:inputField value="{!Case.Ends__c}" styleClass="fieldlength" >
+                                    <apex:actionSupport event="onchange" reRender="panelSummary,panel"/>
+                                </apex:inputField>
+                            <apex:inputField value="{!Case.Start_Day__c}" styleClass="fieldlength"  rendered="{!IF(Case.Repeats__c!='Weekly' && Case.Repeats__c!='Quarterly' && Case.Repeats__c!=NULL,true,false)}">
+                                <apex:actionSupport event="onchange" reRender="panelSummary,panel,page_message"/> 
+                                </apex:inputField>
+                                <apex:selectRadio value="{!Case.Repeat_On_Weekly__c}" rendered="{!IF(Case.Repeats__c=='Weekly' ,true, false)}" >
+                                    <apex:SelectOptions value="{!Days}"/>
+                                    <apex:actionSupport event="onchange" reRender="panelSummary"/>
+                                </apex:selectRadio>
+                                <apex:inputField value="{!Case.Occurrence_Number__c}" rendered="{!IF(Case.Ends__c=='After' , true, false)}" styleClass="fieldlength"/>
+                                <apex:inputField value="{!Case.Excludes_Weekends__c}" />
+                                
+                                <apex:inputField value="{!Case.Ends_On__c}" rendered="{!Case.Ends__c=='On'}" styleClass="fieldlength"/>
+                                 <apex:selectList label="Business Hours" value="{!userBhours}" size="1">
+                                <apex:selectOptions value="{!bhOptions}" />
+                            </apex:selectList>
+                               
+                            </apex:pageBlockSection> 
+                        </apex:outputPanel>
+                       
+                        <apex:outputPanel id="panelSummary">
+                            <apex:pageBlockSection columns="1" >
+                                <div style="margin-left:28%;">
+                                    {!$Label.RC_Summary}: <b>{!summary}</b> 
+                                </div>
+                            </apex:pageBlockSection>
+                        </apex:outputPanel>   
+                        <apex:pageblockButtons >
+                            <apex:commandButton action="{!save}" value="{!$Label.RC_Save_Button}" />
+                            <apex:commandButton action="{!cancel}" value="{!$Label.RC_Cancel_Button}" html-formnovalidate="formnovalidate"/>
+                            <apex:commandButton action="{!endNow}" value="{!$Label.RC_End_Now_Button}"/>
+                        </apex:pageblockButtons>
+                    </apex:pageBlock>
+                </apex:outputPanel>
+                
+                
+                <!--Lightning page section, visible only in lightning view-->
+                <apex:outputPanel rendered="{!OR($User.UIThemeDisplayed=='Theme4d',$User.UIThemeDisplayed=='Theme4t')}">
+                    <head>
+                        <apex:stylesheet value="{!URLFOR($Resource.MFS_UI_Assets, 'assets/styles/salesforce-lightning-design-system-ltng.min.css')}" />
+                        <apex:stylesheet value="{!URLFOR($Resource.MFS_UI_Assets, 'assets/styles/mfs_new_styles.css')}" />
+                        <style>
+                            html,
+                            body {height: 100%;width: 100%;overflow: auto;margin:0 !important;padding:0 !important;}
+                            input[type="text"], textarea, select {-webkit-appearance: none;}
+                            .slds-form-element.slds-is-required .slds-input, 
+                            .slds-form-element.slds-is-required .slds-select{border-left:3px solid #c00;}
+                            .slds-form-element.slds-is-required .slds-dirty-input{border:1px solid #c00;}
+                            .slds-form-element.slds-is-required .slds-form-element__label abbr{display:none;color: #c00;margin-left: 5px;font-style: italic;}
+                            
+                            #repeatsOn .slds-radio--button-group .slds-radio--faux{padding:0 14px;}
+                            .MFS ul li, .MFS ol li{margin-left:0;padding-left:0;}
+                            #datePicker.datePicker{display:none;}
+                            .MFS .mfs-main-container{padding-bottom:20px;}
+                        </style>
+                    </head>
+                    <div id="hiddenBlock" style="display: none">
+                       
+                        <apex:outputPanel style="display:none">
+                            <apex:inputHidden value="{!Case.Repeat_On_Weekly__c}" id="h_repeatOn" />
+                        </apex:outputPanel> 
+                    </div>
+                    <div class="MFS slds exclude-page-close-warning no-console-scroll">
+                        <div class="slds-page-header" role="banner">
+                            <div class="slds-grid">
+                                <div class="slds-col slds-has-flexi-truncate">
+                                    <div class="slds-media slds-no-space slds-grow">
+                                        <div class="slds-media__figure">
+                                            <span class="slds-icon_container slds-icon-standard-case">
+                                                <svg aria-hidden="true" class="slds-icon slds-icon--medium">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <p class="slds-text-title--caps slds-line-height--reset">{!$Label.RC_Recurring_Cases}</p>
+                                            <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">{!$ObjectType.Case.fields.CaseNumber.Label} : {!Case.CaseNumber} • {!$ObjectType.Case.fields.Status.Label} : {!Case.Status}</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-container--x-large slds-container--center slds-inner-container mfs-main-container" id="scroller">
+                            <apex:outputPanel layout="block" rendered="{!isNotRecurr}">
+                                <apex:pageMessage severity="Warning"> 
+                                    <div>
+                                        {!$Label.RC_Message1} 
+                                        <apex:outputLink value="/{!$CurrentPage.parameters.Id}"> {!$Label.RC_Message2} </apex:outputLink> {!$Label.RC_Message3}
+                                    </div>
+                                </apex:pageMessage>
+                            </apex:outputPanel>
+                            <apex:actionFunction name="renderSummary"  rerender="summaryPanel" />
+                            <apex:actionFunction name="renderDays"  rerender="dayMultiSelect" />
+                            <apex:outputPanel id="outerPanel" layout="block" rendered="{!(!isNotRecurr)}">
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                        <div class="slds-form-element slds-is-required">
+                                            <label class="slds-form-element__label" for="select01">
+                                                {!$ObjectType.Case.fields.Repeats__c.Label} <abbr>{!$Label.RC_Message4}</abbr>
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-select_container">
+                                                    <apex:inputField value="{!Case.Repeats__c}" id="select01" styleClass="slds-select mfs-recurrence-repeats" onchange="showRepeats(this.value);" >
+
+                                                        <!--<apex:actionSupport event="onchange" reRender="outerPanel,panel,summaryPanel" oncomplete="alert('Here');" />-->
+                                                    </apex:inputField>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                        <div class="slds-form-element slds-is-required">
+                                            <label class="slds-form-element__label" for="text-input-01">{!$ObjectType.Case.fields.Due_In__c.Label} <abbr>{!$Label.RC_Message4}</abbr></label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputField value="{!Case.Due_In__c}" styleClass="slds-input"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">     
+                                        <div class="slds-form--stacked" id="mfs_recurrence_start_date">
+                                            <div class="slds-form-element slds-is-required">
+                                                <label class="slds-form-element__label" for="date">{!$ObjectType.Case.fields.Start_Date__c.Label} <abbr>{!$Label.RC_Message4}</abbr></label>
+                                                <div class="slds-form-element__control">
+                                                    <div class="slds-input-has-icon slds-input-has-icon--right">
+                                                        <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Resource.SLDSv202,'/assets/icons/utility-sprite/svg/symbols.svg#event')}"></use>
+                                                        </svg>
+                                                        <apex:inputField id="date" value="{!Case.Start_Date__c}" styleClass="slds-input">
+                                                            <apex:actionSupport event="onchange" reRender="summaryPanel"/>
+                                                        </apex:inputField>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slds-form--stacked slds-hide" id="mfs_recurrence_start_month">
+                                            <div class="slds-form-element slds-is-required">
+                                                <label class="slds-form-element__label" for="date">{!$ObjectType.Case.fields.Start_Month__c.Label} <abbr>{!$Label.RC_Message4}</abbr></label>
+                                                <div class="slds-form-element__control">
+                                                    <div class="slds-select_container">
+                                                        <apex:inputField value="{!Case.Start_Month__c}" styleClass="slds-select" onchange="rerenderDays();" >
+                                                            <!--<apex:actionSupport event="onchange" reRender="summaryPanel,dayMultiselect"/> -->
+                                                        </apex:inputField>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slds-form--stacked slds-hide" id="mfs_recurrence_quarter_beginning">
+                                            <div class="slds-form-element slds-is-required">
+                                                <label class="slds-form-element__label" for="date">Quarter Beginning / End <abbr>{!$Label.RC_Message4}</abbr></label>
+                                                <div class="slds-form-element__control">
+                                                    <div class="slds-select_container">
+                                                         <apex:selectList label="Quarter Beginning/End" value="{!selectedQuarter}" size="1"  styleClass="slds-select" >
+                                                             <apex:actionSupport event="onchange" reRender="summaryPanel,panel"/>
+                                                            <apex:selectOption itemvalue="Beginning" itemLabel="Beginning" />
+                                                        <apex:selectOption itemvalue="End" itemLabel="End" />
+                                                    </apex:selectList>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium"> 
+                                        <div class="slds-form-element slds-is-required">
+                                            <label class="slds-form-element__label" for="select-01">{!$ObjectType.Case.fields.Ends__c.Label} <abbr>{!$Label.RC_Message4}</abbr></label>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-select_container">
+                                                    <apex:inputField value="{!Case.Ends__c}"  styleClass="slds-select" onchange="showEnds(this.value)">
+                                                        <apex:actionSupport event="onchange" reRender="summaryPanel,panel"/>
+                                                    </apex:inputField>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                    <!-- Weekly Days -->
+                                    <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                        <div class="slds-form-element" id="repeatsOn" style="display:none">
+                                            <label class="slds-form-element__label" for="text-input-01">{!$ObjectType.Case.fields.Repeats_On__c.Label}</label>
+                                            <fieldset class="slds-form-element">
+                                                <div class="slds-form-element__control">
+                                                    <div class="slds-radio--button-group">
+                                                        <label class="slds-button slds-radio--button" for="Sun">
+                                                            <input name="radio" type="radio" id="Sun" value="Sun" />
+                                                            <span class="slds-radio--faux">{!$Label.RC_Sunday}</span>
+                                                        </label>
+                                                        <label class="slds-button slds-radio--button" for="Mon">
+                                                            <input name="radio" type="radio" id="Mon" value="Mon"/>
+                                                            <span class="slds-radio--faux">{!$Label.RC_Monday}</span>
+                                                        </label>
+                                                        <label class="slds-button slds-radio--button" for="Tue">
+                                                            <input name="radio" type="radio" id="Tue" value="Tue"/>
+                                                            <span class="slds-radio--faux">{!$Label.RC_Tuesday}</span>
+                                                        </label>
+                                                        <label class="slds-button slds-radio--button" for="Wed">
+                                                            <input name="radio" type="radio" id="Wed" value="Wed" />
+                                                            <span class="slds-radio--faux">{!$Label.RC_Wednesday}</span>
+                                                        </label>
+                                                        <label class="slds-button slds-radio--button" for="Thu">
+                                                            <input name="radio" type="radio" id="Thu" value="Thu"/>
+                                                            <span class="slds-radio--faux">{!$Label.RC_Thursday}</span>
+                                                        </label>
+                                                        <label class="slds-button slds-radio--button" for="Fri">
+                                                            <input name="radio" type="radio" id="Fri" value="Fri"/>
+                                                            <span class="slds-radio--faux">{!$Label.RC_Friday}</span>
+                                                        </label>
+                                                        <label class="slds-button slds-radio--button" for="Sat">
+                                                            <input name="radio" type="radio" id="Sat" value="Sat"/>
+                                                            <span class="slds-radio--faux">{!$Label.RC_Saturday}</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <!-- Weekly Days Ends -->
+                                    <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                        <div class="slds-form-element slds-is-required" id="occurenceNumber">
+                                            <label class="slds-form-element__label" for="text-input-01">{!$ObjectType.Case.fields.Occurrence_Number__c.Label} <abbr>Please complete this field</abbr></label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputField value="{!Case.Occurrence_Number__c}" styleClass="slds-input"/>
+                                            </div>
+                                        </div>
+                                        <div class="slds-form--stacked" id="endDate" style="display:none">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label" for="date">{!$ObjectType.Case.fields.Ends_On__c.Label}</label>
+                                                <div class="slds-form-element__control">
+                                                    <div class="slds-input-has-icon slds-input-has-icon--right">
+                                                        <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Resource.SLDSv202,'/assets/icons/utility-sprite/svg/symbols.svg#event')}"></use>
+                                                        </svg>
+                                                       <!-- <input id="date1" class="slds-input" placeholder="Pick a Date" label="End Date" type="text"/>-->
+                                                       <apex:inputField id="endsOn" value="{!Case.Ends_On__c}" styleClass="slds-input">
+                                                        </apex:inputField>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="slds-p-horizontal--small slds-large-size--12-of-12 slds-medium-size--12-of-12 slds-size--12-of-12 mfs-recur-start-multi slds-hide">  
+                                        <div class="slds-form-element slds-is-required" data-select="single">
+                                            <label class="slds-form-element__label slds-truncate">Start Day <abbr>Please complete this field</abbr></label>
+                                            <apex:outputPanel layout="block" styleClass="slds-form-element__control mfs-multiselect" id="dayMultiSelect">
+                                                <apex:inputHidden value="{!Case.Start_Day__c}" id="selected-start-day"/>
+                                                <div class="slds-picklist--draggable slds-grid mfs-recurrence-start-day" data-aljs="multi-select" data-unselected-items="{!startDay}" data-selected-items="{!selectedStartDay}" >
+                                                    <div class="slds-form-element">
+                                                        <div class="slds-picklist slds-picklist--multi" data-aljs-multi-select="unselected">
+                                                            <ul class="slds-picklist__options slds-picklist__options--multi shown"></ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="slds-grid slds-grid--vertical">
+                                                        <button class="slds-button slds-button--icon-container" data-aljs-multi-select="select" onclick="prevDefault(event);setRecurrenceStartDay();">
+                                                            <svg aria-hidden="true" class="slds-button__icon">
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#right"></use>
+                                                            </svg>
+                                                            <span class="slds-assistive-text">Pick list</span>
+                                                        </button>
+                                                        <button class="slds-button slds-button--icon-container" data-aljs-multi-select="unselect" onclick="prevDefault(event);setRecurrenceStartDay();">
+                                                            <svg aria-hidden="true" class="slds-button__icon">
+                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#left"></use>
+                                                            </svg>
+                                                            <span class="slds-assistive-text">Pick list</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="slds-form-element">
+                                                        <div class="slds-picklist slds-picklist--multi" data-aljs-multi-select="selected">
+                                                            <ul class="slds-picklist__options slds-picklist__options--multi shown"></ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </apex:outputPanel>
+                                        </div>
+                                    </div>
+                                    <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">     
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="select-01">{!$ObjectType.Case.fields.Excludes_Weekends__c.Label}</label>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-select_container">
+                                                    <apex:inputField value="{!Case.Excludes_Weekends__c}" styleclass="slds-select" />
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div> 
+                                    <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" >Business Hours</label>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-select_container">
+                                                    <apex:selectList label="Business Hours" value="{!userBhours}" size="1" styleClass="slds-input">
+                                                        <apex:selectOptions value="{!bhOptions}" />
+                                                    </apex:selectList>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium"></div>
+                                    <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--medium">
+                                        <apex:outputPanel layout="block" id="summaryPanel">
+                                            {!$Label.RC_Summary}: <apex:outputText id="summary" value="{!summary}" styleclass="slds-output"/>
+                                            <output id="summaryText" value=""/>
+                                        </apex:outputPanel>
+                                    </div>
+                                    
+                                    <!-- Buttons -->
+                                    <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--medium">     
+                                        <div>
+                                            <input type="button" value="{!$Label.RC_Save_Button}" class="slds-button slds-button--neutral" onclick="validatePageFormBAR(this, event);" />
+                                            <apex:commandButton action="{!save}" value="{!$Label.RC_Save_Button}" styleClass="mfs_save_bar_action slds-button slds-button--neutral slds-hide" />
+                                            <apex:commandButton action="{!cancel}" value="{!$Label.RC_Cancel_Button}" html-formnovalidate="formnovalidate" styleClass="slds-button slds-button--neutral"/>
+                                            <apex:commandButton action="{!endNow}" value="{!$Label.RC_End_Now_Button}" styleClass="slds-button slds-button--neutral"/>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </apex:outputPanel>
+                        </div>
+                    </div>
+                    
+                    <script src="/resource/MFS_UI_Assets/assets/js/moment.js">
+                    </script>
+                    <script src="/resource/MFS_UI_Assets/assets/js/jquery.aljs-init.min.js">
+                    </script>
+                    <script src="/resource/MFS_UI_Assets/assets/js/jquery.aljs-datepicker.min.js">
+                    </script>
+                    <script src="/resource/MFS_UI_Assets/assets/js/jquery.aljs-multi-select.min.js">
+                    </script>
+                    <script src="/resource/MFS_UI_Assets/assets/js/ftscroller.js">
+                    </script>
+                    <script src="{!URLFOR($Resource.MFS_Scripts_New)}">
+                    </script>
+                    <script src="{!URLFOR($Resource.MFS_UI_Engine)}">
+                    </script>
+                    <script>
+                    var isConsole = 'false';
+                    var allUsers = "";
+                    
+                    $(document).ready(function() {
+                        if('{!JSENCODE(Case.Repeats__c)}'=='Weekly'){
+                            $('#repeatsOn').show();
+                            var day=$("[id$='h_repeatOn']").val();
+                            $("#"+day+"").prop("checked",true);
+                            //$("input[name='radio']:checked").val($("[id$='h_repeatOn']").val());
+                        }
+                        if('{!JSENCODE(Case.Ends__c)}'=='Never'){
+                            $('#occurenceNumber').hide();
+                            $('#endDate').hide();
+                        }
+                        if('{!JSENCODE(Case.Ends__c)}'=='After'){
+                            $('#occurenceNumber').show();
+                            $('#endDate').hide();
+                        }
+                        if('{!JSENCODE(Case.Ends__c)}'=='On'){
+                            $('#occurenceNumber').hide();
+                            $('#endDate').show();
+                        }
+                        
+                        var repeatsCurrVal = $(".mfs-recurrence-repeats").val();
+                        showRepeats(repeatsCurrVal);
+                    });
+                    
+                   
+                    function showRepeats(value){
+                        $("#mfs_recurrence_start_month").addClass("slds-hide");
+                        $(".mfs-recur-start-multi").addClass("slds-hide");
+                        $("#mfs_recurrence_quarter_beginning").addClass("slds-hide");
+                        $("#mfs_recurrence_start_date").removeClass("slds-hide");
+                        $('#repeatsOn').hide();
+                        
+                        if(value=='Weekly'){
+                             $('#repeatsOn').show();
+                        }
+                        else if(value == "Monthly" || value == "Annual" || value == "Semi Annual"){
+                            $('#repeatsOn').hide();
+                            $(".mfs-recur-start-multi").removeClass("slds-hide");
+                            $("#mfs_recurrence_start_date").addClass("slds-hide");
+                            $("#mfs_recurrence_start_month").removeClass("slds-hide");
+                        }
+                        else if(value == "Quarterly"){
+                            $(".mfs-recur-start-multi").addClass("slds-hide");
+                            $("#mfs_recurrence_start_date").addClass("slds-hide");
+                            $("#mfs_recurrence_start_month").addClass("slds-hide");
+                            
+                            $("#mfs_recurrence_quarter_beginning").removeClass("slds-hide");
+                        }
+                        else{
+                            $('#repeatsOn').hide();
+                        }
+                        renderSummary();
+                    }
+                    
+                    function showEnds(value){
+                        if(value=='Never'){
+                            $('#occurenceNumber').hide();
+                            $('#endDate').hide();
+                        }
+                        if(value=='After'){
+                            $('#occurenceNumber').show();
+                            $('#endDate').hide();
+                        }
+                        if(value=='On'){
+                            $('#occurenceNumber').hide();
+                            $('#endDate').show();
+                        }
+                        
+                        
+                    }
+                    function rerenderDays(){
+                        renderSummary();
+                        renderDays();
+                    }
+                    $("input[name='radio']").on("click",function(){
+                        var value=$("input[name='radio']:checked").val();
+                        $("[id$='h_repeatOn']").val(value);
+                        renderSummary();
+                    });
+                    </script>
+                </apex:outputPanel>
+            </apex:form>
+        </body>
+    </html>
+    
+    <script>
+    function saveForm(){
+        save();
+    }
+    </script>
+    
+</apex:page>

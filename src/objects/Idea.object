@@ -1,0 +1,841 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>C360_Dev_Team_Categorization__c</fullName>
+        <description>This field will capture the nature of the idea</description>
+        <externalId>false</externalId>
+        <label>C360 Dev Team Categorization</label>
+        <picklist>
+            <picklistValues>
+                <fullName>C360 Defect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Data Defect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Enhancement Request</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Question/Comments</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sales and Assets Defect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Training Request</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>C360_Dev_Team_Comments__c</fullName>
+        <description>This will capture comments related to the Categorization</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>C360 Dev Team Comments</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>C360_Expected_Fix_Deploy_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>C360 Expected Fix/Deploy Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Categories</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>General</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contacts</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Organizations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunities</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Client Service Request</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Territories &amp; Coverage</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Reporting &amp; Dashboards</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Activities</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sales &amp; Assets</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Data</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Products</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sales Console</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Collaboration</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Department__c</fullName>
+        <externalId>false</externalId>
+        <label>Department</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Compliance</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GIS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Distribution Solutions</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Institutional - Client Services</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Institutional - Consultant Relations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Institutional - Relationship Management</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Institutional - Sales</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Marketing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Marketing - RFP</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Product</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Non-US Retail Dealer Relations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Non-US Retail Sales - MIL (external)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Non-US Retail Sales - MIL (Internal)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>US Retail - Dealer Relations &amp; ARG</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>US Retail - RIA or DCI</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>US Retail Sales - MFD (external)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>US Retail Sales - MFD (Internal)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dial-A-Note</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GDS - CDT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Speaker Request Team</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>C360 Development Team</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>true</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Functionality_Tested__c</fullName>
+        <externalId>false</externalId>
+        <label>Functionality Tested</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Organization</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunity/Business At Risk and Product</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Territory Management</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Activity Management</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Onboarding/Offboarding Management</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Data Management</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Client Service Request Tracking</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Campaign Management</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>true</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>ID__c</fullName>
+        <externalId>false</externalId>
+        <label>ID</label>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>Impact__c</fullName>
+        <externalId>false</externalId>
+        <label>Impact</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Critical for Go-Live</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Nice to Have</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>true</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Is_Reviewed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is Reviewed</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>New</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Open</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed - Fixed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed - Enhancement Deferred</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed - Enhancement Delivered</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Closed - Not an Issue</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Progress - Enhancement Under Prioritization</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Enhancement</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Comment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>System Defect</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Data Request</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Training Request</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>UAT_Test_Case__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>UAT Test Case #</label>
+        <length>10</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <listViews>
+        <fullName>All_WiP_Feedback</fullName>
+        <columns>IDEA.CREATED_DATE</columns>
+        <columns>IDEA.TITLE</columns>
+        <columns>IDEA.CREATED_BY_NICKNAME</columns>
+        <columns>VOTE_STATS.WEIGHTED_SUM</columns>
+        <columns>IDEA.NUM_COMMENTS</columns>
+        <columns>IDEA.STATUS</columns>
+        <columns>IDEA.CATEGORIES</columns>
+        <columns>COMMUNITY.NAME</columns>
+        <filterScope>Everything</filterScope>
+        <label>All WiP Feedback</label>
+    </listViews>
+    <listViews>
+        <fullName>Ideas_Last_7_Days</fullName>
+        <columns>IDEA.CREATED_DATE</columns>
+        <columns>IDEA.TITLE</columns>
+        <columns>IDEA.BODY</columns>
+        <columns>IDEA.CREATED_BY_NICKNAME</columns>
+        <columns>VOTE_STATS.WEIGHTED_SUM</columns>
+        <columns>IDEA.NUM_COMMENTS</columns>
+        <columns>IDEA.STATUS</columns>
+        <columns>IDEA.CATEGORIES</columns>
+        <columns>Department__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>IDEA.CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>LAST_N_DAYS:7</value>
+        </filters>
+        <label>Last 7 Days</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>WIP_3</fullName>
+        <columns>IDEA.TITLE</columns>
+        <columns>IDEA.BODY</columns>
+        <columns>IDEA.STATUS</columns>
+        <columns>IDEA.CATEGORIES</columns>
+        <columns>IDEA.CREATED_BY_NICKNAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>IDEA.CREATED_DATE</field>
+            <operation>greaterOrEqual</operation>
+            <value>5/10/2016 12:00 AM</value>
+        </filters>
+        <filters>
+            <field>IDEA.CREATED_DATE</field>
+            <operation>lessThan</operation>
+            <value>5/30/2016 12:00 AM</value>
+        </filters>
+        <label>WIP#3</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>WIP_4</fullName>
+        <columns>IDEA.TITLE</columns>
+        <columns>IDEA.BODY</columns>
+        <columns>IDEA.STATUS</columns>
+        <columns>IDEA.CATEGORIES</columns>
+        <columns>IDEA.CREATED_BY_NICKNAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>IDEA.CREATED_DATE</field>
+            <operation>greaterOrEqual</operation>
+            <value>5/31/2016 12:00 AM</value>
+        </filters>
+        <filters>
+            <field>IDEA.CREATED_DATE</field>
+            <operation>lessThan</operation>
+            <value>6/20/2016 12:00 AM</value>
+        </filters>
+        <label>WIP#4</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>WiP_1</fullName>
+        <columns>IDEA.TITLE</columns>
+        <columns>IDEA.BODY</columns>
+        <columns>IDEA.STATUS</columns>
+        <columns>IDEA.CATEGORIES</columns>
+        <columns>IDEA.CREATED_BY_NICKNAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>IDEA.CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>4/29/2016 12:00 AM</value>
+        </filters>
+        <label>WiP#1</label>
+    </listViews>
+    <listViews>
+        <fullName>WiP_2</fullName>
+        <columns>IDEA.TITLE</columns>
+        <columns>IDEA.BODY</columns>
+        <columns>IDEA.STATUS</columns>
+        <columns>IDEA.CATEGORIES</columns>
+        <columns>IDEA.CREATED_BY_NICKNAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>IDEA.CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>5/3/2016 12:00 AM</value>
+        </filters>
+        <label>WiP#2</label>
+    </listViews>
+    <recordTypes>
+        <fullName>InternalIdeasIdeaRecordType</fullName>
+        <active>true</active>
+        <description>Record Type used to associate ideas with a specific community</description>
+        <label>Ambassador Community: Idea Record Type</label>
+        <picklistValues>
+            <picklist>C360_Dev_Team_Categorization__c</picklist>
+            <values>
+                <fullName>C360 Defect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Defect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enhancement Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question%2FComments</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales and Assets Defect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training Request</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Categories</picklist>
+            <values>
+                <fullName>Activities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Service Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Collaboration</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contacts</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>General</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Marketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Opportunities</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Organizations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Products</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting %26 Dashboards</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales %26 Assets</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Console</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Territories %26 Coverage</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Department__c</picklist>
+            <values>
+                <fullName>C360 Development Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Compliance</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dial-A-Note</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GDS - CDT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GIS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Distribution Solutions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Institutional - Client Services</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Institutional - Consultant Relations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Institutional - Relationship Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Institutional - Sales</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Marketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Marketing - RFP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Global Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-US Retail Dealer Relations</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-US Retail Sales - MIL %28Internal%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-US Retail Sales - MIL %28external%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Speaker Coordinator Team</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US Retail - Dealer Relations %26 ARG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US Retail - RIA or DCI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US Retail Sales - MFD %28Internal%29</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US Retail Sales - MFD %28external%29</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Functionality_Tested__c</picklist>
+            <values>
+                <fullName>Activity Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Campaign Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Service Request Tracking</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mobile</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Onboarding%2FOffboarding Management</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Opportunity%2FBusiness At Risk and Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Organization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Territory Management</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Impact__c</picklist>
+            <values>
+                <fullName>Critical for Go-Live</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Nice to Have</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Closed - Enhancement Deferred</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed - Enhancement Delivered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed - Fixed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed - Not an Issue</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Progress - Enhancement Under Prioritization</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Open</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type__c</picklist>
+            <values>
+                <fullName>Comment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Data Request</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enhancement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Question</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>System Defect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Training Request</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>IDEA.TITLE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>IDEA.BODY</customTabListAdditionalFields>
+        <customTabListAdditionalFields>COMMUNITY.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>IDEA.CREATED_DATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>IDEA.CREATED_BY_NICKNAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>IDEA.NUM_COMMENTS</customTabListAdditionalFields>
+        <customTabListAdditionalFields>VOTE.HAS_VOTED</customTabListAdditionalFields>
+        <customTabListAdditionalFields>IDEA.CATEGORIES</customTabListAdditionalFields>
+        <customTabListAdditionalFields>IDEA.STATUS</customTabListAdditionalFields>
+        <customTabListAdditionalFields>IDEA.LAST_COMMENT_DATE</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>IDEA.TITLE</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>COMMUNITY.NAME</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>IDEA.TITLE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>COMMUNITY.NAME</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>IDEA.TITLE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>IDEA.BODY</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>COMMUNITY.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>IDEA.NUM_COMMENTS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>IDEA.CREATED_BY_NICKNAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>IDEA.CATEGORIES</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>IDEA.STATUS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>IDEA.CREATED_DATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>IdeaCategoryisBlank</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNULL(Categories)</errorConditionFormula>
+        <errorMessage>Please select a Category</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>IdeaDescriptionisBlank</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISBLANK( Body )</errorConditionFormula>
+        <errorMessage>Please enter a Description in the Idea body</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>IdeaStatusisBlank</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL(Status,&apos;&apos;)</errorConditionFormula>
+        <errorMessage>Please add a Status</errorMessage>
+    </validationRules>
+</CustomObject>

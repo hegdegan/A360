@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <caseValues>
+            <plural>false</plural>
+            <value>Completed Date</value>
+        </caseValues>
+        <name>due_date_activity</name>
+        <startsWith>Consonant</startsWith>
+    </fields>
+    <fields>
+        <label><!-- Method --></label>
+        <name>Activity_Category__c</name>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation><!-- Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meeting</masterLabel>
+            <translation><!-- Meeting --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Activity Detail --></label>
+        <name>Activity_Detail__c</name>
+        <relationshipLabel><!-- Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Activity Sub Type --></label>
+        <name>Activity_SubType__c</name>
+        <picklistValues>
+            <masterLabel>Business Partner Event/Entertainment</masterLabel>
+            <translation><!-- Business Partner Event/Entertainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DB Trends</masterLabel>
+            <translation><!-- DB Trends --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DC Trends</masterLabel>
+            <translation><!-- DC Trends --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESG Discussion</masterLabel>
+            <translation><!-- ESG Discussion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finals</masterLabel>
+            <translation><!-- Finals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industry Event</masterLabel>
+            <translation><!-- Industry Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Event</masterLabel>
+            <translation><!-- MFS Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Introduction/Strategy Introduction</masterLabel>
+            <translation><!-- MFS Introduction/Strategy Introduction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Senior Leadership Meeting</masterLabel>
+            <translation><!-- MFS Senior Leadership Meeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Macro Market Update</masterLabel>
+            <translation><!-- Macro Market Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operational Due Diligence</masterLabel>
+            <translation><!-- Operational Due Diligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portfolio/Strategy Review</masterLabel>
+            <translation><!-- Portfolio/Strategy Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Semi-Finals</masterLabel>
+            <translation><!-- Semi-Finals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transition Meeting</masterLabel>
+            <translation><!-- Transition Meeting --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Activity Sub Type --></label>
+        <name>Activity_Sub_Type__c</name>
+        <picklistValues>
+            <masterLabel>Industry</masterLabel>
+            <translation><!-- Industry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS</masterLabel>
+            <translation><!-- MFS --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Activity_Type__c</name>
+        <picklistValues>
+            <masterLabel>Charitable Event</masterLabel>
+            <translation><!-- Charitable Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Seminar</masterLabel>
+            <translation><!-- Client Seminar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conference</masterLabel>
+            <translation><!-- Conference --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Due Diligence</masterLabel>
+            <translation><!-- Due Diligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engagement</masterLabel>
+            <translation><!-- Engagement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Entertainment</masterLabel>
+            <translation><!-- Entertainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Final Presentation</masterLabel>
+            <translation><!-- Final Presentation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Information Request Response?</masterLabel>
+            <translation><!-- Information Request Response? --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marketing</masterLabel>
+            <translation><!-- Marketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operational/Administrative</masterLabel>
+            <translation><!-- Operational/Administrative --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portfolio Review</masterLabel>
+            <translation><!-- Portfolio Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Reporting</masterLabel>
+            <translation><!-- Reporting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Meeting</masterLabel>
+            <translation><!-- Sales Meeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Semi-Final Presentation</masterLabel>
+            <translation><!-- Semi-Final Presentation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Training</masterLabel>
+            <translation><!-- Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transition Meeting</masterLabel>
+            <translation><!-- Transition Meeting --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Activity Type --></label>
+        <name>Activity_Type_for_Instit__c</name>
+        <picklistValues>
+            <masterLabel>Business Partner Event/Entertainment</masterLabel>
+            <translation><!-- Business Partner Event/Entertainment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Finals</masterLabel>
+            <translation><!-- Finals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industry Event</masterLabel>
+            <translation><!-- Industry Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Event</masterLabel>
+            <translation><!-- MFS Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Introduction/Strategy Introduction</masterLabel>
+            <translation><!-- MFS Introduction/Strategy Introduction --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Senior Leadership Meeting</masterLabel>
+            <translation><!-- MFS Senior Leadership Meeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operational Due Diligence</masterLabel>
+            <translation><!-- Operational Due Diligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Portfolio/Strategy Review</masterLabel>
+            <translation><!-- Portfolio/Strategy Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Semi-Finals</masterLabel>
+            <translation><!-- Semi-Finals --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thought Leadership</masterLabel>
+            <translation><!-- Thought Leadership --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transition Meeting</masterLabel>
+            <translation><!-- Transition Meeting --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Location --></label>
+        <name>Additional_Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Call Direction --></label>
+        <name>Call_Category__c</name>
+        <picklistValues>
+            <masterLabel>Inbound</masterLabel>
+            <translation><!-- Inbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound</masterLabel>
+            <translation><!-- Outbound --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Call Note Parent Task Event --></label>
+        <name>Call_Note_Parent_Task_Event__c</name>
+    </fields>
+    <fields>
+        <label><!-- Call Outcome --></label>
+        <name>Call_Outcome__c</name>
+        <picklistValues>
+            <masterLabel>Assistant</masterLabel>
+            <translation><!-- Assistant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inbound</masterLabel>
+            <translation><!-- Inbound --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Live Conversation</masterLabel>
+            <translation><!-- Live Conversation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voicemail</masterLabel>
+            <translation><!-- Voicemail --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Called Time --></label>
+        <name>Called_Time__c</name>
+        <picklistValues>
+            <masterLabel>10:00 AM</masterLabel>
+            <translation><!-- 10:00 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10:00 PM</masterLabel>
+            <translation><!-- 10:00 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10:30 AM</masterLabel>
+            <translation><!-- 10:30 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10:30 PM</masterLabel>
+            <translation><!-- 10:30 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11:00 AM</masterLabel>
+            <translation><!-- 11:00 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11:00 PM</masterLabel>
+            <translation><!-- 11:00 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11:30 AM</masterLabel>
+            <translation><!-- 11:30 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>11:30 PM</masterLabel>
+            <translation><!-- 11:30 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12:00 AM</masterLabel>
+            <translation><!-- 12:00 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12:00 PM</masterLabel>
+            <translation><!-- 12:00 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12:30 AM</masterLabel>
+            <translation><!-- 12:30 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>12:30 PM</masterLabel>
+            <translation><!-- 12:30 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1:00 AM</masterLabel>
+            <translation><!-- 1:00 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1:00 PM</masterLabel>
+            <translation><!-- 1:00 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1:30 AM</masterLabel>
+            <translation><!-- 1:30 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1:30 PM</masterLabel>
+            <translation><!-- 1:30 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2:00 AM</masterLabel>
+            <translation><!-- 2:00 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2:00 PM</masterLabel>
+            <translation><!-- 2:00 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2:30 AM</masterLabel>
+            <translation><!-- 2:30 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2:30 PM</masterLabel>
+            <translation><!-- 2:30 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3:00 AM</masterLabel>
+            <translation><!-- 3:00 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3:00 PM</masterLabel>
+            <translation><!-- 3:00 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3:30 AM</masterLabel>
+            <translation><!-- 3:30 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3:30 PM</masterLabel>
+            <translation><!-- 3:30 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4:00 AM</masterLabel>
+            <translation><!-- 4:00 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4:00 PM</masterLabel>
+            <translation><!-- 4:00 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4:30 AM</masterLabel>
+            <translation><!-- 4:30 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4:30 PM</masterLabel>
+            <translation><!-- 4:30 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5:00 AM</masterLabel>
+            <translation><!-- 5:00 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5:00 PM</masterLabel>
+            <translation><!-- 5:00 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5:30 AM</masterLabel>
+            <translation><!-- 5:30 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5:30 PM</masterLabel>
+            <translation><!-- 5:30 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6:00 AM</masterLabel>
+            <translation><!-- 6:00 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6:00 PM</masterLabel>
+            <translation><!-- 6:00 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6:30 AM</masterLabel>
+            <translation><!-- 6:30 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6:30 PM</masterLabel>
+            <translation><!-- 6:30 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7:00 AM</masterLabel>
+            <translation><!-- 7:00 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7:00 PM</masterLabel>
+            <translation><!-- 7:00 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7:30 AM</masterLabel>
+            <translation><!-- 7:30 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7:30 PM</masterLabel>
+            <translation><!-- 7:30 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8:00 AM</masterLabel>
+            <translation><!-- 8:00 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8:00 PM</masterLabel>
+            <translation><!-- 8:00 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8:30 AM</masterLabel>
+            <translation><!-- 8:30 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>8:30 PM</masterLabel>
+            <translation><!-- 8:30 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9:00 AM</masterLabel>
+            <translation><!-- 9:00 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9:00 PM</masterLabel>
+            <translation><!-- 9:00 PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9:30 AM</masterLabel>
+            <translation><!-- 9:30 AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>9:30 PM</masterLabel>
+            <translation><!-- 9:30 PM --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Client Engagement --></label>
+        <name>Client_Engagement__c</name>
+        <picklistValues>
+            <masterLabel>DC Trends</masterLabel>
+            <translation><!-- DC Trends --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ESG Discussion</masterLabel>
+            <translation><!-- ESG Discussion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Overview/Business Update</masterLabel>
+            <translation><!-- MFS Overview/Business Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Macro Market Update</masterLabel>
+            <translation><!-- Macro Market Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operational Due Diligence</masterLabel>
+            <translation><!-- Operational Due Diligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relationship Building Activity</masterLabel>
+            <translation><!-- Relationship Building Activity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research Analyst Review</masterLabel>
+            <translation><!-- Research Analyst Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk Management</masterLabel>
+            <translation><!-- Risk Management --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Senior Management Meeting</masterLabel>
+            <translation><!-- Senior Management Meeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thought Leadership</masterLabel>
+            <translation><!-- Thought Leadership --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Competitive Analysis Request --></label>
+        <name>Competitive_Analysis_Request__c</name>
+    </fields>
+    <fields>
+        <label><!-- DB Activity Type --></label>
+        <name>DB_Activity_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event End Date --></label>
+        <name>Event_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Start Date --></label>
+        <name>Event_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- ExternalAttendees --></label>
+        <name>ExternalAttendees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Follow up Type --></label>
+        <name>Follow_up_Type__c</name>
+        <picklistValues>
+            <masterLabel>Add to Campaign</masterLabel>
+            <translation><!-- Add to Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Follow Up - Competitive Analysis Request</masterLabel>
+            <translation><!-- Follow Up - Competitive Analysis Request --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Follow Up - DCI Lead</masterLabel>
+            <translation><!-- Follow Up - DCI Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Follow Up - Money In Motion</masterLabel>
+            <translation><!-- Follow Up - Money In Motion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Research Required</masterLabel>
+            <translation><!-- Research Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Schedule Follow up Meeting/Call</masterLabel>
+            <translation><!-- Schedule Follow up Meeting/Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Send Materials</masterLabel>
+            <translation><!-- Send Materials --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Government Entity? --></label>
+        <name>Government_Entity__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Inbound Follow Up Created? --></label>
+        <name>Inbound_Follow_Up_Created__c</name>
+    </fields>
+    <fields>
+        <label><!-- InternalAttendees --></label>
+        <name>InternalAttendees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal Type --></label>
+        <name>Internal_Type__c</name>
+        <picklistValues>
+            <masterLabel>In Office Day</masterLabel>
+            <translation><!-- In Office Day --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Internal Meeting/Training</masterLabel>
+            <translation><!-- MFS Internal Meeting/Training --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Out of Office</masterLabel>
+            <translation><!-- Out of Office --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Travel</masterLabel>
+            <translation><!-- Travel --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Is Modified within 6 months? --></label>
+        <name>Is_Modified_within_6_months__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Overdue --></label>
+        <name>Is_Overdue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Points and Directions for Speakers --></label>
+        <name>Key_Points_and_Directions_for_Speakers__c</name>
+    </fields>
+    <fields>
+        <label><!-- Location --></label>
+        <name>Location__c</name>
+        <picklistValues>
+            <masterLabel>MFS Office</masterLabel>
+            <translation><!-- MFS Office --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Offsite</masterLabel>
+            <translation><!-- Offsite --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- MFS Attendees --></label>
+        <lookupFilter>
+            <errorMessage><!-- Contact should be MFS employee --></errorMessage>
+        </lookupFilter>
+        <name>MFS_Attendees__c</name>
+        <relationshipLabel><!-- Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Materials Request --></label>
+        <name>Materials_Request__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Background --></label>
+        <name>Meeting_Background__c</name>
+    </fields>
+    <fields>
+        <label><!-- Method --></label>
+        <name>Method__c</name>
+        <picklistValues>
+            <masterLabel>Conference Call</masterLabel>
+            <translation><!-- Conference Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customized Webinar</masterLabel>
+            <translation><!-- Customized Webinar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Person Meeting</masterLabel>
+            <translation><!-- In Person Meeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Phone Call</masterLabel>
+            <translation><!-- Phone Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Conference</masterLabel>
+            <translation><!-- Video Conference --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Parent Activity Detail Id --></label>
+        <name>Parent_Activity_Detail_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Product__c</name>
+        <relationshipLabel><!-- Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Question Likely Asked --></label>
+        <name>Question_Likely_Asked__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reason for Call --></label>
+        <name>Reason_for_Call__c</name>
+        <picklistValues>
+            <masterLabel>Advanced MStar</masterLabel>
+            <translation><!-- Advanced MStar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Competitive Analysis Follow Up</masterLabel>
+            <translation><!-- Competitive Analysis Follow Up --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCI Lead</masterLabel>
+            <translation><!-- DCI Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Follow up-Advanced MStar</masterLabel>
+            <translation><!-- Follow up-Advanced MStar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Follow up-Hypo</masterLabel>
+            <translation><!-- Follow up-Hypo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Follow up-Product Call</masterLabel>
+            <translation><!-- Follow up-Product Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Follow up-Wholesaler Meeting</masterLabel>
+            <translation><!-- Follow up-Wholesaler Meeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hypo</masterLabel>
+            <translation><!-- Hypo --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Story</masterLabel>
+            <translation><!-- MFS Story --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Call</masterLabel>
+            <translation><!-- Product Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prospect</masterLabel>
+            <translation><!-- Prospect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Schedule Meeting</masterLabel>
+            <translation><!-- Schedule Meeting --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value Add</masterLabel>
+            <translation><!-- Value Add --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wholesaler follow-up</masterLabel>
+            <translation><!-- Wholesaler follow-up --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Related Organization --></label>
+        <name>Related_Organization__c</name>
+        <relationshipLabel><!-- Activities --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Reminder Start Date --></label>
+        <name>Reminder_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Result --></label>
+        <name>Result__c</name>
+        <picklistValues>
+            <masterLabel>Live Conversation</masterLabel>
+            <translation><!-- Live Conversation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meeting Scheduled</masterLabel>
+            <translation><!-- Meeting Scheduled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Voicemail</masterLabel>
+            <translation><!-- Voicemail --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Saleslogix ID --></label>
+        <name>Saleslogix_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Significant Anticipated Questions --></label>
+        <name>Significant_Anticipated_Questions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Speaker Request --></label>
+        <name>Speaker_Request__c</name>
+    </fields>
+</CustomObjectTranslation>

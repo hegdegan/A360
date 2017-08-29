@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Plan Invest Option</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Plan Invest Options</value>
+    </caseValues>
+    <fields>
+        <label><!-- Daily Valuation --></label>
+        <name>FREQDAILY__c</name>
+    </fields>
+    <fields>
+        <label><!-- Monthly Valuation --></label>
+        <name>FREQMON__c</name>
+    </fields>
+    <fields>
+        <label><!-- Quarterly Valuation --></label>
+        <name>FREQQTR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weekly Valuation --></label>
+        <name>FREQWEEK__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investment Option Name --></label>
+        <name>IONAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invest Opt Seq # --></label>
+        <name>IOSEQ_NO__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Pension Plan --></label>
+        <name>MMD_Pension_Plan__c</name>
+        <relationshipLabel><!-- MMD Plan Invest Options --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Plan Sequence # --></label>
+        <name>PSEQ_NO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Name --></label>
+        <name>Plan_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan Type --></label>
+        <name>Plan_Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

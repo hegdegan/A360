@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value><!-- Meeting Material Request --></value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>false</plural>
+        <value><!-- Meeting Material Request --></value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value><!-- Meeting Material Request --></value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value><!-- Meeting Material Request --></value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>true</plural>
+        <value><!-- Meeting Material Request --></value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value><!-- Meeting Material Request --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Estimate Funding Date --></label>
+        <name>Account_Estimate_Funding_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Material Specifics and Details --></label>
+        <name>Additional_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Agreement Finalized Date --></label>
+        <name>Agreement_Finalized_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Attribution Period --></label>
+        <name>Attribution_Period__c</name>
+        <picklistValues>
+            <masterLabel>1 Year</masterLabel>
+            <translation>フランス語1year</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QTD</masterLabel>
+            <translation>フランス語QTD</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Since Client Inception</masterLabel>
+            <translation>フランス語ACI</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YTD</masterLabel>
+            <translation>フランス語YTD</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Background --></label>
+        <name>Background__c</name>
+    </fields>
+    <fields>
+        <label><!-- Benchmark --></label>
+        <name>Benchmark__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activity Detail --></label>
+        <name>Call_Note__c</name>
+        <relationshipLabel><!-- Meeting Material Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Client Investment --></label>
+        <name>Client_Investment__c</name>
+        <relationshipLabel><!-- Meeting Material Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Organization Name --></label>
+        <name>Client_Prospect_Name__c</name>
+        <relationshipLabel><!-- Meeting Material Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Cover Page Title --></label>
+        <name>Cover_Page_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Transaction Period --></label>
+        <name>Data_Time_period__c</name>
+        <picklistValues>
+            <masterLabel>1 yr</masterLabel>
+            <translation><!-- 1 yr --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QTD</masterLabel>
+            <translation><!-- QTD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YTD</masterLabel>
+            <translation><!-- YTD --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Data as of End Month --></label>
+        <name>Data_as_of_End_Month__c</name>
+        <picklistValues>
+            <masterLabel>April</masterLabel>
+            <translation><!-- April --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>August</masterLabel>
+            <translation><!-- August --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>December</masterLabel>
+            <translation><!-- December --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>February</masterLabel>
+            <translation><!-- February --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>January</masterLabel>
+            <translation><!-- January --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>July</masterLabel>
+            <translation><!-- July --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>June</masterLabel>
+            <translation><!-- June --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>March</masterLabel>
+            <translation><!-- March --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>May</masterLabel>
+            <translation><!-- May --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>November</masterLabel>
+            <translation><!-- November --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>October</masterLabel>
+            <translation><!-- October --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>September</masterLabel>
+            <translation><!-- September --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Data as of End Year --></label>
+        <name>Data_as_of_End_Year__c</name>
+        <picklistValues>
+            <masterLabel>1970</masterLabel>
+            <translation><!-- 1970 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1971</masterLabel>
+            <translation><!-- 1971 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1972</masterLabel>
+            <translation><!-- 1972 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1973</masterLabel>
+            <translation><!-- 1973 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1974</masterLabel>
+            <translation><!-- 1974 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1975</masterLabel>
+            <translation><!-- 1975 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1976</masterLabel>
+            <translation><!-- 1976 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1977</masterLabel>
+            <translation><!-- 1977 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1978</masterLabel>
+            <translation><!-- 1978 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1979</masterLabel>
+            <translation><!-- 1979 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1980</masterLabel>
+            <translation><!-- 1980 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1981</masterLabel>
+            <translation><!-- 1981 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1982</masterLabel>
+            <translation><!-- 1982 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1983</masterLabel>
+            <translation><!-- 1983 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1984</masterLabel>
+            <translation><!-- 1984 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1985</masterLabel>
+            <translation><!-- 1985 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1986</masterLabel>
+            <translation><!-- 1986 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1987</masterLabel>
+            <translation><!-- 1987 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1988</masterLabel>
+            <translation><!-- 1988 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1989</masterLabel>
+            <translation><!-- 1989 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1990</masterLabel>
+            <translation><!-- 1990 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1991</masterLabel>
+            <translation><!-- 1991 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1992</masterLabel>
+            <translation><!-- 1992 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1993</masterLabel>
+            <translation><!-- 1993 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1994</masterLabel>
+            <translation><!-- 1994 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1995</masterLabel>
+            <translation><!-- 1995 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1996</masterLabel>
+            <translation><!-- 1996 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1997</masterLabel>
+            <translation><!-- 1997 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1998</masterLabel>
+            <translation><!-- 1998 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>1999</masterLabel>
+            <translation><!-- 1999 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2000</masterLabel>
+            <translation><!-- 2000 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2001</masterLabel>
+            <translation><!-- 2001 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2002</masterLabel>
+            <translation><!-- 2002 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2003</masterLabel>
+            <translation><!-- 2003 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2004</masterLabel>
+            <translation><!-- 2004 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2005</masterLabel>
+            <translation><!-- 2005 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2006</masterLabel>
+            <translation><!-- 2006 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2007</masterLabel>
+            <translation><!-- 2007 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2008</masterLabel>
+            <translation><!-- 2008 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2009</masterLabel>
+            <translation><!-- 2009 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2010</masterLabel>
+            <translation><!-- 2010 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2011</masterLabel>
+            <translation><!-- 2011 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2012</masterLabel>
+            <translation><!-- 2012 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2013</masterLabel>
+            <translation><!-- 2013 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2014</masterLabel>
+            <translation><!-- 2014 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2015</masterLabel>
+            <translation><!-- 2015 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2016</masterLabel>
+            <translation><!-- 2016 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2017</masterLabel>
+            <translation><!-- 2017 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2018</masterLabel>
+            <translation><!-- 2018 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2019</masterLabel>
+            <translation><!-- 2019 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2020</masterLabel>
+            <translation><!-- 2020 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2021</masterLabel>
+            <translation><!-- 2021 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2022</masterLabel>
+            <translation><!-- 2022 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2023</masterLabel>
+            <translation><!-- 2023 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2024</masterLabel>
+            <translation><!-- 2024 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2025</masterLabel>
+            <translation><!-- 2025 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2026</masterLabel>
+            <translation><!-- 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2027</masterLabel>
+            <translation><!-- 2027 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2028</masterLabel>
+            <translation><!-- 2028 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2029</masterLabel>
+            <translation><!-- 2029 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2030</masterLabel>
+            <translation><!-- 2030 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Data as of Start Month --></label>
+        <name>Data_as_of_Start_Month__c</name>
+        <picklistValues>
+            <masterLabel>Apr</masterLabel>
+            <translation><!-- Apr --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Aug</masterLabel>
+            <translation><!-- Aug --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dec</masterLabel>
+            <translation><!-- Dec --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Feb</masterLabel>
+            <translation><!-- Feb --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jan</masterLabel>
+            <translation><!-- Jan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jul</masterLabel>
+            <translation><!-- Jul --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Jun</masterLabel>
+            <translation><!-- Jun --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mar</masterLabel>
+            <translation><!-- Mar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>May</masterLabel>
+            <translation><!-- May --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nov</masterLabel>
+            <translation><!-- Nov --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Oct</masterLabel>
+            <translation><!-- Oct --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sep</masterLabel>
+            <translation><!-- Sep --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Data as of Start Year --></label>
+        <name>Data_as_of_Start_Year__c</name>
+        <picklistValues>
+            <masterLabel>2016</masterLabel>
+            <translation><!-- 2016 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2017</masterLabel>
+            <translation><!-- 2017 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2018</masterLabel>
+            <translation><!-- 2018 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2019</masterLabel>
+            <translation><!-- 2019 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2020</masterLabel>
+            <translation><!-- 2020 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2021</masterLabel>
+            <translation><!-- 2021 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2022</masterLabel>
+            <translation><!-- 2022 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2023</masterLabel>
+            <translation><!-- 2023 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2024</masterLabel>
+            <translation><!-- 2024 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2025</masterLabel>
+            <translation><!-- 2025 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2026</masterLabel>
+            <translation><!-- 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2027</masterLabel>
+            <translation><!-- 2027 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2028</masterLabel>
+            <translation><!-- 2028 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2029</masterLabel>
+            <translation><!-- 2029 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2030</masterLabel>
+            <translation><!-- 2030 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Date Due to Client --></label>
+        <name>Date_Due_to_Client__c</name>
+    </fields>
+    <fields>
+        <label><!-- Delivery Method to Requester --></label>
+        <name>Delivery_Method__c</name>
+        <picklistValues>
+            <masterLabel>Both</masterLabel>
+            <translation><!-- Both --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Electronically</masterLabel>
+            <translation><!-- Electronically --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hardcopy (in person)</masterLabel>
+            <translation><!-- Hardcopy (in person) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mail(overnight)</masterLabel>
+            <translation><!-- Mail(overnight) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Do materials need to be printed? --></label>
+        <name>Do_materials_need_to_be_printed__c</name>
+        <picklistValues>
+            <masterLabel>Both</masterLabel>
+            <translation><!-- Both --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No: Only softcopy required</masterLabel>
+            <translation><!-- No: Only softcopy required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes: Hardcopy required</masterLabel>
+            <translation><!-- Yes: Hardcopy required --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Period --></label>
+        <name>End_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting End Date --></label>
+        <name>End__c</name>
+    </fields>
+    <fields>
+        <label><!-- Government Entity --></label>
+        <name>Government_Entity__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Location --></label>
+        <name>Location__c</name>
+    </fields>
+    <fields>
+        <label><!-- Material Name --></label>
+        <name>Material_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Material Type --></label>
+        <name>Material_Type__c</name>
+        <picklistValues>
+            <masterLabel>CRP Only</masterLabel>
+            <translation><!-- CRP Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client - CRP</masterLabel>
+            <translation><!-- Client - CRP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client - PRP</masterLabel>
+            <translation><!-- Client - PRP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consultant</masterLabel>
+            <translation><!-- Consultant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRP Only</masterLabel>
+            <translation><!-- PRP Only --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales</masterLabel>
+            <translation><!-- Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transition Call</masterLabel>
+            <translation><!-- Transition Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webcast</masterLabel>
+            <translation><!-- Webcast --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- MFS Meeting Room Needed? --></label>
+        <name>Meeting_Room_Needed__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Number of Copies for Each Language --></label>
+        <name>Number_of_Copies_for_Each_Language__c</name>
+    </fields>
+    <fields>
+        <label><!-- Overview Section --></label>
+        <name>Overview_Section__c</name>
+        <picklistValues>
+            <masterLabel>Custom</masterLabel>
+            <translation><!-- Custom --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard</masterLabel>
+            <translation><!-- Standard --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Performance Period --></label>
+        <name>Performance_Period__c</name>
+        <picklistValues>
+            <masterLabel>1 Year</masterLabel>
+            <translation>フランス語1year</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>10 Years</masterLabel>
+            <translation>フランス語10years</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2 Years</masterLabel>
+            <translation>フランス語2</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3 Years</masterLabel>
+            <translation>フランス語3</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4 Years</masterLabel>
+            <translation>フランス語4</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5 Years</masterLabel>
+            <translation>フランス語5</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>6 Years</masterLabel>
+            <translation>フランス語6</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>7 Years</masterLabel>
+            <translation>フランス語7</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QTD</masterLabel>
+            <translation>フランス語QTD</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Since Client Inception</masterLabel>
+            <translation>フランス語SCI</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YTD</masterLabel>
+            <translation>フランス語YTD</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Please Enter the Desired Time Range --></label>
+        <name>Please_Enter_the_Desired_Time_Range__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portfolio --></label>
+        <name>Portfolio__c</name>
+        <relationshipLabel><!-- Meeting Material Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Presenters --></label>
+        <name>Presenters__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requested Date --></label>
+        <name>Requested_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sector Scheme --></label>
+        <name>Sector_Scheme__c</name>
+        <picklistValues>
+            <masterLabel>GICS (11 Sectors)</masterLabel>
+            <translation><!-- GICS (11 Sectors) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Research (8 Sectors)</masterLabel>
+            <translation><!-- Global Research (8 Sectors) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFSI Standard (13 Sectors)</masterLabel>
+            <translation><!-- MFSI Standard (13 Sectors) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quant Sectors / Barra (14 Sectors)</masterLabel>
+            <translation><!-- Quant Sectors / Barra (14 Sectors) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sector Neutral – Industry schema used (N/A)</masterLabel>
+            <translation><!-- Sector Neutral – Industry schema used (N/A) --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Since Inception Date --></label>
+        <name>Since_Inception_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Period --></label>
+        <name>Start_Period__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Start Date --></label>
+        <name>Start__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Completed</masterLabel>
+            <translation><!-- Completed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Requested</masterLabel>
+            <translation><!-- Requested --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Syntax --></label>
+        <name>Syntax__c</name>
+        <picklistValues>
+            <masterLabel>UK English</masterLabel>
+            <translation><!-- UK English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US English</masterLabel>
+            <translation><!-- US English --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Team Members --></label>
+        <name>Team_Members__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time Periods Covered --></label>
+        <name>Time_Periods_Covered__c</name>
+        <picklistValues>
+            <masterLabel>1 Year</masterLabel>
+            <translation><!-- 1 Year --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Most Recent Quarter</masterLabel>
+            <translation><!-- Most Recent Quarter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other (See notes)</masterLabel>
+            <translation><!-- Other (See notes) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Since Client Inception</masterLabel>
+            <translation><!-- Since Client Inception --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YTD</masterLabel>
+            <translation><!-- YTD --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Translation Languages --></label>
+        <name>Translation_Languages__c</name>
+        <picklistValues>
+            <masterLabel>French</masterLabel>
+            <translation>フランス語french</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>French Canadian</masterLabel>
+            <translation>フランス語FC</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>German</masterLabel>
+            <translation>フランス語G</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hong Kong Chinese</masterLabel>
+            <translation>フランス語HKC</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Taiwan Chinese</masterLabel>
+            <translation>フランス語TC</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Translation Required? --></label>
+        <name>Translation_Required__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Trinket/Gift Needed --></label>
+        <name>Trinket_Gift_Needed__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Use CRP? --></label>
+        <name>Use_CRP__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+    </fields>
+    <gender><!-- Neuter --></gender>
+    <layouts>
+        <layout>Meeting Material Request Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel><!-- Meeting Material Request Name --></nameFieldLabel>
+</CustomObjectTranslation>

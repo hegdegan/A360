@@ -1,0 +1,1430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>(MBI) - MMD - Firm Level Profile/Summary information -- Plan Sponsor &amp; Consultant</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>ADDRESS__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Address</label>
+        <length>126</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AFFILIATE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Affiliate</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AGENTNAME__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>If No, Securities Lending Agent</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ANN_CONTRIB_LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>Annl Contributions (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ANN_CONTRIB__c</fullName>
+        <externalId>false</externalId>
+        <label>Annl Contributions ($000)</label>
+        <precision>13</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>AUTRANET__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Autranet</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BANKAFF__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Bank Affiliate</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BNYESI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>BNY/ESI</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BOSINSTIT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Boston Institutional Services</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BROKAFF__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Broker Affiliate</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CAPINSTIT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Capital Institutional Services</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CATEGORY__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Category Code</label>
+        <length>2</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CHG_ASST_MGR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Chg/Add Managers</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CITY__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD City</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COMMISSNAME__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>If Yes, Responsible for Dir Busn</label>
+        <length>105</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COMMISS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Directs Comms for Services</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>CONMTRANS__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>International Company Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CONSULTYR__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Year began Consulting</label>
+        <length>4</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CONVERT_PLAN__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Convert DB to DC</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>COUNTRY__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Country</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CROTHER__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Other Comm Recapture Firm</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CURR_CODE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Local Currency Conversion Code</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CURR_FOR_EX__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Currency/Foreign Exch</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CUSTBANK__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Use Custodial Bank</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>DB_Assets_Mil__c</fullName>
+        <externalId>false</externalId>
+        <formula>DB_TOTAL__c /1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>DB Assets ($Mil)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DB_TOTAL_LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>DB Assets (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DB_TOTAL__c</fullName>
+        <externalId>false</externalId>
+        <label>DB Assets ($000)</label>
+        <precision>13</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DC_Assets_Mil__c</fullName>
+        <externalId>false</externalId>
+        <formula>DC_TOTAL__c /1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>DC Assets ($Mil)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DC_TOTAL_LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>DC Assets (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DC_TOTAL__c</fullName>
+        <externalId>false</externalId>
+        <label>DC Assets ($000)</label>
+        <precision>13</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DERIVATIVES__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Derivatives</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DONALDSN__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Donaldson &amp; Co.</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>EAFE_INDEX__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>EAFE Index</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EF_ASSETS_LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>Endow/Found Assets (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EF_ASSETS__c</fullName>
+        <externalId>false</externalId>
+        <label>Endow/Found Assets ($000)</label>
+        <precision>13</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EIN_NO__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>EIN #</label>
+        <length>9</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EIOTHER2__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Other Equity Benchmark 2</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EIOTHER__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Other Equity Benchmark</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EMAIL__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Email</label>
+        <length>136</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EMERG_MKTS__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Emerging Markets</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EMPLOYEES__c</fullName>
+        <externalId>false</externalId>
+        <label>Con - Employees</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ESTATEMGR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Real Estate Manager</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>EURO_MKTS__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>European Markets</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Empl_Bene_Assets_Mil__c</fullName>
+        <externalId>false</externalId>
+        <formula>PEN_ASSETS__c /1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Empl Bene Assets ($Mil)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Endow_Found_Assets_Mil__c</fullName>
+        <externalId>false</externalId>
+        <formula>EF_ASSETS__c /1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Endow/Found Assets ($Mil)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FAX__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Fax</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>FIDELITY__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Fidelity</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FINADVISOR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Financial Advisor</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FIN_FUTURES__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Financial Futures</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FIOTHER2__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Other Fixed Income Benchmark 2</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FIOTHER__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Other Fixed Income Benchmark</label>
+        <length>80</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FNDOFFNDS__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Invests in Fund of Funds</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FOFFMGR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Fund of Funds Manager</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Firm_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Firm Name</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>R00N30000003AVmgEAG</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>HEDGEMGR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Hedge Fund Manager</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HEDGE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Hedge Funds</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HIREHFMGR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Hire Hedge Fund Mgr</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HIREWMFIRM__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Hire Woman/Minority Firm</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IADVISOR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Independent Advisor</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IARDCRD__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>IARD/CRD Number</label>
+        <length>6</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ID__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>true</externalId>
+        <label>MMD ID</label>
+        <length>7</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>INHSETOT_LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>Assets Mng In-House (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>INHSETOT__c</fullName>
+        <externalId>false</externalId>
+        <label>Assets Mgd In-House ($000)</label>
+        <precision>13</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>INIT_401K__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Initiate 401(k) Plan</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>INSAFF__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Insurance Company Affiliate</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>INSTITMGR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Institutional Money Manager</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>INTERNET__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Internet</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>INVESTAREAS__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Future Invest Interests</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>INVESTYPE1__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>If Yes, to what Inv Types</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>INVESTYPE2__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>If Yes, for what Inv Types</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>INVMGRAFF__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Investment Manager Affiliate</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LEHAGGRE__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Barclay Capital Aggregate Bond Index</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LEHBOND__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Barclay Capital Govt/Corp Bond Index</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LPARTNER__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Limited Partnerships</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LYNCHJONES__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Lynch, Jones &amp; Ryan</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Last_MMD_Data_Load__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Last MMD Data Load</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>MAILADD__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Mailing Address</label>
+        <length>114</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>METRO__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Metro Area</label>
+        <length>38</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MLYNCH__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Merrill Lynch</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MMDUPDATE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Last MMD Survey</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>MMD_Category__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>CASE( CATEGORY__c ,
+&quot;05&quot;,&quot;Corporations&quot;,
+&quot;5&quot;,&quot;Corporations&quot;,
+&quot;10&quot;,&quot;Unions&quot;,
+&quot;15&quot;,&quot;Governments&quot;,
+&quot;20&quot;,&quot;Endowments&quot;,
+&quot;25&quot;,&quot;Private Foundations&quot;,
+&quot;28&quot;,&quot;All Other Tax-Exempt&quot;,
+&quot;30&quot;,&quot;Health Service - for profit&quot;,
+&quot;35&quot;,&quot;Reserve Banks&quot;,
+&quot;38&quot;,&quot;Health Service - nonprofit&quot;,
+&quot;66&quot;,&quot;Sovereign Wealth Funds&quot;,
+&quot;85&quot;,&quot;Invest Mgmt Consultants Main Office&quot;,
+&quot;86&quot;,&quot;Invest Mgmt Consultants Regional Office&quot;,
+&quot;87&quot;,&quot;Invest Mgmt Consultants Branch Office&quot;,
+&quot; &quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MMD Category</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MMD_NAME__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Firm Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MMD_WebAccess_Link__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>$Organization.Country</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>MMD WebAccess Link</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MSCIEAFE__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>MSCI-EAFE</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>NO_CONS__c</fullName>
+        <externalId>false</externalId>
+        <label># Consultants</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NO_MGRS__c</fullName>
+        <externalId>false</externalId>
+        <label># Managers</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OPTION_WRT__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Options Writing</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OT_ASSETS_LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Assets (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OT_ASSETS__c</fullName>
+        <externalId>false</externalId>
+        <label>Other Assets ($000)</label>
+        <precision>13</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_Assets_Mil__c</fullName>
+        <externalId>false</externalId>
+        <formula>OT_ASSETS__c /1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Other Assets ($Mil)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PACRIM_MKTS__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Pacific Rim Markets</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PEN_ASSETS_LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>Empl Bene Assets (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PEN_ASSETS__c</fullName>
+        <externalId>false</externalId>
+        <label>Empl Bene Assets ($000)</label>
+        <precision>13</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PHONE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>PLEXUS__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Plexus Group</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRIVMGR__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Private Equity Manager</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PROX__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Votes Own Proxy</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>QUANTINVEST__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Quant Investing Strategies</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>REAL_ESTATE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Real Estate</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>REGNUM__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Int&apos;l Registration #</label>
+        <length>15</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ROCHDALE__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Rochdale Securities</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>RUSSELL__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Russell 2000</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SALOMONSB__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Salomon Smith Barney</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SEC_LENDING__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Securities Lending</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SIG_CHG_ASST__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Chg Asset Allocation</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SOC_SCREEN__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Socially Responsible Invest</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SORTNAME__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Sort Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SP500__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>S&amp;P 500</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SPMIDCAP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>S&amp;P MidCap 400</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SPSMCAP__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>S&amp;P SmallCap 600</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>STATE_INTL__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Int&apos;l State/Province</label>
+        <length>60</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>STATE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD State</label>
+        <length>2</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>STOCK__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Stock Publicly Traded</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SUNTRUST__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Sun Trust Robinson Humphrey</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SYMBOL1__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Stock Exchange 1</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SYMBOL2__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Stock Exchange 2</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SYMBOL3__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Stock Exchange 3</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SYMBOL4__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Stock Exchange 4</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SYMBOL5__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Stock Exchange 5</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SYMBOL6__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Stock Exchange 6</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TACT_ASSET__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Tactical Asset Alloc</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TIAA_CREF__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>TIAA CREF</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TICKER__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Ticker Symbol</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TIMBER__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Timberland</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TOTAL_PS_LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Plan Assets (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TOTAL_PS__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Plan Assets ($000)</label>
+        <precision>13</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TOTASSETS__c</fullName>
+        <externalId>false</externalId>
+        <label>Con - Assets Represented ($000)</label>
+        <precision>11</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TOTCLIENTS__c</fullName>
+        <externalId>false</externalId>
+        <label>Con - Number of Clients</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Plan_Assets_Mil__c</fullName>
+        <externalId>false</externalId>
+        <formula>TOTAL_PS__c /1000</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Plan Assets ($Mil)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>VALDATE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Asset Valuation Date</label>
+        <length>10</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>WILSHIRE__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Wilshire 5000</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ZIP__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD Postal Code</label>
+        <length>12</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>MMD Overview</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Link</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>MMD Overview</pluralLabel>
+    <recordTypes>
+        <fullName>Consultant</fullName>
+        <active>true</active>
+        <description>Consultant</description>
+        <label>Consultant</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>PlanSponsor</fullName>
+        <active>true</active>
+        <description>Plan Sponsor</description>
+        <label>Plan Sponsor</label>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

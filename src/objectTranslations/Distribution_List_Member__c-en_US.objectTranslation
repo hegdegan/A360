@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Distribution List Member</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Distribution List Members</value>
+    </caseValues>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contacts__c</name>
+        <relationshipLabel><!-- Distribution List Members --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Distribution List --></label>
+        <name>Distribution_List__c</name>
+        <relationshipLabel><!-- Distribution List Members --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- MDM ID --></label>
+        <name>MDM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Organization --></label>
+        <name>Organization__c</name>
+        <relationshipLabel><!-- Distribution List Membership --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

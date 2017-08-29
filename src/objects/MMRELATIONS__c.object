@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>(MBI) - MMD - Firm Relationships</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Category__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>CASE( REL_CAT__c ,
+&quot;05&quot;,&quot;Corporations&quot;,
+&quot;10&quot;,&quot;Unions&quot;,
+&quot;15&quot;,&quot;Governments&quot;,
+&quot;20&quot;,&quot;Endowments&quot;,
+&quot;25&quot;,&quot;Private Foundations&quot;,
+&quot;28&quot;,&quot;All Other Tax-Exempt Organizations&quot;,
+&quot;30&quot;,&quot;Health Service Organization – for profit&quot;,
+&quot;35&quot;,&quot;Reserve Banks&quot;,
+&quot;38&quot;,&quot;Health Service Organization – non profit&quot;,
+&quot;66&quot;,&quot;Sovereign Wealth Funds&quot;,
+&quot;50&quot;,&quot;Institutional Money Managers&quot;,
+&quot;70&quot;,&quot;Institutional Money Managers (Real Estate)&quot;,
+&quot;80&quot;,&quot;Registered Investment Advisors&quot;,
+&quot;85&quot;,&quot;Investment Management Consultants – Main office&quot;,
+&quot;86&quot;,&quot;Investment Management Consultants – Regional office&quot;,
+&quot;87&quot;,&quot;Investment Management Consultants – Branch office&quot;,
+&quot;90&quot;,&quot;Family Office&quot;,
+&quot;95&quot;,&quot;Family Office Service Provider&quot;,REL_CAT__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Category</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Firm_Profile_Link__c</fullName>
+        <externalId>false</externalId>
+        <label>Firm Profile Link</label>
+        <referenceTo>MMCOMP__c</referenceTo>
+        <relationshipLabel>Firm Relationships</relationshipLabel>
+        <relationshipName>MMD_Firm_Relationships</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>ID__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Firm MMD ID</label>
+        <length>7</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>REL_CAT__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Category Code</label>
+        <length>2</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>REL_CONAME__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Related Firm Name</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>REL_PID__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Rel Firm MMD ID</label>
+        <length>7</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>REL_TYPE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Relationship Code</label>
+        <length>1</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Related_Firm_Link__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Related Firm Link</label>
+        <referenceTo>MMCOMP__c</referenceTo>
+        <relationshipLabel>MMD Firm Relationships (Related Firm Link)</relationshipLabel>
+        <relationshipName>MMD_Firm_Relationships1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Relationship__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>CASE( REL_TYPE__c,
+&quot;P&quot;,&quot;Parent of&quot;,
+&quot;D&quot;,&quot;Division of&quot;,
+&quot;A&quot;,&quot;Affiliate&quot;,
+&quot;S&quot;,&quot;Subsidiary of&quot;,&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Relationship</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>MMD Firm Relationship</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Link</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>MMD Firm Relationships</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

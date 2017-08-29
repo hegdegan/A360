@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>Investment_Compliance_Queue</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>Investment Compliance</label>
+        <name>Investment_Compliance</name>
+    </approvalStep>
+    <emailTemplate>Case_Email_Templates/Onboarding_Case_Request</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Approval_Request__c.Approver_Group__c</field>
+            <operation>equals</operation>
+            <value>Investment Compliance Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Approval_Request__c.RecordType</field>
+            <operation>equals</operation>
+            <value>Onboarding Approval Request</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Approval_Request__c.Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>Not Started</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Update_Approval_Date</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>Update_Status_To_Approved</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Update_Status_to_Reject</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Onboarding_Request_Email</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Update_Status_To_Pending</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Investment Compliance Group Approval</label>
+    <recallActions>
+        <action>
+            <name>Update_Status_To_Not_Started</name>
+            <type>FieldUpdate</type>
+        </action>
+    </recallActions>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

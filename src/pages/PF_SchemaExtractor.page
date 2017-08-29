@@ -1,0 +1,96 @@
+<!--
+* VF Page Name : PF_SchemaExtractor * 
+* Description: Allows System Admin to quickly pull Object schema and export
+* Application: Schema Extractor
+* Created By : PwC
+* Last Modified Date: 09/21/2016
+-->
+<apex:page controller="PF_SchemaExtractor" sidebar="false">
+    
+    <apex:form >
+        <apex:SelectList value="{!val}" size="1">
+            <apex:selectOptions value="{!Name}"></apex:selectOptions>
+        </apex:SelectList>
+        
+        <apex:commandButton value="Go" action="{!objField}" rerender="all, panel" oncomplete="loadTables();">
+            
+        </apex:commandButton>
+        <apex:outputPanel id="panel">
+            <table id="example" class="display nowrap" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Field Label</th>
+                        <th>Field API Name</th>
+                        <th>Field Type</th>
+                        <th>Relationship Name</th>
+                        <th>Field Length</th>
+                        <th>Inline Help Text</th>
+                        <th>Custom Field</th>
+                        <th>Required </th>
+                        
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Field Label</th>
+                        <th>Field API Name</th>
+                        <th>Field Type</th>
+                        <th>Relationship Name</th>
+                        <th>Field Length</th>
+                        <th>Inline Help Text</th>
+                        <th>Custom Field</th>
+                        <th>Required </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <apex:repeat value="{!FieldResultList}" var="f">
+                        <tr>
+                            <td>{!f.LabelName}</td>
+                            <td>{!f.APIName}</td>
+                            <td>{!f.FieldType}</td>
+                            <td>{!f.RelationshipName}</td>
+                            <td>{!f.fieldlength}</td>
+                            <td>{!f.inlinehelpText}</td>
+                            <td>{!f.isCustom}</td>
+                            <td>{!f.required}</td>
+                        </tr>
+                    </apex:repeat>
+                </tbody>
+            </table>
+        </apex:outputPanel>
+    </apex:form>
+    
+
+   <apex:stylesheet value="{!URLFOR($Resource.PFStaticResources, '/DataTables-1.10.12/css/jquery.dataTables.min.css')}"/>
+   <apex:stylesheet value="{!URLFOR($Resource.PFStaticResources, '/DataTables-1.10.12/css/buttons.dataTables.min.css')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.PFStaticResources, '/jquery-1.12.3/jquery-1.12.3.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.PFStaticResources, '/DataTables-1.10.12/jquery.dataTables.min.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.PFStaticResources, '/Buttons-1.2.2/js/dataTables.buttons.min.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.PFStaticResources, '/Buttons-1.2.2/js/buttons.flash.min.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.PFStaticResources, 'jszip.min.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.PFStaticResources, 'pdfmake.min.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.PFStaticResources, 'vfs_fonts.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.PFStaticResources, '/Buttons-1.2.2/js/buttons.html5.min.js')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.PFStaticResources, '/Buttons-1.2.2/js/buttons.print.min.js')}"/>
+
+    
+    <script>
+    function newTable(){
+        
+        var table = $('#example').DataTable( {
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            dom: 'Blfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        } );
+    }
+   
+    function loadTables(){
+       newTable();
+    }
+    $(document).ready(function() {
+        newTable();
+    } );
+    </script>
+</apex:page>

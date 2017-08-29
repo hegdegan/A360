@@ -1,0 +1,146 @@
+<!---
+Visualforce Page Name :  MFS_DomesticCaseApprovalPage
+Version               :  1.0 
+Created Date          :  11 NOV 2016
+Function              :  Show approvers detail for domestic case before submitting for approval
+--->
+<apex:page standardController="Case" tabStyle="Case" extensions="MFS_DomesticCaseApprovalCtrl" standardStylesheets="false">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:outputPanel rendered="{!if(caseRecord.Approval_Status__c!='Submitted',false,true )}" layout="block">
+                <b>{!$Label.OnBoarding_Success_Message} <apex:commandLink value="here" action="{!goBack}"/> {!$Label.onBoarding_Go_Back}</b>
+            </apex:outputPanel>
+        </apex:pageBlock>
+        <apex:outputPanel rendered="{!if(AND(caseRecord.Approval_Status__c!='Submitted',$User.UIThemeDisplayed=='Theme3',caseRecord.RecordType.DeveloperName=='Domestic_NonUS_Retail'),true,false )}">        
+            <apex:pageMessage summary="{!$Label.Validate_Information}" severity="info" strength="3" />        
+            <apex:pageBlock title="{!$Label.Approval_Information}">             
+                <apex:pageblocksection >
+                    <apex:outputField value="{!caseRecord.GDS_Acknowledgement__c}"/>
+                    <apex:outputField value="{!caseRecord.Corporate_Finance__c}"/>
+                    <apex:outputField value="{!caseRecord.Funds_Lawyer__c}"/>
+                    <apex:outputField value="{!caseRecord.Compliance_AML_KYC__c}"/>
+                    <apex:outputField value="{!caseRecord.FATCA_Lawyer__c}"/>
+                    <apex:outputField value="{!caseRecord.Non_US_Questionnaire_Approval_Group__c}"/>  
+                    <apex:outputField value="{!caseRecord.Final_Acknowledgement__c}"/><br/>
+                    <apex:outputField value="{!caseRecord.Distribution_Lawyer__c}"/><br/>
+                    <apex:outputField value="{!caseRecord.AML_Lawyer__c}"/>                           
+                </apex:pageblocksection>
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandButton value="{!$Label.Submit_Button}" action="{!submitForApproval}"  />
+                    <apex:commandButton value="{!$Label.Cancel_Button}" action="{!goBack}"  />
+                </apex:pageBlockButtons>
+            </apex:pageBlock>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!IF(AND(caseRecord.Approval_Status__c!='Submitted',caseRecord.RecordType.DeveloperName=='Domestic_NonUS_Retail',OR($User.UIThemeDisplayed=='Theme4d',$User.UIThemeDisplayed=='Theme4t')),true,false)}">
+            <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <head>               
+                    <apex:stylesheet value="{!URLFOR($Resource.MFS_UI_Assets, '/assets/styles/salesforce-lightning-design-system-ltng.min.css')}" />
+                    <style>
+                        .slds-section__title{color:#16325c;font-weight:700;}
+                    </style>
+                </head>
+                <body>            
+                    <div class="slds MFS">
+                        <div class="slds-page-header" role="banner">
+                            <div class="slds-grid">
+                                <div class="slds-col slds-has-flexi-truncate">
+                                    <div class="slds-media slds-no-space slds-grow">
+                                        <div class="slds-media__figure">
+                                            <span class="slds-icon_container slds-icon-standard-case">
+                                                <svg aria-hidden="true" class="slds-icon slds-icon--medium">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <p class="slds-text-title--caps slds-line-height--reset">Domestic Case</p>
+                                            <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Approval Information</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-container--fluid">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--medium">
+                                    <div class="slds-p-around--small slds-theme--info" style="border-radius:4px;">
+                                        <div class="slds-notify__content slds-grid">
+                                            <svg aria-hidden="true" class="slds-icon slds-icon--small slds-m-right--small slds-col slds-no-flex">
+                                                <use xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                                            </svg>
+                                            <div class="slds-col slds-align-middle">
+                                                <h2 class="slds-text-heading--small">{!$Label.Validate_Information}</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">{!$Label.OB_AM_GDS_Acknowledgement}</label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.GDS_Acknowledgement__c}"  styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div> 
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">{!$Label.OB_DC_Corporate_Finance}</label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Corporate_Finance__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_DC_Funds_Lawyer}</label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Funds_Lawyer__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">{!$Label.OB_DC_Compliance_AML_KYC}</label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Compliance_AML_KYC__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_DC_FATCA_Lawyer}</label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.FATCA_Lawyer__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">{!$Label.OB_DC_Non_US_Questionnaire_Group}</label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Non_US_Questionnaire_Approval_Group__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_DC_Final_Acknowledgement}</label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Final_Acknowledgement__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium"></div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_DC_Distribution_Lawyer}</label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Distribution_Lawyer__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium"></div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_DC_AML_Lawyer}</label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.AML_Lawyer__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-grid slds-m-top--medium slds-m-bottom--medium"> 
+                                <div class="slds-p-horizontal--small slds-size--12-of-12 slds-text-align--center">
+                                    <apex:commandButton value="{!$Label.Submit_Button}" action="{!submitForApproval}"  styleclass="slds-button slds-button--neutral"/>
+                                    <apex:commandButton value="{!$Label.Cancel_Button}" action="{!goBack}"  styleclass="slds-button slds-button--neutral"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </body>
+            </html>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

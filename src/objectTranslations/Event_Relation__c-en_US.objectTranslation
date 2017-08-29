@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Event Relation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Event Relations</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activity Detail --></label>
+        <name>Activity_Detail__c</name>
+        <relationshipLabel><!-- Event Relations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Approval Status --></label>
+        <name>Approval_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Approval Step Owner --></label>
+        <name>Approval_Step_Owner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Event Relations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Host? --></label>
+        <name>Host__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invitee Type --></label>
+        <name>Invitee_Type__c</name>
+        <picklistValues>
+            <masterLabel>Contact</masterLabel>
+            <translation><!-- Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Speaker</masterLabel>
+            <translation><!-- Speaker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>User</masterLabel>
+            <translation><!-- User --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Org --></label>
+        <name>Org__c</name>
+    </fields>
+    <fields>
+        <label><!-- RelationId --></label>
+        <name>RelationId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Speaker Group --></label>
+        <name>Speaker_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Speaker Request --></label>
+        <name>Speaker_Request__c</name>
+        <relationshipLabel><!-- Requested Speaker --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Speaker Status --></label>
+        <name>Speaker_Status__c</name>
+        <picklistValues>
+            <masterLabel>Accepted</masterLabel>
+            <translation><!-- Accepted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Accepted tentatively</masterLabel>
+            <translation><!-- Accepted tentatively --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Accepted tentatively,time proposed!</masterLabel>
+            <translation><!-- Accepted tentatively,time proposed! --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canceled</masterLabel>
+            <translation><!-- Canceled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Declined</masterLabel>
+            <translation><!-- Declined --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Declined,time proposed!</masterLabel>
+            <translation><!-- Declined,time proposed! --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Invited</masterLabel>
+            <translation><!-- Invited --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Speaker --></label>
+        <name>Speaker__c</name>
+        <relationshipLabel><!-- Event Relations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time Slot End --></label>
+        <name>Time_Slot_End__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time Slot Start --></label>
+        <name>Time_Slot_Start__c</name>
+    </fields>
+    <fields>
+        <label><!-- Topic --></label>
+        <name>Topic__c</name>
+        <picklistValues>
+            <masterLabel>Analyst Role</masterLabel>
+            <translation><!-- Analyst Role --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Capital Market Views</masterLabel>
+            <translation><!-- Capital Market Views --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client &amp; Industry Insights</masterLabel>
+            <translation><!-- Client &amp; Industry Insights --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Equity Update &amp; Outlook</masterLabel>
+            <translation><!-- Equity Update &amp; Outlook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fixed Income Update &amp; Outlook</masterLabel>
+            <translation><!-- Fixed Income Update &amp; Outlook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Long Term Capital Market Expectations</masterLabel>
+            <translation><!-- Long Term Capital Market Expectations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Update and Overview</masterLabel>
+            <translation><!-- MFS Update and Overview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Macro/Market Discussion</masterLabel>
+            <translation><!-- Macro/Market Discussion --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>N/A</masterLabel>
+            <translation><!-- N/A --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-Investment Functions Overview</masterLabel>
+            <translation><!-- Non-Investment Functions Overview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk Management overview</masterLabel>
+            <translation><!-- Risk Management overview --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Strategy Review</masterLabel>
+            <translation><!-- Strategy Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Topic does not exist - please list in the Notes section</masterLabel>
+            <translation><!-- Topic does not exist - please list in the Notes section --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trading Overview</masterLabel>
+            <translation><!-- Trading Overview --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Speaker Requests Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- New_Requested_Speaker --></label>
+        <name>New_Requested_Speaker</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_To_Outlook --></label>
+        <name>Send_To_Outlook</name>
+    </webLinks>
+</CustomObjectTranslation>

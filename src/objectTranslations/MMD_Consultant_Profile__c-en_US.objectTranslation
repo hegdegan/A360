@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Consultant Profile</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Consultant Profiles</value>
+    </caseValues>
+    <fields>
+        <label><!-- Other Clients 1 - Assets Placed --></label>
+        <name>ATH1ASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Corporations &gt;$100mil --></label>
+        <name>CORP100PLUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Corporations $50-100mil --></label>
+        <name>CORP100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Corporations $10-50mil --></label>
+        <name>CORP50__c</name>
+    </fields>
+    <fields>
+        <label><!-- Corporations - Assets Placed --></label>
+        <name>CORPASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Corporations &lt;$10mil --></label>
+        <name>CORPLESS10__c</name>
+    </fields>
+    <fields>
+        <label><!-- DB Plan Specs --></label>
+        <name>DB_DESC__c</name>
+    </fields>
+    <fields>
+        <label><!-- DC Plan Specs --></label>
+        <name>DC_DESC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Clients 1 Desc --></label>
+        <name>DESCOTHER1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Clients 2 Desc --></label>
+        <name>DESCOTHER2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Endowments &gt;$100mil --></label>
+        <name>ENDOW100PLUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Endowments $50-100mil --></label>
+        <name>ENDOW100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Endowments $10-50mil --></label>
+        <name>ENDOW50__c</name>
+    </fields>
+    <fields>
+        <label><!-- Endowments - Assets Placed --></label>
+        <name>ENDOWASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Endowments &lt;$10mil --></label>
+        <name>ENDOWLESS10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Endowment Specs --></label>
+        <name>ENDOW_DESC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Family Office/Trust Specs --></label>
+        <name>FAMILY_DESC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Institutions &gt;$100mil --></label>
+        <name>FINST100PLUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Institutions $50-100mil --></label>
+        <name>FINST100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Institutions &lt;$10mil --></label>
+        <name>FINST10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Institutions $10-50mil --></label>
+        <name>FINST50__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Institutions - Assets Placed --></label>
+        <name>FINSTASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Institution Specs --></label>
+        <name>FIN_DESC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Foundations &gt;$100mil --></label>
+        <name>FOUND100PLUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Foundations $50-100mil --></label>
+        <name>FOUND100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Foundations $10-50mil --></label>
+        <name>FOUND50__c</name>
+    </fields>
+    <fields>
+        <label><!-- Foundations - Assets Placed --></label>
+        <name>FOUNDASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Foundations &lt;$10mil --></label>
+        <name>FOUNDLESS10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Foundation Specs --></label>
+        <name>FOUND_DESC__c</name>
+    </fields>
+    <fields>
+        <label><!-- From any Manager --></label>
+        <name>FROMMGR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Governments &gt;$100mil --></label>
+        <name>GOV100PLUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Governments $50-100mil --></label>
+        <name>GOV100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Governments $10-50mil --></label>
+        <name>GOV50__c</name>
+    </fields>
+    <fields>
+        <label><!-- Governments - Assets Placed --></label>
+        <name>GOVASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Governments &lt;$10mil --></label>
+        <name>GOVLESS10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Gov&apos;t Plan Specs --></label>
+        <name>GOV_DESC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hard-Dollar --></label>
+        <name>HARDDOLLAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hospitals &gt;$100mil --></label>
+        <name>HOSP100PLUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hospitals $50-100mil --></label>
+        <name>HOSP100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hospitals $10-50mil --></label>
+        <name>HOSP50__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hospitals - Assets Placed --></label>
+        <name>HOSPASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hospitals &lt;$10mil --></label>
+        <name>HOSPLESS10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hospital Specs --></label>
+        <name>HOSP_DESC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Individuals &gt;$100mil --></label>
+        <name>INDV100PLUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Individuals $50-100mil --></label>
+        <name>INDV100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Individuals $10-50mil --></label>
+        <name>INDV50__c</name>
+    </fields>
+    <fields>
+        <label><!-- Individuals - Assets Placed --></label>
+        <name>INDVASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Individuals &lt;$10mil --></label>
+        <name>INDVLESS10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Individual Specifications --></label>
+        <name>INDV_DESC__c</name>
+    </fields>
+    <fields>
+        <label><!-- For Investment Products (includes Wrap) --></label>
+        <name>INVESTPROD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Corporate DB Plans --></label>
+        <name>MKT_DB__c</name>
+    </fields>
+    <fields>
+        <label><!-- Corporate DC Plans --></label>
+        <name>MKT_DC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Endowments --></label>
+        <name>MKT_ENDOW__c</name>
+    </fields>
+    <fields>
+        <label><!-- Family Offices/Trusts --></label>
+        <name>MKT_FAMILY__c</name>
+    </fields>
+    <fields>
+        <label><!-- Financial Institutions --></label>
+        <name>MKT_FIN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Foundations --></label>
+        <name>MKT_FOUND__c</name>
+    </fields>
+    <fields>
+        <label><!-- Government Plans --></label>
+        <name>MKT_GOV__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hospitals --></label>
+        <name>MKT_HOSP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Individuals --></label>
+        <name>MKT_INDV__c</name>
+    </fields>
+    <fields>
+        <label><!-- Union Plans --></label>
+        <name>MKT_UNION__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Firm Profile --></label>
+        <name>MMD_Firm_Profile__c</name>
+        <relationshipLabel><!-- Consultant Profile --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Not for Profits &gt;$100mil --></label>
+        <name>NPROF100PLUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Not for Profits $50-100mil --></label>
+        <name>NPROF100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Not for Profits &lt;$10mil --></label>
+        <name>NPROF10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Not for Profits $10-50mil --></label>
+        <name>NPROF50__c</name>
+    </fields>
+    <fields>
+        <label><!-- Not for Profits - Assets Placed --></label>
+        <name>NPROFASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Clients 1 &gt;$100mil --></label>
+        <name>OTH1100PLUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Clients 1 $50-100mil --></label>
+        <name>OTH1100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Clients 1 $10-50mil --></label>
+        <name>OTH150__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Clients 1 &lt;$10mil --></label>
+        <name>OTH1LESS10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Market Focus 1 --></label>
+        <name>OTH1_DC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Focus 1 Specs --></label>
+        <name>OTH1_DESC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Focus 1 Description --></label>
+        <name>OTH1_TEXT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Clients 2 &gt;$100mil --></label>
+        <name>OTH2100PLUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Clients 2 $50-100mil --></label>
+        <name>OTH2100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Clients 2 $10-50mil --></label>
+        <name>OTH250__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Clients 2 - Assets Placed --></label>
+        <name>OTH2ASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Clients 2 &lt;$10mil --></label>
+        <name>OTH2LESS10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Market Focus 2 --></label>
+        <name>OTH2_DC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Focus 2 Specs --></label>
+        <name>OTH2_DESC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Focus 2 Description --></label>
+        <name>OTH2_TEXT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Performance Incentive --></label>
+        <name>PERFORMINC__c</name>
+    </fields>
+    <fields>
+        <label><!-- Project Basis --></label>
+        <name>PROJBASIS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Retainer Basis --></label>
+        <name>RETAINBASIS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Soft-Dollar --></label>
+        <name>SOFTDOLLAR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sale of Software/Research Products --></label>
+        <name>SOFTSALE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unions &gt;$100mil --></label>
+        <name>UNION100PLUS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unions $50-100mil --></label>
+        <name>UNION100__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unions $10-50mil --></label>
+        <name>UNION50__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unions - Assets Placed --></label>
+        <name>UNIONASSETS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unions &lt;$10mil --></label>
+        <name>UNIONLESS10__c</name>
+    </fields>
+    <fields>
+        <label><!-- Union Plan Specs --></label>
+        <name>UNION_DESC__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

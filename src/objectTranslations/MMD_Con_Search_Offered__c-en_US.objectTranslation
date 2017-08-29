@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Con Search Offered</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Con Searches Offered</value>
+    </caseValues>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Firm Profile --></label>
+        <name>MMD_Firm_Profile__c</name>
+        <relationshipLabel><!-- Searches Offered --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Other Search Description --></label>
+        <name>OTHSRCH__c</name>
+    </fields>
+    <fields>
+        <label><!-- Search Offered Code --></label>
+        <name>SRCHCODE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Search Offered --></label>
+        <name>Search_Offered__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

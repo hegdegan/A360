@@ -1,0 +1,164 @@
+<!---
+Visualforce Page Name :  MFS_AddOppTeamMember
+Version               :  1.0 
+Created Date          :  15 JUN 2016
+Function              :  VF Page for custom button to add team member to Opportunity team
+--->
+<apex:page standardController="Opportunity" extensions="MFS_OppTeamController" action="{!getMemberList}" tabStyle="Opportunity" title="{!$Label.Opp_Team_Header}" standardStylesheets="false">
+   <!--Classic View-->
+    <apex:outputPanel style="font-size:12px;"> 
+        <apex:sectionHeader title="{!$Label.Opp_Team_Header} {!oppRec.Name}"  rendered="{!$User.UIThemeDisplayed=='Theme3'}"/>
+        <apex:pageMessages escape="false" /> 
+    </apex:outputPanel>
+    <apex:form id="form"> 
+        <apex:outputPanel style="font-size:15px;color:red;" rendered="{!isDuplicate}">
+            {!$Label.Opp_Team_Error}
+        </apex:outputPanel>
+        <apex:pageBlock rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+            <apex:outputPanel id="innerPanel">
+                <apex:pageblockTable value="{!oppTeaWlist}" var="oppT" style="width:90%">           
+                    <apex:column headerValue="{!$Label.Opp_Team_User}" > 
+                        <apex:actionRegion >
+                            <apex:inputField value="{!oppT.oppTeamMem.UserId}" required="false">
+                                <apex:actionSupport event="onchange" action="{!getUserRole}" reRender="innerPanel">
+                                    <apex:param value="{!oppT.rowNum}" assignTo="{!selectedRow}" name="toSelect"/>                                    
+                                </apex:actionSupport>
+                            </apex:inputField></apex:actionRegion> 
+                    </apex:column>                 
+                    <apex:column headerValue="{!$Label.Opp_Team_Role}" >  
+                        <apex:actionRegion >    
+                            <apex:inputField value="{!oppT.oppTeamMem.TeamMemberRole}" required="{!if(oppT.oppTeamMem.UserId!=null,true,false)}">
+                                <apex:actionSupport event="onchange" action="{!setUserRole}" reRender="innerPanel">                     
+                                </apex:actionSupport>
+                            </apex:inputField> 
+                            
+                        </apex:actionRegion>
+                    </apex:column> 
+                    <apex:column headerValue="{!$Label.Opp_Team_Access}" >  
+                        <apex:actionRegion >  
+                            <apex:selectList value="{!oppT.oppTeamMem.OpportunityAccessLevel}" size="1" >
+                                <apex:actionSupport event="onchange" action="{!setUserRole}" reRender="innerPanel">                                         
+                                </apex:actionSupport>
+                                <apex:selectOptions value="{!accessLevel}"/>
+                            </apex:selectList>
+                        </apex:actionRegion>
+                    </apex:column> 
+                    
+                </apex:pageblockTable> </apex:outputPanel>
+            <apex:pageBlockButtons rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+                <apex:commandButton value="{!$Label.Opp_Team_Save}" action="{!saveTeamMember}" />
+                <apex:commandButton value="{!$Label.Opp_Team_Cancel}" action="{!Cancel}"/> 
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+   
+    <!--------- Salesforce Lighting Section-------->
+   
+        <apex:includeScript value="{!URLFOR($Resource.JqueryMin, 'jqueryUI/jquery-1.11.1.min.js')}" />
+        <script type="text/javascript">var __sfdcSessionId = '{!GETSESSIONID()}';</script>
+        <script src="../../soap/ajax/36.0/connection.js" type="text/javascript"></script>       
+        <script>
+            var j$ = jQuery.noConflict();
+        function searchUsers(key,rowNum){
+            console.log('here');
+            j$('#'+key.attr('aria-activedescendant')).show();
+            //Grabbing The Input Field Value
+            searchKey = key.val();
+            if(searchKey == '')
+                j$('#'+key.attr('aria-activedescendant')).hide();
+            j$('#searchText').text(searchKey);
+            //Querying For Records In User for Name Matching The Input in The Text Field
+            result = sforce.connection.query("Select Id, FirstName,LastName from User WHERE (FirstName LIKE '"+searchKey+"%' OR LastName LIKE '"+searchKey+"') and isActive=true LIMIT 5");
+            records = result.getArray("records");
+            var searchLis ='';            
+            if(records.length > 0){
+                for(var i=0; i<records.length; i++){
+                    searchLis += '<li onclick="userInfo(\''+records[i].Id+'\',\''+rowNum+'\');" class="slds-lookup__item"><a id="'+records[i].Id+'" href="#" role="option">'+records[i].FirstName+' '+records[i].LastName+'</a></li>';
+                }
+            }else{
+                searchLis += '<li class="slds-lookup__item">No Records Found</li>';
+            } 
+            j$('#searchResultsUL'+rowNum).html(searchLis);
+        }
+        function userInfo(userId,rowNum){           
+            j$('#SrchDrpDwn'+rowNum).fadeOut();            
+            result = sforce.connection.retrieve("FirstName,LastName", "User", [userId]);
+            j$('#searchInput'+rowNum).val(result[0].FirstName+' '+result[0].LastName);             
+            setUserId(rowNum,userId,result[0].FirstName+' '+result[0].LastName); 
+        }
+        </script>
+        <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <head>
+                <apex:stylesheet value="{!URLFOR($Resource.MFS_UI_Assets, '/assets/styles/salesforce-lightning-design-system-ltng.min.css')}" />
+                <style>
+                    .rc-main-container > .slds-grid{padding-bottom:1.5rem;} 
+                    .rc-main-container > .slds-grid .slds-large-size--4-of-12{padding:0.625rem;}
+                    .rc-main-container > .slds-grid .slds-medium-size--12-of-12, 
+                    .rc-main-container > .slds-grid .slds-size--12-of-12{padding-bottom:0.625rem;}
+                </style>
+            </head>
+            <body> 
+                <apex:outputPanel rendered="{!OR($User.UIThemeDisplayed=='Theme4d', $User.UIThemeDisplayed=='Theme4t')}">
+                <div class="slds MFS" >
+                    <div class="slds slds-m-around--medium">
+                        <p class="slds-text-heading">{!$Label.Opp_Team_Header} {!oppRec.Name}</p>                   
+                        <div class="rc-main-container " >
+                            <apex:repeat value="{!oppTeaWlist}" var="oppT">
+                                <div class="slds-grid slds-wrap slds-grow" >
+                                    <div class="cells slds-large-size--4-of-12 slds-medium-size--12-of-12 slds-size--12-of-12">
+                                        <div data-select="single" data-scope="single" name="User Name">
+                                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                                                <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
+                                                    <use xlink:href="{!URLFOR($Resource.SLDSv202,'/assets/icons/utility-sprite/svg/symbols.svg#search')}"></use>
+                                                </svg>
+                                                <input id="searchInput{!oppT.rowNum}" value ="{!oppT.oppTeamMem.User_Name__c}" class="slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded="true"  placeholder="Search User" onkeyup="searchUsers(j$(this),'{!oppT.rowNum}')" aria-activedescendant="SrchDrpDwn{!oppT.rowNum}"/>
+                                                
+                                                <div class="slds-lookup">
+                                                    <div class="slds-lookup__menu" role="listbox" id="SrchDrpDwn{!oppT.rowNum}" style="display:none;">
+                                                        <div class="slds-lookup__item"></div>
+                                                        <ul class="slds-lookup__list" role="presentation" id="searchResultsUL{!oppT.rowNum}" style="max-height: 100px;">  </ul>                                                                 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="cells slds-large-size--4-of-12 slds-medium-size--12-of-12 slds-size--12-of-12">
+                                        <apex:outputPanel id="sf1InnerPanel">   
+                                            <div>
+                                                <div class="slds-select_container">
+                                                    <apex:actionRegion >
+                                                        <apex:inputField value="{!oppT.oppTeamMem.TeamMemberRole}" required="{!if(oppT.oppTeamMem.UserId!=null,true,false)}" styleclass="slds-select" />
+                                                        <apex:actionSupport event="onchange" action="{!setUserRole}" reRender="sf1InnerPanel">                     
+                                                        </apex:actionSupport>
+                                                    </apex:actionRegion>
+                                                </div></div></apex:outputPanel>
+                                    </div>
+                                    <div class="cells slds-large-size--4-of-12 slds-medium-size--12-of-12 slds-size--12-of-12">
+                                        <div class="slds-select_container">
+                                            <apex:actionRegion >  
+                                                <apex:selectList value="{!oppT.oppTeamMem.OpportunityAccessLevel}"  styleclass="slds-select" size="1">
+                                                    <apex:actionSupport event="onchange" action="{!setUserRole}" reRender="sf1InnerPanel">                                         
+                                                    </apex:actionSupport>
+                                                    <apex:selectOptions value="{!accessLevel}"/>    
+                                                </apex:selectList>
+                                            </apex:actionRegion>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </apex:repeat>                             
+                            <apex:actionFunction name="setUserId" action="{!setUserId}" reRender="sf1InnerPanel">
+                                <apex:param name="selectedRow" assignTo="{!selectedRow}" value=""/>       
+                                <apex:param name="selectedUserId" assignTo="{!selectedUserId}" value=""/>   
+                                <apex:param name="selectedUserName" assignTo="{!selectedUserName}" value=""/> 
+                            </apex:actionFunction>  
+                           <div class="slds-grid slds-grid--align-center">
+                                <apex:commandButton value="{!$Label.Opp_Team_Save}" action="{!saveTeamMember}" styleclass="slds-button slds-button--neutral"/>
+                                <apex:commandButton value="{!$Label.Opp_Team_Cancel}" action="{!Cancel}" styleclass="slds-button slds-button--neutral" /> 
+                            </div>
+                        </div> 
+                    </div> 
+                </div>  </apex:outputPanel> 
+            </body>
+        </html>
+    </apex:form>    
+</apex:page>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PF_Sprints__c$Name</field>
+    </columns>
+    <columns>
+        <field>PF_Sprints__c$Total_Func_in_New__c</field>
+    </columns>
+    <columns>
+        <field>PF_Sprints__c.Stories__r$Name</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>PF_Sprints__c.Stories__r$Configuration_Status_2__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PF_Sprints__c.Stories__r$Workstream__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Dan Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CRM_Transformation_Percent_Complete_Report__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <timeFrameFilter>
+        <dateColumn>PF_Sprints__c$PF_Start_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

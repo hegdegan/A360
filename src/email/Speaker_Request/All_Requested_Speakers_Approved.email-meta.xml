@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This template is used in the speaker request approval process to notify the speaker coordinator group that all speakers in the related list of an event request have been approved.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>All Requested Speakers Approved</name>
+    <style>none</style>
+    <subject>Requested Speakers for Event: {!Event_Request__c.Name} Have Been Approved</subject>
+    <type>text</type>
+</EmailTemplate>

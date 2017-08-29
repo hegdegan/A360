@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AcctTeamAppCustomSettings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>AcctTeamAppCustomSettings</value>
+    </caseValues>
+    <fields>
+        <label><!-- AccountId --></label>
+        <name>AccountId__c</name>
+    </fields>
+    <fields>
+        <label><!-- AccountName --></label>
+        <name>AccountName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Admin Profile Id --></label>
+        <name>Admin_Profile_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Subject --></label>
+        <name>Case_Subject__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Subtype --></label>
+        <name>Case_Subtype__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case Type --></label>
+        <name>Case_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- RecordType_Approval --></label>
+        <name>RecordType_Approval__c</name>
+    </fields>
+    <fields>
+        <label><!-- RecordType_Removal --></label>
+        <name>RecordType_Removal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Requester --></label>
+        <name>Requester__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team Member --></label>
+        <name>Team_Member__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team Member_lkid --></label>
+        <name>Team_Member_lkid__c</name>
+    </fields>
+    <fields>
+        <label><!-- editUrl --></label>
+        <name>editUrl__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

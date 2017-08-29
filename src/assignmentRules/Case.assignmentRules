@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>Assign to RM</fullName>
+        <active>false</active>
+    </assignmentRule>
+    <assignmentRule>
+        <fullName>Retail Onboarding Group</fullName>
+        <active>false</active>
+        <ruleEntry>
+            <assignedTo>Retail_Onboarding_Group</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Amendment (URF)</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Fee_Type__c</field>
+                <operation>equals</operation>
+                <value>Management Fee Rebate</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+    <assignmentRule>
+        <fullName>User Support Case Assignment</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <assignedTo>Data_Management_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>User Support</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Service_Request_Type__c</field>
+                <operation>equals</operation>
+                <value>Data Request</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Transaction_Resolution_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>User Support</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Service_Request_Type__c</field>
+                <operation>equals</operation>
+                <value>Transaction Request</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Territory_Management</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>User Support</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Service_Request_Type__c</field>
+                <operation>equals</operation>
+                <value>Territory Management</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>BI_Sales_Reporting</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>User Support</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Service_Request_Type__c</field>
+                <operation>equals</operation>
+                <value>Reporting Request</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Others_User_Support</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>User Support</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Service_Request_Type__c</field>
+                <operation>equals</operation>
+                <value>Others</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

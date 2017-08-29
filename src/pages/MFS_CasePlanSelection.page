@@ -1,0 +1,469 @@
+<apex:page standardController="Case" extensions="MFS_ServiceRequestCaseController" title="{!$Label.SR_Add_Investments}" standardStylesheets="false">
+    
+    <apex:form >
+        <apex:stylesheet value="{!URLFOR($Resource.MFS_UI_Assets, 'assets/styles/salesforce-lightning-design-system-ltng.min.css')}" />
+        <apex:stylesheet value="{!URLFOR($Resource.SalesAndAssets, 'SalesAndAssets/assets/css/Client.css')}" />
+        <style>
+            .fontcolor{color:white !important;}
+            .header-text{
+            font-size:18px;
+            padding-left:9px;
+            }
+            .table-header
+            {
+            background-color:#EFEFDB;
+            font-size:15px;
+            color:black;
+            padding:10px;
+            }
+            table, th, td
+            {padding:7px;
+            }
+            .plan-row {
+            background-color : #white;
+            padding:5px;
+            }
+            .outer-table{
+            width:100% !important;
+            }
+            .outer-table tbody td{border:1px solid white !important;}
+            
+            .longText{ width:60%; }
+            .multiSelectPicklistTable{padding:0;}
+            .multiSelectPicklistTable tr:first-child{display:none;}
+            .main-heading{display: block;font-size: 21px;text-align: center;margin-bottom: 10px;}
+            .slds-hide{display:none !important;}
+            .mfs-red-table tbody tr td{text-align:left;}
+            .sub-header {text-align:right; border-top: 1px solid white; padding-top: 5px;}
+            .portfolio-row td{text-align:right !important}
+        </style>
+        
+        <script src="/resource/MFS_UI_Assets/assets/js/jquery-1.11.3.min.js">
+        </script>
+        <script>
+        j$ = jQuery.noConflict();
+        var showPopUpOverLay = function(){
+            j$("body").append('<div class="popup-overlay-custom" style="position: fixed;width:100%;height:100%;background: #dbdbdb;opacity:0.6;top: 0;left: 0;z-index: 999;"></div>');
+        };
+        var hidePopUpOverLay = function(){
+            j$(".popup-overlay-custom").remove();
+        };
+        </script>
+        <div class="slds MFS">
+            <div class="slds-page-header" role="banner">
+                <div class="slds-grid">
+                    <div class="slds-col slds-has-flexi-truncate">
+                        <div class="slds-media slds-no-space slds-grow">
+                            <div class="slds-media__figure">
+                                <span class="slds-icon_container slds-icon-standard-case">
+                                    <svg aria-hidden="true" class="slds-icon slds-icon--medium">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="slds-media__body">
+                                <p class="slds-text-title--caps slds-line-height--reset">{!Case.CaseNumber}</p>
+                                <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate" style="font-size:20px !important">{!$Label.SR_Add_Investments}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-size--12-of-12 slds-m-top--medium">     
+                <div class="slds-grid" style="padding-left:40%;">
+                    <div class="slds-button-group  slds-text-align--center" role="group">
+                        <apex:commandButton styleClass="slds-button slds-button--brand" action="{!save}" value="{!$Label.SR_Save}" />
+                        <apex:commandButton styleClass="slds-button slds-button--neutral" action="{!cancel}" value="{!$Label.SR_Cancel}"/>
+                    </div>
+                </div> 
+            </div>
+            <!--<apex:pageBlockButtons >
+<apex:commandButton value="{!$Label.SR_Save}" action="{!save}" onclick="showPopUpOverLay();" />
+<apex:commandButton value="{!$Label.SR_Cancel}" action="{!cancel}" immediate="true"/>
+</apex:pageBlockButtons>-->
+            <apex:pageMessages id="pageMessages"/>
+            <apex:outputPanel id="planPanel" rendered="{!planList.size!=0}" styleClass="slds-size--12-of-12 slds-m-top--medium outer-panel" layout="block">
+                <table class="slds-table slds-table--bordered mfs-red-table outer-table" scope="expandable-table">
+                    <thead>
+                        <tr>
+                            <th width="20%" class="slds-text-heading--label slds-truncate fontcolor">
+                                <div>{!$ObjectType.Plan__c.fields.Name.Label}</div>
+                                <div class="sub-header">&nbsp;{!$ObjectType.Account__c.fields.Portfolio__c.Label}</div>
+                            </th>
+                            <th width="15%" class="slds-text-heading--label slds-truncate fontcolor">
+                                <div>{!$ObjectType.Plan__c.fields.Plan_ID__c.Label}</div>
+                                <div class="sub-header">{!$ObjectType.Account__c.fields.Name.Label}</div>
+                            </th>
+                            <th width="20%" class="slds-text-heading--label slds-truncate fontcolor">
+                                <div>{!$ObjectType.Plan__c.fields.Plan_Start_Date__c.Label}</div>
+                                <div class="sub-header">{!$ObjectType.Account__c.fields.Portfolio_Code__c.Label}</div>
+                            </th>
+                            <th width="20%" class="slds-text-heading--label slds-truncate fontcolor">
+                                <div>{!$ObjectType.Plan__c.fields.Plan_Type__c.Label}</div>
+                                <div class="sub-header">{!$ObjectType.Account__c.fields.Vehicle__c.Label}</div>
+                            </th>
+                            <th width="20%" class="slds-text-heading--label slds-truncate fontcolor">
+                                <div>{!$ObjectType.Plan__c.fields.Plan_Termination_Date__c.Label}</div>
+                                <div class="sub-header">{!$ObjectType.Account__c.fields.Account_Number__c.Label}</div>
+                            </th>
+                            <th width="5%" style="text-align:center;" class="slds-text-heading--label slds-truncate fontcolor">{!$Label.SR_Select}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat value="{!planList}" var="plan">
+                            <tr class="plan-row" scope="expandable-row">
+                                <td scope="row" data-label="{!plan.recId}">
+                                    <img class="mfs_table_plus slds-hide" src="{!URLFOR($Resource.SalesAndAssets,'SalesAndAssets/assets/image/Plus.png')}" width="20" /> 
+                                    <img class="mfs_table_minus slds-hide" src="{!URLFOR($Resource.SalesAndAssets,'SalesAndAssets/assets/image/Minus.png')}" width="20" /> 
+                                    <apex:outputLink value="/{!plan.recId}" onClick="openRecord('{!plan.recId}','{!plan.planLegalName}'); return false;">{!plan.planLegalName}</apex:outputLink>
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!plan.planId}"/>
+                                </td>
+                                <td> <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                    <apex:param value="{!plan.planStartDate}"/> 
+                                    </apex:outputText>
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!plan.planType}"/>
+                                </td>
+                                <td>
+                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!plan.planTerminationDate}"/> 
+                                    </apex:outputText>
+                                </td>
+                                <td style="text-align:center !important">
+                                    <apex:inputCheckbox value="{!plan.selected}" id="planCB" styleClass="slds-checkbox"></apex:inputCheckbox>
+                                </td>
+                            </tr>
+                            <apex:repeat value="{!investmentMap[plan.recId]}" var="inv">
+                                <tr class="portfolio-row slds-hide" scope="expanded-content" aria-expand-parent="{!plan.recId}">
+                                    
+                                    <td>
+                                        <apex:outputLink value="/{!inv.portfolioId}" onClick="openRecord('{!inv.portfolioId}','{!inv.portfolio}'); return false;">{!inv.portfolio}</apex:outputLink>
+                                    </td>
+                                    <td scope="row" data-label="{!inv.investmentName}">
+                                        <apex:outputLink value="/{!inv.recId}" onClick="openRecord('{!inv.recId}','{!inv.investmentName}'); return false;">{!inv.investmentName}</apex:outputLink>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="{!inv.portfolioCode}"/>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="{!inv.vehicle}"/>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="{!inv.accountNumber}"/>
+                                    </td>
+                                    <td style="text-align:center !important">
+                                        <apex:inputCheckbox value="{!inv.selected}" styleClass="portfolio_cb slds-checkbox"></apex:inputCheckbox>
+                                        <!--<apex:inputHidden value="{!inv.selected}" />
+                                        <input type="checkbox" value="" class="portfolio_cb slds-checkbox" />-->
+                                    </td>
+                                </tr>
+                            </apex:repeat>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!planList.size == 0}" layout="block">
+                <h3 class="header-text">
+                    {!$ObjectType.Plan__c.Labelplural}
+                </h3>
+                <br/><br/>{!$Label.SR_Message1}</apex:outputPanel>
+            <br/>
+            
+            <div class="slds-size--12-of-12 slds-m-top--medium">     
+                <div class="slds-grid" style="padding-left:40%;">
+                    <div class="slds-button-group  slds-text-align--center" role="group">
+                        <apex:commandButton styleClass="slds-button slds-button--brand" action="{!save}" value="{!$Label.SR_Save}" />
+                        <apex:commandButton styleClass="slds-button slds-button--neutral" action="{!cancel}" value="{!$Label.SR_Cancel}"/>
+                    </div>
+                </div> 
+            </div>
+            <apex:outputPanel id="invPanel" rendered="{!investmentList.size!=0}" styleClass="outer-panel slds-hide">
+                <h3 class="header-text">
+                    {!$ObjectType.Account__c.Labelplural}
+                </h3>
+                <table class="mfs-red-table outer-table" scope="expandable-table">
+                    <thead>
+                        <tr>
+                            <th width="20%">{!$ObjectType.Account__c.fields.Portfolio__c.Label}</th>
+                            <th width="15%">{!$ObjectType.Account__c.fields.Name.Label}</th>
+                            <th width="20%">{!$ObjectType.Account__c.fields.Portfolio_Code__c.Label}</th>
+                            <th width="20%">{!$ObjectType.Account__c.fields.Vehicle__c.Label}</th>
+                            <th width="20%">{!$ObjectType.Account__c.fields.Account_Number__c.Label}</th>
+                            <th width="5%" style="text-align:center !important">{!$Label.SR_Select}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Iterate through plan and portfolio lists -->
+                        <apex:repeat value="{!investmentList}" var="inv">
+                            <tr class="plan-row" scope="expandable-row">
+                                
+                                <td>
+                                    <apex:outputLink value="/{!inv.portfolioId}" onClick="openRecord('{!inv.portfolioId}','{!inv.portfolio}'); return false;">{!inv.portfolio}</apex:outputLink>
+                                </td>
+                                <td scope="row" data-label="{!inv.investmentName}">
+                                    <apex:outputLink value="/{!inv.recId}" onClick="openRecord('{!inv.recId}','{!inv.investmentName}'); return false;">{!inv.investmentName}</apex:outputLink>
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!inv.portfolioCode}"/>
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!inv.vehicle}"/>
+                                </td>
+                                <td>
+                                    <apex:outputText value="{!inv.accountNumber}"/>
+                                </td>
+                                <td>
+                                    <apex:inputCheckbox value="{!inv.selected}"></apex:inputCheckbox>
+                                </td>
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!investmentList.size == 0}" layout="block" styleClass=" slds-hide">
+                <hr/>
+                <h3 class="header-text">
+                    {!$ObjectType.Account__c.Labelplural}
+                </h3><br/><br/>
+                {!$Label.SR_Message1}</apex:outputPanel>
+        </div>
+        <script>
+        var MFS_BAR_Table_Engine = function($){
+            var _init = function(){
+                initPlugins();
+                invokePlugins();
+            };
+            
+            var nextCount = 0;
+            var totaltemsDisplayed = 5;
+            var rowsPerPage = 5;
+            var totalPageRows;
+            
+            var initPlugins = function(){
+                $.fn.expandableTables = function(){
+                    var that = $(this);
+                    var isEditMode = ($(this).data("render-mode") && $(this).data("render-mode") === "edit") ? true : false;
+                    
+                    $(".mfs_table_minus").addClass("slds-hide");
+                    $(".mfs_table_plus").removeClass("slds-hide");
+                    
+                    that.find("tbody > tr[scope='expandable-row'] > td:first-child").on("click", function(){
+                        var handleName = $(this).data("label");
+                        var allRowChildren = $("tr[scope='expanded-content'][aria-expand-parent='"+handleName+"']");
+                        
+                        if($(this).find(".mfs_table_minus").hasClass("slds-hide")){
+                            //Expand
+                            $(this).find(".mfs_table_plus").addClass("slds-hide");
+                            $(this).find(".mfs_table_minus").removeClass("slds-hide");
+                            allRowChildren.removeClass("slds-hide");
+                        }
+                        else{
+                            //Collapse
+                            $(this).find(".mfs_table_plus").removeClass("slds-hide");
+                            $(this).find(".mfs_table_minus").addClass("slds-hide"); 
+                            allRowChildren.addClass("slds-hide");
+                            
+                            $("tr[scope='expanded-content']").find(".mfs_table_plus").removeClass("slds-hide");
+                            $("tr[scope='expanded-content']").find(".mfs_table_minus").addClass("slds-hide");   
+                        }
+                        
+                        
+                        allRowChildren.find("input[type='checkbox']").on("change", function(){
+                            var thatPlan = $(this);
+                            if($(this).is(":checked")){
+                                
+                                $(this).prev().val($(this).is(":checked"));
+                                
+                            }
+                            else{
+                                $(this).parent().parent().find("input[type='text'][id*='numbersOnly']").off("keyup");
+                                $(this).parent().parent().find("input[type='text'][id*='numbersOnly']").val(0);
+                            }
+                            
+                        });
+                    });
+                    
+                    that.find("tbody > tr > td [id*='planCB']").on("change", function(e){
+                        var handleName = $(this).parents("tr[scope='expandable-row']").find("td:first-child").data("label");
+                        var allRowChildren = $("tr[scope='expanded-content'][aria-expand-parent='"+handleName+"']");
+                        var thatPlan = $(this);
+                        
+                        if($(this).is(":checked")){
+                            $(this).parents("tr[scope='expandable-row']").find("td:first-child .mfs_table_plus").addClass("slds-hide");
+                            $(this).parents("tr[scope='expandable-row']").find("td:first-child .mfs_table_minus").removeClass("slds-hide");
+                            
+                            allRowChildren.removeClass("slds-hide");
+                            checkUncheckHelper(allRowChildren.find(".portfolio_cb"), true);
+                            //allRowChildren.find("input[type='checkbox']").attr("disabled", "disabled");   
+                            
+                            $(this).parents("tr[scope='expandable-row']").find("[id*='numbersOnly']").val(100);
+                            allRowChildren.find("input[type='text'][id*='numbersOnly']").val(100).show();
+                            allRowChildren.find("span[id*='numbersOnly1']").text("100").hide();
+                            
+                            $(this).parents("tr[scope='expandable-row']").find("[id*='numbersOnly']").on("keyup", function(e){
+                                var currPercentage = ($(this).val() !== "") ? parseInt($(this).val(), 10) : 0;
+                                $(this).val(currPercentage);
+                                
+                                allRowChildren.find("input[type='text'][id*='numbersOnly']").val(currPercentage);
+                                allRowChildren.find("span[id*='numbersOnly1']").text(currPercentage);
+                                //calculateRiskValue();
+                            });
+                            
+                            allRowChildren.find("input[type='text'][id*='numbersOnly']").on("keyup", function(){
+                                var currPercentage = ($(this).val() !== "") ? parseInt($(this).val(), 10) : 0;
+                                $(this).val(currPercentage);
+                                
+                                //calculatePlanPercentage(allRowChildren, thatPlan.parents("tr[scope='expandable-row']").find("[id*='numbersOnly'][check-type='plan']"));
+                                //calculateRiskValue();
+                            });
+                        }
+                        else{
+                            $(this).parents("tr[scope='expandable-row']").find("td:first-child .mfs_table_plus").removeClass("slds-hide");
+                            $(this).parents("tr[scope='expandable-row']").find("td:first-child .mfs_table_minus").addClass("slds-hide");
+                            
+                            allRowChildren.addClass("slds-hide");
+                            checkUncheckHelper(allRowChildren.find("input[type='checkbox']"), false);
+                            //allRowChildren.find("input[type='checkbox']").removeAttr("disabled");
+                            
+                            $(this).parents("tr[scope='expandable-row']").find("[id*='numbersOnly']").val(0);
+                            allRowChildren.find("input[type='text'][id*='numbersOnly']").val(0).show();
+                            allRowChildren.find("span[id*='numbersOnly1']").hide();
+                            
+                            $(this).parents("tr[scope='expandable-row']").find("[id*='numbersOnly']").off("keyup");
+                            allRowChildren.find("input[type='text'][id*='numbersOnly']").off("keyup");
+                        }
+                        
+                        //(allRowChildren, thatPlan.parents("tr[scope='expandable-row']").find("[id*='numbersOnly'][check-type='plan']"));
+                        //calculateRiskValue();
+                    });
+                    
+                    that.find("thead .sum-all").on("change", function(e){
+                        var allRowChildren = $("tr[scope='expanded-content']");
+                        if($(this).is(":checked")){
+                            $(".mfs_table_plus").addClass("slds-hide");
+                            $(".mfs_table_minus").removeClass("slds-hide");
+                            allRowChildren.removeClass("slds-hide");
+                            
+                            checkUncheckHelper(that.find("tbody > tr > td [id*='planCB']"), true);
+                            checkUncheckHelper(allRowChildren.find("input[type='checkbox']"), true);
+                            
+                            //allRowChildren.find("input[type='checkbox']").attr("disabled", "disabled");
+                            
+                            $("[id*='numbersOnly'][check-type='plan']").val(100).show();
+                            $("[id*='numbersOnly']:not([check-type='plan'])").val(100).show();
+                            $("span[id*='numbersOnly1']").text("100").hide();
+                            
+                            $("tr[scope='expandable-row']").find("[id*='numbersOnly']").on("keyup", function(e){
+                                var currPercentage = ($(this).val() !== "") ? parseInt($(this).val(), 10) : 0;
+                                var handleName = $(this).parents("tr[scope='expandable-row']").find("td:first-child").data("label");
+                                var onlyThisGroup = $("tr[scope='expanded-content'][aria-expand-parent='"+handleName+"']");
+                                
+                                $(this).val(currPercentage);
+                                onlyThisGroup.find("span[id*='numbersOnly1']").hide().text(currPercentage);
+                                onlyThisGroup.find("input[type='text'][id*='numbersOnly']").val(currPercentage);
+                                calculateRiskValue();
+                            });
+                            
+                            allRowChildren.find("input[type='text'][id*='numbersOnly']").on("keyup", function(){
+                                var currPercentage = ($(this).val() !== "") ? parseInt($(this).val(), 10) : 0;
+                                var handleName = $(this).parent().parent().attr("aria-expand-parent");
+                                var onlyThisGroup = $("tr[scope='expanded-content'][aria-expand-parent='"+handleName+"']");
+                                $(this).val(currPercentage);
+                                
+                                //(onlyThisGroup, $("td[data-label='"+handleName+"']").parent().find("input[type='text'][check-type='plan']"));
+                                //calculateRiskValue();
+                            });
+                        }
+                        else{
+                            $(".mfs_table_plus").removeClass("slds-hide");
+                            $(".mfs_table_minus").addClass("slds-hide");
+                            allRowChildren.addClass("slds-hide");   
+                            
+                            checkUncheckHelper(that.find("tbody > tr > td [id*='planCB']"), false);
+                            checkUncheckHelper(allRowChildren.find("input[type='checkbox']"), false);
+                            //allRowChildren.find("input[type='checkbox']").removeAttr("disabled");
+                            
+                            $("[id*='numbersOnly'][check-type='plan']").val(0).show();
+                            $("[id*='numbersOnly']:not([check-type='plan'])").val(0).show();
+                            $("span[id*='numbersOnly1']").text("0").hide();
+                            
+                            $("tr[scope='expandable-row']").find("[id*='numbersOnly']").off("keyup");
+                        }
+                        
+                    });
+                    
+                    if(isEditMode){
+                        $("input[type='text'][id*='numbersOnly']").on("keyup", function(){
+                            var isPlan = $(this).attr("check-type") === "plan" ? true : false;
+                            var currVal = ($(this).val() !== "") ? parseInt($(this).val(), 10) : 0;
+                            
+                            $(this).val(currVal);
+                            
+                            if(isPlan){
+                                var handleName = $(this).parent().parent().find("td:first-child").data("label");
+                                var allRowChildren = $("tr[scope='expanded-content'][aria-expand-parent='"+handleName+"']");
+                                
+                                allRowChildren.find("span[id*='numbersOnly']").hide().text(currVal);
+                                allRowChildren.find("input[type='text'][id*='numbersOnly']").val(currVal);
+                                allRowChildren.find("input[type='hidden'][id*='numbersOnly2']").val(currVal);
+                            }
+                            else{
+                                var handleName = $(this).parent().parent().attr("aria-expand-parent");
+                                var allRowChildren = $("tr[scope='expanded-content'][aria-expand-parent='"+handleName+"']");
+                                
+                            }
+                            
+                        });
+                    }
+                };
+            };
+            
+            var invokePlugins = function(){
+                $("table[scope='expandable-table']").expandableTables();
+            };
+            
+            var checkUncheckHelper = function(checkboxes, checkOrUncheck){
+                for(var i=0, iLen = checkboxes.length; i < iLen; i++){
+                    checkboxes[i].checked = checkOrUncheck;
+                    $(checkboxes[i]).prev().val(checkOrUncheck);
+                }
+            };
+            
+            var formatCurrency = function(n){
+                return n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');  
+            };
+            
+            var extractNumbers = function(num){
+                return parseInt(num.replace( /[^\d\.]*/g, ''));
+            };
+            
+            var isPlanCheckbox = function(cb){
+                var currID = cb.attr("id") ? cb.attr("id") : "";
+                if(currID !== "" && currID.indexOf("planCB") !== -1){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            };
+            
+            var _postRerenderActions = function(){
+                $("table[scope='expandable-table']").expandableTables();
+            };
+            
+            return {
+                init : _init,
+                postRerenderActions : _postRerenderActions
+            };
+        }(jQuery);
+        
+        j$(document).ready(function(){
+            MFS_BAR_Table_Engine.init();
+        }); 
+        
+        </script>
+    </apex:form>
+</apex:page>

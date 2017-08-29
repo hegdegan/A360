@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>PF_Sprints__c.Stories__r$Name</field>
+    </columns>
+    <columns>
+        <field>PF_Sprints__c.Stories__r$PF_Title__c</field>
+    </columns>
+    <columns>
+        <field>PF_Sprints__c.Stories__r$PF_Description__c</field>
+    </columns>
+    <columns>
+        <field>PF_Sprints__c$PF_Priority__c</field>
+    </columns>
+    <columns>
+        <field>PF_Sprints__c.Stories__r$Apex_Development_Status__c</field>
+    </columns>
+    <columns>
+        <field>PF_Sprints__c.Stories__r$PF_Story_Owner__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>by Workstream</description>
+    <filter>
+        <criteriaItems>
+            <column>PF_Sprints__c.Stories__r$Workstream__c</column>
+            <operator>equals</operator>
+            <value>Client onboarding/offboarding</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PF_Sprints__c.Stories__r$Workstream__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PF_Sprints__c$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PF_Sprints__c.Stories__r$Configuration_Status_2__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>ALL Stories</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Sprints_with_Stories__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>PF_Sprints__c$PF_End_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Activity Detail</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Activity Details</value>
+    </caseValues>
+    <fields>
+        <label><!-- Activity ID --></label>
+        <name>Activity_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Additional Location --></label>
+        <name>Additional_Location__c</name>
+    </fields>
+    <fields>
+        <help><!-- (Other Product details and related analysis --></help>
+        <label><!-- Competitive Information --></label>
+        <name>Competitive_Information__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Activity Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Date Time --></label>
+        <name>End_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event Request --></label>
+        <name>Event_Request__c</name>
+        <relationshipLabel><!-- Activity Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Has RES Record? --></label>
+        <name>Has_RES_Record__c</name>
+    </fields>
+    <fields>
+        <help><!-- Significant anticipated questions and opportunities --></help>
+        <label><!-- Hot Button Issues --></label>
+        <name>Hot_Button_Issues__c</name>
+    </fields>
+    <fields>
+        <label><!-- Not An Orphan Record? --></label>
+        <name>Not_An_Orphan_Record__c</name>
+    </fields>
+    <fields>
+        <label><!-- Notes --></label>
+        <name>Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Activity Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Organization --></label>
+        <name>Organization__c</name>
+        <relationshipLabel><!-- Activity Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Cell number, meeting location, special instructions, etc --></help>
+        <label><!-- Other Notes --></label>
+        <name>Other_Notes__c</name>
+    </fields>
+    <fields>
+        <help><!-- Have you met them before? --></help>
+        <label><!-- Past Relationship --></label>
+        <name>Past_Relationship__c</name>
+    </fields>
+    <fields>
+        <label><!-- Presentation --></label>
+        <name>Presentation__c</name>
+        <picklistValues>
+            <masterLabel>Customized Presentation</masterLabel>
+            <translation><!-- Customized Presentation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Presentation</masterLabel>
+            <translation><!-- No Presentation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Standard Presentation</masterLabel>
+            <translation><!-- Standard Presentation --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Saleslogix ID --></label>
+        <name>Saleslogix_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date Time --></label>
+        <name>Start_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Subject --></label>
+        <name>Subject__c</name>
+    </fields>
+    <layouts>
+        <layout>Meeting Note Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Notes --></label>
+            <section>Notes</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- Meeting_Preparation_Sheet --></label>
+        <name>Meeting_Preparation_Sheet</name>
+    </webLinks>
+</CustomObjectTranslation>

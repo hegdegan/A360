@@ -1,0 +1,46 @@
+<!-- call custom controller -->
+    <apex:page controller="MFS_DataValidationUtilsController">
+        <apex:form id="form">
+    
+            <apex:pageBlock title="Welcome {!$User.FirstName} to the Data Validation Utilities Page">
+    
+                <apex:pageBlockSection columns="5">
+
+                    <apex:pageblocksection title="Select Object" columns="1">
+                        <apex:selectList value="{!selectedObject}" size="1">
+                            <apex:selectOptions value="{!objectOptions}" />
+                            <apex:actionSupport reRender="form,pageMessages" event="onchange" />
+                        </apex:selectList>
+                    </apex:pageblocksection>
+                    
+                    <apex:pageblocksection title="Required Fields" columns="1">
+                        <apex:pageblocktable title="Required Fields" value="{!requiredfields}" var="results">
+                            <apex:column title="Required Fields" value="{!results}"></apex:column>
+                        </apex:pageblocktable>
+                    </apex:pageblocksection>                    
+ <!--                     
+                    <apex:pageblocksection title="Picklist Fields" columns="1">
+                        <apex:pageblocktable value="{!picklistfields}" var="results">
+                            <apex:column value="{!results}"></apex:column>
+                        </apex:pageblocktable>
+                    </apex:pageblocksection>
+  -->
+                    <apex:pageblocksection title="Select Picklist Field" columns="1">
+                    <apex:selectList value="{!selectedPicklistField}" size="1">
+                            <apex:selectOptions value="{!pickListFieldOptions}" />
+                            <apex:actionSupport reRender="form,pageMessages" event="onchange"/>
+                        </apex:selectList>
+                    </apex:pageblocksection>
+
+                    <apex:pageblocksection title="Picklist Values" columns="1">
+                    <apex:pageblocktable title="Picklist Field Values" value="{!picklistvalues}" var="results">
+                            <apex:column title="Picklist Field Values" value="{!results}"></apex:column>
+                    </apex:pageblocktable>
+                    </apex:pageblocksection>
+                    
+     
+
+                </apex:pageblocksection>
+            </apex:pageBlock>
+        </apex:form>
+    </apex:page>

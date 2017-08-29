@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Silverpop Contact Click</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Silverpop Contact Clicks</value>
+    </caseValues>
+    <fields>
+        <label><!-- Campaign_Name --></label>
+        <name>Campaign_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Campaign --></label>
+        <name>Campaign__c</name>
+        <relationshipLabel><!-- Silverpop Contact Clicks --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Click_Name --></label>
+        <name>Click_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Silverpop Contact Clicks --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email_Description --></label>
+        <name>Email_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event_Timestamp --></label>
+        <name>Event_Timestamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- SFDC_Mailing_ID --></label>
+        <name>SFDC_Mailing_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Send_Status --></label>
+        <name>Send_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Silverpop Email Campaign Link --></label>
+        <name>Silverpop_Email_Campaign_Link__c</name>
+        <relationshipLabel><!-- Silverpop Contact Clicks --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Spop_Mailing_ID --></label>
+        <name>Spop_Mailing_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- URL --></label>
+        <name>URL__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

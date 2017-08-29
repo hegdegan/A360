@@ -1,0 +1,39 @@
+<!---
+Visualforce Page Name :  MFS_CreateActivity_Case_Retail_SF1Action
+Version               :  1.0 
+Created Date          :  10 NOV 2016
+Function              :  Publisher action to create retail activity from Case for Admin
+--->
+<apex:page standardController="Case" sidebar="false" >
+    <script>
+    <apex:includeScript value="/soap/ajax/22.0/connection.js"/>
+        <apex:includeScript value="/soap/ajax/22.0/apex.js"/>
+            
+            /*Thisjavascript opens the Custom Activity360 page to Create Activity which is an Event of type Retail.*/ 
+            
+            //parameters to pass in the URL 
+            var returnID; 
+    var pageneme = 'MFS_Activity360RetailPageSF1'; 
+    var RecType= 'Retail'; 
+    var isNew = 'isNew=true'; 
+    var caseId= '{!Case.Id}'; 
+    
+    returnID = caseId; 
+    var activityId; 
+    
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+    var newActivityDetail= new sforce.SObject("Activity_Detail__c"); 
+    newActivityDetail.Subject__c = 'Orphan Record'; 
+    result = sforce.connection.create([newActivityDetail]); 
+    
+    activityId = result[0].id; 
+    var A360url = '/apex/' + pageneme + '?Id='+ activityId + '&event=true&returnID='+returnID+'&RecType=' + RecType+'&'+ isNew ; 
+    
+    if (typeof(srcUp) == 'function') { 
+        srcUp(A360url); 
+    } else { 
+        window.open(A360url); 
+    }
+    
+    </script>
+</apex:page>

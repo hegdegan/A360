@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Contact Coverage Team --></value>
+    </caseValues>
+    <fields>
+        <label><!-- As of Date --></label>
+        <name>As_of_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Coverage Team --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Coverage Owner --></label>
+        <name>Coverage_Owner__c</name>
+        <relationshipLabel><!-- Contact Coverage Team --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Coverage Role ID --></label>
+        <name>Coverage_Role_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Coverage Role --></label>
+        <name>Coverage_Role__c</name>
+        <picklistValues>
+            <masterLabel>ARG</masterLabel>
+            <translation><!-- ARG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Account Manager</masterLabel>
+            <translation><!-- Account Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Service Coordinator</masterLabel>
+            <translation><!-- Client Service Coordinator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Service Manager</masterLabel>
+            <translation><!-- Client Service Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consultant Relations Manager</masterLabel>
+            <translation><!-- Consultant Relations Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External DC</masterLabel>
+            <translation><!-- External DC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External RIA</masterLabel>
+            <translation><!-- External RIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External Wholesaler</masterLabel>
+            <translation><!-- External Wholesaler --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal DC</masterLabel>
+            <translation><!-- Internal DC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal RIA</masterLabel>
+            <translation><!-- Internal RIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal Wholesaler</masterLabel>
+            <translation><!-- Internal Wholesaler --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Key Accounts</masterLabel>
+            <translation><!-- Key Accounts --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-US External Wholesaler</masterLabel>
+            <translation><!-- Non-US External Wholesaler --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-US Internal Wholesaler</masterLabel>
+            <translation><!-- Non-US Internal Wholesaler --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relationship Manager</masterLabel>
+            <translation><!-- Relationship Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail Sales</masterLabel>
+            <translation><!-- Retail Sales --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Territory Support</masterLabel>
+            <translation><!-- Territory Support --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Distribution Level Code --></label>
+        <name>Distribution_Level_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distribution Level --></label>
+        <name>Distribution_Level__c</name>
+        <picklistValues>
+            <masterLabel>Global Institutional</masterLabel>
+            <translation><!-- Global Institutional --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-US Retail</masterLabel>
+            <translation><!-- Non-US Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Retail</masterLabel>
+            <translation><!-- US Retail --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Division Description --></label>
+        <name>Division_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Division --></label>
+        <name>Division__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Organization --></label>
+        <name>Organization__c</name>
+        <relationshipLabel><!-- Contact Coverage Team --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Primary? --></label>
+        <name>Primary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Territory Description --></label>
+        <name>Territory_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Territory --></label>
+        <name>Territory__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zone Description --></label>
+        <name>Zone_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Zone --></label>
+        <name>Zone__c</name>
+    </fields>
+    <layouts>
+        <layout>Coverage Team Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel><!-- Coverage Team Name --></nameFieldLabel>
+    <webLinks>
+        <label><!-- New_Coverage_Team_Button_New --></label>
+        <name>New_Coverage_Team_Button_New</name>
+    </webLinks>
+    <webLinks>
+        <label>MFSカバレッジチームに参加するための要求</label>
+        <name>Request_to_Join_MFS_Coverage_Team</name>
+    </webLinks>
+</CustomObjectTranslation>

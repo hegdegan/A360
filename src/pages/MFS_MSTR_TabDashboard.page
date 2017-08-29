@@ -1,0 +1,7 @@
+<apex:page controller="MFS_MSTR_DashboardController">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:iframe src="{!TabURL}" scrolling="true" id="theIframe"/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

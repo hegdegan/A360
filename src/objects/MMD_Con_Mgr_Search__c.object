@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>(MBI) - MMD - Consultant Manager and other Provider Search details</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>ASSETPLACE__c</fullName>
+        <externalId>false</externalId>
+        <label>Assets Placed ($000)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Firm_Name__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>$Organization.Country</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Firm Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ID__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Firm MMD ID</label>
+        <length>7</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MMD_Firm_Profile__c</fullName>
+        <externalId>false</externalId>
+        <label>MMD Firm Profile</label>
+        <referenceTo>MMCOMP__c</referenceTo>
+        <relationshipLabel>Manager Searches</relationshipLabel>
+        <relationshipName>MMD_Con_Manager_Searches</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>NOMGRS__c</fullName>
+        <externalId>false</externalId>
+        <label>Managers/Providers in Database</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OTHERTYPE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Other Description</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SEARCHES__c</fullName>
+        <externalId>false</externalId>
+        <label>Searches Last Year</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SRCHTYPE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Search Type Code</label>
+        <length>12</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Search_Type__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>CASE(  SRCHTYPE__c  ,
+&quot;DOMEQUITY&quot;,&quot;Domestic Equity Managers&quot;,
+&quot;LCAPGROWTH&quot;,&quot;Large Cap Growth Managers&quot;,
+&quot;LCAPVALUE&quot;,&quot;Large Cap Value Managers&quot;,
+&quot;MCAPGROW&quot;,&quot;Mid Cap Growth Managers&quot;,
+&quot;MCAPVALUE&quot;,&quot;Mid Cap Value Managers&quot;,
+&quot;SCAPGROW&quot;,&quot;Small Cap Growth Managers&quot;,
+&quot;SCAPVALUE&quot;,&quot;Small Cap Value Managers&quot;,
+&quot;DOMFIXED&quot;,&quot;Domestic Fixed Income Managers&quot;,
+&quot;DOMBALANCE&quot;,&quot;Domestic Balanced Managers&quot;,
+&quot;PRIVMGR&quot;,&quot;Private Equity Manager&quot;,
+&quot;REALESTATE&quot;,&quot;Real Estate Managers&quot;,
+&quot;DERIVATIVE&quot;,&quot;Derivative / Alternative Managers&quot;,
+&quot;GICSPON&quot;,&quot;GIC Sponsors&quot;,
+&quot;BANKINV&quot;,&quot;BIC Sponsors&quot;,
+&quot;INTLEQUITY&quot;,&quot;International Equity Managers&quot;,
+&quot;INTLFIXED&quot;,&quot;Int&apos;l Fixed Income Managers&quot;,
+&quot;EMGMKTMGR&quot;,&quot;Emerging Market Managers&quot;,
+&quot;MINWOMMGR&quot;,&quot;Minority/Women owned Managers&quot;,
+&quot;SOCIALCON&quot;,&quot;Socially Conscious Managers&quot;,
+&quot;TACTALLOC&quot;,&quot;Tactical Asset Alloc. Managers&quot;,
+&quot;ACTUARY&quot;,&quot;Actuaries&quot;,
+&quot;HEDGE&quot;,&quot;Hedge Fund Managers&quot;,
+&quot;BUNDLED&quot;,&quot;Bundled/Unbundled /Strategic Alliances&quot;,
+&quot;DCOPTIONS&quot;,&quot;Defined Contribution Options&quot;,
+&quot;DOMCUST&quot;,&quot;Domestic Custodians / Master Trustees&quot;,
+&quot;INTLBANKS&quot;,&quot;Int&apos;l Banks / Global Custodians&quot;,
+&quot;MUTUALF&quot;,&quot;Mutual Fund Managers&quot;,
+&quot;3RDADMIN&quot;,&quot;3rd Party Administrators&quot;,
+&quot;RECKEEP&quot;,&quot;Recordkeepers&quot;,
+&quot;OTHER&quot;,&quot;Other Managers&quot;, SRCHTYPE__c 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Search Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>MMD Con Manager Search</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Link</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>MMD Con Manager Searches</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

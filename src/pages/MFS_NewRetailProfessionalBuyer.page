@@ -1,0 +1,9 @@
+<!---
+Visualforce Page Name :  MFS_NewRetailProfessionalBuyer
+Version               :  1.0 
+Created Date          :  11 NOV 2016
+Function              :  VF Page for custom button to create a new Retail profession buyer opportunity
+--->
+<apex:page standardController="Opportunity"  extensions="MFS_NewRetailProfessionalBuyer" action="{!redirect}" recordSetvar="" >
+    
+</apex:page>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Team Member --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Team --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDM ID --></label>
+        <name>MDM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team Role --></label>
+        <name>Team_Role__c</name>
+        <picklistValues>
+            <masterLabel>Leader</masterLabel>
+            <translation><!-- Leader --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Member</masterLabel>
+            <translation><!-- Member --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scheduling Contact</masterLabel>
+            <translation><!-- Scheduling Contact --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Team --></label>
+        <name>Team__c</name>
+        <relationshipLabel><!-- Team Members --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Team Member Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel><!-- Name --></nameFieldLabel>
+    <quickActions>
+        <label><!-- New Team Member --></label>
+        <name>Create_new_team_action</name>
+    </quickActions>
+    <webLinks>
+        <label><!-- Add_Contact_to_Team --></label>
+        <name>Add_Contact_to_Team</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_Contact_to_Team_JS --></label>
+        <name>Add_Contact_to_Team_JS</name>
+    </webLinks>
+    <webLinks>
+        <label>新規チームの作成</label>
+        <name>Create_New_Team</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Onboarding Case Review</name>
+    <style>none</style>
+    <subject>{!$Label.OB_OwnerReview_ET_Subject}#{!Case.CaseNumber}</subject>
+    <textOnly>Hi {!Case.OwnerFullName},
+
+Please review the following onboarding case that links to . Currently, x out of x groups have approved.The due date for this onboarding case is {!Case.Due_Date__c} .
+
+Thank you!</textOnly>
+    <type>custom</type>
+</EmailTemplate>

@@ -1,0 +1,13 @@
+<!---
+Visualforce Page Name :  MFS_OpportunityAdditionalFlows
+Version               :  1.0 
+Created Date          :  39 JUN 2016
+Function              :  Clone opportunity button
+--->
+<apex:page standardController="Opportunity" extensions="MFS_OpportunityAdditionalFlows" action="{!redirect}">
+    <apex:pageMessages escape="false"></apex:pageMessages>  
+    <apex:pageMessage escape="false" severity="Error" rendered="{!isError}">{!$Label.OpportunityTeamError1}
+        <apex:outputLink value="/{!$CurrentPage.parameters.id}">{!$Label.OpportunityTeamError2}</apex:outputLink> {!$Label.OpportunityTeamError3}
+    </apex:pageMessage>
+
+</apex:page>

@@ -1,0 +1,28 @@
+<apex:page id="thePage" showHeader="false" standardController="Contact" >
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+            
+            <script type="text/javascript" runat="server" src="{!URLFOR($Resource.momentJS)}"></script>
+            <script type="text/javascript" runat="server" src="{!URLFOR($Resource.momentTZJS)}"></script>
+            
+            <script type="text/javascript">
+            var timeZ= '{!JSENCODE(Contact.Time_Zone__c)}' 
+            var int = self.setInterval("clock(timeZ)",1000);
+            
+            function clock(timeZ){
+                var currDate  = new Date();
+                dateStr   = moment.tz(currDate.getTime(), timeZ);  
+                date = moment(dateStr);         
+                document.getElementById("theTime").innerHTML = date.format('h:mm:ss A');
+            }
+            </script>
+        </head>
+        
+        <body>
+            <div id="theTime"></div>
+        </body>
+        
+        
+    </html>
+</apex:page>

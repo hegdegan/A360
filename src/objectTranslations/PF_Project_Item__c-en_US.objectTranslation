@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Project Item</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Project Items</value>
+    </caseValues>
+    <fields>
+        <label><!-- Answer --></label>
+        <name>PF_Answers__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned To --></label>
+        <name>PF_Assigned_To__c</name>
+        <relationshipLabel><!-- Project Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Closed Date --></label>
+        <name>PF_Closed_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Constraints --></label>
+        <name>PF_Constraints__c</name>
+    </fields>
+    <fields>
+        <label><!-- Decision Details --></label>
+        <name>PF_Decision_Details__c</name>
+    </fields>
+    <fields>
+        <label><!-- Decision Made --></label>
+        <name>PF_Decision_Made__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>PF_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Open/Identified Date --></label>
+        <name>PF_Identified_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Impact --></label>
+        <name>PF_Impact__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Implications --></label>
+        <name>PF_Implications__c</name>
+    </fields>
+    <fields>
+        <label><!-- Internal/External --></label>
+        <name>PF_Internal_External__c</name>
+        <picklistValues>
+            <masterLabel>External</masterLabel>
+            <translation><!-- External --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal</masterLabel>
+            <translation><!-- Internal --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Mitigation Plan --></label>
+        <name>PF_Mitigation_Plan__c</name>
+    </fields>
+    <fields>
+        <label><!-- Planned Actions --></label>
+        <name>PF_Planned_Actions__c</name>
+    </fields>
+    <fields>
+        <label><!-- Probability --></label>
+        <name>PF_Probability__c</name>
+        <picklistValues>
+            <masterLabel>Cancelled</masterLabel>
+            <translation><!-- Cancelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Realized</masterLabel>
+            <translation><!-- Realized --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Question --></label>
+        <name>PF_Question__c</name>
+    </fields>
+    <fields>
+        <label><!-- Release --></label>
+        <name>PF_Release__c</name>
+        <relationshipLabel><!-- Project Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sprint --></label>
+        <name>PF_Sprint__c</name>
+        <relationshipLabel><!-- Project Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PF_Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In Progress</masterLabel>
+            <translation><!-- In Progress --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open</masterLabel>
+            <translation><!-- Open --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Story --></label>
+        <name>PF_Story__c</name>
+        <relationshipLabel><!-- Project Items --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Summary --></label>
+        <name>PF_Summary__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Resolution Date --></label>
+        <name>PF_Target_Resolution_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>PF_Type__c</name>
+        <picklistValues>
+            <masterLabel>Assumption</masterLabel>
+            <translation><!-- Assumption --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Dependency</masterLabel>
+            <translation><!-- Dependency --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Issue</masterLabel>
+            <translation><!-- Issue --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Key Decision</masterLabel>
+            <translation><!-- Key Decision --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open Question</masterLabel>
+            <translation><!-- Open Question --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Risk</masterLabel>
+            <translation><!-- Risk --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Assumption and Dependencies Layout</layout>
+        <sections>
+            <label><!-- Assumption/Dependency Details --></label>
+            <section>Assumption/Dependency Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Key Dates --></label>
+            <section>Key Dates</section>
+        </sections>
+        <sections>
+            <label><!-- Related To --></label>
+            <section>Related To</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Decisions Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Decision Details --></label>
+            <section>Decision Details</section>
+        </sections>
+        <sections>
+            <label><!-- Key Dates --></label>
+            <section>Key Dates</section>
+        </sections>
+        <sections>
+            <label><!-- Related Items --></label>
+            <section>Related Items</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Q&amp;A Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Key Dates --></label>
+            <section>Key Dates</section>
+        </sections>
+        <sections>
+            <label><!-- Q&amp;A Details --></label>
+            <section>Q&amp;A Details</section>
+        </sections>
+        <sections>
+            <label><!-- Related Items --></label>
+            <section>Related Items</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Risks and Issues Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Key Dates --></label>
+            <section>Key Dates</section>
+        </sections>
+        <sections>
+            <label><!-- Related Items --></label>
+            <section>Related Items</section>
+        </sections>
+        <sections>
+            <label><!-- Risk/Issues Details --></label>
+            <section>Risk/Issues Details</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Assumption --></label>
+        <name>Assumption</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Key Decision --></label>
+        <name>Decision</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Dependency --></label>
+        <name>Dependency</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Issue --></label>
+        <name>Issue</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Open Question --></label>
+        <name>Open_Question</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Risk --></label>
+        <name>Risk</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

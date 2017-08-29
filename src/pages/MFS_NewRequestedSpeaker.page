@@ -1,0 +1,9 @@
+<!---
+Visualforce Page Name :  MFS_NewRequestedSpeaker
+Version               :  1.0 
+Created Date          :  22 SEP 2016
+Function              :  Custom button to create new Requested Speaker with prepopulated values
+--->
+<apex:page standardController="Event_Relation__c" recordSetvar="" extensions="MFS_NewRequestedSpeakerExt" action="{!redirect}" >
+    Id: {!$CurrentPage.parameters.id}
+</apex:page>

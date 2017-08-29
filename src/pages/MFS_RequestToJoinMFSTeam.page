@@ -1,0 +1,8 @@
+<!---
+Visualforce Page Name :  MFS_RequestToJoinMFSTeam
+Version               :  1.0 
+Created Date          :  11 AUG 2016
+Function              :  Used by "Request To Join MFS Team" button on Contact to open Case submit page
+--->
+<apex:page standardController="Coverage_Team__c" recordSetvar=""  extensions="MFS_RequestToJoinMFSTeam" action="{!redirect}">
+</apex:page>

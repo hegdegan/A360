@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <submitter>Manager</submitter>
+        <type>roleSubordinates</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Additional_Info_on_this_Opportunity__c</field>
+        <field>Does_Clinet_require_MFS_clause__c</field>
+        <field>Due_Date__c</field>
+        <field>Offering_Performance_based_Fee__c</field>
+        <field>Opportunity__c</field>
+        <field>Opportunity_Product__c</field>
+        <field>Submission_Date__c</field>
+        <field>Summarise_existing_relationship_with_MFS__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>true</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Level1_Approval</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>sbova@mfs.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Used to route initial request to Christoper Sullivan for review.</description>
+        <label>Pricing Team Queue</label>
+        <name>Pricing_Team_Queue</name>
+        <rejectionActions>
+            <action>
+                <name>Rejected</name>
+                <type>FieldUpdate</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>Fee_Approval_Request_Approved</name>
+                <type>Alert</type>
+            </action>
+            <action>
+                <name>Updated_Status_to_approve</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>sbova@mfs.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <description>Routes to group if request is inside Guidelines</description>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Approval_Request__c.Guidelines__c</field>
+                <operation>equals</operation>
+                <value>Inside Guidelines</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>Inside Guidelines</label>
+        <name>Inside_Guidelines</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+        <rejectionActions>
+            <action>
+                <name>Approval_status_Reject</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Fee_Approval_Request_Rejected</name>
+                <type>Alert</type>
+            </action>
+        </rejectionActions>
+    </approvalStep>
+    <description>Depending on the Amount and Discount %, either 1 or 2 approvers are required.</description>
+    <emailTemplate>unfiled$public/Fee_Approval_Request_Submitted</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <criteriaItems>
+            <field>Approval_Request__c.Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>Not Started,Pending</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalRecordLock>false</finalApprovalRecordLock>
+    <finalRejectionRecordLock>true</finalRejectionRecordLock>
+    <label>Fee Approval Request Combine</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

@@ -1,0 +1,8 @@
+<!---
+Visualforce Page Name :  MFS_BusinessAtRiskDetailRedirect
+Version               :  1.0 
+Created Date          :  16 AUG 2016
+Function              :  Redirect to BAR page(Inst/Retail) when View link is clicked
+--->
+<apex:page standardController="Business_at_Risk__c" extensions="MFS_BusinessAtRiskRedirectController" action="{!redirectDetail}">
+</apex:page>

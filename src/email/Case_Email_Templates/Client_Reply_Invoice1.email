@@ -1,0 +1,25 @@
+<html>
+<table>
+<tr><td>Client Name: </td><td>	{!Case.Account}</td>
+</tr>
+<tr>
+<td>Client Tier:</td><td>{!Case.Tier__c}</td>
+</tr>
+<tr>
+<td>Client domicile: </td><td>(Country from Org)</td>
+</tr>
+<tr>
+<td>Vehicle</td><td></td>
+</tr>
+<tr>
+<td>Name of Fund</td><td></td>
+</tr>
+<tr>
+<td>Requested Due Date</td><td>{!Case.Due_Date__c}</td>
+</tr>
+</table>
+<br/><br/>
+ 
+Thank you,<br/>
+{!User.FirstName} {!User.LastName}
+</html>

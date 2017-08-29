@@ -1,0 +1,9 @@
+<!---
+Visualforce Page Name :  MFS_NewFeeApprovalRequest
+Version               :  1.0 
+Created Date          :  31 AUG 2016
+Function              :  Fee approval page for products added to Opportunity
+--->
+<apex:page standardController="Approval_Request__c" recordSetvar=""  extensions="MFS_NewFeeApprovalRequestExtn" action="{!redirect}">
+   Id: {!$CurrentPage.parameters.id}
+</apex:page>

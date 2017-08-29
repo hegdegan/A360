@@ -1,0 +1,214 @@
+<!---
+Visualforce Page Name :  MFS_OnBoardingCaseApprovalPage
+Version               :  1.0 
+Created Date          :  31 AUG 2016
+Function              :  Case approval page for Onboarding once case is submitted for approval
+--->
+<apex:page standardController="Case" tabStyle="Case" extensions="MFS_OnBoardingCaseApprovalCtrl" standardStylesheets="false">
+    <apex:form >
+        <apex:pageBlock >
+                <apex:outputPanel rendered="{!if(caseRecord.Approval_Status__c!='Submitted',false,true )}" layout="block">
+                    <b>{!$Label.OnBoarding_Success_Message} <apex:commandLink value="here" action="{!goBack}"/> {!$Label.onBoarding_Go_Back}</b>
+                </apex:outputPanel>
+            </apex:pageBlock>
+        <apex:outputPanel layout="Block" rendered="{!if(AND(caseRecord.Approval_Status__c!='Submitted',$User.UIThemeDisplayed=='Theme3'),true,false )}">
+            
+            <apex:pageMessage summary="{!$Label.Validate_Information}" severity="info" strength="3" />        
+            <apex:pageBlock title="{!$Label.Approval_Information}">             
+                <apex:pageblocksection >
+                    <apex:outputField value="{!caseRecord.Number_of_PM_Approvals_Required__c}"/> 
+                    <apex:outputField value="{!caseRecord.Portfolio_Management_Approver1__c}"/>
+                    <apex:outputField value="{!caseRecord.Portfolio_Management_Approver2__c}"/>
+                    <apex:outputField value="{!caseRecord.Portfolio_Management_Approver3__c}"/>
+                    <apex:outputField value="{!caseRecord.Client_Service_Approver__c}"/>
+                    <apex:outputField value="{!caseRecord.Corporate_Finance_Billing_Approver__c}"/>
+                    <apex:outputField value="{!caseRecord.Compliance_AML_KYC_Approver__c}"/>
+                    <apex:outputField value="{!caseRecord.Legal_Approver__c}"/>
+                    <apex:outputField value="{!caseRecord.Compliance_Code_of_Ethics_Group__c}"/>  
+                    <apex:outputField value="{!caseRecord.Investment_Compliance_Group__c}"/>         
+                    <!--   <apex:outputField value="{!caseRecord.GIS_Risk_Group__c}"/>     Commented as per the updates on 08/11 -->     
+                    <apex:outputField value="{!caseRecord.GIS_Transition_Management_Group__c}"/>         
+                    <apex:outputField value="{!caseRecord.Insurance_Group__c}"/>         
+                    <apex:outputField value="{!caseRecord.MFSI_Management_Group__c}"/>         
+                    <apex:outputField value="{!caseRecord.Performance_Information_Management_Group__c}"/>         
+                    <!-- <apex:outputField value="{!caseRecord.Portfolio_Compliance_Back_End_Group__c}"/>        Commented as per the updates on 08/11 -->
+                    <apex:outputField value="{!caseRecord.Reporting__c}"/>         
+                    <apex:outputField value="{!caseRecord.Trading_Equity_Group__c}"/>         
+                    <apex:outputField value="{!caseRecord.Trading_Fixed_Income_Group__c}"/>         
+                </apex:pageblocksection>
+                <apex:pageBlockButtons location="bottom">
+                    <apex:commandButton value="{!$Label.Submit_Button}" action="{!submitForApproval}"  />
+                    <apex:commandButton value="{!$Label.Cancel_Button}" action="{!goBack}"  />
+                </apex:pageBlockButtons>
+            </apex:pageBlock>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!IF(AND(caseRecord.Approval_Status__c!='Submitted',OR($User.UIThemeDisplayed=='Theme4d',$User.UIThemeDisplayed=='Theme4t')),true,false)}">
+            <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <head>               
+                    <apex:stylesheet value="{!URLFOR($Resource.MFS_UI_Assets, '/assets/styles/salesforce-lightning-design-system-ltng.min.css')}" />
+                    <style> 
+                        .MFS .slds-section__title{color:#16325c;font-weight:700;}
+                    </style>
+                </head>
+                <body>            
+                    <div class="slds MFS">
+                        <div class="slds-page-header" role="banner">
+                            <div class="slds-grid">
+                                <div class="slds-col slds-has-flexi-truncate">
+                                    <div class="slds-media slds-no-space slds-grow">
+                                        <div class="slds-media__figure">
+                                            <span class="slds-icon_container slds-icon-standard-case">
+                                                <svg aria-hidden="true" class="slds-icon slds-icon--medium">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <p class="slds-text-title--caps slds-line-height--reset">Onboarding Case</p>
+                                            <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">Approval Information</h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="slds-container--fluid">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--medium">
+                                    <div class="slds-p-around--small slds-theme--info" style="border-radius:4px;">
+                                        
+                                        <div class="slds-notify__content slds-grid">
+                                            <svg aria-hidden="true" class="slds-icon slds-icon--small slds-m-right--small slds-col slds-no-flex">
+                                                <use xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#warning"></use>
+                                            </svg>
+                                            <div class="slds-col slds-align-middle">
+                                                <h2 class="slds-text-heading--small">{!$Label.Validate_Information}</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--medium">
+                                    <h3 class="slds-section__title slds-text-title--caps">{!$Label.Approval_Information}</h3>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">{!$Label.OB_Number_of_PM_Approvals_Required} </label>                                                                    
+                                        <div>
+                                            <apex:outputField value="{!caseRecord.Number_of_PM_Approvals_Required__c}"  styleClass="slds-form-element__control"/>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">{!$Label.OB_Portfolio_Management_Approver}1</label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Portfolio_Management_Approver1__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_Portfolio_Management_Approver}2</label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Portfolio_Management_Approver2__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">{!$Label.OB_Portfolio_Management_Approver}3 </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Portfolio_Management_Approver3__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_Client_Service_Group} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Client_Service_Approver__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">{!$Label.OB_Corporate_Finance_Billing_Group} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Corporate_Finance_Billing_Approver__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_Compliance_AML_KYC_Group} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Compliance_AML_KYC_Approver__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_Legal_Group} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Legal_Approver__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_Compliance_Code_of_Ethics_Group} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Compliance_Code_of_Ethics_Group__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_GIS_Risk_Group} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.GIS_Risk_Group__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_GIS_Transition_Management_Group} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.GIS_Transition_Management_Group__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">{!$Label.OB_Insurance_Group} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Insurance_Group__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_MFSI_Management_Group} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.MFSI_Management_Group__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium"> 
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" >{!$Label.OB_Performance_Information_Management_Group} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Performance_Information_Management_Group__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element">                 <label class="slds-form-element__label">{!$Label.OB_Portfolio_Compliance_Back_End_Group} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Portfolio_Compliance_Back_End_Group__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element"> <label class="slds-form-element__label" >{!$Label.OB_Reporting} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Reporting__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">  
+                                    <div class="slds-form-element"><label class="slds-form-element__label" >{!$Label.OB_Trading_Equity_Group} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Trading_Equity_Group__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium"> 
+                                    <div class="slds-form-element"> 
+                                        <label class="slds-form-element__label" >{!$Label.OB_Trading_Fixed_Income_Group} </label>                                                                    
+                                        <div><apex:outputField value="{!caseRecord.Trading_Fixed_Income_Group__c}"   styleClass="slds-form-element__control"/></div>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="slds-grid slds-m-top--medium slds-m-bottom--medium"> 
+                                <div class="slds-p-horizontal--small slds-size--12-of-12 slds-text-align--center">
+                                    <apex:commandButton value="{!$Label.Submit_Button}" action="{!submitForApproval}"  styleclass="slds-button slds-button--neutral"/>
+                                    <apex:commandButton value="{!$Label.Cancel_Button}" action="{!goBack}"  styleclass="slds-button slds-button--neutral"/> 
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                </body>
+            </html>
+        </apex:outputPanel>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,105 @@
+<apex:component controller="MFS_ETDataRequest" access="global">
+    <apex:attribute name="recId" description="case Id" type="Id" assignTo="{!caseId}"/>
+    <html>
+        {!$Label.ET_Custom_Data_Text1}<br/>
+        {!$Label.ET_Custom_Data_Text2}
+        
+        <table border="1">
+            <tr>
+                <td> {!$Label.ET_sr_Distribution_Channel}</td><td><apex:outputPanel rendered="{!orgDetails.Distribution_Level__c!=null}">{!orgDetails.Distribution_Level__c}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!orgDetails.Distribution_Level__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Client_Platform_Vendor_Name}</td><td><apex:outputPanel rendered="{!orgDetails.Name!=null}">{!orgDetails.Name}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!orgDetails.Name==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Consultant_if_applicable}</td><td><apex:outputPanel rendered="{!Case.Service_Provider_Org_name__r.Name!=null}">{!Case.Service_Provider_Org_name__r.Name}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!Case.Service_Provider_Org_name__r.Name==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Client_Tier} </td><td><apex:outputPanel rendered="{!OR(orgDetails.Institutional_Tier__c!=null,orgDetails.Non_US_Retail_Tier__c!=null,orgDetails.US_Retail_Tier__c!=null)}">
+                {!orgDetails.Institutional_Tier__c}{!orgDetails.Non_US_Retail_Tier__c}{!orgDetails.US_Retail_Tier__c}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!AND(orgDetails.Institutional_Tier__c==null,orgDetails.Non_US_Retail_Tier__c==null,orgDetails.US_Retail_Tier__c==null)}">TBD</apex:outputPanel></td>
+            </tr> 
+            <tr>
+                <td>{!$Label.ET_sr_Portfolio_Code_s}</td><td><apex:outputPanel rendered="{!portfolioCode!=null}">{!portfolioCode}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!portfolioCode==null}">TBD</apex:outputPanel></td>
+            </tr>   
+            <tr>
+                <td>{!$Label.ET_sr_Vehicle_Type} </td><td><apex:outputPanel rendered="{!vehicle!=null}">{!vehicle}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!vehicle==null}">TBD</apex:outputPanel></td>
+            </tr> 
+            <tr>
+                <td>{!$Label.ET_sr_Strategy} </td><td><apex:outputPanel rendered="{!portfolios!=null}">{!portfolios}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!portfolios==null}">TBD</apex:outputPanel></td>
+            </tr> 
+            
+            <tr>
+                <td>{!$Label.ET_sr_Share_Class_if_applicable} </td><td><apex:outputPanel rendered="{!shareClass!=null}">{!shareClass}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!shareClass==null}">TBD</apex:outputPanel></td>
+            </tr> <tr>
+            <td>{!$Label.ET_sr_Distribution_Method_if_specified_by_the_client}*</td><td>TBD</td>
+            </tr> <tr>
+            <td>{!$Label.ET_sr_Format_Type_if_specified_by_the_client}*</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Data_Type}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Time_Period_s}</td><td>TBD</td>
+            </tr> 
+            <tr>
+                <td>{!$Label.ET_sr_As_of_Date} </td><td>TBD</td>
+            </tr>       
+            <tr>
+                <td>{!$Label.ET_sr_Contractual_Requirement}</td><td>TBD</td>
+            </tr> 
+            <tr>
+                <td>{!$Label.ET_sr_Recurring_Request}</td><td><apex:outputPanel rendered="{!Case.Start_Date__c!=null}">Yes</apex:outputPanel> 
+                <apex:outputPanel rendered="{!Case.Start_Date__c==null}">No</apex:outputPanel></td>
+            </tr> 
+            <tr>
+                <td>{!$Label.ET_sr_Reason_for_the_Request_please_be_specific}</td><td><apex:outputPanel rendered="{!Case.Purpose__c!=null}">{!Case.Purpose__c}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!Case.Purpose__c==null}">TBD</apex:outputPanel></td>
+            </tr> 
+            <tr>
+                <td>{!$Label.ET_sr_Requestor_on_behalf_of}</td><td><apex:outputPanel rendered="{!Case.Service_Provider_Org_Name__r.Name!=null}">{!Case.Service_Provider_Org_Name__r.Name}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!Case.Service_Provider_Org_Name__r.Name==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Client_Service_Manager}</td><td>
+                <apex:outputPanel rendered="{!csm!=null}">
+                {!csm}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!csm==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_Relationship_Manager}</td><td>
+                <apex:outputPanel rendered="{!relationshipManager!=null}">
+                {!relationshipManager}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!relationshipManager==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Due_Date}</td><td><apex:outputtext value="{0,date,MMMM d,' ' YYYY}" rendered="{!Case.Due_Date__c!=null}">
+                <apex:param value="{!Case.Due_Date__c}"/>
+                </apex:outputtext>
+                <apex:outputPanel rendered="{!Case.Due_Date__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Template_Provided_if_provided_by_client}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Additional_details_not_outlined_above}</td><td><apex:outputPanel rendered="{!Case.Additional_Details__c!=null}">{!Case.Additional_Details__c}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!Case.Additional_Details__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+        </table>
+        <br/><br/>
+    </html>
+    {!$Label.ET_Custom_Data_Text3}
+    <br/><br/>
+    {!$Label.ET_Custom_Data_Text4}<br/>
+    <br/><br/>
+    {!$Label.ET_Thankyou}
+    <br/>
+    {!$Label.ET_MFS_Team}
+</apex:component>

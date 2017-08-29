@@ -1,0 +1,1364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Object to capture the product and Onboarding  records which requires approval</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AML_Lawyer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>AML Lawyer</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Approval_Requests5</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Additional_Info_on_this_Opportunity__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Additional Info on this Opportunity</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Amount__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Amount__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Approval Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Approval_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Approval Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Started</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pending</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Approver_Group_User__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Approver Group/User</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Approver_Group__c</fullName>
+        <externalId>false</externalId>
+        <label>Approver Group</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Client Service Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Compliance - AML/KYC Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Compliance - Code of Ethics Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corporate Finance - Billing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Corporate Finance - Billing Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GIS - Risk Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GIS - Transition Management Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Insurance Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Investment Compliance Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Legal Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFSI - Management Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Non-US Questionnaire Approver Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Performance / Information Management Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Portfolio Compliance (Back End) Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Portfolio Management Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Strategic Alliance Department Heads Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trading - Equity Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trading - Fixed Income Group</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Business_at_Risk__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Business At-Risk</label>
+        <referenceTo>Business_at_Risk__c</referenceTo>
+        <relationshipName>Fee_Approval_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>CFO_Acknowledgement__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>CFO Acknowledgement</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Approval_Requests6</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Client_Service_Approver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Client Service Approver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Client_Service_Approver_Req</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Co_Heads_of_Global_Distribution__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Co-Heads of Global Distribution</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Approval_Requests7</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Compliance_AML_KYC_Approver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Compliance - AML/KYC Approver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Compliance_AML_KYC_app_req</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Compliance_AML_KYC__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Compliance - AML/KYC</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Approval_Requests8</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Corp_Finance_Billing_Group__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Corp Finance - Billing Group</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Approval_Requests9</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Corporate_Finance_Billing_Approver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Corporate Finance - Billing Approver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Corporate_Finance_Billing_Approver_Req</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Discount__c</fullName>
+        <externalId>false</externalId>
+        <label>Discount %</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Distribution_Lawyer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Distribution Lawyer</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Approval_Requests4</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Does_Clinet_require_MFS_clause__c</fullName>
+        <externalId>false</externalId>
+        <label>Does Client require MFN clause?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Due_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Due Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Effective_Fee__c</fullName>
+        <externalId>false</externalId>
+        <label>Effective Fee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FATCA_Lawyer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>FATCA Lawyer</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Approval_Requests2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Fee_Schedule_Assessment__c</fullName>
+        <externalId>false</externalId>
+        <label>Fee Schedule Assessment</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Fee_Structure_Currency__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>TEXT( CurrencyIsoCode )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Fee Structure Currency</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fee_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Fee Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Management Fee Rebate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Management Fee</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Marketing Support</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Program Support</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Final_Acknowledgement__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Final Acknowledgement</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Approval_Requests3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Funds_Lawyer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Funds Lawyer</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Approval_Requests1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>GDS_Acknowledgement__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>GDS Acknowledgement</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Approval_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>General_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>General Comments</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Guidelines__c</fullName>
+        <externalId>false</externalId>
+        <label>Guidelines</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Inside Guidelines</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Outside Guidelines</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>If_asset_transer_enter_Fee_Structure__c</fullName>
+        <externalId>false</externalId>
+        <label>If asset transer, enter Fee Structure</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Custom</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Initiate_URF_Case__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Initiate URF Case</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Last_Approver_Id__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Last Approver Id</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Legal_Approver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Legal Approver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Legal_Approver_Req</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Next_Approver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Next Approver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Fee_Approval_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Number_of_Follow_ups_Sent__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Number of Follow ups Sent</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_PM_Approvals_Required__c</fullName>
+        <externalId>false</externalId>
+        <label>Number of PM Approvals Required</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Offering_Performance_based_Fee__c</fullName>
+        <externalId>false</externalId>
+        <label>Offering Performance based Fee?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Onboarding_Case__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Onboarding Case</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipLabel>Onboarding Approval Requests</relationshipLabel>
+        <relationshipName>Approval_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Opportuinty_ProductId__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Opportuinty ProductId</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Product_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>Opportunity Product Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Product__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Strategy Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Approval Requests</relationshipLabel>
+        <relationshipName>Fee_Approval_Requests</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Portfolio_Management_Approver1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Portfolio Management Approver 1</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Portfolio_Management_Approver</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Portfolio_Management_Approver2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Portfolio Management Approver 2</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>PortfolioManagementApprover_2</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Portfolio_Management_Approver3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Portfolio Management Approver 3</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>PortfolioManagementApprover_3</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Portfolio_Name__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Portfolio Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Style__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Product Style</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submission_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>TODAY()</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Submission Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Summarise_existing_relationship_with_MFS__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Summarize existing relationship with MFS</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>RecordType.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Approval Request</label>
+    <listViews>
+        <fullName>AML_Lawyer_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>AML Lawyer</label>
+        <queue>AML_Lawyer</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Opportunity_Product__c</columns>
+        <columns>Submission_Date__c</columns>
+        <columns>Due_Date__c</columns>
+        <columns>Approval_Status__c</columns>
+        <columns>Amount__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Client_Service_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Client Service Queue</label>
+        <queue>Client_Service_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Compliance_AML_KYC_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Compliance - AML/KYC Queue</label>
+        <queue>Compliance_AML_KYC_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Compliance_Code_of_Ethics_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Compliance - Code of Ethics Queue</label>
+        <queue>Compliance_Code_of_Ethics_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Corporate_Finance_Billing_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Corporate Finance - Billing Queue</label>
+        <queue>Corporate_Finance_Billing_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Distribution_Lawyer_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Distribution Lawyer</label>
+        <queue>Distribution_Lawyer</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>FATCA_Lawyer_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>FATCA Lawyer</label>
+        <queue>FATCA_Lawyer</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Final_Approver_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Final Approver</label>
+        <queue>Final_Approver</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Funds_Lawyer_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Funds Lawyer</label>
+        <queue>Funds_Lawyer</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>GIS_Risk_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>GIS - Risk Queue</label>
+        <queue>GIS_Risk_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>GIS_Transition_Management_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>GIS - Transition Management Queue</label>
+        <queue>GIS_Transition_Management_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Insurance_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Insurance Queue</label>
+        <queue>Insurance_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Investment_Compliance_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Investment Compliance Queue</label>
+        <queue>Investment_Compliance_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Legal_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Legal Queue</label>
+        <queue>Legal_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>MFSI_Management_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>MFSI - Management Queue</label>
+        <queue>MFSI_Management_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Non_US_Questionnaire_Approval_Group_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Non-US Questionnaire Approval Group</label>
+        <queue>Non_US_Questionnaire_Approval_Group</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Pending_Request</fullName>
+        <columns>NAME</columns>
+        <columns>Opportunity__c</columns>
+        <columns>Opportunity_Product__c</columns>
+        <columns>Submission_Date__c</columns>
+        <columns>Due_Date__c</columns>
+        <columns>Approval_Status__c</columns>
+        <columns>Amount__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>Pending</value>
+        </filters>
+        <label>Pending Request</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Performance_Information_Management_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Performance/Information Management Queue</label>
+        <queue>Performance_Information_Management_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Portfolio_Compliance_Back_End_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Portfolio Compliance (Back End) Queue</label>
+        <queue>Portfolio_Compliance_Back_End_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Portfolio_Management_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Portfolio Management Queue</label>
+        <queue>Portfolio_Management_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Reporting_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Reporting Queue</label>
+        <queue>Reporting_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Retail_Onboarding_Group_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Retail Onboarding Group</label>
+        <queue>Retail_Onboarding_Group</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Strategic_Alliance_Department_Heads_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Strategic Alliance Department Heads</label>
+        <queue>Strategic_Alliance_Department_Heads</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Trading_Equity_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Trading - Equity Queue</label>
+        <queue>Trading_Equity_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Trading_Fixed_Income_Queue_Approval_Request</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Trading - Fixed Income Queue</label>
+        <queue>Trading_Fixed_Income_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <displayFormat>Approval Request - {000000}</displayFormat>
+        <label>Approval Request Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Approval Requests</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Fee_Approval_Request</fullName>
+        <active>true</active>
+        <description>Record type for fee approval request</description>
+        <label>Fee Approval Request</label>
+        <picklistValues>
+            <picklist>Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Started</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Approver_Group__c</picklist>
+            <values>
+                <fullName>Compliance - Code of Ethics Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GIS - Risk Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GIS - Transition Management Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insurance Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFSI - Management Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance %2F Information Management Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio Compliance %28Back End%29 Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trading - Equity Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trading - Fixed Income Group</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Does_Clinet_require_MFS_clause__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Fee_Type__c</picklist>
+            <values>
+                <fullName>Management Fee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Management Fee Rebate</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Guidelines__c</picklist>
+            <values>
+                <fullName>Inside Guidelines</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outside Guidelines</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>If_asset_transer_enter_Fee_Structure__c</picklist>
+            <values>
+                <fullName>Custom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Offering_Performance_based_Fee__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Onboarding_Approval_Request</fullName>
+        <active>true</active>
+        <description>Approval request for onboarding case</description>
+        <label>Onboarding Approval Request</label>
+        <picklistValues>
+            <picklist>Approval_Status__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Not Started</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rejected</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Approver_Group__c</picklist>
+            <values>
+                <fullName>Client Service Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Compliance - AML%2FKYC Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Compliance - Code of Ethics Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Corporate Finance - Billing Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GIS - Risk Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>GIS - Transition Management Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insurance Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Investment Compliance Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Legal Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFSI - Management Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-US Questionnaire Approver Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Performance %2F Information Management Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio Compliance %28Back End%29 Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Portfolio Management Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Reporting</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Strategic Alliance Department Heads Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trading - Equity Group</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trading - Fixed Income Group</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Does_Clinet_require_MFS_clause__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Fee_Type__c</picklist>
+            <values>
+                <fullName>Management Fee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Management Fee Rebate</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Guidelines__c</picklist>
+            <values>
+                <fullName>Inside Guidelines</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Outside Guidelines</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>If_asset_transer_enter_Fee_Structure__c</picklist>
+            <values>
+                <fullName>Custom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Offering_Performance_based_Fee__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Opportunity__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Opportunity_Product__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Submission_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Due_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Approval_Status__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Opportunity__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Due_Date__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Portfolio_Name__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CREATEDBY_USER</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Approval_Status__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Submission_Date__c</lookupDialogsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>New_Fee_Approval_Request</fullName>
+        <availability>online</availability>
+        <description>This is used in Business At Risk related list</description>
+        <displayType>massActionButton</displayType>
+        <linkType>page</linkType>
+        <masterLabel>New Fee Approval Request</masterLabel>
+        <openType>replace</openType>
+        <page>MFS_NewFeeApprovalRequest</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
+    <webLinks>
+        <fullName>Send_Email_Reminder</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Send Email Reminder</masterLabel>
+        <openType>replace</openType>
+        <page>MFS_OnBoardingSendEmailPage</page>
+        <protected>false</protected>
+    </webLinks>
+</CustomObject>

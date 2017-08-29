@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="{!$Label.Ad_Hoc_Data_Request}" recipientType="Contact" relatedToType="Case">
+<messaging:HtmlEmailBody >
+<c:MFS_Ad_Hoc_Data_Request recId="{!relatedTo.Id}"></c:MFS_Ad_Hoc_Data_Request>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <submitter>Consultant_Relations_LS</submitter>
+        <type>roleSubordinates</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Date_Requested__c</field>
+        <field>New_Rating_Requested__c</field>
+        <field>New_MFS_Rating_Requested__c</field>
+        <field>Rating_Change_Reason__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>EMEA_Rating_Change_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>Sales LS,Sales</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>User.Country_3_Work__c</field>
+                <operation>equals</operation>
+                <value>GBR,PRT,DEU,ESP,CHE,FRA,ITA,NLD</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>EMEA Approval Request</label>
+        <name>EMEA_Approval_Request</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>isApprovedUpdte</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Rating_Change_Approved</name>
+                <type>Alert</type>
+            </action>
+            <action>
+                <name>UpdatedApprovalDate</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>North_America_Rating_Change_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>Sales LS,Sales</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>North America Approval Request</label>
+        <name>North_America_Approval_Request</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>isApprovedUpdte</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Rating_Change_Approved</name>
+                <type>Alert</type>
+            </action>
+            <action>
+                <name>UpdatedApprovalDate</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Asia_ex_Japan_Rating_Change_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.Country_3_Work__c</field>
+                <operation>equals</operation>
+                <value>BHR,HKG,IND,PHL,SGP,TWN</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Asia-ex Japan Approval</label>
+        <name>Asia_ex_Japan_Approval</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <approvalActions>
+            <action>
+                <name>isApprovedUpdte</name>
+                <type>FieldUpdate</type>
+            </action>
+            <action>
+                <name>Rating_Change_Approved</name>
+                <type>Alert</type>
+            </action>
+            <action>
+                <name>UpdatedApprovalDate</name>
+                <type>FieldUpdate</type>
+            </action>
+        </approvalActions>
+        <assignedApprover>
+            <approver>
+                <name>Japan_Rating_Change_Approvers</name>
+                <type>queue</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.UserRole</field>
+                <operation>equals</operation>
+                <value>Japan LS,Japan</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>Japan Approval Process</label>
+        <name>Japan_Approval_Process</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <emailTemplate>unfiled$public/RatingUpgrade_Downgrade_Approval_Request</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <formula>AND(!ISBLANK(TEXT(New_MFS_Rating_Requested__c)), OR(
+$UserRole.DeveloperName ==&apos;Sales_LS&apos;,
+$UserRole.DeveloperName ==&apos;Sales&apos;,
+$UserRole.DeveloperName ==&apos;Japan_LS&apos;,
+$UserRole.DeveloperName ==&apos;Japan&apos;,
+$User.Country_3_Work__c = &apos;BHR&apos;, 
+$User.Country_3_Work__c = &apos;HKG&apos;, 
+$User.Country_3_Work__c = &apos;IND&apos;, 
+$User.Country_3_Work__c = &apos;PHL&apos;, 
+$User.Country_3_Work__c = &apos;SGP&apos;, 
+$User.Country_3_Work__c = &apos;TWN&apos; 
+))</formula>
+    </entryCriteria>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Rating_Change_Rejected</name>
+            <type>Alert</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>Consultant Rating Change Approval</label>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

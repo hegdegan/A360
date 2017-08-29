@@ -1,0 +1,5 @@
+<apex:page controller="MFS_RedirectDetailRequest" action="{!redirectContact}">
+    <apex:form >
+        
+    </apex:form>
+</apex:page>

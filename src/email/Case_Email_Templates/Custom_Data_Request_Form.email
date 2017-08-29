@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Custom Data Request Form" recipientType="User" relatedToType="Case">
+<messaging:htmlEmailBody >
+<c:MFS_Custom_Data_Request_Form recId="{!relatedTo.Id}"/>
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

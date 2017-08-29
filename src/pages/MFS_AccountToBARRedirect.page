@@ -1,0 +1,9 @@
+<!---
+Visualforce Page Name :  MFS_AccountToBARRedirect
+Version               :  1.0 
+Created Date          :  15 APR 2016
+Function              :  Redirects to BAR create page(Inst/Retail) depending on Organization record type
+--->
+<apex:page standardController="Account" extensions="MFS_AccountToBARRedirectController" action="{!redirect}" >
+    <apex:pageMessages ></apex:pageMessages>
+</apex:page>

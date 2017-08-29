@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Functionality__c.Stories__r$Name</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Stories__r$PF_Title__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Stories__r$PF_Sprint__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Stories__r$PF_Description__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c$Name</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>RTM Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Functionality_with_Requirement__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Functionality__c.Stories__r$PF_Sprint__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Functionality__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

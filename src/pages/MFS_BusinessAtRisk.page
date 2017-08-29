@@ -1,0 +1,638 @@
+<!---
+Visualforce Page Name :  MFS_BusinessAtRisk 
+Version               :  1.0 
+Created Date          :  17 JUL 2016
+Function              :  Business at Risk page for Institutional
+--->
+<apex:page standardController="Business_at_Risk__c" tabStyle="Business_at_Risk__c" extensions="MFS_BusinessAtRiskController" title="{!$ObjectType.Business_at_Risk__c.Label}" docType="html-5.0">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+        <apex:includeScript value="/support/console/30.0/integration.js"/>
+        <apex:includeScript value="{!URLFOR($Resource.JqueryMin, 'jqueryUI/jquery-1.11.1.min.js')}" />
+        <apex:includeScript value="{!URLFOR($Resource.moment,'/moment.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-all.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-datepicker.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-modal.min.js')}"/>
+        <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-pill.min.js')}"/>
+        
+        <script type="text/javascript">
+        var assetsLocation = "{!URLFOR($Resource.SLDSv202,'/assets/icons/utility-sprite/svg/symbols.svg')}";
+        //Set the tab title in console
+        function testSetTabTitle() {
+            sforce.console.setTabTitle('{!$Label.BAR_New} {!$ObjectType.Business_at_Risk__c.Label}');
+        }
+        var pageLoad = window.onload;
+        window.onload = function() {
+            if (pageLoad) {
+                pageLoad();
+            }
+            testSetTabTitle();
+        }
+        
+        j$=jQuery.noConflict();
+        var restrictNumbers = function () {
+            j$("[id*='numbersOnly']").keypress(function (e) {
+                //if the letter is not digit or if it is greater than 100-- don't type anything
+                var a= String.fromCharCode(e.which);
+                var b=this.value+a;
+                if (isNaN(a) || parseInt(b)>100) {
+                    return false;
+                }
+                
+            });
+        };
+        //set the cursor position after rerendering the table
+        j$.fn.setCursorPosition = function (pos) {
+            this.each(function (index, elem) {
+                if (elem.setSelectionRange) {
+                    elem.setSelectionRange(pos, pos);
+                } else if (elem.createTextRange) {
+                    var range = elem.createTextRange();
+                    range.collapse(true);
+                    range.moveEnd('character', pos);
+                    range.moveStart('character', pos);
+                    range.select();
+                }
+            });
+            return this;
+        };
+        var elementFocus = null;
+        var textValue = null;
+        function retainFocus(){
+            j$(document.getElementById(elementFocus.name)).focus().setCursorPosition(textValue.length+1);
+        }
+        //function to expand and collapse the table rows
+        function expandPortfolio(value, planId, icon)
+        {
+            if(icon=='plus')
+            {
+                j$("[id$='"+planId+"']").val('true');
+                renderPortf(planId, icon);
+                j$("[id$='minusIcon']").show();
+                j$("[id$='plusIcon']").hide();
+            }
+            if(icon=='minus')
+            {
+                j$("[id$='"+planId+"']").val('false');
+                renderPortf(planId, icon);
+                j$("[id$='minusIcon']").hide();
+                j$("[id$='plusIcon']").show();
+            }
+        }
+        //function to toggle plus and minus icons
+        function toggleIcon(Icon)
+        {
+            if(icon=='minus')
+            {
+                j$("[id$='minusIcon']").hide();
+                j$("[id$='plusIcon']").show();
+            }
+            if(icon=='plus')
+            {
+                j$("[id$='minusIcon']").show();
+                j$("[id$='plusIcon']").hide();
+            }
+        }
+        
+        //lookup field
+        j$(document).ready(function(){  
+            //SLDS Lookup
+            j$('#lookup').val('{!JSENCODE(orgName)}');
+            j$('#lookup').keyup(function(e){                                  
+                j$('#results').css("display","block");
+                j$('#lookup').attr('aria-expanded','true'); 
+                j$('#keyword').html(j$('#lookup').val());
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.MFS_BusinessAtRiskController.queryAccounts}',
+                    j$('#lookup').val(),                                                 
+                    function(result, event){
+                        if (event.status) {
+                            j$('#ui_results').empty();
+                            populateLookup(result);
+                        } else if (event.type === 'exception') {
+                            j$('#lookup') = 'ERROR: ' + event.message;   
+                        } else {
+                            j$('#lookup') = 'ERROR: ' + event.message;
+                        }
+                    }, 
+                    {escape: true}
+                );            
+            });
+            function populateLookup(result){
+                if(result){                        
+                    j$( result ).each(function() {                        
+                        j$('#ui_results').append('<li class="slds-lookup__item">' + 
+                                                 '<a id="' + this.Id + '" href="javascript:void(0)" role="option">' + 
+                                                 '<svg aria-hidden="true" class="slds-icon slds-icon-standard-account slds-icon--small">' + 
+                                                 '<use xlink:href="{!URLFOR ($Resource.SLDSv202, 'assets/icons/utility-sprite/svg/symbols.svg#user')}"></use>' + 
+                                                 '</svg>' + this.Name+ '</a>' + 
+                                                 '</li>');
+                    });
+                    
+                    j$('ul.slds-lookup__list a').click(function(e){                                  
+                        j$('#lookup').val(j$(this)[0].innerText);
+                        j$('#lookup').attr('aria-activedescendant',j$(this)[0].id);
+                        j$('#lookup').attr('aria-expanded','false');
+                        j$('#results').css("display","none");
+                        j$("[id$='orgHidden']").val(j$(this)[0].id);
+                        fetchRelatedLists();
+                    }); 
+                }
+            }
+        });
+        
+        j$(document).ready(function() {
+            restrictNumbers();
+            //SLDS Datepicker construction
+            j$.aljsInit({
+                assetsLocation: "/resource/SLDSv202"
+            });
+            j$('#date').datepicker({
+                format: 'MM/DD/YYYY',
+                initDate: moment(),
+                onChange: function(datepicker) {
+                    j$("[id$='relDate']").val(j$('#date').val());
+                }
+            });
+            
+            j$('#date1').datepicker({
+                format: 'MM/DD/YYYY',
+                initDate: moment(),
+                onChange: function(datepicker) {
+                    j$("[id$='expLossDate']").val(j$('#date1').val());                
+                }
+            });
+            
+        });
+        function openNewTab(productid,notename) {
+            var urlString = '/'+productid;
+            if(sforce.console.isInConsole())
+            {
+                sforce.console.openPrimaryTab(null, urlString, true, notename, true, notename);
+            }
+            else
+            {
+                window.open(urlString, '_blank');
+            }
+        }
+        </script>
+       <apex:form >
+            <!--Classic View STARTS-->
+            <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+                <apex:stylesheet value="{!URLFOR($Resource.BARv10, '/styles/Business_At_Risk.css')}" />
+                <style>
+                	.slds-hide{display:none !important;}
+                </style>
+                <apex:sectionHeader title="{!$ObjectType.Business_at_Risk__c.Label}"/>
+                <apex:pageBlock >
+                    <apex:pageBlockSection title="{!$Label.BAR_Plans_and_Portfolios}" collapsible="false" columns="1">
+                        <apex:outputText value="" rendered="{!planLst.size==0}">{!$Label.BAR_Disp_Message1}</apex:outputText>
+                    </apex:pageBlockSection>
+                </apex:pageBlock>
+                <apex:actionFunction name="copyToChildRows"  rerender="panel,message"/>
+                
+                <apex:outputPanel id="panel" rendered="{!planLst.size!=0}">
+                    <table class="outer-table-inst" scope="expandable-table">
+                        <thead>
+                            <tr class="table-header">
+                                <th width="25%">{!$Label.BAR_Plan_Portfolio_Name}</th>
+                                <th width="25%">{!$Label.BAR_Strategy}</th>
+                                <th width="10%">{!$Label.BAR_AUM_in} {!userCurrency}<br/><h6 class="small-font-header">    
+                                    ({!$Label.BAR_User_Currency})</h6>
+                                </th>
+                                <th width="10%">{!$Label.BAR_AUM_in} {!clientCurrency} <br/><h6 class="small-font-header">({!$Label.BAR_Client_Currency})</h6></th>
+                                <th width="10%">{!$Label.BAR_Level}</th>
+                                <th width="8%">{!$Label.BAR_Percentage}<br/>{!$Label.BAR_At_Risk}</th>
+                                <th width="9%">{!$Label.BAR_Select_All}<br/>
+                                    <apex:inputCheckbox styleclass="sum-all" value="{!selectAll}" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Iterate through plan and portfolio lists -->
+                            <apex:repeat value="{!planLst}" var="plan">
+                                <tr class="plan-row" scope="expandable-row">
+                                    <td scope="row" data-label="{!Plan.plans.Plan_Id__c}">
+                                        <img class="mfs_table_plus slds-hide" src="{!URLFOR($Resource.SalesAndAssets,'SalesAndAssets/assets/image/Plus.png')}" width="15" /> 
+                                        <img class="mfs_table_minus slds-hide" src="{!URLFOR($Resource.SalesAndAssets,'SalesAndAssets/assets/image/Minus.png')}" width="15" /> 
+                                        <apex:outputLink value="#" onClick="openNewTab('{!Plan.plans.Plan__c}')">{!Plan.plans.Plan_Name__c}</apex:outputLink>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        {!userCurrencySymbol}&nbsp; <apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                        <apex:param value="{!plan.userCurrency}"/>
+                                        </apex:outputText>
+                                    </td>
+                                    <td>
+                                        {!clientCurrencySymbol}&nbsp; <apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                        <apex:param value="{!plan.ClientCurrency}"/>
+                                        </apex:outputText>
+                                    </td>
+                                    <td>{!$Label.Level_Plan}</td>
+                                    <td>
+                                        <apex:inputText id="numbersOnly" value="{!plan.PercAtRisk}" styleClass="textbox-small" html-check-type="plan" maxlength="3"></apex:inputText>
+                                    </td>
+                                    <td>
+                                        <apex:inputCheckbox id="planCB" value="{!plan.selected}"></apex:inputCheckbox>
+                                    </td>
+                                </tr>
+                                
+                                <apex:repeat value="{!portfolioMap[plan.Plans.Plan_ID__c]}" var="portf" >
+                                    <apex:outputPanel rendered="{!plan.Plans.Plan_ID__c == portf.Portfolio.Plan_Id__c}" layout="none" id="portf">
+                                        <tr class="portfolio-row slds-hide" scope="expanded-content" aria-expand-parent="{!Plan.plans.Plan_Id__c}">
+                                            <td><apex:outputLink value="#" onClick="openNewTab('{!portf.Portfolio.Portfolio__c}')">{!portf.Portfolio.Portfolio__r.Name}</apex:outputLink></td>
+                                            <td>{!portf.Portfolio.Portfolio__r.Strategy__r.Name}</td>
+                                            <td>
+                                                {!userCurrencySymbol }&nbsp;<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                <apex:param value="{!portf.userCurrency}"/>
+                                                </apex:outputText>
+                                            </td>
+                                            <td>
+                                                {!clientCurrencySymbol}&nbsp;<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                <apex:param value="{!portf.clientCurrency}"/>
+                                                </apex:outputText>
+                                            </td>
+                                            <td>{!$Label.Level_Portfolio}</td>
+                                            <td>
+                                                <!--<apex:outputText value="{!portf.PercAtRisk}" styleClass="textbox-small" id="numbersOnly1" rendered="{!plan.Selected}"></apex:outputText>-->
+                                                <apex:inputText value="{!portf.PercAtRisk}" styleClass="textbox-small" id="numbersOnly" maxlength="3"></apex:inputText>
+                                            </td>
+                                            <td>
+                                                <apex:inputHidden value="{!portf.selected}" />
+                                                <input type="checkbox" value="" class="portfolio_cb" />
+                                            </td>
+                                        </tr>
+                                    </apex:outputPanel>
+                                </apex:repeat>
+                                
+                            </apex:repeat>
+                        </tbody>
+                    </table>
+                </apex:outputPanel>
+                <br/><br/>
+                <apex:pageBlock >
+                    <apex:pagemessages />
+                    <apex:pageBlockSection columns="2" title="{!$Label.BAR_Business_at_Risk_Details}" id="fields2" collapsible="false">
+                        <apex:outputText value="{!Business_at_Risk__c.Name}" id="riskName"/>
+                        <apex:inputField value="{!Business_at_Risk__c.Organization__c}" required="true">
+                            <apex:actionSupport event="onchange" action="{!fetchRelatedLists}" reRender="panel,fields, fields1,riskName"/>
+                        </apex:inputField>
+                        <apex:inputField value="{!Business_at_Risk__c.Reason_at_Risk__c}" required="true" />
+                        <apex:inputField value="{!Business_at_Risk__c.Relationship_at_Risk_Date__c}" required="true"/>
+                        <apex:inputField value="{!Business_at_Risk__c.Percentage_at_Risk__c}" required="true"/>
+                        <apex:outputText label="{!$Label.BAR_Total_AUM}({!userCurrency})" value="{0, number,###,###,###,###,###,###,##0.00}" id="fields">
+                            {!userCurrencySymbol}&nbsp;<apex:param value="{!totalValueU}"/>
+                        </apex:outputText>
+                        <apex:inputField value="{!Business_at_Risk__c.Expected_Loss_Date__c}" required="true"/>
+                        <apex:outputText label="{!$Label.BAR_Total_AUM}({!ClientCurrency})" value="{0, number,###,###,###,###,###,###,##0.00}" id="fields1">
+                            {!clientCurrencySymbol}&nbsp;<apex:param value="{!totalValueC}"/>
+                        </apex:outputText>
+                        <apex:inputField value="{!Business_at_Risk__c.Status__c}" required="true"/>
+                        </apex:pageBlockSection>
+                    
+                    <apex:pageBlockSection columns="1">
+                        <apex:inputField value="{!Business_at_Risk__c.Description__c}"/>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockButtons location="bottom">
+                        <apex:commandButton value="{!$Label.BAR_Save}" action="{!save}"/>
+                        <apex:commandButton value="{!$Label.BAR_Cancel}" action="{!cancel}"/>
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+                
+                <apex:actionRegion >
+                    <apex:actionFunction name="renderPortf" action="{!renderPortf}" rerender="panel" oncomplete="restrictNumbers();">
+                        <apex:param name="selectedValue" value="" assignTo="{!selectedvalue}"/>
+                        <apex:param name="selectedIcon" value="" assignTo="{!selectedIcon}"/>
+                    </apex:actionFunction>
+                </apex:actionRegion>
+                <apex:actionFunction name="handleParentRows" action="{!handleParentRows}" rerender="panel,fields, fields1" oncomplete="restrictNumbers();">
+                    <apex:param name="childRow" value="" assignTo="{!childRow}"/>
+                </apex:actionFunction>
+                <apex:actionFunction name="fieldsRerender" action="{!calculateTotalAUMs}" rerender="fields, fields1" oncomplete="restrictNumbers();retainFocus();"/>
+            </apex:outputPanel>
+            <!--Classic View ENDS-->
+            
+            <!--SLDS View STARTS-->
+            <apex:outputPanel rendered="{!OR($User.UIThemeDisplayed=='Theme4d',$User.UIThemeDisplayed=='Theme4t')}">
+                <head>
+                    <apex:stylesheet value="{!URLFOR($Resource.MFS_UI_Assets, 'assets/styles/salesforce-lightning-design-system-ltng.min.css')}" />
+                    <apex:stylesheet value="{!URLFOR($Resource.MFS_UI_Assets, 'assets/styles/Business_At_Risk.css')}" />
+                    <style>
+                        html,
+                        body {height: 100%;width: 100%;overflow: auto;}
+                        input[type="text"], textarea, select {-webkit-appearance: none;}
+                        .mfs-bar-portfolio-table-container{overflow:auto;}
+                    	.MFS .slds-hide{display:none !important;}
+                        .MFS .outer-table-inst tbody tr td:nth-child(7){text-align:center;}
+                        .MFS .outer-table-inst .slds-form-element .slds-checkbox [type=checkbox]~.slds-checkbox--faux{margin-right:0;}
+                    </style>
+                </head>
+                <div class="slds MFS">
+                    <div class="slds-page-header" role="banner">
+                        <div class="slds-grid">
+                            <div class="slds-col slds-has-flexi-truncate">
+                                <div class="slds-media slds-no-space slds-grow">
+                                    <div class="slds-media__figure">
+                                        <span class="slds-icon_container slds-icon-standard-case">
+                                            <svg aria-hidden="true" class="slds-icon slds-icon--medium">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <p class="slds-text-title--caps slds-line-height--reset">Organizations</p>
+                                        <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">{!$ObjectType.Business_at_Risk__c.Label}</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--Table-->
+                    <div class="slds-container--fluid slds-container--center slds-p-around--small">
+                        <h3 class="slds-section__title slds-text-title--caps">{!$Label.BAR_Plans_and_Portfolios}</h3>
+                        <apex:outputPanel style="display:none" layout="block">
+                            <apex:inputText value="{!Business_at_Risk__c.Relationship_at_Risk_Date__c}" id="relDate" style="display:none"/>
+                            <apex:inputText value="{!Business_at_Risk__c.Expected_Loss_Date__c}" id="expLossDate" style="display:none"/>
+                            <apex:inputHidden value="{!Business_at_Risk__c.Organization__c}" id="orgHidden"/>
+                        </apex:outputPanel>
+                        <apex:outputPanel id="panel_SLDS" layout="block" styleClass="slds-m-top--medium">
+                            <apex:outputText value="" rendered="{!planLst.size==0}">{!$Label.BAR_Disp_Message1}</apex:outputText>
+                            <apex:outputPanel rendered="{!planLst.size!=0}" layout="block" styleClass="mfs-bar-portfolio-table-container">
+                                <table class="slds-table slds-table--bordered outer-table-inst" scope="expandable-table">
+                                    <thead>
+                                        <tr class="table-header">
+                                            <th width="25%" class="slds-text-heading--label slds-truncate fontcolor" scope="col">{!$Label.BAR_Plan_Portfolio_Name}</th>
+                                            <th width="25%" class="slds-text-heading--label slds-truncate fontcolor" scope="col">{!$Label.BAR_Strategy}</th>
+                                            <th width="10%" class="slds-text-heading--label slds-truncate fontcolor" scope="col">{!$Label.BAR_AUM_in} {!userCurrency}<br/>
+                                                <h6 class="small-font-header">({!$Label.BAR_User_Cur})</h6>
+                                            </th>
+                                            <th width="10%" class="slds-text-heading--label slds-truncate fontcolor" scope="col">{!$Label.BAR_AUM_in} {!clientCurrency} <br/>
+                                                <h6 class="small-font-header">({!$Label.BAR_Client_Cur})</h6>
+                                            </th>
+                                            <th width="10%" class="slds-text-heading--label slds-truncate fontcolor" scope="col">{!$Label.BAR_Level}</th>
+                                            <th width="10%" class="slds-text-heading--label slds-truncate fontcolor" scope="col">{!$Label.BAR_Percentage}<br/>{!$Label.BAR_At_Risk}</th>
+                                            <th width="10%" class="slds-text-heading--label slds-truncate fontcolor" scope="col"> 
+                                                {!$Label.BAR_Select_All}<br/>
+                                                <div class="slds-form-element">
+                                                    <div class="slds-form-element__control">
+                                                        <label class="slds-checkbox fontcolor">
+                                                            <apex:inputCheckbox styleclass="sum-all" value="{!selectAll}"></apex:inputCheckbox>
+                                                            <span class="slds-checkbox--faux"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!planLst}" var="plan">
+                                            <tr class="plan-row" scope="expandable-row">
+                                                <td scope="row" data-label="{!Plan.plans.Plan_Id__c}">
+                                                    <img class="mfs_table_plus slds-hide" src="{!URLFOR($Resource.SalesAndAssets,'SalesAndAssets/assets/image/Plus.png')}" width="15" /> 
+                                                    <img class="mfs_table_minus slds-hide" src="{!URLFOR($Resource.SalesAndAssets,'SalesAndAssets/assets/image/Minus.png')}" width="15" /> 
+                                                    <apex:outputLink value="javascript:void(0);" onClick="openNewTab('{!Plan.plans.Plan__c}')">{!Plan.plans.Plan_Name__c}</apex:outputLink></td>
+                                                <td></td>
+                                                <td>
+                                                    {!userCurrencySymbol}&nbsp; <apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                    <apex:param value="{!plan.userCurrency}"/>
+                                                    </apex:outputText>
+                                                </td>
+                                                <td>
+                                                    {!clientCurrencySymbol}&nbsp; <apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                    <apex:param value="{!plan.ClientCurrency}"/>
+                                                    </apex:outputText>
+                                                </td>
+                                                <td>{!$Label.Level_Plan}</td>
+                                                <td>
+                                                    <apex:inputText value="{!plan.PercAtRisk}" styleClass="slds-input" id="numbersOnly" html-check-type="plan" maxlength="3"></apex:inputText>
+                                                </td>
+                                                <td>
+                                                    <apex:inputCheckbox id="planCB" styleclass="dark-check" disabled="{!selectAll}" value="{!plan.selected}"></apex:inputCheckbox>
+                                                </td>
+                                            </tr>
+                                            <apex:repeat value="{!portfolioMap[plan.Plans.Plan_ID__c]}" var="portf" >
+                                                <apex:outputPanel rendered="{!plan.Plans.Plan_ID__c == portf.Portfolio.Plan_Id__c}" layout="none" id="portf_SLDS">
+                                                    <tr class="portfolio-row slds-hide" scope="expanded-content" aria-expand-parent="{!Plan.plans.Plan_Id__c}">
+                                                        <td width="25%"><apex:outputLink value="javascript:void(0);" onClick="openNewTab('{!portf.Portfolio.Portfolio__c}')">{!portf.Portfolio.Portfolio__r.Name}</apex:outputLink></td>
+                                                        <td width="25%">{!portf.Portfolio.Portfolio__r.Strategy__r.Name}</td>
+                                                        <td width="10%">
+                                                            {!userCurrencySymbol }&nbsp;<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                            <apex:param value="{!portf.userCurrency}"/>
+                                                            </apex:outputText>
+                                                        </td>
+                                                        <td width="10%">
+                                                            {!clientCurrencySymbol}&nbsp;<apex:outputText value="{0, number,###,###,###,###,###,###,##0}">
+                                                            <apex:param value="{!portf.clientCurrency}"/>
+                                                            </apex:outputText>
+                                                        </td>
+                                                        <td width="10%">{!$Label.Level_Portfolio}</td>
+                                                        <td width="10%">
+                                                            <apex:inputText value="{!portf.PercAtRisk}" styleClass="slds-input" id="numbersOnly" maxlength="3"></apex:inputText>
+                                                            <!--<apex:outputText value="{!portf.PercAtRisk}" styleClass="textbox-small" id="numbersOnly1" rendered="{!plan.Selected}"/>-->
+                                                        </td>
+                                                        <td width="10%">
+                                                            <apex:inputHidden value="{!portf.selected}" />
+                                                            <input type="checkbox" value="" class="portfolio_cb" />
+                                                        </td>
+                                                    </tr>
+                                                </apex:outputPanel>
+                                            </apex:repeat>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                            </apex:outputPanel>
+                            
+                            <apex:actionFunction name="renderPortf" action="{!renderPortf}" rerender="panel_SLDS" oncomplete="restrictNumbers();setBARPortfolioTableWidth();">
+                                <apex:param name="selectedValue" value="" assignTo="{!selectedvalue}"/>
+                                <apex:param name="selectedIcon" value="" assignTo="{!selectedIcon}"/>
+                            </apex:actionFunction>
+                            <apex:actionFunction name="handleParentRows" action="{!handleParentRows}" rerender="panel_SLDS,aumu,aumc" oncomplete="restrictNumbers();">
+                                <apex:param name="childRow" value="" assignTo="{!childRow}"/>
+                            </apex:actionFunction>
+                            <apex:actionFunction name="fieldsRerender" action="{!calculateTotalAUMs}" rerender="aumu,aumc"/>
+                            <apex:actionFunction name="copyToChildRows" action="{!copyToChildRows}" reRender="portf_SLDS"/>
+                            
+                            <apex:actionfunction name="fetchRelatedLists" action="{!fetchRelatedLists}" reRender="panel_SLDS,fields, fields1, riskName1"/>
+                        </apex:outputPanel>
+                        
+                        <!--fields-->
+
+                        <h3 class="slds-section__title slds-text-title--caps slds-m-top--medium">{!$Label.BAR_Business_at_Risk_Details}</h3>
+                        <apex:pageMessages ></apex:pageMessages>
+                        
+                        <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                            <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                <div class="slds-form-element slds-is-required">
+                                    <label class="slds-form-element__label" for="text-input-01">{!$ObjectType.Business_at_Risk__c.fields.Name.Label}</label>
+                                    <div class="slds-form-element__control">
+                                        <apex:outputField value="{!Business_at_Risk__c.Name}" styleClass="slds-output" id="riskName1"/>&nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                <div class="slds-form--stacked">
+                                    <div class="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true">
+                                        <div class="slds-form-element slds-is-required">
+                                            <label class="slds-form-element__label" for="lookup">{!$ObjectType.Business_at_Risk__c.fields.Organization__c.Label} <abbr>{!$Label.BAR_Message1}</abbr></label>
+                                            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                                                <svg aria-hidden="true" class="slds-input__icon">
+                                                    <use xlink:href="{!URLFOR ($Resource.MFS_UI_Assets, 'assets/icons/utility-sprite/svg/symbols.svg#search')}"></use>
+                                                </svg>                              
+                                                <input id="lookup" value="" class="slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded="false" aria-activedescendant="" />
+                                            </div>
+                                        </div>
+                                        <div class="slds-lookup__menu" role="listbox" id="results" style="display:none">
+                                            <div class="slds-lookup__item">
+                                                <button class="slds-button">
+                                                    <svg aria-hidden="true" class="slds-icon slds-icon-text-default slds-icon--small">
+                                                        <use xlink:href="{!URLFOR ($Resource.MFS_UI_Assets, 'assets/icons/utility-sprite/svg/symbols.svg#search')}"></use>
+                                                    </svg>&quot;<span id="keyword"></span>&quot; in Organization
+                                                </button>
+                                            </div>
+                                            <ul class="slds-lookup__list" role="presentation" id="ui_results"></ul>                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                <div class="slds-form-element slds-is-required">
+                                    <label class="slds-form-element__label" for="select01">{!$ObjectType.Business_at_Risk__c.fields.Reason_at_Risk__c.Label} <abbr>{!$Label.BAR_Message1}</abbr></label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container">
+                                            <apex:inputField value="{!Business_at_Risk__c.Reason_at_Risk__c}" id="select01" styleClass="slds-select"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">     
+                                <div class="slds-form--stacked">
+                                    <div class="slds-form-element slds-is-required">
+                                        <label class="slds-form-element__label" for="date">{!$ObjectType.Business_at_Risk__c.fields.Relationship_At_Risk_Date__c.Label} <abbr>{!$Label.BAR_Message1}</abbr></label>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-input-has-icon slds-input-has-icon--right">
+                                                <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
+                                                    <use xlink:href="{!URLFOR($Resource.SLDSv202,'/assets/icons/utility-sprite/svg/symbols.svg#event')}"></use>
+                                                </svg>
+                                                <input id="date" class="slds-input" placeholder="Pick a Date" label="Relationship at Risk Date" type="text"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div>
+                            <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                <div class="slds-form-element slds-is-required">
+                                    <label class="slds-form-element__label" for="select02">{!$ObjectType.Business_at_Risk__c.fields.Percentage_at_Risk__c.Label} <abbr>{!$Label.BAR_Message1}</abbr></label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container">
+                                            <apex:inputField value="{!Business_at_Risk__c.Percentage_at_Risk__c}" id="select02" styleClass="slds-select"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">     
+                                <div class="slds-form--stacked">
+                                    <div class="slds-form-element slds-is-required">
+                                        <label class="slds-form-element__label" for="date">{!$ObjectType.Business_at_Risk__c.fields.Expected_Loss_Date__c.Label} <abbr>{!$Label.BAR_Message1}</abbr></label>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-input-has-icon slds-input-has-icon--right">
+                                                <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
+                                                    <use xlink:href="{!URLFOR($Resource.SLDSv202,'/assets/icons/utility-sprite/svg/symbols.svg#event')}"></use>
+                                                </svg>
+                                                <input id="date1" class="slds-input" placeholder="Pick a Date" label="Potential Loss Date" type="text"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>   
+                            </div>
+                            <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                <div class="slds-form-element slds-is-required">
+                                    <label class="slds-form-element__label" for="select-01">{!$ObjectType.Business_at_Risk__c.fields.Status__c.Label} <abbr>{!$Label.BAR_Message1}</abbr></label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container">
+                                            
+                                            <apex:inputField value="{!Business_at_Risk__c.Status__c}" id="select03" styleClass="slds-select"/>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium"></div>
+                            <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">   
+                                <apex:outputPanel id="aumc">
+                                    <div class="slds-has-divider--bottom">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="text-input-01">{!$Label.BAR_Total_AUM}({!ClientCurrency})</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:outputText styleClass="slds-output">
+                                                    {!clientCurrencySymbol}&nbsp;<span id="fields2:fields1"></span>
+                                                </apex:outputText>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                            </div>
+                            <div class="slds-p-horizontal--small slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12 slds-m-top--medium">
+                                <apex:outputPanel id="aumu">
+                                    <div class="slds-has-divider--bottom">
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="text-input-01">{!$Label.BAR_Total_AUM}({!userCurrency})</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:outputText styleClass="slds-output">
+                                                    {!userCurrencySymbol}&nbsp;<span id="fields2:fields"></span>
+                                                </apex:outputText>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </apex:outputPanel>
+                            </div>
+                            <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--medium">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="select-01">{!$ObjectType.Business_at_Risk__c.fields.Description__c.Label}</label>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element">
+                                            <apex:inputField value="{!Business_at_Risk__c.Description__c}"  styleClass="slds-input"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Buttons -->
+                        <div class="slds-size--12-of-12 slds-m-top--medium">     
+                            <div class="slds-grid">
+                                <div class="slds-button-group" role="group">
+                                    <input type="button" value="{!$Label.BAR_Save}" class="slds-button slds-button--neutral" onclick="prevDefault(event);validatePageFormBAR(this, event);return false;" />
+                                    <apex:commandButton styleClass="slds-button slds-button--neutral mfs_save_bar_action slds-hide" action="{!save}" value="{!$Label.BAR_Save}" />
+                                    <apex:commandButton styleClass="slds-button slds-button--neutral" action="{!cancel}" value="{!$Label.BAR_Cancel}"/>
+                                </div>
+                            </div> 
+                        </div> 
+                    </div>
+                    
+                </div>
+                
+                <script src="/resource/MFS_UI_Assets/assets/js/jquery-1.11.3.min.js">
+                </script>
+                <script src="{!URLFOR($Resource.MFS_Scripts_New)}">
+                </script>
+                <script>
+                var setBARPortfolioTableWidth = function(){
+                    $(".mfs-bar-portfolio-table-container").hide();
+                    $(".mfs-bar-portfolio-table-container").width($(window).width()-27).show();
+                };
+                $(document).ready(function(){
+                    setBARPortfolioTableWidth();
+                });
+                
+                $(window).on("orientationchange", function(){
+                    setBARPortfolioTableWidth();
+                });
+                </script>
+            </apex:outputPanel>
+            <!--SLDS View ENDS-->
+        </apex:form>
+        <script src="{!URLFOR($Resource.MFS_BAR_Scripts)}">
+        </script>
+    </html>
+</apex:page>

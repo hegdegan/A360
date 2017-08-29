@@ -1,0 +1,6 @@
+Hi {!Opportunity.Owner_Manager__c},
+
+Please review the Money in Motion opportunity worth {!Opportunity.Amount} that was recently closed {!Opportunity.Link}.
+
+Thank you,
+{!Opportunity.OwnerFullName}

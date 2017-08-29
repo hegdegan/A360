@@ -1,0 +1,141 @@
+<!---
+Visualforce Page Name :  MFS_OpportunityComponent
+Version               :  1.0 
+Created Date          :  4 JAN 2017
+Function              :  Console Sidebar component for Opportunity
+--->
+<apex:page standardController="Account" extensions="MFS_OpportunityComponentController" standardStylesheets="false">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+     <head>
+            <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/salesforce-lightning-design-system.min.css" />
+            <style>
+                html, html *{background-color: #f4f6f9;}
+                ul li, ol li{margin:0;padding:0;}
+                a{color:#006cb5;}
+                .list.consoleTable{background-color: #f4f6f9;border: none;border-top: 1px solid #e0e3e5;text-align: left;}
+                .list.consoleTable .headerRow{padding-top: 2px;padding-right: 5px;padding-bottom: 0;padding-left: 0;}
+                .list.consoleTable .headerRow th{font-family: 'Salesforce Sans',Helvetica,Arial,sans-serif;font-size: 12.5px;color: #8392aa;font-weight: bold;text-transform: capitalize;border-bottom:0;}
+                h3{font-family: 'Salesforce Sans',Helvetica,Arial,sans-serif;font-size: 16px;color: #16325c;font-weight: 300;margin:10px 0 0 0;display:block;}
+                .mfs-goto-list-container{padding:10px 0 10px 10px;;}
+                .mfs-goto-list-container a{font-size:12px;}
+                .mfs-more-actions-open-acts{position:relative;top:4px;}
+                .slds-dropdown__list, .slds-dropdown__list > li, .slds-dropdown__list > li a, .slds-dropdown__list > li a span{background-color:#FFF;}
+                .slds-dropdown__list > li:hover a, .slds-dropdown__list > li:hover a span{background-color: #f4f6f9;}
+            </style>
+            <apex:includeScript value="/support/console/35.0/integration.js"/>
+            <script src="/resource/MFS_UI_Assets/assets/js/jquery-1.11.3.min.js">
+            </script>
+        </head>
+        <apex:form >
+        
+            <div class="slds-clearfix">
+                <div class="slds-float--left"><h3>{!$Label.OC_Opportunities}</h3></div>
+                
+            </div>
+            
+            <div>
+            <div class="slds-m-bottom--small">
+            <apex:outputPanel layout="block" rendered="{!CONTAINS($Profile.Name,'Admin') || CONTAINS($Profile.Name,'Global Consultant Relations')}">
+                <input type="button" class="slds-button slds-button--neutral slds-m-top--small slds-m-left--small" value="{!$Label.OC_New_Institutional_Sales_Opportunity}" onclick = "newInstOppty();"/>
+                <input type="button" class="slds-button slds-button--neutral slds-m-top--small slds-m-left--small" value="{!$Label.OC_New_Retail_Professional_Buyer}" onclick = "newRetProfBuyer();"/>
+                </apex:outputPanel>
+                <apex:outputPanel layout="block" rendered="{!CONTAINS($Profile.Name,'Institutional') || CONTAINS($Profile.Name,'Global Client')}">
+                <input type="button" class="slds-button slds-button--neutral slds-m-top--small slds-m-left--small" value="{!$Label.OC_New_Institutional_Sales_Opportunity}" onclick = "newInstOppty();"/>
+                </apex:outputPanel>
+                <apex:outputPanel layout="block" rendered="{!CONTAINS($Profile.Name,'Retail')}">
+                <input type="button" class="slds-button slds-button--neutral slds-m-top--small slds-m-left--small" value="{!$Label.OC_New_Retail_Professional_Buyer}" onclick = "newRetProfBuyer();"/>
+                </apex:outputPanel>
+            </div>
+            </div>
+            <apex:outputPanel rendered="{!Opportunities.size!=0}" layout="block" styleClass="related-list-sidebar">
+                <div id="openAct" class="bRelatedList">
+                    <table class="list consoleTable" border="0" cellspacing="0" cellpadding="0">
+                        <tbody>
+                            <tr class="headerRow">
+                                <th class="actionColumn" scope="col">{!$Label.OC_Action}</th>
+                                <th scope="col" class="cellCol1 zen-deemphasize">{!$Label.OC_Opportunity_Name}</th>
+                                <th scope="col" class="cellCol2 zen-deemphasize">{!$Label.OC_Stage}</th>
+                                <th scope="col" class="cellCol3 zen-deemphasize">{!$Label.OC_Amount}</th>
+                                <th scope="col" class="DateElement cellCol4 zen-deemphasize">{!$Label.OC_Estimated_Funding_Date}</th>
+                            </tr>
+                            <apex:repeat value="{!Opportunities}" var="opp">
+                                <!-- ListRow -->
+                                <tr class="dataRow even first">
+                                    <td class="actionColumn">
+                                        <apex:outputLink value="/{!opp.id}/e" target="_blank"> {!$Label.OC_Edit}</apex:outputLink>
+                                    </td>
+                                    <th scope="row" class="dataCell  cellCol1">
+                                        <apex:outputLink value="/{!opp.id}" target="_blank"> {!opp.Name}</apex:outputLink>
+                                    </th>
+                                    <td class="dataCell cellCol2"><a href="javascript:void(0);">{!opp.StageName}</a></td>
+                                    <td class="dataCell cellCol3"><a href="javascript:void(0);">{!opp.Amount__c}</a></td>
+                                    <td class="dataCell cellCol4"><a href="javascript:void(0);">{!opp.Estimated_Funding_Date__c}</a></td>
+                                </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table>  
+                </div>
+            </apex:outputPanel>
+            <apex:outputPanel styleClass="mfs-goto-list-container" layout="block" rendered="{!IF(oppCount > 5, true, false)}">
+                <apex:outputLink onclick="openOpptyList(); return false;">{!$Label.OC_Go_to_list} ({!OppCount}) &raquo;</apex:outputLink>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!Opportunities.size==0}" layout="block" styleClass="slds-m-top--medium">
+                <div class="no-record-message">
+                    {!$Label.BAR_Disp_Message2}
+                </div>
+            </apex:outputPanel>
+        </apex:form>
+    </html>
+    
+    <script type="text/javascript">
+$(document).ready(function(){
+                $("body").on("click", function(){
+                    $(".slds-dropdown-trigger.slds-dropdown-trigger--click").removeClass("slds-is-open");
+                });
+            });
+            
+            var openMenu = function(elem, e){
+                e.stopPropagation();
+                e.preventDefault();
+                
+                var menuContainer = $(elem).parent(".slds-dropdown-trigger.slds-dropdown-trigger--click");
+                if(menuContainer.hasClass("slds-is-open")){
+                    menuContainer.removeClass("slds-is-open");
+                }
+                else{
+                    menuContainer.addClass("slds-is-open");
+                }
+            };
+    function newInstOppty()
+    {
+        sforce.console.getEnclosingPrimaryTabId(openSubtab);
+    }
+    var openSubtab = function openSubtab(result) {
+            var primaryTabId = result.id;
+            sforce.console.openSubtab(primaryTabId , '{!URLFOR($Action.Opportunity.New_Institutional_Sales_Opportunity, Account.Id)}', true, 
+                '{!$Label.OC_New_Opportunity}', null, openSuccess, 'salesforceSubtab');
+        };
+    var openSuccess = function openSuccess(result) {
+            
+        };
+    function newRetProfBuyer()
+    {
+        sforce.console.getEnclosingPrimaryTabId(openRetSubtab);
+        
+        }
+     var openRetSubtab = function openRetSubtab(result) {
+            var primaryTabId = result.id;
+            sforce.console.openSubtab(primaryTabId , '{!URLFOR($Action.Opportunity.New_Retail_Professional_Buyer, Account.Id)}', true, 
+                '{!$Label.OC_New_Opportunity}', null, openSuccess, 'salesforceSubtab');
+        };
+        
+        function openOpptyList(){
+                sforce.console.getEnclosingPrimaryTabId(openListSubtab);
+            }
+            var openListSubtab = function openListSubtab(result) {
+                var primaryTabId = result.id;
+                var url = '/006?id='+'{!Account.Id}'+'&rlid=RelatedOpportunityList';
+                sforce.console.openSubtab(primaryTabId , url, true, '{!Account.Name}', null, null, 'salesforceSubtab');
+            };
+    </script>
+</apex:page>

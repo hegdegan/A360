@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Campaign Delivery Platform --></label>
+        <name>Campaign_Delivery__c</name>
+        <picklistValues>
+            <masterLabel>Contact Sync</masterLabel>
+            <translation><!-- Contact Sync --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Physical Mailing</masterLabel>
+            <translation><!-- Physical Mailing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Call List</masterLabel>
+            <translation><!-- Sales Call List --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Tagged</masterLabel>
+            <translation><!-- Tagged --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Campaign Objective --></label>
+        <name>Campaign_Objective__c</name>
+    </fields>
+    <fields>
+        <label><!-- Content Type --></label>
+        <name>Content_Type__c</name>
+        <picklistValues>
+            <masterLabel>Brand</masterLabel>
+            <translation><!-- Brand --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contact</masterLabel>
+            <translation><!-- Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation><!-- Event --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insight</masterLabel>
+            <translation><!-- Insight --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product</masterLabel>
+            <translation><!-- Product --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regulatory</masterLabel>
+            <translation><!-- Regulatory --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Targeted Opportunity</masterLabel>
+            <translation><!-- Targeted Opportunity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Value Added Content</masterLabel>
+            <translation><!-- Value Added Content --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- DB Campaign Tactic --></label>
+        <name>DB_Campaign_Tactic__c</name>
+        <picklistValues>
+            <masterLabel>Direct Mail</masterLabel>
+            <translation><!-- Direct Mail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Employment Seminars</masterLabel>
+            <translation><!-- Employment Seminars --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Internal Website</masterLabel>
+            <translation><!-- Internal Website --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lunches</masterLabel>
+            <translation><!-- Lunches --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online Banners/Ads</masterLabel>
+            <translation><!-- Online Banners/Ads --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partners</masterLabel>
+            <translation><!-- Partners --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Print Advertisement</masterLabel>
+            <translation><!-- Print Advertisement --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Public Relations</masterLabel>
+            <translation><!-- Public Relations --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Referral Program</masterLabel>
+            <translation><!-- Referral Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sales Call Down</masterLabel>
+            <translation><!-- Sales Call Down --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webinars</masterLabel>
+            <translation><!-- Webinars --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distribution Channel --></label>
+        <name>Distribution_Channel__c</name>
+        <picklistValues>
+            <masterLabel>Global Institutional</masterLabel>
+            <translation><!-- Global Institutional --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS</masterLabel>
+            <translation><!-- MFS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-US Retail</masterLabel>
+            <translation><!-- Non-US Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US-Retail</masterLabel>
+            <translation><!-- US-Retail --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Distribution Sub-Channels --></label>
+        <name>Distribution_Sub_Channels__c</name>
+        <picklistValues>
+            <masterLabel>ARG</masterLabel>
+            <translation><!-- ARG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bank Trust</masterLabel>
+            <translation><!-- Bank Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client</masterLabel>
+            <translation><!-- Client --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Consultant</masterLabel>
+            <translation><!-- Consultant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DC</masterLabel>
+            <translation><!-- DC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Institutional</masterLabel>
+            <translation><!-- Institutional --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFD</masterLabel>
+            <translation><!-- MFD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Non-US Retail</masterLabel>
+            <translation><!-- Non-US Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Prospect</masterLabel>
+            <translation><!-- Prospect --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RIA</masterLabel>
+            <translation><!-- RIA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Retail</masterLabel>
+            <translation><!-- US Retail --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VA</masterLabel>
+            <translation><!-- VA --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Duration --></label>
+        <name>Duration__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Specific? --></label>
+        <name>Firm_Specific__c</name>
+    </fields>
+    <fields>
+        <label><!-- Original Campaign --></label>
+        <name>Original_Campaign__c</name>
+        <relationshipLabel><!-- Campaigns --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Other Contact --></label>
+        <name>Other_Contact__c</name>
+        <relationshipLabel><!-- Campaigns --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Region --></label>
+        <name>Region__c</name>
+        <picklistValues>
+            <masterLabel>AUNZ</masterLabel>
+            <translation><!-- AUNZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Americas</masterLabel>
+            <translation><!-- Americas --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AxJ</masterLabel>
+            <translation><!-- AxJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canada</masterLabel>
+            <translation><!-- Canada --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EMEA</masterLabel>
+            <translation><!-- EMEA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Japan</masterLabel>
+            <translation><!-- Japan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MIL</masterLabel>
+            <translation><!-- MIL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US</masterLabel>
+            <translation><!-- US --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Role --></label>
+        <name>Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Saleslogix ID --></label>
+        <name>Saleslogix_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- SilverPop Updated Date --></label>
+        <name>SilverPop_Updated_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Target Audience --></label>
+        <name>Target_Audience__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type2__c</name>
+        <picklistValues>
+            <masterLabel>408(b)2</masterLabel>
+            <translation><!-- 408(b)2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ADV Mailing</masterLabel>
+            <translation><!-- ADV Mailing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ADV Update</masterLabel>
+            <translation><!-- ADV Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BTN</masterLabel>
+            <translation><!-- BTN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Client Hosted</masterLabel>
+            <translation><!-- Client Hosted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Compliance and Operational Guidelines Update</masterLabel>
+            <translation><!-- Compliance and Operational Guidelines Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conference Call</masterLabel>
+            <translation><!-- Conference Call --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Corporate Update</masterLabel>
+            <translation><!-- Corporate Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Disruption</masterLabel>
+            <translation><!-- Disruption --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fact Sheets</masterLabel>
+            <translation><!-- Fact Sheets --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Family Wealth</masterLabel>
+            <translation><!-- Family Wealth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Heritage Planning</masterLabel>
+            <translation><!-- Heritage Planning --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industry Hosted</masterLabel>
+            <translation><!-- Industry Hosted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Hosted</masterLabel>
+            <translation><!-- MFS Hosted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Management Results</masterLabel>
+            <translation><!-- Management Results --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Market Insights</masterLabel>
+            <translation><!-- Market Insights --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Newsletter</masterLabel>
+            <translation><!-- Newsletter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Offering Memorandum</masterLabel>
+            <translation><!-- Offering Memorandum --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Offering Memorandum Update</masterLabel>
+            <translation><!-- Offering Memorandum Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PRP</masterLabel>
+            <translation><!-- PRP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pooled &amp; CCT Fund Financials</masterLabel>
+            <translation><!-- Pooled &amp; CCT Fund Financials --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Marketing</masterLabel>
+            <translation><!-- Product Marketing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Product Update</masterLabel>
+            <translation><!-- Product Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Soft Dollar Notice</masterLabel>
+            <translation><!-- Soft Dollar Notice --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Strategist&apos;s Corner</masterLabel>
+            <translation><!-- Strategist&apos;s Corner --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Strategy Update</masterLabel>
+            <translation><!-- Strategy Update --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Webcast</masterLabel>
+            <translation><!-- Webcast --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Week in Review</masterLabel>
+            <translation><!-- Week in Review --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ZoomOut</masterLabel>
+            <translation><!-- ZoomOut --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Silverpop_ID --></label>
+        <name>silverpop__Silverpop_ID__c</name>
+    </fields>
+    <layouts>
+        <layout>Business Driven Layout</layout>
+        <sections>
+            <label><!-- Silverpop --></label>
+            <section>Silverpop</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Business Driven Layout (Admin)</layout>
+        <sections>
+            <label><!-- Silverpop --></label>
+            <section>Silverpop</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Campaign Layout(for Admins)</layout>
+        <sections>
+            <label><!-- Silverpop --></label>
+            <section>Silverpop</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Marketing Driven Layout</layout>
+        <sections>
+            <label><!-- Silverpop --></label>
+            <section>Silverpop</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Marketing Driven Layout (Admin)</layout>
+        <sections>
+            <label><!-- Silverpop --></label>
+            <section>Silverpop</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Child Campaign --></label>
+        <name>Child_Campaign</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Activity --></label>
+        <name>Create_Activity</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Activity (Institutional) --></label>
+        <name>Create_Activity_Institutional</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Activity (Retail) --></label>
+        <name>Create_Activity_Retail</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log A Call --></label>
+        <name>Log_A_Call</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log A Call (Institutional) --></label>
+        <name>Log_A_Call_Institutional</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log A Call (Retail) --></label>
+        <name>Log_A_Call_Retail</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Task --></label>
+        <name>Task</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Business Driven --></label>
+        <name>Business_Driven</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Marketing Driven --></label>
+        <name>Marketing_Driven</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Region is required if Distribution Channel is Non-US Retail --></errorMessage>
+        <name>RegionOnNonUsRetail</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Please enter campaign objective and target audience --></errorMessage>
+        <name>Update_Stage</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Add_Update_Members --></label>
+        <name>Add_Update_Members</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Add_Update_Members_SLDS --></label>
+        <name>Add_Update_Members_SLDS</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Clone --></label>
+        <name>Clone</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Skip --></label>
+        <name>Skip</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Skip2 --></label>
+        <name>Skip2</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- ViewAllCampaignMembers --></label>
+        <name>ViewAllCampaignMembers</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- ViewCampaignInfluenceReport --></label>
+        <name>ViewCampaignInfluenceReport</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Send_Silverpop_Email --></label>
+        <name>silverpop__Send_Silverpop_Email</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- ViewCampaignInfluenceReport --></label>
+        <name>silverpop__ViewCampaignInfluenceReport</name>
+    </webLinks>
+</CustomObjectTranslation>

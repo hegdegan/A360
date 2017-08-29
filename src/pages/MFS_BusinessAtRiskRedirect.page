@@ -1,0 +1,9 @@
+<!---
+Visualforce Page Name :  MFS_BusinessAtRiskRedirect
+Version               :  1.0 
+Created Date          :  8 AUG 2016
+Function              :  Displays an informational message when New BAR is clicked from BAR tab
+--->
+<apex:page standardController="Business_at_Risk__c" extensions="MFS_BusinessAtRiskRedirectController" action="{!redirect}">
+    <apex:pageMessages ></apex:pageMessages>
+</apex:page>

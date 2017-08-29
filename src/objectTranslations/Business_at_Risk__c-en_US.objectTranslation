@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Business at Risk</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Business at Risk</value>
+    </caseValues>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- If Assets were to leave, this is the expected redemption date --></help>
+        <label><!-- Potential Loss Date --></label>
+        <name>Expected_Loss_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investment --></label>
+        <name>Investment__c</name>
+        <relationshipLabel><!-- Business at Risk --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Organization --></label>
+        <name>Organization__c</name>
+        <relationshipLabel><!-- Business at Risk --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Probability of losing the business
+High - 75 - 100%
+Medium - 50 - 74.99%
+Low - 25 - 49.99%
+Redeeming - 0 - 24.99% --></help>
+        <label><!-- Probability of Loss --></label>
+        <name>Percentage_at_Risk__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Redeeming</masterLabel>
+            <translation><!-- Redeeming --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Portfolio --></label>
+        <name>Portfolio__c</name>
+    </fields>
+    <fields>
+        <help><!-- This will contain the reason the business is at risk. --></help>
+        <label><!-- Reason at Risk --></label>
+        <name>Reason_at_Risk__c</name>
+        <picklistValues>
+            <masterLabel>De-risking</masterLabel>
+            <translation><!-- De-risking --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Fee Related</masterLabel>
+            <translation><!-- Fee Related --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In House Management/ OCIO</masterLabel>
+            <translation><!-- In House Management/ OCIO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Move to Passive</masterLabel>
+            <translation><!-- Move to Passive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Client Decision Maker</masterLabel>
+            <translation><!-- New Client Decision Maker --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New Consultant</masterLabel>
+            <translation><!-- New Consultant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operational Issues</masterLabel>
+            <translation><!-- Operational Issues --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM Change</masterLabel>
+            <translation><!-- PM Change --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Performance</masterLabel>
+            <translation><!-- Performance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Plan Restructure</masterLabel>
+            <translation><!-- Plan Restructure --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rebalance</masterLabel>
+            <translation><!-- Rebalance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regulatory</masterLabel>
+            <translation><!-- Regulatory --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Relationship at Risk Date --></label>
+        <name>Relationship_at_Risk_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- This checkbox will display whether or not a relationship is at risk. --></help>
+        <label><!-- Relationship at Risk --></label>
+        <name>Relationship_at_Risk__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed - Lost</masterLabel>
+            <translation><!-- Closed - Lost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Closed - Saved</masterLabel>
+            <translation><!-- Closed - Saved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Open</masterLabel>
+            <translation><!-- Open --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total AUM AUD --></label>
+        <name>Total_AUM_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total AUM CAD --></label>
+        <name>Total_AUM_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total AUM EUR --></label>
+        <name>Total_AUM_EUR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total AUM GBP --></label>
+        <name>Total_AUM_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total AUM JPY --></label>
+        <name>Total_AUM_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total AUM SGD --></label>
+        <name>Total_AUM_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total AUM USD --></label>
+        <name>Total_AUM_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Institutional</masterLabel>
+            <translation><!-- Institutional --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Retail</masterLabel>
+            <translation><!-- Retail --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Business at Risk Layout</layout>
+        <sections>
+            <label><!-- At Risk --></label>
+            <section>At Risk</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Create Activity --></label>
+        <name>Create_Activity</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Log A Call --></label>
+        <name>Log_A_Call</name>
+    </quickActions>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

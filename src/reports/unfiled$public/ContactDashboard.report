@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>PF_Sprints__c.Total_Func_Complete__c:SUM / PF_Sprints__c.Total_Stories__c:SUM</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>This contains the PoC in for Func. Reqs</description>
+        <developerName>FORMULA1</developerName>
+        <downGroupingContext>PF_Sprints__c.Stories__r$Workstream__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Total Func. Completion</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>PF_Sprints__c.Total_Func_in_New__c:SUM / PF_Sprints__c.Total_Stories__c:SUM</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>Displays Percent of Functional Requirements that have not been started yet</description>
+        <developerName>FORMULA2</developerName>
+        <downGroupingContext>PF_Sprints__c.Stories__r$Workstream__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Total Func. in New</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>(PF_Sprints__c.Total_Func_in_Progress__c:SUM)/(PF_Sprints__c.Total_Stories__c:SUM)</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>This will contain the percentage of Functional Specifications that are in Progress</description>
+        <developerName>FORMULA3</developerName>
+        <downGroupingContext>PF_Sprints__c.Stories__r$Workstream__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Total Func. in Progress</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>(PF_Sprints__c.Total_Func_Build_and_Review__c:SUM)/(PF_Sprints__c.Total_Stories__c:SUM)</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>This will contain the percentage of Functional Specifications that are in Build and Review</description>
+        <developerName>FORMULA5</developerName>
+        <downGroupingContext>PF_Sprints__c.Stories__r$Workstream__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Total Func.Build and Review</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>PF_Sprints__c.Total_Func_In_Design__c:SUM / PF_Sprints__c.Total_Stories__c:SUM</calculatedFormula>
+        <datatype>percent</datatype>
+        <description>This will contain the percentage of Functional Specifications that are in Design</description>
+        <developerName>FORMULA6</developerName>
+        <downGroupingContext>PF_Sprints__c.Stories__r$Workstream__c</downGroupingContext>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Total Func in Design</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <field>PF_Sprints__c$Name</field>
+    </columns>
+    <columns>
+        <field>PF_Sprints__c$Total_Func_in_New__c</field>
+    </columns>
+    <columns>
+        <field>PF_Sprints__c.Stories__r$Name</field>
+    </columns>
+    <columns>
+        <field>PF_Sprints__c.Stories__r$PF_Description__c</field>
+    </columns>
+    <columns>
+        <field>PF_Sprints__c.Stories__r$Functional_Comments__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>PF_Sprints__c$Name</column>
+            <operator>contains</operator>
+            <value>Contact</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PF_Sprints__c.Stories__r$Workstream__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PF_Sprints__c.Stories__r$Configuration_Status_2__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>ContactDashboard</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CRM_Transformation_Percent_Complete_Report__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>PF_Sprints__c$PF_Start_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

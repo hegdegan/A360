@@ -1,0 +1,63 @@
+Hi,
+
+<html>
+<table  border="1">
+<tr>
+<td>Client Name</td><td>{!Case.Account}</td>
+</tr>
+<tr>
+<td>Client Tier</td><td>{!Case.Tier__c}</td>
+</tr>
+<tr>
+<td>Portfolio Code</td><td></td>
+</tr>
+<tr>
+<td>Share Class</td><td></td>
+</tr>
+<tr>
+<td>Data Type</td><td></td>
+</tr>
+<tr>
+<td>Time Period(s)</td><td></td>
+</tr>
+<tr>
+<td>As of Date</td><td></td>
+</tr>
+<tr>
+<td>Contractual Requirement</td><td></td>
+</tr>
+<tr>
+<td>Recurring Request?</td><td></td>
+</tr>
+<tr>
+<td>Reason Needed</td><td></td>
+</tr>
+<tr>
+<td>Requestor(on behalf of)</td><td></td>
+</tr>
+<tr>
+<td>Due Date</td><td>{!Case.Due_Date__c}</td>
+</tr>
+<tr>
+<td>Additional Details not outlined above</td><td></td>
+</tr>
+</table>
+<br/><br/>
+*all data will be provided in the default currency, sector scheme and benchmark of the portfolio unless otherwise specified
+<br/><br/>
+**<u>Please keep in mind disclosure policies for commingled portfolio data.  The table below outlines the
+timing of when data can be released externally:</u><br/><br/>
+
+<table border="1">
+<tr>
+<td>First of the month to 15CD</td><td>Performance</td>
+</tr>
+<tr>
+<td>15CD to 25CD</td><td>Characteristics, Sector Weights, Country Weights, Currency Weights, and Top 10 Securities (no individual weights, just the percentage Total of the Top 10 – No other security names can be released</td>
+</tr>
+<tr>
+<td>25CD or later</td><td>All data can be sent</td>
+</tr>
+</table>
+
+</html>

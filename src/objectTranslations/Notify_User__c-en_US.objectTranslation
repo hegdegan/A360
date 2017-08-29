@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Notify User</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Notify Users</value>
+    </caseValues>
+    <fields>
+        <label><!-- Parent ER --></label>
+        <name>Parent_ER__c</name>
+    </fields>
+    <fields>
+        <label><!-- Speaker Request --></label>
+        <name>Speaker_Request__c</name>
+        <relationshipLabel><!-- Notify Users --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Termination Case --></label>
+        <name>Termination_Case__c</name>
+        <relationshipLabel><!-- Notify Users --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- User --></label>
+        <name>User__c</name>
+        <relationshipLabel><!-- Notify Users --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- User email --></label>
+        <name>User_email__c</name>
+    </fields>
+    <layouts>
+        <layout>Notify User (for Speaker Request)</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Notify User Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Notify User --></label>
+        <name>Notify_User_for_Case</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Notify User (for Speaker Request Only) --></label>
+        <name>Notify_User_for_Speaker_Request</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- New --></label>
+        <name>New</name>
+    </webLinks>
+</CustomObjectTranslation>

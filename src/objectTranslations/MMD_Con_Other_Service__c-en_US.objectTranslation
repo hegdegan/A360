@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Con Other Service</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Con Other Services</value>
+    </caseValues>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Firm Profile --></label>
+        <name>MMD_Firm_Profile__c</name>
+        <relationshipLabel><!-- Other Services --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Service --></label>
+        <name>NAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sequence # --></label>
+        <name>SEQ_NO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Type --></label>
+        <name>Service_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Service Description --></label>
+        <name>TEXT__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

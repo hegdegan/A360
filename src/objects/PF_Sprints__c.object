@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>pForce</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>PF_Actual_Velocity__c</fullName>
+        <externalId>false</externalId>
+        <label>Actual Velocity</label>
+        <summarizedField>PF_Stories__c.PF_Story_Point__c</summarizedField>
+        <summaryFilterItems>
+            <field>PF_Stories__c.PF_Story_Status__c</field>
+            <operation>equals</operation>
+            <value>Development Complete</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>PF_Description__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PF_End_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Actual End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PF_Is_DE_Review_Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is DE Review Completed ?</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PF_Is_Peer_Review_Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is Peer Review Completed ?</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PF_Number_Of_Resources__c</fullName>
+        <externalId>false</externalId>
+        <label>Number Of Resources</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PF_Number_of_Working_days_in_Sprint__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(AND((5 - (CASE(MOD( PF_Planned_Start_Date__c - DATE(1900, 1, 6), 7), 0, 0, 1, 5, 2, 5, 3, 4, 4, 3, 5, 2, 6, 1, 0)) &lt; (CASE(MOD( PF_Planned_End_Date__c - DATE(1900, 1, 6), 7), 0, 0, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 0)) ),
+((( PF_Planned_End_Date__c - PF_Planned_Start_Date__c ) + 1) &lt; 7)),
+((CASE(MOD( PF_Planned_End_Date__c - DATE(1900, 1, 6), 7), 0, 0, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 0)) - (5 - (CASE(MOD( PF_Planned_Start_Date__c - DATE(1900, 1, 6), 7), 0, 0, 1, 5, 2, 5, 3, 4, 4, 3, 5, 2, 6, 1, 0)))),
+(((FLOOR((( PF_Planned_End_Date__c - PF_Planned_Start_Date__c ) - (CASE(MOD( PF_Planned_Start_Date__c - DATE(1900, 1, 6), 7), 0, 0, 1, 6, 2, 5, 3, 4, 4, 3, 5, 2, 6, 1, 0))) / 7)) * 5) +
+(CASE(MOD( PF_Planned_Start_Date__c - DATE(1900, 1, 6), 7), 0, 0, 1, 5, 2, 5, 3, 4, 4, 3, 5, 2, 6, 1, 0)) +
+(CASE(MOD( PF_Planned_End_Date__c - DATE(1900, 1, 6), 7), 0, 0, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 0))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Number of Working days in Sprint</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PF_Percent_Complete__c</fullName>
+        <externalId>false</externalId>
+        <formula>PF_Sum_of_Completed_Stories__c  /  IF (PF_Sum_of_All_Stories__c == 0 , 1 , PF_Sum_of_All_Stories__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Percent Complete</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>PF_Planned_End_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Planned End Date</label>
+        <required>true</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PF_Planned_Start_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Planned Start Date</label>
+        <required>true</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PF_Planned_Velocity__c</fullName>
+        <externalId>false</externalId>
+        <label>Planned Velocity</label>
+        <summarizedField>PF_Stories__c.PF_Story_Point__c</summarizedField>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>PF_Priority__c</fullName>
+        <externalId>false</externalId>
+        <label>Priority</label>
+        <picklist>
+            <picklistValues>
+                <fullName>High</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>PF_Projected_Velocity__c</fullName>
+        <externalId>false</externalId>
+        <label>Projected Velocity</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PF_Release__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Release</label>
+        <referenceTo>PF_Release__c</referenceTo>
+        <relationshipName>Sprints</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PF_Slipage_in_End_date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>IF(((ISBlank(PF_End_Date__c) &amp;&amp; (Today() &lt; PF_Planned_End_Date__c))  || ISBlank(PF_Planned_End_Date__c ) || (PF_Planned_End_Date__c - PF_End_Date__c &gt;= 0 )  ),  IMAGE(&quot;/img/samples/color_green.gif&quot;, &quot;green&quot;, 15, 30), IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;red&quot;, 15, 30))</formula>
+        <label>Slipage in End date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PF_Slipage_in_Start_date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>IF((ISBlank(PF_Start_Date__c) &amp;&amp; (Today() &lt; PF_Planned_Start_Date__c )) || PF_Planned_Start_Date__c - PF_Start_Date__c &gt;= 0, IMAGE(&quot;/img/samples/color_green.gif&quot;, &quot;green&quot;, 15, 30), IMAGE(&quot;/img/samples/color_red.gif&quot;, &quot;red&quot;, 15, 30))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Slipage in Start date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PF_Sprint_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Sprint Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Cancelled</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Started</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>PF_Sprint_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Sprint Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Custom/Mobile Development</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Data &amp; Integration</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Project Management</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sales Cloud</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Service Cloud</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>PF_Start_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Actual Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PF_Sum_of_All_Stories__c</fullName>
+        <externalId>false</externalId>
+        <label>Total # of Stories</label>
+        <summaryFilterItems>
+            <field>PF_Stories__c.PF_Story_Status__c</field>
+            <operation>notEqual</operation>
+            <value>Out of Scope, Duplicate, Cancelled</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>PF_Sum_of_Completed_Stories__c</fullName>
+        <externalId>false</externalId>
+        <label>Sum of Completed Stories</label>
+        <summaryFilterItems>
+            <field>PF_Stories__c.PF_Story_Status__c</field>
+            <operation>equals</operation>
+            <value>5-Closed</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>PF_Total_Sprint_Capacity__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( PF_Number_of_Working_days_in_Sprint__c  &gt; 0,(PF_Number_of_Working_days_in_Sprint__c * 8 *  PF_Number_Of_Resources__c ),0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Total Sprint Capacity</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Development_Complete__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Development Complete</label>
+        <summaryFilterItems>
+            <field>PF_Stories__c.Apex_Development_Status__c</field>
+            <operation>equals</operation>
+            <value>Complete</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Development_in_New__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Development in New</label>
+        <summaryFilterItems>
+            <field>PF_Stories__c.Apex_Development_Status__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Development_in_Progress__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Development in Progress</label>
+        <summaryFilterItems>
+            <field>PF_Stories__c.Apex_Development_Status__c</field>
+            <operation>equals</operation>
+            <value>Design</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>PF_Stories__c.Apex_Development_Status__c</field>
+            <operation>equals</operation>
+            <value>Build and Review</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Func_Build_and_Review__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Func. Build and Review</label>
+        <summaryFilterItems>
+            <field>PF_Stories__c.Configuration_Status_2__c</field>
+            <operation>equals</operation>
+            <value>Build and Review</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Func_Complete__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Func. Complete</label>
+        <summaryFilterItems>
+            <field>PF_Stories__c.Configuration_Status_2__c</field>
+            <operation>equals</operation>
+            <value>Complete, Build Complete</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Func_In_Design__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Func. In Design</label>
+        <summaryFilterItems>
+            <field>PF_Stories__c.Configuration_Status_2__c</field>
+            <operation>equals</operation>
+            <value>Design</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Func_in_New__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Func. in New</label>
+        <summaryFilterItems>
+            <field>PF_Stories__c.Configuration_Status_2__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Func_in_Progress__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Func. Not In Scope</label>
+        <summaryFilterItems>
+            <field>PF_Stories__c.Configuration_Status_2__c</field>
+            <operation>equals</operation>
+            <value>Not in Scope</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Integrations_Complete__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Integrations Complete</label>
+        <summaryFilterItems>
+            <field>PF_Stories__c.Integration_Status__c</field>
+            <operation>equals</operation>
+            <value>Complete</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Integrations_in_New__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Integrations in New</label>
+        <summaryFilterItems>
+            <field>PF_Stories__c.Integration_Status__c</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Integrations_in_Progress__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Integrations in Progress</label>
+        <summaryFilterItems>
+            <field>PF_Stories__c.Integration_Status__c</field>
+            <operation>equals</operation>
+            <value>Design</value>
+        </summaryFilterItems>
+        <summaryFilterItems>
+            <field>PF_Stories__c.Integration_Status__c</field>
+            <operation>equals</operation>
+            <value>Build and Review</value>
+        </summaryFilterItems>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Total_Stories__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Stories</label>
+        <summaryForeignKey>PF_Stories__c.PF_Sprint__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <label>Workstream</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PF_Release__c</columns>
+        <columns>PF_Planned_Velocity__c</columns>
+        <columns>PF_Planned_Start_Date__c</columns>
+        <columns>PF_Planned_End_Date__c</columns>
+        <columns>PF_Start_Date__c</columns>
+        <columns>PF_End_Date__c</columns>
+        <columns>PF_Number_Of_Resources__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Workstream Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Workstreams</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>PF_Release__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PF_Planned_Velocity__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PF_Start_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PF_End_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PF_Number_Of_Resources__c</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>PF_Release__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PF_Planned_Velocity__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PF_Start_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PF_End_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PF_Number_Of_Resources__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Sprint_dates_lies_between_Release</fullName>
+        <active>false</active>
+        <description>Sprint Start/End dates should lie within Release Start/end dates</description>
+        <errorConditionFormula>(PF_Start_Date__c &lt; PF_Release__r.PF_Planned_Start_Date__c ) ||
+(PF_End_Date__c &gt; PF_Release__r.PF_Planned_End_Date__c )</errorConditionFormula>
+        <errorMessage>Sprint Start/End dates should lie within Release Start/end dates</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Start_End_date_check</fullName>
+        <active>true</active>
+        <description>Start date cannot be greater than End date</description>
+        <errorConditionFormula>PF_Start_Date__c &gt; PF_End_Date__c</errorConditionFormula>
+        <errorMessage>Start date cannot be greater than End date</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>PF_Sprint_Status</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Sprint Status</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/apex/Statusreport?SprintName={!PF_Sprints__c.Name}</url>
+    </webLinks>
+</CustomObject>

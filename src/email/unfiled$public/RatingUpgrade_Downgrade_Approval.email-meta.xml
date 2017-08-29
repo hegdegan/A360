@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>RatingUpgrade/Downgrade Approval</name>
+    <style>none</style>
+    <subject>Rating Upgrade/Downgrade Request {!Consultant_Rating__c.Name} Approved</subject>
+    <type>text</type>
+</EmailTemplate>

@@ -1,0 +1,9 @@
+<!---
+Visualforce Page Name :  MFS_CustomPageForStandardEventVF
+Version               :  1.0 
+Created Date          :  12 JUL 2016
+Function              :  Standard Event detail page 
+--->
+<apex:page standardController="Event" >
+    <apex:detail subject="{!Event.id}" relatedList="true" title="true"/>
+</apex:page>

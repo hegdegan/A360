@@ -1,0 +1,9 @@
+<!---
+Visualforce Page Name :  MFS_OrgNewConsultantStrategyRating
+Version               :  1.0 
+Created Date          :  21 JUL 2016
+Function              :  VF Page for custom button to create a new consultant strategy rating
+--->
+<apex:page standardController="Strategy_Rating_Process__c" recordSetvar="" extensions="MFS_OrgNewConsultantStrategyRating" action="{!redirect}"> 
+    Id: {!$CurrentPage.parameters.id}
+</apex:page>

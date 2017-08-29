@@ -1,0 +1,128 @@
+<!---
+Visualforce Page Name :  MFS_Activity360TaskRedirect
+Version               :  1.0 
+Created Date          :  09 SEP 2016
+Function              :  
+This VF Page overrides the Edit link of Tasks to open the custom Meeting notes page.
+In Window, the page opens in existing tab; In Console, the page opens in new sub tab.
+Meeting notes(Task with Meeting Notes Record Type) open as Custom page and 
+Tasks with Standard record type open in standard mode.
+Since Edit link is overridden, clicking of Tasks create an empty sub tab in console. This unwanted sub tab has been removed by console methods.
+
+Modification Log : 
+-----------------------------------------------------------------------------
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Maheshkumar            09 SEP 2016              Initial Version
+--->
+
+
+<apex:page standardController="Task"  > 
+    <!--Console Integration ToolKit Library-->
+    <apex:includeScript value="/support/console/30.0/integration.js"/>
+    <!--JQuery Library-->
+    <script src="{!URLFOR($Resource.jquery113)}"></script>
+    <script type="text/javascript">
+        var url;
+    var j$ = jQuery.noConflict();
+    j$(document).ready(function()
+                       {
+                           var returnID;
+                           
+                           var urlStandardPage = "/{!URLENCODE(Task.Id)}/e?nooverride=1";
+                           //var urlStandardPageInConsole ="/apex/MFS_CustomPageForStandardTaskVF?id={!URLENCODE(Task.id)}";
+                           var urlStandardPageInConsole = "/{!URLENCODE(Task.Id)}/e?nooverride=1";
+                           if('{!Task.whatId}' != '' )  {
+                               var urlCustomPage = "/apex/MFS_Activity360PageSF1?id={!URLENCODE(Task.Activity_Detail__c)}&nooverride=1&returnID={!URLENCODE(Task.whatId)}&task=true&inEditMode=true";
+                               var urlCustomPageInstit = "/apex/MFS_Activity360PageSF1?id={!URLENCODE(Task.Activity_Detail__c)}&nooverride=1&returnID={!URLENCODE(Task.whatId)}&task=true&inEditMode=true";
+                               var urlCustomPageRetail = "/apex/MFS_Activity360RetailPageSF1?id={!URLENCODE(Task.Activity_Detail__c)}&nooverride=1&returnID={!URLENCODE(Task.whatId)}&task=true&inEditMode=true";
+                           }else{
+                               var urlCustomPage = "/apex/MFS_Activity360PageSF1?id={!URLENCODE(Task.Activity_Detail__c)}&nooverride=1&returnID={!URLENCODE(Task.whoId)}&task=true&inEditMode=true";
+                               var urlCustomPageInstit = "/apex/MFS_Activity360PageSF1?id={!URLENCODE(Task.Activity_Detail__c)}&nooverride=1&returnID={!URLENCODE(Task.whoId)}&task=true&inEditMode=true";
+                               var urlCustomPageRetail = "/apex/MFS_Activity360RetailPageSF1?id={!URLENCODE(Task.Activity_Detail__c)}&nooverride=1&returnID={!URLENCODE(Task.whoId)}&task=true&inEditMode=true";                
+                           }
+                           //Based on record type, URL is set
+                           if(('{!Task.Parent_Activity_Detail_Id__c}' == '') && ('{!Task.Recordtype.Name}' == 'Log a Call (Institutional)' || '{!Task.Recordtype.Name}' == 'Log a Call (Retail)'))
+                           {
+                               //url = urlCustomPage;
+                               if('{!URLENCODE(Task.Recordtype.Name)}' == 'Log a Call (Institutional)'){
+                                   url = urlCustomPageInstit;
+                               }else{
+                                   url = urlCustomPageRetail;
+                               }
+                           }
+                           else{
+                               if(sforce.console.isInConsole()){
+                                   //A custom page is used coz Console cannot open the standard detail page.
+                                   //window.location.href = urlStandardPageInConsole;
+                                   url = urlStandardPageInConsole;
+                               }
+                               else{
+                                   url = urlStandardPage;
+                               }
+                           }
+                           
+                           console.log('inside script');
+                           //If console, open in new sub tab.
+                           if(sforce.console.isInConsole()){
+                               openTaskInSubTab();
+                           }
+                           //If window, override on the same window
+                           else{  
+                               if(typeof sforce != "undefined" && sforce.one != null){
+                                   //salesforce1 navigation
+                                   sforce.one.navigateToURL(url);
+                               }
+                               else{
+                                   window.open(url+"&isConsole=false","_parent");
+                               }   
+                           }
+                           
+                       });
+    
+    //Console Integration method to Open Task (Standard/Meeting Notes) in sub tab 
+    function openTaskInSubTab() {
+        //To get the Primary Tab ID
+        sforce.console.getFocusedPrimaryTabObjectId(function(result){
+            var objId = result.id;
+            sforce.console.getEnclosingPrimaryTabId(function(resultPrim){
+                var primaryTabId = resultPrim.id;
+                
+                if(objId.indexOf('00T') != -1){
+                    sforce.console.openPrimaryTab(null, url+"&isConsole=true", true,"{!URLENCODE(Task.Subject)}", openSuccess, "{!URLENCODE(Task.id)}");
+                }
+                else{
+                    sforce.console.openSubtab(primaryTabId, url+"&isConsole=true", true,"{!URLENCODE(Task.Subject)}",null, openSuccess, "{!URLENCODE(Task.id)}");
+                }
+            });
+            
+        });
+    }
+    
+    //Console method to identify the ID of the unwanted additional sub tab 
+    var openSuccess = function openSuccess(result) {
+        if (result.success == true) {
+            sforce.console.getEnclosingTabId(closeAdditionalSubtab);
+        } else {
+            //If openPrimaryTab() fails then close it and open again
+            sforce.console.getEnclosingTabId(closeAdditionalSubtab);
+            sforce.console.openPrimaryTab(null, url, true,"{!URLENCODE(Task.Subject)}", openSuccessAndStop, "{!URLENCODE(Task.id)}");
+        }
+    };
+    
+    //Stop the recursive execution if openPrimaryTab fails in previous method
+    var openSuccessAndStop = function openSuccessAndStop(result) {
+        if (result.success == true) {
+            sforce.console.getEnclosingTabId(closeAdditionalSubtab);
+        }else{
+            window.location.href = url; 
+        }
+    };
+    
+    //Console method to close the unwanted additional sub tab
+    var closeAdditionalSubtab = function closeSubtab(result) {
+        var tabId = result.id;
+        sforce.console.closeTab(tabId);
+    };
+    </script>
+</apex:page>

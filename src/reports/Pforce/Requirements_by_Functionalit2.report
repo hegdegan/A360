@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Functionality__c.Stories__r$Name</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Stories__r$PF_Description__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c$Description__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c.Stories__r$Configuration_Status_2__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c$Steps__c</field>
+    </columns>
+    <columns>
+        <field>Functionality__c$Acceptance_Criteria__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Functionality__c$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Functionality__c$Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Requirements by Functionality</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Functionality_with_Requirement__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>Functionality__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,402 @@
+<apex:page standardController="Case" extensions="MFS_ServiceRequestCaseController" title="{!$Label.SR_Add_Investments}">
+    <apex:form >
+        <apex:includeScript value="/support/console/36.0/integration.js" />
+        <script type="text/javascript">
+        function openRecord(currText, name){
+            if(sforce.console.isInConsole())
+            {
+                consoleURLOpener(currText, name);
+            }
+            else if(typeof sforce != "undefined" && sforce.one != null)
+            {
+                sforce.one.navigateToURL("/"+currText);
+            }
+            else{
+                window.open("/"+currText, "_blank");            
+            }
+        }
+        var consoleURLOpener = function(currText,name){
+            var url = "/"+currText;
+            sforce.console.openPrimaryTab(null,url, true, name, null, currText); 
+        };
+        
+        </script>
+        <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+            <style>
+                .header-text{
+                font-size:18px;
+                padding-left:9px;
+                }
+                .table-header
+                {
+                background-color:#EFEFDB;
+                font-size:15px;
+                color:black;
+                padding:10px;
+                }
+                table, th, td
+                {padding:7px;
+                }
+                .plan-row {
+                background-color : #white;
+                padding:5px;
+                }
+                .outer-table{
+                	width:100% !important;
+                }
+                .longText{ width:60%; }
+                .multiSelectPicklistTable{padding:0;}
+                .multiSelectPicklistTable tr:first-child{display:none;}
+                .main-heading{display: block;font-size: 21px;text-align: center;margin-bottom: 10px;}
+            </style>
+            <apex:stylesheet value="{!URLFOR($Resource.SalesAndAssets, 'SalesAndAssets/assets/css/Client.css')}" />
+            <script src="/resource/MFS_UI_Assets/assets/js/jquery-1.11.3.min.js">
+            </script>
+            <script>
+            var showPopUpOverLay = function(){
+                $("body").append('<div class="popup-overlay-custom" style="position: fixed;width:100%;height:100%;background: #dbdbdb;opacity:0.6;top: 0;left: 0;z-index: 999;"></div>');
+            };
+            var hidePopUpOverLay = function(){
+                $(".popup-overlay-custom").remove();
+            };
+            </script>
+            <apex:sectionHeader title="{!Case.CaseNumber}" subtitle="{!$Label.SR_Add_Investments}"/>
+            <apex:pageBlock mode="maindetail">
+                <apex:pageBlockButtons >
+                    <apex:commandButton value="{!$Label.SR_Save}" action="{!save}" onclick="showPopUpOverLay();" />
+                    <apex:commandButton value="{!$Label.SR_Cancel}" action="{!cancel}" immediate="true"/>
+                </apex:pageBlockButtons>
+                <apex:pageMessages id="pageMessages"/>
+                <apex:outputPanel id="planPanel" rendered="{!planList.size!=0}" styleClass="outer-panel">
+                    <h3 class="header-text">
+                        {!$ObjectType.Plan__c.Labelplural}
+                    </h3>
+                    <table class="mfs-red-table outer-table" scope="expandable-table">
+                        <thead>
+                            <tr>
+                                <th width="20%">{!$ObjectType.Plan__c.fields.Name.Label}</th>
+                                <th width="15%">{!$ObjectType.Plan__c.fields.Plan_ID__c.Label}</th>
+                                <th width="10%">{!$ObjectType.Plan__c.fields.Plan_Start_Date__c.Label}</th>
+                                <th width="20%">{!$ObjectType.Plan__c.fields.Plan_Type__c.Label}</th>
+                                <th width="20%">{!$ObjectType.Plan__c.fields.Plan_Termination_Date__c.Label}</th>
+                                <th width="15%">{!$Label.SR_Select}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                              <apex:repeat value="{!planList}" var="plan">
+                                <tr class="plan-row" scope="expandable-row">
+                                    <td scope="row" data-label="{!plan.planLegalName}">
+                                        <apex:outputLink value="/{!plan.recId}" onClick="openRecord('{!plan.recId}','{!plan.planLegalName}'); return false;">{!plan.planLegalName}</apex:outputLink>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="{!plan.planId}"/>
+                                    </td>
+                                    <td> <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!plan.planStartDate}"/> 
+                                        </apex:outputText>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="{!plan.planType}"/>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                            <apex:param value="{!plan.planTerminationDate}"/> 
+                                        </apex:outputText>
+                                    </td>
+                                    <td>
+                                        <apex:inputCheckbox value="{!plan.selected}"></apex:inputCheckbox>
+                                    </td>
+                                </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!planList.size == 0}" layout="block">
+                    <h3 class="header-text">
+                        {!$ObjectType.Plan__c.Labelplural}
+                    </h3>
+                    <br/><br/>{!$Label.SR_Message1}</apex:outputPanel>
+                <br/>
+                <apex:outputPanel id="invPanel" rendered="{!investmentList.size!=0}" styleClass="outer-panel">
+                    <h3 class="header-text">
+                        {!$ObjectType.Account__c.Labelplural}
+                    </h3>
+                    <table class="mfs-red-table outer-table" scope="expandable-table">
+                        <thead>
+                            <tr>
+                                <th width="20%">{!$ObjectType.Account__c.fields.Portfolio__c.Label}</th>
+                                <th width="15%">{!$ObjectType.Account__c.fields.Name.Label}</th>
+                                <th width="10%">{!$ObjectType.Account__c.fields.Portfolio_Code__c.Label} Code</th>
+                                <th width="20%">{!$ObjectType.Account__c.fields.Vehicle__c.Label}</th>
+                                <th width="20%">{!$ObjectType.Account__c.fields.Account_Number__c.Label}</th>
+                                <th width="15%">{!$Label.SR_Select}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Iterate through plan and portfolio lists -->
+                            <apex:repeat value="{!investmentList}" var="inv">
+                                <tr class="plan-row" scope="expandable-row">
+                                    <td>
+                                        <apex:outputLink value="/{!inv.portfolioId}" onClick="openRecord('{!inv.portfolioId}','{!inv.portfolio}'); return false;">{!inv.portfolio}</apex:outputLink>
+                                    </td>
+                                    <td scope="row" data-label="{!inv.investmentName}">
+                                        <apex:outputLink value="/{!inv.recId}" onClick="openRecord('{!inv.recId}','{!inv.investmentName}'); return false;">{!inv.investmentName}</apex:outputLink>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="{!inv.portfolioCode}"/>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="{!inv.vehicle}"/>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="{!inv.accountNumber}"/>
+                                    </td>
+                                    <td>
+                                        <apex:inputCheckbox value="{!inv.selected}"></apex:inputCheckbox>
+                                    </td>
+                                </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!investmentList.size == 0}" layout="block">
+                    <hr/>
+                    <h3 class="header-text">
+                        {!$ObjectType.Account__c.Labelplural}
+                    </h3><br/><br/>
+                    {!$Label.SR_Message1}</apex:outputPanel>
+            </apex:pageBlock>
+            
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!OR($User.UIThemeDisplayed=='Theme4d',$User.UIThemeDisplayed=='Theme4t')}">
+            <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+                    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                    <title>MFS Case</title>
+                    <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/salesforce-lightning-design-system-ltng.min.css" />
+                    <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/mfs_new_styles.css" />
+                    <style>
+                        .MFS .mfs-multi-select-lookup .slds-icon_container{padding:6.3px;top:22.5px;right:1px;}
+                        .MFS .all-portfolios svg{fill: #16325c;top: 1px;position: relative;}
+                        .MFS .all-portfolios .mfs-strategy-add{background-color:#f7f9fb;margin-right:10px;padding:5px;border:1px solid #d8dde6;cursor:pointer;}
+                        .MFS .all-portfolios .mfs-strategy-name{margin-left:10px;}
+                        .MFS .mfs-main-container{padding-bottom:70px;}
+                    </style>
+                </head>
+                <body>
+                    <div class="slds MFS exclude-page-close-warning">
+                        <div class="slds-page-header" role="banner">
+                            <div class="slds-grid">
+                                <div class="slds-col slds-has-flexi-truncate">
+                                    <div class="slds-media slds-no-space slds-grow">
+                                        <div class="slds-media__figure">
+                                            <span class="slds-icon_container slds-icon-standard-case">
+                                                <svg aria-hidden="true" class="slds-icon slds-icon--medium">
+                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#case"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <p class="slds-text-title--caps slds-line-height--reset">Case&nbsp;{!case.caseNumber}</p>
+                                            <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">
+                                                {!$Label.SR_Add_Investments}
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-no-flex slds-grid slds-align-top">
+                                    <div class="mfs-top-arrow--small">
+                                        <button class="slds-button slds-button--icon-border-filled" aria-haspopup="true" title="{!$label.A360_Show_More}">
+                                            <svg class="slds-button__icon" aria-hidden="true">
+                                                <use xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                            </svg>
+                                            <span class="slds-assistive-text">{!$label.A360_Show_More}</span>
+                                        </button>
+                                    </div>
+                                    <apex:outputPanel id="topBtns" styleClass="slds-button-group mfs-top-buttons-container" html-role="group" layout="block">
+                                        <apex:commandbutton value="Cancel" action="{!Cancel}" styleclass="slds-button slds-button--neutral slds-truncate" />
+                                        <apex:commandbutton value="Save" action="{!Save}" styleclass="slds-button slds-button--neutral slds-truncate" />
+                                    </apex:outputPanel>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-container--x-large slds-container--center mfs-main-container" id="scroller_disabled">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-p-horizontal--small slds-size--12-of-12">
+                                    <div class="slds-clearfix">
+                                        <div class="slds-float--left slds-m-top--small"><h3 class="slds-section__title slds-text-title--caps">{!$ObjectType.Plan__c.Labelplural}</h3></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--small">
+                                    <table class="slds-table slds-table--bordered slds-max-medium-table--stacked">
+                                        <thead>
+                                            <tr class="slds-text-title--caps">
+                                                <th scope="col">
+                                                    <div title="{!$ObjectType.Plan__c.fields.Name.Label}">
+                                                        {!$ObjectType.Plan__c.fields.Name.Label}
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div title="{!$ObjectType.Plan__c.fields.Plan_ID__c.Label}">
+                                                        {!$ObjectType.Plan__c.fields.Plan_ID__c.Label}
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div title="{!$ObjectType.Plan__c.fields.Plan_Start_Date__c.Label}">
+                                                        {!$ObjectType.Plan__c.fields.Plan_Start_Date__c.Label}
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div title="{!$ObjectType.Plan__c.fields.Plan_Type__c.Label}">
+                                                        {!$ObjectType.Plan__c.fields.Plan_Type__c.Label}
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div title="{!$ObjectType.Plan__c.fields.Plan_Termination_Date__c.Label}">
+                                                        {!$ObjectType.Plan__c.fields.Plan_Termination_Date__c.Label}
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div title="{!$Label.SR_Select}">
+                                                        {!$Label.SR_Select}
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <apex:repeat value="{!planList}" var="plan">
+                                            <tr class="slds-hint-parent">
+                                                <th scope="row" data-label="{!$ObjectType.Plan__c.fields.Name.Label}">
+                                                    <apex:outputLink value="/{!plan.recId}" onClick="openRecord('{!plan.recId}','{!plan.planLegalName}');">{!plan.planLegalName}</apex:outputLink>
+                                                </th>
+                                                <th scope="row" data-label="{!$ObjectType.Plan__c.fields.Plan_Id__c.Label}">
+                                                    <apex:outputText value="{!plan.planId}"/>
+                                                </th>
+                                                <td data-label="{!$ObjectType.Plan__c.fields.Plan_Start_Date__c.Label}">
+                                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                        <apex:param value="{!plan.planStartDate}"/> 
+                                        </apex:outputText>
+                                                </td>
+                                                <td data-label="{!$ObjectType.Plan__c.fields.Plan_Type__c.Label}">
+                                                    <apex:outputText value="{!plan.planType}"/>
+                                                </td>
+                                                <td data-label="{!$ObjectType.Plan__c.fields.Plan_Termination_Date__c.Label}">
+                                                    <apex:outputText value="{0,date,MM/dd/yyyy}">
+                                            <apex:param value="{!plan.planTerminationDate}"/> 
+                                        </apex:outputText>
+                                                </td>
+                                                <td data-label="{!$Label.SR_Select}">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-checkbox">
+                                                            <apex:inputCheckbox value="{!plan.selected}"></apex:inputCheckbox>
+                                                            <span class="slds-checkbox--faux"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </apex:repeat>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="slds-grid slds-wrap slds-m-top--small">
+                                <div class="slds-p-horizontal--small slds-size--12-of-12">
+                                    <div class="slds-clearfix">
+                                        <div class="slds-float--left slds-m-top--small"><h3 class="slds-section__title slds-text-title--caps">{!$ObjectType.Account__c.Labelplural}</h3></div>
+                                    </div>
+                                </div>
+                                <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--small">
+                                    <table class="slds-table slds-table--bordered slds-max-medium-table--stacked">
+                                        <thead>
+                                            <tr class="slds-text-title--caps">
+                                                
+                                                <th scope="col">
+                                                    <div title="{!$ObjectType.Account__c.fields.Portfolio__c.Label}">
+                                                        {!$ObjectType.Account__c.fields.Portfolio__c.Label}
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div title="{!$ObjectType.Account__c.fields.Name.Label}">
+                                                        {!$ObjectType.Account__c.fields.Name.Label}
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div title="{!$ObjectType.Account__c.fields.Portfolio_Code__c.Label}">
+                                                        {!$ObjectType.Account__c.fields.Portfolio_Code__c.Label}
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div title="{!$ObjectType.Account__c.fields.Vehicle__c.Label}">
+                                                        {!$ObjectType.Account__c.fields.Vehicle__c.Label}
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div title="{!$ObjectType.Account__c.fields.Account_Number__c.Label}">
+                                                        {!$ObjectType.Account__c.fields.Account_Number__c.Label}
+                                                    </div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div title="{!$Label.SR_Select}">
+                                                        {!$Label.SR_Select}
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <apex:repeat value="{!investmentList}" var="inv">
+                                            <tr class="slds-hint-parent">
+                                                <th scope="row" data-label="{!$ObjectType.Account__c.fields.Portfolio__c.Label}">
+                                                    <apex:outputLink value="/{!inv.portfolioId}" onClick="openRecord('{!inv.portfolioId}','{!inv.portfolio}');">{!inv.portfolio}</apex:outputLink>
+                                                </th>
+                                                <th scope="row" data-label="{!$ObjectType.Account__c.fields.Name.Label}">
+                                                    <apex:outputLink value="/{!inv.recId}" onClick="openRecord('{!inv.recId}','{!inv.investmentName}');">{!inv.investmentName}</apex:outputLink>
+                                                </th>
+                                                
+                                                <td data-label="{!$ObjectType.Account__c.fields.Portfolio_Code__c.Label}">
+                                                    <apex:outputText value="{!inv.portfolioCode}"/>
+                                                </td>
+                                                <td data-label="{!$ObjectType.Account__c.fields.Vehicle__c.Label}">
+                                                    <apex:outputText value="{!inv.vehicle}"/>
+                                                </td>
+                                                <td data-label="{!$ObjectType.Account__c.fields.Account_Number__c.Label}">
+                                                   <apex:outputText value="{!inv.accountNumber}"/>
+                                                </td>
+                                                <td data-label="{!$Label.SR_Select}">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-checkbox">
+                                                            <apex:inputCheckbox value="{!inv.selected}"></apex:inputCheckbox>
+                                                            <span class="slds-checkbox--faux"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </apex:repeat>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <script src="/resource/MFS_UI_Assets/assets/js/dist/MFS_Core_Plugins.min.js">
+                    </script>
+                    <script src="/resource/MFS_UI_Assets/assets/js/dist/MFS_Core_Plugins_Mobile.min.js">
+                    </script>
+                    <script src="/resource/MFS_UI_Assets/assets/js/dist/MFS_Core_Scripts.min.js">
+                    </script>
+                    <script type="text/javascript">
+                    var isConsole = "";
+                    var allUsers = ""; 
+                    
+                    </script>
+                </body>
+            </html>
+        </apex:outputPanel>
+        
+    </apex:form>
+</apex:page>

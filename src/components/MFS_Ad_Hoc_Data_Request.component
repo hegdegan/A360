@@ -1,0 +1,85 @@
+<apex:component controller="MFS_ETDataRequest" access="global">
+    <apex:attribute name="recId" description="case Id" type="Id" assignTo="{!caseId}"/>
+    <html>
+        <TABLE border="1">
+            <tr>
+                <td>{!$Label.Client_Name}</td><td><apex:outputpanel rendered="{!orgDetails.Name!=null}">{!orgDetails.Name}</apex:outputpanel>
+                <apex:outputPanel rendered="{!orgDetails.Name==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Client_Tier}</td><td><apex:outputPanel rendered="{!OR(orgDetails.Institutional_Tier__c!=null,orgDetails.Non_US_Retail_Tier__c!=null,orgDetails.US_Retail_Tier__c!=null)}">
+                {!orgDetails.Institutional_Tier__c}{!orgDetails.Non_US_Retail_Tier__c}{!orgDetails.US_Retail_Tier__c}</apex:outputPanel> 
+                <apex:outputPanel rendered="{!AND(orgDetails.Institutional_Tier__c==null,orgDetails.Non_US_Retail_Tier__c==null,orgDetails.US_Retail_Tier__c==null)}">TBD</apex:outputPanel> </td>
+            </tr>
+            <tr>
+                <td>{!$Label.Portfolio_Code}</td><td><apex:outputpanel rendered="{!portfolioCode!=null}">{!portfolioCode}</apex:outputpanel>
+                <apex:outputPanel rendered="{!portfolioCode==null}">TBD</apex:outputPanel></td> 
+            </tr>
+            <tr>
+                <td>{!$Label.e_Share_Class}</td><td><apex:outputpanel rendered="{!shareClass!=null}">{!shareClass}</apex:outputpanel>
+                <apex:outputPanel rendered="{!shareClass==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.Data_Type}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Time_Period_s}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_As_of_Date}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Currency}</td><td><apex:outputpanel rendered="{!reportingCurrency!=null}">{!reportingCurrency}</apex:outputpanel>
+                <apex:outputPanel rendered="{!reportingCurrency==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Sector_Schema_if_applicable}</td><td>TBD</td>
+            </tr>    
+            <tr>
+                <td>{!$Label.ET_sr_Contractual_Requirement}</td><td>TBD</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Recurring_Request}</td><td><apex:outputPanel rendered="{!Case.Start_Date__c!=null}">Yes</apex:outputPanel>
+                <apex:outputPanel rendered="{!Case.Start_Date__c==null}">No</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Reason_Needed}</td><td><apex:outputpanel rendered="{!Case.Purpose__c!=null}">{!Case.Purpose__c}</apex:outputpanel>
+                <apex:outputPanel rendered="{!Case.Purpose__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Requestor_on_behalf_of}</td><td><apex:outputpanel rendered="{!Case.Service_Provider_Org_Name__r.Name!=null}">{!Case.Service_Provider_Org_Name__r.Name}</apex:outputpanel>
+                <apex:outputPanel rendered="{!Case.Service_Provider_Org_Name__r.Name==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Due_Date}</td><td><apex:outputtext value="{0,date,MMMM d,' ' YYYY}" rendered="{!Case.Due_Date__c!=null}">
+                <apex:param value="{!Case.Due_Date__c}"/>
+                </apex:outputtext>
+                <apex:outputPanel rendered="{!Case.Due_Date__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_Additional_details_not_outlined_above}</td><td><apex:outputpanel rendered="{!Case.Additional_Details__c!=null}">{!Case.Additional_Details__c}</apex:outputpanel>
+                <apex:outputPanel rendered="{!Case.Additional_Details__c==null}">TBD</apex:outputPanel></td>
+            </tr>
+        </TABLE>
+        <br/><br/>
+        {!$Label.ET_Ad_Hoc_Text}
+        <br/><br/>
+        **<u>{!$Label.ET_Ad_Hoc_Text1}</u><br/><br/>
+        
+        <table border="1">
+            <tr>
+                <td>{!$Label.ET_sr_First_of_the_month_to_15CD}</td><td>{!$Label.ET_sr_Performance}</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_15CD_to_25CD}</td><td>{!$Label.ET_sr_15CD_to_25CD_Description}</td>
+            </tr>
+            <tr>
+                <td>{!$Label.ET_sr_25CD_or_later}</td><td>{!$Label.ET_sr_All_data_can_be_sent}</td>
+            </tr>
+        </table>
+        <br/><br/>
+        {!$Label.ET_Thankyou}
+        <br/>
+        {!$Label.ET_MFS_Team}
+    </html>
+</apex:component>

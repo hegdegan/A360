@@ -1,0 +1,9 @@
+<apex:page standardController="Contact">
+    <apex:form >
+        <script language="JavaScript" type="text/javascript">
+        //window.opener.location.href="/{!$CurrentPage.parameters.id}";
+        //window.close();
+        </script>
+        <apex:commandButton onclick="RefreshParentAndClose()" value="Close Window" />
+    </apex:form>
+</apex:page>

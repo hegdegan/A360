@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-2022-JP</encodingKey>
+    <name>Notify when User added to ER</name>
+    <style>none</style>
+    <subject>Speaker Request for review {!Notify_User__c.Speaker_Request__c}</subject>
+    <type>text</type>
+</EmailTemplate>

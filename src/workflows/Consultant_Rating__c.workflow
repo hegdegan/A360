@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>ConsultantRatingName</fullName>
+        <field>Name</field>
+        <formula>Consultant__r.Name +&quot; - &quot; + Product__r.Name +&quot; - &quot;+(TEXT(YEAR((Datevalue(CreatedDate)))))</formula>
+        <name>ConsultantRatingName</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>IsUpgraded</fullName>
+        <field>Rating_Status__c</field>
+        <literalValue>Blue</literalValue>
+        <name>IsUpgraded</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RatingDowngrade</fullName>
+        <field>Rating_Status__c</field>
+        <literalValue>Red</literalValue>
+        <name>RatingDowngrade</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>RatingisStale</fullName>
+        <field>Rating_Status__c</field>
+        <literalValue>Black</literalValue>
+        <name>RatingisStale</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UpdateRating</fullName>
+        <field>External_Rating__c</field>
+        <formula>Requested_Rating_Change__c</formula>
+        <name>UpdateRating</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UpdateRequestedRatingChange</fullName>
+        <field>Requested_Rating_Change__c</field>
+        <name>UpdateRequestedRatingChange</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Null</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>isNoChange</fullName>
+        <field>Rating_Status__c</field>
+        <literalValue>Black</literalValue>
+        <name>isNoChange</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <rules>
+        <fullName>ConsultantRatingName</fullName>
+        <actions>
+            <name>ConsultantRatingName</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Updates the Consultant Rating Name</description>
+        <formula>Isblank(Name) || ISCHANGED(Name)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>RatingisDowngraded</fullName>
+        <actions>
+            <name>RatingDowngrade</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Checks if the rating is Downgraded, updates record to Downgraded</description>
+        <formula>TEXT(Rating_Change_Type__c) = &quot;Downgrade&quot;</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>RatingisStale</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <timeLength>730</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>RatingisNoChange</fullName>
+        <actions>
+            <name>isNoChange</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Checks if the rating is No Change, updates record to No Change</description>
+        <formula>TEXT(Rating_Change_Type__c) = &quot;No Change&quot;</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>RatingisUpgraded</fullName>
+        <actions>
+            <name>IsUpgraded</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Checks if the rating is upgraded, updates record to Upgraded</description>
+        <formula>TEXT(Rating_Change_Type__c) = &quot;Upgrade&quot;</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>RatingisStale</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <timeLength>730</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+</Workflow>

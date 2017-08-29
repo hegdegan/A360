@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>BAR Org Retail Sales</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>BAR Org Retail Sales</value>
+    </caseValues>
+    <fields>
+        <label><!-- AUM - AUD --></label>
+        <name>AUM_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM - CAD --></label>
+        <name>AUM_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM - EUR --></label>
+        <name>AUM_EUR__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM_GBP --></label>
+        <name>AUM_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM_JPY --></label>
+        <name>AUM_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM SGD --></label>
+        <name>AUM_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM_USD --></label>
+        <name>AUM_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business at Risk --></label>
+        <name>Business_at_Risk__c</name>
+        <relationshipLabel><!-- BAR Org Retail Sales --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Client Reporting Currency Code --></label>
+        <name>Client_Reporting_Currency_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Level --></label>
+        <name>Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDM_ID --></label>
+        <name>MDM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Percentage At Risk --></label>
+        <name>Percentage_At_Risk__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Vehicle --></label>
+        <name>Product_Vehicle__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product --></label>
+        <name>Product__c</name>
+        <relationshipLabel><!-- BAR Org Retail Sales --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Selected? --></label>
+        <name>Selected__c</name>
+    </fields>
+    <fields>
+        <label><!-- Share Class --></label>
+        <name>Share_Class__c</name>
+        <relationshipLabel><!-- BAR Org Retail Sales --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

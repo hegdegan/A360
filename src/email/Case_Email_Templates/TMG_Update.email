@@ -1,0 +1,15 @@
+<messaging:emailTemplate recipientType="User"  
+    relatedToType="Case"
+    subject="{!relatedTo.Subject}" 
+    replyTo="sbova@mfs.com">
+<messaging:htmlEmailBody >
+              <p> Hello,</p>
+<P>{!relatedTo.Purpose__c} New Account # {!relatedTo.CaseNumber}</P>
+<br/>
+<c:MFS_TMGUpdate recId="{!relatedTo.Id}"/>
+<br></br>
+Thank you,
+<br></br>
+MFS Team
+  </messaging:htmlEmailBody>    
+</messaging:emailTemplate>

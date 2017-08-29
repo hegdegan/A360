@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Minimum Waiver</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Minimum Waiver</value>
+    </caseValues>
+    <fields>
+        <label><!-- Anticipated Additional Investment --></label>
+        <name>Anticipated_additional_investment_within__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approval Status --></label>
+        <name>Approval_Status__c</name>
+        <picklistValues>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Required</masterLabel>
+            <translation><!-- Not Required --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Started</masterLabel>
+            <translation><!-- Not Started --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending</masterLabel>
+            <translation><!-- Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Discount --></label>
+        <name>Discount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Distribution Channel --></label>
+        <name>Distribution_Channel__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investment on MFS or Separate Acc --></label>
+        <name>Investment_on_MFS_or_Separate_Acc__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Minimum Waiver --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Prospective Client --></label>
+        <name>Prospective_Client__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stated minimum --></label>
+        <name>Stated_minimum__c</name>
+    </fields>
+    <layouts>
+        <layout>Minimum Waiver Layout</layout>
+        <sections>
+            <label><!-- Business Rationale --></label>
+            <section>Business Rationale</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Waiver Details --></label>
+            <section>Waiver Details</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

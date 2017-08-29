@@ -1,0 +1,11 @@
+{!$Label.OB_Request_ET_1} {!Approval_Request__c.Approver_Group__c},<br><br>
+
+{!Approval_Request__c.OwnerFullName} {!$Label.OB_Request_ET_2} <a href={!URL}/{!Approval_Request__c.Onboarding_CaseId__c}>
+Case URL</a><br><br>
+{!$Label.OB_Request_ET_3}<br><br>
+<a href={!Approval_Request__c.Link}>Request URL</a><br><br>
+{!$Label.OB_Request_ET_4}<br><br>
+{!$Label.OB_Request_ET_5}<br><br>
+
+{!$Label.OB_Request_ET_6}<br>
+{!Approval_Request__c.OwnerFullName}

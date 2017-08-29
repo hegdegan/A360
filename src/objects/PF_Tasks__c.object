@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>pForce</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Functionality__c</fullName>
+        <externalId>false</externalId>
+        <label>Functionality</label>
+        <referenceTo>Functionality__c</referenceTo>
+        <relationshipLabel>Work Tasks</relationshipLabel>
+        <relationshipName>Work_Tasks</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>PF_Actual_End_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Actual End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PF_Actual_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>Actual Hours</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PF_Actual_Start_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Actual Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>PF_Assigned_To__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Assigned To</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Work_Tasks</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PF_Calculated_Estimated_Hours__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Configuration&apos;), ISPICKVAL( PF_Complexity__c , &apos;Simple&apos;)) , 10, 
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Configuration&apos;), ISPICKVAL( PF_Complexity__c , &apos;Medium&apos;)) , 20,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Configuration&apos;), ISPICKVAL( PF_Complexity__c , &apos;Complex&apos;)) , 40,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;VF Page/Component&apos;), ISPICKVAL( PF_Complexity__c ,&apos;Simple&apos;)) , 28,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;VF Page/Component&apos;), ISPICKVAL( PF_Complexity__c ,&apos;Medium&apos;)) , 50,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;VF Page/Component&apos;), ISPICKVAL( PF_Complexity__c ,&apos;Complex&apos;)) , 100,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Apex Class&apos;), ISPICKVAL( PF_Complexity__c , &apos;Simple&apos;)) , 30,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Apex Class&apos;), ISPICKVAL( PF_Complexity__c , &apos;Medium&apos;)) , 44,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Apex Class&apos;), ISPICKVAL( PF_Complexity__c , &apos;Complex&apos;)) , 80,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Web services/Apex call outs&apos;),ISPICKVAL( PF_Complexity__c , &apos;Simple&apos;)) , 34,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Web services/Apex call outs&apos;),ISPICKVAL( PF_Complexity__c , &apos;Medium&apos;)) , 56,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Web services/Apex call outs&apos;),ISPICKVAL( PF_Complexity__c , &apos;Complex&apos;)) ,100,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Trigger/Trigger helper&apos;),ISPICKVAL( PF_Complexity__c , &apos;Simple&apos;)) , 18,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Trigger/Trigger helper&apos;),ISPICKVAL( PF_Complexity__c , &apos;Medium&apos;)) , 36,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Trigger/Trigger helper&apos;),ISPICKVAL( PF_Complexity__c , &apos;Complex&apos;)) , 88,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Data Migration&apos;),ISPICKVAL( PF_Complexity__c , &apos;Simple&apos;)) , 72,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Data Migration&apos;),ISPICKVAL( PF_Complexity__c , &apos;Medium&apos;)) , 136,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Data Migration&apos;),ISPICKVAL( PF_Complexity__c , &apos;Complex&apos;)) , 418,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Integration&apos;),ISPICKVAL( PF_Complexity__c , &apos;Simple&apos;)) , 20,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Integration&apos;),ISPICKVAL( PF_Complexity__c , &apos;Medium&apos;)) , 84,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Integration&apos;),ISPICKVAL( PF_Complexity__c , &apos;Complex&apos;)) , 152,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Reporting &amp; Visualization&apos;),ISPICKVAL( PF_Complexity__c , &apos;Simple&apos;)) , 5,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Reporting &amp; Visualization&apos;),ISPICKVAL( PF_Complexity__c , &apos;Medium&apos;)) , 11,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;Reporting &amp; Visualization&apos;),ISPICKVAL( PF_Complexity__c , &apos;Complex&apos;)) , 30,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;UI Development&apos;),ISPICKVAL( PF_Complexity__c , &apos;Simple&apos;)) , 80,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;UI Development&apos;),ISPICKVAL( PF_Complexity__c , &apos;Medium&apos;)) , 120,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;UI Development&apos;),ISPICKVAL( PF_Complexity__c , &apos;Complex&apos;)) , 220,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;UX Design&apos;),ISPICKVAL( PF_Complexity__c , &apos;Simple&apos;)) , 60,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;UX Design&apos;),ISPICKVAL( PF_Complexity__c , &apos;Medium&apos;)) , 120,
+ IF( And (ISPICKVAL(PF_Work_Type__c,&apos;UX Design&apos;),ISPICKVAL( PF_Complexity__c , &apos;Complex&apos;)) , 220,
+ IF( ISPICKVAL( PF_Work_Type__c, &apos;Other&apos;) , PF_Estimate_Hours__c,0)))))))))))))))))))))))))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Calculated Estimated Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PF_Complexity__c</fullName>
+        <externalId>false</externalId>
+        <label>Complexity</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Complex</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Simple</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>PF_Detailed_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Detailed Description</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PF_Estimate_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>Estimated Hours</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PF_Moved_to_P__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Moved to PROD?</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PF_Moved_to_QA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Moved to QA?</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PF_Planned_End_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Planned End Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>PF_Planned_Start_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Planned Start Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>PF_Priority__c</fullName>
+        <externalId>false</externalId>
+        <label>Priority</label>
+        <picklist>
+            <picklistValues>
+                <fullName>High</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>PF_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1-New</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2-Open</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3-Design</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4-Build</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5-Dev Completed -Ready for Review</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6-Test</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7-UAT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Blocked</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Deferred</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>PF_Task_Summary__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Task Summary</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PF_Unit_testing_completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This flag indicates that Unit testing corresponding to task is completed.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is Unit testing completed for this task ?</inlineHelpText>
+        <label>Unit testing completed</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PF_Work_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Work Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Apex Class</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Configuration</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Data Migration</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Integration</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Reporting &amp; Visualization</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Trigger/Trigger helper</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>UI Development</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>UX Design</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VF Page/Component</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Web services/Apex call outs</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Release__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Release</label>
+        <referenceTo>PF_Release__c</referenceTo>
+        <relationshipLabel>Work Tasks</relationshipLabel>
+        <relationshipName>Work_Tasks</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Work Task</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PF_Detailed_Description__c</columns>
+        <columns>PF_Task_Summary__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>TSK-{00000}</displayFormat>
+        <label>Task Number</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Work Tasks</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>PF_Task_Summary__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PF_Detailed_Description__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PF_Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Functionality__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PF_Assigned_To__c</customTabListAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>OtherComplexity</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL( PF_Complexity__c , &apos;Other&apos;)  &amp;&amp; ISBLANK( PF_Estimate_Hours__c )</errorConditionFormula>
+        <errorMessage>Please enter &quot;Estimate Hours (When Complexity = Other)&quot; when Complexity is other.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Start_End_date_check</fullName>
+        <active>true</active>
+        <description>Start date cannot be greater than End date</description>
+        <errorConditionFormula>(PF_Actual_Start_Date__c &gt; PF_Actual_End_Date__c) ||
+(PF_Planned_Start_Date__c &gt; PF_Planned_End_Date__c)</errorConditionFormula>
+        <errorMessage>Planned/Actual Start date cannot be greater than End date</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>New_Custom</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New_Test</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>https://na24.salesforce.com/a09/e?CF00N1a000004zvLS=TSK-00007&amp;CF00N1a000004zvLS_lkid=a051a0000047LRB&amp;retURL=%2Fa051a0000047LRB</url>
+    </webLinks>
+</CustomObject>

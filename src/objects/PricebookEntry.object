@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>AddPricebookEntryOnPricebook</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddPricebookEntryOnProduct</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AddStandardPrice</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Asset_Class_Geography_Picklist__c</fullName>
+        <externalId>false</externalId>
+        <label>Asset Class-Geography</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Emerging Markets (diversified) Equity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Emerging Markets (diversified) Fixed Income</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Emerging Markets Equity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Alternatives/Specialty</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Balanced/Multi-Asset</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Equity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global ex US Equity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Fixed Income</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Regional Equity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Single Country - Non US Equity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>US Alternatives/Specialty</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>US Balanced/Multi-Asset</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>US Equity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>US Fixed Income</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Asset_Class_Geography__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>(TEXT((Product2.Geography__c)))&amp;&quot; &quot;&amp;(TEXT(Product2.Asset_Class__c))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Asset Class-Geography</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Blended__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product2.Blended__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Blended?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsActive</fullName>
+    </fields>
+    <fields>
+        <fullName>Is_Unknown__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product2.Is_Unknown__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Is Unknown</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Portfolio_Name__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>if( Product2.RecordType.DeveloperName =&apos;Strategy&apos;, &apos;&apos;,Product2.Name)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Portfolio Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pricebook2Id</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product2Id</fullName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ProductCode</fullName>
+    </fields>
+    <fields>
+        <fullName>Product_Family__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>TEXT( Product2.Family )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Family</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Record_Type__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>IF( Product2.RecordType.DeveloperName =&apos;Portfolio&apos;, &apos;2.Portfolio&apos;,&apos;1.Strategy&apos; )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Record Type</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Style__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>TEXT(Product2.Style__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Product Style</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Product_Vehicle__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>TEXT( Product2.Vehicle__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Vehicle</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Restricted__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product2.Restricted__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Restricted</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>StandardPrice</fullName>
+    </fields>
+    <fields>
+        <fullName>Strategy_Name__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>IF( Product2.RecordType.DeveloperName =&apos;Portfolio&apos;, Product2.Strategy__r.Name, Product2.Name)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Strategy Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UnitPrice</fullName>
+    </fields>
+    <fields>
+        <fullName>UseStandardPrice</fullName>
+    </fields>
+    <fields>
+        <fullName>Vehicle__c</fullName>
+        <externalId>false</externalId>
+        <label>Vehicle</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Australia Unit Trust</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Canadian Trust</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>CDO</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Collective Investment Trust</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Institutional Trust</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ITM</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>LLC</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meridian</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFS Family of Funds (US)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFS Investment Funds (FCP)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PPS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Separate Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Subadvised Account</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VIT</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VIT II</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VIT III</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>isValid__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product2.Is_Valid_Product__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>isValid</label>
+        <type>Checkbox</type>
+    </fields>
+    <searchLayouts>
+        <searchResultsAdditionalFields>PRODUCT.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT.CUSTOMER_PRODUCT_ID</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT.DEFAULT_PRICE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.DESCRIPTION</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.FAMILY_ENUM</searchResultsAdditionalFields>
+    </searchLayouts>
+</CustomObject>

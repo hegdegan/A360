@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Pforce</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Acceptance_Criteria__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>These are a set of statements, each with a clear pass/fail result, that specify functional and non-functional requirements to determine when a functionality is completed and working as expected.</inlineHelpText>
+        <label>Acceptance Criteria</label>
+        <length>32768</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Blocked_Reason__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Blocked Reason</label>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Overview of what requirements the functionality is going to address</inlineHelpText>
+        <label>Description</label>
+        <length>131072</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Mobile_Ready_Required__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Mobile-Ready Required?</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Mobile_UX_Status__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Note: All functionalities should be mobile ready. There are some that do not req a separate mobile UX design, but they still need to be mobile ready (i.e., responsive design is still req). This field is to track fun. needing a separate UX design</inlineHelpText>
+        <label>Mobile UX Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>N/A (No UI Required)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mobile UX Design Not Req (Use Desktop UX)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mobile UX Design Pending</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mobile UX Design Created</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mobile UX Implementation Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>PF_Total_Actual_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Actual Hours</label>
+        <summarizedField>PF_Tasks__c.PF_Actual_Hours__c</summarizedField>
+        <summaryForeignKey>PF_Tasks__c.Functionality__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>PF_Total_Estimated_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>Total Estimated Hours</label>
+        <summarizedField>PF_Tasks__c.PF_Estimate_Hours__c</summarizedField>
+        <summaryForeignKey>PF_Tasks__c.Functionality__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Questions_Comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Questions/Comments</label>
+        <length>32768</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Solution_Description__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Description of the end solution created to address the business requirements</inlineHelpText>
+        <label>Solution Description</label>
+        <length>32768</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Not Started</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>New</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In Development</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Complete</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Blocked</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Out-Of-Scope</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Steps__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Include any prerequisite steps, key pointers, updates per iteration conversations, recommendations for approach here.
+
+Please Strike-through anything that is no longer required in this field.</inlineHelpText>
+        <label>Steps</label>
+        <length>32768</length>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Apex Development</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Integration Specification</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pure Configuration</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Workstream__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Workstream</label>
+        <referenceTo>PF_Sprints__c</referenceTo>
+        <relationshipName>Technical_Functionalities</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <label>Functionality</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Workstream__c</columns>
+        <columns>NAME</columns>
+        <columns>Status__c</columns>
+        <columns>Type__c</columns>
+        <columns>Description__c</columns>
+        <columns>Steps__c</columns>
+        <columns>Acceptance_Criteria__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All_Apex</fullName>
+        <columns>Workstream__c</columns>
+        <columns>Status__c</columns>
+        <columns>Type__c</columns>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Mobile_Ready_Required__c</columns>
+        <columns>Mobile_UX_Status__c</columns>
+        <columns>Steps__c</columns>
+        <columns>Acceptance_Criteria__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Type__c</field>
+            <operation>equals</operation>
+            <value>Apex Development</value>
+        </filters>
+        <label>All_Apex</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All_Complete</fullName>
+        <columns>Workstream__c</columns>
+        <columns>NAME</columns>
+        <columns>Status__c</columns>
+        <columns>Type__c</columns>
+        <columns>Description__c</columns>
+        <columns>Steps__c</columns>
+        <columns>Acceptance_Criteria__c</columns>
+        <columns>OWNER.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Complete</value>
+        </filters>
+        <label>All - Complete</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All_Specs</fullName>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Acceptance_Criteria__c</columns>
+        <columns>Status__c</columns>
+        <columns>Steps__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>NAME</field>
+            <operation>notContain</operation>
+            <value>spec</value>
+        </filters>
+        <label>All (exlcuding specs)</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>All_in_dev_complete_or_blocked</fullName>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <columns>Workstream__c</columns>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Acceptance_Criteria__c</columns>
+        <columns>Status__c</columns>
+        <columns>Steps__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>In Development</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Complete</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Blocked</value>
+        </filters>
+        <label>All in dev,complete or blocked</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>In_Development</fullName>
+        <columns>Workstream__c</columns>
+        <columns>NAME</columns>
+        <columns>Description__c</columns>
+        <columns>Steps__c</columns>
+        <columns>Acceptance_Criteria__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>In Development</value>
+        </filters>
+        <label>In Development</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <label>Functionality Name</label>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Functionalities</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Blocked_Reason_Required</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(ISPICKVAL( Status__c , &quot;Blocked&quot;), ISBLANK( Blocked_Reason__c ) 
+)</errorConditionFormula>
+        <errorDisplayField>Blocked_Reason__c</errorDisplayField>
+        <errorMessage>Please enter a Blocked Reason.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Solution_Description_Required</fullName>
+        <active>true</active>
+        <description>Solution Description required in order to Complete</description>
+        <errorConditionFormula>ISPICKVAL(Status__c , &quot;Complete&quot;)  &amp;&amp;  Solution_Description__c =null</errorConditionFormula>
+        <errorMessage>Solution Description required in order to mark functionality as Complete</errorMessage>
+    </validationRules>
+</CustomObject>

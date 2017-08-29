@@ -1,0 +1,174 @@
+<!---
+Visualforce Page Name :  Opportunity Chevron
+Version               :  1.0 
+Created Date          :  15 APR 2016
+Function              :  This page is used to display the Custom Chevron (visual representation of  stage Progress ) for the Opportunity. 
+                         This page displays the current stage in highlighted blue color and other stages in grey color.
+                         Note:  Lightning need not be enabled to view this page; This single page works both in desktop and mobile view.
+Modification Log : 
+-----------------------------------------------------------------------------
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Maheshkumar            15 APR 2016              Initial Version
+* Maheshkumar            22 APR 2016              Picklist valuesdasd are loaded based on Business process
+--->
+
+<apex:page standardController="Opportunity" extensions="MFS_OpportunityChevronExtension"  showHeader="false" standardStylesheets="FALSE" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+    <style type="text/css">
+        .slds
+        {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .slds .slds-tabs--path__item + .slds-is-current:before
+        {
+            background-color:   #7a7a7a;
+
+        }
+        
+        .slds .slds-tabs--path__item + .slds-is-incomplete:before, .slds .slds-tabs--path__item + .slds-is-lost:before
+        {
+            background-color: #7a7a7a;
+        
+        }
+        
+        .slds .slds-tabs--path .slds-is-current + .slds-is-incomplete:before
+        {
+        
+            background-color: #8a002e;
+        }
+        
+        li.li-no-hover-grey.slds-tabs--path__item.slds-is-incomplete
+        {
+            background-color: #7a7a7a;
+        }
+        
+        .slds .slds-tabs--path .slds-is-incomplete .slds-tabs--path__link
+        {
+
+            color: #ffffff;
+        }
+        
+        #makeRed
+        {
+            background-color: #8a002e;
+        }
+        
+        body
+        {
+            pointer-events: none; 
+
+        }
+    </style>
+
+    <!--This section rendered during the Page load to send the Stage picklist values from Page to Controller so that the picklist values corresponds to the Record Type-->
+    <apex:outputPanel rendered="{!loadonce}" >
+        <apex:form id="frm">
+            <apex:actionFunction name="reloadWithStages" action="{!reload}" />
+            <div id="test1" style="width: 100%; height: 150px;"></div> 
+            <apex:outputPanel layout="block" id="vals" style="display:none">
+                <apex:inputField value="{!Opportunity.StageName}" required="false" id="stages"/>
+                <apex:inputText value="{!valsText}" required="false" id="back"/>
+            </apex:outputPanel>
+        </apex:form>
+        <script>
+            function reload()
+            {
+                var ele=document.getElementById('{!$Component.frm.stages}');
+                var idx=0;
+                var valText='';
+                for (idx=0; idx<ele.length; idx++)
+                {
+                    valText+=ele.options[idx].text + ':';
+                }
+
+                var backele=document.getElementById('{!$Component.frm.back}');
+                backele.value=valText;
+                
+                reloadWithStages();
+            }
+            
+            window.onload=reload(); 
+        </script>
+    </apex:outputPanel>
+
+    <!--This section displays the Chevron showing the completed, current and future stages-->
+    <apex:outputPanel id="op">
+        <html xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+            <head>
+                <apex:stylesheet value="{!URLFOR($Resource.MFS_UI_Assets, 'assets/styles/salesforce-lightning-design-system.min.css')}" />
+                <style>
+                	.mfs-chevron-container{overflow:auto;}
+                </style>
+                <script src="/resource/MFS_UI_Assets/assets/js/jquery-1.11.3.min.js">
+                </script>
+                <script>
+                $(document).ready(function(){
+                    //alert($(window).width());
+                    $(".mfs-chevron-container").width($(window).width());
+                });
+                 $(window).on("orientationchange", function(){
+                    $(".mfs-chevron-container").hide();
+                    $(".mfs-chevron-container").width($(window).width()).show();
+                });
+                </script>
+            </head>
+            <body>  
+                
+                <div class="slds">
+                    <div class="mfs-chevron-container">
+                        <div class="slds-tabs--path" role="application">
+                            <ul class="slds-tabs--path__nav" role="tablist">
+                                
+                                <!---------------- Display the Completed stages of the Opportunity --------------> 
+                                <apex:repeat value="{!CompletedStages}" var="stage">    
+                                    <li class="li-no-hover-grey slds-tabs--path__item slds-is-incomplete" role="presentation" rendered = "FALSE" >
+                                        <!--<a class="slds-tabs--path__link" id="tabs-path-1" aria-controls="content-path-1" aria-selected="false" tabindex="-1" role="tab" href="#void" aria-live="assertive"> -->
+                                        <div class=" slds-tabs--path__link" id="tabs-path-1" aria-controls="content-path-1" aria-selected="false" tabindex="-1" role="tab" aria-live="assertive">
+                                            <span class="slds-tabs--path__stage">
+                                                <svg aria-hidden="true" class="slds-icon slds-icon--x-small">
+                                                    <use xlink:href="{!URLFOR($Resource.SLDS102,'assets/icons/utility-sprite/svg/symbols.svg#check')}"></use>
+                                                </svg>
+                                                <span rendered = "FALSE" class="slds-assistive-text">Stage Complete</span>
+                                            </span>
+                                            <span class="slds-tabs--path__title">{!stage}</span>
+                                        </div>
+                                    </li>
+                                </apex:repeat>   
+                                
+                                <!---------------- Display the Current Stage of the Opportunity --------------> 
+                                <li class="li-no-hover-blue slds-tabs--path__item slds-is-current" id="makeRed" role="presentation">
+                                    <div class="slds-tabs--path__link" id="tabs-path-1" aria-controls="content-path-1" aria-selected="false" tabindex="-1" role="tab" href="#void" aria-live="assertive">
+                                        <span class="slds-tabs--path__stage">
+                                            <svg aria-hidden="true" class="slds-icon slds-icon--x-small">
+                                                <use xlink:href="{!URLFOR($Resource.SLDS102,'/assets/icons/utility-sprite/svg/symbols.svg#check')}"></use>
+                                            </svg>
+                                        </span>
+                                        <span class="slds-tabs--path__title">{!InprogressStage}</span>
+                                    </div>
+                                </li> 
+                                
+                                <!---------------- Display the Future stages of the Opportunity --------------> 
+                                <apex:repeat value="{!FutureStages}" var="stage">        
+                                    <li class="li-no-hover-grey slds-tabs--path__item slds-is-incomplete" role="presentation">
+                                        <div class="slds-tabs--path__link" id="tabs-path-1" aria-controls="content-path-1" aria-selected="false" tabindex="-1" role="tab" href="#void" aria-live="assertive">
+                                            <span class="slds-tabs--path__stage">
+                                                <svg aria-hidden="true" class="slds-icon slds-icon--x-small">
+                                                    <use xlink:href="{!URLFOR($Resource.SLDS102,'assets/icons/utility-sprite/svg/symbols.svg#check')}"></use>
+                                                </svg>
+                                                <span class="slds-assistive-text">Stage Complete</span>
+                                            </span>
+                                            <span class="slds-tabs--path__title">{!stage}</span>
+                                        </div>
+                                    </li>
+                                </apex:repeat> 
+                                
+                            </ul>
+                        </div>
+                    </div>      
+                </div>
+                
+            </body>  
+        </html>  
+    </apex:outputPanel>
+</apex:page>

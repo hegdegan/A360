@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Will contain information for literature and logo items</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Comments__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Comments</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <description>Related contacts for Harte Hanks</description>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Literature Requests</relationshipLabel>
+        <relationshipName>Literature_Requests</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Date_Needed_By__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Date Needed By</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_Requested__c</fullName>
+        <description>The date materials were requested</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Date Requested</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Order_Number__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>true</externalId>
+        <label>Order Number</label>
+        <length>200</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <length>25</length>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Literature Request</label>
+    <nameField>
+        <label>Literature Request Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Literature Requests</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>New_Literature_Request</fullName>
+        <availability>online</availability>
+        <description>Click-through to Harte Hanks</description>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New Literature Request</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/39.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/39.0/apex.js&quot;)}
+
+{!REQUIRESCRIPT(&apos;/resource/&apos; &amp; LEFT(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(TEXT(NOW()),&apos;:&apos;,&apos;&apos;),&apos;-&apos;,&apos;&apos;),&apos; &apos;,&apos;&apos;),13) &amp; &apos;/HarteHanksHelper&apos;)}
+
+var hh = new HarteHanksHelper();
+hh.postHHForm(&apos;{!Contact.Id}&apos;);</url>
+    </webLinks>
+    <webLinks>
+        <fullName>StatusLink</fullName>
+        <availability>online</availability>
+        <description>Link to Harte Hanks order status page</description>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>View  Request in Harte Hanks</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>var form = document.createElement(&apos;form&apos;);
+
+form.setAttribute(&apos;method&apos;, &apos;POST&apos;);
+form.setAttribute(&apos;action&apos;, &apos;https://uatmfssso.hartehanks.com/SalesforceController&apos;);
+form.setAttribute(&apos;target&apos;, &apos;HarteHanks&apos;);
+
+var dictionary = {
+	&apos;orderId&apos;:&apos;{!Literature_Request__c.Order_Number__c}&apos;
+	,&apos;contactId&apos;:&apos;{!Contact.Id}&apos;
+}
+                
+for (key in dictionary) {
+	var hiddenField = document.createElement(&quot;input&quot;);
+	
+	hiddenField.setAttribute(&quot;type&quot;, &quot;hidden&quot;);
+	hiddenField.setAttribute(&quot;name&quot;, key);
+	hiddenField.setAttribute(&quot;value&quot;, dictionary[key]);
+
+	form.appendChild(hiddenField);
+}
+
+document.body.appendChild(form);
+
+var params = [ 
+&apos;height=&apos;+screen.height, 
+&apos;width=&apos;+screen.width, 
+&apos;fullscreen=yes&apos; // only works in IE, but here for completeness 
+].join(&apos;,&apos;); 
+
+var hh = window.open(&quot;&quot;, &apos;HarteHanks&apos;, params); 
+hh.moveTo(0,0); 
+
+if (hh) {
+    form.submit();
+} else {
+    alert(&apos;You must allow popups to view Harte Hanks orders.&apos;);
+}</url>
+    </webLinks>
+</CustomObject>

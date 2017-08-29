@@ -1,0 +1,5 @@
+All requested speakers for Event:{!Event_Request__c.Name} have been approved. Please review final event details, send the Outlook meeting invite to the requested speakers, and update the Overall Approval Status to "Confirmed".
+
+Please find the Event Request here:  {!Event_Request__c.Link}
+
+Thank you.

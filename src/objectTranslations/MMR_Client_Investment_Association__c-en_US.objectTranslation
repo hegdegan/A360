@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMR Portfolio Association</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMR Portfolio Association</value>
+    </caseValues>
+    <fields>
+        <label><!-- Client Investment --></label>
+        <name>Client_Investment__c</name>
+        <relationshipLabel><!-- MMR Portfolio Association --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Meeting Material Request --></label>
+        <name>Meeting_Material_Request__c</name>
+        <relationshipLabel><!-- MMR Portfolio Association --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Portfolio Code --></label>
+        <name>Portfolio_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portfolio --></label>
+        <name>Portfolio__c</name>
+        <relationshipLabel><!-- MMR Portfolio Association --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

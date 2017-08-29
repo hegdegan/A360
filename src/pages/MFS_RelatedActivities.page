@@ -1,0 +1,755 @@
+<apex:page controller="MFS_RelatedActivitiesController" standardStylesheets="false" showHeader="false" sidebar="false" docType="html-5.0" >
+    
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>{!$Label.MFS_Related_Activities}</title>
+    <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/salesforce-lightning-design-system-ltng.min.css" />
+    <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/mfs_new_styles.css" />
+    <style>
+        .slds-table th, .slds-table td{white-space:normal !important;}
+        .slds-pill_container{position:absolute;width:95%;background:#eee;z-index:1002;}
+        .slds-pill{padding:4px;}
+        .added-list-container{padding: 5px;background: #eee;border: 1px solid #ccc;position:absolute;width:94.5%;border-radius:4px;z-index:1002;}
+        .slds-checkbox [type=checkbox][disabled]+.slds-checkbox--faux, 
+        .slds-checkbox [type=checkbox][disabled]+.slds-checkbox__label .slds-checkbox--faux, 
+        .slds-checkbox [type=checkbox][disabled]~.slds-checkbox--faux{background-color:#000;}
+        .slds-popover{position:absolute;right: 77px;top: -47px;}
+        .debug{background:#CCC;color:#000;padding:5px;}
+    </style>
+   </head>
+<body class="slds MFS">
+<apex:form >
+<apex:actionFunction name="searchPortfolioOnEnter" action="{!searchProduct}" reRender="searchResults"/>
+    <apex:actionFunction name="init" action="{!init}" reRender="searchResults" oncomplete="hideLoading();" />
+<apex:actionFunction name="search" action="{!FilterActivity}" reRender="searchItems" onbeforedomupdate="showLoading();" oncomplete="hideLoading();postReRenderRelSearch();" />
+<apex:actionFunction name="OpenProductSearchModal" action="{!OpenProductSearchModal}" rerender="searchResults, addSelectedBtn, searchTextPanel" oncomplete="postReRenderPortfolio();"/>
+<apex:actionFunction name="OpenAttendeeSearchModal" action="{!OpenAttendeeSearchModal}" rerender="BoxPanel2" oncomplete="postReRenderInvitees();"/>
+<apex:actionFunction name="searchInvitee" action="{!searchInvitee}" rerender="BoxPanel2" oncomplete="postReRenderActions();"/>
+
+<div class="slds MFS exclude-page-close-warning">
+    <div class="slds-page-header" role="banner">
+        <div class="slds-grid">
+            <div class="slds-col slds-has-flexi-truncate">
+                <div class="slds-media slds-no-space slds-grow">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-account">
+                            <svg aria-hidden="true" class="slds-icon slds-icon--medium">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <p class="slds-text-title--caps slds-line-height--reset">{!$label.A360_Related_Activities}</p>
+                        <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">{!parentObject}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-no-flex slds-grid slds-align-top"></div>
+        </div>
+    </div>
+    <div class="slds-container--x-large slds-container--center mfs-main-container" id="scroller_disabled">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-form-element slds-p-horizontal--small slds-m-top--medium slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                <label class="slds-form-element__label">{!$Label.A360_Time_Frame}</label>
+                <div class="slds-select_container">
+                    <apex:selectList styleClass="slds-select mfs-related-search-timeframe" value="{!wSearchKey.timeframe}" multiselect="false" size="1" onkeypress="MFSApp.relatedActsSearchOnEnterKey(event);">
+                        <apex:selectOption itemValue="All Time" itemLabel="{!$Label.A360_All_Time}" ></apex:selectOption>
+                        <apex:selectOption itemValue="Upcoming 3 Months" itemLabel="{!$Label.A360_Upcoming_3_Months}" ></apex:selectOption>
+                        <apex:selectOption itemValue="1 Month" itemLabel="{!$Label.A360_Past_1_Month}" ></apex:selectOption>
+                        <apex:selectOption itemValue="3 Months" itemLabel="{!$Label.A360_Past_3_Months}" ></apex:selectOption>
+                        <apex:selectOption itemValue="6 Months" itemLabel="{!$Label.A360_Past_6_Months}" ></apex:selectOption>
+                        <apex:selectOption itemValue="1 Year" itemLabel="{!$Label.A360_Past_1_Year}" ></apex:selectOption>
+                        <apex:selectOption itemValue="2 Years" itemLabel="{!$Label.A360_Past_2_Years}" ></apex:selectOption>
+                        <apex:selectOption itemValue="3 Years" itemLabel="{!$Label.A360_Past_3_Years}" ></apex:selectOption>
+                    </apex:selectList>
+                </div>
+            </div>
+            <div class="slds-form-element slds-p-horizontal--small slds-m-top--medium slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                <div class="slds-form-element slds-lookup" data-select="single" data-lookup-type="normal" data-query-url="MFS_RelatedActivitiesController.queryUsers" data-callback="MFSApp.setRelatedSearchAssignedTo" data-icon-path="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#people">
+                    <label class="slds-form-element__label">{!$Label.A360_Assigned_To}</label>
+                    <div class="slds-form-element__control">
+                        <div class="slds-input-has-icon slds-input-has-icon--right">
+                            <svg aria-hidden="true" class="slds-input__icon">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+                            </svg>
+                            <apex:inputHidden value="{!wSearchKey.idAssignedTo}" />
+                            <input class="slds-lookup__search-input slds-input mfs-rel-search-assigned-to" value="" type="text" aria-autocomplete="list" role="combobox"  aria-expanded="true" aria-activedescendant="" placeholder="" autocomplete="off" onkeypress="MFSApp.relatedActsSearchOnEnterKey(event);" />
+                        </div>
+                    </div>
+                    <div class="slds-lookup__menu slds-hide">
+                        <ul class="slds-lookup__list" role="listbox"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-form-element slds-p-horizontal--small slds-m-top--medium slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                <label class="slds-form-element__label">{!$Label.A360_Attendees}</label>
+                <div class="slds-form-element slds-lookup slds-lookup--polymorphic" data-select="multi" data-callback="MFSApp.setRelatedSearchAttendee">
+                    <div class="slds-form-element__control slds-grid slds-box--border mfs-polymorphic-multi-select-lookup">
+                        <div class="dropdown--trigger slds-dropdown-trigger--click slds-align-middle slds-m-left--xx-small slds-shrink-none">
+                            <span class="slds-icon__container selected-icon-container what-handle-icon-container">
+                                <svg aria-hidden="true" class="slds-icon slds-icon-standard-contact slds-icon--small">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                                </svg>
+                            </span>
+                            <button class="slds-button slds-button--icon slds-button--icon-small" aria-haspopup="true" data-query-default-url="MFS_RelatedActivitiesController.queryContacts">
+                                <svg aria-hidden="true" class="slds-button__icon">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                </svg>
+                                <span class="slds-assistive-text">{!$Label.A360_Filter_By_object}</span>
+                            </button>
+                            
+                            <div class="slds-dropdown slds-dropdown--left">
+                                <ul class="dropdown__list" role="menu">
+                                    <li class="slds-dropdown__item" role="presentation" data-query-url="MFS_RelatedActivitiesController.queryUsers">
+                                        <a href="javascript:void(0);" role="menuitem" tabindex="-1">
+                                            <span class="slds-icon__container">
+                                                <span>
+                                                    <svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon-standard-people slds-m-right--small">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#people"></use>
+                                                    </svg>
+                                                </span>
+                                                Users
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="slds-dropdown__item" role="presentation" data-query-url="MFS_RelatedActivitiesController.queryContacts">
+                                        <a href="javascript:void(0);" role="menuitem" tabindex="-1">
+                                            <span class="slds-icon__container">
+                                                <span>
+                                                    <svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon-standard-contact slds-m-right--small">
+                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#contact"></use>
+                                                    </svg>
+                                                </span>
+                                                Contacts
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="mfs-multi-select-lookup">
+                            <apex:inputHidden value="{!wSearchKey.selectedAttendee}" id="selectedAttendeeHidden" />
+                            <input class="slds-lookup__search-input slds-input--bare" value="" type="text" placeholder="Search" aria-activedescendent="" aria-expanded="false" aria-autocomplete="list" onkeypress="MFSApp.relatedActsSearchOnEnterKey(event);" />
+                            <span class="slds-icon_container mfs_open_invitees_modal" title="Click to open all users and contacts"  onclick="OpenAttendeeSearchModal();">
+                                <svg class="slds-icon slds-icon-text-default slds-icon--x-small" aria-hidden="true">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-lookup__menu slds-hide">
+                        <ul class="slds-lookup__list" role="listbox"></ul>
+                    </div>
+                </div>
+                <div class="slds-pill_container attendees-pills-search slds-hide"></div>
+                <div class="added-list-container attendees-list-search slds-hide"></div>
+            </div>
+            <div class="slds-form-element slds-p-horizontal--small slds-m-top--medium slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                <label class="slds-form-element__label">{!$Label.A360_Method}</label>
+                <div class="slds-select_container">
+                    <apex:inputHidden value="{!wSearchKey.selectedmethods}" />
+                    <apex:selectList styleClass="slds-select mfs-related-search-method" value="{!wSearchKey.method}" multiselect="false" size="1" onkeypress="MFSApp.relatedActsSearchOnEnterKey(event);">
+                        <apex:selectOptions value="{!wSearchKey.methodOptions}"></apex:selectOptions>
+                        <!--<apex:selectOption itemValue="" itemLabel="--Select--"></apex:selectOption>
+                        <apex:selectOption itemValue="In Person Meeting" itemLabel="In Person Meeting" ></apex:selectOption>
+                        <apex:selectOption itemValue="Virtual Meeting" itemLabel="Virtual Meeting" ></apex:selectOption>
+                        <apex:selectOption itemValue="Phone Call" itemLabel="Phone Call" ></apex:selectOption>
+                        <apex:selectOption itemValue="Phone Call(Conference calls)" itemLabel="Phone Call(Conference calls)" ></apex:selectOption>
+                        <apex:selectOption itemValue="Video Conference" itemLabel="Video Conference" ></apex:selectOption>
+                        <apex:selectOption itemValue="Webinar" itemLabel="Webinar" ></apex:selectOption>-->
+                    </apex:selectList>
+                </div>
+                <div class="slds-pill_container methods-pills-search slds-hide"></div>
+                <div class="added-list-container methods-list-search slds-hide"></div>
+            </div>
+            <div class="slds-form-element slds-p-horizontal--small slds-m-top--medium slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                <div class="slds-form-element slds-lookup" data-lookup-type="normal" data-select="multi" data-query-url="MFS_RelatedActivitiesController.queryPortfolios" data-callback="MFSApp.setRelatedSearchProducts" data-icon-path="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#product">
+                    <label class="slds-form-element__label">{!$Label.A360_Products}</label>
+                    <div class="slds-form-element__control">
+                        <div class="mfs-multi-select-lookup">
+                            <apex:inputHidden value="{!wSearchKey.selectedProduct}" id="search_related_products" />
+                            <input class="slds-input slds-lookup__search-input search-related-products" type="text" aria-autocomplete="list" aria-expanded="true" aria-activedescendant="" placeholder="Search Products..." onkeypress="MFSApp.relatedActsSearchOnEnterKey(event);" />
+                            <span class="slds-icon_container mfs_portfolio_selector" title="Click to open products list" onclick="OpenProductSearchModal();">
+                                <svg class="slds-icon slds-icon-text-default slds-icon--x-small" aria-hidden="true">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="slds-lookup__menu slds-hide">
+                        <ul class="slds-lookup__list" role="listbox"></ul>
+                    </div>
+                </div>
+                <div class="slds-pill_container products-pills-search slds-hide"></div>
+                <div class="added-list-container products-list-search slds-hide"></div>
+            </div>
+            <div class="slds-form-element slds-p-horizontal--small slds-m-top--medium slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                <label class="slds-form-element__label">&nbsp;</label>
+                <div>
+                    <input type="button" class="slds-button mfs-related-search-button slds-button--brand" value="{!$Label.A360_Search}" onclick="showLoading();search();" />
+                    <input type="button" class="slds-button mfs-related-search-reset slds-button--brand" value="{!$Label.A360_Reset}" />
+                </div>
+            </div>
+        </div>
+        <apex:outputPanel id="searchItems" layout="block">
+            <div class="slds-grid slds-wrap slds-m-top--x-large" style="margin-top:50px;min-height:500px;">
+                <div class="slds-size--12-of-12 slds-p-horizontal--small mfs_fixed_table_wrapper">
+                    <table class="slds-table slds-table--bordered slds-max-medium-table--stacked mfs_fixed_table_head">
+                        <thead>
+                            <tr class="slds-text-title--caps">
+                                <th scope="col">
+                                    <div title="{!$Label.A360_Subject}">
+                                        {!$Label.A360_Subject}
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div title="{!$Label.A360_Date_Time}">
+                                        {!$Label.A360_Date_Time}
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div title="{!$Label.A360_Method}">
+                                        {!$Label.A360_Method}
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div title="{!$Label.A360_Type}">
+                                        {!$Label.A360_Type}
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div title="{!$Label.A360_Location}">
+                                        {!$Label.A360_Location}
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div title="{!$Label.A360_Attendees}">
+                                        {!$Label.A360_Attendees}
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div title="{!$Label.A360_Assigned_To}">
+                                        {!$Label.A360_Assigned_To}
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div title="{!$Label.A360_Related_Products}">
+                                        {!$Label.A360_Related_Products}
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div title="{!$Label.A360_Additional_Notes}">
+                                        {!$Label.A360_Additional_Notes}
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div title="{!$Label.A360_Competitive_Analysis}">
+                                        {!$Label.A360_Competitive_Analysis}
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <apex:repeat value="{!activitiesList}" var="a">
+                                <tr class="slds-hint-parent">
+                                    <td scope="row" data-label="{!$Label.A360_Subject}" width="10%">
+                                        <apex:outputLink value="/{!a['id']}"  onclick="openA360Page('{!a['id']}', 'Loading...', '{!isConsole}');return false;">
+                                            {!a['subject']}
+                                        </apex:outputLink>
+                                    </td>
+                                    <td data-label="{!$Label.A360_Date_Time}" width="10%">
+                                        <div>
+                                            <apex:outputField value="{!a['ActivityDate']}"/>
+                                        </div>
+                                    </td>
+                                    <td data-label="{!$Label.A360_Method}" width="10%">
+                                        <div>{!a['Method__c']}</div>
+                                    </td>
+                                    <td data-label="{!$Label.A360_Type}" width="10%"> 
+                                        <div title="">
+                                            <apex:outputField rendered="{!AND(NOT(a['isTask']),CONTAINS(mapFilteredEvents[a['id']].RecordType.Name, 'Institution'))}"
+                                                              value="{!mapFilteredEvents[a['id']].Activity_Type_for_Instit__c}"/>
+                                            <apex:outputField rendered="{!AND(NOT(a['isTask']),NOT(CONTAINS(mapFilteredEvents[a['id']].RecordType.Name, 'Institution')))}"
+                                                              value="{!mapFilteredEvents[a['id']].Type}"/>
+                                            <apex:outputField rendered="{!AND((a['isTask']),CONTAINS(mapFilteredTasks[a['id']].RecordType.Name, 'Institution'),ISBLANK(mapFilteredTasks[a['id']].Follow_up_Type__c))}"
+                                                              value="{!mapFilteredTasks[a['id']].Type}"/>
+                                            <apex:outputField rendered="{!AND((a['isTask']),NOT(CONTAINS(mapFilteredTasks[a['id']].RecordType.Name, 'Institution')),ISBLANK(mapFilteredTasks[a['id']].Follow_up_Type__c))}"
+                                                              value="{!mapFilteredTasks[a['id']].Type}"/>
+                                            <apex:outputField rendered="{!AND((a['isTask']),NOT(ISBLANK(mapFilteredTasks[a['id']].Follow_up_Type__c)))}"
+                                                              value="{!mapFilteredTasks[a['id']].Follow_up_Type__c}"/> 
+                                        </div>
+                                    </td>
+                                    <td data-label="{!$Label.A360_Location}" width="10%">
+                                        <div title="">
+                                            <apex:outputField value="{!a['Location']}"/>
+                                        </div>
+                                    </td>
+                                    <td data-label="{!$Label.A360_Attendees}" width="10%">
+                                        <div title="">
+                                            <apex:variable var="indexRelation" value="{!0}"/>
+                                            <apex:outputPanel rendered="{!NOT(a['isTask'])}">
+                                            <apex:repeat rendered="TRUE"
+                                                         value="{!mapActIdToActDetail[a['id']].Invitees__r}" var="i">
+                                                <apex:outputPanel rendered="{!NOT(indexRelation == 0)}">, </apex:outputPanel>
+                                                <apex:outputLink value="/{!i.RelationId__c}" 
+                                                                 onclick="openCreatePage('{!i.RelationId__c}', '{!i.Name__c}', '{!isConsole}'); return false;">
+                                                    {!i.Name__c} - {!i.Invitee_Type__c}
+                                                </apex:outputLink>
+                                                <apex:variable var="indexRelation" value="{!indexRelation + 1}"/>
+                                            </apex:repeat>
+                                            </apex:outputPanel>
+                                        </div> 
+                                    </td>
+                                    <td data-label="{!$Label.A360_Assigned_To}" width="10%">
+                                        <div title="">
+                                            <apex:outputLink value="/{!a['ownerid']}" onclick="openCreatePage('{!a['ownerid']}', '{!a['owner.Name']}', '{!isConsole}'); return false;">
+                                                {!a['owner.Name']}
+                                            </apex:outputLink>
+                                        </div>
+                                    </td>
+                                    <td data-label="{!$Label.A360_Related_Products}" width="10%">
+                                        <div title="">
+                                            <apex:variable var="indexProduct" value="{!0}"/>
+                                            <apex:repeat value="{!mapActIdToActDetail[a['id']].Products__r}" var="p">
+                                                <apex:outputPanel rendered="{!NOT(indexProduct == 0)}">, </apex:outputPanel>
+                                                <apex:outputLink value="/{!p.Product__c}" 
+                                                                 onclick="openCreatePage('{!p.Product__c}', '{!p.Product__r.Name}', '{!isConsole}'); return false;">
+                                                    {!p.Product__r.Name}
+                                                </apex:outputLink>
+                                                <apex:variable var="indexProduct" value="{!indexProduct + 1}"/>
+                                            </apex:repeat>
+                                        </div>
+                                    </td>
+                                    <td data-label="{!$Label.A360_Additional_Notes}" width="19%">
+                                        <div tabindex="1" data-aljs="popover" data-aljs-placement="left" title="{!mapActIdToActDetail[a['id']].Notes__c}" onclick="openCreatePage('{!a['id']}', '{!a['subject']}', '{!isConsole}'); return false;">
+                                            {!mapActIdToActDetail[a['id']].Other_Notes__c}
+                                        </div>
+                                        <div class="slds-text-body--small">
+                                            <div class="slds-hide">{!mapActIdToActDetail[a['id']].Notes__c}</div>
+                                            <apex:outputPanel rendered="{!NOT(ISBLANK(TRIM(mapActIdToActDetail[a['id']].Other_Notes__c)))}" layout="none">
+                                                <a href="javascript:void(0)" class="mfs_show_additional_notes_modal" data-modal-heading="{!a['subject']}">Show Full &raquo;</a>
+                                            </apex:outputPanel>
+                                        </div>
+                                    </td>
+                                    <td data-label="{!$Label.A360_Competitive_Analysis}" width="1%" class="mfs-align-center--large">
+                                        <div title="">
+                                            <apex:outputPanel rendered="{!IF(mapActIdToActDetail[a['id']].Competitive_Analysis__r.EMPTY, false,true)}" layout="none">
+                                                <img src="/img/checkbox_checked.gif" alt="Checked" width="21" height="16" class="checkImg" title="Checked" />
+                                            </apex:outputPanel>
+                                            <apex:outputPanel rendered="{!!IF(mapActIdToActDetail[a['id']].Competitive_Analysis__r.EMPTY, false,true)}" layout="none">
+                                                <img src="/img/checkbox_unchecked.gif" alt="Not Checked" width="21" height="16" class="checkImg" title="Not Checked" />
+                                            </apex:outputPanel>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </apex:repeat>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </apex:outputPanel>
+    </div>
+    
+    <!-- Portfolio Modal STARTS -->
+    <div class="mfs_portfolio_selector_modal">
+        <div role="dialog" class="slds-modal slds-fade-in-close slds-modal--large">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse mfs-modal-cancel">
+                        <svg aria-hidden="true" class="slds-button__icon slds-button__icon--large">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">{!$Label.A360_Close}</span>
+                    </button>
+                    <h2 class="slds-text-heading--medium">{!$Label.A360_Select_Portfolios}</h2>
+                </div>
+                <div class="slds-modal__content slds-p-around--medium slds-text-align--center slds-modal--loading">
+                    <img src="/resource/MFS_UI_Assets/assets/images/spinners/slds_spinner_brand.gif" border="0" width="30" />
+                    {!$Label.A360_Loading_Message}
+                </div>
+                <div class="slds-modal__content slds-hide">
+                    <div>
+                        <apex:outputPanel id="searchTextPanel">
+                        <div class="slds-grid slds-wrap slds-pull--padded slds-m-bottom--small slds-m-top--large">
+                            <div class="slds-p-horizontal--small slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12 slds-m-top--small">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="lookup">{!$Label.A360_Asset_Class_Geography}</label>
+                                    <div class="slds-select_container">
+                                        <apex:inputField styleClass="slds-select" value="{!wSearchKey.product.Asset_Class_Geography__c}">
+                                            <apex:actionSupport event="onchange" action="{!searchProduct}" reRender="searchResults">                                         
+                                            </apex:actionSupport>
+                                        </apex:inputField>
+                                         <!--<apex:selectList value="{!selectedAssetGeography}" size="1" id="styleP" styleClass="slds-select">
+                                            <apex:actionSupport event="onchange" action="{!searchProduct}" reRender="searchResults">                                         
+                                            </apex:actionSupport>
+                                            <apex:selectOptions value="{!GeograhpyOptions}"/>
+                                        </apex:selectList>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-p-horizontal--small slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12 slds-m-top--small">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="lookup">{!$Label.A360_Strategy_Portfolio_Name}</label>
+                                    <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                                        <apex:inputText value="{!wSearchKey.product.Name}" styleClass="slds-input add_enter_key_listener" html-data-enter-key-callback="searchPortfolioGo" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-p-horizontal--small slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12 slds-m-top--small">
+                                <div class="slds-form-element">
+                                    <label class="slds-form-element__label" for="lookup">{!$Label.A360_Vehicle}</label>
+                                    <div class="slds-select_container">
+                                        <apex:inputField styleClass="slds-select" value="{!wSearchKey.product.Vehicle__c}">
+                                            <apex:actionSupport event="onchange" action="{!searchProduct}" reRender="searchResults">                                         
+                                            </apex:actionSupport>
+                                        </apex:inputField>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <input id="sProd" type="hidden" />
+                            <input id="cProd" type="hidden" />
+                        </apex:outputPanel>
+                        <div class="slds-grid slds-wrap slds-pull--padded slds-m-bottom--small">
+                            <div class="slds-p-horizontal--small slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                                <apex:commandButton value="{!$Label.Product_Search}" action="{!searchProduct}" reRender="searchResults" styleClass="slds-button slds-button--brand" onclick="showLoading();" oncomplete="hideLoading();" />
+                            </div>
+                        </div>
+                        
+                        <apex:outputPanel id="searchResults" layout="block">
+                        
+                            <div class="slds-p-around--medium">
+                                <table class="slds-table slds-table--bordered slds-max-medium-table--stacked all-portfolios-in-search">
+                                    <thead>
+                                        <tr class="slds-text-title--caps">
+                                            <th class="slds-cell-shrink" scope="col"></th>
+                                            <th scope="col">
+                                                <div title="{!$Label.A360_Asset_Class_Geography}">
+                                                    {!$Label.A360_Asset_Class_Geography}
+                                                </div>
+                                            </th>
+                                            <th scope="col">
+                                                <div title="{!$Label.A360_Strategy_Name}">
+                                                    {!$Label.A360_Strategy_Name}
+                                                </div>
+                                            </th>
+                                            <th scope="col">
+                                                <div title="{!$Label.A360_Portfolio_Name}">
+                                                    {!$Label.A360_Portfolio_Name}
+                                                </div>
+                                            </th>
+                                            <th scope="col">
+                                                <div title="{!$Label.A360_Vehicle}">
+                                                    {!$Label.A360_Vehicle}
+                                                </div>
+                                            </th>
+                                            <th scope="col">
+                                                <div title="{!$Label.A360_Restricted}">
+                                                    {!$Label.A360_Restricted}
+                                                </div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <apex:repeat value="{!wlSearchedProducts}" var="resultRec">
+                                            <tr class="slds-hint-parent">
+                                                <td class="slds-cell-shrink" data-label="Select Row">
+                                                    <label class="slds-checkbox">
+                                                        <apex:inputCheckbox value="{!resultRec.isSelected}" html-data-prg-id="{!resultRec.p.Id}" html-data-prg-name="{!resultRec.p.Name}"></apex:inputCheckbox>
+                                                        <span class="slds-checkbox--faux"></span>
+                                                        <span class="slds-assistive-text">{!$Label.A360_Select_Row}</span>
+                                                    </label>
+                                                </td>
+                                                <th scope="row" data-label="{!$Label.A360_Asset_Class_Geography}">
+                                                    <div>{!resultRec.p.Asset_Class_by_Geography__c}</div> <!--Asset_Class_Geography__c field is replace by Asset_Class_by_Geography__c on 01/Feb/2017 -->
+                                                </th>
+                                                <td data-label="{!$Label.A360_Strategy_Name}">
+                                                    <div><apex:outputText value="{!IF((resultRec.p.Product_Record_Type__c == '1.Strategy'),resultRec.p.Name,resultRec.p.Strategy__r.Name)}"/></div>
+                                                </td>
+                                                <td data-label="{!$Label.A360_Portfolio_Name}">
+                                                    <div><apex:outputText value="{!IF((resultRec.p.Product_Record_Type__c == '2.Portfolio'),resultRec.p.Name,'')}"/></div> 
+                                                </td>
+                                                <td data-label="{!$Label.A360_Vehicle}">
+                                                    <div>{!resultRec.p.Vehicle__c}</div>
+                                                </td>
+                                                <td data-label="{!$Label.A360_Restricted}">
+                                                    <div><apex:outputField value="{!resultRec.p.Restricted__c}"/></div>
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </apex:outputPanel>
+                    </div>
+                </div>
+                <apex:outputPanel styleClass="slds-modal__footer slds-modal__footer--directional" id="addSelectedBtn" layout="block">
+                    <button class="slds-button slds-button--neutral mfs-modal-cancel">{!$Label.A360_Close}</button>        
+                    <apex:commandButton value="{!$Label.A360_Add_Selected}" styleclass="slds-button slds-button--brand mfs-add-products-to-search mfs-modal-cancel" onclick="prevDefault(event);" />
+                </apex:outputPanel>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop--close"></div>
+    </div>
+    <!-- Portfolio Modal ENDS -->
+    
+    <!-- Invitee pop up STARTS -->
+    <div class="dialog_box_select_invitee">
+        <div class="slds-modal slds-modal--large slds-fade-in-close" aria-hidden="false" role="dialog">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse mfs-modal-cancel">
+                        <svg aria-hidden="true" class="slds-button__icon slds-button__icon--large">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">{!$Label.A360_Close}</span>
+                    </button>
+                    <h2 class="slds-text-heading--medium">{!$Label.A360_Select_Attendees}</h2>
+                </div>
+                
+                <div class="slds-modal__content slds-p-around--medium slds-text-align--center slds-modal--loading slds-hide">
+                    <img src="/resource/MFS_UI_Assets/assets/images/spinners/slds_spinner_brand.gif" border="0" width="30" />
+                    {!$Label.A360_Loading_Message}
+                </div>
+                <apex:outputPanel styleClass="slds-modal__content slds-p-around--medium" id="BoxPanel2" layout="block">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-form-element slds-p-horizontal--small slds-m-top--small slds-large-size--2-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                            <label class="slds-form-element__label">Type</label>
+                            <div class="slds-select_container">
+                                <apex:selectList styleClass="slds-select" value="{!SearchObjects}" multiselect="false" size="1">
+                                    <apex:selectOptions value="{!InviteeSearchObjects}" />
+                                </apex:selectList>
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-p-horizontal--small slds-m-top--small slds-large-size--2-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                            <label class="slds-form-element__label">{!$Label.A360_Name}</label>
+                            <div class="slds-form-element__control">
+                                <apex:inputText styleClass="slds-input" value="{!wSearchKey.wAttendees.SearchText}" onkeypress="disableEnterKey(event)" />
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-p-horizontal--small slds-m-top--small slds-large-size--2-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                            <label class="slds-form-element__label">{!$Label.A360_Organization}</label>
+                            <div class="slds-form-element__control">
+                                 <apex:inputText styleClass="slds-input" value="{!wSearchKey.wAttendees.SearchTextOrg}" onkeypress="disableEnterKey(event)" />
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-p-horizontal--small slds-m-top--small slds-large-size--2-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                            <label class="slds-form-element__label">{!$Label.A360_City}</label>
+                            <div class="slds-form-element__control">
+                                 <apex:inputText styleClass="slds-input" value="{!wSearchKey.wAttendees.SearchTextCity}" onkeypress="disableEnterKey(event)" />
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-p-horizontal--small slds-m-top--small slds-large-size--2-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                            <label class="slds-form-element__label">{!$Label.A360_Country}</label>
+                            <div class="slds-form-element__control">
+                                
+                                 <apex:inputText styleClass="slds-input" value="{!wSearchKey.wAttendees.SearchTextCountry}" onkeypress="disableEnterKey(event)" />
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-p-horizontal--small slds-m-top--medium slds-large-size--2-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                            <label class="slds-form-element__label">&nbsp;</label>
+                            <div style="margin-top:-4px;margin-left:-4px;">
+                                <apex:commandButton styleClass="slds-button slds-button--brand" action="{!searchInvitee}" value="{!$Label.A360_Find}" rerender="BoxPanel2" onclick="showLoading();" oncomplete="postReRenderActions();" />
+                                <apex:commandButton styleClass="slds-button slds-button--brand slds-m-left--large" action="{!reset}" value="{!$Label.A360_Reset}" rerender="BoxPanel2" onclick="showLoading();"  />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-form-element slds-m-top--medium mfs-multiselect">
+                        <div class="slds-form-element__control">
+                            <apex:inputHidden id="mfs_fld_selected_invitees_hidden" value="{!selectedAttendeeHidden}" />
+                            <div class="slds-picklist--draggable slds-grid mfs-invitees-popup" data-aljs="multi-select" data-unselected-items="{!leftSideInvitees}" data-selected-items="{!rightSideInvitees}" data-type="json">
+                                <div class="slds-form-element">
+                                    <div class="slds-picklist slds-picklist--multi" data-aljs-multi-select="unselected">
+                                        <ul class="slds-picklist__options slds-picklist__options--multi shown"></ul>
+                                    </div>
+                                </div>
+                                <div class="slds-grid slds-grid--vertical">
+                                    <button class="slds-button slds-button--icon-container" data-aljs-multi-select="select" onclick="prevDefault(event);setValuesToInviteePopupForRelatedActsSearch();">
+                                        <span class="slds-icon__container" data-reset-icons='true' data-render-icon-class="slds-button__icon" data-rerender-icon="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#right">
+                                            <svg aria-hidden="true" class="slds-button__icon">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#right"></use>
+                                            </svg>
+                                            <span class="slds-assistive-text">Pick list</span>
+                                        </span>
+                                    </button>
+                                    <button class="slds-button slds-button--icon-container" data-aljs-multi-select="unselect" onclick="prevDefault(event);setValuesToInviteePopupForRelatedActsSearch();">
+                                        <span class="slds-icon__container" data-reset-icons='true' data-render-icon-class="slds-button__icon" data-rerender-icon="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#left">
+                                            <svg aria-hidden="true" class="slds-button__icon">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#left"></use>
+                                            </svg>
+                                            <span class="slds-assistive-text">Pick list</span>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="slds-form-element">
+                                    <div class="slds-picklist slds-picklist--multi" data-aljs-multi-select="selected">
+                                        <ul class="slds-picklist__options slds-picklist__options--multi shown"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </apex:outputPanel>
+                <div class="slds-modal__footer slds-modal__footer--directional">
+                    <input value="{!$Label.A360_Close}" type="button" class="slds-button slds-button--neutral mfs-modal-cancel" />
+                    <apex:commandButton value="{!$Label.A360_Add_Selected}" styleclass="slds-button slds-button--brand mfs-add-attendees-to-search mfs-modal-cancel" onclick="prevDefault(event);" />
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop slds-backdrop--close"></div>
+    </div>
+    <!-- Invitee pop up ENDS -->
+    
+    <!-- Additional Notes Full View Modal STARTS -->
+    <div class="mfs_additional_notes_full">
+        <div role="dialog" tabindex="-1" class="slds-modal">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse mfs-modal-cancel" title="Close">
+                        <svg class="slds-button__icon slds-button__icon--large" aria-hidden="true">
+                            <use xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                    </button>
+                    <h2 id="mfs_modal_header_txt" class="slds-text-heading--medium"></h2>
+                </div>
+                <div id="mfs_modal_content_txt" class="slds-modal__content slds-p-around--medium"></div>
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button--neutral mfs-modal-cancel">Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop"></div>
+    </div>
+    <!-- Additional Notes Full View Modal STARTS -->
+</div>
+</apex:form>
+<script src="/resource/MFS_UI_Assets/assets/js/jquery-1.11.3.min.js">
+</script>    
+<script src="/resource/MFS_UI_Assets/assets/js/ftscroller.js">
+</script>
+<script src="/resource/MFS_UI_Assets/assets/js/jquery.aljs-init.min.js">
+</script>
+<script src="/resource/MFS_UI_Assets/assets/js/jquery.aljs-multi-select.min.js">
+</script>
+<script src="/resource/MFS_UI_Assets/assets/js/jquery.aljs-popover.min.js">
+</script>
+<script src="/resource/MFS_UI_Assets/assets/js/jquery.floatThead.min.js">
+</script>
+<script src="/resource/MFS_UI_Assets/assets/js/SLDS_Lookup.js">
+</script>
+<script src="{!URLFOR($Resource.MFS_Scripts_New)}">
+</script>
+<script>
+var allUsers = "";
+var isConsole = "{!isConsole}";
+var fixedTableHeaderHTML = $(".mfs_fixed_table_head thead").html();
+</script>
+<script src="{!URLFOR($Resource.MFS_UI_Engine)}">
+</script>
+
+<script>
+    <apex:includeScript value="/soap/ajax/22.0/connection.js"/>
+        <apex:includeScript value="/soap/ajax/22.0/apex.js"/>
+        <apex:includeScript value="/support/console/35.0/integration.js"/>
+    var pageLoad = window.onload;
+    window.onload = function() {
+        if (pageLoad) {
+            pageLoad();
+        }
+        SetTabTitle();
+    }
+    function SetTabTitle() {
+        sforce.console.setTabTitle('{!$Label.A360_View_Activities}');
+    }
+    $(document).ready(function(){
+        //showLoading();
+        //init();
+        $("html").on("click", function(e){
+            if($(e.target).parents(".slds-lookup__list").length == 0 && $(".slds-pill_container").is(":visible") && !$(e.target).hasClass("search-related-products")){
+                $(".slds-pill_container").addClass("slds-hide");
+                
+                var allAddedList = $(".added-list-container");
+                for(var i=0, iLen = allAddedList.length; i < iLen; i++){
+                    if($(allAddedList[i]).text() !== ""){
+                        $(allAddedList[i]).removeClass("slds-hide");
+                    }
+                }
+            }
+        });
+        
+        $(".added-list-container").on("click", function(e){
+            e.stopPropagation();
+            $(this).addClass("slds-hide");
+            $(this).parent().find(".slds-pill_container").removeClass("slds-hide");
+        });
+        
+        $('[data-aljs="popover"]').popover();
+
+        /*$('.mfs_fixed_table_head').floatThead({
+            scrollContainer: function($table){
+                return $table.closest('.mfs_fixed_table_wrapper');
+            }
+        });*/
+        
+        /*$('.mfs_fixed_table_head').floatThead({
+            position: "fixed",
+            top: 69
+        });*/
+    });
+    
+    var postReRenderRelSearch = function(){
+        $('[data-aljs="popover"]').popover();
+        MFSApp.relatedActsSearchTableReflow();
+    };
+    
+    function A360OpenPrimaryTabNew(url, title){
+        sforce.console.getEnclosingPrimaryTabId(function(result){
+            var primaryTabId = result.id;
+            sforce.console.openSubtab(primaryTabId , url, true, title, null, openSuccess, title);
+        });
+    }
+    
+    function openCreatePage(recordID, title, isConsole){
+        var url = "/"+recordID;
+        console.log('{!$User.UIThemeDisplayed}');
+        if('{!$User.UIThemeDisplayed}' == 'Theme4d' || '{!$User.UIThemeDisplayed}' == 'Theme4t'){
+            console.log('in sf1');
+            //sforce.one.navigateToURL(url, true);
+            sforce.one.navigateToSObject(recordID);
+        }
+        else if(sforce.console.isInConsole() || isConsole == 'true'){
+            console.log('inside console');
+            A360OpenPrimaryTabNew(url, title);
+        }
+            else{
+                console.log('window');
+                window.open(url, "_new");
+            }
+    }
+    
+    function openA360Page(recordID, title, isConsole){
+        var url = "/"+recordID;
+        if(sforce.console.isInConsole() || isConsole == 'true'){
+            A360OpenPrimaryTabNew(url, title);
+        }
+        else if('{!$User.UIThemeDisplayed}' == 'Theme4d' || '{!$User.UIThemeDisplayed}' == 'Theme4t'){
+            sforce.one.navigateToURL(url,true);
+            //sforce.one.navigateToSObject(recordID);
+        }
+            else{
+                window.open(url, "_new");
+            }
+    }
+    
+    var openSuccess = function(result) {
+    };
+</script>
+</body>
+</html>
+</apex:page>

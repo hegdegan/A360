@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Notify for new Product Win</name>
+    <style>none</style>
+    <subject>New win: [Strategy] for {!Case.Account}.</subject>
+    <textOnly>Hello,
+
+Purpose:  To notify the group of the new win: [Strategy], for {!Case.Account}.
+
+[Enter description of request here]
+
+Below please find additional information regarding these new mandates:
+
+Client: {!Case.Account}
+Client Type:  {!Case.00NP0000000t4L3}
+
+
+Next Steps: We will be sending the IMA and guidelines for review and comments shortly.
+
+Please let me know if you have any questions.
+
+Thank you,
+{!User.FirstName} {!User.LastName}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

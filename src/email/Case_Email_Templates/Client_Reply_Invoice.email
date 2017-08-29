@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Client Reply-inv" recipientType="Contact" relatedToType="Case">
+<messaging:HtmlEmailBody >
+<c:MFS_Client_Reply_Invoice recId="{!relatedTo.Id}"/>
+</messaging:HtmlEmailBody>
+</messaging:emailTemplate>

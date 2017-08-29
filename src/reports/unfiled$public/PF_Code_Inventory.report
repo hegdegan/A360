@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>PF_Deployment__c.PF_Object_Name__c</field>
+    </columns>
+    <columns>
+        <field>PF_Deployment__c.PF_API_Name__c</field>
+    </columns>
+    <columns>
+        <field>PF_Deployment__c.PF_Component_Type__c</field>
+    </columns>
+    <columns>
+        <field>PF_Deployment__c.PF_Description__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>PF_Deployment__c.Functionality__c</column>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PF_Deployment__c.Functionality__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Code Inventory</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$PF_Deployment__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

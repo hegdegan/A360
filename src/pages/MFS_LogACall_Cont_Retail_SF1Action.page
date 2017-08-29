@@ -1,0 +1,39 @@
+<!---
+Visualforce Page Name :  MFS_LogACall_Cont_Retail_SF1Action
+Version               :  1.0 
+Created Date          :  9 NOV 2016
+Function              :  Publisher action to create Retail Call from Contact for Admin
+--->
+<apex:page standardController="Contact" sidebar="false" >
+    <script>
+    <apex:includeScript value="/soap/ajax/22.0/connection.js"/>
+        <apex:includeScript value="/soap/ajax/22.0/apex.js"/>
+            
+            /*Thisjavascript opens the Custom Activity360 page to Create Activity which is an Event of type Retail.*/ 
+            
+            //parameters to pass in the URL 
+            var returnID; 
+    var pageneme = 'MFS_Activity360RetailPageSF1'; 
+    var RecType= 'Retail'; 
+    var isNew = 'isNew=true'; 
+    var contid= '{!Contact.Id}'; 
+    
+    returnID = contid; 
+    var activityId; 
+    
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+    var newActivityDetail= new sforce.SObject("Activity_Detail__c"); 
+    newActivityDetail.Subject__c = 'Orphan Record'; 
+    result = sforce.connection.create([newActivityDetail]); 
+    
+    activityId = result[0].id; 
+    var A360url = '/apex/' + pageneme + '?Id='+ activityId + '&task=true&returnID='+returnID+'&RecType=' + RecType+'&'+ isNew ; 
+    
+    if (typeof(srcUp) == 'function') { 
+         window.open(A360url, "_self"); 
+    } else { 
+        window.open(A360url); 
+    }
+    
+    </script>
+</apex:page>

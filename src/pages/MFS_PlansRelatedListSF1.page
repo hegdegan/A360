@@ -1,0 +1,104 @@
+<apex:page standardController="Case" extensions="MFS_ServiceRequestRelatedListController" showHeader="false" sidebar="false" standardStylesheets="false">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+            <title>MFS Plans Related List</title>
+            <apex:slds />
+            <apex:includeScript value="{!URLFOR($Resource.JqueryMin, 'jqueryUI/jquery-1.11.1.min.js')}" />
+            <apex:includeScript value="/support/console/30.0/integration.js"/>
+            <script>
+            $(document).ready(function(){
+                var currIframeH = $(window).height();
+                console.log($(window).height());
+                if(currIframeH === 40){
+                	$(".slds-card__header").css({"position":"relative", "top":"-12px", "left":"-12px"});
+                }
+                else{
+                    $(".slds-card__header").css({"position":"relative", "top":"0", "left":"0"});
+                }
+            });
+            function openRecord(currText, name){
+               sforce.one.navigateToUTL("/"+currText);            
+            }
+            </script>
+        </head>
+        <body>
+            <div class="slds">
+                <div class="slds-card__header slds-grid">
+                    <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                        <div class="slds-media__figure">
+                            <div class="small forceEntityIcon" style="background-color: #F2CF5B">
+                                <span>
+                                    <img src="/resource/MFS_UI_Assets/assets/icons/standard/case_120.png" class="icon " alt="" title="" width="32" height="32" />
+                                </span>
+                            </div>
+                        </div>
+                        <div class="slds-media__body">
+                            <h2 class="header-title-container">
+                                <span class="slds-text-heading--medium slds-truncate" title="Plans (0)" style="font-size:1.25rem;font-weight:400;">Plans ({!PlansList.size})</span>
+                            </h2>
+                        </div>
+                    </header>
+                    <div class="slds-no-flex" >
+                        
+                    </div>
+                </div>
+                <table class="slds-table slds-table--bordered slds-max-medium-table--stacked-horizontal slds-m-top--small">
+                    <thead>
+                        <tr class="slds-text-title--caps">
+                            <th scope="col">
+                                <div title="Plan Name">
+                                    Plan Name
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div title="Plan ID">
+                                    Plan ID
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div title="Plan Start Date">
+                                    Plan Start Date
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div title="Plan Type">
+                                    Plan Type
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div title="Plan Termination Date">
+                                    Plan Termination Date
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat value="{!PlansList}" var="plan">
+                            <tr class="slds-hint-parent">
+                                <th data-label="Plan Name">
+                                    <div class="slds-truncate">
+                                        <apex:outputLink value="/{!plan.Plan__c}" onclick="openRecord('{!plan.Plan__c}', '{!plan.Plan__r.Name}'); return false;"> {!plan.Plan__r.Name} </apex:outputLink>
+                                    </div> 
+                                </th>
+                                <td data-label="Plan ID">
+                                    <div class="slds-truncate">{!plan.Plan__r.Plan_ID__c}</div>
+                                </td>
+                                <td data-label="Plan Start Date">
+                                    <div class="slds-truncate"><apex:outputField value="{!plan.Plan__r.Plan_Start_Date__c}"/></div> 
+                                </td>
+                                <td data-label="Plan Type">
+                                    <div class="slds-truncate">{!plan.Plan__r.Plan_Type__c}</div>
+                                </td>
+                                <td data-label="Plan Termination Date">
+                                    <div class="slds-truncate"><apex:outputField value="{!plan.Plan__r.Plan_Termination_Date__c}"/></div> 
+                                </td>
+                            </tr>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </div>
+        </body>
+    </html>
+</apex:page>

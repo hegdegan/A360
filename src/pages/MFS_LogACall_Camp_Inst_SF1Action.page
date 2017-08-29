@@ -1,0 +1,39 @@
+<!---
+Visualforce Page Name :  MFS_LogACall_Camp_Inst_SF1Action
+Version               :  1.0 
+Created Date          :  11 OCT 2016
+Function              :  Publisher action to create Inst Call from Campaign for Admin
+--->
+<apex:page standardController="Campaign" sidebar="false" >
+    <script>
+    <apex:includeScript value="/soap/ajax/22.0/connection.js"/>
+        <apex:includeScript value="/soap/ajax/22.0/apex.js"/>
+            
+            /*Thisjavascript opens the Custom Activity360 page to Create Activity which is an Event of type Retail.*/ 
+            
+            //parameters to pass in the URL 
+            var returnID; 
+    var pageneme = 'MFS_Activity360PageSF1'; 
+    var RecType= 'Institutional'; 
+    var isNew = 'isNew=true'; 
+    var campId= '{!Campaign.Id}'; 
+    
+    returnID = campId; 
+    var activityId; 
+    
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+    var newActivityDetail= new sforce.SObject("Activity_Detail__c"); 
+    newActivityDetail.Subject__c = 'Orphan Record'; 
+    result = sforce.connection.create([newActivityDetail]); 
+    
+    activityId = result[0].id; 
+    var A360url = '/apex/' + pageneme + '?Id='+ activityId + '&task=true&returnID='+returnID+'&RecType=' + RecType+'&'+ isNew ; 
+    
+    if (typeof(srcUp) == 'function') { 
+        srcUp(A360url); 
+    } else { 
+        window.open(A360url); 
+    }
+    
+    </script>
+</apex:page>

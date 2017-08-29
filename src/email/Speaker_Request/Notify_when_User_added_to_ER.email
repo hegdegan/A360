@@ -1,0 +1,7 @@
+Hi {!Notify_User__c.User__c}, 
+
+Please see the following speaker request for your review: 
+{!Notify_User__c.Link} 
+
+Thanks, 
+Speaker Coordinator Group

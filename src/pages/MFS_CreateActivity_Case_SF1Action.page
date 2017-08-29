@@ -1,0 +1,54 @@
+<!---
+Visualforce Page Name :  MFS_CreateActivity_Case_SF1Action
+Version               :  1.0 
+Created Date          :  11 NOV 2016
+Function              :  Publisher action to create activity from Case for Non admins
+--->
+<apex:page standardController="Case" sidebar="false" >
+    <script>
+    <apex:includeScript value="/soap/ajax/22.0/connection.js"/>
+        <apex:includeScript value="/soap/ajax/22.0/apex.js"/>
+            
+            /*Thisjavascript opens the Custom Activity360 page to Create Activity which is an Event of type*/ 
+            
+            //parameters to pass in the URL 
+//parameters to pass in the URL 
+var returnID; 
+var pagename; 
+var isTaskorEvent = 'event=true'; 
+var isNew = 'isNew=true'; 
+
+//Determine the Page Layout (Institutional/Retail) 
+if('{$User.Profile}'.includes("Institution") || '{$User.Profilee}'.includes("Global Client Service") || '{$User.Profilee}'.includes("Global Consultant Relations")){ 
+pagename = 'MFS_Activity360PageSF1'; 
+} else if('{$User.Profile}'.includes("Retail")){ 
+pagename = 'MFS_Activity360RetailPageSF1'; 
+}else{ 
+pagename = 'MFS_Activity360RetailPageSF1'; 
+}  
+
+var caseId= '{!Case.Id}'; 
+    
+returnID = caseId;
+var activityId; 
+
+sforce.connection.sessionId = "{!$Api.Session_ID}"; 
+var newActivityDetail= new sforce.SObject("Activity_Detail__c"); 
+newActivityDetail.Subject__c = 'Orphan Record'; 
+result = sforce.connection.create([newActivityDetail]); 
+
+
+activityId = result[0].id; 
+
+var A360url = '/apex/' + pagename + '?Id=' +activityId+ '&' +isTaskorEvent+ '&returnID='+returnID+'&'+ isNew +'&isConsole=false'; 
+
+//var A360urlConsole = '/apex/' + pagename + '?Id=&' +isTaskorEvent+ '&returnID='+returnID+'&'+ isNew +'&isConsole=true'; 
+
+if (typeof(srcUp) == 'function') { 
+srcUp(A360url); 
+} else { 
+window.open(A360url); 
+}
+    
+    </script>
+</apex:page>

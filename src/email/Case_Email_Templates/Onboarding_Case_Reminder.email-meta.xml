@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Onboarding Case Reminder</name>
+    <style>none</style>
+    <subject>{!$Label.OB_Reminder_ET_Subject}</subject>
+    <textOnly>Hi {!Approval_Request__c.Approver_Group__c},
+
+Please respond to the approval request:{!Approval_Request__c.Link} , for the following Onboarding Case [include url to case detail record]. The due date for this approval request is [due date field]. Thank you! Regards, [Case Owner]  Case Link :{!Approval_Request__c.Onboarding_Case__r.Link}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

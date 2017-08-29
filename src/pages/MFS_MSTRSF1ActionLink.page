@@ -1,0 +1,29 @@
+<!---
+Visualforce Page Name :  MFS_MSTRSF1ActionLink
+Version               :  1.0 
+Created Date          :  2 May 2017
+Function              :  URL for Dashboard link to MSTR App on Mobile
+Modification Log : 
+-----------------------------------------------------------------------------
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Manoj Parida            2 May 2017              Initial Version
+--->
+
+
+<apex:page > 
+    <!--Console Integration ToolKit Library-->
+    <apex:includeScript value="/support/console/30.0/integration.js"/>
+    <!--JQuery Library-->
+    <script src="{!URLFOR($Resource.jquery113)}"></script>
+    
+    <script type="text/javascript">
+        var url;
+    var j$ = jQuery.noConflict();
+    j$(document).ready(function()
+                       {
+                           sforce.one.navigateToURL('{!$Label.MSTR_Mobile_App_Link}'); 
+                           
+                       });
+   </script>
+</apex:page>

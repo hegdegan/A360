@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Client Investments Needing Service</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Client Investments Needing Services</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Number --></label>
+        <name>Account_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Case --></label>
+        <name>Case__c</name>
+        <relationshipLabel><!-- Client Investments Needing Services --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Client Investment Type --></label>
+        <name>Client_Investment_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client&apos;s Account Number --></label>
+        <name>Client_s_Account_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Invesment --></label>
+        <name>Invesments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investment --></label>
+        <name>Investment__c</name>
+        <relationshipLabel><!-- Client Investments Needing Services --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Org Name --></label>
+        <name>Org_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Performance Start Date --></label>
+        <name>Performance_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan --></label>
+        <name>Plan__c</name>
+        <relationshipLabel><!-- Client Investments Needing Services --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Plan --></label>
+        <name>Plans__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portfolio Code --></label>
+        <name>Portfolio_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portfolio --></label>
+        <name>Portfolios__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Style --></label>
+        <name>Product_Style__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reporting Currency --></label>
+        <name>Reporting_Currency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Share Class --></label>
+        <name>Share_Class__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vehicle --></label>
+        <name>Vehicle__c</name>
+    </fields>
+    <layouts>
+        <layout>Investments Needing Service Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

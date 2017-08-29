@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Approval For Onboarding Case</name>
+    <style>none</style>
+    <subject>Approval Complete For Case  # {!Case.CaseNumber}</subject>
+    <textOnly>Hi {!Case.OwnerFullName} 
+	All of the approvals for the following Onboarding Case {!Case.Link} have been completed. Please send out the New Account Memo Sheet.   
+Thank you,
+ MFS Team</textOnly>
+    <type>custom</type>
+</EmailTemplate>

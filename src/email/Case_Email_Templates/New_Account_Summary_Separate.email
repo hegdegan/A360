@@ -1,0 +1,8 @@
+<messaging:emailTemplate recipientType="User"  
+    relatedToType="Case"
+    subject="New Account Summary - Separate" 
+    replyTo="sbova@mfs.com">
+<messaging:htmlEmailBody >
+<c:MFS_NewAccountSummaryTemplate recId="{!relatedTo.Id}"/>
+</messaging:htmlEmailBody>    
+</messaging:emailTemplate>

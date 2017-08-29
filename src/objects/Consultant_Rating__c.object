@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Consultant_Rating</fullName>
+        <fields>Consultant__c</fields>
+        <fields>Product__c</fields>
+        <fields>MFS_Rating__c</fields>
+        <fields>Rating_Health__c</fields>
+        <fields>Rating_Last_Updated_Date__c</fields>
+        <label>Consultant Rating</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>To be used to rack ratings for a specific consultant</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Client__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Client</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Consultant Rating</relationshipLabel>
+        <relationshipName>Consultant_Ratings1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Consultant__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Consultant</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Consultant Ratings</relationshipLabel>
+        <relationshipName>Consultant_Ratings</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>External_Rating__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>This corresponds to the Consultant&apos;s name for a rating</inlineHelpText>
+        <label>External Rating</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MFS_Rating__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This rating corresponds to the MFS defined, common rating for a Consultant Rated Product</inlineHelpText>
+        <label>MFS Rating</label>
+        <picklist>
+            <picklistValues>
+                <fullName>A</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>A-</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>B</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>B-</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>B+</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>C</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not Rated</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>MFS_Strategy_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>MFS Strategy Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Focus</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Opportunistic</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hold</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Product_Rating_Request__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Product Rating Request</label>
+        <referenceTo>Strategy_Rating_Process__c</referenceTo>
+        <relationshipLabel>Consultant Ratings</relationshipLabel>
+        <relationshipName>Consultant_Ratings</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Product__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Strategy</label>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>Consultant Ratings</relationshipLabel>
+        <relationshipName>Consultant_Ratings</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Rating_Change_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Rating Change Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Downgrade</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No Change</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Upgrade</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Rating_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Rating Description</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Rating_Health__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>IMAGE( 
+IF(ISPICKVAL( Rating_Status__c , &quot;Green&quot;), &apos;/resource/GreenUp&apos;, 
+IF(ISPICKVAL( Rating_Status__c , &quot;Blue&quot;), &apos;/resource/GreenUp&apos;,
+IF(ISPICKVAL( Rating_Status__c , &quot;Black&quot;), &apos;/resource/YellowNoChange&apos;,  
+IF(ISPICKVAL( Rating_Status__c , &quot;Red&quot;), &apos;/resource/RedDown&apos;,&quot;&quot;)))),&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Blue signifies Rating Upgrade, Red signifies Rating Downgrade, Black signals No Change</inlineHelpText>
+        <label>Rating Health</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Rating_Last_Updated_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Rating Last Updated Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Rating_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Rating Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Black</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Blue</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Green</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Red</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Requested_Rating_Change__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Requested Rating Change</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Due Diligence Done</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Info Sent / Discussions</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Invested w/ Clients</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Meeting Done</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No Current Interest</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No Future Interest</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <label>Consultant Rating</label>
+    <listViews>
+        <fullName>ARG_Approvers_Consultant_Rating</fullName>
+        <filterScope>Queue</filterScope>
+        <label>ARG Approvers</label>
+        <queue>ARG_Approvers</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Asia_ex_Japan_Rating_Change_Approvers_Consultant_Rating</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Asia-ex Japan Rating Change Approvers</label>
+        <queue>Asia_ex_Japan_Rating_Change_Approvers</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Australia_New_Zealand_Approvers_Consultant_Rating</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Australia / New Zealand Approvers</label>
+        <queue>Australia_New_Zealand_Approvers</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Consultant_Relations_Approvers_Consultant_Rating</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Consultant Relations Approvers</label>
+        <queue>Consultant_Relations_Approvers</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>EMEA_Rating_Change_Approvers_Consultant_Rating</fullName>
+        <filterScope>Queue</filterScope>
+        <label>EMEA Rating Change Approvers</label>
+        <queue>EMEA_Rating_Change_Approvers</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Japan_Rating_Change_Approvers_Consultant_Rating</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Japan Rating Change Approvers</label>
+        <queue>Japan_Rating_Change_Approvers</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>MFD_KAM_Approvers_Consultant_Rating</fullName>
+        <filterScope>Queue</filterScope>
+        <label>MFD (KAM) Approvers</label>
+        <queue>MFD_KAM_Approvers</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Non_US_Retail_Rating_Change_Approvers_Consultant_Rating</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Non-US Retail Rating Change Approvers</label>
+        <queue>Non_US_Retail_Rating_Change_Approvers</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>North_America_Rating_Change_Approvers_Consultant_Rating</fullName>
+        <filterScope>Queue</filterScope>
+        <label>North America Rating Change Approvers</label>
+        <queue>North_America_Rating_Change_Approvers</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PPM_ISG_Approvers_Consultant_Rating</fullName>
+        <filterScope>Queue</filterScope>
+        <label>PPM/ISG Approvers</label>
+        <queue>PPM_ISG_Approvers</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Rel_Mgrs_ex_Asia_Pac_Hybrids_Approver_Consultant_Rating</fullName>
+        <filterScope>Queue</filterScope>
+        <label>Rel Mgrs (ex Asia Pac Hybrids) Approver</label>
+        <queue>Rel_Mgrs_ex_Asia_Pac_Hybrids_Approver</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <nameField>
+        <label>Rating Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Consultant Ratings</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>Read</sharingModel>
+</CustomObject>

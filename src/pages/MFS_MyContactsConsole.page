@@ -1,0 +1,361 @@
+<!---
+Visualforce Page Name :  MFS_MyContactsConsole
+Version               :  1.0 
+Created Date          :  15 DEC 2016
+Function              :  My Contacts page to be launched from console - For Retail only
+--->
+<apex:page sidebar="false" controller="MFS_MyContactsController" showheader="true" title="{!$Label.My_Cont_My_Contacts}" tabStyle="Contact" standardStylesheets="false">
+    <style>
+        .dataTables_filter{margin-bottom:10px;}
+        .active-Tab{background-color:#56458c; color:White; background-image:none; font-size:14px; font-weight:bold; height:30px; width:120px; !important}
+        .inactive-Tabs{background-color:#5645CA; color:White; background-image:none; font-size:14px; height:28px; width:120px; !important}
+        
+        table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr{background:#FFF;}
+        table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{background:#FFF !important;}
+        table.dataTable.display tbody tr > .sorting_1, 
+        table.dataTable.order-column tbody tr > .sorting_1{background:#FFF !important;}
+        
+        table.dataTable{border-radius:0 !important;border:1px solid #e0e3e5 !important;background:none !important;}
+        table.dataTable thead tr{background:#f2f3f3;}
+        table.dataTable thead tr th{border-right:1px solid #e0e3e5;}
+        table.dataTable thead th, table.dataTable thead td{padding:4px 18px !important;}
+        table.dataTable tbody th, table.dataTable tbody td{padding:0 10px !important;height:21px;border-bottom:1px solid #e0e3e5;}
+        .show{visibility:visible;}
+        .hide{visibility:hidden;}
+        .myContactsTableContainer{overflow-x:auto;height:415px;overflow-y:hidden;}
+    </style>
+    <apex:includeScript value="/support/console/36.0/integration.js"/>
+    <apex:includeScript value="{!URLFOR($Resource.JqueryMin, 'jqueryUI/jquery-1.11.1.min.js')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Datatable, 'DataTables-1.10.12/media/css/jquery.dataTables.min.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Datatable,'/DataTables-1.10.12/media/js/jquery.dataTables.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.moment,'/moment.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-all.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-datepicker.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-modal.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.aljs, '/jquery.aljs-pill.min.js')}"/>
+    
+    <script>
+    var j$ = jQuery.noConflict();
+    var listRendered = false;
+    function makeMyContactsDataTable(){
+        j$('#myContactsTable').DataTable({
+            "pageLength": 25,
+            "dom": '<"bottom"if>rt<"bottom"lp><"clear">',
+            "order": [0, "asc"],
+            "searching":false
+        }); 
+        onsearchEnd();
+    }
+    function makeMyContactsDataTableSLDS(){
+        j$('#myContactsTableSLDS').DataTable({
+            "pageLength": 10,
+            "dom": '<"bottom"if>rt<"bottom"lp><"clear">',
+            "order": [0, "asc"],
+            "searching":false
+        }); 
+        onsearchEnd();
+    }
+    
+    j$(document).ready(function() {
+        j$('[data-aljs="tabs"]').tabs({
+            defaultTabId: '',
+            onChange: function(obj) {
+                rerenderEListSLDS();
+            }
+        });
+        submitForm();
+        makeMyContactsDataTable(); 
+        makeMyContactsDataTableSLDS();
+        j$("[id$='data-div']").show();
+        j$("[id$='loading-div']").hide();
+        j$("[id*='allContacts']").off("click").on("click", function(){
+        });
+        setTableWidth();
+        removeDefaultButtonStyling();
+    });
+    
+    var setTableWidth = function(){
+        var pageW = j$(window).width() - 49;
+        
+        j$(".myContactsTableContainer").width(pageW);
+    };
+    
+    function showEList()
+    {
+        listRendered = true;
+        j$("#enhancedList").addClass("show").removeClass("hide");
+        j$(".enhancedListLoading").removeClass("hide").addClass("hide");
+        j$("[id$='eListLoading']").hide();
+    }
+    function hideEList()
+    {
+        j$("[id$=enhancedList]").hide();
+    }
+    function onsearchStart()
+    {
+        j$("[id$='data-div']").hide();
+        j$("[id$='loading-div']").show();
+    }
+    function onsearchEnd()
+    {
+        j$("[id$='data-div']").show();
+        j$("[id$='loading-div']").hide();
+    }
+    
+    var initiateReRenderList = function(){
+        if(!listRendered){
+            rerenderEList();
+        }
+    };
+    
+    var submitForm = function () {
+        j$(".searchBox").keypress(function(e){
+            var key = e.which;
+            if (key == 13) {
+                onsearchStart();
+                searchInMyContacts();
+            }
+        });
+    };
+    function openPrimaryTab(id, Name) {
+        //Open a new primary tab with the salesforce.com home page in it
+        sforce.console.openPrimaryTab(null, '/'+id, true, 
+                                      Name, openSuccess, Name);
+    }
+    
+    var openSuccess = function openSuccess(result) {};
+    var removeDefaultButtonStyling = function(){
+        j$(".myContactsTableContainer input[type='button']").removeClass("btnDisabled");
+        j$(".myContactsTableContainer input[type='button']").removeClass("btn");
+    };
+    </script>
+    
+    <!--SLDS View (Desktop) STARTS-->
+    <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+        <style>
+            input[type="text"], textarea, select {-webkit-appearance: none;}
+            .dataTables_filter{margin-bottom:10px;}
+            table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr{background:#FFF;}
+            table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{background:#FFF !important;}
+            table.dataTable.display tbody tr > .sorting_1, 
+            table.dataTable.order-column tbody tr > .sorting_1{background:#FFF !important;}
+            
+            table.dataTable{border-radius:0 !important;border:1px solid #e0e3e5 !important;background:none !important;}
+            table.dataTable thead tr{background:#f2f3f3;}
+            table.dataTable thead tr th{border-right:1px solid #e0e3e5;}
+            table.dataTable thead th, table.dataTable thead td{padding:4px 18px !important;}
+            table.dataTable tbody th, table.dataTable tbody td{padding:0 10px !important;height:30px;border-bottom:1px solid #e0e3e5;}
+            .myContactsTableContainer{height:520px;overflow:auto;}
+            .show{visibility:visible;}
+            .hide{visibility:hidden;}
+            #myContactsTableSLDS_length{display:none;}
+            
+            .message{margin:0 !important;background-color:#FFF !important;}
+            .search-filters-container ul{margin:0;padding:0;display:block;overflow:hidden;}
+            .search-filters-container ul li{width:204px;float:left;margin:0 16px 0 0;padding:0;}
+            
+            @media only screen and (max-width: 20em){
+                table.dataTable tbody th, table.dataTable tbody td{height:36px;}
+                table.dataTable ul li{margin:0;padding:10px 0;}
+                table.dataTable ul li span.dtr-title{font-weight:bold;}
+                .dataTables_length{margin-top:10px;}
+                .dataTables_paginate{margin-top:20px !important;}
+                .search-filters-container ul li{width:100%;float:none;margin:0;padding:0;}
+                
+                .x-grid3-header-offset thead tr td{display:none;}
+                .x-grid3-header-offset thead tr td.x-grid3-td-FULL_NAME{display:table-cell;}
+                
+                .x-grid3-row-table tbody tr td{display:none;}
+                .x-grid3-row-table tbody tr td.x-grid3-td-FULL_NAME{display:table-cell;}
+                
+                .rolodex{display:none;}
+                .filterLinks{display:none;}
+                .topNavTab{display:none;}
+            }
+            @media only screen and (min-width: 20.0625em) and (max-width:47.937em) {
+                table.dataTable tbody th, table.dataTable tbody td{height:36px;}
+                table.dataTable ul li{margin:0;padding:10px 0;}
+                table.dataTable ul li span.dtr-title{font-weight:bold;}
+                .dataTables_length{margin-top:10px;}
+                .dataTables_paginate{margin-top:20px !important;}
+                .search-filters-container ul li{width:100%;float:none;margin:0;padding:0;}
+                
+                .x-grid3-header-offset thead tr td{display:none;}
+                .x-grid3-header-offset thead tr td.x-grid3-td-FULL_NAME{display:table-cell;}
+                
+                .x-grid3-row-table tbody tr td{display:none;}
+                .x-grid3-row-table tbody tr td.x-grid3-td-FULL_NAME{display:table-cell;}
+                
+                .rolodex{display:none;}
+                .filterLinks{display:none;}
+                .topNavTab{display:none;}
+            }
+            @media only screen and (min-device-width: 768px) and (max-device-width:1024px) and (orientation:landscape) {
+                .search-filters-container ul li{width:306px;float:left;}
+                table.dataTable ul li{margin:0;padding:10px 0;}
+                table.dataTable ul li span.dtr-title{font-weight:bold;}
+            }
+            @media only screen and (min-device-width: 768px) and (max-device-width:1024px) and (orientation:portrait) {
+                .search-filters-container ul li{width:226px;float:left;}
+                table.dataTable ul li{margin:0;padding:10px 0;}
+                table.dataTable ul li span.dtr-title{font-weight:bold;}
+            }
+        </style>
+        <apex:stylesheet value="{!URLFOR($Resource.SLDSv202, '/assets/styles/salesforce-lightning-design-system.min.css')}" />
+        <!--link rel="stylesheet" type="text/css" href="//cdn.datatables.net/responsive/2.1.0/css/dataTables.responsive.css"/>
+        <!--script type="text/javascript" language="javascript" src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.js">
+        </script-->
+        <!--apex:stylesheet value="{!URLFOR($Resource.Datatable, 'DataTables-1.10.12/responsive/responsive.dataTables.css')}" /-->
+        <apex:includeScript value="{!URLFOR($Resource.Datatable,'/DataTables-1.10.12/responsive/dataTables.responsive.js')}"/>
+        
+        <apex:form >
+            <apex:actionFunction name="rerenderEListSLDS" rerender="enhancedListPanelSLDSDesktop"/>
+        </apex:form>
+        <div class="slds">
+            <!-- Tabs -->
+            <apex:form >
+                <apex:actionFunction name="searchInMyContacts" action="{!searchInMyContacts}" rerender="contactsTableSLDS, myContacts-messageSLDS, paginationPanelSLDS" onbeforedomupdate="onsearchStart()" oncomplete="makeMyContactsDataTableSLDS();" />
+                <apex:outputPanel id="mycontacts-blockSLDS" >
+                    <apex:outputPanel id="myContacts-messageSLDS">
+                        <apex:pageMessages />
+                    </apex:outputPanel>
+                    
+                    <div class="search-filters-container">
+                        <ul>
+                            <li>
+                                <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                    <div class="slds-size--12-of-12">
+                                        {!$Label.My_Cont_Name}
+                                    </div>
+                                    <div class="slds-size--12-of-12">
+                                        <apex:inputText value="{!searchMCName}" styleClass="slds-input searchBox"/>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                    <div class="slds-size--12-of-12">
+                                        {!$Label.My_Cont_Organization}
+                                    </div>
+                                    <div class="slds-size--12-of-12">
+                                        <apex:inputText value="{!searchMCOrg}" styleClass="slds-input searchBox"/>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                    <div class="slds-size--12-of-12">
+                                        {!$Label.My_Cont_City}
+                                    </div>
+                                    <div class="slds-size--12-of-12">
+                                        <apex:inputText value="{!searchMCCity}" styleClass="slds-input searchBox"/>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                    <div class="slds-size--12-of-12">
+                                        {!$Label.My_Cont_State}
+                                    </div>
+                                    <div class="slds-size--12-of-12">
+                                        <apex:inputText value="{!searchMCState}" styleClass="slds-input searchBox"/>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                    <div class="slds-size--12-of-12">
+                                        {!$Label.My_Cont_Country}
+                                    </div>
+                                    <div class="slds-size--12-of-12">
+                                        <apex:inputText value="{!searchMCCountry}" styleClass="slds-input searchBox"/>
+                                    </div>  
+                                </div>
+                            </li>
+                            <li>
+                                <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                    <div class="slds-size--12-of-12">
+                                        {!$Label.My_Cont_Zone}
+                                    </div>
+                                    <div class="slds-size--12-of-12">
+                                        <apex:inputText value="{!searchMCZone}" styleClass="slds-input searchBox"/>
+                                    </div>  
+                                </div>
+                            </li>
+                            <li>
+                                <div class="slds-grid slds-wrap slds-grow slds-m-top--medium">
+                                    <div class="slds-size--12-of-12">&nbsp;</div>
+                                    <div class="slds-size--12-of-12">
+                                        <apex:actionFunction name="refreshMyContacts" action="{!refreshMyContacts}" rerender="mycontacts-blockSLDS, contactsTableSLDS, paginationPanelSLDS" oncomplete="makeMyContactsDataTableSLDS()" />
+                                        <input type="button" class="slds-button slds-button--brand" value="{!$Label.My_Cont_Search}" onclick="searchInMyContacts();return false;" />
+                                        <input type="button" class="slds-button slds-button--brand" value="{!$Label.My_Cont_Reset}" onclick="refreshMyContacts();return false;" />
+                                    </div>  
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </apex:outputPanel>
+                <apex:outputPanel id="contactsTableSLDS" layout="block" styleClass="myContactsTableContainer slds-m-top--medium">
+                    <table id="myContactsTableSLDS" width="100%">
+                        <thead>
+                            <tr>
+                                <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Cont_Name}</th>
+                                <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Cont_Organization}</th>
+                                <th style="width:20%; !important" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Cont_Street}</th>
+                                <th style="width:10% !important" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Cont_City}</th>
+                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Cont_State}</th>
+                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Cont_Country}</th>
+                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Cont_YTD_Sales_USD}</th>
+                                <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Cont_Last_Activity}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <apex:repeat value="{!MyContactsList}" var="myCont"> 
+                                <tr>
+                                    <td class="slds-truncate"><apex:outputLink value="/{!myCont.id}" onclick="openPrimaryTab('{!myCont.Id}','{!myCont.Name}'); return false;">
+                                        {!myCont.LastName}<apex:outputText value=", {!myCont.FirstName} {!myCont.MiddleName}" rendered="{!myCont.FirstName!=''}"></apex:outputText></apex:outputLink></td>
+                                    <td class="slds-truncate"><apex:outputLink value="/{!myCont.AccountId}" onclick="openPrimaryTab('{!myCont.AccountId}','{!myCont.Account.Name}'); return false;">{!myCont.Account.Name}</apex:outputLink></td>
+                                    <td class="slds-truncate">{!myCont.MailingStreet}</td>
+                                    <td class="slds-truncate">{!myCont.MailingCity}</td>
+                                    <td class="slds-truncate">{!myCont.MailingState}</td>
+                                    <td class="slds-truncate">{!myCont.MailingCountry}</td>
+                                    <td class="slds-truncate">{!myCont.YTD_Sales_in_USD__c}</td>
+                                    <td class="slds-truncate"><apex:outputText value="{0,date,MM'/'dd'/'yyyy}">
+                                        <apex:param value="{!myCont.LastActivityDate}" /> 
+                                        </apex:outputText>
+                                    </td>  
+                                </tr>
+                            </apex:repeat>  
+                        </tbody>
+                    </table>
+                    <apex:outputPanel id="paginationPanelSLDS" layout="block" styleClass="slds-m-top--medium">
+                        <div class="slds-text-align--center slds-is-relative">
+                            <apex:outputPanel rendered="{!noOfRecords>1000}">
+                                <div style="position:absolute;left:50%;top:-23px;">
+                                    <apex:actionStatus id="fetchStatus" >
+                                        <apex:facet name="start" >
+                                            <img src="/img/loading.gif" />                    
+                                        </apex:facet>
+                                    </apex:actionStatus>
+                                </div>
+                                <apex:commandButton status="fetchStatus" value="{!$Label.My_Cont_Previous}" action="{!getpreviousContacts}" disabled="{!!myInstContacts.hasPrevious}"
+                                                    rerender="contactsTableSLDS, paginationPanelSLDS" onclick="onsearchStart()" oncomplete="makeMyContactsDataTableSLDS();removeDefaultButtonStyling();" styleClass="slds-button slds-button--brand"/> 
+                                
+                                <apex:commandButton status="fetchStatus" value="{!$Label.My_Cont_Next}" action="{!getNextContacts}" disabled="{!!myInstContacts.hasNext}"
+                                                    rerender="contactsTableSLDS, paginationPanelSLDS" onclick="onsearchStart()" oncomplete="makeMyContactsDataTableSLDS();removeDefaultButtonStyling();" styleclass="slds-button slds-button--brand"/> 
+                                
+                                <div class="slds-m-top--medium">
+                                    {!(myInstContacts.pageNumber * size)+1-size}-{!IF((myInstContacts.pageNumber * size)>noOfRecords, noOfRecords,
+                                    (myInstContacts.pageNumber * size))} of {!noOfRecords}
+                                </div>
+                            </apex:outputPanel>
+                        </div>
+                        <apex:outputPanel >                      
+                        </apex:outputPanel> 
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </apex:form>
+        </div>
+    </apex:outputPanel>
+    <!--SLDS View (Desktop) ENDS-->
+</apex:page>

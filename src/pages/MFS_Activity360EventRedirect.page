@@ -1,0 +1,114 @@
+<!---
+Visualforce Page Name :  MFS_Activity360EventRedirect
+Version               :  1.0 
+Created Date          :  15 JUN 2016
+Function              :  
+This VF Page overrides the view link of Event to open the custom Enhanced Event page.
+In Window, the page opens in existing tab; In Console, the page opens in new sub tab.
+Enhanced Events(Event with Enhanced Event Record Type) open as Custom page and 
+Event with Standard record type open in standard mode.
+Since view link is overridden, clicking of Event create an empty sub tab in console. This unwanted sub tab has been removed by console methods.
+
+Modification Log : 
+-----------------------------------------------------------------------------
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Maheshkumar            15 JUN 2016              Initial Version
+* Maheshkumar            12 JUL 2016              Opening in subtab in console
+--->
+
+
+<apex:page standardController="Event"  > 
+    <!--Console Integration ToolKit Library-->
+    <apex:includeScript value="/support/console/30.0/integration.js"/>
+    <!--JQuery Library-->
+    <script src="{!URLFOR($Resource.jquery113)}"></script>
+    <script type="text/javascript">
+        var url;
+    var j$ = jQuery.noConflict();
+    j$(document).ready(function()
+                       {
+                           var urlStandardPage = "/{!URLENCODE(Event.Id)}?nooverride=1";
+                           var urlStandardPageInConsole ="/apex/MFS_CustomPageForStandardEventVF?id={!URLENCODE(Event.id)}";
+                           if('{!Event.whatId}' != '' )  {
+                               var urlCustomPage = "/apex/MFS_Activity360PageSF1?id={!URLENCODE(Event.Activity_Detail__c)}&nooverride=1&returnID={!URLENCODE(Event.whatId)}&event=true";
+                               var urlCustomPageInstit = "/apex/MFS_Activity360PageSF1?id={!URLENCODE(Event.Activity_Detail__c)}&nooverride=1&returnID={!URLENCODE(Event.whatId)}&event=true";
+                               var urlCustomPageRetail = "/apex/MFS_Activity360RetailPageSF1?id={!URLENCODE(Event.Activity_Detail__c)}&nooverride=1&returnID={!URLENCODE(Event.whatId)}&event=true";
+                           }else{
+                               var urlCustomPage = "/apex/MFS_Activity360PageSF1?id={!URLENCODE(Event.Activity_Detail__c)}&nooverride=1&returnID={!URLENCODE(Event.whoId)}&event=true";
+                               var urlCustomPageInstit = "/apex/MFS_Activity360PageSF1?id={!URLENCODE(Event.Activity_Detail__c)}&nooverride=1&returnID={!URLENCODE(Event.whoId)}&event=true";
+                               var urlCustomPageRetail = "/apex/MFS_Activity360RetailPageSF1?id={!URLENCODE(Event.Activity_Detail__c)}&nooverride=1&returnID={!URLENCODE(Event.whoId)}&event=true";
+                           }
+                           
+                           //Based on record type, URL is set
+                           if(('{!Event.Recordtype.Name}' == 'Enhanced Event (Retail)')|| ('{!Event.Recordtype.Name}' =='Enhanced Event (Institutional)'))
+                           {
+                               if('{!Event.Recordtype.Name}' == 'Enhanced Event (Institutional)'){
+                                   url = urlCustomPageInstit;
+                               }
+                               else{
+                                   url = urlCustomPageRetail;
+                               }
+                           }
+                           else{
+                               if(sforce.console.isInConsole()){
+                                   //A custom page is used coz Console cannot open the standard detail page. 
+                                   url = urlStandardPageInConsole;
+                               }
+                               else{
+                                   url = urlStandardPage;
+                               }
+                           }
+                           
+                           //If console, open in new sub tab.
+                           if(sforce.console.isInConsole()){
+                               openEventInSubTab();
+                           } 
+                           
+                           //If window, override on the same window
+                           
+                           else{  
+                               if(typeof sforce != "undefined" && sforce.one != null){
+                                   sforce.one.navigateToURL(url);
+                               }
+                               else{
+                                   window.open(url,"_parent");
+                               }   
+                           }
+                           
+                       });
+    
+    //Console Integration method to Open Event (Standard/Enhanced Event) in sub tab 
+    function openEventInSubTab() {
+        //To get the Primary Tab ID
+        sforce.console.getFocusedPrimaryTabObjectId(function(result){
+            var objId = result.id;
+            sforce.console.getEnclosingPrimaryTabId(function(resultPrim){
+                var primaryTabId = resultPrim.id;
+                
+                if(objId.indexOf('00U') != -1){
+                    sforce.console.openPrimaryTab(null, url, true,"{!URLENCODE(Event.Subject)}", openSuccess, "{!URLENCODE(Event.id)}");
+                    
+                }
+                else{
+                    sforce.console.openSubtab(primaryTabId, url, true,"{!URLENCODE(Event.Subject)}",null, openSuccess, "{!URLENCODE(Event.id)}");
+                }
+            });
+            
+        });
+    }
+    
+    //Console method to identify the ID of the unwanted additional sub tab 
+    var openSuccess = function openSuccess(result) {
+        if (result.success == true) {
+            sforce.console.getEnclosingTabId(closeAdditionalSubtab);
+        }
+    };
+    
+    //Console method to close the unwanted additional sub tab
+    var closeAdditionalSubtab = function closeSubtab(result) {
+        var tabId = result.id;
+        sforce.console.closeTab(tabId);
+    };
+    </script>
+</apex:page>

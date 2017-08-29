@@ -1,0 +1,5 @@
+Hi {!Strategy_Rating_Process__c.Owner}, 
+
+Your {!Strategy_Rating_Process__c.Name} has been rejected. Please click here to view additional details: {!Strategy_Rating_Process__c.Link}
+
+Thanks!

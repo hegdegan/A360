@@ -1,0 +1,8 @@
+<!---
+Visualforce Page Name :  MFS_AddContactTeamMember
+Version               :  1.0 
+Created Date          :  12 AUG 2016
+Function              :  VF Page for custom button to add Contacts to Contact team
+--->
+<apex:page standardController="Team_Member__c" recordSetvar=""  extensions="MFS_AddTeamMember" action="{!redirect}">
+</apex:page>

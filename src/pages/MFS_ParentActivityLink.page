@@ -1,0 +1,59 @@
+<apex:page standardController="Task" extensions="MFS_ParentActivityLinkController" standardStylesheets="false">
+    <apex:includeScript value="/support/console/35.0/integration.js" />
+    <style>
+    	[id*='activityLink'] .detailList .labelCol.first{padding-right:25px;font-size:11px;}
+        [id*='activityLink'] .detailList .labelCol.first label{font-size:11px;}
+    </style>
+    <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+        <apex:form >
+            <apex:pageBlock mode="maindetail" id="activityLink">
+                <apex:pageBlockSection columns="2">
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Parent Activity"></apex:outputLabel>
+                        <apex:outputLink value="" onclick="openHyperlinks('{!Task.Parent_Activity_Detail_Id__c}', '{!activityName}'); return false;">
+                            {!activityName}</apex:outputLink>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:form>
+    </apex:outputPanel>
+    <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme4d' || $User.UIThemeDisplayed=='Theme4t'}" layout="none">
+        <!--<apex:stylesheet value="{!URLFOR($Resource.SLDSv202, '/assets/styles/salesforce-lightning-design-system-ltng.min.css')}" />-->
+        <link href="/resource/MFS_UI_Assets/assets/styles/salesforce-lightning-design-system-ltng.min.css" rel="stylesheet" />
+        <style>
+            body{padding:0;margin:0;}
+        </style>
+        <div class="slds MFS">
+            <div class="slds-grid slds-wrap slds-grow" style="border-top:solid 1px #d8dde6;">
+                <div class="slds-size--12-of-12">
+                    <div class="slds-form-element" style="padding-top:10px;"> 
+                        <label class="slds-form-element__label slds-truncate" style="font-size:0.875rem">Parent Activity</label>
+                        <div class="slds-form-element__control" style="position:relative;top:-5px;">
+                            <a href="javascript:void(0);" onclick="openHyperlinks('{!Task.Parent_Activity_Detail_Id__c}', '{!activityName}'); return false;" style="font-size:1rem;">
+                                {!activityName}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </apex:outputPanel>
+    <script>
+    function openHyperlinks(recId, name){
+        var url = '/'+recId;
+        if(sforce.console.isInConsole())
+        {
+            sforce.console.openPrimaryTab(null, url, true, name, openSuccess, name); 
+        } 
+        //If window, override on the same window
+        else if(typeof sforce != "undefined" && sforce.one != null)
+        {
+            sforce.one.navigateToSObject(recId);
+        }
+            else{
+                window.open(url,"_blank");
+            } 
+    }
+    var openSuccess = function openSuccess(result) {}
+    </script>
+</apex:page>

@@ -1,0 +1,446 @@
+<apex:page standardController="Strategy_Rating_Process__c" extensions="MFS_StrategyRatingController" tabStyle="Strategy_Rating_Process__c" id="Page">
+    <apex:includeScript value="/support/console/30.0/integration.js"/>
+    <script type="text/javascript"> 
+    function openLookup(baseURL, width, modified, searchParam){
+        var originalbaseURL = baseURL;
+        var originalwidth = width;
+        var originalmodified = modified;
+        var originalsearchParam = searchParam;
+        
+        var lookupType = baseURL.substr(baseURL.length-3, 3);
+        if (modified == '1') baseURL = baseURL + searchParam;
+        
+        var isCustomLookup = false;
+        if(lookupType == "01t"){
+            var urlArr = baseURL.split("&");
+            var txtId = '';
+            if(urlArr.length > 2) {
+                urlArr = urlArr[1].split('=');
+                txtId = urlArr[1];
+            }
+            
+        
+            baseURL = "/apex/MFS_ProductSearchLookup?txt=" + txtId;
+            if(sforce.console.isInConsole()){
+            	baseURL = baseURL + "&isInConsole=true";
+            }
+            baseURL = baseURL + "&frm=" + escapeUTF("{!$Component.myForm}");
+            if (modified == '1') {
+                baseURL = baseURL + "&lksearch=" + searchParam;
+            }
+            
+            // Following is the ID of inputField that is the lookup to be customized as custom lookup
+            if(txtId.indexOf('productlookup') > -1 ){
+                isCustomLookup = true;
+            }
+        }
+        if(isCustomLookup == true){
+            openPopup(baseURL, "lookup", 600, 700, "width=900,height=500,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=no", true);
+        }
+        else {
+            if (modified == '1') originalbaseURL = originalbaseURL + originalsearchParam;
+            openPopup(originalbaseURL, "lookup", 500, 600, "width="+originalwidth+",height=480,toolbar=no,status=no,directories=no,menubar=no,resizable=yes,scrollable=no", true);
+        } 
+    }
+    </script>
+    <apex:outputPanel rendered="{!$User.UIThemeDisplayed=='Theme3'}">
+        <apex:sectionHeader title="Strategy Rating Process Edit" subtitle="{!IF(Strategy_Rating_Process__c.Id == null, 'New Strategy Rating Process', Strategy_Rating_Process__c.Name)}"/>
+        <apex:form id="myForm"> 
+            <apex:pageBlock mode="edit">
+                <apex:pageBlockButtons title="Strategy Rating Process Edit">
+                    <apex:commandButton value="Save" action="{!save}"/>
+                    <apex:commandButton value="Cancel" action="{!cancel}"/>
+                </apex:pageBlockButtons>
+                
+                <apex:pageBlockSection title="Information" columns="2" id="PageBlock">
+                    <apex:inputField value="{!Strategy_Rating_Process__c.Name}"/>
+                    <apex:inputField value="{!Strategy_Rating_Process__c.Status__c}"/>
+                    <apex:inputField value="{!Strategy_Rating_Process__c.Product__c}" id="productlookup" required="true"/>
+                    <apex:inputField value="{!Strategy_Rating_Process__c.Consultant__c}"/>
+                    <apex:inputField value="{!Strategy_Rating_Process__c.MFS_Rating__c}"/>
+                    <apex:inputField value="{!Strategy_Rating_Process__c.External_Rating__c}"/>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Rating Request Rationale" columns="1">
+                    <apex:inputField value="{!Strategy_Rating_Process__c.Rating_Request_Reason__c}" />
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:form>
+        <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            if('{!Strategy_Rating_Process__c.Name}' == ''){
+            sforce.console.setTabTitle("New Strategy Rating Process");
+                }
+            else{
+                 sforce.console.setTabTitle('{!Strategy_Rating_Process__c.Name}');
+                }
+                
+        });
+        
+        var consoleURLOpener = function(currText,name){
+            var url = "/"+currText;
+        	sforce.console.openPrimaryTab(null,url, true,name, null, currText); 
+        };
+        </script>
+    </apex:outputPanel>
+    
+    <apex:outputPanel rendered="{!OR($User.UIThemeDisplayed=='Theme4d',$User.UIThemeDisplayed=='Theme4t')}">
+        <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+                <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+                <title>MFS Strategy Rating</title>
+                <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/salesforce-lightning-design-system-ltng.min.css" />
+                <link rel="stylesheet" href="/resource/MFS_UI_Assets/assets/styles/mfs_new_styles.css" />
+                <style>
+                	.MFS .mfs-multi-select-lookup .slds-icon_container{padding:6.3px;top:22.5px;right:1px;}
+                    .MFS .all-portfolios svg{fill: #16325c;top: 1px;position: relative;}
+                    .MFS .all-portfolios .mfs-strategy-add{background-color:#f7f9fb;margin-right:10px;padding:5px;border:1px solid #d8dde6;cursor:pointer;}
+                    .MFS .all-portfolios .mfs-strategy-name{margin-left:10px;}
+                    .MFS .mfs-main-container{padding-bottom:15px;}
+                </style>
+            </head>
+            <body>
+                <div class="slds MFS exclude-page-close-warning">
+                <apex:form > 
+                <div class="slds-page-header" role="banner">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-has-flexi-truncate">
+                            <div class="slds-media slds-no-space slds-grow">
+                                <div class="slds-media__figure">
+                                    <span class="slds-icon_container slds-icon-standard-account">
+                                        <svg aria-hidden="true" class="slds-icon slds-icon--medium">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="slds-media__body">
+                                    <p class="slds-text-title--caps slds-line-height--reset">MFS Strategy Rating</p>
+                                    <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate">
+                                        <apex:outputText value="{!IF(Strategy_Rating_Process__c.Id == null, 'New Strategy Rating Process', Strategy_Rating_Process__c.Name)}"/>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-no-flex slds-grid slds-align-top">
+                            <div class="mfs-top-arrow--small">
+                                <button class="slds-button slds-button--icon-border-filled" aria-haspopup="true" title="{!$label.A360_Show_More}">
+                                    <svg class="slds-button__icon" aria-hidden="true">
+                                        <use xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                                    </svg>
+                                    <span class="slds-assistive-text">{!$label.A360_Show_More}</span>
+                                </button>
+                            </div>
+                            <apex:outputPanel id="topBtns" styleClass="slds-button-group mfs-top-buttons-container" html-role="group" layout="block">
+                                <apex:commandButton value="Cancel" action="{!cancel}" styleClass="slds-button slds-button--neutral slds-truncate" />
+                                <input type="button" value="Save" class="slds-button slds-button--neutral slds-truncate" onclick="validatePageForm(this, event);"  />
+                                <apex:commandButton value="Save" action="{!save}" style="display:none" onclick="showLoading();" />
+                            </apex:outputPanel>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-container--x-large slds-container--center mfs-main-container" id="scroller_disabled">
+                    
+                    <apex:actionFunction name="loadProducts" action="{!loadProducts}" rerender="searchResults, searchTextPanel" oncomplete="postReRenderStrategySearch();"></apex:actionFunction>  
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-p-horizontal--small slds-size--12-of-12">
+                            <div class="slds-clearfix">
+                                <div class="slds-float--left slds-m-top--small"><h3 class="slds-section__title slds-text-title--caps">Information</h3></div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-p-horizontal--small slds-m-top--medium slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12">
+                            <div class="slds-form-element"> 
+                                <label class="slds-form-element__label">Name</label>
+                                <div class="slds-form-element__control">
+                                    <apex:inputField value="{!Strategy_Rating_Process__c.Name}" styleclass="slds-input" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-p-horizontal--small slds-m-top--medium slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12">
+                            <div class="slds-form-element"> 
+                                <label class="slds-form-element__label">Status</label>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                        <apex:inputField value="{!Strategy_Rating_Process__c.Status__c}" styleclass="slds-select" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-p-horizontal--small slds-m-top--medium slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12">
+                            <div class="slds-form-element slds-is-required">
+                                <label class="slds-form-element__label">Strategy <abbr>Please complete this field</abbr></label>
+                                <div class="slds-form-element__control">
+                                    <div class="mfs-multi-select-lookup">
+                                        <apex:inputHidden value="{!Strategy_Rating_Process__c.Product__c}" id="strategy_rating_selected"/>
+                                        <input class="slds-input slds-lookup__search-input search-related-products" value="{!selectedProductName}" type="text" aria-autocomplete="list" aria-expanded="true" aria-activedescendant="" placeholder="Search Products..." onkeypress="MFSApp.relatedActsSearchOnEnterKey(event);" />
+                                        <span class="slds-icon_container mfs_portfolio_selector" title="Click to open products list" onclick="loadProducts();">
+                                            <svg class="slds-icon slds-icon-text-default slds-icon--x-small" aria-hidden="true">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-p-horizontal--small slds-m-top--medium slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12">
+                            <div class="slds-form-element slds-is-required"> 
+                                <label class="slds-form-element__label">Consultant <abbr>Please complete this field</abbr></label>
+                                <div class="slds-form-element__control slds-is-required">
+                                    <div class="slds-lookup" data-icon-path="/resource/MFS_UI_Assets/assets/icons/standard-sprite/svg/symbols.svg#account" data-callback="MFSApp.selectOrgLookup" data-lookup-type="normal" data-query-url="MFS_StrategyRatingController.queryAccounts">
+                                        <div class="slds-input-has-icon slds-input-has-icon--right slds-grow">
+                                            <svg aria-hidden="true" class="slds-input__icon">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+                                            </svg>
+                                            <apex:inputHidden value="{!Strategy_Rating_Process__c.Consultant__c}" />
+                                            <input class="slds-lookup__search-input slds-input" value="{!selectedConsultantName}" type="text" placeholder="Enter Consultant" aria-activedescendent="" aria-expanded="false" aria-autocomplete="list" />
+                                        </div>
+                                        <div class="slds-lookup__menu slds-hide">
+                                            <ul class="slds-lookup__list" role="listbox"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-p-horizontal--small slds-m-top--medium slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12">
+                            <div class="slds-form-element"> 
+                                <label class="slds-form-element__label">MFS Rating</label>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                        <apex:inputField value="{!Strategy_Rating_Process__c.MFS_Rating__c}" styleclass="slds-select" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-p-horizontal--small slds-m-top--medium slds-large-size--6-of-12 slds-medium-size--6-of-12 slds-size--12-of-12">
+                            <div class="slds-form-element"> 
+                                <label class="slds-form-element__label">External Rating</label>
+                                <div class="slds-form-element__control">
+                                    <apex:inputField value="{!Strategy_Rating_Process__c.External_Rating__c}" styleclass="slds-input" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-p-horizontal--small slds-size--12-of-12 slds-m-top--small">
+                            <div class="slds-clearfix">
+                                <div class="slds-float--left slds-m-top--small"><h3 class="slds-section__title slds-text-title--caps">Rating Request Rationale</h3></div>
+                            </div>
+                        </div>
+                        <div class="slds-form-element slds-p-horizontal--small slds-size--12-of-12 slds-m-top--medium">
+                            <div class="slds-form-element"> 
+                                <div class="slds-form-element__control">
+                                    <apex:inputField value="{!Strategy_Rating_Process__c.Rating_Request_Reason__c}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					
+					<!-- Portfolio Modal STARTS -->
+					<div class="mfs_portfolio_selector_modal">
+                        <div role="dialog" class="slds-modal slds-fade-in-close slds-modal--large">
+                            <div class="slds-modal__container">
+                                <div class="slds-modal__header">
+                                    <button class="slds-button slds-modal__close slds-button--icon-inverse mfs-modal-cancel">
+                                        <svg aria-hidden="true" class="slds-button__icon slds-button__icon--large">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/resource/MFS_UI_Assets/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                        </svg>
+                                        <span class="slds-assistive-text">{!$Label.A360_Close}</span>
+                                    </button>
+                                    <h2 class="slds-text-heading--medium">{!$Label.A360_Select_Portfolios}</h2>
+                                </div>
+                                
+                                <div class="slds-modal__content slds-p-around--medium slds-text-align--center slds-modal--loading">
+                                    <img src="/resource/MFS_UI_Assets/assets/images/spinners/slds_spinner_brand.gif" border="0" width="30" />
+                                    {!$Label.A360_Loading_Message}
+                                </div>
+                                <div class="slds-modal__content slds-hide">
+                                    <div>
+                                        <apex:outputPanel id="searchTextPanel">
+                                            <div class="slds-grid slds-wrap slds-pull--padded slds-m-bottom--small slds-m-top--large">
+                                                <div class="slds-p-horizontal--small slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12 slds-m-top--small">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label" for="lookup">{!$Label.A360_Asset_Class_Geography}</label>
+                                                        <div class="slds-select_container">
+                                                            <apex:selectList value="{!selectedAssetGeography}" size="1" id="styleP" styleClass="slds-select">
+                                                                <apex:actionSupport event="onchange" action="{!searchProduct}" reRender="searchResults">                                         
+                                                                </apex:actionSupport>
+                                                                <apex:selectOptions value="{!GeograhpyOptions}"/>
+                                                            </apex:selectList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-p-horizontal--small slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12 slds-m-top--small">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label" for="lookup">{!$Label.A360_Strategy_Portfolio_Name}</label>
+                                                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+                                                            <apex:inputText value="{!searchOpt}" styleClass="slds-input add_enter_key_listener" html-data-enter-key-callback="searchStrategyOnEnter" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-p-horizontal--small slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12 slds-m-top--small">
+                                                    <div class="slds-form-element">
+                                                        <label class="slds-form-element__label" for="lookup">{!$Label.A360_Vehicle}</label>
+                                                        <div class="slds-select_container">
+                                                            <apex:selectList value="{!selectedVehicle}" size="1" id="PVehicle" styleClass="slds-select">
+                                                                <apex:actionSupport event="onchange" action="{!searchProduct}" reRender="searchResults">                                         
+                                                                </apex:actionSupport>
+                                                                <apex:selectOptions value="{!VehicleOptions}"/>
+                                                            </apex:selectList>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </apex:outputPanel>
+                                        <div class="slds-grid slds-wrap slds-pull--padded slds-m-bottom--small">
+                                            <div class="slds-p-horizontal--small slds-large-size--4-of-12 slds-medium-size--4-of-12 slds-size--12-of-12">
+                                                <apex:commandButton value="{!$Label.Product_Search}" action="{!searchProduct}" reRender="searchResults" styleClass="slds-button slds-button--brand mfs_portfolios_search_btn" onclick="showLoading();" oncomplete="hideLoading();" />
+                                            </div>
+                                        </div>
+                                        
+                                        <apex:outputPanel id="searchResults" layout="block">
+                                            
+                                            <div class="slds-p-around--medium">
+                                                <table class="slds-table slds-table--bordered slds-max-medium-table--stacked all-portfolios">
+                                                    <thead>
+                                                        <tr class="slds-text-title--caps">
+                                                            <th scope="col">
+                                                                <div title="Action">
+                                                                    Action
+                                                                </div>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <div title="{!$Label.A360_Asset_Class_Geography}">
+                                                                    {!$Label.A360_Asset_Class_Geography}
+                                                                </div>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <div title="{!$Label.A360_Strategy_Name}">
+                                                                    {!$Label.A360_Strategy_Name}
+                                                                </div>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <div title="{!$Label.A360_Portfolio_Name}">
+                                                                    {!$Label.A360_Portfolio_Name}
+                                                                </div>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <div title="{!$Label.A360_Vehicle}">
+                                                                    {!$Label.A360_Vehicle}
+                                                                </div>
+                                                            </th>
+                                                            <th scope="col">
+                                                                <div title="{!$Label.A360_Restricted}">
+                                                                    {!$Label.A360_Restricted}
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <apex:repeat value="{!wraplist}" var="resultRec">
+                                                            <tr class="slds-hint-parent">
+                                                                <th scope="row" data-label="{!$Label.A360_Asset_Class_Geography}">
+                                                                	<a href="javascript:void(0);" onclick="addThisStrategy('{!resultRec.prg.Name}', '{!resultRec.prg.Id}');">Add</a>
+                                                                </th>
+                                                                <th scope="row" data-label="{!$Label.A360_Asset_Class_Geography}">
+                                                                    {!resultRec.assetClassGeoName}
+                                                                </th>
+                                                                <td data-label="{!$Label.A360_Strategy_Name}">
+                                                                    <div>
+                                                                        <apex:outputText value="{!IF((resultRec.prg.Product_Record_Type__c == '1.Strategy'),resultRec.prg.Name,resultRec.prg.Strategy__r.Name)}"/>
+                                                                    </div>
+                                                                </td>
+                                                                <td data-label="{!$Label.A360_Portfolio_Name}">
+                                                                    <div>
+                                                                        <apex:outputText value="{!IF((resultRec.prg.Product_Record_Type__c == '2.Portfolio'),resultRec.prg.Name,'')}"/>
+                                                                    </div> 
+                                                                </td>
+                                                                
+                                                                <td data-label="{!$Label.A360_Vehicle}">
+                                                                    <div><apex:outputField value="{!resultRec.prg.Vehicle__c}"/></div>
+                                                                </td>
+                                                                <td data-label="{!$Label.A360_Restricted}">
+                                                                    <div><apex:outputField value="{!resultRec.prg.Restricted__c}"/></div>
+                                                                </td>
+                                                            </tr>
+                                                        </apex:repeat>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            
+                                        </apex:outputPanel>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-backdrop slds-backdrop--close"></div>
+					</div>
+					<!-- Portfolio Modal ENDS -->
+                </div>
+                </apex:form>
+            	</div>
+                <script>
+                var isConsole = "";
+                var allUsers = ""; 
+                </script>
+                <apex:includeScript value="/support/console/36.0/integration.js" />
+                <script src="/resource/MFS_UI_Assets/assets/js/dist/MFS_Core_Plugins.min.js">
+                </script>
+                <script src="/resource/MFS_UI_Assets/assets/js/dist/MFS_Core_Plugins_Mobile.min.js">
+                </script>
+                <script src="/resource/MFS_UI_Assets/assets/js/dist/MFS_Core_Scripts.min.js">
+                </script>
+                
+                <!--
+                <script src="{!URLFOR($Resource.MFS_Scripts_New)}">
+                </script>
+                <script src="{!URLFOR($Resource.MFS_UI_Engine)}">
+                </script> -->
+                
+                <script>
+                var reRenderSVGIcons = function(container){
+                    var allIcons;
+                    if(container){
+                        allIcons = $(container).find(".slds-icon__container[data-reset-icons='true']");   
+                    }
+                    else{
+                        allIcons = $("body").find(".slds-icon__container[data-reset-icons='true']");
+                    }
+
+                    for(var i=0, iLen = allIcons.length; i < iLen; i++){
+                        var iconHTML = '',
+                            svgIcon = $($(allIcons)[i]).data("rerender-icon"),
+                            svgClasses = $($(allIcons)[i]).data("render-icon-class");
+                        
+                        iconHTML =   '<svg aria-hidden="true" class="'+svgClasses+'">'+
+                            '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="'+svgIcon+'"></use>'+
+                            '</svg>';
+
+                        $($(allIcons)[i]).html(iconHTML);
+                    }
+                };
+                
+                var postReRenderStrategySearch = function(){
+                    postReRenderPortfolio();
+                    
+                    reRenderSVGIcons($(".all-portfolios"));
+                };
+                
+                var addThisStrategy = function(strategyName, strategyID){
+                    $(".search-related-products").val(strategyName);
+                    $("input[type='hidden'][id*='strategy_rating_selected']").val(strategyID);
+                    $(".mfs-modal-cancel").trigger("click");
+                };
+                
+                var openURLSF1 = function(recordID){
+                    if(recordID){
+                        sforce.one.navigateToSObject(recordID);
+                    }
+                };
+                
+                var searchStrategyOnEnter = function(){
+                    $(".mfs_portfolios_search_btn").trigger("click");
+                };
+                </script>
+            </body>
+        </html>
+    </apex:outputPanel>
+</apex:page>

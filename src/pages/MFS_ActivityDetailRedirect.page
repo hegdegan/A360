@@ -1,0 +1,9 @@
+<!---
+Visualforce Page Name :  MFS_ActivityDetailRedirect
+Version               :  1.0 
+Created Date          :  16 JAN 2017
+Function              :  
+--->
+<apex:page standardController="Activity_Detail__c" extensions="MFS_ActivityDetailRedirectController" action="{!redirect}">
+<apex:pageMessages ></apex:pageMessages>    
+</apex:page>

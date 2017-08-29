@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Provider - Int&apos;l</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Providers - Int&apos;l</value>
+    </caseValues>
+    <fields>
+        <label><!-- Firm Profile Link --></label>
+        <name>Firm_Profile_Link__c</name>
+        <relationshipLabel><!-- Providers - Int&apos;l --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Firm MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Provider Firm Name &amp; City --></label>
+        <name>PROVNAME__c</name>
+    </fields>
+    <fields>
+        <label><!-- Provider MMD ID --></label>
+        <name>PROV_PID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Provider Type Code --></label>
+        <name>PROV_TYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Provider Type --></label>
+        <name>Provider_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Year Hired --></label>
+        <name>YEAR_HIRED__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

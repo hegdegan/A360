@@ -1,0 +1,57 @@
+<!---
+Visualforce Page Name :  MFS_StandardMeeting
+Version               :  1.0 
+Created Date          :  7 FEB 2017
+Function              :  Create standard meeting from home page
+--->
+<apex:page standardController="Event"  > 
+    <!--Console Integration ToolKit Library-->
+    <apex:includeScript value="/support/console/30.0/integration.js"/>
+     <apex:includeScript value="/soap/ajax/22.0/connection.js"/>
+        <apex:includeScript value="/soap/ajax/22.0/apex.js"/>
+    <!--JQuery Library-->
+    <script src="{!URLFOR($Resource.jquery113)}"></script>
+    <script type="text/javascript">
+        var url;
+    var j$ = jQuery.noConflict();
+    j$(document).ready(function()
+                       {
+                            
+                           sforce.connection.sessionId = "{!$Api.Session_ID}";
+                           var recTypes = sforce.connection.query("SELECT Id from Recordtype where DeveloperName='Standard_Event' and SObjectType='Event' limit 1");
+                           records = recTypes.getArray("records"); 
+                           var rectTypeId = records[0].Id; 
+                           url = "/00U/e?RecordType="+rectTypeId+"&ent=Event&nooverride=1";
+                           //If console, open in new sub tab.
+                           if(sforce.console.isInConsole())
+                           {
+                               openEventInSubTab();
+                           } 
+                           //If window, override on the same window
+                           else if(typeof sforce != "undefined" && sforce.one != null)
+                           {
+                               sforce.one.navigateToURL(url);
+                           }
+                               else{
+                                   window.open(url,"_parent");
+                               }   
+                           
+                       });
+    //Console Integration method to Open Event (Standard/Enhanced Event) in sub tab 
+    function openEventInSubTab() {
+        sforce.console.openPrimaryTab(null, url, true,"{!$Label.A360_New_Meeting}", openSuccess, "{!$Label.A360_New_Meeting}");   
+    }
+    
+    //Console method to identify the ID of the unwanted additional sub tab 
+    var openSuccess = function openSuccess(result) {
+        if (result.success == true) {
+            sforce.console.getEnclosingTabId(closeAdditionalSubtab);
+        }
+    }
+    //Console method to close the unwanted additional sub tab
+    var closeAdditionalSubtab = function closeSubtab(result) {
+        var tabId = result.id;
+        sforce.console.closeTab(tabId);
+    };
+    </script>
+</apex:page>

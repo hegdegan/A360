@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Test Case --></value>
+    </caseValues>
+    <fields>
+        <label><!-- Component Test --></label>
+        <name>Component_Test__c</name>
+    </fields>
+    <fields>
+        <label><!-- Functionality --></label>
+        <name>Functionality__c</name>
+        <relationshipLabel><!-- Test Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Assigned To --></label>
+        <name>PF_Assigned_To__c</name>
+        <relationshipLabel><!-- Test Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>PF_Description__c</name>
+    </fields>
+    <fields>
+        <help><!-- First Pass Result --></help>
+        <label><!-- First Pass --></label>
+        <name>PF_First_Pass_Rate__c</name>
+    </fields>
+    <fields>
+        <label><!-- QA --></label>
+        <name>PF_QA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Regression --></label>
+        <name>PF_Regression__c</name>
+    </fields>
+    <fields>
+        <label><!-- QA/SIT --></label>
+        <name>PF_SIT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>PF_Status__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Passed</masterLabel>
+            <translation><!-- Passed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ready for Execution</masterLabel>
+            <translation><!-- Ready for Execution --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- TC Creation Effort --></label>
+        <name>PF_TC_Creation_Effort__c</name>
+    </fields>
+    <fields>
+        <label><!-- TC Execution Effort --></label>
+        <name>PF_TC_Execution_Effort__c</name>
+    </fields>
+    <fields>
+        <label><!-- Task --></label>
+        <name>PF_Task__c</name>
+        <relationshipLabel><!-- Test Cases --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Test Plan Date --></label>
+        <name>PF_Test_Plan_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Title --></label>
+        <name>PF_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Defects --></label>
+        <name>PF_Total_Defects__c</name>
+    </fields>
+    <fields>
+        <help><!-- Number of SIT test case excecutions --></help>
+        <label><!-- Total QA/SIT Execution --></label>
+        <name>PF_Total_Test_Case_Execution__c</name>
+    </fields>
+    <fields>
+        <label><!-- Total Testing Effort --></label>
+        <name>PF_Total_Testing_Effort__c</name>
+    </fields>
+    <fields>
+        <label><!-- UAT --></label>
+        <name>PF_UAT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Unit --></label>
+        <name>PF_Unit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workstream --></label>
+        <name>Workstream__c</name>
+        <relationshipLabel><!-- Test Cases --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>PF_TestCases Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Plan and Effort --></label>
+            <section>Plan and Effort</section>
+        </sections>
+        <sections>
+            <label><!-- Select Testing Phase --></label>
+            <section>Select Testing Phase</section>
+        </sections>
+        <sections>
+            <label><!-- Test Case Steps --></label>
+            <section>Test Case Steps</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>QA_Test_Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Plan and Effort --></label>
+            <section>Plan and Effort</section>
+        </sections>
+        <sections>
+            <label><!-- Test Case Steps --></label>
+            <section>Test Case Steps</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Unit Test layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Plan and Effort --></label>
+            <section>Plan and Effort</section>
+        </sections>
+        <sections>
+            <label><!-- Test Case Steps --></label>
+            <section>Test Case Steps</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel><!-- Test Case # --></nameFieldLabel>
+    <recordTypes>
+        <label><!-- Component Test --></label>
+        <name>Component_Test</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Unit Test --></label>
+        <name>Unit_Test</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- At least one of the Unit / SIT / UAT phase must be selected. --></errorMessage>
+        <name>Testing_Phase_must_be_selected</name>
+    </validationRules>
+    <webLinks>
+        <label>新しい
+</label>
+        <name>New</name>
+    </webLinks>
+    <webLinks>
+        <label>追加/編集ステップ（複数可）</label>
+        <name>PF_Add_Edit_Step_s</name>
+    </webLinks>
+</CustomObjectTranslation>

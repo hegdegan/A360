@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Firm Name</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Firm Names</value>
+    </caseValues>
+    <fields>
+        <label><!-- Firm Profile Link --></label>
+        <name>Firm_Profile_Link__c</name>
+        <relationshipLabel><!-- MMD Firm Names --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Firm MMD ID --></label>
+        <name>PID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name Seq # --></label>
+        <name>SEQ_NO__c</name>
+    </fields>
+    <fields>
+        <label><!-- Alternate/Related Name --></label>
+        <name>TEXT__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

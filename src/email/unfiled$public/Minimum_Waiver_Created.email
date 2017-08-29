@@ -1,0 +1,6 @@
+Hi,
+
+New minimum Waiver {!Minimum_Waiver__c.Name} is created for Opportunity {!Minimum_Waiver__c.Opportunity__c}. Please see the details: {!Minimum_Waiver__c.Link}
+
+Thanks,
+C360Admin

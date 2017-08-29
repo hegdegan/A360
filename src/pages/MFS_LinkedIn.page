@@ -1,0 +1,2 @@
+<apex:page standardController="Contact" extensions="MFS_LinkedIn" action="{!redirect}"> 
+</apex:page>

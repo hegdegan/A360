@@ -1,0 +1,13 @@
+<!---
+Visualforce Page Name :  MFS_Activity360Chatter
+Version               :  1.0 
+Created Date          :  15 NOV 2016
+Function              :  Show/Hide chatter on top of Activity 360 page
+--->
+<apex:page controller="MFS_ChatterController" standardStylesheets="true" showHeader="false" sidebar="false" docType="html-5.0">
+    <style>
+        #section_header{display:none;}
+        .feedpage.zen{padding-left:0;}
+    </style>
+    <chatter:feed entityId="{!recordId}" showPublisher="true" />
+</apex:page>

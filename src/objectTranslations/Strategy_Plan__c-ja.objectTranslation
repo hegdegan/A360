@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Strategy Plan --></value>
+    </caseValues>
+    <fields>
+        <label><!-- AUM --></label>
+        <name>AUM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Type --></label>
+        <name>Account_Type__c</name>
+        <picklistValues>
+            <masterLabel>Separate</masterLabel>
+            <translation><!-- Separate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trust</masterLabel>
+            <translation><!-- Trust --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Analyst Meeting Goal Counter --></label>
+        <name>Analyst_Meeting_Goal_Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Analyst Meeting Goal --></label>
+        <name>Analyst_Meeting_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Approx. Min Fee --></label>
+        <name>Approx_Min_Fee__c</name>
+    </fields>
+    <fields>
+        <help><!-- Research Objectives for Blended Research Strategies --></help>
+        <label><!-- Research Goals - Blended Research --></label>
+        <name>Blended_Research__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Channels --></label>
+        <name>Business_Channels__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Engagement Goal Counter --></label>
+        <name>Client_Engagement_Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Engagement Goal --></label>
+        <name>Client_Engagement_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Reference --></label>
+        <name>Client_Reference__c</name>
+        <picklistValues>
+            <masterLabel>No</masterLabel>
+            <translation><!-- No --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBD</masterLabel>
+            <translation><!-- TBD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes</masterLabel>
+            <translation><!-- Yes --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Yes, with prior Approval</masterLabel>
+            <translation><!-- Yes, with prior Approval --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Client Review Meeting Goal Counter --></label>
+        <name>Client_Review_Meeting_Goal_Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Client Review Meeting Goal --></label>
+        <name>Client_Review_Meeting_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Commitees --></label>
+        <name>Commitees__c</name>
+    </fields>
+    <fields>
+        <label><!-- Compliance --></label>
+        <name>Compliance__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consultant Influence --></label>
+        <name>Consultant_Influence__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Consultant Meeting Goal Counter --></label>
+        <name>Consultant_Meeting_Goal_Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Consultant Meeting Goal --></label>
+        <name>Consultant_Meeting_Goal__c</name>
+    </fields>
+    <fields>
+        <help><!-- Detail the relationship between the Organization and the Consultant --></help>
+        <label><!-- Consultant Role --></label>
+        <name>Consultant_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cross Sell Opportunity --></label>
+        <name>Cross_Sell_Opportunity__c</name>
+    </fields>
+    <fields>
+        <help><!-- Research Objectives for DC --></help>
+        <label><!-- Defined Contribution --></label>
+        <name>Defined_Contribution__c</name>
+    </fields>
+    <fields>
+        <label><!-- ESG Reason --></label>
+        <name>ESG_Reason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fee Schedule --></label>
+        <name>Fee_Schedule__c</name>
+    </fields>
+    <fields>
+        <help><!-- Key Field Consultants --></help>
+        <label><!-- Field Consultant Outreach --></label>
+        <name>Field_Consultant_Outreach__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Biases --></label>
+        <name>Firm_Biases__c</name>
+    </fields>
+    <fields>
+        <help><!-- Research Objectives for Fixed Income Strategies --></help>
+        <label><!-- Research Goals - Fixed Income --></label>
+        <name>Fixed_Income__c</name>
+    </fields>
+    <fields>
+        <help><!-- Research Objectives for Fundamental Equity Strategies --></help>
+        <label><!-- Research Goals - Fundamental --></label>
+        <name>Fundamental__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal --></label>
+        <name>Goal__c</name>
+        <relationshipLabel><!-- Strategy Plans --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Goals --></label>
+        <name>Goals__c</name>
+    </fields>
+    <fields>
+        <help><!-- What is the Organization&apos;s decision making structure, investment beliefs, views on sustainability, definition of risk, and measures of success --></help>
+        <label><!-- Governance --></label>
+        <name>Governance__c</name>
+    </fields>
+    <fields>
+        <help><!-- How does the Organization select managers and construct their portfolio, what is their appetite for Active versus Passive, how do they benchmark managers, what is their view on fees? For DC, how do they view and serve their participants? --></help>
+        <label><!-- Implementation --></label>
+        <name>Implementation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Importance of ESG --></label>
+        <name>Importance_of_ESG__c</name>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Institutional Portfolio Mgr Goal Counter --></label>
+        <name>Institutional_Portfolio_Manager_Goal_Cou__c</name>
+    </fields>
+    <fields>
+        <label><!-- Institutional Tier --></label>
+        <name>Institutional_Tier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Institutional Portfolio Manager Goal --></label>
+        <name>Institutional__c</name>
+    </fields>
+    <fields>
+        <help><!-- What is the Organization&apos;s asset allocation strategy, how is it evolving, does the Organization focus on volatility management? --></help>
+        <label><!-- Investment Policy --></label>
+        <name>Investment_Policy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Key Initiatives --></label>
+        <name>Key_Initiatives__c</name>
+    </fields>
+    <fields>
+        <label><!-- Legal --></label>
+        <name>Legal__c</name>
+    </fields>
+    <fields>
+        <label><!-- MFS Strategy --></label>
+        <name>MFS_Strategy__c</name>
+        <relationshipLabel><!-- Strategy Plans --></relationshipLabel>
+    </fields>
+    <fields>
+        <label>関連する委任の背景</label>
+        <name>Mandate_Details__c</name>
+    </fields>
+    <fields>
+        <label><!-- Meeting Plan --></label>
+        <name>Meeting_Plan__c</name>
+    </fields>
+    <fields>
+        <label><!-- Milestones --></label>
+        <name>Milestones__c</name>
+    </fields>
+    <fields>
+        <label><!-- NDA? --></label>
+        <name>NDA__c</name>
+    </fields>
+    <fields>
+        <label><!-- Near Term Investment Needs --></label>
+        <name>Near_Term_Investment__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Thing to Do --></label>
+        <name>One_Thing_to_Do__c</name>
+    </fields>
+    <fields>
+        <label><!-- Organization --></label>
+        <name>Organization__c</name>
+        <relationshipLabel><!-- Strategy Plans --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Research Objectives for anything not captured above --></help>
+        <label><!-- Other --></label>
+        <name>Other__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partnership Opportunity --></label>
+        <name>Partnership_Opportunity1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partnership Opportunity --></label>
+        <name>Partnership_Opportunity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portfolio Manager Meeting Goal Counter --></label>
+        <name>Portfolio_Manager_Meeting_Goal_Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portfolio Manager Meeting Goal --></label>
+        <name>Portfolio_Manager_Meeting_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recent Client Activity --></label>
+        <name>Recent_Client_Activity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Recent Issues --></label>
+        <name>Recent_Issues__c</name>
+    </fields>
+    <fields>
+        <label><!-- Relationship Background --></label>
+        <name>Relationship_Background__c</name>
+    </fields>
+    <fields>
+        <help><!-- To be used to detail the current relationship status, including any risks or issues --></help>
+        <label><!-- Relationship Status --></label>
+        <name>Relationship_Status__c</name>
+    </fields>
+    <fields>
+        <help><!-- Clarify if this client requires non-standard/complex servicing or reporting --></help>
+        <label><!-- Servicing/Reporting Complexity --></label>
+        <name>Reporting_Complexity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Research Process --></label>
+        <name>Research_Process__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Status --></label>
+        <name>Sales_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Special Arrangements --></label>
+        <name>Special_Arrangements__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sr. Executive Meeting Goal Counter --></label>
+        <name>Sr_Executive_Meeting_Goal_Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sr. Executive Meeting Goal --></label>
+        <name>Sr_Executive_Meeting_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sr. Investment Speaker Goal Counter --></label>
+        <name>Sr_Investment_Speaker_Goal_Counter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sr. Investment Speaker Goal --></label>
+        <name>Sr_Investment_Speaker_Goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Strategy Plan Year --></label>
+        <name>Strategy_Plan_Year__c</name>
+        <picklistValues>
+            <masterLabel>2016</masterLabel>
+            <translation><!-- 2016 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2017</masterLabel>
+            <translation><!-- 2017 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2018</masterLabel>
+            <translation><!-- 2018 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2019</masterLabel>
+            <translation><!-- 2019 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2020</masterLabel>
+            <translation><!-- 2020 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Strategy --></label>
+        <name>Strategy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Strengths --></label>
+        <name>Strengths__c</name>
+    </fields>
+    <fields>
+        <help><!-- Research Objectives for Thought Leadership --></help>
+        <label><!-- Thought Leadership --></label>
+        <name>Thought_Leadership__c</name>
+    </fields>
+    <fields>
+        <label><!-- Threats --></label>
+        <name>Threats__c</name>
+    </fields>
+    <fields>
+        <label><!-- Top Business Issues --></label>
+        <name>Top_Business_Issues__c</name>
+    </fields>
+    <fields>
+        <label><!-- US Retail Tier --></label>
+        <name>US_Retail_Tier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weaknesses --></label>
+        <name>Weaknesses__c</name>
+    </fields>
+    <fields>
+        <label><!-- Three Things to Know --></label>
+        <name>X3_Things_to_Know__c</name>
+    </fields>
+    <layouts>
+        <layout>ARG Strategy Plan Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+        <sections>
+            <label><!-- Organization Details --></label>
+            <section>Organization Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Consultant Strategy Plan1 Layout</layout>
+        <sections>
+            <label><!-- Consultant Profile --></label>
+            <section>Consultant Profile</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Goals --></label>
+            <section>Goals</section>
+        </sections>
+        <sections>
+            <label><!-- Organization Details --></label>
+            <section>Organization Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Prospect Plan Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+        <sections>
+            <label><!-- Organization Details --></label>
+            <section>Organization Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Strategy Plan Layout</layout>
+        <sections>
+            <label><!-- Client Service --></label>
+            <section>Client Service</section>
+        </sections>
+        <sections>
+            <label><!-- Client Strategy --></label>
+            <section>Client Strategy</section>
+        </sections>
+        <sections>
+            <label><!-- Consultant Detail --></label>
+            <section>Consultant Detail</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Details --></label>
+            <section>Details</section>
+        </sections>
+        <sections>
+            <label><!-- Governance, Investment Policy and Implementation --></label>
+            <section>Governance, Investment Policy and Implementation</section>
+        </sections>
+        <sections>
+            <label><!-- Legal / Compliance --></label>
+            <section>Legal / Compliance</section>
+        </sections>
+        <sections>
+            <label><!-- Organization Details --></label>
+            <section>Organization Details</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel><!-- Strategy Plan Name --></nameFieldLabel>
+    <quickActions>
+        <label><!-- New Client Investment Objective --></label>
+        <name>New_Client_Objective_Action</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- ARG Strategy Plan --></label>
+        <name>ARG_Strategy_Plan</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Client Strategy Plan --></label>
+        <name>Client_Strategy_Plan</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Consultant Strategy Plan --></label>
+        <name>Consultant_Strategy_Plan</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Prospect Strategy Plan --></label>
+        <name>Prospect_Strategy_Plan</name>
+    </recordTypes>
+    <webLinks>
+        <label><!-- Generate_ARG_Strategy_Plan --></label>
+        <name>Generate_ARG_Strategy_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label>チームに連絡先を追加しますan</label>
+        <name>Generate_Consultant_Strategy_Plan</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Run_Client_Strategy_Plan_Report --></label>
+        <name>Run_Client_Strategy_Plan_Report</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Run_Prospect_Strategy_Plan_Report --></label>
+        <name>Run_Prospect_Strategy_Plan_Report</name>
+    </webLinks>
+</CustomObjectTranslation>

@@ -1,0 +1,9 @@
+<!---
+Visualforce Page Name :  MFS_CustomPageForStandardTaskVF
+Version               :  1.0 
+Created Date          :  12 JUL 2016
+Function              :  Standard Task detail page
+--->
+<apex:page standardController="Task" >
+    <apex:detail subject="{!Task.id}" relatedList="true" title="true"/>
+</apex:page>

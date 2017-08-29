@@ -1,0 +1,8 @@
+<!---
+Visualforce Page Name :  MFS_SubmitHelpTicket
+Version               :  1.0 
+Created Date          :  7 OCT 2016
+Function              :  Page to redirect to Case creation page to submit thelp ticket from Account
+--->
+<apex:page standardController="Account" extensions="MFS_SubmitHelpTicketExt" action="{!redirect}"> 
+</apex:page>

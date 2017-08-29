@@ -1,0 +1,1380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>To be used to capture Client and Prospect strategy plans</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>AUM__c</fullName>
+        <externalId>false</externalId>
+        <label>AUM</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Account_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Account Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Trust</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Separate</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Analyst_Meeting_Goal_Counter__c</fullName>
+        <externalId>false</externalId>
+        <label>Analyst Meeting Goal Counter</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Analyst_Meeting_Goal__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Analyst Meeting Goal</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Approx_Min_Fee__c</fullName>
+        <externalId>false</externalId>
+        <label>Approx. Min Fee</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Blended_Research__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Research Objectives for Blended Research Strategies</inlineHelpText>
+        <label>Research Goals - Blended Research</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Business_Channels__c</fullName>
+        <externalId>false</externalId>
+        <label>Business Channels</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Client_Engagement_Counter__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Engagement Goal Counter</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Engagement_Goal__c</fullName>
+        <description>Field is populated based on goal, can be edited</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Client Engagement Goal</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Reference__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Reference</label>
+        <picklist>
+            <picklistValues>
+                <fullName>TBD</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yes, with prior Approval</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Client_Review_Meeting_Goal_Counter__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Review Meeting Goal Counter</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Review_Meeting_Goal__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Client Review Meeting Goal</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Commitees__c</fullName>
+        <externalId>false</externalId>
+        <label>Commitees</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Compliance__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Compliance</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Consultant_Influence__c</fullName>
+        <externalId>false</externalId>
+        <label>Consultant Influence</label>
+        <picklist>
+            <picklistValues>
+                <fullName>High</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Consultant_Meeting_Goal_Counter__c</fullName>
+        <externalId>false</externalId>
+        <label>Consultant Meeting Goal Counter</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Consultant_Meeting_Goal__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Consultant Meeting Goal</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Consultant_Role__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Detail the relationship between the Organization and the Consultant</inlineHelpText>
+        <label>Consultant Role</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Cross_Sell_Opportunity__c</fullName>
+        <externalId>false</externalId>
+        <label>Cross Sell Opportunity</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Defined_Contribution__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Research Objectives for DC</inlineHelpText>
+        <label>Defined Contribution</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ESG_Reason__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>ESG Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Fee_Schedule__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Fee Schedule</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Field_Consultant_Outreach__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Key Field Consultants</inlineHelpText>
+        <label>Field Consultant Outreach</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Firm_Biases__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Firm Biases</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Fixed_Income__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Research Objectives for Fixed Income Strategies</inlineHelpText>
+        <label>Research Goals - Fixed Income</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Fundamental__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Research Objectives for Fundamental Equity Strategies</inlineHelpText>
+        <label>Research Goals - Fundamental</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goal__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Goal</label>
+        <referenceTo>Goal__c</referenceTo>
+        <relationshipLabel>Strategy Plans</relationshipLabel>
+        <relationshipName>Strategy_Plans</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Goals__c</fullName>
+        <externalId>false</externalId>
+        <label>Goals</label>
+        <length>100000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Governance__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the Organization&apos;s decision making structure, investment beliefs, views on sustainability, definition of risk, and measures of success</inlineHelpText>
+        <label>Governance</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Implementation__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How does the Organization select managers and construct their portfolio, what is their appetite for Active versus Passive, how do they benchmark managers, what is their view on fees? For DC, how do they view and serve their participants?</inlineHelpText>
+        <label>Implementation</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Importance_of_ESG__c</fullName>
+        <externalId>false</externalId>
+        <label>Importance of ESG</label>
+        <picklist>
+            <picklistValues>
+                <fullName>High</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Institutional_Portfolio_Manager_Goal_Cou__c</fullName>
+        <externalId>false</externalId>
+        <label>Institutional Portfolio Mgr Goal Counter</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Institutional_Tier__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>TEXT(Organization__r.Institutional_Tier__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Institutional Tier</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Institutional__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Institutional Portfolio Manager Goal</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Investment_Policy__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the Organization&apos;s asset allocation strategy, how is it evolving, does the Organization focus on volatility management?</inlineHelpText>
+        <label>Investment Policy</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Key_Initiatives__c</fullName>
+        <externalId>false</externalId>
+        <label>Key Initiatives</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Legal__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Legal</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>MFS_Strategy__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>MFS Strategy</label>
+        <referenceTo>Product2</referenceTo>
+        <relationshipLabel>Strategy Plans</relationshipLabel>
+        <relationshipName>Strategy_Plans</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Mandate_Details__c</fullName>
+        <externalId>false</externalId>
+        <label>Mandate Details</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Meeting_Plan__c</fullName>
+        <externalId>false</externalId>
+        <label>Meeting Plan</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Milestones__c</fullName>
+        <externalId>false</externalId>
+        <label>Milestones</label>
+        <length>100000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>NDA__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>NDA?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Near_Term_Investment__c</fullName>
+        <externalId>false</externalId>
+        <label>Near Term Investment Needs</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>One_Thing_to_Do__c</fullName>
+        <externalId>false</externalId>
+        <label>One Thing to Do</label>
+        <length>3000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Organization__c</fullName>
+        <externalId>false</externalId>
+        <label>Organization</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Strategy Plans</relationshipLabel>
+        <relationshipName>Strategy_Plans</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Other__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Research Objectives for anything not captured above</inlineHelpText>
+        <label>Other</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Partnership_Opportunity1__c</fullName>
+        <externalId>false</externalId>
+        <label>Partnership Opportunity</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Partnership_Opportunity__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Partnership Opportunity</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Portfolio_Manager_Meeting_Goal_Counter__c</fullName>
+        <externalId>false</externalId>
+        <label>Portfolio Manager Meeting Goal Counter</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Portfolio_Manager_Meeting_Goal__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Portfolio Manager Meeting Goal</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Recent_Client_Activity__c</fullName>
+        <externalId>false</externalId>
+        <label>Recent Client Activity</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Recent_Issues__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Recent Issues</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Relationship_Background__c</fullName>
+        <externalId>false</externalId>
+        <label>Relationship Background</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Relationship_Status__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>To be used to detail the current relationship status, including any risks or issues</inlineHelpText>
+        <label>Relationship Status</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Reporting_Complexity__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <inlineHelpText>Clarify if this client requires non-standard/complex servicing or reporting</inlineHelpText>
+        <label>Servicing/Reporting Complexity</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Research_Process__c</fullName>
+        <externalId>false</externalId>
+        <label>Research Process</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Sales_Status__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>TEXT(Organization__r.Sales_Status__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Sales Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Special_Arrangements__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Special Arrangements</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Sr_Executive_Meeting_Goal_Counter__c</fullName>
+        <externalId>false</externalId>
+        <label>Sr. Executive Meeting Goal Counter</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sr_Executive_Meeting_Goal__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Sr. Executive Meeting Goal</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sr_Investment_Speaker_Goal_Counter__c</fullName>
+        <externalId>false</externalId>
+        <label>Sr. Investment Speaker Goal Counter</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Sr_Investment_Speaker_Goal__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Sr. Investment Speaker Goal</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Strategy_Plan_Year__c</fullName>
+        <externalId>false</externalId>
+        <label>Strategy Plan Year</label>
+        <picklist>
+            <picklistValues>
+                <fullName>2016</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2017</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2018</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2019</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2020</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Strategy__c</fullName>
+        <externalId>false</externalId>
+        <label>Strategy</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Strengths__c</fullName>
+        <externalId>false</externalId>
+        <label>Strengths</label>
+        <length>3000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Thought_Leadership__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Research Objectives for Thought Leadership</inlineHelpText>
+        <label>Thought Leadership</label>
+        <length>5000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Threats__c</fullName>
+        <externalId>false</externalId>
+        <label>Threats</label>
+        <length>3000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Top_Business_Issues__c</fullName>
+        <externalId>false</externalId>
+        <label>Top Business Issues</label>
+        <length>3000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>US_Retail_Tier__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>TEXT( Organization__r.US_Retail_Tier__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>US Retail Tier</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Weaknesses__c</fullName>
+        <externalId>false</externalId>
+        <label>Weaknesses</label>
+        <length>3000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>X3_Things_to_Know__c</fullName>
+        <externalId>false</externalId>
+        <label>Three Things to Know</label>
+        <length>3000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <label>Strategy Plan</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Strategy Plan Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Strategy Plans</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>ARG_Strategy_Plan</fullName>
+        <active>true</active>
+        <description>For ARG Strategy Plans</description>
+        <label>ARG Strategy Plan</label>
+        <picklistValues>
+            <picklist>Account_Type__c</picklist>
+            <values>
+                <fullName>Separate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trust</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_Reference__c</picklist>
+            <values>
+                <fullName>Yes%2C with prior Approval</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Consultant_Influence__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Importance_of_ESG__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Strategy_Plan_Year__c</picklist>
+            <values>
+                <fullName>2016</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2017</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2018</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2019</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2020</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Client_Strategy_Plan</fullName>
+        <active>true</active>
+        <description>For Inst. Client Strategy Plans</description>
+        <label>Client Strategy Plan</label>
+        <picklistValues>
+            <picklist>Account_Type__c</picklist>
+            <values>
+                <fullName>Separate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trust</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_Reference__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TBD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes%2C with prior Approval</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Consultant_Influence__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Importance_of_ESG__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Strategy_Plan_Year__c</picklist>
+            <values>
+                <fullName>2016</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2017</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2018</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2019</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2020</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Consultant_Strategy_Plan</fullName>
+        <active>true</active>
+        <description>For Consultant Strategy Plans</description>
+        <label>Consultant Strategy Plan</label>
+        <picklistValues>
+            <picklist>Account_Type__c</picklist>
+            <values>
+                <fullName>Separate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trust</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_Reference__c</picklist>
+            <values>
+                <fullName>Yes%2C with prior Approval</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Consultant_Influence__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Importance_of_ESG__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Strategy_Plan_Year__c</picklist>
+            <values>
+                <fullName>2016</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2017</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2018</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2019</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2020</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Prospect_Strategy_Plan</fullName>
+        <active>true</active>
+        <description>Used to track strategy for Prospect pursuits</description>
+        <label>Prospect Strategy Plan</label>
+        <picklistValues>
+            <picklist>Account_Type__c</picklist>
+            <values>
+                <fullName>Separate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Trust</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Client_Reference__c</picklist>
+            <values>
+                <fullName>Yes%2C with prior Approval</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Consultant_Influence__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Importance_of_ESG__c</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Strategy_Plan_Year__c</picklist>
+            <values>
+                <fullName>2016</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2017</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2018</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2019</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2020</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>Generate_ARG_Strategy_Plan</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Generate ARG Strategy Plan</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://composer.congamerge.com
+?sessionId={!API.Session_ID}
+&amp;serverUrl={!API.Partner_Server_URL_290}
+&amp;id={!Strategy_Plan__c.Id}
+
+&amp;QueryId=[Plans]a1eP0000000BzH4,[Account]a1eP0000000C7ag?pv0={!Strategy_Plan__c.OrganizationId__c},[Opportunities]a1eP0000000C7aq?pv0={!Strategy_Plan__c.OrganizationId__c},[Contacts]a1eP0000000C7al?pv0={!Strategy_Plan__c.OrganizationId__c},[Activity]a1eP0000000C7av?pv0={!Strategy_Plan__c.OrganizationId__c} 
+
+&amp;TemplateId=a1mP0000000IYWH
+
+&amp;DS7=3
+&amp;DS7Preview=1
+&amp;BML=ARG+Strategy+Plan+for+{!Strategy_Plan__c.Organization__c}
+
+&amp;OFN=ARG+Strategy+Plan+Report+-+{!Strategy_Plan__c.Organization__c}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Generate_Consultant_Strategy_Plan</fullName>
+        <availability>online</availability>
+        <description>This is the Conga report to run the Consultant Strategy Plan report</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Generate Consultant Strategy Plan</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://composer.congamerge.com
+?sessionId={!API.Session_ID}
+&amp;serverUrl={!API.Partner_Server_URL_290}
+&amp;id={!Strategy_Plan__c.Id}
+
+&amp;QueryId=[Plans]a1eP0000000ByrN,[Account]a1eP0000000BwRq?pv0={!Strategy_Plan__c.OrganizationId__c},[Opportunities]a1eP0000000Br9L?pv0={!Strategy_Plan__c.OrganizationId__c},[ConsultOpportunities]a1eP0000000BzHd?pv0={!Strategy_Plan__c.OrganizationId__c},[Ratings]a1eP0000000ByrS?pv0={!Strategy_Plan__c.OrganizationId__c},[Contacts]a1eP0000000Bu4M?pv0={!Strategy_Plan__c.OrganizationId__c},[Activity]a1eP0000000Bu42?pv0={!Strategy_Plan__c.OrganizationId__c}
+
+&amp;TemplateId=a1mP0000000IYMZ
+
+&amp;DS7=3
+&amp;DS7Preview=1
+&amp;BML=Consultant+Strategy+Plan+for+{!Strategy_Plan__c.Organization__c}
+
+&amp;OFN=Consultant+Strategy+Plan+Report+-+{!Strategy_Plan__c.Organization__c}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Run_Client_Strategy_Plan_Report</fullName>
+        <availability>online</availability>
+        <description>This is the Conga report to build the Client Strategy Plan report.</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Generate Client Strategy Plan</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://composer.congamerge.com
+?sessionId={!API.Session_ID}
+&amp;serverUrl={!API.Partner_Server_URL_290}
+&amp;id={!Strategy_Plan__c.Id}
+
+&amp;QueryId=[Plans]a1eP0000000BwRg,[Account]a1eP0000000BwRq?pv0={!Strategy_Plan__c.OrganizationId__c},[Opportunities]a1eP0000000Br9L?pv0={!Strategy_Plan__c.OrganizationId__c},[BAR]a1eP0000000BrAY?pv0={!Strategy_Plan__c.OrganizationId__c},[InvestmentObj]a1eP0000000BrL5,[Activity]a1eP0000000Bu42?pv0={!Strategy_Plan__c.OrganizationId__c},[AUM]a1eP0000000BwRv?pv0={!Strategy_Plan__c.OrganizationId__c}
+
+&amp;TemplateId=a1mP0000000IXjc
+
+&amp;DS7=3
+&amp;DS7Preview=1
+&amp;BML=Client+Strategy+Plan+for+{!Strategy_Plan__c.Organization__c}
+
+&amp;OFN=Client+Strategy+Plan+Report+-+{!Strategy_Plan__c.Organization__c}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Run_Prospect_Strategy_Plan_Report</fullName>
+        <availability>online</availability>
+        <description>This is the Conga report to run the Prospect Strategy Plan report</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Generate Prospect Strategy Plan</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://composer.congamerge.com
+?sessionId={!API.Session_ID}
+&amp;serverUrl={!API.Partner_Server_URL_290}
+&amp;id={!Strategy_Plan__c.Id}
+
+&amp;QueryId=[Plans]a1eP0000000BvXA,[Account]a1eP0000000BwRq?pv0={!Strategy_Plan__c.OrganizationId__c},[Opportunities]a1eP0000000Br9L?pv0={!Strategy_Plan__c.OrganizationId__c},[Contacts]a1eP0000000Bu4M?pv0={!Strategy_Plan__c.OrganizationId__c},[Activity]a1eP0000000Bu42?pv0={!Strategy_Plan__c.OrganizationId__c},[MMDPlan]a1eP0000000BuTA?pv0={!Strategy_Plan__c.OrganizationId__c},[AUM]a1eP0000000BwRv?pv0={!Strategy_Plan__c.OrganizationId__c}
+
+&amp;TemplateId=a1mP0000000IXoc
+
+&amp;OFN=Prospect+Strategy+Plan+Report+-+{!Strategy_Plan__c.Organization__c}
+&amp;DS7=3
+&amp;DS7Preview=1
+&amp;BML=Prospect+Strategy+Plan+for+{!Strategy_Plan__c.Organization__c}</url>
+    </webLinks>
+</CustomObject>

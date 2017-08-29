@@ -1,0 +1,5 @@
+<apex:page controller="MFS_MSTR_DashboardController" showHeader="false">
+	<apex:pageBlock >
+        <apex:iframe src="{!HomePageURL}" scrolling="true" id="theIframe"/>
+	</apex:pageBlock>
+</apex:page>

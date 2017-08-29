@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>BI List creation Template</name>
+    <style>none</style>
+    <subject>New Campaign</subject>
+    <textOnly>Hi List Creation Team,
+
+A new campaign list request has been submitted. Please click the link below to view the request. {!Campaign.Link}
+
+Thanks,
+{!User.FirstName} {!User.LastName}</textOnly>
+    <type>custom</type>
+</EmailTemplate>

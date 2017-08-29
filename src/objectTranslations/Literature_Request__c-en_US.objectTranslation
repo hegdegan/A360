@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Literature Request</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Literature Requests</value>
+    </caseValues>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Literature Requests --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Date Needed By --></label>
+        <name>Date_Needed_By__c</name>
+    </fields>
+    <fields>
+        <label><!-- Date Requested --></label>
+        <name>Date_Requested__c</name>
+    </fields>
+    <fields>
+        <label><!-- Order Number --></label>
+        <name>Order_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <layouts>
+        <layout>Literature Request Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- New_Literature_Request --></label>
+        <name>New_Literature_Request</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- StatusLink --></label>
+        <name>StatusLink</name>
+    </webLinks>
+</CustomObjectTranslation>

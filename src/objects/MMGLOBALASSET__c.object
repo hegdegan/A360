@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>(MBI) - MMD - Plan Sponsor - Pension Plan Tax-Exempt Assets</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>APERCENT__c</fullName>
+        <externalId>false</externalId>
+        <label>Percent</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>COLLECTIVE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Collective Code</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Collective_Desc__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>IF( COLLECTIVE__c =&quot;000&quot;,&quot;Unspecified&quot;,
+IF( COLLECTIVE__c =&quot;001&quot;,&quot;Common Collective Trust&quot;,
+IF( COLLECTIVE__c =&quot;002&quot;,&quot;Exchange-Traded Fund&quot;,
+IF( COLLECTIVE__c =&quot;004&quot;,&quot;Mutual Fund&quot;,
+IF( COLLECTIVE__c =&quot;005&quot;,&quot;Pooled Separate Account&quot;,
+IF( COLLECTIVE__c =&quot;007&quot;,&quot;Unit Trust&quot;,&quot;&quot;))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Collective</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DOLLARS__c</fullName>
+        <externalId>false</externalId>
+        <label>Dollars ($000)</label>
+        <precision>14</precision>
+        <required>false</required>
+        <scale>1</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Firm_Link__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Firm Link</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Asset Classes - MMD</relationshipLabel>
+        <relationshipName>MMD_Plan_Tax_Exempt_Assets</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Firm_Name__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>$Organization.Country</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Firm Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ID__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>MMD ID</label>
+        <length>7</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LOC__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount (Local Curr)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Local_Currency_Conversion_Code__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>MMD_Pension_Plan__r.CURR_CODE__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Local Currency Conversion Code</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MMD_Pension_Plan__c</fullName>
+        <externalId>false</externalId>
+        <label>MMD Pension Plan</label>
+        <referenceTo>MMPLANS__c</referenceTo>
+        <relationshipLabel>Plan Tax-Exempt Assets</relationshipLabel>
+        <relationshipName>MMD_Plan_Asset</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>OTHERA__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Other Type</label>
+        <length>120</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Plan_Name__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>MMD_Pension_Plan__r.PLAN_NAME__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Plan Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Plan_Type__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>MMD_Pension_Plan__r.Plan_Type_Desc__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Plan Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>REGION__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Region Code</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Region_Desc__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Region Desc</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SEQ_NO__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Plan Sequence #</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>STYLE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Style Code</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Style_Desc__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Style Desc</label>
+        <length>40</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TYPE__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Type Code</label>
+        <length>3</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type_Desc__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>IF( TYPE__c =&quot;001&quot;,&quot;Alternatives&quot;,
+IF( TYPE__c =&quot;002&quot;,&quot;Asset Allocation&quot;,
+IF( TYPE__c =&quot;003&quot;,&quot;Bonds&quot;,
+IF( TYPE__c =&quot;004&quot;,&quot;Cash &amp; Short-Term&quot;,
+IF( TYPE__c =&quot;005&quot;,&quot;Equities&quot;,
+IF( TYPE__c =&quot;006&quot;,&quot;Fixed Income&quot;,
+IF( TYPE__c =&quot;007&quot;,&quot;Gilts&quot;,
+IF( TYPE__c =&quot;010&quot;,&quot;Lifestyle Fund&quot;,
+IF( TYPE__c =&quot;008&quot;,&quot;Loans&quot;,
+IF( TYPE__c =&quot;009&quot;,&quot;Self Directed Brokerage Accounts&quot;,
+IF( TYPE__c =&quot;011&quot;,&quot;Target Date Retirement Fund&quot;,
+IF( TYPE__c =&quot;000&quot;,&quot;Unspecified&quot;,&quot;&quot;))))))))))))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>MMD Plan Tax-Exempt Asset</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Link</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>MMD Plan Tax-Exempt Assets</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

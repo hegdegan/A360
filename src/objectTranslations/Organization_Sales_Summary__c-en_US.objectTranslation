@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Organization Sales Summary</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Organization Sales Summary</value>
+    </caseValues>
+    <fields>
+        <label><!-- AUM - AUD --></label>
+        <name>AUM_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM - CAD --></label>
+        <name>AUM_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM - Euro --></label>
+        <name>AUM_Euro__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM - GBP --></label>
+        <name>AUM_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM - JPY --></label>
+        <name>AUM_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM - SGD --></label>
+        <name>AUM_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- AUM - USD --></label>
+        <name>AUM_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Month End Date --></label>
+        <name>Month_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Organization MDM ID --></label>
+        <name>Organization_MDM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Organization --></label>
+        <name>Organization__c</name>
+        <relationshipLabel><!-- Organization Sales Summary --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- PY DCI Sales - AUD --></label>
+        <name>PY_DCI_Sales_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY DCI Sales - CAD --></label>
+        <name>PY_DCI_Sales_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY DCI Sales - EURO --></label>
+        <name>PY_DCI_Sales_EURO__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY DCI Sales - GBP --></label>
+        <name>PY_DCI_Sales_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY DCI Sales - JPY --></label>
+        <name>PY_DCI_Sales_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY DCI Sales - SGD --></label>
+        <name>PY_DCI_Sales_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY DCI Sales - USD --></label>
+        <name>PY_DCI_Sales_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Red - AUD --></label>
+        <name>PY_Red_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Red - CAD --></label>
+        <name>PY_Red_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Red - Euro --></label>
+        <name>PY_Red_Euro__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Red - GBP --></label>
+        <name>PY_Red_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Red - JPY --></label>
+        <name>PY_Red_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Red - SGD --></label>
+        <name>PY_Red_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Red - USD --></label>
+        <name>PY_Red_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Sales - AUD --></label>
+        <name>PY_Sales_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Sales - CAD --></label>
+        <name>PY_Sales_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Sales - Euro --></label>
+        <name>PY_Sales_Euro__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Sales - GBP --></label>
+        <name>PY_Sales_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Sales - JPY --></label>
+        <name>PY_Sales_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Sales - SGD --></label>
+        <name>PY_Sales_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- PY Sales - USD --></label>
+        <name>PY_Sales_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- Refresh Date --></label>
+        <name>Refresh_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD DCI Sales - AUD --></label>
+        <name>YTD_DCI_Sales_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD DCI Sales - CAD --></label>
+        <name>YTD_DCI_Sales_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD DCI Sales - EURO --></label>
+        <name>YTD_DCI_Sales_EURO__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD DCI Sales - GBP --></label>
+        <name>YTD_DCI_Sales_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD DCI Sales - JPY --></label>
+        <name>YTD_DCI_Sales_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD DCI Sales - SGD --></label>
+        <name>YTD_DCI_Sales_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD DCI Sales - USD --></label>
+        <name>YTD_DCI_Sales_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Red - AUD --></label>
+        <name>YTD_Red_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Red - CAD --></label>
+        <name>YTD_Red_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Red - Euro --></label>
+        <name>YTD_Red_Euro__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Red - GBP --></label>
+        <name>YTD_Red_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Red - JPY --></label>
+        <name>YTD_Red_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Red - SGD --></label>
+        <name>YTD_Red_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Red - USD --></label>
+        <name>YTD_Red_USD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Sales - AUD --></label>
+        <name>YTD_Sales_AUD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Sales - CAD --></label>
+        <name>YTD_Sales_CAD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Sales - Euro --></label>
+        <name>YTD_Sales_Euro__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Sales - GBP --></label>
+        <name>YTD_Sales_GBP__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Sales - JPY --></label>
+        <name>YTD_Sales_JPY__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Sales - SGD --></label>
+        <name>YTD_Sales_SGD__c</name>
+    </fields>
+    <fields>
+        <label><!-- YTD Sales - USD --></label>
+        <name>YTD_Sales_USD__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

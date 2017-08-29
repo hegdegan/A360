@@ -1,0 +1,1620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>AddCampaign</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>AdvancedSetup</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>CampaignCompactLayout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>CampaignCompactLayout</fullName>
+        <fields>Name</fields>
+        <fields>RecordTypeId</fields>
+        <fields>Content_Type__c</fields>
+        <fields>Description__c</fields>
+        <fields>Status</fields>
+        <label>CampaignCompactLayout</label>
+    </compactLayouts>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <fields>
+        <fullName>ActualCost</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>AmountAllOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>AmountWonOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>BudgetedCost</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>CampaignMemberRecordTypeId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Campaign_Delivery__c</fullName>
+        <externalId>false</externalId>
+        <label>Campaign Delivery Platform</label>
+        <picklist>
+            <picklistValues>
+                <fullName>ContactSync</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Physical Mailing</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sales Call List</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Tagged</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Campaign_Objective__c</fullName>
+        <externalId>false</externalId>
+        <label>Campaign Objective</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Content_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Content Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Brand</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Event</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Insight</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Product</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Regulatory</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Targeted Opportunity</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Value Added Content</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>true</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>CurrencyIsoCode</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>DB_Campaign_Tactic__c</fullName>
+        <description>This is a field that is installed by and used with the Adoption Dashboard AppExchange package. If your org already has a similar field, you can change the reports that are part of the Adoption Dashboard package to use your custom field and then delete this field.</description>
+        <externalId>false</externalId>
+        <label>DB Campaign Tactic</label>
+        <picklist>
+            <controllingField>Type</controllingField>
+            <picklistValues>
+                <fullName>Print Advertisement</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Employment Seminars</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Webinars</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Public Relations</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Partners</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Referral Program</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Lunches</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Direct Mail</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sales Call Down</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Online Banners/Ads</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Internal Website</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Distribution_Channel__c</fullName>
+        <externalId>false</externalId>
+        <label>Distribution Channel</label>
+        <picklist>
+            <picklistValues>
+                <fullName>MFS</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Global Institutional</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Non-US Retail</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>US-Retail</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Distribution_Sub_Channels__c</fullName>
+        <externalId>false</externalId>
+        <label>Distribution Sub-Channels</label>
+        <picklist>
+            <controllingField>Distribution_Channel__c</controllingField>
+            <picklistValues>
+                <fullName>US Retail</fullName>
+                <default>false</default>
+                <controllingFieldValues>MFS</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Non-US Retail</fullName>
+                <default>false</default>
+                <controllingFieldValues>MFS</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Institutional</fullName>
+                <default>false</default>
+                <controllingFieldValues>MFS</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Client</fullName>
+                <default>false</default>
+                <controllingFieldValues>Global Institutional</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Consultant</fullName>
+                <default>false</default>
+                <controllingFieldValues>Global Institutional</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Prospect</fullName>
+                <default>false</default>
+                <controllingFieldValues>Global Institutional</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>DC</fullName>
+                <default>false</default>
+                <controllingFieldValues>US-Retail</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>RIA</fullName>
+                <default>false</default>
+                <controllingFieldValues>US-Retail</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Bank Trust</fullName>
+                <default>false</default>
+                <controllingFieldValues>US-Retail</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ARG</fullName>
+                <default>false</default>
+                <controllingFieldValues>US-Retail</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>VA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFD</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Duration__c</fullName>
+        <externalId>false</externalId>
+        <label>Duration</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EndDate</fullName>
+        <inlineHelpText>Please enter an End Date if the Delivery Platform does not equal &apos;Email&apos;.</inlineHelpText>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>ExpectedResponse</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>ExpectedRevenue</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Firm_Specific__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Firm Specific?</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HierarchyActualCost</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyAmountAllOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyAmountWonOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyBudgetedCost</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyExpectedRevenue</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberOfContacts</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberOfConvertedLeads</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberOfLeads</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberOfOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberOfResponses</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberOfWonOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>HierarchyNumberSent</fullName>
+    </fields>
+    <fields>
+        <fullName>IsActive</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <inlineHelpText>Please enter a campaign name. This is a required field</inlineHelpText>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>NumberOfContacts</fullName>
+    </fields>
+    <fields>
+        <fullName>NumberOfConvertedLeads</fullName>
+    </fields>
+    <fields>
+        <fullName>NumberOfLeads</fullName>
+    </fields>
+    <fields>
+        <fullName>NumberOfOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>NumberOfResponses</fullName>
+    </fields>
+    <fields>
+        <fullName>NumberOfWonOpportunities</fullName>
+    </fields>
+    <fields>
+        <fullName>NumberSent</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Original_Campaign__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Original Campaign</label>
+        <referenceTo>Campaign</referenceTo>
+        <relationshipLabel>Campaigns</relationshipLabel>
+        <relationshipName>Campaigns</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Other_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>This field is used for the &quot;My Contacts&quot; development.</description>
+        <externalId>false</externalId>
+        <label>Other Contact</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Campaigns</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>OwnerId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ParentId</fullName>
+        <inlineHelpText>Please enter a Parent Campaign only if necessary. A Parent Campaign will allow you to associate this new Campaign to an existing Campaign.</inlineHelpText>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Region__c</fullName>
+        <externalId>false</externalId>
+        <label>Region</label>
+        <picklist>
+            <picklistValues>
+                <fullName>US</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Canada</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AUNZ</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>AxJ</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Japan</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Americas</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MIL</fullName>
+                <default>false</default>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Role__c</fullName>
+        <description>This field will be used on Business Driven campaigns for reporting purposes. It will allow users to see what group is running this business driven campaign (Consultant relations, institutional, etc.)</description>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <formula>Owner.UserRole.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Role</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Saleslogix_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <encrypted>false</encrypted>
+        <externalId>true</externalId>
+        <label>Saleslogix ID</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>SilverPop_Updated_Date__c</fullName>
+        <encrypted>false</encrypted>
+        <externalId>false</externalId>
+        <label>SilverPop Updated Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>StartDate</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Initiated</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Planning</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Planned</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In-Progress</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Aborted</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Target_Audience__c</fullName>
+        <externalId>false</externalId>
+        <label>Target Audience</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Html</type>
+        <visibleLines>10</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Type</fullName>
+        <picklist>
+            <picklistValues>
+                <fullName>Week In Review</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>true</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Type2__c</fullName>
+        <description>This field is dependent on the field &quot;Content Type&quot;. We are using this rather than the standard &quot;Type&quot; field because it needs to be multi-select.</description>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <picklist>
+            <controllingField>Content_Type__c</controllingField>
+            <picklistValues>
+                <fullName>Corporate Update</fullName>
+                <default>false</default>
+                <controllingFieldValues>Brand</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>MFS Hosted</fullName>
+                <default>false</default>
+                <controllingFieldValues>Event</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Webcast</fullName>
+                <default>false</default>
+                <controllingFieldValues>Event</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Client Hosted</fullName>
+                <default>false</default>
+                <controllingFieldValues>Event</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Industry Hosted</fullName>
+                <default>false</default>
+                <controllingFieldValues>Event</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Conference Call</fullName>
+                <default>false</default>
+                <controllingFieldValues>Event</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ZoomOut</fullName>
+                <default>false</default>
+                <controllingFieldValues>Insight</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Market Insights</fullName>
+                <default>false</default>
+                <controllingFieldValues>Insight</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Week in Review</fullName>
+                <default>false</default>
+                <controllingFieldValues>Insight</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Strategist&apos;s Corner</fullName>
+                <default>false</default>
+                <controllingFieldValues>Insight</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fact Sheets</fullName>
+                <default>false</default>
+                <controllingFieldValues>Product</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Management Results</fullName>
+                <default>false</default>
+                <controllingFieldValues>Product</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Product Update</fullName>
+                <default>false</default>
+                <controllingFieldValues>Product</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>PRP</fullName>
+                <default>false</default>
+                <controllingFieldValues>Product</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Product Marketing</fullName>
+                <default>false</default>
+                <controllingFieldValues>Product</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Family Wealth</fullName>
+                <default>false</default>
+                <controllingFieldValues>Targeted Opportunity</controllingFieldValues>
+                <controllingFieldValues>Value Added Content</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Heritage Planning</fullName>
+                <default>false</default>
+                <controllingFieldValues>Targeted Opportunity</controllingFieldValues>
+                <controllingFieldValues>Value Added Content</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Disruption</fullName>
+                <default>false</default>
+                <controllingFieldValues>Targeted Opportunity</controllingFieldValues>
+                <controllingFieldValues>Value Added Content</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>BTN</fullName>
+                <default>false</default>
+                <controllingFieldValues>Insight</controllingFieldValues>
+                <controllingFieldValues>Value Added Content</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Newsletter</fullName>
+                <default>false</default>
+                <controllingFieldValues>Insight</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ADV Mailing</fullName>
+                <default>false</default>
+                <controllingFieldValues>Regulatory</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>ADV Update</fullName>
+                <default>false</default>
+                <controllingFieldValues>Regulatory</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Compliance and Operational Guidelines Update</fullName>
+                <default>false</default>
+                <controllingFieldValues>Regulatory</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>408(b)2</fullName>
+                <default>false</default>
+                <controllingFieldValues>Regulatory</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Offering Memorandum Update</fullName>
+                <default>false</default>
+                <controllingFieldValues>Regulatory</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Pooled &amp; CCT Fund Financials</fullName>
+                <default>false</default>
+                <controllingFieldValues>Regulatory</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Soft Dollar Notice</fullName>
+                <default>false</default>
+                <controllingFieldValues>Regulatory</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Offering Memorandum</fullName>
+                <default>false</default>
+                <controllingFieldValues>Regulatory</controllingFieldValues>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Strategy Update</fullName>
+                <default>false</default>
+                <controllingFieldValues>Regulatory</controllingFieldValues>
+            </picklistValues>
+            <restrictedPicklist>true</restrictedPicklist>
+            <sorted>false</sorted>
+        </picklist>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>silverpop__Silverpop_ID__c</fullName>
+        <caseSensitive>true</caseSensitive>
+        <deprecated>false</deprecated>
+        <encrypted>false</encrypted>
+        <externalId>true</externalId>
+        <label>Silverpop_ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <listViews>
+        <fullName>All_Campaigns</fullName>
+        <columns>CAMPAIGN.ID</columns>
+        <columns>CAMPAIGN.NUM_CONTACTS</columns>
+        <columns>CAMPAIGN.NAME</columns>
+        <columns>Distribution_Channel__c</columns>
+        <columns>Distribution_Sub_Channels__c</columns>
+        <columns>Campaign_Delivery__c</columns>
+        <columns>Region__c</columns>
+        <columns>CAMPAIGN.CAMPAIGN_TYPE</columns>
+        <columns>Content_Type__c</columns>
+        <columns>CAMPAIGN.STATUS</columns>
+        <columns>CAMPAIGN.START_DATE</columns>
+        <columns>CAMPAIGN.END_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CAMPAIGN.NAME</field>
+            <operation>contains</operation>
+            <value>Brand -</value>
+        </filters>
+        <label>All Campaigns</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>MyActiveCampaigns</fullName>
+        <columns>CAMPAIGN.NAME</columns>
+        <columns>CAMPAIGN.START_DATE</columns>
+        <columns>CAMPAIGN.END_DATE</columns>
+        <columns>CAMPAIGN.CAMPAIGN_TYPE</columns>
+        <columns>CAMPAIGN.STATUS</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CAMPAIGN.ACTIVE</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My Active Campaigns</label>
+    </listViews>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypes>
+        <fullName>Business_Driven</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>CampaignCompactLayout</compactLayoutAssignment>
+        <description>Used for Institutional and Retail Sales specific campaigns.</description>
+        <label>Business Driven</label>
+        <picklistValues>
+            <picklist>Campaign_Delivery__c</picklist>
+            <values>
+                <fullName>Contact Sync</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Call List</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Content_Type__c</picklist>
+            <values>
+                <fullName>Brand</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Contact</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insight</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regulatory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Targeted Opportunity</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Distribution_Channel__c</picklist>
+            <values>
+                <fullName>Global Institutional</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-US Retail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US-Retail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Distribution_Sub_Channels__c</picklist>
+            <values>
+                <fullName>ARG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bank Trust</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consultant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Institutional</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-US Retail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prospect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US Retail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Region__c</picklist>
+            <values>
+                <fullName>AUNZ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AxJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Canada</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Japan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Aborted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In-Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Initiated</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Planned</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Planning</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Week In Review</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type2__c</picklist>
+            <values>
+                <fullName>408%28b%292</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ADV Mailing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ADV Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BTN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client Hosted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Compliance and Operational Guidelines Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conference Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industry Hosted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Hosted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Newsletter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offering Memorandum Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pooled %26 CCT Fund Financials</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Soft Dollar Notice</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Webcast</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Marketing_Driven</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>CampaignCompactLayout</compactLayoutAssignment>
+        <description>Used for Marketing specific campaigns.</description>
+        <label>Marketing Driven</label>
+        <picklistValues>
+            <picklist>Campaign_Delivery__c</picklist>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Physical Mailing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sales Call List</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Tagged</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Content_Type__c</picklist>
+            <values>
+                <fullName>Brand</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Event</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Insight</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Regulatory</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Targeted Opportunity</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Distribution_Channel__c</picklist>
+            <values>
+                <fullName>Global Institutional</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-US Retail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US-Retail</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Distribution_Sub_Channels__c</picklist>
+            <values>
+                <fullName>ARG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bank Trust</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Consultant</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Institutional</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Non-US Retail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prospect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RIA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US Retail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VA</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Region__c</picklist>
+            <values>
+                <fullName>AUNZ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Americas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AxJ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Canada</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EMEA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Japan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MIL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>US</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Aborted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In-Progress</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Initiated</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Planned</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Planning</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Week In Review</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type2__c</picklist>
+            <values>
+                <fullName>Client Hosted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Conference Call</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Corporate Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Disruption</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fact Sheets</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Family Wealth</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Heritage Planning</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industry Hosted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MFS Hosted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Management Results</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Market Insights</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Newsletter</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Offering Memorandum</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>PRP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Marketing</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Product Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Strategist%27s Corner</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Strategy Update</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Webcast</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Week in Review</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ZoomOut</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>CAMPAIGN.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CAMPAIGN.RECORDTYPE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Description__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Content_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CAMPAIGN.STATUS</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CAMPAIGN.START_DATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CAMPAIGN.END_DATE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PARENT_NAME</customTabListAdditionalFields>
+        <listViewButtons>Skip</listViewButtons>
+        <lookupDialogsAdditionalFields>CAMPAIGN.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CAMPAIGN.RECORDTYPE</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Description__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Content_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CAMPAIGN.STATUS</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CAMPAIGN.START_DATE</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CAMPAIGN.END_DATE</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>PARENT_NAME</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CAMPAIGN.NAME</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>CAMPAIGN.NAME</searchFilterFields>
+        <searchFilterFields>CAMPAIGN.RECORDTYPE</searchFilterFields>
+        <searchFilterFields>CAMPAIGN.STATUS</searchFilterFields>
+        <searchFilterFields>Content_Type__c</searchFilterFields>
+        <searchFilterFields>Distribution_Channel__c</searchFilterFields>
+        <searchFilterFields>Distribution_Sub_Channels__c</searchFilterFields>
+        <searchFilterFields>Region__c</searchFilterFields>
+        <searchFilterFields>CAMPAIGN.START_DATE</searchFilterFields>
+        <searchFilterFields>CAMPAIGN.END_DATE</searchFilterFields>
+        <searchResultsAdditionalFields>CAMPAIGN.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CAMPAIGN.RECORDTYPE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Description__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Content_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CAMPAIGN.STATUS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CAMPAIGN.START_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CAMPAIGN.END_DATE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PARENT_NAME</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>RegionOnNonUsRetail</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL(Distribution_Channel__c , &quot;Non-US Retail&quot;) &amp;&amp; ISBLANK(Region__c)</errorConditionFormula>
+        <errorDisplayField>Region__c</errorDisplayField>
+        <errorMessage>Region is required if Distribution Channel is Non-US Retail</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Update_Stage</fullName>
+        <active>true</active>
+        <errorConditionFormula>!ISPICKVAL(Status, &apos;initiated&apos;) &amp;&amp; (
+Len(Campaign_Objective__c)==0 ||Len(Target_Audience__c)==0
+)</errorConditionFormula>
+        <errorMessage>Please enter campaign objective and target audience</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Add_Update_Members</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Add/Update Members</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>{!REQUIRESCRIPT(&quot;/support/console/35.0/integration.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/25.0/connection.js&quot;)} 
+{!REQUIRESCRIPT(&quot;/soap/ajax/25.0/apex.js&quot;)} 
+
+var urlString= &apos;/apex/MFS_MyCampCon?Id=&apos;+&apos;{!Campaign.Id}&apos;;
+var urlStringConsole = &apos;/apex/MFS_MyCampCon?Id=&apos;+&apos;{!Campaign.Id}&apos;+&apos;&amp;isdtp=true&apos;; 
+if (sforce.console.isInConsole()){ 
+sforce.console.getEnclosingPrimaryTabId(function(result){
+var primaryTabId = result.id;
+		sforce.console.openSubtab(primaryTabId , urlStringConsole , true, 
+			&apos;{!Campaign.Name}&apos;, null, null, &apos;{!Campaign.Id}&apos;);
+});
+		
+}
+else { 
+	window.open(urlString,&quot;_self&quot;); 
+}
+    
+/*if (typeof(srcUp) == &apos;function&apos;) { 
+srcUp(&apos;/apex/MFS_MyCampCon?Id=&apos;+&apos;{!Campaign.Id}&apos;+&apos;&amp;isdtp=true&apos;); 
+} else { 
+window.open(urlString,&quot;_self&quot;); 
+}*/</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Add_Update_Members_SLDS</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Add\Update Members</masterLabel>
+        <openType>replace</openType>
+        <page>MFS_MyCampCon</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Clone</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Clone</masterLabel>
+        <openType>sidebar</openType>
+        <page>MFS_ClonePage</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Skip</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>Skip</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>www.google.com</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Skip2</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Skip2</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>www.gooogle.com</url>
+    </webLinks>
+    <webLinks>
+        <fullName>ViewAllCampaignMembers</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>500</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>View All Campaign Members</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/camp/rptcmpgncalldown.jsp?scope=1&amp;scopeid={!Campaign_Name}</url>
+        <width>500</width>
+    </webLinks>
+    <webLinks>
+        <fullName>ViewCampaignInfluenceReport</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>500</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>View Campaign Influence Report</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/00O?rt=117&amp;break0=CAN&amp;scope=1&amp;scopeid_lkid={!Campaign.Id}&amp;scopeid={!Campaign_Name}&amp;c=CAN&amp;c=MR&amp;c=PCS&amp;c=CFN&amp;c=RN&amp;c=ON&amp;c=OA&amp;c=OS&amp;c=OCD&amp;c=AN&amp;s=OA&amp;duel0=CAN%2CMR%2CCFN%2CRN%2CAN%2CON%2CPCS%2COS%2COCD%2COA&amp;details=yes&amp;format=t</url>
+        <width>500</width>
+    </webLinks>
+    <webLinks>
+        <fullName>silverpop__Send_Silverpop_Email</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Send Silverpop Email</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <url>//Display new window 90% of height
+{!REQUIRESCRIPT(&quot;/soap/ajax/25.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/soap/ajax/25.0/apex.js&quot;)}
+
+var contactnumber = {!FLOOR(Campaign.NumberOfContacts)};
+var leadnumber = {!FLOOR(Campaign.NumberOfLeads)};
+
+var namespace_prefix=&apos;&apos;;
+var gettingnamespace=sforce.connection.query(&quot;SELECT namespaceprefix FROM ApexClass where name = &apos;PartnerServerUrl&apos; &quot;);
+
+var getname=gettingnamespace.getArray(&quot;records&quot;);
+ 
+if(getname.length&gt;0)
+{
+   if (getname[0].NamespacePrefix != null &amp;&amp; getname[0].NamespacePrefix != &apos;&apos;){
+       namespace_prefix=getname[0].NamespacePrefix;
+   }
+   if(namespace_prefix!=null &amp;&amp; namespace_prefix!=&apos;&apos;)
+   {
+        namespace_prefix=namespace_prefix+&apos;__&apos;;
+   }
+}
+
+if ( !{!ISNULL( Campaign.silverpop__Silverpop_ID__c )}  || !{!ISBLANK( Campaign.silverpop__Silverpop_ID__c )} ) {
+
+    alert(&apos;{!$Label.silverpop__lbl_campaign_msg1}&apos;);
+
+} else if ((contactnumber &lt;= 0) &amp;&amp; (leadnumber &lt;= 0)) {
+      
+     alert(&apos;{!$Label.silverpop__lbl_campaign_msg2}&apos;);   
+        
+} else {
+     window.open(&apos;/apex/&apos;+namespace_prefix+&apos;SP_EngageCampaignLogin?id={!Campaign.Id}&apos;, &apos;_blank&apos;, &apos;height=700,width=1024,location=0,resizable=0,toolbar=0,status=0,menubar=no,scrollbars=1&apos;);
+
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>silverpop__ViewCampaignInfluenceReport</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>500</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>View Campaign Influence Report</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/00O?rt=117&amp;break0=CAN&amp;scope=1&amp;scopeid_lkid={!Campaign.Id}&amp;scopeid={!Campaign.Name}&amp;c=CAN&amp;c=MR&amp;c=PCS&amp;c=CFN&amp;c=RN&amp;c=ON&amp;c=OA&amp;c=OS&amp;c=OCD&amp;c=AN&amp;s=OA&amp;duel0=CAN%2CMR%2CCFN%2CRN%2CAN%2CON%2CPCS%2COS%2COCD%2COA&amp;details=yes&amp;format=t</url>
+        <width>500</width>
+    </webLinks>
+</CustomObject>

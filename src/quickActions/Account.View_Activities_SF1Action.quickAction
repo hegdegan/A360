@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This button opens the Custom Activity360 page to View Cheat Sheet</description>
+    <height>250</height>
+    <label>View Activities</label>
+    <page>MFS_ViewActivities_SF1Action</page>
+    <type>VisualforcePage</type>
+    <width>-100</width>
+</QuickAction>

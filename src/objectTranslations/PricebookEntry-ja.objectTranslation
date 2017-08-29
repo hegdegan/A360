@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label><!-- Asset Class-Geography --></label>
+        <name>Asset_Class_Geography_Picklist__c</name>
+        <picklistValues>
+            <masterLabel>Emerging Markets (diversified) Equity</masterLabel>
+            <translation>エマージング マーケット (ダイバーシファイド) 株式</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emerging Markets (diversified) Fixed Income</masterLabel>
+            <translation>エマージング マーケット (ダイバーシファイド) 債券</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Emerging Markets Equity</masterLabel>
+            <translation>エマージング マーケット 株式</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Alternatives/Specialty</masterLabel>
+            <translation><!-- Global Alternatives/Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Balanced/Multi-Asset</masterLabel>
+            <translation><!-- Global Balanced/Multi-Asset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Equity</masterLabel>
+            <translation><!-- Global Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Fixed Income</masterLabel>
+            <translation><!-- Global Fixed Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global ex US Equity</masterLabel>
+            <translation><!-- Global ex US Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Regional Equity</masterLabel>
+            <translation><!-- Regional Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Single Country - Non US Equity</masterLabel>
+            <translation><!-- Single Country - Non US Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Alternatives/Specialty</masterLabel>
+            <translation><!-- US Alternatives/Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Balanced/Multi-Asset</masterLabel>
+            <translation><!-- US Balanced/Multi-Asset --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Equity</masterLabel>
+            <translation><!-- US Equity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>US Fixed Income</masterLabel>
+            <translation><!-- US Fixed Income --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Asset Class-Geography --></label>
+        <name>Asset_Class_Geography__c</name>
+    </fields>
+    <fields>
+        <label><!-- Blended? --></label>
+        <name>Blended__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Unknown --></label>
+        <name>Is_Unknown__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portfolio Name --></label>
+        <name>Portfolio_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Family --></label>
+        <name>Product_Family__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Record Type --></label>
+        <name>Product_Record_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product Style --></label>
+        <name>Product_Style__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vehicle --></label>
+        <name>Product_Vehicle__c</name>
+    </fields>
+    <fields>
+        <label><!-- Restricted --></label>
+        <name>Restricted__c</name>
+    </fields>
+    <fields>
+        <label><!-- Strategy Name --></label>
+        <name>Strategy_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vehicle --></label>
+        <name>Vehicle__c</name>
+        <picklistValues>
+            <masterLabel>Australia Unit Trust</masterLabel>
+            <translation><!-- Australia Unit Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CDO</masterLabel>
+            <translation><!-- CDO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Canadian Trust</masterLabel>
+            <translation><!-- Canadian Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collective Investment Trust</masterLabel>
+            <translation><!-- Collective Investment Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITM</masterLabel>
+            <translation><!-- ITM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Institutional Trust</masterLabel>
+            <translation><!-- Institutional Trust --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LLC</masterLabel>
+            <translation><!-- LLC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Family of Funds (US)</masterLabel>
+            <translation><!-- MFS Family of Funds (US) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MFS Investment Funds (FCP)</masterLabel>
+            <translation><!-- MFS Investment Funds (FCP) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Meridian</masterLabel>
+            <translation><!-- Meridian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PPS</masterLabel>
+            <translation><!-- PPS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Separate Account</masterLabel>
+            <translation><!-- Separate Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Subadvised Account</masterLabel>
+            <translation><!-- Subadvised Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIT</masterLabel>
+            <translation><!-- VIT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIT II</masterLabel>
+            <translation><!-- VIT II --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VIT III</masterLabel>
+            <translation><!-- VIT III --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- isValid --></label>
+        <name>isValid__c</name>
+    </fields>
+</CustomObjectTranslation>

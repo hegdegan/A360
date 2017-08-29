@@ -1,0 +1,29 @@
+Hello,
+<br/><br/>
+<b>Purpose: </b> To circulate IMA and guidelines with client comments for  [Strategy] for {!Case.Account}.
+<br/><br/>
+<b>[Enter description of request here]</b><br/><br/>
+
+See Sharepoint link below:<br/>
+<b>[Add Link]</b><br/><br/>
+Below please find additional information regarding these new mandates:
+<br/><br/>
+<table>
+<tr>
+<td>Client:</td><td> {!Case.Account}
+</td>
+</tr>
+<tr>
+<td>Client Type:</td><td> {!Case.00NP0000000t4L3}</td>
+</tr>
+
+
+</table>
+<br/>
+
+Next Steps: Please provide comments and edits by [Date].
+<br/><br/>
+Please let me know if you have any questions. 
+<br/><br/>
+Thank you,<br/>
+{!User.FirstName} {!User.LastName}

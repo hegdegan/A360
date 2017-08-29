@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Competitor Product</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Competitor Product</value>
+    </caseValues>
+    <fields>
+        <label><!-- Asset Class ID --></label>
+        <name>Asset_Class_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Asset Class --></label>
+        <name>Asset_Class__c</name>
+    </fields>
+    <fields>
+        <label><!-- Benchmark --></label>
+        <name>Benchmark__c</name>
+    </fields>
+    <fields>
+        <label><!-- CUSIP --></label>
+        <name>CUSIP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Competitor Contact --></label>
+        <name>Competitor_Contact__c</name>
+        <relationshipLabel><!-- Competitor Product --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Domicile --></label>
+        <name>Domicile__c</name>
+    </fields>
+    <fields>
+        <label><!-- Final Competitor --></label>
+        <name>Final_Competitor__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm ID --></label>
+        <name>Firm_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm --></label>
+        <name>Firm__c</name>
+        <relationshipLabel><!-- Competitor Product --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Fund Legal Name --></label>
+        <name>Fund_Legal_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Fund Legal Structure --></label>
+        <name>Fund_Legal_Structure__c</name>
+        <picklistValues>
+            <masterLabel>Open Ended Investment Company</masterLabel>
+            <translation><!-- Open Ended Investment Company --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- ISIN --></label>
+        <name>ISIN__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is High Interest Product --></label>
+        <name>Is_High_Interest_Product__c</name>
+    </fields>
+    <fields>
+        <label><!-- Opportunity --></label>
+        <name>Opportunity__c</name>
+        <relationshipLabel><!-- Competitor Product --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Portfolio ID --></label>
+        <name>Portfolio_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Portfolio Name --></label>
+        <name>Portfolio_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Product ID --></label>
+        <name>Product_ID__c</name>
+    </fields>
+    <fields>
+        <help><!-- Use this field to keep track of a Contact&apos;s sentiment regarding a Competitor Product. --></help>
+        <label><!-- Sentiment --></label>
+        <name>Sentiment__c</name>
+        <picklistValues>
+            <masterLabel>Currently Using - Pleased</masterLabel>
+            <translation><!-- Currently Using - Pleased --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Currently Using- Not Pleased</masterLabel>
+            <translation><!-- Currently Using- Not Pleased --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Using</masterLabel>
+            <translation><!-- Not Using --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Previously Used - Not Pleased</masterLabel>
+            <translation><!-- Previously Used - Not Pleased --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Previously Used- Pleased</masterLabel>
+            <translation><!-- Previously Used- Pleased --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Share Class ID --></label>
+        <name>Share_Class_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Share Class Type --></label>
+        <name>Share_Class_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Share Class --></label>
+        <name>Share_Class__c</name>
+    </fields>
+    <fields>
+        <label><!-- Strategy ID --></label>
+        <name>Strategy_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Strategy --></label>
+        <name>Strategy__c</name>
+    </fields>
+    <fields>
+        <label><!-- Ticker --></label>
+        <name>Ticker__c</name>
+    </fields>
+    <fields>
+        <label><!-- Universe Granularity --></label>
+        <name>Universe_Granularity__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vehicle ID --></label>
+        <name>Vehicle_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vehicle --></label>
+        <name>Vehicle__c</name>
+    </fields>
+    <layouts>
+        <layout>Institutional(Evestment)</layout>
+        <sections>
+            <label><!-- Competitor Product Information --></label>
+            <section>Competitor Product Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Retail (Morningstar)</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Morningstar Information --></label>
+            <section>Morningstar Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>System Administrator</layout>
+        <sections>
+            <label><!-- Contact Field --></label>
+            <section>Contact Field</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Institutional Fields --></label>
+            <section>Institutional Fields</section>
+        </sections>
+        <sections>
+            <label><!-- Retail Fields --></label>
+            <section>Retail Fields</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Product Name</nameFieldLabel>
+    <recordTypes>
+        <label><!-- Institutional --></label>
+        <name>Institutional</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Retail --></label>
+        <name>Retail</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

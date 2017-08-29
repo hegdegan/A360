@@ -1,0 +1,22 @@
+<!---
+Visualforce Page Name :  MFS_SendEventToOutlook
+Version               :  1.0 
+Created Date          :  3 NOV 2016
+Function              :  Generates outlook file when "Send to Outlook" button is clicked from Requested Speaker
+--->
+<apex:page title="event.ics" contentType="text/calendar" cache="false" controller="MFS_SendEventToOutlookCtrl" >
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID::-//hacksw/handcal//NONSGML v1.0//EN
+BEGIN:VEVENT
+ATTENDEE;MAILTO:<apex:outputText value="{!eventRel.Speaker__r.Email}"/>
+DTSTAMP;TZID=US-Pacific:<apex:outputText value="{!now}"/>
+UID:<apex:outputText value="{!eventRel.Speaker__r.Employee_ID__c}"/>
+DTSTART;TZID=US-Pacific:<apex:outputText value="{!startDate}"/>
+DTEND;TZID=US-Pacific:<apex:outputText value="{!endDate}"/>
+SUMMARY:<apex:outputText value="{!eventRel.Topic__c}"/>
+X-ALT-DESC;FMTTYPE="text/html":<html><body><b>Event Location time Zone : </b>{!eventRel.Speaker_Request__r.TimeZone__c}<br/><b>Event Local Start Time : </b>{!localStartTime}<br/><br/> <b>Event : </b> {!eventRel.Speaker_Request__r.Event_Title__c}<br/><b>Requester : </b> {!eventRel.CreatedBy.Name}<br/><b>Requested on behalf of :</b> {!eventRel.Speaker_Request__r.Requester__r.Name}<br/><b>Location : </b>{!eventRel.Speaker_Request__r.Location__c}<br/><b>Additional Info :</b><br/><b>Meeting Type : </b>{!eventRel.Speaker_Request__r.Event_Types__c}<br/><b>Audience : </b> {!eventRel.Speaker_Request__r.Audience__c}<br/><b>Dress Code : </b>{!eventRel.Speaker_Request__r.Dress_Code__c}<br/><b>Conference Call Info : </b> {!eventRel.Speaker_Request__r.Call__c}<br/><br/><b>Relationship : </b>{!eventRel.Speaker_Request__r.Organization__r.Name}<br/><b>Client Tier : </b>{!eventRel.Speaker_Request__r.Tier__c}<br/><b>Assets with MFS : </b>{!eventRel.Speaker_Request__r.Asset_Class__c}<br/><b>Primary Relationship Contact :</b>{!eventRel.Speaker_Request__r.Requester__r.Name}<br/><br/><b>Speaker And Topic :</b><br/><b>Speaker : </b>{!eventRel.Speaker__r.Name}<br/><b>Topic : </b>{!eventRel.Topic__c}<br/><b>Vehicle Type : </b>{!VehicleTypes}<br/><b>All Day Event : </b>{!event.IsAllDayEvent}<br/><b>Start Time : </b>{!mstartDate}<br/><b>End Time : </b>{!mendDate}<br/><br/><b>Discussion Details :</b><br/><b>Account Type : </b>{!eventRel.Speaker_Request__r.Organization__r.Type}<br/><b>MFS Contact for Presentaion Material :</b>{!eventRel.Speaker_Request__r.MFS_Contact_for_Presentation_Materials__r.Name}<br/><b>Link To Presentaion Material : </b>{!eventRel.Speaker_Request__r.Link_to_presentation_materials__c}<br/><b>Speaker Expense RC Code :</b>{!rcCode}<br/><b>Portfolios: </b>{!portfolios}<br/><b>Notes : </b><br/>{!eventRel.Speaker_Request__r.Event_Instructions__c}<br/><b>Meeting Detail: </b> <a href="{!detailURL}">{!linkText}</a></body></html>
+LOCATION:<apex:outputText value="{!eventRel.Speaker_Request__r.Location__c}"/>
+END:VEVENT
+END:VCALENDAR
+</apex:page>

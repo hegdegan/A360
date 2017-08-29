@@ -1,0 +1,58 @@
+<!---
+Visualforce Page Name :  MFS_CreateActivity_SF1Action
+Version               :  1.0 
+Created Date          :  13 OCT 2016
+Function              :  Publisher action to create activity from Account for Non admin
+--->
+<apex:page standardController="Account" sidebar="false" >
+    
+    <script>
+    <apex:includeScript value="/soap/ajax/22.0/connection.js"/>
+        <apex:includeScript value="/soap/ajax/22.0/apex.js"/>
+        <apex:includeScript value="/support/console/35.0/integration.js"/>
+        
+        /*Thisjavascript opens the Custom Activity360 page to Create Activity.*/ 
+        
+    //parameters to pass in the URL 
+    var returnID; 
+    var pagename; 
+    var isTaskorEvent = 'event=true'; 
+    var isNew = 'isNew=true'; 
+    
+    //Determine the Page Layout (Institutional/Retail) 
+    if('{!$Profile.Name}'.includes("Institution") || '{!$Profile.Name}'.includes("Global Client Service") || '{!$Profile.Name}'.includes("Global Consultant Relations")){ 
+        pagename = 'MFS_Activity360PageSF1'; 
+    } else if('{!$Profile.Name}'.includes("Retail")){ 
+        pagename = 'MFS_Activity360RetailPageSF1'; 
+    }else{ 
+        pagename = 'MFS_Activity360RetailPageSF1'; 
+    } 
+     
+    //Determine the return ID (Account/Contact/Oppty/BAR id) 
+    var acctid= '{!Account.Id}'; 
+    if(acctid!= ''){ 
+        returnID = acctid; 
+    } 
+    var activityId; 
+    
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+    var newActivityDetail= new sforce.SObject("Activity_Detail__c"); 
+    newActivityDetail.Subject__c = 'Orphan Record'; 
+    result = sforce.connection.create([newActivityDetail]); 
+    
+    activityId = result[0].id;
+    
+    var A360url = '/apex/' + pagename + '?Id='+activityId+'&' +isTaskorEvent+ '&returnID='+returnID+'&'+ isNew +'&isConsole=false'; 
+    
+    var A360urlConsole = '/apex/' + pagename + '?Id='+activityId+'&' +isTaskorEvent+ '&returnID='+returnID+'&'+ isNew +'&isConsole=true'; 
+    
+    if (sforce.console.isInConsole()){ 
+    window.open(A360urlConsole,"_self"); 
+    }
+    else { 
+        sforce.one.navigateToURL(A360url );
+    }
+    
+    </script>
+    
+</apex:page>

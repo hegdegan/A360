@@ -1,0 +1,142 @@
+<!---
+Visualforce Page Name :  MFS_MyOrganizationConsole
+Version               :  1.0 
+Created Date          :  18 JAN 2017
+Function              :  Organization list view to be launched from console - For Inst only
+--->
+<apex:page sidebar="false" controller="MFS_MyOrganizationsController" tabStyle="Account" standardStylesheets="false">
+    <style>
+        .dataTables_filter{margin-bottom:10px;}
+        .active-Tab{background-color:#56458c; color:White; background-image:none; font-size:14px; font-weight:bold; height:30px; width:120px; !important}
+        .inactive-Tabs{background-color:#5645CA; color:White; background-image:none; font-size:14px; height:28px; width:120px; !important}
+        
+        table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr{background:#FFF;}
+        table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{background:#FFF !important;}
+        table.dataTable.display tbody tr > .sorting_1, 
+        table.dataTable.order-column tbody tr > .sorting_1{background:#FFF !important;}
+        
+        table.dataTable{border-radius:0 !important;border:1px solid #e0e3e5 !important;background:none !important;}
+        table.dataTable thead tr{background:#f2f3f3;}
+        table.dataTable thead tr th{border-right:1px solid #e0e3e5;}
+        table.dataTable thead th, table.dataTable thead td{padding:4px 18px !important;}
+        table.dataTable tbody th, table.dataTable tbody td{padding:0 10px !important;height:21px;border-bottom:1px solid #e0e3e5;}
+        .show{visibility:visible;}
+        .hide{visibility:hidden;}
+        .myOrgactsTableContainer{overflow-x:auto;height:415px;overflow-y:hidden;}
+        input[type="text"], textarea, select {-webkit-appearance: none;}
+        .dataTables_filter{margin-bottom:10px;}
+        table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr{background:#FFF;}
+        table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{background:#FFF !important;}
+        table.dataTable.display tbody tr > .sorting_1, 
+        table.dataTable.order-column tbody tr > .sorting_1{background:#FFF !important;}
+        
+        table.dataTable{border-radius:0 !important;border:1px solid #e0e3e5 !important;background:none !important;}
+        table.dataTable thead tr{background:#f2f3f3;}
+        table.dataTable thead tr th{border-right:1px solid #e0e3e5;}
+        table.dataTable thead th, table.dataTable thead td{padding:4px 18px !important;}
+        table.dataTable tbody th, table.dataTable tbody td{padding:0 10px !important;height:30px;border-bottom:1px solid #e0e3e5;}
+        .myContactsTableContainer{height:500px;overflow:auto;}
+        .show{visibility:visible;}
+        .hide{visibility:hidden;}
+        #myOrgactsTableSLDS_length{display:none;}
+        .message{margin:0 !important;background-color:#FFF !important;}
+        .search-filters-container ul{margin:0;padding:0;display:block;overflow:hidden;}
+        .search-filters-container ul li{width:204px;float:left;margin:0 16px 0 0;padding:0;}
+        .dataTables_length{display:none;}
+    </style>
+    <apex:includeScript value="/support/console/36.0/integration.js"/>
+    <apex:includeScript value="{!URLFOR($Resource.JqueryMin, 'jqueryUI/jquery-1.11.1.min.js')}" />
+    <apex:stylesheet value="{!URLFOR($Resource.Datatable, 'DataTables-1.10.12/media/css/jquery.dataTables.min.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Datatable,'/DataTables-1.10.12/media/js/jquery.dataTables.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.moment,'/moment.js')}"/>
+    
+    <script>
+    var j$ = jQuery.noConflict();
+    function makeMyOrgsDataTable(){
+        j$('#myOrgsTableSLDS').DataTable({
+            "pageLength": 10,
+            "dom": '<"bottom"if>rt<"bottom"lp><"clear">',
+            "order": [0, "asc"],
+            "searching":false
+        }); 
+    }
+    
+    j$(document).ready(function() {
+        makeMyOrgsDataTable();
+        removeDefaultButtonStyling();
+    });
+    
+    
+    function openPrimaryTab(id, Name) {
+        //Open a new primary tab with the salesforce.com home page in it
+        sforce.console.openPrimaryTab(null, '/'+id, true, Name, openSuccess, Name);
+    }
+    var openSuccess = function openSuccess(result) {};
+    
+    var removeDefaultButtonStyling = function(){
+        j$(".myContactsTableContainer input[type='button']").removeClass("btnDisabled");
+        j$(".myContactsTableContainer input[type='button']").removeClass("btn");
+    };
+    </script>
+    
+    <!--SLDS View (Desktop) STARTS-->
+    <apex:stylesheet value="{!URLFOR($Resource.SLDSv202, '/assets/styles/salesforce-lightning-design-system.min.css')}" />
+    <apex:includeScript value="{!URLFOR($Resource.Datatable,'/DataTables-1.10.12/responsive/dataTables.responsive.js')}"/>
+    
+    <div class="slds">
+        <!-- Tabs -->
+        <apex:form >
+            
+            <apex:outputPanel id="orgsTableSLDS" layout="block" styleClass="myContactsTableContainer slds-m-top--medium">
+                <table id="myOrgsTableSLDS" width="100%">
+                    <thead>
+                        <tr>
+                            <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Org_Org_Name}</th>
+                            <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Org_Mailing_City}</th>
+                            <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Org_Mailing_State_Province}</th>
+                            <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Org_Mailing_Country}</th>
+                            <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Org_Postal_Code}</th>
+                            <th width="15%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Org_Institutional_Tier}</th>
+                            <th width="10%" class="slds-text-heading--label slds-truncate" scope="col">{!$Label.My_Org_Type}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat value="{!myOrgsList}" var="myOrg"> 
+                            <tr>
+                                <td class="slds-truncate"><apex:outputLink value="/{!myOrg.id}" onclick="openPrimaryTab('{!myOrg.Id}','{!myOrg.Name}'); return false;">
+                                    {!myOrg.Name}</apex:outputLink></td>
+                                <td class="slds-truncate">{!myOrg.ShippingCity}</td>
+                                <td class="slds-truncate">{!myOrg.ShippingState}</td>
+                                <td class="slds-truncate">{!myOrg.ShippingCountry}</td>
+                                <td class="slds-truncate">{!myOrg.ShippingPostalCode}</td>
+                                <td class="slds-truncate">{!myOrg.Institutional_Tier__c}</td>
+                                <td class="slds-truncate">{!myOrg.Type__c}</td>  
+                            </tr>
+                        </apex:repeat>  
+                    </tbody>
+                </table>
+                <div class="slds-text-align--center slds-is-relative">
+                    <apex:outputPanel layout="block" rendered="{!noOfRecords > size}" styleClass="slds-m-top--medium">
+                        <div style="position:absolute;left:50%;top:-23px;">
+                            <apex:actionStatus id="fetchStatus" >
+                                <apex:facet name="start" >
+                                    <img src="/img/loading.gif" />                    
+                                </apex:facet>
+                            </apex:actionStatus>
+                        </div>
+                        <apex:commandButton status="fetchStatus" value="{!$Label.My_Cont_Previous}" action="{!getpreviousOrgs}" disabled="{!!myOrgs.hasPrevious}"
+                                            rerender="orgsTableSLDS, paginationPanelSLDS" oncomplete="makeMyOrgsDataTable();removeDefaultButtonStyling();" styleClass="slds-button slds-button--brand"/> 
+                        
+                        <apex:commandButton status="fetchStatus" value="{!$Label.My_Cont_Next}" action="{!getNextOrgs}" disabled="{!!myOrgs.hasNext}"
+                                            rerender="orgsTableSLDS, paginationPanelSLDS" oncomplete="makeMyOrgsDataTable();removeDefaultButtonStyling();" styleclass="slds-button slds-button--brand"/> 
+                        
+                        <div class="slds-m-top--medium">
+                            {!(myOrgs.pageNumber * size)+1-size}-{!IF((myOrgs.pageNumber * size)>noOfRecords, noOfRecords,
+                            (myOrgs.pageNumber * size))} of {!noOfRecords}
+                        </div>
+                    </apex:outputPanel>
+                </div>
+            </apex:outputPanel>
+        </apex:form>
+    </div>
+</apex:page>

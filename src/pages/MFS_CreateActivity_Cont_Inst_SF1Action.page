@@ -1,0 +1,40 @@
+<!---
+Visualforce Page Name :  MFS_CreateActivity_Cont_Inst_SF1Action
+Version               :  1.0 
+Created Date          :  9 NOV 2016
+Function              :  Publisher action to create Inst activity from Contact for Admin
+--->
+<apex:page standardController="Contact" sidebar="false" >
+    <script>
+    <apex:includeScript value="/soap/ajax/22.0/connection.js"/>
+        <apex:includeScript value="/soap/ajax/22.0/apex.js"/>
+            
+            /*Thisjavascript opens the Custom Activity360 page to Create Activity which is an Event of type Institutional.*/ 
+            
+            //parameters to pass in the URL 
+            var returnID; 
+    var pageneme = 'MFS_Activity360PageSF1'; 
+    var RecType= 'Institutional'; 
+    var isNew = 'isNew=true'; 
+    var contId= '{!Contact.Id}'; 
+    
+    returnID = contId; 
+    var activityId; 
+    
+    sforce.connection.sessionId = "{!$Api.Session_ID}";
+    var newActivityDetail= new sforce.SObject("Activity_Detail__c"); 
+    newActivityDetail.Subject__c = 'Orphan Record'; 
+    result = sforce.connection.create([newActivityDetail]); 
+    
+    activityId = result[0].id; 
+    var A360url = '/apex/' + pageneme + '?Id='+ activityId + '&event=true&returnID='+returnID+'&RecType=' + RecType+'&'+ isNew ; 
+    var A360urlConsole = '/apex/' + pageneme + '?Id='+ activityId + '&event=true&returnID='+returnID+'&RecType=' + RecType+'&'+ isNew +'&isConsole=true' ; 
+    
+    if (typeof(srcUp) == 'function') { 
+         window.open(A360urlConsole, "_self");  
+    } else { 
+        window.open(A360url); 
+    }
+    
+    </script>
+</apex:page>

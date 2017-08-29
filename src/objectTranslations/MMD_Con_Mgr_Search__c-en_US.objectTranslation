@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>MMD Con Manager Search</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>MMD Con Manager Searches</value>
+    </caseValues>
+    <fields>
+        <label><!-- Assets Placed ($000) --></label>
+        <name>ASSETPLACE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm Name --></label>
+        <name>Firm_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Firm MMD ID --></label>
+        <name>ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- MMD Firm Profile --></label>
+        <name>MMD_Firm_Profile__c</name>
+        <relationshipLabel><!-- Manager Searches --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Managers/Providers in Database --></label>
+        <name>NOMGRS__c</name>
+    </fields>
+    <fields>
+        <label><!-- Other Description --></label>
+        <name>OTHERTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Searches Last Year --></label>
+        <name>SEARCHES__c</name>
+    </fields>
+    <fields>
+        <label><!-- Search Type Code --></label>
+        <name>SRCHTYPE__c</name>
+    </fields>
+    <fields>
+        <label><!-- Search Type --></label>
+        <name>Search_Type__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

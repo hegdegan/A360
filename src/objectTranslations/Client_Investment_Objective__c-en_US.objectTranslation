@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Investment Objective and Insight</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Investment Objectives and Insights</value>
+    </caseValues>
+    <fields>
+        <label><!-- Client Strategy Plan --></label>
+        <name>Client_Strategy_Plan__c</name>
+        <relationshipLabel><!-- Investment Objectives and Insights --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Provide details on the status of products or product discussions/searches as related to this objective --></help>
+        <label><!-- Current/Potential --></label>
+        <name>Current_Potential__c</name>
+        <picklistValues>
+            <masterLabel>Current</masterLabel>
+            <translation><!-- Current --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Potential</masterLabel>
+            <translation><!-- Potential --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- MFS Potential Strategy Detail --></label>
+        <name>Investment_Detail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investment Objective Detail --></label>
+        <name>Investment_Objective_Detail1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investment Objective Detail --></label>
+        <name>Investment_Objective_Detail__c</name>
+    </fields>
+    <fields>
+        <label><!-- Investment Objective --></label>
+        <name>Investment_Objective__c</name>
+        <picklistValues>
+            <masterLabel>Capital preservation</masterLabel>
+            <translation><!-- Capital preservation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Growth</masterLabel>
+            <translation><!-- Growth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Income</masterLabel>
+            <translation><!-- Income --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inflation</masterLabel>
+            <translation><!-- Inflation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Liability matching</masterLabel>
+            <translation><!-- Liability matching --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Long Term DC Outcome</masterLabel>
+            <translation><!-- Long Term DC Outcome --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Volatility Management</masterLabel>
+            <translation><!-- Volatility Management --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- MFS Potential Strategy --></label>
+        <name>MFS_Potential_Strategy__c</name>
+        <relationshipLabel><!-- Investment Objectives and Insights (MFS Potential Strategy) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- MFS Existing Strategy --></label>
+        <name>MFS_Strategy__c</name>
+        <relationshipLabel><!-- Investment Objectives and Insights --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Organization --></label>
+        <name>Organization__c</name>
+        <relationshipLabel><!-- Investment Objectives and Insights --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- E.g. US DB Plan, Canadian DC Plan, etc. --></help>
+        <label><!-- Plan Identification --></label>
+        <name>Plan_Identification__c</name>
+    </fields>
+    <fields>
+        <label><!-- Plan --></label>
+        <name>Plan__c</name>
+        <picklistValues>
+            <masterLabel>Corporate Cash</masterLabel>
+            <translation><!-- Corporate Cash --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DB Plan</masterLabel>
+            <translation><!-- DB Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DC Plan</masterLabel>
+            <translation><!-- DC Plan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Endowment</masterLabel>
+            <translation><!-- Endowment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Foundation</masterLabel>
+            <translation><!-- Foundation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insurance</masterLabel>
+            <translation><!-- Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Other</masterLabel>
+            <translation><!-- Other --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sovereign Wealth</masterLabel>
+            <translation><!-- Sovereign Wealth --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sub Advisory</masterLabel>
+            <translation><!-- Sub Advisory --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Client Investment Objective Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- New_Client_Investment_Objective --></label>
+        <name>New_Client_Investment_Objective</name>
+    </webLinks>
+</CustomObjectTranslation>

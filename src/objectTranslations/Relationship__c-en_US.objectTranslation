@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Service Provider</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Service Providers</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active? --></label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- MDM ID --></label>
+        <name>MDM_ID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Organization --></label>
+        <name>Organization__c</name>
+        <relationshipLabel><!-- Service Providers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Primary Contact Title --></label>
+        <name>Primary_Contact_Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- Primary Contact --></label>
+        <name>Primary_Contact__c</name>
+        <relationshipLabel><!-- Mutual Clients --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Relationship --></label>
+        <name>Relationship__c</name>
+        <relationshipLabel><!-- Mutual Clients --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Actuary</masterLabel>
+            <translation><!-- Actuary --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Administrator</masterLabel>
+            <translation><!-- Administrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auditor</masterLabel>
+            <translation><!-- Auditor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Clearing Platform</masterLabel>
+            <translation><!-- Clearing Platform --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Contracting Entity</masterLabel>
+            <translation><!-- Contracting Entity --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Custodian</masterLabel>
+            <translation><!-- Custodian --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Due Dilligence</masterLabel>
+            <translation><!-- Due Dilligence --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>External Asset Manager</masterLabel>
+            <translation><!-- External Asset Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Law Firm</masterLabel>
+            <translation><!-- Law Firm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lending Agent</masterLabel>
+            <translation><!-- Lending Agent --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Organization Investment Consultant</masterLabel>
+            <translation><!-- Organization Investment Consultant --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Performance Analytics</masterLabel>
+            <translation><!-- Performance Analytics --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Record Keeper</masterLabel>
+            <translation><!-- Record Keeper --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trade Cost Analysis</masterLabel>
+            <translation><!-- Trade Cost Analysis --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transition Manager</masterLabel>
+            <translation><!-- Transition Manager --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vendor</masterLabel>
+            <translation><!-- Vendor --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Relationship Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

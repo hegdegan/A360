@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This button opens the Custom Activity360 page to Log a Call (Retail) . This is for Admin users so they can specifically Log a Call of type Retail</description>
+    <height>250</height>
+    <label>Log A Call (Retail)</label>
+    <page>MFS_LogACall_Retail_SF1Action</page>
+    <type>VisualforcePage</type>
+    <width>-100</width>
+</QuickAction>

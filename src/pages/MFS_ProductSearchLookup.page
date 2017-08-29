@@ -1,0 +1,174 @@
+<apex:page controller="MFS_StrategyRatingController"  
+           title="Search" 
+           showHeader="false" 
+           sideBar="false" 
+           tabStyle="Account" 
+           id="pg">
+    <apex:includeScript value="/support/console/30.0/integration.js"/>
+    <style>
+        .outer_panel{
+        margin:0px;
+        height:400px;
+        overflow-Y:auto;
+        }
+        body .pbBody table.list tr td{border:none;border-bottom: 1px solid #ededed;}
+    </style>
+    <apex:form >
+        <apex:outputPanel id="page" layout="block" style="margin:5px;padding:10px;padding-top:2px;">
+            <apex:actionRegion >  
+                <table>
+                    <tr>
+                        <th>{!$Label.A360_Asset_Class_Geography}</th>
+                        <th>{!$Label.A360_Strategy_Portfolio_Name}</th>
+                        <th>{!$Label.A360_Vehicle}</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <apex:selectList value="{!selectedAssetGeography}" size="1" id="styleP" styleClass="slds-select">
+                                <apex:actionSupport event="onchange" action="{!searchProduct}" reRender="searchResults" status="status"/>
+                                <apex:selectOptions value="{!GeograhpyOptions}"/>
+                            </apex:selectList>
+                        </td>
+                        <td><apex:inputText value="{!searchOpt}" onkeypress="searchStrategyOnEnter(this, event);" /></td>
+                        <td><apex:selectList value="{!selectedVehicle}" size="1" id="PVehicle" styleClass="slds-select">
+                            <apex:actionSupport event="onchange" action="{!searchProduct}" reRender="searchResults" status="status"/>                                         
+                            <apex:selectOptions value="{!VehicleOptions}"/>
+                            </apex:selectList></td>
+                        <td><apex:commandButton id="btnGo" styleClass="btnGoStrategy" value="Search" action="{!searchProduct}" rerender="searchResults" status="status"/></td>
+                    </tr>
+                </table>
+                <apex:actionStatus id="status">
+                    <apex:facet name="start">
+                        <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+                            &nbsp;
+                        </div>
+                        <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 40%">
+                            <div style="display: inline-block; padding: 2px; background-color: #fff; width: 125px;">
+                                <img src="/img/loading.gif" style="float: left; margin: 8px;" />
+                                <span style="display: inline-block; padding: 10px 0px;">Please Wait...</span>
+                            </div>
+                        </div>
+                    </apex:facet>
+                </apex:actionStatus>
+                <apex:outputPanel id="pnlSearchResults" styleclass="outer_panel" layout="block" style="margin-top:20px;">
+                    <apex:outputPanel id="searchResults" layout="block"> 
+                        <div class="bPageBlock brandSecondaryBrd secondaryPalette">
+                            <div class="pbBody">
+                                <table class="list" cellpadding="0" cellspacing="0">
+                                    <thead>
+                                        <tr class="headerRow">
+                                            <th width="5%">
+                                                Action
+                                            </th>
+                                            <th width="20%">
+                                                {!$Label.A360_Asset_Class_Geography}
+                                            </th>
+                                            <th width="25%">
+                                                {!$Label.A360_Strategy_Name}
+                                            </th>
+                                            <th width="25%">
+                                                {!$Label.A360_Portfolio_Name}
+                                            </th>
+                                            <th width="20%">
+                                                {!$Label.A360_Vehicle}
+                                            </th>
+                                            <th width="5%">
+                                                {!$Label.A360_Restricted}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        
+                                        <apex:repeat value="{!wraplist}" var="resultRec">
+                                            <tr>
+                                                <td class="dataCell">
+                                                    <div onclick="javascript:top.window.opener.lookupPick2('{!FormTag}','{!TextBox}_lkid','{!TextBox}','{!resultRec.prg.Id}','{!resultRec.prg.Name}', false)">
+                                                        <a href="javascript:void(0);">Add</a>
+                                                    </div>
+                                                </td>
+                                                <td class="dataCell">
+                                                    {!resultRec.assetClassGeoName}  
+                                                </td>
+                                                <td class="dataCell">
+                                                    <apex:outputLink value="/{!IF((resultRec.prg.Product_Record_Type__c == '1.Strategy'),resultRec.prg.Id,resultRec.prg.Strategy__c)}"
+                                                                     onclick="openProduct('{!IF((resultRec.prg.Product_Record_Type__c == '1.Strategy'),resultRec.prg.Id,resultRec.prg.Strategy__c)}', '{!IF((resultRec.prg.Product_Record_Type__c == '1.Strategy'),resultRec.prg.Name,resultRec.prg.Strategy__r.Name)}'); return false;">
+                                                        <apex:outputText value="{!IF((resultRec.prg.Product_Record_Type__c == '1.Strategy'),resultRec.prg.Name,resultRec.prg.Strategy__r.Name)}"/>
+                                                    </apex:outputLink>
+                                                    
+                                                </td>
+                                                <td >
+                                                    <apex:outputLink value="/{!IF((resultRec.prg.Product_Record_Type__c == '2.Portfolio'),resultRec.prg.Id,'')}"
+                                                                     onclick="openProduct('{!IF((resultRec.prg.Product_Record_Type__c == '2.Portfolio'),resultRec.prg.Id,'')}', '{!IF((resultRec.prg.Product_Record_Type__c == '2.Portfolio'),resultRec.prg.Name,'')}'); return false;">
+                                                        
+                                                        <apex:outputText value="{!IF((resultRec.prg.Product_Record_Type__c == '2.Portfolio'),resultRec.prg.Name,'')}"/>
+                                                    </apex:outputLink>
+                                                </td>
+                                                
+                                                <td class="dataCell">
+                                                    <apex:outputField value="{!resultRec.prg.Vehicle__c}"/>
+                                                </td>
+                                                <td class="dataCell">
+                                                    <apex:outputField value="{!resultRec.prg.Restricted__c}"/>
+                                                </td>
+                                            </tr>
+                                        </apex:repeat>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                        
+                        <br/><br/>
+                        <apex:outputPanel layout="block" rendered="{!IF(wraplist.size==0, TRUE, FALSE)}">
+                            
+                            No record to display
+                            </apex:outputPanel>
+                       <!-- <apex:pageBlockTable value="{!wraplist}" var="a" id="tblResults">
+                            <apex:column >
+                                <apex:facet name="header">
+                                    <apex:outputPanel >Name</apex:outputPanel>
+                                </apex:facet>
+                                <apex:outputLink value="javascript:top.window.opener.lookupPick2('{!FormTag}','{!TextBox}_lkid','{!TextBox}','{!a.Id}','{!a.Name}', false)" rendered="{!NOT(ISNULL(a.Id))}">{!a.Name}</apex:outputLink>     
+                            </apex:column>
+                        </apex:pageBlockTable>-->
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </apex:actionRegion>
+        </apex:outputPanel>
+    </apex:form>
+    
+    <script type="text/javascript">
+    function openProduct(currText, name){
+        if('{!isInConsole}' == 'true')
+        {
+            window.opener.consoleURLOpener(currText, name);
+        }
+        else{
+            window.open("/"+currText, "_blank").blur();
+			window.focus();            
+        }
+    }
+    var openSuccess = function openSuccess(result) {
+        if (result.success == true) {
+            console.log('true');
+            sforce.console.getEnclosingTabId(closeAdditionalSubtab);
+        }
+        else{
+            console.log(result);
+        }
+    }
+    
+    var searchStrategyOnEnter = function(elem, e){
+        if(e.keyCode === 13){
+            e.preventDefault();
+            e.stopPropagation();
+            
+            document.getElementsByClassName("btnGoStrategy")[0].click();
+            
+            return false;
+        } 
+    };
+    </script>
+</apex:page>
